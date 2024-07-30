@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-};
+	trailingSlash: true,
+	reactStrictMode: false,
+	pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+	compiler: {
+		styledComponents: true,
+	},
+}
 
-export default nextConfig;
+export default nextConfig
