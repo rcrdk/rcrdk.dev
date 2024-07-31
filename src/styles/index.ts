@@ -1,4 +1,15 @@
 import { createStitches } from '@stitches/react'
+import localFont from 'next/font/local'
+
+const circularSTD = localFont({
+	src: [
+		{
+			path: '../fonts/CircularStd-Black.woff2',
+			weight: '900',
+			style: 'normal',
+		},
+	],
+})
 
 export const {
 	config,
@@ -30,28 +41,20 @@ export const {
 		max575: '(max-width: 575px)',
 	},
 	theme: {
-		colors: {
-			baseBackground: '#ffffff',
-			baseText: '#161616',
-
-			brandBase: '#e51872',
-			brandContrast: '#ffffff',
-
-			grayText: '#808080',
-			grayBorder: '#e6e6e6',
-			grayBorderDialog: '#d6d6d6',
-			grayBackground: '#efefef',
-		},
 		fonts: {
 			base: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+			heading: `${circularSTD.style.fontFamily}, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`,
+		},
+		fontWeights: {
+			heading: '900',
 		},
 		fontSizes: {
 			iconDefault: '1.5rem',
 
 			thin: '.85rem',
-			small: '.93rem',
+			small: '.9rem',
 			base: '1rem',
-			lead: '1.13rem',
+			lead: '1.1rem',
 
 			leadSmall: '1.07rem',
 
@@ -77,22 +80,18 @@ export const {
 			h6: '1.25',
 		},
 		letterSpacings: {
-			h1: '-0.01em',
-			h2: '-0.005em',
-		},
-		shadows: {
-			defaultFocus: '0 0 0 1px #fff, 0 0 0 3px #e51872',
-
-			buttonFocus: '0 0 0 2px #e51872',
-			buttonFilledFocus: '0 0 0 2px #ffffff, 0 0 0 4px #e51872',
+			h1: '-0.03em',
+			h2: '-0.03em',
+			h3: '-0.03em',
 		},
 		space: {
-			betweenNodesLarge: '1.25rem',
-			betweenNodesMedium: '1rem',
+			betweenNodesLarge: '1.9rem',
+			betweenNodesMedium: '1.25rem',
+			betweenNodesNormal: '1rem',
+			betweenNodesSmall: '0.66rem',
 
 			containerLarge: '2.5rem',
 			containerSmall: '1.5rem',
-			containerExtraSmall: '1.3rem',
 
 			yAxisLarge: '3.5rem',
 			yAxisMedium: '3.125rem',
@@ -117,5 +116,57 @@ export const {
 			color: 'color 300ms ease',
 			colorBorder: 'color 300ms ease, border 300ms ease',
 		},
+	},
+})
+
+export const lightTheme = createTheme({
+	colors: {
+		baseBackground: '#ffffff',
+		baseTranslucid: 'rgb(255 255 255 / 80%)',
+		baseText: '#393939',
+		baseHeading: '#161616',
+
+		brandBase: '#00a5bc',
+		brandContrast: '#ffffff',
+
+		grayText: '#808080',
+		grayBorder: '#e6e6e6',
+		grayBorderDialog: '#d6d6d6',
+		grayBackground: '#efefef',
+
+		grayButtonHover: '#e0e0e0',
+		grayButtonActive: '#d0d0d0',
+	},
+	shadows: {
+		defaultFocus: '0 0 0 1px #fff, 0 0 0 3px #00a5bc',
+
+		buttonFocus: '0 0 0 2px #00a5bc',
+		buttonFilledFocus: '0 0 0 2px #ffffff, 0 0 0 4px #00a5bc',
+	},
+})
+
+export const darkTheme = createTheme({
+	colors: {
+		baseBackground: '#000000',
+		baseTranslucid: 'rgb(0 0 0 / 66%)',
+		baseText: '#d0d0d0',
+		baseHeading: '#ffffff',
+
+		brandBase: '#009bba',
+		brandContrast: '#ffffff',
+
+		grayText: '#808080',
+		grayBorder: '#e6e6e6',
+		grayBorderDialog: '#d6d6d6',
+		grayBackground: '#1f1f1f',
+
+		grayButtonHover: '#252525',
+		grayButtonActive: '#2f2f2f',
+	},
+	shadows: {
+		defaultFocus: '0 0 0 1px #fff, 0 0 0 3px #009bba',
+
+		buttonFocus: '0 0 0 2px #009bba',
+		buttonFilledFocus: '0 0 0 2px #000000, 0 0 0 4px #009bba',
 	},
 })
