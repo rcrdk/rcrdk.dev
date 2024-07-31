@@ -1,5 +1,4 @@
 import * as Avatar from '@radix-ui/react-avatar'
-import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useMemo, useState } from 'react'

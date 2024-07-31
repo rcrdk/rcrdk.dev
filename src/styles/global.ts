@@ -57,7 +57,7 @@ export const globalStyles = globalCss({
 
 	'.tabler-icon': {
 		fontSize: '$iconDefault',
-		strokeWidth: '1.75',
+		strokeWidth: '1.5',
 		width: '1em',
 		height: '1em',
 	},

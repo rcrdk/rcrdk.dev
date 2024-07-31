@@ -6,7 +6,7 @@ import { styled } from '@/styles'
 export const HomeContainer = styled(Container, {
 	maxWidth: 768,
 	paddingTop: '$yAxisLarge',
-	paddingBottom: '$yAxisMedium',
+	paddingBottom: '$yAxisExtraLarge',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'flex-start',
@@ -23,6 +23,20 @@ export const HomeContainer = styled(Container, {
 			fontWeight: 600,
 			color: '$baseHeading',
 			textDecoration: 'underline',
+			transition: '$color',
+
+			'@hover': {
+				'&:hover': {
+					color: '$brandBase',
+				},
+			},
 		},
 	},
+})
+
+export const Buttons = styled('nav', {
+	display: 'flex',
+	gap: '$betweenNodesSmall',
+	alignItems: 'center',
+	marginTop: '$betweenNodesMedium',
 })

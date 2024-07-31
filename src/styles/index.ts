@@ -49,7 +49,8 @@ export const {
 			heading: '900',
 		},
 		fontSizes: {
-			iconDefault: '1.5rem',
+			iconDefault: '1.65rem',
+			iconLead: '1.95rem',
 
 			thin: '.85rem',
 			small: '.9rem',
@@ -69,7 +70,7 @@ export const {
 		},
 		lineHeights: {
 			base: '1',
-			text: '1.75',
+			text: '1.9',
 			textThin: '1.35',
 			textSmall: '1.5',
 			h1: '1.1',
@@ -93,6 +94,7 @@ export const {
 			containerLarge: '2.5rem',
 			containerSmall: '1.5rem',
 
+			yAxisExtraLarge: '4.25rem',
 			yAxisLarge: '3.5rem',
 			yAxisMedium: '3.125rem',
 			yAxisSmall: '2.5rem',
@@ -115,6 +117,8 @@ export const {
 		transitions: {
 			color: 'color 300ms ease',
 			colorBorder: 'color 300ms ease, border 300ms ease',
+			button:
+				'color 300ms ease, background 300ms ease, border 300ms ease, transform 100ms ease, opacity 300ms ease',
 		},
 	},
 })
@@ -123,11 +127,14 @@ export const lightTheme = createTheme({
 	colors: {
 		baseBackground: '#ffffff',
 		baseTranslucid: 'rgb(255 255 255 / 80%)',
-		baseText: '#393939',
+		baseText: '#3f3f3f',
 		baseHeading: '#161616',
 
 		brandBase: '#00a5bc',
 		brandContrast: '#ffffff',
+		brandTint: '#32b7c9',
+		brandShade: '#0094a9',
+		brandButtonOutlineActive: 'rgb(50 183 201 / 12%)',
 
 		grayText: '#808080',
 		grayBorder: '#e6e6e6',
@@ -149,14 +156,17 @@ export const darkTheme = createTheme({
 	colors: {
 		baseBackground: '#000000',
 		baseTranslucid: 'rgb(0 0 0 / 66%)',
-		baseText: '#d0d0d0',
-		baseHeading: '#ffffff',
+		baseText: '#b0b0b0',
+		baseHeading: '#f0f0f0',
 
 		brandBase: '#009bba',
 		brandContrast: '#ffffff',
+		brandTint: '#32afc7',
+		brandShade: '#008ba7',
+		brandButtonOutlineActive: 'rgb(0 155 186 / 24%)',
 
 		grayText: '#808080',
-		grayBorder: '#e6e6e6',
+		grayBorder: '#2b2b2b',
 		grayBorderDialog: '#d6d6d6',
 		grayBackground: '#1f1f1f',
 

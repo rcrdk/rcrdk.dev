@@ -9,46 +9,37 @@ import Head from 'next/head'
 
 import favicon from '@/assets/favicon.png'
 import sharingImage from '@/assets/open-graph.jpg'
-import sharingImageX from '@/assets/open-graph-x.jpg'
 import { Button } from '@/components/button'
 import Header from '@/components/header'
 import { Heading } from '@/components/heading'
 import { Text } from '@/components/text'
+import Tooltip from '@/components/tooltip'
 
-import { HomeContainer } from './styles'
+import { Buttons, HomeContainer } from './styles'
 
 export default function Home() {
+	const SEO = {
+		title: 'Ricardo Augusto Kowalski | Desenvolvedor Front-End',
+		description:
+			'Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js.',
+	}
+
 	return (
 		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<title>Ricardo Augusto Kowalski | Desenvolvedor Front-End</title>
-				<meta
-					name="description"
-					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
-				/>
-				<meta
-					property="og:title"
-					content="Ricardo Augusto Kowalski | Desenvolvedor Front-End"
-				/>
-				<meta
-					property="og:description"
-					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
-				/>
-				<meta property="og:image:type" content="image/jpeg" />
+				<title>{SEO.title}</title>
+				<meta name="description" content={SEO.description} />
+				<meta property="og:type" content="website" />
+				<meta property="og:locale" content="pt_BR" />
+				<meta property="og:title" content={SEO.title} />
+				<meta property="og:description" content={SEO.description} />
 				<meta property="og:image" content={sharingImage.src} />
 				<meta property="og:url" content="/" />
 				<meta name="twitter:card" content="summary_large_image" />
-				<meta
-					name="twitter:title"
-					content="Ricardo Augusto Kowalski | Desenvolvedor Front-End"
-				/>
-				<meta
-					name="twitter:description"
-					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
-				/>
-				<meta name="twitter:image:type" content="image/jpeg" />
-				<meta name="twitter:image" content={sharingImageX.src} />
+				<meta name="twitter:title" content={SEO.title} />
+				<meta name="twitter:description" content={SEO.description} />
+				<meta name="twitter:image" content={sharingImage.src} />
 				<link rel="icon" href={favicon.src} type="image/png" sizes="128x128" />
 				<meta
 					name="theme-color"
@@ -109,26 +100,69 @@ export default function Home() {
 					ou se conectar através de alguma rede abaixo:
 				</Text>
 
-				<Button as="a" href="http://" target="_blank" rel="noopener noreferrer">
-					<IconBrandLinkedin />
-					<span>Conecte-se comigo no LinkedIn</span>
-				</Button>
-				<Button as="a" href="http://" target="_blank" rel="noopener noreferrer">
-					<IconBrandGithub />
-					<span>Veja minha atividade no GitHub</span>
-				</Button>
-				<Button as="a" href="http://" target="_blank" rel="noopener noreferrer">
-					<IconBrandBehance />
-					<span>Veja alguns projetos visuais no Behance</span>
-				</Button>
-				<Button as="a" href="mailto:ricardoakowalski@gmail.com">
-					<IconMail />
-					<span>Entre em contato comigo</span>
-				</Button>
-				<Button as="a" href="http://" target="_blank" rel="noopener noreferrer">
-					<IconFileDescription />
-					<span>Veja meu CV atualizado</span>
-				</Button>
+				<Buttons>
+					<Tooltip content="Conecte-se comigo no LinkedIn">
+						<Button
+							mode="outline"
+							size="lead"
+							as="a"
+							href="https://www.linkedin.com/in/rcrdk/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<IconBrandLinkedin />
+						</Button>
+					</Tooltip>
+
+					<Tooltip content="Entre em contato comigo por e-mail">
+						<Button
+							mode="outline"
+							size="lead"
+							as="a"
+							href="mailto:ricardoakowalski@gmail.com"
+						>
+							<IconMail />
+						</Button>
+					</Tooltip>
+
+					<Tooltip content="Veja minha atividade e projetos no GitHub">
+						<Button
+							mode="outline"
+							size="lead"
+							as="a"
+							href="http://"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<IconBrandGithub />
+						</Button>
+					</Tooltip>
+
+					<Tooltip content="Veja alguns projetos visuais no Behance">
+						<Button
+							mode="outline"
+							size="lead"
+							as="a"
+							href="http://"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<IconBrandBehance />
+						</Button>
+					</Tooltip>
+
+					{/* <Button
+						mode="outline"
+						size="lead"
+						as="a"
+						href="http://"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<IconFileDescription />
+						<span>Veja meu CV atualizado</span>
+					</Button> */}
+				</Buttons>
 			</HomeContainer>
 		</>
 	)

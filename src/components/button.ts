@@ -17,8 +17,7 @@ export const Button = styled('button', {
 	boxSizing: 'border-box',
 	userDrag: 'none',
 	flexShrink: 0,
-	transition:
-		'color 300ms ease, background 300ms ease, border 300ms ease, transform 100ms ease, opacity 300ms ease',
+	transition: '$button',
 
 	'&:active': {
 		transform: 'scale(.93)',
@@ -48,6 +47,10 @@ export const Button = styled('button', {
 				height: '3.25rem',
 				gap: '$gap3',
 				padding: '0 1.5rem',
+
+				svg: {
+					fontSize: '$iconLead',
+				},
 
 				'&:has(svg:only-child)': {
 					padding: 0,

@@ -1,3 +1,4 @@
+import * as TooltipBase from '@radix-ui/react-tooltip'
 import type { AppProps } from 'next/app'
 
 import { ThemeProvider } from '@/context/theme'
@@ -19,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
 				dark: darkTheme.className,
 			}}
 		>
-			<Component {...pageProps} />
+			<TooltipBase.Provider delayDuration={0}>
+				<Component {...pageProps} />
+			</TooltipBase.Provider>
 		</ThemeProvider>
 	)
 }
