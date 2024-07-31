@@ -25,7 +25,7 @@ export default function Home() {
 				<title>Ricardo Augusto Kowalski | Desenvolvedor Front-End</title>
 				<meta
 					name="description"
-					content="Sou desenvolvedor front-end com habilidades em Typescript, React e Next.js."
+					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
 				/>
 				<meta
 					property="og:title"
@@ -33,7 +33,7 @@ export default function Home() {
 				/>
 				<meta
 					property="og:description"
-					content="Sou desenvolvedor front-end com habilidades em Typescript, React e Next.js."
+					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
 				/>
 				<meta property="og:image:type" content="image/jpeg" />
 				<meta property="og:image" content={sharingImage.src} />
@@ -45,7 +45,7 @@ export default function Home() {
 				/>
 				<meta
 					name="twitter:description"
-					content="Sou desenvolvedor front-end com habilidades em Typescript, React e Next.js."
+					content="Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
 				/>
 				<meta name="twitter:image:type" content="image/jpeg" />
 				<meta name="twitter:image" content={sharingImageX.src} />
