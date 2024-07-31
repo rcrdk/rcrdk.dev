@@ -9,6 +9,7 @@ import Head from 'next/head'
 
 import favicon from '@/assets/favicon.png'
 import sharingImage from '@/assets/open-graph.jpg'
+import sharingImageX from '@/assets/open-graph-x.jpg'
 import { Button } from '@/components/button'
 import Header from '@/components/header'
 import { Heading } from '@/components/heading'
@@ -35,9 +36,8 @@ export default function Home() {
 					content="Sou desenvolvedor front-end com habilidades em Typescript, React e Next.js."
 				/>
 				<meta property="og:image:type" content="image/jpeg" />
-				<meta property="og:image:width" content="1200" />
-				<meta property="og:image:height" content="630" />
 				<meta property="og:image" content={sharingImage.src} />
+				<meta property="og:url" content="/" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta
 					name="twitter:title"
@@ -48,10 +48,18 @@ export default function Home() {
 					content="Sou desenvolvedor front-end com habilidades em Typescript, React e Next.js."
 				/>
 				<meta name="twitter:image:type" content="image/jpeg" />
-				<meta name="twitter:image:width" content="1200" />
-				<meta name="twitter:image:height" content="630" />
-				<meta name="twitter:image" content={sharingImage.src} />
+				<meta name="twitter:image" content={sharingImageX.src} />
 				<link rel="icon" href={favicon.src} type="image/png" sizes="128x128" />
+				<meta
+					name="theme-color"
+					media="(prefers-color-scheme: light)"
+					content="#00a5bc"
+				/>
+				<meta
+					name="theme-color"
+					media="(prefers-color-scheme: dark)"
+					content="#0277a9"
+				/>
 			</Head>
 
 			<Header />
