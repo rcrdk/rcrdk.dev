@@ -1,3 +1,4 @@
+import { SrOnly } from '@/components/text'
 import { styled } from '@/styles'
 
 export const Button = styled('button', {
@@ -34,7 +35,7 @@ export const Button = styled('button', {
 				padding: '0 $gap4',
 				gap: '$gap3',
 
-				'&:has(svg:only-child)': {
+				[`&:has(svg):has(${SrOnly})`]: {
 					padding: 0,
 					width: '2.8rem',
 
@@ -52,7 +53,7 @@ export const Button = styled('button', {
 					fontSize: '$iconLead',
 				},
 
-				'&:has(svg:only-child)': {
+				[`&:has(svg):has(${SrOnly})`]: {
 					padding: 0,
 					width: '3.25rem',
 

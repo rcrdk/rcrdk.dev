@@ -12,7 +12,7 @@ import { Button } from '@/components/button'
 import Header from '@/components/header'
 import { Heading } from '@/components/heading'
 import { LayoutContainer } from '@/components/layout'
-import { Text } from '@/components/text'
+import { SrOnly, Text } from '@/components/text'
 import Tooltip from '@/components/tooltip'
 
 import { Buttons, HomeContainer } from './styles'
@@ -117,6 +117,7 @@ export default function Home() {
 								rel="noopener noreferrer"
 							>
 								<IconBrandLinkedin />
+								<SrOnly>Conecte-se comigo no LinkedIn</SrOnly>
 							</Button>
 						</Tooltip>
 
@@ -128,6 +129,7 @@ export default function Home() {
 								href="mailto:ricardoakowalski@gmail.com"
 							>
 								<IconMail />
+								<SrOnly>Entre em contato comigo por e-mail</SrOnly>
 							</Button>
 						</Tooltip>
 
@@ -141,6 +143,7 @@ export default function Home() {
 								rel="noopener noreferrer"
 							>
 								<IconBrandGithub />
+								<SrOnly>Veja minha atividade e projetos no GitHub</SrOnly>
 							</Button>
 						</Tooltip>
 
@@ -154,6 +157,7 @@ export default function Home() {
 								rel="noopener noreferrer"
 							>
 								<IconBrandBehance />
+								<SrOnly>Veja alguns projetos visuais no Behance</SrOnly>
 							</Button>
 						</Tooltip>
 

@@ -49,3 +49,16 @@ export const Text = styled('p', {
 		theme: 'current',
 	},
 })
+
+export const SrOnly = styled('span', {
+	display: 'block',
+	width: '1px',
+	height: '1px',
+	overflow: 'hidden',
+	position: 'absolute',
+	padding: 0,
+	margin: '-1px',
+	clip: 'rect(0, 0, 0, 0)',
+	whiteSpace: 'nowrap',
+	borderWidth: 0,
+})

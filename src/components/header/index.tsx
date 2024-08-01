@@ -7,8 +7,9 @@ import avatarImage from '@/assets/avatar.jpg'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Heading } from '@/components/heading'
+import { SrOnly } from '@/components/text'
+import Tooltip from '@/components/tooltip'
 
-import Tooltip from '../tooltip'
 import { BrandAvatar, BrandContainer, HeaderContainer } from './styles'
 
 export default function Header() {
@@ -61,7 +62,10 @@ export default function Header() {
 			<Container>
 				<BrandContainer>
 					<BrandAvatar>
-						<Avatar.Image src={avatarImage.src} />
+						<Avatar.Image
+							src={avatarImage.src}
+							alt="Imagem de perfil de Ricardo Augusto Kowalski"
+						/>
 					</BrandAvatar>
 					<Heading as="span" mode="h3">
 						rcrdk<span>.dev</span>
@@ -71,6 +75,7 @@ export default function Header() {
 				<Tooltip content={getActiveTheme?.title}>
 					<Button mode="filledGray" onClick={handleChangeTheme}>
 						{getActiveTheme?.icon}
+						<SrOnly>{getActiveTheme?.title || 'Modo de cor'}</SrOnly>
 					</Button>
 				</Tooltip>
 			</Container>
