@@ -38,4 +38,8 @@ export const BrandAvatar = styled(Avatar.Root, {
 	borderRadius: '50%',
 	overflow: 'hidden',
 	background: '$grayBackground',
+
+	'@max575': {
+		flex: '0 0 2.25rem',
+	},
 })

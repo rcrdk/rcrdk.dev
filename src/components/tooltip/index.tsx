@@ -1,6 +1,8 @@
 import * as TooltipBase from '@radix-ui/react-tooltip'
 import { ReactNode } from 'react'
 
+import { TooltipContent, TooltipInner } from './styles'
+
 interface TooltipProps {
 	children: ReactNode
 	content: string | ReactNode
@@ -12,10 +14,9 @@ export default function Tooltip({ children, content }: TooltipProps) {
 			<TooltipBase.Trigger asChild>{children}</TooltipBase.Trigger>
 
 			<TooltipBase.Portal>
-				<TooltipBase.Content>
-					<TooltipBase.Arrow />
-					{content}
-				</TooltipBase.Content>
+				<TooltipContent sideOffset={10}>
+					<TooltipInner>{content}</TooltipInner>
+				</TooltipContent>
 			</TooltipBase.Portal>
 		</TooltipBase.Root>
 	)

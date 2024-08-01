@@ -18,6 +18,11 @@ export const globalStyles = globalCss({
 		borderRadius: '$buttons',
 	},
 
+	'::selection': {
+		background: '$brandBase',
+		color: '$brandContrast',
+	},
+
 	'html, body': {
 		background: '$baseBackground',
 		color: '$baseText',

@@ -2,7 +2,6 @@ import {
 	IconBrandBehance,
 	IconBrandGithub,
 	IconBrandLinkedin,
-	IconFileDescription,
 	IconMail,
 } from '@tabler/icons-react'
 import Head from 'next/head'
@@ -12,6 +11,7 @@ import sharingImage from '@/assets/open-graph.jpg'
 import { Button } from '@/components/button'
 import Header from '@/components/header'
 import { Heading } from '@/components/heading'
+import { LayoutContainer } from '@/components/layout'
 import { Text } from '@/components/text'
 import Tooltip from '@/components/tooltip'
 
@@ -22,6 +22,9 @@ export default function Home() {
 		title: 'Ricardo Augusto Kowalski | Desenvolvedor Front-End',
 		description:
 			'Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js.',
+		url: process.env.NEXT_PUBLIC_URL,
+		image: process.env.NEXT_PUBLIC_URL + sharingImage.src,
+		favicon: process.env.NEXT_PUBLIC_URL + favicon.src,
 	}
 
 	return (
@@ -34,13 +37,13 @@ export default function Home() {
 				<meta property="og:locale" content="pt_BR" />
 				<meta property="og:title" content={SEO.title} />
 				<meta property="og:description" content={SEO.description} />
-				<meta property="og:image" content={sharingImage.src} />
-				<meta property="og:url" content="/" />
+				<meta property="og:image" content={SEO.image} />
+				<meta property="og:url" content={SEO.url} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content={SEO.title} />
 				<meta name="twitter:description" content={SEO.description} />
-				<meta name="twitter:image" content={sharingImage.src} />
-				<link rel="icon" href={favicon.src} type="image/png" sizes="128x128" />
+				<meta name="twitter:image" content={SEO.image} />
+				<link rel="icon" href={SEO.favicon} type="image/png" sizes="128x128" />
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: light)"
@@ -53,105 +56,108 @@ export default function Home() {
 				/>
 			</Head>
 
-			<Header />
+			<LayoutContainer>
+				<Header />
 
-			<HomeContainer as="main">
-				<Heading>Ricardo Augusto Kowalski</Heading>
-				<Text size="lead" balance>
-					Sou <strong>desenvolvedor front-end</strong> há mais de 11 anos,
-					trabalhei a maior parte deste tempo movido a muito café e motivação no
-					desenvolvimento de{' '}
-					<strong>websites, e-commerces e sistemas web</strong>. Tenho 28 anos e
-					sou bacharel em <strong>Publicidade e Propaganda</strong> desde 2017.
-				</Text>
-				<Text size="lead" balance>
-					Neste período colaborei em projetos usando o ecossistema{' '}
-					<strong>PHP/Laravel</strong> escrevendo muito <strong>CSS</strong> com
-					uso do pré-processador LESS, e também muito{' '}
-					<strong>JavaScript</strong> puro ou com jQuery{' '}
-					<s>(já faz muito, muito tempo)</s>. Tudo isso, claro, buscando de
-					desenvolver projetos com <strong>boas práticas</strong> de código, que
-					tivessem boa <strong>performance</strong> e que trouxessem{' '}
-					<strong>resultados positivos</strong> para os clientes.
-				</Text>
-				<Text size="lead" balance>
-					Com toda essa experiência acabei me tornando um adepto do{' '}
-					<strong>Pixel Perfect</strong> podendo desenvolver interfaces de alta
-					qualidade. Desenvolvi alguns projetos como{' '}
-					<strong>desenvolvedor full-stack</strong> usando o ecossistema
-					Laravel. Outras habilidades que se destacam são: edição de imagens e
-					design de interfaces.
-				</Text>
+				<HomeContainer as="main">
+					<Heading>Ricardo Augusto Kowalski</Heading>
+					<Text size="lead">
+						Sou <strong>desenvolvedor front-end</strong> há mais de 11 anos,
+						trabalhei a maior parte deste tempo movido a muito café e playlists
+						no desenvolvimento de{' '}
+						<strong>websites, e-commerces e sistemas web</strong>. Tenho 28 anos
+						e sou bacharel em <strong>Publicidade e Propaganda</strong>.
+					</Text>
 
-				<Text size="lead" balance>
-					Atualmente meu foco de estudo e de trabalho vem sendo a stack{' '}
-					<strong>Typescript, React e Next.js</strong> das quais busco
-					oportunidades, e claro, venho me atualizando e alimentando minha
-					vontade de aprender cada vez mais.
-				</Text>
+					{/* <Text size="lead">
+						Neste período colaborei em projetos usando o ecossistema{' '}
+						<strong>PHP/Laravel</strong> escrevendo muito <strong>CSS</strong> com
+						uso do pré-processador LESS, e também muito{' '}
+						<strong>JavaScript</strong> puro ou com jQuery{' '}
+						<s>(já faz muito, muito tempo)</s>. Tudo isso, claro, buscando de
+						desenvolver projetos com <strong>boas práticas</strong> de código, que
+						tivessem boa <strong>performance</strong> e que trouxessem{' '}
+						<strong>resultados positivos</strong> para os clientes.
+					</Text>
 
-				<Text size="lead" balance>
-					Esta página ainda está em <strong>desenvolvimento</strong>, mas estou
-					disponível para novas oportunidades ou quem sabe um papo, fique a
-					vontade para entrar em contato por{' '}
-					<a href="mailto:ricardoakowalski@gmail.com">
-						ricardoakowalski@gmail.com
-					</a>{' '}
-					ou se conectar através de alguma rede abaixo:
-				</Text>
+					<Text size="lead">
+						Com toda essa experiência acabei me tornando um adepto do{' '}
+						<strong>Pixel Perfect</strong> podendo desenvolver interfaces de alta
+						qualidade. Desenvolvi alguns projetos como{' '}
+						<strong>desenvolvedor full-stack</strong> usando o ecossistema
+						Laravel. Outras habilidades que se destacam são: edição de imagens e
+						design de interfaces.
+					</Text> */}
 
-				<Buttons>
-					<Tooltip content="Conecte-se comigo no LinkedIn">
-						<Button
-							mode="outline"
-							size="lead"
-							as="a"
-							href="https://www.linkedin.com/in/rcrdk/"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<IconBrandLinkedin />
-						</Button>
-					</Tooltip>
+					<Text size="lead">
+						Atualmente meu foco de estudo e de trabalho vem sendo a stack{' '}
+						<strong>Typescript, React e Next.js</strong> das quais busco
+						oportunidades, e claro, venho me atualizando e alimentando minha
+						vontade de aprender cada vez mais.
+					</Text>
 
-					<Tooltip content="Entre em contato comigo por e-mail">
-						<Button
-							mode="outline"
-							size="lead"
-							as="a"
-							href="mailto:ricardoakowalski@gmail.com"
-						>
-							<IconMail />
-						</Button>
-					</Tooltip>
+					<Text size="lead">
+						Esta página ainda está em <strong>desenvolvimento</strong>, mas
+						estou disponível para novas oportunidades ou quem sabe um papo,
+						fique a vontade para entrar em contato em{' '}
+						<a href="mailto:ricardoakowalski@gmail.com">
+							ricardoakowalski@gmail.com
+						</a>{' '}
+						ou se conectar através de alguma rede abaixo:
+					</Text>
 
-					<Tooltip content="Veja minha atividade e projetos no GitHub">
-						<Button
-							mode="outline"
-							size="lead"
-							as="a"
-							href="http://"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<IconBrandGithub />
-						</Button>
-					</Tooltip>
+					<Buttons>
+						<Tooltip content="Conecte-se comigo no LinkedIn">
+							<Button
+								mode="outline"
+								size="lead"
+								as="a"
+								href="https://www.linkedin.com/in/rcrdk/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconBrandLinkedin />
+							</Button>
+						</Tooltip>
 
-					<Tooltip content="Veja alguns projetos visuais no Behance">
-						<Button
-							mode="outline"
-							size="lead"
-							as="a"
-							href="http://"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<IconBrandBehance />
-						</Button>
-					</Tooltip>
+						<Tooltip content="Entre em contato comigo por e-mail">
+							<Button
+								mode="outline"
+								size="lead"
+								as="a"
+								href="mailto:ricardoakowalski@gmail.com"
+							>
+								<IconMail />
+							</Button>
+						</Tooltip>
 
-					{/* <Button
+						<Tooltip content="Veja minha atividade e projetos no GitHub">
+							<Button
+								mode="outline"
+								size="lead"
+								as="a"
+								href="https://github.com/rcrdk"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconBrandGithub />
+							</Button>
+						</Tooltip>
+
+						<Tooltip content="Veja alguns projetos visuais no Behance">
+							<Button
+								mode="outline"
+								size="lead"
+								as="a"
+								href="https://behance.net/rcrdk"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconBrandBehance />
+							</Button>
+						</Tooltip>
+
+						{/* <Button
 						mode="outline"
 						size="lead"
 						as="a"
@@ -162,8 +168,9 @@ export default function Home() {
 						<IconFileDescription />
 						<span>Veja meu CV atualizado</span>
 					</Button> */}
-				</Buttons>
-			</HomeContainer>
+					</Buttons>
+				</HomeContainer>
+			</LayoutContainer>
 		</>
 	)
 }

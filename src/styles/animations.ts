@@ -19,121 +19,14 @@ export const fadeOut = keyframes({
 	},
 })
 
-// full slide
-export const slideInFromLeft = keyframes({
+// scale
+export const scaleIn = keyframes({
 	from: {
-		transform: 'translate3d(-100%,0,0)',
-	},
-	to: {
-		transform: 'translate3d(0,0,0)',
-	},
-})
-
-export const slideOutToLeft = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-	},
-	to: {
-		transform: 'translate3d(-100%,0,0)',
-	},
-})
-
-export const slideInFromRight = keyframes({
-	from: {
-		transform: 'translate3d(100%,0,0)',
-	},
-	to: {
-		transform: 'translate3d(0,0,0)',
-	},
-})
-
-export const slideOutToRight = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-	},
-	to: {
-		transform: 'translate3d(100%,0,0)',
-	},
-})
-
-// short slide
-export const shortSlideInFromTop = keyframes({
-	from: {
-		transform: 'translate3d(0,-1.5rem,0)',
-	},
-	to: {
-		transform: 'translate3d(0,0,0)',
-	},
-})
-
-export const shortSlideOutToTop = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-	},
-	to: {
-		transform: 'translate3d(0,-1.5rem,0)',
-	},
-})
-
-export const shortSlideInFromBottom = keyframes({
-	from: {
-		transform: 'translate3d(0,1.5rem,0)',
-	},
-	to: {
-		transform: 'translate3d(0,0,0)',
-	},
-})
-
-export const shortSlideOutToBottom = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-	},
-	to: {
-		transform: 'translate3d(0,1.5rem,0)',
-	},
-})
-
-export const shortSlideInFromLeft = keyframes({
-	from: {
-		transform: 'translate3d(-1.5rem,0,0)',
-	},
-	to: {
-		transform: 'translate3d(0,0,0)',
-	},
-})
-
-export const shortSlideOutToLeft = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-	},
-	to: {
-		transform: 'translate3d(-1.5rem,0,0)',
-	},
-})
-
-// dropdown
-export const dropdownIn = keyframes({
-	from: {
-		transform: 'translate3d(0,-0.5rem,0)',
 		opacity: 0,
-		boxShadow: '$popupInvisible',
+		transform: 'scale(0.85)',
 	},
 	to: {
-		transform: 'translate3d(0,0,0)',
 		opacity: 1,
-		boxShadow: '$popupVisible',
-	},
-})
-
-export const dropdownOut = keyframes({
-	from: {
-		transform: 'translate3d(0,0,0)',
-		opacity: 1,
-		boxShadow: '$popupVisible',
-	},
-	to: {
-		transform: 'translate3d(0,-0.5rem,0)',
-		opacity: 0,
-		boxShadow: '$popupInvisible',
+		transform: 'scale(1)',
 	},
 })

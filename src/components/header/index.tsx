@@ -8,6 +8,7 @@ import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Heading } from '@/components/heading'
 
+import Tooltip from '../tooltip'
 import { BrandAvatar, BrandContainer, HeaderContainer } from './styles'
 
 export default function Header() {
@@ -19,17 +20,17 @@ export default function Header() {
 		return [
 			{
 				mode: 'light',
-				title: 'Modo Claro (clique para alterar)',
+				title: 'Modo Claro',
 				icon: <IconSun />,
 			},
 			{
 				mode: 'dark',
-				title: 'Modo Escuro (clique para alterar)',
+				title: 'Modo Escuro',
 				icon: <IconMoon />,
 			},
 			{
 				mode: 'system',
-				title: 'Modo de cores do sistema (clique para alterar)',
+				title: 'Modo de cor',
 				icon: <IconDeviceDesktop />,
 			},
 		]
@@ -55,8 +56,6 @@ export default function Header() {
 	useEffect(() => setMounted(true), [])
 	if (!mounted) return null
 
-	console.log(resolvedTheme)
-
 	return (
 		<HeaderContainer>
 			<Container>
@@ -69,13 +68,11 @@ export default function Header() {
 					</Heading>
 				</BrandContainer>
 
-				<Button
-					mode="filledGray"
-					title={getActiveTheme?.title}
-					onClick={handleChangeTheme}
-				>
-					{getActiveTheme?.icon}
-				</Button>
+				<Tooltip content={getActiveTheme?.title}>
+					<Button mode="filledGray" onClick={handleChangeTheme}>
+						{getActiveTheme?.icon}
+					</Button>
+				</Tooltip>
 			</Container>
 		</HeaderContainer>
 	)

@@ -4,6 +4,7 @@ import { Text } from '@/components/text'
 import { styled } from '@/styles'
 
 export const HomeContainer = styled(Container, {
+	margin: 'auto',
 	maxWidth: 768,
 	paddingTop: '$yAxisLarge',
 	paddingBottom: '$yAxisExtraLarge',
@@ -14,6 +15,15 @@ export const HomeContainer = styled(Container, {
 
 	[`> ${Heading}`]: {
 		marginBottom: '$betweenNodesLarge',
+
+		'@max767': {
+			maxWidth: '1rem',
+			overflowWrap: 'normal',
+		},
+
+		'@max575': {
+			fontSize: '$display',
+		},
 	},
 
 	[`> ${Text}`]: {

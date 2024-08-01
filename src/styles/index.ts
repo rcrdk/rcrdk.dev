@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createStitches } from '@stitches/react'
 import localFont from 'next/font/local'
 
@@ -41,9 +42,37 @@ export const {
 		max575: '(max-width: 575px)',
 	},
 	theme: {
+		colors: {
+			baseBackground: '#ffffff',
+			baseTranslucid: 'rgb(255 255 255 / 80%)',
+			baseText: '#3f3f3f',
+			baseHeading: '#161616',
+
+			brandBase: '#00a5bc',
+			brandContrast: '#ffffff',
+			brandTint: '#32b7c9',
+			brandShade: '#0094a9',
+			brandButtonOutlineActive: 'rgb(50 183 201 / 12%)',
+
+			grayText: '#808080',
+			grayBorder: '#e6e6e6',
+			grayBorderShadow: '#d6d6d6',
+			grayBackground: '#efefef',
+
+			grayButtonHover: '#e0e0e0',
+			grayButtonActive: '#d0d0d0',
+		},
 		fonts: {
 			base: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 			heading: `${circularSTD.style.fontFamily}, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`,
+		},
+		shadows: {
+			defaultFocus: '0 0 0 1px #fff, 0 0 0 3px #00a5bc',
+	
+			buttonFocus: '0 0 0 2px #00a5bc',
+			buttonFilledFocus: '0 0 0 2px #ffffff, 0 0 0 4px #00a5bc',
+	
+			tooltip: 'rgba(0 0 0 / 20%) 0px 5px 15px',
 		},
 		fontWeights: {
 			heading: '900',
@@ -57,9 +86,9 @@ export const {
 			base: '1rem',
 			lead: '1.1rem',
 
-			leadSmall: '1.07rem',
+			leadSmall: '1.05rem',
 
-			navigationLinkLead: '1.45rem',
+			display: '3.75rem',
 
 			h1: '3.25rem',
 			h2: '2.5rem',
@@ -67,6 +96,13 @@ export const {
 			h4: '1.5rem',
 			h5: '1.25rem',
 			h6: '1rem',
+			
+			h1ExtraSmall: '3rem',
+			h2ExtraSmall: '2.25rem',
+			h3ExtraSmall: '1.75rem',
+			h4ExtraSmall: '1.4rem',
+			h5ExtraSmall: '1.15rem',
+			h6ExtraSmall: '1rem',
 		},
 		lineHeights: {
 			base: '1',
@@ -113,12 +149,12 @@ export const {
 		radii: {
 			buttons: '0.75rem',
 			card: '1.5rem',
+			tooltip: '1rem',
 		},
 		transitions: {
 			color: 'color 300ms ease',
 			colorBorder: 'color 300ms ease, border 300ms ease',
-			button:
-				'color 300ms ease, background 300ms ease, border 300ms ease, transform 100ms ease, opacity 300ms ease',
+			button: 'color 300ms ease, background 300ms ease, border 300ms ease, transform 100ms ease, opacity 300ms ease',
 		},
 	},
 })
@@ -138,7 +174,7 @@ export const lightTheme = createTheme({
 
 		grayText: '#808080',
 		grayBorder: '#e6e6e6',
-		grayBorderDialog: '#d6d6d6',
+		grayBorderShadow: '#d6d6d6',
 		grayBackground: '#efefef',
 
 		grayButtonHover: '#e0e0e0',
@@ -149,6 +185,8 @@ export const lightTheme = createTheme({
 
 		buttonFocus: '0 0 0 2px #00a5bc',
 		buttonFilledFocus: '0 0 0 2px #ffffff, 0 0 0 4px #00a5bc',
+
+		tooltip: 'rgba(0 0 0 / 20%) 0px 5px 15px',
 	},
 })
 
@@ -167,7 +205,7 @@ export const darkTheme = createTheme({
 
 		grayText: '#808080',
 		grayBorder: '#2b2b2b',
-		grayBorderDialog: '#d6d6d6',
+		grayBorderShadow: '#3b3b3b',
 		grayBackground: '#1f1f1f',
 
 		grayButtonHover: '#252525',
@@ -178,5 +216,7 @@ export const darkTheme = createTheme({
 
 		buttonFocus: '0 0 0 2px #009bba',
 		buttonFilledFocus: '0 0 0 2px #000000, 0 0 0 4px #009bba',
+
+		tooltip: 'rgba(133 133 133 / 20%) 0px 5px 15px',
 	},
 })
