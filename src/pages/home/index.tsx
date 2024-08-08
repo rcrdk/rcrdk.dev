@@ -1,5 +1,6 @@
 import {
 	IconBrandBehance,
+	IconBrandDiscord,
 	IconBrandGithub,
 	IconBrandLinkedin,
 	IconMail,
@@ -52,7 +53,7 @@ export default function Home() {
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: dark)"
-					content="#0277a9"
+					content="#000000"
 				/>
 			</Head>
 
@@ -130,6 +131,20 @@ export default function Home() {
 							>
 								<IconMail />
 								<SrOnly>Entre em contato comigo por e-mail</SrOnly>
+							</Button>
+						</Tooltip>
+
+						<Tooltip content="Entre em contato comigo no Discord">
+							<Button
+								mode="outline"
+								size="lead"
+								as="a"
+								href="https://discordapp.com/users/810953409850114098"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconBrandDiscord />
+								<SrOnly>Entre em contato comigo no Discord</SrOnly>
 							</Button>
 						</Tooltip>
 
