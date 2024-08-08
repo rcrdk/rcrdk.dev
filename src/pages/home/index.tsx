@@ -35,6 +35,7 @@ export default function Home() {
 				<title>{SEO.title}</title>
 				<meta name="description" content={SEO.description} />
 				<meta property="og:type" content="website" />
+				<meta property="og:site_name" content="Ricardo Augusto Kowalski" />
 				<meta property="og:locale" content="pt_BR" />
 				<meta property="og:title" content={SEO.title} />
 				<meta property="og:description" content={SEO.description} />
@@ -44,7 +45,7 @@ export default function Home() {
 				<meta name="twitter:title" content={SEO.title} />
 				<meta name="twitter:description" content={SEO.description} />
 				<meta name="twitter:image" content={SEO.image} />
-				<link rel="icon" href={SEO.favicon} type="image/png" sizes="128x128" />
+				<link rel="icon" href={SEO.favicon} type="image/png" sizes="192x192" />
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: light)"
