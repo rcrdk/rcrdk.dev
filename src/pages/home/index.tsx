@@ -45,6 +45,8 @@ export default function Home() {
 				<meta name="twitter:title" content={SEO.title} />
 				<meta name="twitter:description" content={SEO.description} />
 				<meta name="twitter:image" content={SEO.image} />
+				<meta property="og:image:width" content="2400" />
+				<meta property="og:image:height" content="1260" />
 				<link rel="icon" href={SEO.favicon} type="image/png" sizes="192x192" />
 				<meta
 					name="theme-color"
