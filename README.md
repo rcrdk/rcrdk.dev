@@ -1,40 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img width="66" height="66" src="https://github.com/rcrdk.png" style="border-radius:50%" align="center" />
 
-## Getting Started
+# Ricardo Augusto Kowalski
 
-First, run the development server:
+👋🏻 Hi, there! This is the repo of my [personal website](https://rcrdk.dev/). 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+It's in constant construction, but it's always in production if the hosting doesn't crash. 😅
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+By now I only have a few informations and links, but hopefully soon as I can, I'll be bringing new updates. 👀
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can contact me on:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p>
+	<a href="https://github.com/rcrdk" target="_blank"><img alt="GitHub Profile" src="https://img.shields.io/badge/GitHub%20Profile-545454?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="mailto:ricardoakowalski@gmail.com" target="_blank"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="https://linkedin.com/in/rcrdk" target="_blank"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="https://discordapp.com/users/810953409850114098" target="_blank"><img alt="Discord" src="https://img.shields.io/badge/-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" /></a>
+  <a href="https://behance.net/rcrdk" target="_blank"><img alt="Behance" src="https://img.shields.io/badge/-Behance-0057ff?style=for-the-badge&logo=behance&logoColor=white" /></a>
+</p>
