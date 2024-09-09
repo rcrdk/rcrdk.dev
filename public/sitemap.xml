@@ -6,4 +6,16 @@
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://rcrdk.dev/pt-br</loc>
+      <lastmod>2024-08-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://rcrdk.dev/en-us</loc>
+      <lastmod>2024-08-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
 </urlset> 

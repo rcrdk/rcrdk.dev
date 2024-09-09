@@ -43,3 +43,8 @@ export const BrandAvatar = styled(Avatar.Root, {
 		flex: '0 0 2.25rem',
 	},
 })
+
+export const HeaderButtons = styled('div', {
+	display: 'flex',
+	gap: '$gap3',
+})

@@ -1,0 +1,32 @@
+{
+	"Default": {
+		"mode": {
+			"light": "Light mode",
+			"dark": "Dark mode",
+			"default": "System color mode"
+		},
+		"changeLocale": "(change language)",
+		"avatarAlt": "Profile image of Ricardo Augusto Kowalski"
+	},
+	
+	"Home": {
+		"seo": {
+			"title": "Ricardo Augusto Kowalski | Front-End Developer",
+			"description": "I'm a front-end developer with over +10 year of experience, currently working on Typescript, React and Next.js stack."
+		},
+		"title": "Ricardo Augusto Kowalski",
+		"text": [
+			"I'm a <strong>front-end developer</strong> for over +10 years, most of thi time I've worked with a lot of coffee and playlists on the development of <strong>websites, landing pages, e-commerces and web systems</strong>. I'm 28 and I have a bachelor degree in <strong>Advertising</strong>.",
+			"Now, my main focus of study and work has been <strong>Typescript, React, Next.js and Node.js</strong> stack on which I'm looking forward to work on, and of cource, I'm constantly studing and updating my knowledge on web development.",
+			"This page is still under <strong>construction</strong>, but I'm available for new opportunitiesor maybe a chat, feel free to contact me on <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or by any other social network:"
+		],
+		"buttons": {
+			"linkedin": "Connect with me on LinkedIn",
+			"email": "Send me a message by e-mail",
+			"discord": "Call me on Discord",
+			"github": "Check out my projects and activities on GitHub",
+			"behance": "Check out some of visual projects on Behance",
+			"resume": "Read my Resume"
+		}
+	}
+}
