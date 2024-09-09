@@ -6,6 +6,7 @@ import {
 	IconMail,
 } from '@tabler/icons-react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 
@@ -22,16 +23,20 @@ import { Buttons, HomeContainer } from './styles'
 
 export default function Home() {
 	const __ = useTranslations('Home')
+	const { locale } = useRouter()
 
-	const SEO = {
-		title: __('seo.title'),
-		description: __('seo.description'),
-		url: process.env.NEXT_PUBLIC_URL,
-		image: process.env.NEXT_PUBLIC_URL + sharingImage.src,
-		favicon: process.env.NEXT_PUBLIC_URL + favicon.src,
-	}
+	const SEO = useMemo(() => {
+		return {
+			title: __('seo.title'),
+			description: __('seo.description'),
+			url: process.env.NEXT_PUBLIC_URL,
+			image: process.env.NEXT_PUBLIC_URL + sharingImage.src,
+			favicon: process.env.NEXT_PUBLIC_URL + favicon.src,
+			locale: locale === 'pt-br' ? 'pt_BR' : 'en_US',
+		}
+	}, [__, locale])
 
-	const aboutMeParagraphs: string[] = __.raw('text')
+	const aboutMeParagraphs = useMemo(() => __.raw('text') as string[], [__])
 
 	const contactButtons = useMemo(
 		() => [
@@ -89,7 +94,7 @@ export default function Home() {
 				<meta name="description" content={SEO.description} />
 				<meta property="og:type" content="website" />
 				<meta property="og:site_name" content="Ricardo Augusto Kowalski" />
-				<meta property="og:locale" content="pt_BR" />
+				<meta property="og:locale" content={SEO.locale} />
 				<meta property="og:title" content={SEO.title} />
 				<meta property="og:description" content={SEO.description} />
 				<meta property="og:image" content={SEO.image} />
@@ -101,6 +106,7 @@ export default function Home() {
 				<meta property="og:image:width" content="2400" />
 				<meta property="og:image:height" content="1260" />
 				<link rel="icon" href={SEO.favicon} type="image/png" sizes="192x192" />
+				<link rel="apple-touch-icon" href={SEO.favicon} />
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: light)"

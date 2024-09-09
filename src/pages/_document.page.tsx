@@ -4,7 +4,7 @@ import { getCssText } from '@/styles'
 
 export default function Document() {
 	return (
-		<Html lang="pt-br" prefix="og: http://ogp.me/ns#">
+		<Html prefix="og: http://ogp.me/ns#">
 			<Head>
 				<style
 					id="stitches"
