@@ -1,0 +1,32 @@
+{
+	"Default": {
+		"mode": {
+			"light": "Modo claro",
+			"dark": "Modo escuro",
+			"default": "Modo de cor"
+		},
+		"changeLocale": "(alterar idioma)",
+		"avatarAlt": "Imagem de perfil de Ricardo Augusto Kowalski"
+	},
+
+	"Home": {
+		"seo": {
+			"title": "Ricardo Augusto Kowalski | Desenvolvedor Front-End",
+			"description": "Sou desenvolvedor front-end com mais de 11 anos de experiência, trabalhando atualmente com a stack: Typescript, React e Next.js."
+		},
+		"title": "Ricardo Augusto Kowalski",
+		"text": [
+			"Sou <strong>desenvolvedor front-end</strong> há mais de 11 anos, trabalhei a maior parte deste tempo movido a muito café e playlists no desenvolvimento de <strong>websites, landing pages, e-commerces e sistemas web</strong>. Tenho 28 anos e sou bacharel em <strong>Publicidade e Propaganda</strong>.",
+			"Atualmente meu foco de estudo e de trabalho vem sendo a stack <strong>Typescript, React, Next.js e Node.js</strong> das quais busco oportunidades, e claro, venho me atualizando e alimentando minha vontade de aprender cada vez mais.",
+			"Esta página ainda está em <strong>desenvolvimento</strong>, mas estou disponível para novas oportunidades ou quem sabe um papo, fique a vontade para entrar em contato em <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> ou se conectar através de alguma rede abaixo:"
+		],
+		"buttons": {
+			"linkedin": "Conecte-se comigo no LinkedIn",
+			"email": "Entre em contato comigo por e-mail",
+			"discord": "Entre em contato comigo no Discord",
+			"github": "Veja minha atividade e projetos no GitHub",
+			"behance": "Veja alguns projetos visuais no Behance",
+			"resume": "Veja meu CV atualizado"
+		}
+	}
+}

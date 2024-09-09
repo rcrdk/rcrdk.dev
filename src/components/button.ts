@@ -28,6 +28,11 @@ export const Button = styled('button', {
 		flexShrink: 0,
 	},
 
+	strong: {
+		fontSize: '$small',
+		fontWeight: 600,
+	},
+
 	variants: {
 		size: {
 			default: {
@@ -35,7 +40,7 @@ export const Button = styled('button', {
 				padding: '0 $gap4',
 				gap: '$gap3',
 
-				[`&:has(svg):has(${SrOnly})`]: {
+				[`&:has(svg):has(${SrOnly}), &:has(strong):has(${SrOnly})`]: {
 					padding: 0,
 					width: '2.8rem',
 
@@ -53,7 +58,7 @@ export const Button = styled('button', {
 					fontSize: '$iconLead',
 				},
 
-				[`&:has(svg):has(${SrOnly})`]: {
+				[`&:has(svg):has(${SrOnly}), &:has(strong):has(${SrOnly})`]: {
 					padding: 0,
 					width: '3.25rem',
 
