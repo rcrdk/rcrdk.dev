@@ -1,7 +1,6 @@
 import 'server-only'
 
-import { v4 as uuidv4 } from 'uuid'
-
+// import { v4 as uuidv4 } from 'uuid'
 import { env } from '@/lib/env'
 
 export const trackServerEvent = async (
@@ -30,20 +29,20 @@ export const trackServerEvent = async (
 		// 	id: urlParams.get('id') || undefined,
 		// }
 
-		function getUserUUID() {
-			let userUUID = localStorage.getItem('@RCRDK.DEV:mixpanel-user')
+		// function getUserUUID() {
+		// 	let userUUID = localStorage.getItem('@RCRDK.DEV:mixpanel-user')
 
-			if (!userUUID) {
-				userUUID = uuidv4()
-				localStorage.setItem('@RCRDK.DEV:mixpanel-user', userUUID)
-			}
-			return userUUID
-		}
-		const userUUID = getUserUUID()
+		// 	if (!userUUID) {
+		// 		userUUID = uuidv4()
+		// 		localStorage.setItem('@RCRDK.DEV:mixpanel-user', userUUID)
+		// 	}
+		// 	return userUUID
+		// }
+		// const userUUID = getUserUUID()
 
 		const additionalProperties = {
-			distinct_id: userUUID,
-			$user_id: userUUID,
+			// distinct_id: userUUID,
+			// $user_id: userUUID,
 			$browser: navigator.userAgent,
 			$browser_version: navigator.appVersion,
 			$city: locationData.city,
