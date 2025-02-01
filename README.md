@@ -1,8 +1,9 @@
-<img width="66" height="66" src="https://github.com/rcrdk.png" style="border-radius:50%" align="center" />
+<!-- <img width="66" height="66" src="https://github.com/rcrdk.png" style="border-radius:50%" align="center" /> -->
 
 # Ricardo Augusto Kowalski
-
 👋🏻 Hi, there! This is the repo of my [personal website](https://rcrdk.dev/). 
+
+<img src="https://github.com/rcrdk/rcrdk.dev/blob/main/public/site.jpg?raw=true" />
 
 It's in constant construction, but it's always in production if the hosting doesn't crash. 😅
 
