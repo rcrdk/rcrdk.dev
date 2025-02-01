@@ -31,7 +31,11 @@ export const mixpanelEvent = async (
 	eventName: string,
 	eventProperties?: Record<string, unknown>,
 ) => {
-	if (process.env.NODE_ENV !== 'production' || !env.MIXPANEL_SECRET) {
+	if (
+		process.env.NODE_ENV !== 'production' ||
+		!env.MIXPANEL_SECRET ||
+		!env.IPAPI_ACCESS_KEY
+	) {
 		return
 	}
 
