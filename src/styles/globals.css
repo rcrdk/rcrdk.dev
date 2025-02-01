@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));
+
+@theme {
+	--breakpoint-xs: 30rem;
+
+  --font-heading: "Circular STD Custom", "sans-serif"; 
+
+	--color-accent-blue: #00a5bc;
+
+	--color-content-light: #3f3f3f;
+	--color-content-dark: #b0b0b0;
+}
+
+@layer base {
+	a {
+		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
+	}
+}
+
+@font-face {
+	font-family: "Circular STD Custom";
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url("CircularStd-Black.woff2") format("woff2");
+}

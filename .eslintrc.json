@@ -1,14 +1,17 @@
 {
-	"extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"],
-	"plugins": ["simple-import-sort"],
-	"rules": {
+  "extends": [
+    "@rocketseat/eslint-config/next",
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "plugins": ["simple-import-sort"],
+  "rules": {
 		"simple-import-sort/imports": "error",
-		"@typescript-eslint/no-empty-function": "off",
-		"@typescript-eslint/no-explicit-any": "off",
-		"@typescript-eslint/no-non-null-assertion": "off",
-		"react/no-unescaped-entities": "off",
-		"@typescript-eslint/no-unused-vars": "off",
-		"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-		"@typescript-eslint/no-var-requires": "off"
+		"@typescript-eslint/consistent-type-imports": [
+			"error",
+			{
+				"prefer": "type-imports"
+			}
+		]
 	}
 }

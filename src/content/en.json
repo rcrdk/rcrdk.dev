@@ -5,14 +5,15 @@
 			"dark": "Dark mode",
 			"default": "System color mode"
 		},
-		"changeLocale": "(change language)",
-		"avatarAlt": "Profile image of Ricardo Augusto Kowalski"
+		"changeLocale": "Change language",
+		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski"
 	},
 	
 	"Home": {
 		"seo": {
 			"title": "Ricardo Augusto Kowalski | Front-End Developer",
-			"description": "I'm a front-end developer with over +10 year of experience, currently working on Typescript, React and Next.js stack."
+			"description": "I'm a front-end developer with over +10 year of experience, currently working on Typescript, React and Next.js stack.",
+			"keywords": ["front-end", "frontend", "react", "next", "typescript", "javascript", "developer", "software","hire","looking"]
 		},
 		"title": "Ricardo Augusto Kowalski",
 		"text": [
