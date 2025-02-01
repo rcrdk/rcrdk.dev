@@ -20,15 +20,15 @@ export const trackServerEvent = async (
 		const locationResponse = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/proxy`)
 		const locationData = await locationResponse.json()
 
-		const urlParams = new URLSearchParams(window.location.search)
-		const utmParams = {
-			utm_source: urlParams.get('utm_source') || undefined,
-			utm_medium: urlParams.get('utm_medium') || undefined,
-			utm_campaign: urlParams.get('utm_campaign') || undefined,
-			utm_term: urlParams.get('utm_term') || undefined,
-			utm_content: urlParams.get('utm_content') || undefined,
-			id: urlParams.get('id') || undefined,
-		}
+		// const urlParams = new URLSearchParams(window.location.search)
+		// const utmParams = {
+		// 	utm_source: urlParams.get('utm_source') || undefined,
+		// 	utm_medium: urlParams.get('utm_medium') || undefined,
+		// 	utm_campaign: urlParams.get('utm_campaign') || undefined,
+		// 	utm_term: urlParams.get('utm_term') || undefined,
+		// 	utm_content: urlParams.get('utm_content') || undefined,
+		// 	id: urlParams.get('id') || undefined,
+		// }
 
 		function getUserUUID() {
 			let userUUID = localStorage.getItem('@RCRDK.DEV:mixpanel-user')
@@ -49,7 +49,7 @@ export const trackServerEvent = async (
 			$city: locationData.city,
 			$region: locationData.region_name,
 			mp_country_code: locationData.country_name,
-			$current_url: window.location.href,
+			// $current_url: window.location.href,
 			$device: navigator.platform,
 			$device_id: navigator.userAgent,
 			$initial_referrer: document.referrer ? document.referrer : undefined,
@@ -57,9 +57,9 @@ export const trackServerEvent = async (
 				? new URL(document.referrer).hostname
 				: undefined,
 			$os: navigator.platform,
-			$screen_height: window.screen.height,
-			$screen_width: window.screen.width,
-			...utmParams,
+			// $screen_height: window.screen.height,
+			// $screen_width: window.screen.width,
+			// ...utmParams,
 		}
 
 		const properties = {

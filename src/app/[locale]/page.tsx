@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/common/header'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
+import { env } from '@/lib/env'
 import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,6 +42,7 @@ export default async function HomePage({ params }: Props) {
 	await trackServerEvent('page_view', {
 		page: 'home',
 		locale,
+		$current_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
 	})
 
 	const __ = await getTranslations('Home')
