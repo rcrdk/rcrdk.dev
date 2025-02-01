@@ -39,7 +39,7 @@ export const trackServerEvent = async (
 		return
 	}
 
-	const locationResponse = await fetch('/api/proxy')
+	const locationResponse = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/proxy`)
 	const locationData = await locationResponse.json()
 
 	const urlParams = new URLSearchParams(window.location.search)
@@ -88,7 +88,7 @@ export const trackServerEvent = async (
 		...additionalProperties,
 	}
 
-	fetch('/api/mixpanel', {
+	fetch(`${env.NEXT_PUBLIC_APP_URL}/api/mixpanel`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
