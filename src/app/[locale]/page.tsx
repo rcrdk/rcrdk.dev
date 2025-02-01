@@ -6,14 +6,11 @@ import {
 	IconMail,
 } from '@tabler/icons-react'
 import type { Metadata } from 'next'
-import { headers } from 'next/headers'
-import { userAgentFromString } from 'next/server'
 import { getTranslations } from 'next-intl/server'
 
 import { Header } from '@/components/common/header'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
-import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const __ = await getTranslations('Home')
@@ -32,35 +29,12 @@ export async function generateMetadata(): Promise<Metadata> {
 	}
 }
 
-type Props = {
+export type Props = {
 	params: Promise<{ locale: string }>
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function HomePage({ params, searchParams }: Props) {
-	const { locale } = await params
-	const getSearchParams = await searchParams
-	const headersRef = Object.fromEntries(await headers())
-
-	const { 'user-agent': userAgentString } = headersRef
-
-	const { browser, isBot, os, device } = userAgentFromString(userAgentString)
-
-	await trackServerEvent('page_view', {
-		page: 'home',
-		locale,
-		origin: headersRef.referer,
-		userAgent: userAgentFromString,
-		deviceVendor: device.vendor,
-		deviceModel: device.model,
-		device: device.type ?? 'desktop',
-		browser: browser.name,
-		os: os.name,
-		osVersion: os.version,
-		isBot,
-		...getSearchParams,
-	})
-
+export default async function HomePage() {
 	const __ = await getTranslations('Home')
 
 	const aboutMeParagraphs = __.raw('text') as string[]
