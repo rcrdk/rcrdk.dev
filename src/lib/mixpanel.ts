@@ -27,7 +27,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { env } from '@/lib/env'
 
-export const mixpanelEvent = async (
+export const trackServerEvent = async (
 	eventName: string,
 	eventProperties?: Record<string, unknown>,
 ) => {
