@@ -38,7 +38,7 @@ type Props = {
 export default async function HomePage({ params }: Props) {
 	const { locale } = await params
 
-	trackServerEvent('page_view', {
+	await trackServerEvent('page_view', {
 		page: 'home',
 		locale,
 	})
