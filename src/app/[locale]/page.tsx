@@ -6,12 +6,12 @@ import {
 	IconMail,
 } from '@tabler/icons-react'
 import type { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 
 import { Header } from '@/components/common/header'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
+import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const __ = await getTranslations('Home')
@@ -30,8 +30,20 @@ export async function generateMetadata(): Promise<Metadata> {
 	}
 }
 
-export default function HomePage() {
-	const __ = useTranslations('Home')
+type Props = {
+	params: Promise<{ locale: string }>
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export default async function HomePage({ params }: Props) {
+	const { locale } = await params
+
+	trackServerEvent('page_view', {
+		page: 'home',
+		locale,
+	})
+
+	const __ = await getTranslations('Home')
 
 	const aboutMeParagraphs = __.raw('text') as string[]
 
