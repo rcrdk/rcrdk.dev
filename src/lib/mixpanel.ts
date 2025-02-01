@@ -1,7 +1,10 @@
-import 'server-only'
+import Mixpanel from 'mixpanel'
 
-// import { v4 as uuidv4 } from 'uuid'
 import { env } from '@/lib/env'
+
+const mixpanelEvent = env.MIXPANEL_SECRET
+	? Mixpanel.init(env.MIXPANEL_SECRET)
+	: undefined
 
 export const trackServerEvent = async (
 	eventName: string,
@@ -10,15 +13,12 @@ export const trackServerEvent = async (
 	if (
 		process.env.NODE_ENV !== 'production' ||
 		!env.MIXPANEL_SECRET ||
-		!env.IPAPI_ACCESS_KEY
+		!mixpanelEvent
 	) {
 		return
 	}
 
 	try {
-		const locationResponse = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/proxy`)
-		const locationData = await locationResponse.json()
-
 		// const urlParams = new URLSearchParams(window.location.search)
 		// const utmParams = {
 		// 	utm_source: urlParams.get('utm_source') || undefined,
@@ -43,19 +43,19 @@ export const trackServerEvent = async (
 		const additionalProperties = {
 			// distinct_id: userUUID,
 			// $user_id: userUUID,
-			$browser: navigator.userAgent,
-			$browser_version: navigator.appVersion,
-			$city: locationData.city,
-			$region: locationData.region_name,
-			mp_country_code: locationData.country_name,
+			// $browser: navigator.userAgent,
+			// $browser_version: navigator.appVersion,
+			// $city: locationData.city,
+			// $region: locationData.region_name,
+			// mp_country_code: locationData.country_name,
 			// $current_url: window.location.href,
-			$device: navigator.platform,
-			$device_id: navigator.userAgent,
-			$initial_referrer: document.referrer ? document.referrer : undefined,
-			$initial_referring_domain: document.referrer
-				? new URL(document.referrer).hostname
-				: undefined,
-			$os: navigator.platform,
+			// $device: navigator.platform,
+			// $device_id: navigator.userAgent,
+			// $initial_referrer: document.referrer ? document.referrer : undefined,
+			// $initial_referring_domain: document.referrer
+			// 	? new URL(document.referrer).hostname
+			// 	: undefined,
+			// $os: navigator.platform,
 			// $screen_height: window.screen.height,
 			// $screen_width: window.screen.width,
 			// ...utmParams,
@@ -66,16 +66,7 @@ export const trackServerEvent = async (
 			...additionalProperties,
 		}
 
-		await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/mixpanel`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				event: eventName,
-				properties,
-			}),
-		})
+		mixpanelEvent.track(eventName, properties)
 	} catch (error) {
 		console.error(error)
 	}

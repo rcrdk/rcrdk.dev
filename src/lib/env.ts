@@ -6,7 +6,6 @@ export const env = createEnv({
 
 	server: {
 		MIXPANEL_SECRET: z.string().optional(),
-		IPAPI_ACCESS_KEY: z.string().optional(),
 	},
 
 	shared: {
@@ -20,6 +19,5 @@ export const env = createEnv({
 		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
 		NEXT_PUBLIC_GOOGLE_TAG_MANAGER: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER,
 		MIXPANEL_SECRET: process.env.MIXPANEL_SECRET,
-		IPAPI_ACCESS_KEY: process.env.IPAPI_ACCESS_KEY,
 	},
 })
