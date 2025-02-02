@@ -4,7 +4,9 @@ import { z } from 'zod'
 export const env = createEnv({
 	emptyStringAsUndefined: true,
 
-	server: {},
+	server: {
+		MIXPANEL_SECRET: z.string().optional(),
+	},
 
 	shared: {
 		NEXT_PUBLIC_APP_URL: z.string(),
@@ -13,6 +15,7 @@ export const env = createEnv({
 	},
 
 	runtimeEnv: {
+		MIXPANEL_SECRET: process.env.MIXPANEL_SECRET,
 		NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
 		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
 		NEXT_PUBLIC_GOOGLE_TAG_MANAGER: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER,

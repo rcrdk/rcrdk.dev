@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/common/header'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
+import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const __ = await getTranslations('Home')
@@ -34,7 +35,8 @@ export type Props = {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function HomePage() {
+export default async function HomePage({ params }: Props) {
+	const { locale } = await params
 	const __ = await getTranslations('Home')
 
 	const aboutMeParagraphs = __.raw('text') as string[]
@@ -83,6 +85,11 @@ export default async function HomePage() {
 		// 	external: true,
 		// },
 	]
+
+	trackServerEvent('page_view', {
+		page: `home-${locale.split('-')[0]}`,
+		url: `/${locale}`,
+	})
 
 	return (
 		<div className="flex min-h-svh flex-col items-center">

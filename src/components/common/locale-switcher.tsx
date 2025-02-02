@@ -49,7 +49,7 @@ export function LocaleSwitcher() {
 						tabIndex={getActiveLocale.prefix === lang.prefix ? -1 : undefined}
 						className={cn(
 							getActiveLocale.prefix === lang.prefix
-								? 'pointer-events-none bg-white shadow-sm dark:bg-black'
+								? 'pointer-events-none bg-white shadow-sm dark:bg-black dark:shadow-md dark:shadow-white/10'
 								: 'hover:bg-black/5 dark:hover:bg-white/5',
 						)}
 					>
