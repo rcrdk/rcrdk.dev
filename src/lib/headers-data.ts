@@ -17,5 +17,6 @@ export async function getHeadersData() {
 		$brand: device.vendor,
 		$model: device.model,
 		isBot,
+		ip: headersData.get('x-forwarded-for'),
 	}
 }

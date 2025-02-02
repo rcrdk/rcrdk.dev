@@ -20,8 +20,8 @@ export async function trackServerEvent(
 		return
 	}
 
-	const ipData = await getIpData()
 	const headersData = await getHeadersData()
+	const ipData = await getIpData(headersData.ip)
 
 	mixpanelEvent.track(eventName, {
 		$city: ipData.city,
