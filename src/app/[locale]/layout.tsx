@@ -44,6 +44,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 	return (
 		<html
 			lang={locale}
+			translate="no"
 			className="text-content-light dark:text-content-dark bg-white font-sans antialiased dark:bg-black"
 			suppressHydrationWarning
 		>
