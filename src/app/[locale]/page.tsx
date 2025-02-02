@@ -95,42 +95,45 @@ export default async function HomePage({ params }: Props) {
 		<div className="flex min-h-svh flex-col items-center">
 			<Header />
 
-			<Container
-				size="center"
-				sideSpacing="lg"
-				className="xs:py-16 my-auto py-10 sm:py-20"
-			>
-				<h1 className="font-heading xs:text-7xl xs:mb-12 mb-10 max-w-1/2 text-6xl font-black tracking-tight text-black sm:mb-16 sm:text-8xl md:mb-8 md:max-w-full md:text-5xl dark:text-white">
-					{__('title')}
-				</h1>
+			<main>
+				<Container
+					size="center"
+					sideSpacing="lg"
+					className="xs:py-16 my-auto py-10 sm:py-20"
+				>
+					<h1 className="font-heading xs:text-7xl xs:mb-12 mb-10 max-w-1/2 text-6xl font-black tracking-tight text-black sm:mb-16 sm:text-8xl md:mb-8 md:max-w-full md:text-5xl dark:text-white">
+						{__('title')}
+					</h1>
 
-				<div className="flex flex-col gap-4">
-					{aboutMeParagraphs.map((text, index) => (
-						<p
-							className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-base leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
-							key={index}
-							dangerouslySetInnerHTML={{ __html: text }}
-						/>
-					))}
-				</div>
+					<div className="flex flex-col gap-4">
+						{aboutMeParagraphs.map((text, index) => (
+							<p
+								className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-base leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
+								key={index}
+								dangerouslySetInnerHTML={{ __html: text }}
+							/>
+						))}
+					</div>
 
-				<div className="xs:gap-3 mt-8 flex gap-2">
-					{contactButtons.map(({ Icon, ...button }) => (
-						<Button
-							as="a"
-							href={button.link}
-							target={button.external ? '_blank' : '_self'}
-							size="lg"
-							variant="outline"
-							icon
-							aria-label={button.label}
-							key={button.id}
-						>
-							<Icon className="size-8" />
-						</Button>
-					))}
-				</div>
-			</Container>
+					<ul className="xs:gap-3 mt-8 flex gap-2">
+						{contactButtons.map(({ Icon, ...button }) => (
+							<li key={button.id}>
+								<Button
+									as="a"
+									href={button.link}
+									target={button.external ? '_blank' : '_self'}
+									size="lg"
+									variant="outline"
+									icon
+									aria-label={button.label}
+								>
+									<Icon className="size-8" />
+								</Button>
+							</li>
+						))}
+					</ul>
+				</Container>
+			</main>
 		</div>
 	)
 }
