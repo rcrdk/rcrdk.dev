@@ -4,6 +4,7 @@ import { userAgentFromString } from 'next/server'
 export async function getHeadersData() {
 	const headersData = await headers()
 	const getUserAgentString = headersData.get('user-agent') ?? ''
+	const getUserIp = headersData.get('x-forwarded-for')
 	const referer = headersData.get('referer')
 
 	const { browser, device, isBot, os } = userAgentFromString(getUserAgentString)
@@ -17,6 +18,6 @@ export async function getHeadersData() {
 		$brand: device.vendor,
 		$model: device.model,
 		isBot,
-		ip: headersData.get('x-forwarded-for'),
+		ip: getUserIp,
 	}
 }
