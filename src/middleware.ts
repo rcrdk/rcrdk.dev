@@ -17,7 +17,7 @@ export default async function middleware(
 
 	// userId cookie
 	const cookieName = '@RCRDK.DEV:user-1.0.0'
-	const doesCookieExists = response.cookies.get(cookieName)
+	const doesCookieExists = request.cookies.has(cookieName)
 
 	if (!doesCookieExists) {
 		response.cookies.set(cookieName, uuid(), {
