@@ -1,4 +1,5 @@
 import Mixpanel from 'mixpanel'
+import { cookies } from 'next/headers'
 
 import { getIpData } from '@/http/get-ip-data'
 import { env } from '@/lib/env'
@@ -23,7 +24,11 @@ export async function trackServerEvent(
 	const headersData = await getHeadersData()
 	const ipData = await getIpData(headersData.ip)
 
+	const cookieStore = await cookies()
+	const userId = cookieStore.get('@RCRDK.DEV:user-1.0.0')?.value
+
 	mixpanelEvent.track(eventName, {
+		$user_id: userId,
 		$city: ipData.city,
 		$region: ipData.regionName,
 		mp_country_code: ipData.countryCode,
@@ -41,4 +46,12 @@ export async function trackServerEvent(
 			: undefined,
 		url: undefined,
 	})
+
+	if (userId && mixpanelEvent) {
+		mixpanelEvent.people.set_once(userId, {
+			$city: ipData.city,
+			$region: ipData.regionName,
+			mp_country_code: ipData.countryCode,
+		})
+	}
 }
