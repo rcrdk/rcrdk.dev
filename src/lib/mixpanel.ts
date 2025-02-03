@@ -14,7 +14,7 @@ export async function trackServerEvent(
 	properties: Record<string, string | number | boolean>,
 ) {
 	if (
-		// process.env.NODE_ENV !== 'production' ||
+		process.env.NODE_ENV !== 'production' ||
 		!env.MIXPANEL_SECRET ||
 		!mixpanelEvent
 	) {
