@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/common/header'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
+import { routing } from '@/i18n/routing'
 import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export type Props = {
-	params: Promise<{ locale: string }>
+	params: Promise<{ locale: (typeof routing.locales)[number] }>
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
@@ -86,10 +87,14 @@ export default async function HomePage({ params }: Props) {
 		// },
 	]
 
-	trackServerEvent('page_view', {
-		page: `home-${locale.split('-')[0]}`,
-		url: `/${locale}`,
-	})
+	const isValidLocaleSlug = routing.locales.includes(locale)
+
+	if (isValidLocaleSlug) {
+		trackServerEvent('page_view', {
+			page: `home-${locale.split('-')[0]}`,
+			url: `/${locale}`,
+		})
+	}
 
 	return (
 		<div className="flex min-h-svh flex-col items-center">
