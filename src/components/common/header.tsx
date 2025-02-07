@@ -24,7 +24,7 @@ export function Header() {
 		} else {
 			setIsVertical(true)
 		}
-	}, [height, width])
+	}, [])
 
 	return (
 		<header className="xs:pt-6 xs:pb-0 xs:static xs:border-b-0 layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 w-full border-b border-black/5 bg-white/90 pt-4 pb-4 text-black/85 backdrop-blur-xs select-none dark:border-white/10 dark:bg-black/90 dark:text-white">
@@ -32,7 +32,8 @@ export function Header() {
 				direction={isVertical ? 'vertical' : 'horizontal'}
 				className="flex grow"
 				reverse
-				distance={isVertical ? 70 : 80}
+				distance={isVertical ? 60 : 80}
+				threshold={0}
 				config={{ tension: 60, friction: 15 }}
 			>
 				<Container
