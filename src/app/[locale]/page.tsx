@@ -45,7 +45,7 @@ export default async function HomePage({ params }: Props) {
 		<div className="layout:flex-row layout:items-start flex min-h-svh flex-col items-center">
 			<Header />
 
-			<main className="layout:self-stretch flex grow">
+			<main className="layout:self-stretch flex grow pb-10 sm:pb-0">
 				<Container
 					size="center"
 					sideSpacing="lg"

@@ -13,7 +13,7 @@ import { Container } from '@/components/ui/container'
 import { Link } from '@/i18n/routing'
 
 export function Header() {
-	const [isVertical, setIsVertical] = useState(false)
+	const [isVertical, setIsVertical] = useState<boolean>()
 
 	const t = useTranslations('Default')
 	const { width, height } = useWindowSize()
@@ -24,6 +24,7 @@ export function Header() {
 		} else {
 			setIsVertical(true)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return (
@@ -34,6 +35,7 @@ export function Header() {
 				reverse
 				distance={isVertical ? 60 : 80}
 				threshold={0}
+				enabled={typeof isVertical === 'boolean'}
 				config={{ tension: 60, friction: 15 }}
 			>
 				<Container
