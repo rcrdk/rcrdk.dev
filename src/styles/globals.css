@@ -15,9 +15,9 @@
 }
 
 @layer base {
-	* {
+	/* * {
 		@apply [scrollbar-color:#00a5bc_transparent] [scrollbar-width:thin];
-	}
+	} */
 
 	a {
 		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
