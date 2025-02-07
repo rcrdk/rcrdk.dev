@@ -132,7 +132,7 @@ export default async function HomePage({ params }: Props) {
 									icon
 									aria-label={button.label}
 								>
-									<Icon className="size-8" />
+									<Icon className="size-8" strokeWidth={1.5} />
 								</Button>
 							</li>
 						))}
