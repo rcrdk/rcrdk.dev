@@ -17,7 +17,6 @@ interface AnimatedContentProps {
 	scale?: number
 	threshold?: number
 	delay?: number
-	enabled?: boolean
 }
 
 const AnimatedContent: React.FC<AnimatedContentProps> = ({
@@ -32,14 +31,13 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 	scale = 1,
 	threshold = 0.1,
 	delay = 0,
-	enabled = true,
 }) => {
 	const [inView, setInView] = useState(false)
 	const ref = useRef<HTMLDivElement | null>(null)
 
 	useEffect(() => {
 		const element = ref.current
-		if (!element || !enabled) return
+		if (!element) return
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -54,7 +52,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 		observer.observe(element)
 
 		return () => observer.disconnect()
-	}, [enabled, threshold])
+	}, [threshold])
 
 	const directions: Record<'vertical' | 'horizontal', string> = {
 		vertical: 'Y',
