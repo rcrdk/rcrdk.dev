@@ -38,7 +38,7 @@ export function LocaleSwitcher() {
 		<nav>
 			<span className="sr-only">{__('changeLocale')}</span>
 
-			<div className="xs:h-12 flex h-11 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10">
+			<div className="xs:h-12 layout:w-12 layout:h-auto layout:px-0 layout:py-2 layout:flex-col flex h-11 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10">
 				{languagesAvailable.map((lang) => (
 					<Button
 						as={Link}

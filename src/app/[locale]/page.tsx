@@ -97,10 +97,10 @@ export default async function HomePage({ params }: Props) {
 	}
 
 	return (
-		<div className="flex min-h-svh flex-col items-center">
+		<div className="layout:flex-row layout:items-start flex min-h-svh flex-col items-center">
 			<Header />
 
-			<main className="flex grow">
+			<main className="layout:self-stretch flex grow">
 				<Container
 					size="center"
 					sideSpacing="lg"
@@ -128,7 +128,7 @@ export default async function HomePage({ params }: Props) {
 									href={button.link}
 									target={button.external ? '_blank' : '_self'}
 									size="lg"
-									variant="outline"
+									variant="primary-discret"
 									icon
 									aria-label={button.label}
 								>

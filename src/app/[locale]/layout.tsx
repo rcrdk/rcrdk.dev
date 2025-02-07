@@ -18,12 +18,15 @@ type Props = {
 export const metadata: Metadata = {
 	metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
 	applicationName: 'Ricardo Augusto Kowalski',
+	authors: { name: 'Ricardo Augusto Kowalski', url: env.NEXT_PUBLIC_APP_URL },
+	generator: 'Next.js',
+	formatDetection: { telephone: false },
 }
 
 export const viewport: Viewport = {
 	themeColor: [
 		{ media: '(prefers-color-scheme: dark)', color: '#000000' },
-		{ media: '(prefers-color-scheme: light)', color: '#00a5bc' },
+		{ media: '(prefers-color-scheme: light)', color: '#ffffff' },
 	],
 }
 

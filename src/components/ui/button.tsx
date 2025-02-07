@@ -3,14 +3,14 @@ import { cn } from '@/utils/tailwind-cn'
 
 type Props<T extends React.ElementType> = {
 	as?: T
-	variant?: 'primary' | 'outline' | 'discret'
+	variant?: 'primary' | 'primary-discret' | 'outline' | 'discret'
 	size?: 'base' | 'lg' | 'sm'
 	icon?: boolean
 }
 
 export function Button<T extends React.ElementType = 'button'>({
 	as,
-	variant = 'primary',
+	variant,
 	size = 'base',
 	icon = false,
 	...props
@@ -34,7 +34,8 @@ export function Button<T extends React.ElementType = 'button'>({
 				size === 'sm' && 'h-8 gap-4 px-4 xs:h-8 xs:ap-4 xs:px-5',
 				size === 'sm' && icon && 'w-8 !px-0 xs:w-9',
 
-				variant === 'primary' && '',
+				variant === 'primary' && 'bg-accent-blue text-white focus-visible:border-white dark:focus-visible:border-black focus-visible:text-white hover:bg-accent-blue/85',
+				variant === 'primary-discret' && 'bg-accent-blue/15 text-accent-blue focus-visible:border-accent-blue hover:bg-accent-blue/25',
 				variant === 'outline' && 'border-black/20 hover:border-black/35 dark:border-white/20 dark:text-white dark:hover:border-white/40',
 				variant === 'discret' && 'bg-black/5 dark:bg-white/10  hover:bg-black/10 dark:hover:bg-white/15 focus-visible:bg-accent-blue/10 focus-visible:dark:bg-accent-blue/20',
 

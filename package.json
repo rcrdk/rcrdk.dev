@@ -6,7 +6,8 @@
     "dev": "rm -rf .next && next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+		"test:ts": "npx tsc --noEmit"
   },
   "dependencies": {
     "@next/third-parties": "^15.1.6",
