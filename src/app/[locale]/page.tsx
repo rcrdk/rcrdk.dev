@@ -100,7 +100,7 @@ export default async function HomePage({ params }: Props) {
 		<div className="flex min-h-svh flex-col items-center">
 			<Header />
 
-			<main>
+			<main className="flex grow">
 				<Container
 					size="center"
 					sideSpacing="lg"
