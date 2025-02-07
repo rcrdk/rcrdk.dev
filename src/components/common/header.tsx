@@ -28,7 +28,7 @@ export function Header() {
 						className="xs:size-10 size-9 rounded-full"
 					/>
 
-					<span className="font-heading xs:text-3xl layout:[writing-mode:sideways-lr] block -translate-y-0.5 text-2xl leading-none font-black tracking-tight">
+					<span className="font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight">
 						rcrdk
 						<span className="text-accent-blue">.dev</span>
 					</span>

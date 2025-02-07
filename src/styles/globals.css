@@ -6,22 +6,26 @@
 @theme {
 	--breakpoint-xs: 30rem;
 
-  --font-heading: "Circular STD Custom", "sans-serif"; 
+  --font-heading: "Circular STD", "sans-serif"; 
 
 	--color-accent-blue: #00a5bc;
 
-	--color-content-light: #3f3f3f;
+	--color-content-light: #191919;
 	--color-content-dark: #b0b0b0;
 }
 
 @layer base {
+	* {
+		@apply [scrollbar-color:#00a5bc_transparent] [scrollbar-width:thin];
+	}
+
 	a {
 		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
 	}
 }
 
 @font-face {
-	font-family: "Circular STD Custom";
+	font-family: "Circular STD";
 	font-style: normal;
 	font-weight: 900;
 	font-display: swap;
