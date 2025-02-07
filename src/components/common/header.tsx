@@ -26,8 +26,7 @@ function HeaderInset({ animationEnter }: Props) {
 				animationEnter === 'horizontal' && 'layout:flex hidden grow',
 			)}
 			reverse
-			distance={animationEnter === 'vertical' ? 60 : 80}
-			threshold={0}
+			distance={animationEnter === 'vertical' ? 40 : 80}
 			config={{ tension: 60, friction: 15 }}
 		>
 			<Container

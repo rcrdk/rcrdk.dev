@@ -102,7 +102,6 @@ export function Content() {
 						key={index}
 						distance={125}
 						config={{ tension: 60, friction: 15 }}
-						threshold={0}
 						delay={canDelayAnimations ? index * 100 : 0}
 					>
 						<p
@@ -116,7 +115,6 @@ export function Content() {
 			<AnimatedContent
 				distance={100}
 				delay={canDelayAnimations ? 300 : 0}
-				threshold={0}
 				config={{ tension: 60, friction: 15 }}
 			>
 				<ul className="xs:gap-3 mt-8 flex gap-2">
