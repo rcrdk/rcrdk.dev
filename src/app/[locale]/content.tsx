@@ -92,7 +92,7 @@ export function Content() {
 				<SplitText
 					text={__('title')}
 					delay={50}
-					className="font-heading xs:text-7xl block max-w-1/2 text-6xl font-black tracking-tight text-black sm:text-8xl md:max-w-full md:text-5xl dark:text-white"
+					className="font-heading xs:text-7xl xs:leading-[0.85] block max-w-1/2 text-[20vw] leading-[16vw] font-black tracking-tight text-black sm:text-8xl md:max-w-full md:text-5xl dark:text-white"
 				/>
 			</h1>
 
@@ -103,6 +103,7 @@ export function Content() {
 						distance={125}
 						config={{ tension: 60, friction: 15 }}
 						delay={canDelayAnimations ? index * 100 : 0}
+						rootMargin="0px 0px 125px"
 					>
 						<p
 							className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-base leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
@@ -113,9 +114,10 @@ export function Content() {
 			</div>
 
 			<AnimatedContent
-				distance={100}
+				distance={125}
 				delay={canDelayAnimations ? 300 : 0}
 				config={{ tension: 60, friction: 15 }}
+				rootMargin="0px 0px 125px"
 			>
 				<ul className="xs:gap-3 mt-8 flex gap-2">
 					{contactButtons.map(({ Icon, ...button }) => (

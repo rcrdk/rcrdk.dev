@@ -16,6 +16,7 @@ interface AnimatedContentProps {
 	animateOpacity?: boolean
 	scale?: number
 	threshold?: number
+	rootMargin?: string
 	delay?: number
 }
 
@@ -30,6 +31,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 	animateOpacity = true,
 	scale = 1,
 	threshold = 0.1,
+	rootMargin,
 	delay = 0,
 }) => {
 	const [inView, setInView] = useState(false)
@@ -46,13 +48,13 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 					observer.unobserve(element)
 				}
 			},
-			{ threshold },
+			{ threshold, rootMargin },
 		)
 
 		observer.observe(element)
 
 		return () => observer.disconnect()
-	}, [threshold])
+	}, [rootMargin, threshold])
 
 	const directions: Record<'vertical' | 'horizontal', string> = {
 		vertical: 'Y',

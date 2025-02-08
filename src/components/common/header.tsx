@@ -22,6 +22,7 @@ function HeaderInset({ animationEnter }: Props) {
 		<AnimatedContent
 			direction={animationEnter}
 			className={cn(
+				'xs:py-0 xs:border-b-0 border-b border-black/5 py-4 dark:border-white/10',
 				animationEnter === 'vertical' && 'layout:hidden flex grow',
 				animationEnter === 'horizontal' && 'layout:flex hidden grow',
 			)}
@@ -62,7 +63,7 @@ function HeaderInset({ animationEnter }: Props) {
 
 export function Header() {
 	return (
-		<header className="xs:pt-6 xs:pb-0 xs:static xs:border-b-0 layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 w-full border-b border-black/5 bg-white/90 pt-4 pb-4 text-black/85 backdrop-blur-xs select-none dark:border-white/10 dark:bg-black/90 dark:text-white">
+		<header className="xs:pt-6 xs:pb-0 xs:static layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 w-full bg-white/90 text-black/85 backdrop-blur-xs select-none dark:bg-black/90 dark:text-white">
 			<HeaderInset animationEnter="horizontal" />
 			<HeaderInset animationEnter="vertical" />
 		</header>
