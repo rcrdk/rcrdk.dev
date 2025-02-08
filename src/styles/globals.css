@@ -11,14 +11,12 @@
 	--color-accent-blue: #00a5bc;
 
 	--color-content-light: #191919;
-	--color-content-dark: #b0b0b0;
+	--color-content-dark: #d0d0d0;
+
+	--text-md: 1.0625rem;
 }
 
 @layer base {
-	/* * {
-		@apply [scrollbar-color:#00a5bc_transparent] [scrollbar-width:thin];
-	} */
-
 	a {
 		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
 	}

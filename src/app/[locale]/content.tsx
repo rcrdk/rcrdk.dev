@@ -106,7 +106,7 @@ export function Content() {
 						rootMargin="0px 0px 125px"
 					>
 						<p
-							className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-base leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
+							className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-md leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
 							dangerouslySetInnerHTML={{ __html: text }}
 						/>
 					</AnimatedContent>

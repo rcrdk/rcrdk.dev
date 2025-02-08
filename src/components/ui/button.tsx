@@ -35,7 +35,7 @@ export function Button<T extends React.ElementType = 'button'>({
 				size === 'sm' && icon && 'w-8 !px-0 xs:w-9',
 
 				variant === 'primary' && 'bg-accent-blue text-white focus-visible:border-white dark:focus-visible:border-black focus-visible:text-white hover:bg-accent-blue/85',
-				variant === 'primary-discret' && 'dark:bg-accent-blue/15 dark:border-accent-blue/30 dark:text-accent-blue focus-visible:border-accent-blue focus-visible:bg-accent-blue/15 bg-black/5 hover:text-accent-blue hover:bg-accent-blue/10 dark:hover:border-accent-blue/75 dark:hover:bg-accent-blue/20',
+				variant === 'primary-discret' && 'dark:bg-accent-blue/10 dark:border-accent-blue/30 dark:text-accent-blue focus-visible:border-accent-blue focus-visible:bg-accent-blue/15 bg-black/5 hover:text-accent-blue hover:bg-accent-blue/10 dark:hover:border-accent-blue/75 dark:hover:bg-accent-blue/15',
 				variant === 'outline' && 'border-black/20 hover:border-black/35 dark:border-white/20 dark:text-white dark:hover:border-white/40',
 				variant === 'discret' && 'bg-black/5 dark:bg-white/10  hover:bg-black/10 dark:hover:bg-white/15 focus-visible:bg-accent-blue/10 focus-visible:dark:bg-accent-blue/20',
 

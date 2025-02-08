@@ -36,7 +36,7 @@ function HeaderInset({ animationEnter }: Props) {
 			>
 				<Link
 					href="/"
-					className="xs:py-2 xs:pr-4 xs:pl-2 xs:gap-3 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 flex items-center gap-2 rounded-4xl py-1 pr-2 pl-1"
+					className="xs:py-2 xs:pr-4 xs:pl-2 xs:gap-3 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 focus-visible:border-accent-blue flex items-center gap-2 rounded-4xl border border-transparent py-1 pr-2 pl-1"
 				>
 					<Image
 						src={avatarPicture}
@@ -46,7 +46,7 @@ function HeaderInset({ animationEnter }: Props) {
 						className="xs:size-10 size-9 rounded-full"
 					/>
 
-					<span className="font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight">
+					<span className="font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight">
 						rcrdk
 						<span className="text-accent-blue">.dev</span>
 					</span>
