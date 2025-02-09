@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { Content } from '@/app/[locale]/content'
+import { Content } from '@/app/[locale]/components/content'
 import { Header } from '@/components/common/header'
 import { Container } from '@/components/ui/container'
 import { routing } from '@/i18n/routing'
@@ -42,15 +42,11 @@ export default async function HomePage({ params }: Props) {
 	}
 
 	return (
-		<div className="layout:flex-row layout:items-start flex min-h-svh flex-col items-center">
+		<div className="layout:flex-row layout:items-start flex flex-col items-center">
 			<Header />
 
-			<main className="layout:self-stretch flex grow pt-10 pb-20 sm:pt-0 sm:pb-0">
-				<Container
-					size="center"
-					sideSpacing="lg"
-					className="xs:py-16 my-auto py-10 sm:py-20"
-				>
+			<main className="layout:self-stretch flex grow">
+				<Container size="center" sideSpacing="lg">
 					<Content />
 				</Container>
 			</main>

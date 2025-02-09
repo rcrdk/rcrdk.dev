@@ -31,20 +31,29 @@ export function ThemeSwitcher() {
 	const handleChangeTheme = useCallback(() => {
 		const isSystemDarkTheme = resolvedTheme === 'dark'
 
+		document.documentElement.classList.add('disable-transitions')
+
 		switch (currentTheme) {
 			case 'system':
 				return setTheme(isSystemDarkTheme ? 'light' : 'dark')
-				break
 			case 'light':
 				return setTheme('dark')
-				break
 			case 'dark':
 				return setTheme('light')
-				break
 		}
 	}, [currentTheme, resolvedTheme, setTheme])
 
 	useEffect(() => setMounted(true), [])
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			document.documentElement.classList.remove('disable-transitions')
+		}, 100)
+
+		return () => {
+			clearTimeout(timer)
+		}
+	}, [currentTheme])
 
 	if (!mounted) {
 		return (

@@ -17,6 +17,10 @@
 }
 
 @layer base {
+	.disable-transitions * {
+		@apply !transition-none;
+	}
+
 	a {
 		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
 	}

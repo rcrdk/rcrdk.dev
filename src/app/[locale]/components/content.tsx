@@ -10,8 +10,8 @@ import {
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 
-import AnimatedContent from '@/components/animated/AnimatedContent'
-import SplitText from '@/components/animated/SplitText'
+import AnimatedContent from '@/components/animated/animated-content'
+import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 
 export function Content() {
@@ -87,56 +87,60 @@ export function Content() {
 	}, [])
 
 	return (
-		<div ref={ref}>
-			<h1>
-				<SplitText
-					text={__('title')}
-					delay={50}
-					className="font-heading xs:text-7xl xs:leading-[0.85] block max-w-1/2 text-[20vw] leading-[16vw] font-black tracking-tight text-black sm:text-8xl md:max-w-full md:text-5xl dark:text-white"
-				/>
-			</h1>
+		<section className="layout:snap-start flex min-h-dvh pt-10 pb-20 sm:pt-0 sm:pb-0">
+			<div className="xs:py-16 my-auto py-10 sm:py-20">
+				<div ref={ref}>
+					<h1>
+						<SplitText
+							text={__('title')}
+							delay={50}
+							className="font-heading xs:text-7xl xs:leading-[0.85] block max-w-1/2 text-[20vw] leading-[16vw] font-black tracking-tight text-black sm:text-8xl md:max-w-full md:text-5xl dark:text-white"
+						/>
+					</h1>
 
-			<div className="xs:mt-12 mt-10 flex flex-col gap-4 sm:mt-16 md:mt-8">
-				{aboutMeParagraphs.map((text, index) => (
+					<div className="xs:mt-12 mt-10 flex flex-col gap-4 sm:mt-16 md:mt-8">
+						{aboutMeParagraphs.map((text, index) => (
+							<AnimatedContent
+								key={index}
+								distance={125}
+								config={{ tension: 60, friction: 15 }}
+								delay={canDelayAnimations ? index * 100 : 0}
+								rootMargin="0px 0px 125px"
+							>
+								<p
+									className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-md leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
+									dangerouslySetInnerHTML={{ __html: text }}
+								/>
+							</AnimatedContent>
+						))}
+					</div>
+
 					<AnimatedContent
-						key={index}
 						distance={125}
+						delay={canDelayAnimations ? 300 : 0}
 						config={{ tension: 60, friction: 15 }}
-						delay={canDelayAnimations ? index * 100 : 0}
 						rootMargin="0px 0px 125px"
 					>
-						<p
-							className="[&_a]:focus-visible:text-accent-blue xs:text-lg text-md leading-loose text-pretty dark:[&_a]:text-white dark:[&_strong]:text-white"
-							dangerouslySetInnerHTML={{ __html: text }}
-						/>
+						<ul className="xs:gap-3 mt-8 flex gap-2">
+							{contactButtons.map(({ Icon, ...button }) => (
+								<li key={button.id}>
+									<Button
+										as="a"
+										href={button.link}
+										target={button.external ? '_blank' : '_self'}
+										size="lg"
+										variant="primary-discret"
+										icon
+										aria-label={button.label}
+									>
+										<Icon className="size-8" strokeWidth={1.5} />
+									</Button>
+								</li>
+							))}
+						</ul>
 					</AnimatedContent>
-				))}
+				</div>
 			</div>
-
-			<AnimatedContent
-				distance={125}
-				delay={canDelayAnimations ? 300 : 0}
-				config={{ tension: 60, friction: 15 }}
-				rootMargin="0px 0px 125px"
-			>
-				<ul className="xs:gap-3 mt-8 flex gap-2">
-					{contactButtons.map(({ Icon, ...button }) => (
-						<li key={button.id}>
-							<Button
-								as="a"
-								href={button.link}
-								target={button.external ? '_blank' : '_self'}
-								size="lg"
-								variant="primary-discret"
-								icon
-								aria-label={button.label}
-							>
-								<Icon className="size-8" strokeWidth={1.5} />
-							</Button>
-						</li>
-					))}
-				</ul>
-			</AnimatedContent>
-		</div>
+		</section>
 	)
 }

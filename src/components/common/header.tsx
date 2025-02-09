@@ -2,9 +2,10 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 
 import avatarPicture from '@/assets/avatar.jpg'
-import AnimatedContent from '@/components/animated/AnimatedContent'
+import AnimatedContent from '@/components/animated/animated-content'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { Container } from '@/components/ui/container'
@@ -16,7 +17,29 @@ type Props = {
 }
 
 function HeaderInset({ animationEnter }: Props) {
+	const ref = useRef<HTMLSpanElement>(null)
+	const [showLettering, setShowLettering] = useState(false)
+
 	const t = useTranslations('Default')
+
+	useEffect(() => {
+		const element = ref.current
+		if (!element) return
+
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setShowLettering(true)
+					observer.unobserve(element)
+				}
+			},
+			{ threshold: 1 },
+		)
+
+		observer.observe(element)
+
+		return () => observer.disconnect()
+	}, [])
 
 	return (
 		<AnimatedContent
@@ -36,7 +59,7 @@ function HeaderInset({ animationEnter }: Props) {
 			>
 				<Link
 					href="/"
-					className="xs:py-2 xs:pr-4 xs:pl-2 xs:gap-3 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 focus-visible:border-accent-blue flex items-center gap-2 rounded-4xl border border-transparent py-1 pr-2 pl-1"
+					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 focus-visible:border-accent-blue flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
 				>
 					<Image
 						src={avatarPicture}
@@ -46,9 +69,20 @@ function HeaderInset({ animationEnter }: Props) {
 						className="xs:size-10 size-9 rounded-full"
 					/>
 
-					<span className="font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight">
-						rcrdk
-						<span className="text-accent-blue">.dev</span>
+					<span
+						className="xs:pl-3 layout:pt-3 layout:pl-0 block overflow-hidden pl-2"
+						ref={ref}
+					>
+						<span
+							className={cn(
+								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
+								!showLettering &&
+									'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
+							)}
+						>
+							rcrdk
+							<span className="text-accent-blue">.dev</span>
+						</span>
 					</span>
 				</Link>
 

@@ -48,10 +48,10 @@ export default async function LocaleLayout({ children, params }: Props) {
 		<html
 			lang={locale}
 			translate="no"
-			className="text-content-light dark:text-content-dark bg-white font-sans antialiased dark:bg-black"
+			className="text-content-light dark:text-content-dark layout:overflow-hidden bg-white font-sans antialiased dark:bg-black"
 			suppressHydrationWarning
 		>
-			<body>
+			<body className="layout:overflow-y-auto layout:snap-y layout:snap-mandatory layout:h-dvh">
 				<NextIntlClientProvider messages={messages}>
 					<ThemeProvider attribute="data-mode">{children}</ThemeProvider>
 
