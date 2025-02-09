@@ -24,6 +24,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 1,
+	userScalable: false,
 	themeColor: [
 		{ media: '(prefers-color-scheme: dark)', color: '#000000' },
 		{ media: '(prefers-color-scheme: light)', color: '#ffffff' },
@@ -48,10 +52,10 @@ export default async function LocaleLayout({ children, params }: Props) {
 		<html
 			lang={locale}
 			translate="no"
-			className="text-content-light dark:text-content-dark layout:overflow-hidden bg-white font-sans antialiased dark:bg-black"
+			className="text-content-light dark:text-content-dark layout:overflow-hidden w-full bg-white font-sans antialiased dark:bg-black"
 			suppressHydrationWarning
 		>
-			<body className="layout:overflow-y-auto layout:snap-y layout:snap-mandatory layout:h-dvh">
+			<body className="layout:overflow-y-auto layout:snap-y layout:snap-mandatory layout:h-dvh w-full overflow-x-hidden">
 				<NextIntlClientProvider messages={messages}>
 					<ThemeProvider attribute="data-mode">{children}</ThemeProvider>
 

@@ -87,7 +87,7 @@ export function Content() {
 	}, [])
 
 	return (
-		<section className="layout:snap-start flex min-h-dvh pt-10 pb-20 sm:pt-0 sm:pb-0">
+		<section className="layout:snap-start flex min-h-dvh pt-10 pb-20 sm:pt-0 sm:pb-0 [&_div]:max-w-full [&_section]:max-w-full">
 			<div className="xs:py-16 my-auto py-10 sm:py-20">
 				<div ref={ref}>
 					<h1>

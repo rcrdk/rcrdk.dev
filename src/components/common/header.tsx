@@ -59,7 +59,7 @@ function HeaderInset({ animationEnter }: Props) {
 			>
 				<Link
 					href="/"
-					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 focus-visible:border-accent-blue flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
+					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
 				>
 					<Image
 						src={avatarPicture}
