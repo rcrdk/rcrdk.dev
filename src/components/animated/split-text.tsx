@@ -14,6 +14,7 @@ interface SplitTextProps {
 	threshold?: number
 	rootMargin?: string
 	textAlign?: 'left' | 'right' | 'center' | 'justify' | 'start' | 'end'
+	breakWords?: boolean
 	onLetterAnimationComplete?: () => void
 }
 
@@ -26,7 +27,8 @@ const SplitText: React.FC<SplitTextProps> = ({
 	easing = (t: number) => t,
 	threshold = 0.1,
 	rootMargin = '-100px',
-	textAlign = 'center',
+	textAlign = 'left',
+	breakWords = false,
 	onLetterAnimationComplete,
 }) => {
 	const words = text.split(' ').map((word) => word.split(''))
@@ -87,7 +89,11 @@ const SplitText: React.FC<SplitTextProps> = ({
 			{words.map((word, wordIndex) => (
 				<span
 					key={wordIndex}
-					style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
+					style={{
+						display: breakWords ? 'block' : 'inline-block',
+						textAlign: 'left',
+						whiteSpace: 'nowrap',
+					}}
 				>
 					{word.map((letter, letterIndex) => {
 						const index =

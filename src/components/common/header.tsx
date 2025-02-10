@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
+import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { Container } from '@/components/ui/container'
 import { Link } from '@/i18n/routing'
@@ -33,7 +34,7 @@ function HeaderInset({ animationEnter }: Props) {
 					observer.unobserve(element)
 				}
 			},
-			{ threshold: 1 },
+			{ threshold: 0.1 },
 		)
 
 		observer.observe(element)
@@ -70,12 +71,12 @@ function HeaderInset({ animationEnter }: Props) {
 					/>
 
 					<span
-						className="xs:pl-3 layout:pt-3 layout:pl-0 block overflow-hidden pl-2"
+						className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2"
 						ref={ref}
 					>
 						<span
 							className={cn(
-								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
+								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pr-[0.15rem] block w-full -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
 								!showLettering &&
 									'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
 							)}
@@ -85,6 +86,8 @@ function HeaderInset({ animationEnter }: Props) {
 						</span>
 					</span>
 				</Link>
+
+				<Nav slot="header" />
 
 				<div className="layout:flex-col flex gap-2">
 					<LocaleSwitcher />

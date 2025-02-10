@@ -6,28 +6,71 @@
 			"default": "System color mode"
 		},
 		"changeLocale": "Change language",
-		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski"
+		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski",
+		"navigation": {
+			"about": "About me",
+			"projects": "Projects",
+			"trajectory": "Trajectory",
+			"contact": "Contact"
+		}
 	},
 	
-	"Home": {
-		"seo": {
-			"title": "Ricardo Augusto Kowalski | Front-End Developer",
-			"description": "I'm a front-end developer with over +10 year of experience, currently working on Typescript, React and Next.js stack.",
-			"keywords": ["front-end", "frontend", "react", "next", "typescript", "javascript", "developer", "software","hire","looking"]
-		},
+	"Seo": {
+		"title": "Ricardo Augusto Kowalski | Front-End Developer",
+		"description": "",
+		"keywords": ["front-end developer", "web developer", "React", "Next.js", "TypeScript", "JavaScript", "Node.js", "PHP", "Laravel", "HTML", "CSS", "accessibility", "SEO", "web performance", "responsive design", "UI/UX", "mobile development", "React Native", "technology", "advertising and marketing", "website development", "web apps", "Timbó", "Santa Catarina", "remote developer", "digital projects", "clean code best practices"]
+	},
+
+	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": [
-			"I'm a <strong>front-end developer</strong> for over +10 years, most of the time I've worked with a lot of coffee and playlists on the development of <strong>websites, landing pages, e-commerces and web systems</strong>. I'm 28 and I have a bachelor degree in <strong>Advertising</strong>.",
-			"Now, my main focus of study and work has been <strong>Typescript, React, Next.js and Node.js</strong> stack on which I'm looking forward to work on, and of cource, I'm constantly studing and updating my knowledge on web development.",
-			"This page is still under <strong>construction</strong>, but I'm available for new opportunitiesor maybe a chat, feel free to contact me on <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or by any other social network:"
-		],
+		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over +12 years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong habilities in <strong>Typescript, React, Next.js and Node.js.</strong>",
 		"buttons": {
+			"aboutLong": "Who is Ricardo?",
+			"aboutShort": "Who I am",
 			"linkedin": "Connect with me on LinkedIn",
-			"email": "Send me a message by e-mail",
-			"discord": "Call me on Discord",
-			"github": "Check out my projects and activities on GitHub",
-			"behance": "Check out some of visual projects on Behance",
-			"resume": "Read my Resume"
+			"github": "Check out my projects and activities on GitHub"
 		}
+	},
+
+	"About": {
+		"title": "About me",
+		"expand": "Grab a coffee and know me more",
+		"contents": [
+			"My name is Ricardo, I am 29 years old, and I live in Timbó, Santa Catarina, Brazil. I am a detail-oriented, persistent, and coffee-driven person. Besides coding, I am passionate about music — my playlists range from pop, rock, MPB, indie, disco, and many more. I’m a fan of the queen, the woman, Madonna. I’m also a Stephen Kings constant reader and a binge-watcher of series and brazilian novelas. I have a special fondness for everything that brings back the past.",
+			"Technology has fascinated me from an early age. My curiosity about the web began in the early 2000s as I explored websites, Orkut, MSN, and, of course, slowly downloaded music over dial-up internet. I took computer and hardware maintenance courses, but it was a game — among many others — that truly sparked my passion for development: The Sims.",
+			"I first played it on the old yellowed computers at school and spent years immersed in the life simulator. Over time, I got involved in building and sharing houses and worlds from the game, maintaining a blog on Blogger, just like many other players did. That was when I discovered the ability to edit themes and tweak the source code. Even without fully understanding what I was doing, I dived into it and fell in love with the process. A few years later, it all started making sense.",
+			"In 2011, I took a Delphi course, where only two students completed the program — I was one of them. After all, I am persistent. This course led to a small program I developed to handle the student council elections at my school, marking my first functional project.",
+			"In 2013, I moved to Timbó and began my professional journey at Sou Digital, where I started as an apprentice and was later hired as a front-end developer. I worked with HTML, CSS, and jQuery, eventually learning some PHP and Laravel, always striving to improve my work. Over the years, I refined my knowledge, sharpened my eye for code, design, and accessibility, and delivered high-quality projects. I also worked on web apps and e-commerce platforms.",
+			"At the same time, between 2014 and 2017, I pursued a degree in Advertising and Marketing. Although I never worked directly in this field, the degree added a lot of value to my work, providing insights into design, marketing, consumer behavior, and technology.",
+			"From 2019 onwards, as I transitioned to remote work, I took the opportunity to dive deeper into my studies and enhance my skills in React, Next.js, TypeScript, Node.js, PHP, and Laravel. Today, I work as a front-end developer at Meu Rosinha while also being involved in other projects. My main focus is working with the React ecosystem, but I remain open to exploring other frameworks or even mobile development with React Native, which I am currently learning. On the back-end, Node.js has become a natural complement to Next.js, while PHP and Laravel serve as more of a backup solution when needed.",
+			"In the future, my goal is to continue growing as a developer, exploring new technologies, and getting involved in challenging projects where I can leave a meaningful mark. While my focus remains on front-end development, I am always looking for new tools and best practices to expand my skill set. I want to collaborate with innovative teams, share knowledge, and contribute to the creation of products that truly make a difference. I strive to always keep moving forward—one day at a time, one line of code at a time."
+		],
+		"subtitle": "Habilities",
+		"list": [
+			{
+				"title": "Communication",
+				"text": "Portuguese (Native), English (Proficient)"
+			},
+			{
+				"title": "Languages & techs",
+				"text": "Javascript, Typescript, React, Next.js, Node.js, Fastify, React Native, PHP, Laravel, HTML, CSS"
+			},
+			{
+				"title": "Libraries & tools",
+				"text": "React Query, React Hook Form, Zod, TailwindCSS, Styled Components, Radix UI, shadcn/ui, Stripe API"
+			},
+			{
+				"title": "Databases",
+				"text": "PostgreSQL, MySQL, Firebase, Prisma ORM"
+			},
+			{
+				"title": "Softwares",
+				"text": "Figma, Adobe Photoshop, Adobe XD, Docker, Git, GitHub, BitBucket"
+			},
+			{
+				"title": "Metodologies & good practices",
+				"text": "Kanban"
+			}
+		]
 	}
 }

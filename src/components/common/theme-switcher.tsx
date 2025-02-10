@@ -55,6 +55,16 @@ export function ThemeSwitcher() {
 		}
 	}, [currentTheme])
 
+	useEffect(() => {
+		const onKeyUp = (e: KeyboardEvent) => {
+			if (e.ctrlKey && e.key === 'c') handleChangeTheme()
+		}
+
+		document.addEventListener('keyup', onKeyUp)
+
+		return () => document.removeEventListener('keyup', onKeyUp)
+	}, [handleChangeTheme])
+
 	if (!mounted) {
 		return (
 			<Button

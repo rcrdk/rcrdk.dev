@@ -10,19 +10,48 @@
 
 	--color-accent-blue: #00a5bc;
 
-	--color-content-light: #191919;
-	--color-content-dark: #d0d0d0;
+	--color-content-light: #242424;
+	--color-content-dark: #c0c0c0;
 
 	--text-md: 1.0625rem;
+
+	--animate-avatar: avatar 8s ease infinite;
+	--animate-collapsible-in: collapsibleIn 1000ms ease-out;
+	--animate-collapsible-out: collapsibleOut 1000ms ease-out;
+
+	@keyframes avatar {
+		0% { border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%; }
+		50% { border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%; }
+		100% { border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%; } 
+	}
+	
+	@keyframes collapsibleIn {
+		from { height: 0; }
+		to { height: var(--radix-collapsible-content-height); }
+	}
+	
+	@keyframes collapsibleOut {
+		from { height: var(--radix-collapsible-content-height); }
+		to { height: 0; }
+	}
 }
 
 @layer base {
+	::selection {
+		@apply bg-accent-blue/10 text-accent-blue dark:text-white dark:bg-accent-blue/80;
+	}
+
 	.disable-transitions * {
 		@apply !transition-none;
 	}
 
 	a {
 		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
+	}
+
+	p strong,
+	p b {
+		@apply font-semibold text-black dark:text-white;
 	}
 }
 
