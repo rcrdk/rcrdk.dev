@@ -17,17 +17,16 @@ export function About() {
 
 	const __ = useTranslations('About')
 	const contents = __.raw('contents') as string[]
-	const list = __.raw('list') as Record<string, string>[]
 
 	return (
-		<Section>
-			<div className="xs:-mt-18 -md-14 flex flex-col-reverse items-center sm:-mt-20 lg:mt-0 lg:flex-row lg:items-end">
+		<Section classNameCenter="max-xs:py-9">
+			<div className="xs:-mt-18 -md-14 relative flex flex-col-reverse items-center sm:-mt-20 sm:items-end lg:mt-0 lg:flex-row lg:items-center">
 				<div>
-					<h2 className="mb-8">
+					<h2 className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 left-0 flex aspect-[16/15] items-end justify-start sm:aspect-auto sm:h-[26rem] lg:static lg:mb-12 lg:block lg:h-auto">
 						<SplitText
 							text={__('title')}
 							delay={50}
-							className="font-heading block text-6xl font-black tracking-tight md:max-w-full dark:text-white"
+							className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl md:max-w-full lg:text-6xl dark:text-white"
 						/>
 					</h2>
 
@@ -36,33 +35,42 @@ export function About() {
 						rootMargin="0px 0px 125px"
 						config={{ tension: 60, friction: 15 }}
 					>
-						<p className="xs:text-lg text-md mb-0 leading-loose text-pretty">
-							{contents.at(0)}
-						</p>
+						<p
+							className="xs:text-lg text-md xs:leading-loose mb-0 leading-[1.8] text-pretty"
+							dangerouslySetInnerHTML={{ __html: contents.at(0) ?? '' }}
+						/>
 					</AnimatedContent>
 				</div>
 
-				<div className="layout:-mr-44 layout:ml-14 xs:mb-9 layout:size-96 mb-7 size-96 shrink-0 sm:mb-10 lg:-mr-20 lg:mb-0 lg:ml-8">
+				<div className="layout:-mr-44 layout:ml-14 xs:mb-9 layout:size-96 animate-avatar mb-7 shrink-0 overflow-hidden sm:mb-10 sm:size-[30rem] lg:-mr-20 lg:mb-0 lg:ml-8 lg:size-96">
 					<AnimatedContent
-						scale={0.4}
-						distance={125}
-						rootMargin="0px 0px 125px"
+						scale={2}
+						distance={50}
+						rootMargin="0px 0px 50px"
 						config={{ tension: 60, friction: 15 }}
 						delay={200}
 					>
 						<Image
 							src={avatarPicture}
-							width={600}
-							height={600}
+							width={800}
+							height={800}
+							quality={100}
 							alt=""
-							className="animate-avatar shrink-0 [shape-outside:circle(50%)]"
+							className="shrink-0"
 						/>
+
+						<span className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 flex aspect-[16/15] w-full max-w-[768px] translate-3d items-end justify-start sm:aspect-auto sm:h-[26rem] sm:w-[calc(100vw-(var(--spacing)*32))] md:w-[calc(100vw-(var(--spacing)*40))] lg:hidden">
+							<SplitText
+								text={__('title')}
+								className="font-heading block text-5xl font-black tracking-tight text-balance text-white sm:text-7xl md:max-w-full lg:text-6xl"
+							/>
+						</span>
 					</AnimatedContent>
 				</div>
 			</div>
 
 			<Collapsible.Root
-				className="xs:min-h-12 relative mt-6 mb-12 min-h-11"
+				className="xs:min-h-14 relative mt-6 min-h-12 lg:min-h-12"
 				open={showContents}
 				onOpenChange={() => setShowContents((prev) => !prev)}
 			>
@@ -75,9 +83,10 @@ export function About() {
 								config={{ tension: 60, friction: 15 }}
 								key={index}
 							>
-								<p className="xs:text-lg text-md leading-loose text-pretty">
-									{item}
-								</p>
+								<p
+									className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty"
+									dangerouslySetInnerHTML={{ __html: item }}
+								/>
 							</AnimatedContent>
 						))}
 					</div>
@@ -87,10 +96,14 @@ export function About() {
 					distance={125}
 					rootMargin="0px 0px 125px"
 					config={{ tension: 60, friction: 15 }}
-					className="absolute bottom-0 left-0"
+					className="absolute right-0 bottom-0 left-0"
 				>
 					<Collapsible.Trigger asChild>
-						<Button variant="solid" hidden={showContents}>
+						<Button
+							variant="solid"
+							className="max-xs:px-0 max-xs:w-full xs:h-14 xs:gap-5 xs:px-6 h-12 gap-4 px-6 lg:h-12 lg:gap-3 lg:px-5"
+							hidden={showContents}
+						>
 							<IconCoffee />
 							<span className="font-medium">{__('expand')}</span>
 						</Button>
@@ -99,38 +112,12 @@ export function About() {
 			</Collapsible.Root>
 
 			{contents.slice(1).map((item, index) => (
-				<p className="sr-only" key={index}>
-					{item}
-				</p>
+				<p
+					className="sr-only"
+					key={index}
+					dangerouslySetInnerHTML={{ __html: item }}
+				/>
 			))}
-
-			<AnimatedContent
-				distance={125}
-				rootMargin="0px 0px 125px"
-				config={{ tension: 60, friction: 15 }}
-			>
-				<h3 className="font-heading mb-4 text-2xl font-black tracking-tight dark:text-white">
-					{__('subtitle')}
-				</h3>
-			</AnimatedContent>
-
-			<AnimatedContent
-				distance={125}
-				rootMargin="0px 0px 125px"
-				config={{ tension: 60, friction: 15 }}
-			>
-				{list.map((item) => (
-					<p
-						className="text-content-light/65 dark:text-content-dark/85 pb-2"
-						key={item.title}
-					>
-						<strong className="text-content-light font-semibold dark:text-white">
-							{item.title}:
-						</strong>{' '}
-						{item.text}.
-					</p>
-				))}
-			</AnimatedContent>
 		</Section>
 	)
 }

@@ -9,6 +9,7 @@
 		"avatarAlt": "Imagem de perfil de Ricardo Augusto Kowalski",
 		"navigation": {
 			"about": "Sobre mim",
+			"habilities": "Habilidades",
 			"projects": "Projetos",
 			"trajectory": "Trajetória",
 			"contact": "Contato"
@@ -33,19 +34,22 @@
 	},
 
 	"About": {
-		"title": "Quem sou eu",
+		"title": "Sobre mim",
 		"expand": "Pegue um café e continue lendo",
 		"contents": [
-			"Meu nome é Ricardo, tenho 29 anos e vivo em Timbó, Santa Catarina. Sou uma pessoa detalhista, persistente e movida a café. Além de código, sou apaixonado por música, minhas playlist variam entre pop, rock, MPB, indie, disco, entre tantas outros; sou fã da rainha, da mulher, Madonna; sou leitor fiel de Stephen King e maratoneiro de séries e novelas. Tenho um carinho especial por tudo que remete ao passado.",
-			"Desde cedo, a tecnologia me fascinava. Minha curiosidade pela web começou em meados dos anos 2000, explorando sites, Orkut, MSN e, claro, baixando músicas lentamente na internet discada. Fiz cursos de informática e manutenção de computadores, mas foi um jogo, entre tantos outros, que realmente acendeu minha paixão pelo desenvolvimento: The Sims.",
-			"Conheci ele nos computadores amarelados antigos da escola e passei anos jogando com o simulador de vida e, com o tempo, me envolvi na construção e compartilhamento de casas e mundos do jogo, mantendo um blog no Blogger como tantos outros jogadores faziam. Foi ali que descobri a possibilidade de editar temas e mexer no código-fonte. Mesmo sem entender muito, eu mergulhei nisso e me apaixonei pelo processo. Poucos anos depois tudo faria sentido.",
-			"Em 2011 fiz um curso de Delphi, onde apenas dois alunos concluíram, eu era um deles, afinal, sou persistente. Esse curso rendeu um pequeno programa que desenvolvi para realizar a votação do grêmio estudantil da minha escola, então, meu primeiro projeto funcional.",
-			"Em 2013 me mudei para Timbó e iniciei minha trajetória profissional na Sou Digital, onde comecei como aprendiz e, mais tarde, fui contratado como desenvolvedor front-end. Trabalhei com HTML, CSS, jQuery, eventualmente aprendendo um pouco de PHP e Laravel, sempre buscando aprimorar minhas entregas. Ao longo dos anos, evoluí meu conhecimento, refinei meu olhar para o código, design e acessibilidade e entregando projetos de qualidade. Também trabalhei em web apps e e-commerces.",
-			"Paralelamente, cursei Publicidade e Propaganda entre 2014 e 2017. Apesar de nunca ter atuado diretamente na área, a formação agregou muito ao meu trabalho, trazendo conceitos de design, marketing, comportamento e tecnologia.",
-			"A partir de 2019, com o trabalho remoto, aproveitei para intensificar meus estudos e aprofundar minhas habilidades em React, Next.js, TypeScript, Node.js, PHP e Laravel. Atualmente, sou desenvolvedor front-end no Meu Rosinha e sigo envolvido em outros projetos. Meu foco principal é trabalhar com o ecossistema React, sem descartar o uso de outros frameworks ou até mesmo mobile com React Native no qual estou aprendendo. No back-end, Node.js tem sido um complemento natural do Next.js, enquanto PHP e Laravel são mais um quebra-galho.",
-			"No futuro, meu objetivo é continuar crescendo como desenvolvedor, explorando novas tecnologias e me envolvendo em projetos desafiadores que me permitam deixar uma marca significativa. Embora meu foco continue no front-end, estou sempre em busca de novas ferramentas e práticas para expandir minhas habilidades. Quero colaborar com equipes inovadoras, compartilhar conhecimento e contribuir para a criação de produtos que realmente façam a diferença. Quero estar sempre em movimento, um dia de cada vez, uma linha de código por vez."
-		],
-		"subtitle": "Conhecimentos e habilidades",
+			"<strong>Meu nome é Ricardo</strong>, tenho 29 anos e vivo em Timbó, Santa Catarina. Sou uma pessoa <strong>detalhista, persistente e movida a café.</strong> Além de código, sou <strong>apaixonado por música</strong>, minhas playlists variam entre pop, rock, MPB, indie, disco, entre tantas outros; sou fã da rainha, da mulher, <strong>Madonna</strong>; sou leitor fiel de <strong>Stephen King</strong> e maratoneiro de <strong>séries e novelas.</strong> Tenho um carinho especial por tudo que remete ao passado.",
+			"<strong>Desde cedo, a tecnologia me fascinava.</strong> Minha curiosidade pela web começou em meados dos anos 2000, explorando sites, Orkut, MSN e, claro, baixando músicas lentamente na internet discada. Fiz cursos de <strong>informática e manutenção de computadores</strong>, mas foi um jogo, entre tantos outros, que realmente acendeu minha paixão pelo desenvolvimento: <strong>The Sims.</strong>",
+			"Conheci ele nos computadores amarelados antigos da escola e passei anos jogando com o simulador de vida e, com o tempo, me envolvi na construção e compartilhamento de casas e mundos do jogo, mantendo um blog no Blogger como tantos outros jogadores faziam. <strong>Foi ali que descobri a possibilidade de editar temas e mexer no código-fonte.</strong> Mesmo sem entender muito, eu mergulhei nisso e me apaixonei pelo processo. Poucos anos depois <strong>tudo faria sentido.</strong>",
+			"Em 2011 fiz um curso de <strong>Delphi</strong>, onde apenas dois alunos concluíram, eu era um deles, afinal, sou persistente. Esse curso rendeu um pequeno programa que desenvolvi para realizar a votação do grêmio estudantil da minha escola, então, <strong>meu primeiro projeto funcional.</strong>",
+			"Em 2013 me mudei para Timbó e iniciei minha trajetória profissional na <strong>Sou Digital</strong>, onde comecei como aprendiz e, mais tarde, fui contratado como <strong>desenvolvedor front-end.</strong> Trabalhei com <strong>HTML, CSS, jQuery,</strong> eventualmente aprendendo um pouco de <strong>PHP e Laravel</strong>, sempre buscando aprimorar minhas entregas. Ao longo dos anos, evoluí meu conhecimento, refinei meu olhar para o <strong>código, design e acessibilidade e entregando projetos de qualidade.</strong> Também trabalhei em <strong>web apps e e-commerces.</strong>",
+			"Paralelamente, cursei <strong>Publicidade e Propaganda</strong> entre 2014 e 2017. Apesar de nunca ter atuado diretamente na área, a formação agregou muito ao meu trabalho, trazendo conceitos de <strong>design, marketing, comportamento e tecnologia.</strong>",
+			"A partir de 2019, com o <strong>trabalho remoto</strong>, aproveitei para intensificar meus estudos e aprofundar minhas habilidades em <strong>React, Next.js, TypeScript, Node.js, PHP e Laravel</strong>. Atualmente, sou desenvolvedor front-end no <strong>Meu Rosinha</strong> e sigo envolvido em outros projetos. Meu foco principal é trabalhar com o ecossistema <strong>React</strong>, sem descartar o uso de <strong>outros frameworks</strong> ou até mesmo mobile com <strong>React Native</strong> no qual estou aprendendo. No back-end, <strong>Node.js</strong> tem sido um complemento natural do <strong>Next.js</strong> ou mesmo usando algum de seus frameworks como o <strong>Fastify</strong>, enquanto <strong>PHP e Laravel</strong> são mais um quebra-galho.",
+			"<strong>No futuro</strong>, meu objetivo é continuar crescendo como desenvolvedor, explorando <strong>novas tecnologias</strong> e me envolvendo em projetos desafiadores que me permitam deixar uma marca significativa. Embora meu foco continue no front-end, estou sempre em busca de novas ferramentas e práticas para expandir minhas habilidades. <strong>Quero colaborar com equipes inovadoras, compartilhar conhecimento e contribuir para a criação de produtos que realmente façam a diferença.</strong> Quero estar sempre em movimento, um dia de cada vez, uma linha de código por vez."
+		]
+	},
+
+	"Habilities": {
+		"title": "Conhecimentos e habilidades",
 		"list": [
 			{
 				"title": "Idiomas",
@@ -64,7 +68,7 @@
 				"text": "PostgreSQL, MySQL, Firebase, Prisma ORM"
 			},
 			{
-				"title": "Softwares",
+				"title": "Softwares e serviços",
 				"text": "Figma, Adobe Photoshop, Adobe XD, Docker, Git, GitHub, BitBucket"
 			},
 			{
@@ -72,5 +76,17 @@
 				"text": "Kanban"
 			}
 		]
+	},
+
+	"Projects": {
+		"title": "Projetos"
+	},
+
+	"Trajectory": {
+		"title": "Trajetória"
+	},
+
+	"Contact": {
+		"title": "Contato"
 	}
 }

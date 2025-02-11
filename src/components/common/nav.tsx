@@ -14,9 +14,10 @@ export function Nav({ slot }: Props) {
 	const __ = useTranslations('Default')
 
 	const containerClass = cn(
-		'xs:h-12 h-9 items-center gap-3',
+		'xs:h-10 h-9 items-center gap-3',
 		slot === 'header' && 'layout:hidden hidden min-[960px]:flex',
-		slot === 'page' && 'layout:flex absolute top-10 right-11 hidden',
+		slot === 'page' &&
+			'layout:flex fixed top-10 right-11 hidden z-50 rounded-xl bg-white/90 backdrop-blur-xs dark:bg-black/90 px-3 -mr-3',
 	)
 
 	const linkClass = cn(
@@ -50,6 +51,22 @@ export function Nav({ slot }: Props) {
 				rootMargin="65px 0px 0px"
 			>
 				<a
+					href="#habilities"
+					className={linkClass}
+					onClick={(e) => scrollToSection(e, '#habilities')}
+				>
+					{__('navigation.habilities')}
+				</a>
+			</AnimatedContent>
+
+			<AnimatedContent
+				distance={65}
+				config={{ tension: 60, friction: 15 }}
+				delay={300}
+				reverse
+				rootMargin="65px 0px 0px"
+			>
+				<a
 					href=""
 					className={linkClass}
 					onClick={(e) => scrollToSection(e, '#projects')}
@@ -61,7 +78,7 @@ export function Nav({ slot }: Props) {
 			<AnimatedContent
 				distance={65}
 				config={{ tension: 60, friction: 15 }}
-				delay={300}
+				delay={400}
 				reverse
 				rootMargin="65px 0px 0px"
 			>
@@ -77,7 +94,7 @@ export function Nav({ slot }: Props) {
 			<AnimatedContent
 				distance={65}
 				config={{ tension: 60, friction: 15 }}
-				delay={400}
+				delay={500}
 				reverse
 				rootMargin="65px 0px 0px"
 			>

@@ -51,7 +51,7 @@ export function Hero() {
 					/>
 				</h1>
 
-				<div className="layout:mt-9 mt-12 sm:mt-16">
+				<div className="layout:mt-9 mt-8 sm:mt-16">
 					<AnimatedContent
 						distance={125}
 						config={{ tension: 60, friction: 15 }}
@@ -59,7 +59,7 @@ export function Hero() {
 						rootMargin="0px 0px 125px"
 					>
 						<p
-							className="xs:text-lg text-md leading-loose text-pretty md:pl-40"
+							className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty md:pl-40"
 							dangerouslySetInnerHTML={{ __html: __.raw('text') }}
 						/>
 					</AnimatedContent>
@@ -71,7 +71,7 @@ export function Hero() {
 					config={{ tension: 60, friction: 15 }}
 					rootMargin="0px 0px 125px"
 				>
-					<div className="layout:mt-14 xs:gap-4 mt-14 flex justify-between gap-2 sm:mt-18 sm:gap-0">
+					<div className="layout:mt-14 mt-12 flex justify-between gap-4 sm:mt-18 sm:gap-0">
 						<Button
 							as="a"
 							href="#about"
@@ -93,7 +93,7 @@ export function Hero() {
 
 						<hr className="mx-8 hidden grow self-center border-t border-black/25 sm:block dark:border-white/20" />
 
-						<ul className="xs:gap-2 flex gap-1 sm:gap-3">
+						<ul className="flex gap-2 sm:gap-3">
 							<li>
 								<Button
 									as="a"

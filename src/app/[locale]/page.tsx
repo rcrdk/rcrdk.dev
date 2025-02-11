@@ -3,11 +3,13 @@ import { getTranslations } from 'next-intl/server'
 
 import { About } from '@/app/[locale]/components/about'
 import { Contact } from '@/app/[locale]/components/contact'
+import { Habilities } from '@/app/[locale]/components/habilities'
 import { Hero } from '@/app/[locale]/components/hero'
 import { Projects } from '@/app/[locale]/components/projects'
 import { Trajectory } from '@/app/[locale]/components/trajectory'
 import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
+import { ScrollStart } from '@/components/common/scroll-start'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
 import { routing } from '@/i18n/routing'
@@ -57,11 +59,16 @@ export default async function HomePage({ params }: Props) {
 					size="center"
 					sideSpacing="lg"
 					className="xs:pb-18 layout:pb-0 my-auto pb-14 sm:pb-20"
+					classNameCenter="divide-black/5 dark:divide-white/10 divide-y xs:divide-y-0"
 				>
+					<Anchor id="home" />
 					<Hero />
 
 					<Anchor id="about" />
 					<About />
+
+					<Anchor id="habilities" />
+					<Habilities />
 
 					<Anchor id="projects" />
 					<Projects />
@@ -73,6 +80,8 @@ export default async function HomePage({ params }: Props) {
 					<Contact />
 				</Container>
 			</main>
+
+			<ScrollStart />
 		</div>
 	)
 }

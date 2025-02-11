@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 'use client'
 
 import Image from 'next/image'
@@ -10,7 +11,7 @@ import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { Container } from '@/components/ui/container'
-import { Link } from '@/i18n/routing'
+import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
 type Props = {
@@ -46,7 +47,7 @@ function HeaderInset({ animationEnter }: Props) {
 		<AnimatedContent
 			direction={animationEnter}
 			className={cn(
-				'xs:py-0 xs:border-b-0 border-b border-black/5 py-4 dark:border-white/10',
+				'xs:py-0 xs:border-b-0 border-b border-black/5 py-3 dark:border-white/10',
 				animationEnter === 'vertical' && 'layout:hidden flex grow',
 				animationEnter === 'horizontal' && 'layout:flex hidden grow',
 			)}
@@ -58,9 +59,10 @@ function HeaderInset({ animationEnter }: Props) {
 				className="layout:pl-11 layout:pr-0 layout:flex"
 				classNameCenter="flex items-center justify-between layout:flex-col layout:min-h-fit"
 			>
-				<Link
+				<a
 					href="/"
 					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
+					onClick={(e) => scrollToSection(e, '#home')}
 				>
 					<Image
 						src={avatarPicture}
@@ -85,7 +87,7 @@ function HeaderInset({ animationEnter }: Props) {
 							<span className="text-accent-blue">.dev</span>
 						</span>
 					</span>
-				</Link>
+				</a>
 
 				<Nav slot="header" />
 
