@@ -8,13 +8,20 @@ export function Trajectory() {
 
 	return (
 		<Section>
-			<h2 className="layout:mb-8 xs:pr-0 lg:mb-12">
+			<h2 className="layout:mb-8 mb-8 sm:mb-12">
 				<SplitText
 					text={__('title')}
 					delay={50}
 					className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white"
 				/>
 			</h2>
+
+			<div>
+				<p>Texto introdutório</p>
+				<p>Listar experiências profissionais</p>
+				<p>Listar formações e cursos</p>
+				<p>Card: Linkedin + CV</p>
+			</div>
 		</Section>
 	)
 }

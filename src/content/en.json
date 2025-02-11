@@ -57,11 +57,11 @@
 			},
 			{
 				"title": "Languages & techs",
-				"text": "Javascript, Typescript, React, Next.js, Node.js, Fastify, React Native, PHP, Laravel, HTML, CSS"
+				"text": "Javascript, Typescript, React, Next.js, Node.js, Fastify, React Native, Expo, PHP, Laravel, HTML, CSS"
 			},
 			{
 				"title": "Libraries & tools",
-				"text": "React Query, React Hook Form, Zod, TailwindCSS, Styled Components, Radix UI, shadcn/ui, Stripe API"
+				"text": "React Query, React Hook Form, Zod, TailwindCSS, Styled Components, Radix UI, shadcn/ui, Stripe API, Redux, Zustand, Context API, Sever components"
 			},
 			{
 				"title": "Databases",
@@ -69,17 +69,38 @@
 			},
 			{
 				"title": "Softwares & services",
-				"text": "macOS, Figma, Adobe Photoshop, Adobe XD, Docker, Git, GitHub, BitBucket"
+				"text": "macOS, Figma, Adobe Photoshop, Adobe XD, Docker, Git, GitHub, BitBucket, Notion, Trello"
 			},
 			{
 				"title": "Metodologies & good practices",
-				"text": "Kanban"
+				"text": "Kanban, Responsive Design, Mobile First, SEO friendly, Pixel Perfect, SOLID, Clean Architecture, Design Patterns"
 			}
 		]
 	},
 
 	"Projects": {
-		"title": "Projects"
+		"title": "Projects",
+		"categories": [
+			{
+				"id": "highlights",
+				"label": "Highlighted"
+			}, {
+				"id": "websites",
+				"label": "Websites"
+			}, {
+				"id": "web_apps",
+				"label": "Web Apps"
+			}, {
+				"id": "landing_pages",
+				"label": "Landing Pages"
+			}, {
+				"id": "ecommerces",
+				"label": "E-commerces"
+			}, {
+				"id": "mobile_apps",
+				"label": "Mobile Apps"
+			}
+		]
 	},
 
 	"Trajectory": {
