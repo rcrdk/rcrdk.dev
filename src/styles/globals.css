@@ -39,6 +39,10 @@
 	@apply xs:!text-nowrap [&>span>span]:!block xs:[&>span>span]:!inline-block;
 }
 
+@utility scrollbar-hidden {
+	@apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+}
+
 @layer base {
 	::selection {
 		@apply bg-accent-blue/10 text-accent-blue dark:text-white dark:bg-accent-blue/80;

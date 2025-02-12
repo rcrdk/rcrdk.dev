@@ -1,9 +1,9 @@
 'use client'
 
+import { useMemo } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useMemo } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/tailwind-cn'
@@ -28,10 +28,7 @@ export function LocaleSwitcher() {
 	}, [])
 
 	const getActiveLocale = useMemo(() => {
-		return (
-			languagesAvailable.find((locale) => locale.prefix === currentLocale) ??
-			languagesAvailable[0]
-		)
+		return languagesAvailable.find((locale) => locale.prefix === currentLocale) ?? languagesAvailable[0]
 	}, [currentLocale, languagesAvailable])
 
 	return (
@@ -45,7 +42,7 @@ export function LocaleSwitcher() {
 						href={`/${lang.prefix}`}
 						key={lang.prefix}
 						icon
-						size="sm"
+						size="xs"
 						tabIndex={getActiveLocale.prefix === lang.prefix ? -1 : undefined}
 						className={cn(
 							getActiveLocale.prefix === lang.prefix
@@ -53,10 +50,7 @@ export function LocaleSwitcher() {
 								: '!bg-transparent hover:!bg-black/5 dark:hover:!bg-white/5',
 						)}
 					>
-						<abbr
-							title={lang.title}
-							className="text-sm font-semibold no-underline"
-						>
+						<abbr title={lang.title} className="text-sm font-semibold no-underline">
 							{lang.acronym}
 						</abbr>
 					</Button>

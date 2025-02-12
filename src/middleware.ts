@@ -4,9 +4,7 @@ import { v4 as uuid } from 'uuid'
 
 import { routing } from './i18n/routing'
 
-export default async function middleware(
-	request: NextRequest & { ip?: string },
-) {
+export default async function middleware(request: NextRequest & { ip?: string }) {
 	// i18n
 	const handleI18nRouting = createMiddleware(routing)
 	const response = handleI18nRouting(request)

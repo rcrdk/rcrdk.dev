@@ -3,16 +3,16 @@ import { getTranslations } from 'next-intl/server'
 
 import { About } from '@/app/[locale]/components/about'
 import { Contact } from '@/app/[locale]/components/contact'
-import { Habilities } from '@/app/[locale]/components/habilities'
 import { Hero } from '@/app/[locale]/components/hero'
+import { Journey } from '@/app/[locale]/components/journey'
 import { Projects } from '@/app/[locale]/components/projects'
-import { Trajectory } from '@/app/[locale]/components/trajectory'
+import { Skills } from '@/app/[locale]/components/skills'
 import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
 import { ScrollStart } from '@/components/common/scroll-start'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
-import { routing } from '@/i18n/routing'
+import { LocalesType, routing } from '@/i18n/routing'
 import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export type Props = {
-	params: Promise<{ locale: (typeof routing.locales)[number] }>
+	params: Promise<{ locale: LocalesType }>
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
@@ -59,7 +59,7 @@ export default async function HomePage({ params }: Props) {
 					size="center"
 					sideSpacing="lg"
 					className="xs:pb-18 layout:pb-0 my-auto pb-14 sm:pb-20"
-					classNameCenter="divide-black/5 dark:divide-white/10 divide-y xs:divide-y-0"
+					classNameCenter="divide-black/5 dark:divide-white/10 divide-y sm:divide-y-0"
 				>
 					<Anchor id="home" />
 					<Hero />
@@ -67,14 +67,14 @@ export default async function HomePage({ params }: Props) {
 					<Anchor id="about" />
 					<About />
 
-					<Anchor id="habilities" />
-					<Habilities />
+					<Anchor id="skills" />
+					<Skills />
 
 					<Anchor id="projects" />
 					<Projects />
 
-					<Anchor id="trajectory" />
-					<Trajectory />
+					<Anchor id="journey" />
+					<Journey />
 
 					<Anchor id="contact" />
 					<Contact />

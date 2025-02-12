@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
 
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
@@ -72,15 +72,11 @@ function HeaderInset({ animationEnter }: Props) {
 						className="xs:size-10 size-9 rounded-full"
 					/>
 
-					<span
-						className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2"
-						ref={ref}
-					>
+					<span className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2" ref={ref}>
 						<span
 							className={cn(
 								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pr-[0.15rem] block w-full -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
-								!showLettering &&
-									'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
+								!showLettering && 'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
 							)}
 						>
 							rcrdk

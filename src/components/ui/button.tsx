@@ -4,7 +4,7 @@ import { cn } from '@/utils/tailwind-cn'
 type Props<T extends React.ElementType> = {
 	as?: T
 	variant?: 'solid' | 'outline' | 'discret'
-	size?: 'base' | 'lg' | 'sm'
+	size?: 'base' | 'lg' | 'sm' | 'xs'
 	icon?: boolean
 }
 
@@ -31,8 +31,12 @@ export function Button<T extends React.ElementType = 'button'>({
 				size === 'lg' && 'h-12 gap-4 px-6 xs:h-14 xs:gap-5 xs:px-6',
 				size === 'lg' && icon && 'w-12 !px-0 xs:w-14',
 
-				size === 'sm' && 'h-8 gap-4 px-4 xs:h-8 xs:ap-4 xs:px-5',
+				size === 'sm' && 'h-10 gap-2 px-2 xs:h-10 xs:px-4',
 				size === 'sm' && icon && 'w-8 !px-0 xs:w-9',
+
+				size === 'xs' && 'h-8 gap-4 px-4 xs:h-8 xs:ap-4 xs:px-5',
+				size === 'xs' && icon && 'w-8 !px-0 xs:w-9',
+				
 
 				variant === 'solid' && 'bg-content-light dark:bg-white text-white dark:text-black hover:bg-content-light/80 dark:hover:bg-white/85 focus-visible:!bg-accent-blue focus-visible:text-white focus-visible:border-white dark:focus-visible:border-black',
 				variant === 'outline' && 'bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border-black/20 hover:border-black/60 dark:border-white/20 dark:text-white dark:hover:border-white/50 focus-visible:!border-accent-blue focus-visible:bg-accent-blue/10 dark:focus-visible:bg-accent-blue/20',

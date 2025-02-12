@@ -1,9 +1,9 @@
 'use client'
 
-import type { SpringConfig } from '@react-spring/web'
-import { animated, useSpring } from '@react-spring/web'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
+import type { SpringConfig } from '@react-spring/web'
+import { animated, useSpring } from '@react-spring/web'
 
 interface AnimatedContentProps {
 	children: ReactNode
@@ -66,9 +66,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 			transform: `translate${directions[direction]}(${reverse ? `-${distance}px` : `${distance}px`}) scale(${scale})`,
 			opacity: animateOpacity ? initialOpacity : 1,
 		},
-		to: inView
-			? { transform: 'translateY(0px) scale(1)', opacity: 1 }
-			: undefined,
+		to: inView ? { transform: 'translateY(0px) scale(1)', opacity: 1 } : undefined,
 		config,
 		delay,
 	})

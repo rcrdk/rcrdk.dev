@@ -5,12 +5,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 	sideSpacing?: 'base' | 'lg'
 	classNameCenter?: React.HTMLAttributes<HTMLDivElement>['className']
 }
-export function Container({
-	size = 'fluid',
-	sideSpacing = 'base',
-	classNameCenter,
-	...props
-}: Props) {
+export function Container({ size = 'fluid', sideSpacing = 'base', classNameCenter, ...props }: Props) {
 	return (
 		<div
 			{...props}

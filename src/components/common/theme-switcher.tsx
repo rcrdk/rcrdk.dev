@@ -1,9 +1,9 @@
 'use client'
 
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
@@ -22,9 +22,7 @@ export function ThemeSwitcher() {
 	}, [__])
 
 	const getActiveTheme = useMemo(
-		() =>
-			themesAvailable.find((theme) => theme.mode === currentTheme) ??
-			themesAvailable[0],
+		() => themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0],
 		[currentTheme, themesAvailable],
 	)
 
@@ -67,12 +65,7 @@ export function ThemeSwitcher() {
 
 	if (!mounted) {
 		return (
-			<Button
-				as="div"
-				variant="discret"
-				className="pointer-events-none opacity-60"
-				icon
-			>
+			<Button as="div" variant="discret" className="pointer-events-none opacity-60" icon>
 				<IconSunMoon />
 			</Button>
 		)
@@ -81,12 +74,7 @@ export function ThemeSwitcher() {
 	const { title, icon } = getActiveTheme
 
 	return (
-		<Button
-			aria-label={title}
-			onClick={handleChangeTheme}
-			variant="discret"
-			icon
-		>
+		<Button aria-label={title} onClick={handleChangeTheme} variant="discret" icon>
 			{icon}
 		</Button>
 	)

@@ -1,10 +1,10 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import { IconCoffee } from '@tabler/icons-react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
 
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
@@ -20,7 +20,7 @@ export function About() {
 
 	return (
 		<Section classNameCenter="max-xs:py-9">
-			<div className="xs:-mt-18 -md-14 relative flex flex-col-reverse items-center sm:-mt-20 sm:items-end lg:mt-0 lg:flex-row lg:items-center">
+			<div className="-md-14 relative flex flex-col-reverse items-center sm:-mt-20 sm:items-end lg:mt-0 lg:flex-row lg:items-center">
 				<div>
 					<h2 className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 left-0 flex aspect-[16/15] items-end justify-start sm:aspect-auto sm:h-[26rem] lg:static lg:mb-12 lg:block lg:h-auto">
 						<SplitText
@@ -30,11 +30,7 @@ export function About() {
 						/>
 					</h2>
 
-					<AnimatedContent
-						distance={125}
-						rootMargin="0px 0px 125px"
-						config={{ tension: 60, friction: 15 }}
-					>
+					<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
 						<p
 							className="xs:text-lg text-md xs:leading-loose mb-0 leading-[1.8] text-pretty"
 							dangerouslySetInnerHTML={{ __html: contents.at(0) ?? '' }}
@@ -50,14 +46,7 @@ export function About() {
 						config={{ tension: 60, friction: 15 }}
 						delay={200}
 					>
-						<Image
-							src={avatarPicture}
-							width={800}
-							height={800}
-							quality={100}
-							alt=""
-							className="shrink-0"
-						/>
+						<Image src={avatarPicture} width={800} height={800} quality={100} alt="" className="shrink-0" />
 
 						<span className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 flex aspect-[16/15] w-full max-w-[768px] translate-3d items-end justify-start sm:aspect-auto sm:h-[26rem] sm:w-[calc(100vw-(var(--spacing)*32))] md:w-[calc(100vw-(var(--spacing)*40))] lg:hidden">
 							<SplitText
@@ -112,11 +101,7 @@ export function About() {
 			</Collapsible.Root>
 
 			{contents.slice(1).map((item, index) => (
-				<p
-					className="sr-only"
-					key={index}
-					dangerouslySetInnerHTML={{ __html: item }}
-				/>
+				<p className="sr-only" key={index} dangerouslySetInnerHTML={{ __html: item }} />
 			))}
 		</Section>
 	)

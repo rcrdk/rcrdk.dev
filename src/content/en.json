@@ -9,9 +9,9 @@
 		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski",
 		"navigation": {
 			"about": "About me",
-			"habilities": "Habilities",
+			"skills": "Skills",
 			"projects": "Projects",
-			"trajectory": "Trajectory",
+			"journey": "Journey",
 			"contact": "Contact"
 		}
 	},
@@ -24,7 +24,7 @@
 
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over +12 years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong habilities in <strong>Typescript, React, Next.js and Node.js.</strong>",
+		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over +12 years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong skills in <strong>Typescript, React, Next.js and Node.js.</strong>",
 		"buttons": {
 			"aboutLong": "Who is Ricardo?",
 			"aboutShort": "Who I am",
@@ -48,8 +48,8 @@
 		]
 	},
 
-	"Habilities": {
-		"title": "Habilities",
+	"Skills": {
+		"title": "Skills and expertise",
 		"list": [
 			{
 				"title": "Communication",
@@ -85,11 +85,11 @@
 				"id": "highlights",
 				"label": "Highlighted"
 			}, {
-				"id": "websites",
-				"label": "Websites"
-			}, {
 				"id": "web_apps",
 				"label": "Web Apps"
+			}, {
+				"id": "websites",
+				"label": "Websites"
 			}, {
 				"id": "landing_pages",
 				"label": "Landing Pages"
@@ -99,15 +99,116 @@
 			}, {
 				"id": "mobile_apps",
 				"label": "Mobile Apps"
+			}, {
+				"id": "apis",
+				"label": "API"
 			}
 		]
 	},
 
-	"Trajectory": {
-		"title": "Trajectory"
+	"Journey": {
+		"title": "My journey",
+		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>, but my focus has always been on web development. Currently, I work at <strong>Meu Rosinha</strong> and also take on parallel projects. In the future, I seek <strong>new experiences and challenges.</strong>",
+		"box": {
+			"text": "Check out my full profile with experiences, courses, and certifications on LinkedIn, or take a look at my resume.",
+			"button": {
+				"linkedin": "LinkedIn",
+				"cv": "Resume"
+			}
+		},
+		"work_experience": {
+			"title": "Work experience",
+			"list": [
+				{
+					"company": "Meu Rosinha",
+					"url": "https://meurosinha.com.br",
+					"role": "Front-End Developer",
+					"time_range": "2021 - Present",
+					"location": "Remote",
+					"info": [
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+						"Augue nec rhoncus elementum pharetra, justo ut ridiculus.",
+						"Cubilia maecenas venenatis gravida luctus hendrerit, eleifend dapibus per.",
+						"Tempor arcu justo enim, mollis vel, faucibus quisque."
+					]
+				},
+				{
+					"company": "Sou Digital",
+					"url": "https://sou.digital",
+					"role": "Full-Stack Developer",
+					"time_range": "Oct. 2019 - Jan. 2025",
+					"location": "Remote",
+					"info": [
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+						"Augue nec rhoncus elementum pharetra, justo ut ridiculus.",
+						"Cubilia maecenas venenatis gravida luctus hendrerit, eleifend dapibus per.",
+						"Tempor arcu justo enim, mollis vel, faucibus quisque."
+					]
+				},
+				{
+					"company": "Sou Digital",
+					"url": "https://sou.digital",
+					"role": "Front-End Developer",
+					"time_range": "Feb. 2013 - Oct. 2019",
+					"location": "Timbó, SC, Brazil",
+					"info": [
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+						"Augue nec rhoncus elementum pharetra, justo ut ridiculus.",
+						"Cubilia maecenas venenatis gravida luctus hendrerit, eleifend dapibus per.",
+						"Tempor arcu justo enim, mollis vel, faucibus quisque."
+					]
+				}
+			]
+		},
+		"education": {
+			"title": "Education and certifications",
+			"list": [
+				{
+					"company": "Rocketseat",
+					"url": "https://www.rocketseat.com.br/",
+					"title": "Full-Stack and Mobile Development",
+					"time_range": "2023 - Present",
+					"location": "Remote",
+					"description": "I have completed advanced courses in React, Node.js, and React Native, covering everything from fundamentals to best practices and performance. In React, I deepened my knowledge of Hooks, API consumption, unit and integration testing, Next.js, and design systems. In Node.js, I studied Fastify, NestJS, SOLID principles, design patterns, and building scalable APIs with automated testing. In React Native, I explored navigation, API integration, push notifications, deep linking, animations, micro-interactions, and offline-first strategies. Additionally, I enhanced my skills with Redux, Zustand, building a multi-tenant SaaS boilerplate with role-based access control (RBAC), web accessibility, SEO for developers, and Micro SaaS development."
+				},
+				{
+					"company": "Laravue",
+					"url": "https://laravue.com.br/",
+					"title": "Full-Stack Development",
+					"time_range": "2021 - 2022",
+					"location": "Remote",
+					"description": "I completed a series of PHP/Laravel and Vue courses. In Laravel, I learned how to configure environments, create routes, controllers, middlewares, and views, as well as master dependency injection and best practices for building scalable and secure applications. In Vue.js, I gained knowledge in directives, state management with Vuex, data exchange between components, and route handling with Vue Router to create dynamic and interactive user interfaces."
+				},
+				{
+					"company": "Udemy",
+					"url": "https://www.udemy.com/",
+					"title": "Full-Stack Development",
+					"time_range": "2019 - 2023",
+					"location": "Remote",
+					"description": "I have completed courses covering fullstack web development, including HTML5, CSS3, JavaScript (ES6+), programming paradigms (Functional, OOP), and frameworks like React, Vue and Angular. I also enhanced my knowledge of PHP and Node.js, building applications with relational and NoSQL databases (MySQL, PostgreSQL, MongoDB) and implementing authentication. Additionally, I explored best practices, component-based architecture, design patterns, and tools like Gulp and Webpack for build optimization and automation."
+				},
+				{
+					"company": "Uniasselvi",
+					"url": "https://portal.uniasselvi.com.br/",
+					"title": "Social Communication: Advertising and Marketing",
+					"time_range": "2014 - 2017",
+					"location": "Indaial, SC, Brazil",
+					"description": "I have a Bachelor’s degree in Advertising and Marketing, which provided me with a broad understanding of communication, marketing, and design. Throughout the course, I developed skills in advertising creation, copywriting, photography, graphic design, art direction, and multimedia production, while also deepening my knowledge of marketing strategies, consumer behavior, branding, and campaign planning. Additionally, I studied digital media, new technologies applied to communication, and audiovisual production, building a strong foundation to work at the intersection of creativity and strategy in the digital environment."
+				}
+			]
+		}
 	},
 
 	"Contact": {
-		"title": "Contact"
+		"title": "Contact me",
+		"text": "<strong>How about we have a chat?</strong> I’m open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let’s connect!</strong>",
+		"buttons": {
+			"linkedin": "Connect with me on LinkedIn",
+			"github": "Check out my projects and activities on GitHub",
+			"behance": "Check out my visual projects on Behance",
+			"discord": "Contact me on Discord",
+			"spotify": "Let's listen to CSS on Spotify!",
+			"cv": "Checkout my resume"
+		}
 	}
 }

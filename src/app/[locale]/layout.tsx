@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
 
-import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
@@ -45,8 +45,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
 	const messages = await getMessages()
 
-	const shouldEnableGA =
-		process.env.NODE_ENV === 'production' && !!env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+	const shouldEnableGA = process.env.NODE_ENV === 'production' && !!env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 	return (
 		<html
@@ -59,9 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 				<NextIntlClientProvider messages={messages}>
 					<ThemeProvider attribute="data-mode">{children}</ThemeProvider>
 
-					{shouldEnableGA && (
-						<GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />
-					)}
+					{shouldEnableGA && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />}
 				</NextIntlClientProvider>
 			</body>
 		</html>

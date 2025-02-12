@@ -1,17 +1,17 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Section } from '@/components/ui/section'
 
-export function Habilities() {
+export function Skills() {
 	const [canDelayAnimations, setCanDelayAnimations] = useState(false)
 	const ref = useRef<HTMLDivElement>(null)
 
-	const __ = useTranslations('Habilities')
+	const __ = useTranslations('Skills')
 	const list = __.raw('list') as Record<string, string>[]
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ export function Habilities() {
 	return (
 		<Section
 			classNameCenter="max-xs:pt-9"
-			className="layout:border-t-0 xs:border-t border-t-black/25 dark:border-t-white/20"
+			className="layout:border-t-0 border-t-black/25 sm:border-t dark:border-t-white/20"
 		>
 			<div ref={ref}>
 				<h2 className="layout:mb-8 mb-8 items-center sm:mb-12 lg:static lg:block lg:h-auto lg:pr-0">

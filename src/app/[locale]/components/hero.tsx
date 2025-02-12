@@ -1,17 +1,14 @@
 'use client'
 
-import {
-	IconBrandGithub,
-	IconBrandLinkedin,
-	IconCircleArrowDown,
-} from '@tabler/icons-react'
-import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
+import { IconBrandGithub, IconBrandLinkedin, IconCircleArrowDown } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
+import { links } from '@/content/_links'
 import { scrollToSection } from '@/utils/scroll-to-section'
 
 export function Hero() {
@@ -82,13 +79,9 @@ export function Hero() {
 						>
 							<IconCircleArrowDown className="size-7" strokeWidth={1.5} />
 
-							<span className="hidden font-medium sm:block">
-								{__('buttons.aboutLong')}
-							</span>
+							<span className="hidden font-medium sm:block">{__('buttons.aboutLong')}</span>
 
-							<span className="font-medium sm:hidden">
-								{__('buttons.aboutShort')}
-							</span>
+							<span className="font-medium sm:hidden">{__('buttons.aboutShort')}</span>
 						</Button>
 
 						<hr className="mx-8 hidden grow self-center border-t border-black/25 sm:block dark:border-white/20" />
@@ -97,7 +90,7 @@ export function Hero() {
 							<li>
 								<Button
 									as="a"
-									href="https://linkedin.com/in/rcrdk/"
+									href={links.linkedIn}
 									target="_blank"
 									size="lg"
 									variant="outline"
@@ -111,7 +104,7 @@ export function Hero() {
 							<li>
 								<Button
 									as="a"
-									href="https://github.com/rcrdk/"
+									href={links.github}
 									target="_blank"
 									size="lg"
 									variant="outline"
