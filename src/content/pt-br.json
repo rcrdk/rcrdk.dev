@@ -13,8 +13,12 @@
 			"projects": "Projetos",
 			"journey": "Trajetória",
 			"contact": "Contato"
-		},
-		"404": "Me leve para uma página real"
+		}
+	},
+
+	"NotFound": {
+		"title": "Página não encontrada",
+		"button": "Me leve para uma página real"
 	},
 
 	"Seo": {

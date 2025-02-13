@@ -17,7 +17,7 @@ export function Nav({ slot }: Props) {
 		'xs:h-10 h-9 items-center gap-2',
 		slot === 'header' && 'layout:hidden hidden min-[960px]:flex',
 		slot === 'page' &&
-			'[&:has([data-state="open"])]:before:opacity-100 [&:has([data-state="open"])]:before:translate-y-0 layout:flex fixed top-10 right-11 hidden z-50 before:rounded-xl before:absolute before:-translate-y-full before:inset-0 before:bg-black/5 dark:before:bg-white/10 before:backdrop-blur-xs px-2 -mr-2 before:transition-all before:duration-1000 before:opacity-0',
+			'[&:has([data-state="open"])]:before:opacity-100 [&:has([data-state="open"])]:before:translate-y-0 layout:flex absolute layout-sm:fixed top-10 right-11 hidden z-50 before:rounded-xl before:absolute before:-translate-y-full before:inset-0 before:bg-black/5 dark:before:bg-white/10 before:backdrop-blur-xs px-2 -mr-2 before:transition-all before:duration-1000 before:opacity-0',
 	)
 
 	const linkClass = cn(

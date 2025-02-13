@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));
-@custom-variant layout {@media (width >= 70rem) and (height >= 30rem) { @slot }}
+@custom-variant layout {@media (width >= 70rem) and (height >= 30rem) { @slot }};
+@custom-variant layout-sm {@media (width >= 70rem) and (height >= 43.75rem) { @slot }};
+@custom-variant only-touch {@media (hover : none) { @slot }};
+@custom-variant only-mouse {@media (hover : hover) { @slot }};
 
 @theme {
 	--breakpoint-xs: 30rem;

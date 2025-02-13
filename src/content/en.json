@@ -13,8 +13,12 @@
 			"projects": "Projects",
 			"journey": "Journey",
 			"contact": "Contact"
-		},
-		"404": "Take me to a real page"
+		}
+	},
+
+	"NotFound": {
+		"title": "Page not found",
+		"button": "Take me to a real page"
 	},
 	
 	"Seo": {
