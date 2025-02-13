@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 	],
 }
 
-export default async function LocaleLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
 	const messages = await getMessages()
 
 	const cookieStore = await cookies()
