@@ -1,14 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import 'swiper/css'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+import { IconCirclePlus } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 import { useDraggable } from 'react-use-draggable-scroll'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import temporaryProjectImage from '@/assets/thumbnail-tmp.png'
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Section } from '@/components/ui/section'
@@ -20,6 +20,29 @@ type CategoryDTO = {
 	id: Category
 	label: string
 }
+
+const projects = [
+	{
+		id: '1',
+		name: 'Chilique da Mamãe',
+		image: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/4f145c166966545.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+	},
+	{
+		id: '2',
+		name: 'Meu Rosinha: Web App',
+		image: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/c7d3ed204162471.Y3JvcCw4MDgsNjMyLDAsMA.png',
+	},
+	{
+		id: '3',
+		name: 'Uniasselvi: ENEM',
+		image: 'https://mir-s3-cdn-cf.behance.net/projects/808/591c62136910957.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+	},
+	{
+		id: '4',
+		name: 'Adapcon',
+		image: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/75f19f114173323.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+	},
+]
 
 export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
@@ -74,6 +97,7 @@ export function Projects() {
 					className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white"
 				/>
 			</h2>
+
 			<div
 				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
 				ref={refContainer}
@@ -115,60 +139,71 @@ export function Projects() {
 				</div>
 			</div>
 
-			<div
-				className={cn(
-					'scrollbar-hidden xs:w-[calc(100%+96px)] relative w-[calc(100%+48px)] !max-w-none overflow-hidden sm:w-[calc(100%+64px+var(--offset))]',
-					'layout:mt-12 xs:-ml-12 mt-8 -ml-6 sm:mt-12 sm:-ml-16',
-					'xs:px-12 px-6 sm:px-16 md:px-16 lg:pr-10',
-					'sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
-				)}
-				style={offsetStyle}
-			>
-				<Swiper
-					slidesPerView="auto"
-					spaceBetween={12}
-					className="!overflow-visible select-none"
-					breakpoints={{
-						480: {
-							spaceBetween: 24,
-						},
-						640: {
-							spaceBetween: 32,
-						},
-					}}
+			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+				<div
+					className={cn(
+						'scrollbar-hidden xs:w-[calc(100%+96px)] relative w-[calc(100%+48px)] !max-w-none overflow-hidden sm:w-[calc(100%+64px+var(--offset))]',
+						'layout:mt-12 xs:-ml-12 mt-8 -ml-6 sm:mt-12 sm:-ml-16',
+						'xs:px-12 px-6 sm:px-16 md:px-16 lg:pr-10',
+						'sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
+					)}
+					style={offsetStyle}
 				>
-					{Array.from({ length: 5 }).map((_, i) => (
-						<SwiperSlide className="!sm:w-[360px] !w-[280px] !max-w-none" key={i}>
-							<div className="flex aspect-[13/16] w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-xl sm:aspect-[13/16]">
-								<Image
-									src={temporaryProjectImage}
-									alt=""
-									width={886}
-									height={520}
-									className="aspect-[16/10] w-full object-cover"
-								/>
+					<Swiper
+						slidesPerView="auto"
+						spaceBetween={16}
+						className="!overflow-visible !py-[4px] select-none"
+						breakpoints={{
+							480: {
+								spaceBetween: 24,
+							},
+							640: {
+								spaceBetween: 32,
+							},
+						}}
+					>
+						{projects.map((item) => (
+							<SwiperSlide className="!sm:w-[360px] !w-[280px] !max-w-none" key={item.id}>
+								<button className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex aspect-[11/16] w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 lg:aspect-[12/16] dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50">
+									<div className="group-hover:before:border-content-light relative aspect-[4/3] overflow-hidden before:absolute before:inset-x-px before:bottom-0 before:z-[1] before:border-t before:border-black/20 before:transition-colors dark:before:border-white/15 dark:group-hover:before:border-white/50">
+										<img
+											src={item.image}
+											alt=""
+											className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+										/>
+									</div>
 
-								<div className="grow border border-t-0 border-black/20 p-4 dark:border-white/15">
-									<h3 className="text-md mb-2 font-bold dark:text-white">ProjectInBio</h3>
-									<p className="text-sm text-pretty text-black/60 dark:text-white/50">
-										Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, enim! Perferendis aspernatur
-										quo.
-									</p>
-								</div>
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
+									<div className="relative flex grow flex-col p-4">
+										<h3 className="mb-2 text-base leading-tight font-bold dark:text-white">{item.name}</h3>
+										<p className="line-clamp-2 text-sm text-pretty text-black/60 dark:text-white/50">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, enim! Perferendis aspernatur
+											quo.
+										</p>
 
-				{/* <p>Usar JSOn Server: https://github.com/kitloong/json-server-vercel/tree/main</p>
-				<p>Listar projetos filtrados</p>
-				<p>Criar descrição para cada categoria?</p>
-				<p>Thumbnail em video/imagem</p>
-				<p>Nome</p>
-				<p>Descrição</p>
-				<p>Tags</p>
-				<p>Links: Repo / Behance / Produção</p> */}
-			</div>
+										<span className="mt-auto flex items-center gap-1">
+											<IconCirclePlus className="size-5" />
+											<span className="text-sm font-bold">Detalhes</span>
+										</span>
+									</div>
+								</button>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
+			</AnimatedContent>
 		</Section>
 	)
+}
+
+{
+	/*
+	<p>Usar JSOn Server: https://github.com/kitloong/json-server-vercel/tree/main</p>
+	<p>Listar projetos filtrados</p>
+	<p>Criar descrição para cada categoria?</p>
+	<p>Thumbnail em video/imagem</p>
+	<p>Nome</p>
+	<p>Descrição</p>
+	<p>Tags</p>
+	<p>Links: Repo / Behance / Produção</p>
+	*/
 }
