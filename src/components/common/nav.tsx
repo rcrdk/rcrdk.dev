@@ -14,15 +14,15 @@ export function Nav({ slot }: Props) {
 	const __ = useTranslations('Default')
 
 	const containerClass = cn(
-		'xs:h-10 h-9 items-center gap-3',
+		'xs:h-10 h-9 items-center gap-2',
 		slot === 'header' && 'layout:hidden hidden min-[960px]:flex',
 		slot === 'page' &&
-			'layout:flex fixed top-10 right-11 hidden z-50 rounded-xl bg-white/90 backdrop-blur-xs dark:bg-black/90 px-3 -mr-3',
+			'[&:has([data-state="open"])]:before:opacity-100 [&:has([data-state="open"])]:before:translate-y-0 layout:flex fixed top-10 right-11 hidden z-50 before:rounded-xl before:absolute before:-translate-y-full before:inset-0 before:bg-black/5 dark:before:bg-white/10 before:backdrop-blur-xs px-2 -mr-2 before:transition-all before:duration-1000 before:opacity-0',
 	)
 
 	const linkClass = cn(
-		'px-2 py-1 transition-colors hover:bg-black/5  text-black/60 text-[15px] border border-transparent focus-visible:border-accent-blue focus-visible:text-accent-blue',
-		'dark:text-white/50 dark:hover:bg-white/10 dark:hover:text-white',
+		'px-2 py-1 transition-colors hover:bg-white  text-black/60 text-[15px] border border-transparent focus-visible:border-accent-blue focus-visible:text-accent-blue transition-all',
+		'dark:text-white/50 dark:hover:bg-black dark:hover:text-white hover:shadow-sm hover:text-content-light dark:hover:shadow-md dark:hover:shadow-white/10',
 	)
 
 	return (

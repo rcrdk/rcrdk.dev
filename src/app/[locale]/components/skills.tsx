@@ -34,10 +34,7 @@ export function Skills() {
 	}, [])
 
 	return (
-		<Section
-			classNameCenter="max-xs:pt-9"
-			className="layout:border-t-0 border-t-black/25 sm:border-t dark:border-t-white/20"
-		>
+		<Section classNameCenter="max-xs:pt-9" className="layout:border-t-0">
 			<div ref={ref}>
 				<h2 className="layout:mb-8 mb-8 items-center sm:mb-12 lg:static lg:block lg:h-auto lg:pr-0">
 					<SplitText

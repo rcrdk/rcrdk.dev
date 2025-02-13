@@ -74,7 +74,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 	const Animated = animated('div')
 
 	return (
-		<Animated ref={ref} style={springProps} className={className}>
+		<Animated ref={ref} style={springProps} className={className} data-state={inView ? 'open' : 'closed'}>
 			{children}
 		</Animated>
 	)

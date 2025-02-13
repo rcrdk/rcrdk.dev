@@ -59,7 +59,7 @@ export default async function HomePage({ params }: Props) {
 					size="center"
 					sideSpacing="lg"
 					className="xs:pb-18 layout:pb-0 my-auto pb-14 sm:pb-20"
-					classNameCenter="divide-black/5 dark:divide-white/10 divide-y sm:divide-y-0"
+					classNameCenter="divide-black/10 dark:divide-white/15 divide-y sm:divide-y-0"
 				>
 					<Anchor id="home" />
 					<Hero />

@@ -53,6 +53,8 @@ export function Journey() {
 				/>
 			</AnimatedContent>
 
+			<hr className="my-12 grow self-center border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
+
 			<h3 className="mt-12 mb-10">
 				<SplitText
 					text={__('work_experience.title')}
@@ -74,12 +76,12 @@ export function Journey() {
 								<a
 									href={item.url}
 									target="_blank"
-									className="block font-semibold hover:underline md:font-bold dark:text-white"
+									className="block font-medium hover:underline md:font-bold dark:text-white"
 								>
 									{item.company}
 								</a>
-								<p className="text-sm text-black/85 dark:text-white/70">{item.time_range}</p>
-								<p className="text-sm text-black/50 dark:text-white/40">{item.location}</p>
+								<p className="text-sm leading-tight text-black/85 dark:text-white/70">{item.time_range}</p>
+								<p className="text-sm leading-tight text-black/50 dark:text-white/40">{item.location}</p>
 							</div>
 
 							<span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
@@ -109,6 +111,8 @@ export function Journey() {
 				))}
 			</ul>
 
+			<hr className="my-12 grow self-center border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
+
 			<h3 className="mt-12 mb-10">
 				<SplitText
 					text={__('education.title')}
@@ -130,12 +134,12 @@ export function Journey() {
 								<a
 									href={item.url}
 									target="_blank"
-									className="block font-semibold hover:underline md:font-bold dark:text-white"
+									className="block font-medium hover:underline md:font-bold dark:text-white"
 								>
 									{item.company}
 								</a>
-								<p className="text-sm text-black/85 dark:text-white/70">{item.time_range}</p>
-								<p className="text-sm text-black/50 dark:text-white/40">{item.location}</p>
+								<p className="text-sm leading-tight text-black/85 dark:text-white/70">{item.time_range}</p>
+								<p className="text-sm leading-tight text-black/50 dark:text-white/40">{item.location}</p>
 							</div>
 
 							<span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
@@ -168,7 +172,9 @@ export function Journey() {
 				className="mt-12"
 			>
 				<div className="flex items-center gap-6 rounded-2xl bg-black/5 p-5 max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-4 dark:bg-white/10">
-					<p className="xs:text-start text-center text-balance">{__('box.text')}</p>
+					<p className="xs:text-start text-content-light/75 dark:text-content-dark/75 text-center text-[15px] text-balance">
+						{__('box.text')}
+					</p>
 
 					<div className="xs:w-auto flex w-full gap-2">
 						<Button
