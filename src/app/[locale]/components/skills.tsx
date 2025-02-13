@@ -44,7 +44,7 @@ export function Skills() {
 					/>
 				</h2>
 
-				<div className="xs:gap-2 flex flex-col gap-4">
+				<div className="flex flex-col gap-4 sm:gap-2">
 					{list.map((item, index) => (
 						<AnimatedContent
 							distance={125}
@@ -53,8 +53,8 @@ export function Skills() {
 							key={item.title}
 							delay={canDelayAnimations ? (index + 1) * 50 : 0}
 						>
-							<p className="text-content-light/65 dark:text-content-dark/85 xs:text-md leading-[1.8] text-pretty sm:text-lg">
-								<strong className="xs:inline text-content-light block font-semibold dark:text-white">
+							<p className="text-content-light/65 dark:text-content-dark/85 sm:text-md leading-[1.8] text-pretty md:text-lg">
+								<strong className="text-content-light block font-semibold sm:inline dark:text-white">
 									{item.title}:
 								</strong>{' '}
 								{item.text}.

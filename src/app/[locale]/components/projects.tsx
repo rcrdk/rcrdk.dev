@@ -88,11 +88,12 @@ export function Projects() {
 						{categories.map((item, index) => (
 							<AnimatedContent
 								direction="horizontal"
-								delay={index * 50}
-								scale={0.75}
-								distance={50}
+								delay={index * 75}
+								distance={100}
+								threshold={0}
+								reverse
 								config={{ tension: 60, friction: 15 }}
-								rootMargin="0px 62px 0px 0px"
+								rootMargin="0px 100px 0px 100px"
 								key={item.id}
 							>
 								<button
@@ -137,11 +138,17 @@ export function Projects() {
 					}}
 				>
 					{Array.from({ length: 5 }).map((_, i) => (
-						<SwiperSlide className="!sm:w-[360px] !w-[300px] !max-w-none" key={i}>
-							<div className="flex aspect-[13/16] w-full shrink-0 flex-col items-center justify-center rounded-xl border border-black/20 p-3 sm:aspect-[14/16] dark:border-white/15">
-								<Image src={temporaryProjectImage} alt="" width={886} height={520} className="w-full rounded-xl" />
+						<SwiperSlide className="!sm:w-[360px] !w-[280px] !max-w-none" key={i}>
+							<div className="flex aspect-[13/16] w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-xl sm:aspect-[13/16]">
+								<Image
+									src={temporaryProjectImage}
+									alt=""
+									width={886}
+									height={520}
+									className="aspect-[16/10] w-full object-cover"
+								/>
 
-								<div className="grow pt-3">
+								<div className="grow border border-t-0 border-black/20 p-4 dark:border-white/15">
 									<h3 className="text-md mb-2 font-bold dark:text-white">ProjectInBio</h3>
 									<p className="text-sm text-pretty text-black/60 dark:text-white/50">
 										Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, enim! Perferendis aspernatur

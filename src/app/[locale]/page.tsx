@@ -82,6 +82,8 @@ export default async function HomePage({ params }: Props) {
 			</main>
 
 			<ScrollStart />
+
+			{/* <Spotlight /> */}
 		</div>
 	)
 }

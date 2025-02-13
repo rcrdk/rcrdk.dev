@@ -72,16 +72,22 @@ export function Journey() {
 							config={{ tension: 60, friction: 15 }}
 							className="grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]"
 						>
-							<div className="order-3 w-44 shrink-0 pb-2 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:self-start md:pr-3 md:pb-0 md:pl-0">
+							<div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
 								<a
 									href={item.url}
 									target="_blank"
-									className="block font-medium hover:underline md:font-bold dark:text-white"
+									className="mr-1 block hover:underline md:mr-0 md:mb-1 md:block md:font-bold md:after:hidden dark:text-white"
 								>
 									{item.company}
 								</a>
-								<p className="text-sm leading-tight text-black/85 dark:text-white/70">{item.time_range}</p>
-								<p className="text-sm leading-tight text-black/50 dark:text-white/40">{item.location}</p>
+
+								<p className="inline-block text-sm leading-tight text-black/85 after:mx-2 after:not-italic after:content-['|'] max-md:italic md:mr-0 md:block md:after:hidden dark:text-white/70 dark:md:text-white/55">
+									{item.time_range}
+								</p>
+
+								<p className="inline-block text-sm leading-tight text-black/85 max-md:italic md:mr-0 md:block dark:text-white/70 dark:md:text-white/55">
+									{item.location}
+								</p>
 							</div>
 
 							<span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
@@ -95,12 +101,12 @@ export function Journey() {
 								<span className="bg-accent-blue absolute top-2.5 -left-1 block size-2 rounded-full" />
 							</span>
 
-							<h4 className="text-md order-2 mb-2 pl-6 font-bold text-pretty md:order-3 md:text-lg md:font-semibold dark:text-white">
+							<h4 className="text-md order-2 pl-6 font-bold text-pretty md:order-3 md:mb-2 md:text-lg md:font-semibold dark:text-white">
 								{item.role}
 							</h4>
 
 							<div className="order-3 grow pl-6">
-								<ul className="marker:text-accent-blue list-disc pl-4 text-sm text-pretty sm:text-base">
+								<ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
 									{item.info.map((detail, n) => (
 										<li key={n}>{detail}</li>
 									))}
@@ -130,16 +136,22 @@ export function Journey() {
 							config={{ tension: 60, friction: 15 }}
 							className="grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]"
 						>
-							<div className="order-3 w-44 shrink-0 pb-2 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:self-start md:pr-3 md:pb-0 md:pl-0">
+							<div className="order-3 shrink-0 pb-3 pl-6 md:sticky md:top-4 md:order-1 md:row-span-2 md:w-44 md:self-start md:pr-3 md:pb-0 md:pl-0">
 								<a
 									href={item.url}
 									target="_blank"
-									className="block font-medium hover:underline md:font-bold dark:text-white"
+									className="mr-1 block hover:underline md:mr-0 md:mb-1 md:block md:font-bold md:after:hidden dark:text-white"
 								>
 									{item.company}
 								</a>
-								<p className="text-sm leading-tight text-black/85 dark:text-white/70">{item.time_range}</p>
-								<p className="text-sm leading-tight text-black/50 dark:text-white/40">{item.location}</p>
+
+								<p className="inline-block text-sm leading-tight text-black/85 after:mx-2 after:not-italic after:content-['|'] max-md:italic md:mr-0 md:block md:after:hidden dark:text-white/70 dark:md:text-white/55">
+									{item.time_range}
+								</p>
+
+								<p className="inline-block text-sm leading-tight text-black/85 max-md:italic md:mr-0 md:block dark:text-white/70 dark:md:text-white/55">
+									{item.location}
+								</p>
 							</div>
 
 							<span className="relative order-1 row-span-3 block w-px shrink-0 md:order-2 md:row-span-2">
@@ -153,12 +165,22 @@ export function Journey() {
 								<span className="bg-accent-blue absolute top-2.5 -left-1 block size-2 rounded-full" />
 							</span>
 
-							<h4 className="text-md order-2 mb-2 pl-6 font-bold text-pretty md:order-3 md:text-lg md:font-semibold dark:text-white">
+							<h4 className="text-md order-2 mb-[2px] pl-6 font-bold text-pretty md:order-3 md:mb-2 md:text-lg md:font-semibold dark:text-white">
 								{item.title}
 							</h4>
 
 							<div className="order-3 grow pl-6">
-								<p className="text-sm sm:text-base">{item.description}</p>
+								<p className="dark:text-content-dark text-content-light text-sm sm:text-base">{item.description}</p>
+
+								{/* line-clamp-2 */}
+
+								{/* <a
+									href=""
+									className="text-content-light mt-4 inline-flex items-center gap-1 text-sm font-semibold sm:text-base md:mt-3 dark:text-white"
+								>
+									<IconCirclePlus className="size-5" />
+									Leia mais
+								</a> */}
 							</div>
 						</AnimatedContent>
 					</li>
