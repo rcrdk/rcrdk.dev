@@ -90,22 +90,22 @@
 				"id": "highlights",
 				"label": "Destaques"
 			}, {
-				"id": "web_apps",
+				"id": "web_app",
 				"label": "Web Apps"
 			}, {
-				"id": "websites",
+				"id": "website",
 				"label": "Websites"
 			}, {
-				"id": "landing_pages",
+				"id": "landing_page",
 				"label": "Landing Pages"
 			}, {
-				"id": "ecommerces",
+				"id": "ecommerce",
 				"label": "E-commerces"
 			}, {
-				"id": "mobile_apps",
+				"id": "mobile_app",
 				"label": "Mobile Apps"
 			}, {
-				"id": "apis",
+				"id": "api",
 				"label": "API"
 			}
 		]
