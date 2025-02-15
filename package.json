@@ -30,7 +30,6 @@
     "postcss": "^8.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-dvd-screensaver": "^0.1.1",
     "react-haiku": "^2.2.0",
     "react-use-draggable-scroll": "^0.4.7",
     "swiper": "^11.2.3",

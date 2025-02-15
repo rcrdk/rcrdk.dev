@@ -64,9 +64,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      react-dvd-screensaver:
-        specifier: ^0.1.1
-        version: 0.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-haiku:
         specifier: ^2.2.0
         version: 2.2.0(react@19.0.0)
@@ -2068,12 +2065,6 @@ packages:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
       react: ^19.0.0
-
-  react-dvd-screensaver@0.1.1:
-    resolution: {integrity: sha512-spnmbhdQiV1wpCKN1L+zOiQA/X/h4DoxSSmSmm2aBwipT60bxUzSPUoWgi84qYpnxWaH6LlDTntR+Tn2jMwIbg==}
-    peerDependencies:
-      react: ^16.3 || ^17.0 || ^18.0 || ^19.0
-      react-dom: ^16.3 || ^17.0 || ^18.0 || ^19.0
 
   react-haiku@2.2.0:
     resolution: {integrity: sha512-Qm+kMLhtUOpN3HLql/kYAkwWsnLljSwpBObsv5tnrZ6WH2SnakbcHbvZlqSMwmhz4BCN06xXKPCW2knUh1b8sw==}
@@ -4396,11 +4387,6 @@ snapshots:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
-
-  react-dvd-screensaver@0.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
 
   react-haiku@2.2.0(react@19.0.0):
     dependencies:

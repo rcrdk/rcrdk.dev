@@ -3,9 +3,10 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useDvdScreensaver } from 'react-dvd-screensaver'
 import { useIdle, useMediaQuery } from 'react-haiku'
 
+import { CONFIG } from '@/config'
+import { useDvdScreensaver } from '@/hooks/dvd-screensaver'
 import { cn } from '@/utils/tailwind-cn'
 
 export function Screensaver() {
@@ -30,9 +31,9 @@ export function Screensaver() {
 		]
 	}, [])
 
-	const [gif, setGif] = useState(Math.floor(Math.random() * gifs.length))
+	const [gif, setGif] = useState(0)
 
-	const isIddle = useIdle(15000, { initialState: false })
+	const isIddle = useIdle(CONFIG.SCREENSAVER_TIMEOUT, { initialState: false })
 	const isTouchDevice = useMediaQuery('(hover : none)', false)
 	const __ = useTranslations('Default')
 

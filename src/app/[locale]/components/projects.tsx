@@ -41,7 +41,7 @@ export function ProjectsComponent() {
 		setFilter(id)
 	}, [])
 
-	const { data, isLoading, isFetching } = useQuery({
+	const { data, isLoading, isFetching, error } = useQuery({
 		queryKey: ['projects', filter],
 		queryFn: async () => await getProjects({ filter }),
 	})
@@ -86,7 +86,7 @@ export function ProjectsComponent() {
 
 	return (
 		<Section>
-			<h2 className="layout:mb-8 mb-8 sm:mb-12">
+			<h2 className="layout:mb-8 xs:mb-8 mb-6 sm:mb-12">
 				<SplitText
 					text={__('title')}
 					delay={50}
@@ -99,17 +99,12 @@ export function ProjectsComponent() {
 				ref={refContainer}
 			>
 				<div
-					className="scrollbar-hidden m xs:-ml-12 -my-2 -ml-6 w-dvw !max-w-none overflow-x-auto overflow-y-hidden py-2 max-[929px]:w-screen min-[929px]:!-ml-10 min-[929px]:w-[calc(100%+40px+var(--offset))] sm:-ml-16 md:-ml-20"
+					className="scrollbar-hidden xs:-ml-12 -my-2 -ml-6 w-dvw !max-w-none overflow-x-auto overflow-y-hidden py-2 max-[929px]:w-screen min-[929px]:!-ml-10 min-[929px]:w-[calc(100%+40px+var(--offset))] sm:-ml-16 md:-ml-20"
 					style={offsetStyle}
 					{...events}
 					ref={refScroller}
 				>
-					<div
-						className={cn(
-							'xs:before:w-10 xs:after:w-10 flex !max-w-none gap-2 before:w-4 before:shrink-0 after:w-4 after:shrink-0 min-[929px]:before:!w-[calc(40px-0.5rem)] min-[929px]:after:!w-[calc(40px-0.5rem)] sm:before:w-[calc(64px-0.5rem)] sm:after:w-[calc(64px-0.5rem)] md:before:w-[calc(80px-0.5rem)] md:after:w-[calc(80px-0.5rem)]',
-							(isFetching || isLoading) && '[&>div]:cursor-wait',
-						)}
-					>
+					<div className="xs:before:w-10 xs:after:w-10 flex !max-w-none gap-2 before:w-4 before:shrink-0 after:w-4 after:shrink-0 min-[929px]:before:!w-[calc(40px-0.5rem)] min-[929px]:after:!w-[calc(40px-0.5rem)] sm:before:w-[calc(64px-0.5rem)] sm:after:w-[calc(64px-0.5rem)] md:before:w-[calc(80px-0.5rem)] md:after:w-[calc(80px-0.5rem)]">
 						{categories.map((item, index) => (
 							<AnimatedContent
 								direction="horizontal"
@@ -146,7 +141,7 @@ export function ProjectsComponent() {
 				<div
 					className={cn(
 						'scrollbar-hidden relative !max-w-none overflow-hidden max-[929px]:!w-screen min-[929px]:w-[calc(100%+64px+var(--offset))]',
-						'layout:mt-12 xs:-ml-12 mt-8 -ml-6 min-[929px]:!-ml-16 sm:mt-12 sm:-ml-16 md:-ml-20',
+						'layout:mt-12 xs:-ml-12 mt-12 -ml-6 min-[929px]:!-ml-16 sm:mt-12 sm:-ml-16 md:-ml-20',
 						'xs:px-12 px-6 min-[929px]:!px-16 sm:px-16 md:px-20 lg:pr-10',
 						'max-[929px]:before:hidden sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
 					)}
@@ -166,17 +161,23 @@ export function ProjectsComponent() {
 						}}
 						ref={swiperRef}
 					>
-						{(isFetching || isLoading) &&
+						{(isFetching || isLoading || error) &&
 							Array.from({ length: 10 }).map((_, i) => (
-								<SwiperSlide className="!sm:w-[360px] !w-[280px] !max-w-none" key={i}>
-									<div className="aspect-[11/16] w-full shrink-0 animate-pulse overflow-hidden rounded-xl bg-black/5 [animation-duration:1s] lg:aspect-[11/16] dark:bg-white/15" />
+								<SwiperSlide
+									className="!flex !min-h-[360px] !w-[240px] !max-w-none min-sm:!min-h-[400px] min-sm:!w-[290px]"
+									key={i}
+								>
+									<div className="w-full shrink-0 animate-pulse overflow-hidden rounded-xl bg-black/5 [animation-duration:1s] dark:bg-white/15" />
 								</SwiperSlide>
 							))}
 
 						{data?.projects &&
 							data.projects.map((item) => (
-								<SwiperSlide className="!sm:w-[360px] !w-[280px] !max-w-none" key={item.id}>
-									<button className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex aspect-[11/16] w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 lg:aspect-[11/16] dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50">
+								<SwiperSlide
+									className="!flex !min-h-[360px] !w-[240px] !max-w-none min-sm:!min-h-[400px] min-sm:!w-[290px]"
+									key={item.id}
+								>
+									<button className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex min-h-full w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50">
 										<div className="group-hover:before:border-content-light relative flex aspect-[4/3] w-full overflow-hidden before:absolute before:inset-x-px before:bottom-0 before:z-[1] before:border-t before:border-black/20 before:transition-colors dark:before:border-white/15 dark:group-hover:before:border-white/50">
 											{item.image ? (
 												<Image src={item.image} />
@@ -186,11 +187,11 @@ export function ProjectsComponent() {
 										</div>
 
 										<div className="relative flex grow flex-col p-4">
-											<h3 className="mb-2 text-base leading-tight font-bold text-balance dark:text-white">
+											<h3 className="mb-2 line-clamp-2 text-base leading-tight font-bold text-balance dark:text-white">
 												{item.title}
 											</h3>
 
-											<p className="line-clamp-4 text-sm text-pretty text-black/60 dark:text-white/50">
+											<p className="mb-4 line-clamp-3 text-sm text-pretty text-black/60 dark:text-white/50">
 												{item.intro['pt-br']}
 											</p>
 
