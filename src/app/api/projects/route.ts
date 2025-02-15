@@ -1,12 +1,11 @@
-import { promises as fs } from 'node:fs'
+/* eslint-disable prettier/prettier */
 import { NextRequest, NextResponse } from 'next/server'
 
+import projects from '@/data/projects.json' assert { type: 'json' }
 import { ProjectDTO, ProjectFilters } from '@/http/types/project'
 
 export async function GET(req: NextRequest) {
-	const file = await fs.readFile(process.cwd() + '/src/app/data/projects.json', 'utf8')
-	const data: ProjectDTO[] = JSON.parse(file)
-
+	const data: ProjectDTO[] = projects
 	const filter = req.nextUrl.searchParams.get('filter') as ProjectFilters | undefined
 
 	if (filter === 'highlights') {
