@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ProjectDTO, ProjectFilters } from '@/http/types/project'
 
 export async function GET(req: NextRequest) {
-	const file = await fs.readFile(process.cwd() + '/src/data/projects.json', 'utf8')
+	const file = await fs.readFile(process.cwd() + '/src/app/data/projects.json', 'utf8')
 	const data: ProjectDTO[] = JSON.parse(file)
 
 	const filter = req.nextUrl.searchParams.get('filter') as ProjectFilters | undefined
