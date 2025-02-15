@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 'use client'
 
 import 'swiper/css'
@@ -12,10 +12,10 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
+import { Image } from '@/components/ui/image'
 import { Section } from '@/components/ui/section'
 import { getProjects } from '@/http/get-projects'
 import { ProjectFilters } from '@/http/types/project'
-import { env } from '@/lib/env'
 import { queryClient } from '@/lib/react-query'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -95,18 +95,18 @@ export function ProjectsComponent() {
 			</h2>
 
 			<div
-				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
+				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 max-[929px]:before:hidden sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
 				ref={refContainer}
 			>
 				<div
-					className="xs:-ml-12 scrollbar-hidden -my-2 -ml-6 w-dvw !max-w-none overflow-x-auto overflow-y-hidden py-2 sm:-ml-10 sm:w-[calc(100%+40px+var(--offset))]"
+					className="scrollbar-hidden m xs:-ml-12 -my-2 -ml-6 w-dvw !max-w-none overflow-x-auto overflow-y-hidden py-2 max-[929px]:w-screen min-[929px]:!-ml-10 min-[929px]:w-[calc(100%+40px+var(--offset))] sm:-ml-16 md:-ml-20"
 					style={offsetStyle}
 					{...events}
 					ref={refScroller}
 				>
 					<div
 						className={cn(
-							'xs:before:w-10 xs:after:w-10 flex !max-w-none gap-2 before:w-4 before:shrink-0 after:w-10 after:shrink-0 sm:before:w-[calc(40px-0.5rem)] sm:after:w-[calc(40px-0.5rem)]',
+							'xs:before:w-10 xs:after:w-10 flex !max-w-none gap-2 before:w-4 before:shrink-0 after:w-4 after:shrink-0 min-[929px]:before:!w-[calc(40px-0.5rem)] min-[929px]:after:!w-[calc(40px-0.5rem)] sm:before:w-[calc(64px-0.5rem)] sm:after:w-[calc(64px-0.5rem)] md:before:w-[calc(80px-0.5rem)] md:after:w-[calc(80px-0.5rem)]',
 							(isFetching || isLoading) && '[&>div]:cursor-wait',
 						)}
 					>
@@ -145,10 +145,10 @@ export function ProjectsComponent() {
 			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
 				<div
 					className={cn(
-						'scrollbar-hidden xs:w-[calc(100%+96px)] relative w-[calc(100%+48px)] !max-w-none overflow-hidden sm:w-[calc(100%+64px+var(--offset))]',
-						'layout:mt-12 xs:-ml-12 mt-8 -ml-6 sm:mt-12 sm:-ml-16',
-						'xs:px-12 px-6 sm:px-16 md:px-16 lg:pr-10',
-						'sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
+						'scrollbar-hidden relative !max-w-none overflow-hidden max-[929px]:!w-screen min-[929px]:w-[calc(100%+64px+var(--offset))]',
+						'layout:mt-12 xs:-ml-12 mt-8 -ml-6 min-[929px]:!-ml-16 sm:mt-12 sm:-ml-16 md:-ml-20',
+						'xs:px-12 px-6 min-[929px]:!px-16 sm:px-16 md:px-20 lg:pr-10',
+						'max-[929px]:before:hidden sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
 					)}
 					style={offsetStyle}
 				>
@@ -179,18 +179,14 @@ export function ProjectsComponent() {
 									<button className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex aspect-[11/16] w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 lg:aspect-[11/16] dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50">
 										<div className="group-hover:before:border-content-light relative flex aspect-[4/3] w-full overflow-hidden before:absolute before:inset-x-px before:bottom-0 before:z-[1] before:border-t before:border-black/20 before:transition-colors dark:before:border-white/15 dark:group-hover:before:border-white/50">
 											{item.image ? (
-												<img
-													src={`${env.NEXT_PUBLIC_APP_URL}/projects/${item.image}`}
-													alt=""
-													className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-												/>
+												<Image src={item.image} />
 											) : (
 												<IconPhoto className="m-auto size-20 stroke-1 opacity-20" />
 											)}
 										</div>
 
 										<div className="relative flex grow flex-col p-4">
-											<h3 className="mb-2 text-base leading-tight font-bold text-pretty dark:text-white">
+											<h3 className="mb-2 text-base leading-tight font-bold text-balance dark:text-white">
 												{item.title}
 											</h3>
 

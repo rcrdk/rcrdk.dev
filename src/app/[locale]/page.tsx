@@ -9,6 +9,7 @@ import { Projects } from '@/app/[locale]/components/projects'
 import { Skills } from '@/app/[locale]/components/skills'
 import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
+import { Screensaver } from '@/components/common/screensaver'
 import { ScrollStart } from '@/components/common/scroll-start'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
@@ -82,8 +83,7 @@ export default async function HomePage({ params }: Props) {
 			</main>
 
 			<ScrollStart />
-
-			{/* <Spotlight /> */}
+			<Screensaver />
 		</div>
 	)
 }

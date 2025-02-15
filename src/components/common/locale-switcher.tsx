@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo } from 'react'
-import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
@@ -38,7 +37,7 @@ export function LocaleSwitcher() {
 			<div className="layout:w-12 layout:h-auto layout:px-0 layout:py-2 layout:flex-col flex h-12 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10">
 				{languagesAvailable.map((lang) => (
 					<Button
-						as={Link}
+						as="a"
 						href={`/${lang.prefix}`}
 						key={lang.prefix}
 						icon

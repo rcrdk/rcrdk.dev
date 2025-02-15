@@ -35,6 +35,11 @@ export default async function NotFound() {
 		'https://media1.tenor.com/m/CsRwaeb1ONUAAAAd/gloria-maria-gl%C3%B3ria-maria-matta-da-silva.gif',
 		'https://media1.tenor.com/m/oGuA7Ahb3RIAAAAd/pandlr-lemonadetour.gif',
 		'https://media1.tenor.com/m/6bZK0OnaKacAAAAd/pandlr-deb.gif',
+		'https://media1.tenor.com/m/t4gXYxF8LlsAAAAd/debora-globo.gif',
+		'https://media1.tenor.com/m/YGIC-2MFCa0AAAAd/gretchen.gif',
+		'https://media1.tenor.com/m/0syjW3mh2TIAAAAd/really-tulla-luana.gif',
+		'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXI3bGIxemtqMnphZnpnbW95cHprbnRlYndpYzVycTdoN290djJjcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BZFuCsqQEJndM5cLYU/giphy.gif',
+		'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWxsYXMxdGhhNndlbHo1NnZ0ejJyNmxueXBhcXpubWVkZXh2NW9kMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HteV6g0QTNxp6/giphy.gif',
 	]
 
 	const randomGif = gifs[Math.floor(Math.random() * gifs.length)]
