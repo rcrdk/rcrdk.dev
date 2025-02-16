@@ -19,3 +19,21 @@ export type ProjectDTO = {
 	intro: Record<LocalesType, string>
 	description: Record<LocalesType, string>
 }
+
+export type ProjectWithLocaleDTO = {
+	id: number
+	title: string
+	image: string | null
+	categories: string[]
+	roles: string[]
+	behance: string | null
+	github: string | null
+	website: string | null
+	highlighted: boolean
+	stack: string[]
+	year: number
+	designer: string | null
+	employer: string | null
+	intro: string
+	description: string
+}

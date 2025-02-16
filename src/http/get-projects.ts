@@ -1,4 +1,4 @@
-import { ProjectDTO, ProjectFilters } from '@/http/types/project'
+import { ProjectFilters, ProjectWithLocaleDTO } from '@/http/types/project'
 import { env } from '@/lib/env'
 
 type GetProjectsRequest = {
@@ -6,7 +6,7 @@ type GetProjectsRequest = {
 }
 
 type GetProjectsResponse = {
-	projects: ProjectDTO[]
+	projects: ProjectWithLocaleDTO[]
 }
 
 export async function getProjects({ filter }: GetProjectsRequest): Promise<GetProjectsResponse | undefined> {

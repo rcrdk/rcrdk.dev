@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import { useDraggable } from 'react-use-draggable-scroll'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 
+import { ProjectDetails } from '@/app/[locale]/components/project-details'
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Image } from '@/components/ui/image'
@@ -31,6 +32,7 @@ export function ProjectsComponent() {
 
 	const { events } = useDraggable(refScroller)
 
+	const [projectSelected, setProjectSelected] = useState<number>()
 	const [filter, setFilter] = useState<ProjectFilters>('highlights')
 	const [sideOffset, setSideOffset] = useState(0)
 
@@ -39,6 +41,10 @@ export function ProjectsComponent() {
 
 	const handleChangeFilter = useCallback((id: ProjectFilters) => {
 		setFilter(id)
+	}, [])
+
+	const handleSelectProject = useCallback((id?: number) => {
+		setProjectSelected(id)
 	}, [])
 
 	const { data, isLoading, isFetching, error } = useQuery({
@@ -177,7 +183,10 @@ export function ProjectsComponent() {
 									className="!flex !min-h-[360px] !w-[240px] !max-w-none min-sm:!min-h-[400px] min-sm:!w-[290px]"
 									key={item.id}
 								>
-									<button className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex min-h-full w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50">
+									<button
+										className="group focus-visible:before:border-accent-blue focus-visible:ring-accent-blue/40 hover:before:border-content-light relative flex min-h-full w-full shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl text-start outline-none before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl before:border before:border-black/20 before:transition-colors focus-visible:ring-4 dark:bg-white/5 dark:before:border-white/15 dark:hover:before:border-white/50"
+										onClick={() => handleSelectProject(item.id)}
+									>
 										<div className="group-hover:before:border-content-light relative flex aspect-[4/3.15] w-full overflow-hidden before:absolute before:inset-x-px before:bottom-0 before:z-[1] before:border-t before:border-black/20 before:transition-colors dark:before:border-white/15 dark:group-hover:before:border-white/50">
 											{item.image ? (
 												<Image src={item.image} />
@@ -192,7 +201,7 @@ export function ProjectsComponent() {
 											</h3>
 
 											<p className="mb-4 line-clamp-3 text-sm text-pretty text-black/60 dark:text-white/50">
-												{item.intro['pt-br']}
+												{item.intro}
 											</p>
 
 											<span className="mt-auto flex items-center gap-1">
@@ -206,6 +215,8 @@ export function ProjectsComponent() {
 					</Swiper>
 				</div>
 			</AnimatedContent>
+
+			<ProjectDetails open={!!projectSelected} onOpenChange={handleSelectProject} projectId={projectSelected} />
 		</Section>
 	)
 }

@@ -22,6 +22,11 @@
 	--animate-collapsible-in: collapsibleIn 2000ms ease-out;
 	--animate-collapsible-out: collapsibleOut 2000ms ease-out;
 
+	--animate-dialog-overlay-show: dialogOverlayShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-overlay-hide: dialogOverlayHide 300ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-content-show: dialogContentShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-content-hide: dialogContentHide 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
 	@keyframes avatar {
 		from { border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%; }
 		to { border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%; }
@@ -35,6 +40,38 @@
 	@keyframes collapsibleOut {
 		from { height: var(--radix-collapsible-content-height); }
 		to { height: 0; }
+	}
+
+	@keyframes dialogOverlayShow {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	@keyframes dialogOverlayHide {
+		from { opacity: 1; }
+		to { opacity: 0; }
+	}
+
+	@keyframes dialogContentShow {
+		from {
+			opacity: 0;
+			transform: translateY(4%) scale(0.96);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes dialogContentHide {
+		from {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(-4%) scale(0.96);
+		}
 	}
 }
 

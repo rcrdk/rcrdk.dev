@@ -107,9 +107,29 @@
 				"label": "Mobile Apps"
 			}, {
 				"id": "api",
-				"label": "API"
+				"label": "APIs"
 			}
-		]
+		],
+		"details": {
+			"categories": {
+				"highlights": "Highlighted",
+				"web_app": "Web App",
+				"website": "Website",
+				"landing_page": "Landing Page",
+				"ecommerce": "E-commerce",
+				"mobile_app": "Mobile App",
+				"api": "API"
+			},
+			"category": "Categories",
+			"roles": "Roles",
+			"employer": "Team",
+			"designer": "UI/UX",
+			"year": "Year",
+			"stack": "Stack",
+			"website": "Visit the Website",
+			"github": "Project on GitHub",
+			"behance": "Project on Behance"
+		}
 	},
 
 	"Journey": {

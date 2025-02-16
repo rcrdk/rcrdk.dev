@@ -10,7 +10,7 @@
 		"website": "https://app.meurosinha.com.br",
 		"highlighted": true,
 		"stack": ["React", "Next.js", "Javascript", "Typescript", "Sass", "HTML", "CSS"],
-		"designer": "Me",
+		"designer": null,
 		"year": 2023,
 		"employer": "Meu Rosinha",
 		"intro": {
@@ -18,8 +18,8 @@
 			"en": "A tool that simplifies business organization for beauty consultants, product resellers, and entrepreneurs."
 		},
 		"description": {
-			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. \\n Este projeto, batizado como v2, surgiu com a proposta de renovação da ferramenta com código e tecnologias modernos, um novo visual, uma nova experiência de uso. A proposta vem sendo expandir o negócio através de melhorias e novas features, principalmente requisitados pelos seus usuários. \\n O Rosinha conta com a gestão de agenda, clientes, contatos, financeiro, metas, estoque, trocas, relatórios, lojinha online, automação de mensagens e campanhas via WhatsApp, além de ter uma comunidade exclusiva com diversos conteúdos em imagens, vídeos, arquivos e publicações do blog.",
-			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \\n This project, named v2, was born with the goal of renewing the tool with modern code and technologies, a fresh look, and an enhanced user experience. The vision is to expand the business by introducing improvements and new features, many of which are requested by its users. \\n Rosinha offers management solutions for scheduling, clients, contacts, finances, goals, inventory, exchanges, reports, an online store, and automated messaging and WhatsApp campaigns. Additionally, it provides an exclusive community with a variety of content, including images, videos, files, and blog posts."
+			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. \n Este projeto, batizado como v2, surgiu com a proposta de renovação da ferramenta com código e tecnologias modernos, um novo visual, uma nova experiência de uso. A proposta vem sendo expandir o negócio através de melhorias e novas features, principalmente requisitados pelos seus usuários. \n O Rosinha conta com a gestão de agenda, clientes, contatos, financeiro, metas, estoque, trocas, relatórios, lojinha online, automação de mensagens e campanhas via WhatsApp, além de ter uma comunidade exclusiva com diversos conteúdos em imagens, vídeos, arquivos e publicações do blog.",
+			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \n This project, named v2, was born with the goal of renewing the tool with modern code and technologies, a fresh look, and an enhanced user experience. The vision is to expand the business by introducing improvements and new features, many of which are requested by its users. \n Rosinha offers management solutions for scheduling, clients, contacts, finances, goals, inventory, exchanges, reports, an online store, and automated messaging and WhatsApp campaigns. Additionally, it provides an exclusive community with a variety of content, including images, videos, files, and blog posts."
 		}
 	},
 	{
@@ -33,7 +33,7 @@
 		"website": "https://meurosinha.com.br",
 		"highlighted": true,
 		"stack": ["React", "Next.js", "Javascript", "Typescript", "Stitches", "HTML", "CSS"],
-		"designer": "Me",
+		"designer": null,
 		"year": 2024,
 		"employer": "Meu Rosinha",
 		"intro": {
@@ -56,7 +56,7 @@
 		"website": "https://loja.meurosinha.com.br/meurosinha",
 		"highlighted": true,
 		"stack": ["Laravel", "Javacript Vanilla", "Sass", "HTML", "CSS"],
-		"designer": "Me",
+		"designer": null,
 		"year": 2022,
 		"employer": "Meu Rosinha",
 		"intro": {
@@ -64,8 +64,8 @@
 			"en": "A product showcase for Rosinha users to share with clients via an exclusive link."
 		},
 		"description": {
-			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. \\n A loja online do Rosinha é um recurso que os usuários podem habilitar dentro da ferramenta para terem uma página de vitrine exclusiva e personalizável com seus produtos e promoções. É disponibilizado um link único e compartilhável que pode ser enviado para seus clientes. É possível adicionar produtos na sacola e no final fechar o pedido que será registrado no Rosinha e notificado para a consultora.",
-			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \\n Rosinha’s online store is a feature that users can enable within the tool to have an exclusive and customizable showcase page with their products and promotions. A unique, shareable link is provided, which can be sent to their clients. Clients can add products to the cart and, at the end, place the order, which will be recorded in Rosinha and notified to the consultant."
+			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. \n A loja online do Rosinha é um recurso que os usuários podem habilitar dentro da ferramenta para terem uma página de vitrine exclusiva e personalizável com seus produtos e promoções. É disponibilizado um link único e compartilhável que pode ser enviado para seus clientes. É possível adicionar produtos na sacola e no final fechar o pedido que será registrado no Rosinha e notificado para a consultora.",
+			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \n Rosinha’s online store is a feature that users can enable within the tool to have an exclusive and customizable showcase page with their products and promotions. A unique, shareable link is provided, which can be sent to their clients. Clients can add products to the cart and, at the end, place the order, which will be recorded in Rosinha and notified to the consultant."
 		}
 	},
 	{
@@ -700,7 +700,7 @@
 		"website": "https://www.vitru.com.br/",
 		"highlighted": false,
 		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Me",
+		"designer": null,
 		"year": 2020,
 		"employer": "Sou Digital",
 		"intro": {
@@ -723,7 +723,7 @@
 		"website": null,
 		"highlighted": false,
 		"stack": ["Laravel", "PHP", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Me",
+		"designer": null,
 		"year": 2021,
 		"employer": null,
 		"intro": {

@@ -32,7 +32,7 @@ export function Button<T extends React.ElementType = 'button'>({
 				size === 'lg' && icon && 'w-12 !px-0 xs:w-14',
 
 				size === 'sm' && 'h-10 gap-2 px-2 xs:h-10 xs:px-4',
-				size === 'sm' && icon && 'w-8 !px-0 xs:w-9',
+				size === 'sm' && icon && 'w-10 !px-0 xs:w-10',
 
 				size === 'xs' && 'h-8 gap-4 px-4 xs:h-8 xs:ap-4 xs:px-5',
 				size === 'xs' && icon && 'w-8 !px-0 xs:w-9',
