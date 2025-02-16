@@ -200,7 +200,7 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 								</div>
 							</div>
 
-							<Dialog.Close className="focus-visible:ring-accent-blue/50 focus-visible:border-accent-blue absolute top-6 right-6 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/35 text-white shadow-2xl backdrop-blur-xs transition-colors outline-none hover:bg-black focus-visible:ring-4">
+							<Dialog.Close className="focus-visible:ring-accent-blue/50 focus-visible:border-accent-blue focus-visible:bg-accent-blue xs:top-6 xs:right-6 absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/35 text-white shadow-2xl backdrop-blur-xs transition-all outline-none hover:bg-black focus-visible:ring-4">
 								<IconX className="size-5" />
 							</Dialog.Close>
 						</Dialog.Content>
