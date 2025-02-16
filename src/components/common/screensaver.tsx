@@ -55,7 +55,7 @@ export function Screensaver() {
 		return () => clearTimeout(timer)
 	}, [gifs, isIddle])
 
-	if (isTouchDevice) {
+	if (isTouchDevice || process.env.NODE_ENV !== 'production') {
 		return null
 	}
 
