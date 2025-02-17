@@ -99,7 +99,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 							<Animated
 								key={index}
 								style={springs[index] as unknown as React.CSSProperties}
-								className="inline-block transform transition-opacity will-change-transform"
+								className="inline-block transform transition-opacity will-change-[transform,opacity]"
 							>
 								{letter}
 							</Animated>

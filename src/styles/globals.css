@@ -12,11 +12,12 @@
   --font-heading: "Circular STD", "sans-serif"; 
 
 	--color-accent-blue: #00a5bc;
-
 	--color-content-light: #242424;
 	--color-content-dark: #c0c0c0;
 
 	--text-md: 1.0625rem;
+
+	--shadow-dialog: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
 	--animate-avatar: avatar 3s ease infinite alternate;
 	--animate-collapsible-in: collapsibleIn 2000ms ease-out;

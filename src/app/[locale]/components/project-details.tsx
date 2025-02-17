@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { getProject } from '@/http/get-project'
 import { env } from '@/lib/env'
+import { cn } from '@/utils/tailwind-cn'
 
 type Props = {
 	projectId?: number
@@ -89,10 +90,10 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 	return (
 		<Dialog.Root open={open && !!data?.project} onOpenChange={handleOpenChange}>
 			<Dialog.Portal>
-				<Dialog.Overlay className="data-[state=open]:animate-dialog-overlay-show data-[state=closed]:animate-dialog-overlay-hide fixed inset-0 z-[99] overflow-x-hidden overflow-y-auto bg-white/75 backdrop-blur-xs dark:bg-black/60">
+				<Dialog.Overlay className="data-[state=open]:animate-dialog-overlay-show data-[state=closed]:animate-dialog-overlay-hide fixed inset-0 z-[99] overflow-x-hidden overflow-y-auto bg-white/50 backdrop-blur-xs dark:bg-black/50">
 					<div className="xs:p-6 pointer-events-none flex min-h-full items-end justify-center p-4 max-sm:pt-16 sm:items-center sm:p-12 lg:p-20">
 						<Dialog.Content
-							className="data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all relative max-w-[440px] overflow-hidden rounded-3xl border border-black/15 bg-white shadow-2xl outline-none md:max-w-[540px] dark:border-white/20 dark:bg-black"
+							className="data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all shadow-dialog relative max-w-[440px] overflow-hidden rounded-3xl border border-black/15 bg-white will-change-transform outline-none md:max-w-[540px] dark:border-white/20 dark:bg-black"
 							onOpenAutoFocus={(e) => e.preventDefault()}
 						>
 							{project.image && (
@@ -106,7 +107,12 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 							)}
 
 							<div className="flex flex-col divide-y divide-black/15 dark:divide-white/20">
-								<div className="xs:p-8 xs:gap-6 flex flex-col gap-4 p-6 sm:p-8 md:flex-row md:gap-8 lg:px-10 lg:py-9">
+								<div
+									className={cn(
+										'xs:p-8 xs:gap-6 flex flex-col gap-4 p-6 sm:p-8 lg:px-10 lg:py-9',
+										!!project.image ? 'md:flex-row md:gap-8' : 'md:gap-3',
+									)}
+								>
 									<div className="flex grow flex-col gap-1">
 										<Dialog.Title className="font-heading xs:text-3xl text-2xl leading-none tracking-tight text-balance dark:text-white">
 											{project.title}
@@ -200,7 +206,13 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 								</div>
 							</div>
 
-							<Dialog.Close className="focus-visible:ring-accent-blue/50 focus-visible:border-accent-blue focus-visible:bg-accent-blue xs:top-6 xs:right-6 absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/35 text-white shadow-2xl backdrop-blur-xs transition-all outline-none hover:bg-black focus-visible:ring-4">
+							<Dialog.Close
+								className={cn(
+									'focus-visible:ring-accent-blue/50 focus-visible:border-accent-blue focus-visible:bg-accent-blue xs:top-6 xs:right-6 absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/35 text-white shadow-2xl backdrop-blur-xs transition-all outline-none hover:bg-black focus-visible:ring-4',
+									!project.image &&
+										'bg-black/10 text-black/35 hover:text-white dark:bg-white/15 dark:text-white dark:hover:bg-white dark:hover:text-black',
+								)}
+							>
 								<IconX className="size-5" />
 							</Dialog.Close>
 						</Dialog.Content>

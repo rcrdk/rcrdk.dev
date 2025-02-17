@@ -38,7 +38,7 @@ export function About() {
 					</AnimatedContent>
 				</div>
 
-				<div className="layout:-mr-44 layout:ml-14 xs:mb-9 layout:size-96 animate-avatar mb-7 shrink-0 overflow-hidden sm:mb-10 sm:size-[30rem] lg:-mr-20 lg:mb-0 lg:ml-8 lg:size-96">
+				<div className="layout:-mr-44 layout:ml-14 xs:mb-9 layout:size-96 animate-avatar mb-7 shrink-0 overflow-hidden will-change-[transform] sm:mb-10 sm:size-[30rem] lg:-mr-20 lg:mb-0 lg:ml-8 lg:size-96">
 					<AnimatedContent
 						scale={2}
 						distance={50}
