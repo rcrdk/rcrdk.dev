@@ -69,6 +69,84 @@
 		}
 	},
 	{
+		"id": 38,
+		"title": "ProjectInBio Micro SaaS",
+		"image": "inbio.png",
+		"categories": ["web_app", "website", "landing_page"],
+		"roles": ["Front-End", "Back-End"],
+		"behance": null,
+		"github": "https://github.com/rcrdk/in-bio-micro-saas",
+		"website": null,
+		"highlighted": true,
+		"stack": [
+			"React",
+			"Next.js",
+			"Node",
+			"Firebase Firestore",
+			"Firebase Storage",
+			"Javascript",
+			"Typescript",
+			"Sass",
+			"HTML",
+			"CSS",
+			"TailwindCSS",
+			"Stripe API",
+			"Resend",
+			"Auth.js"
+		],
+		"designer": "Rocketseat",
+		"year": 2025,
+		"employer": null,
+		"intro": {
+			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication.",
+			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication."
+		},
+		"description": {
+			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication. Neste caso de uso, os usuários podem criar sua própria página compartilhável para usar em redes sociais como Linkedin, GitHub, Instagram e outras. Este aplicativo foi desenvolvido durante meus estudos sobre Micro SaaS na Rocketseat.",
+			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication. In this use case users can create their own shareble page to use on social media such as Linkedin, GitHub, Instagram and others. This app was developed during my studies about micro SaaS app at Rocketseat."
+		}
+	},
+	{
+		"id": 37,
+		"title": "Multi Tenant SaaS: Next.js and Fastify + RBAC",
+		"image": "saas-multi tenant.png",
+		"categories": ["web_app", "api"],
+		"roles": ["Front-End", "Back-End"],
+		"behance": null,
+		"github": "https://github.com/rcrdk/nextjs-fastify-saas-rbac",
+		"website": null,
+		"highlighted": true,
+		"stack": [
+			"React",
+			"Next.js",
+			"Node",
+			"Fastify",
+			"Prisma ORM",
+			"PostgreSQL",
+			"Cloudflare R2",
+			"CASL",
+			"Javascript",
+			"Typescript",
+			"React Hook Form",
+			"Zod",
+			"Sass",
+			"HTML",
+			"CSS",
+			"TailwindCSS"
+		],
+		"designer": "Rocketseat",
+		"year": 2024,
+		"employer": null,
+		"intro": {
+			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC.",
+			"en": "This project contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization."
+		},
+		"description": {
+			"pt-br": "É um monorepo gerido com TurboRepo que contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC. Este projeto foi desenvolvido como um caso de aprendizado na Rocketseat.",
+			"en": "It's a monorepo managed with TurboRepo that contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization. This project was developed for learning case at Rocketseat."
+		}
+	},
+	{
 		"id": 4,
 		"title": "Geo Marine Survey Systems",
 		"image": "geo-marine.webp",
@@ -825,84 +903,6 @@
 		"description": {
 			"pt-br": "Vinícola catarinense que produz vinhos e espumantes que vão viver e contar histórias. Histórias de amor, histórias de conquistas, encontros, comemorações e boas lembranças. Existe para traduzir e imortalizar momentos através dos sentidos, preenchendo-os de sabor, aroma e cor.",
 			"en": "A winery from Santa Catarina, Brazil, that produces wines and sparkling wines designed to live and tell stories. Stories of love, achievements, encounters, celebrations, and good memories. It exists to translate and immortalize moments through the senses, filling them with flavor, aroma, and color."
-		}
-	},
-	{
-		"id": 37,
-		"title": "Multi Tenant SaaS: Next.js and Fastify + RBAC",
-		"image": "saas-multi tenant.png",
-		"categories": ["web_app", "api"],
-		"roles": ["Front-End", "Back-End"],
-		"behance": null,
-		"github": "https://github.com/rcrdk/nextjs-fastify-saas-rbac",
-		"website": null,
-		"highlighted": true,
-		"stack": [
-			"React",
-			"Next.js",
-			"Node",
-			"Fastify",
-			"Prisma ORM",
-			"PostgreSQL",
-			"Cloudflare R2",
-			"CASL",
-			"Javascript",
-			"Typescript",
-			"React Hook Form",
-			"Zod",
-			"Sass",
-			"HTML",
-			"CSS",
-			"TailwindCSS"
-		],
-		"designer": "Rocketseat",
-		"year": 2024,
-		"employer": null,
-		"intro": {
-			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC.",
-			"en": "This project contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization."
-		},
-		"description": {
-			"pt-br": "É um monorepo gerido com TurboRepo que contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC. Este projeto foi desenvolvido como um caso de aprendizado na Rocketseat.",
-			"en": "It's a monorepo managed with TurboRepo that contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization. This project was developed for learning case at Rocketseat."
-		}
-	},
-	{
-		"id": 38,
-		"title": "ProjectInBio Micro SaaS",
-		"image": "inbio.png",
-		"categories": ["web_app", "website", "landing_page"],
-		"roles": ["Front-End", "Back-End"],
-		"behance": null,
-		"github": "https://github.com/rcrdk/in-bio-micro-saas",
-		"website": null,
-		"highlighted": true,
-		"stack": [
-			"React",
-			"Next.js",
-			"Node",
-			"Firebase Firestore",
-			"Firebase Storage",
-			"Javascript",
-			"Typescript",
-			"Sass",
-			"HTML",
-			"CSS",
-			"TailwindCSS",
-			"Stripe API",
-			"Resend",
-			"Auth.js"
-		],
-		"designer": "Rocketseat",
-		"year": 2025,
-		"employer": null,
-		"intro": {
-			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication.",
-			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication."
-		},
-		"description": {
-			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication. Neste caso de uso, os usuários podem criar sua própria página compartilhável para usar em redes sociais como Linkedin, GitHub, Instagram e outras. Este aplicativo foi desenvolvido durante meus estudos sobre Micro SaaS na Rocketseat.",
-			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication. In this use case users can create their own shareble page to use on social media such as Linkedin, GitHub, Instagram and others. This app was developed during my studies about micro SaaS app at Rocketseat."
 		}
 	},
 	{
