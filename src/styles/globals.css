@@ -15,6 +15,9 @@
 	--color-content-light: #242424;
 	--color-content-dark: #c0c0c0;
 
+	--color-glass-light: #e9e9e9;
+	--color-glass-dark: #2e2e2e;
+
 	--text-md: 1.0625rem;
 
 	--shadow-dialog: rgba(0, 0, 0, 0.4) 0px 30px 90px;

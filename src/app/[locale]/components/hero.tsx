@@ -8,7 +8,7 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
-import { links } from '@/content/_links'
+import { LINKS } from '@/config/links'
 import { scrollToSection } from '@/utils/scroll-to-section'
 
 export function Hero() {
@@ -90,7 +90,7 @@ export function Hero() {
 							<li>
 								<Button
 									as="a"
-									href={links.linkedIn}
+									href={LINKS.linkedIn}
 									target="_blank"
 									size="lg"
 									variant="outline"
@@ -104,7 +104,7 @@ export function Hero() {
 							<li>
 								<Button
 									as="a"
-									href={links.github}
+									href={LINKS.github}
 									target="_blank"
 									size="lg"
 									variant="outline"

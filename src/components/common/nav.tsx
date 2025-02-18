@@ -13,20 +13,20 @@ type Props = {
 export function Nav({ slot }: Props) {
 	const __ = useTranslations('Default')
 
-	const containerClass = cn(
-		'xs:h-10 h-9 items-center gap-2 select-none',
-		slot === 'header' && 'layout:hidden hidden min-[960px]:flex',
-		slot === 'page' &&
-			'[&:has([data-state="open"])]:before:opacity-100 [&:has([data-state="open"])]:before:translate-y-0 layout:flex absolute layout-sm:fixed top-10 right-11 hidden z-50 before:rounded-xl before:absolute before:-translate-y-full before:inset-0 before:bg-black/5 dark:before:bg-white/10 before:backdrop-blur-xs px-2 -mr-2 before:transition-all before:duration-1000 before:opacity-0',
-	)
-
 	const linkClass = cn(
 		'px-2 py-1 transition-colors hover:bg-white  text-black/60 text-[15px] border border-transparent focus-visible:border-accent-blue focus-visible:text-accent-blue transition-all',
 		'dark:text-white/50 dark:hover:bg-black dark:hover:text-white hover:shadow-sm hover:text-content-light dark:hover:shadow-md dark:hover:shadow-white/10',
 	)
 
 	return (
-		<div className={containerClass}>
+		<div
+			className={cn(
+				'xs:h-10 h-9 items-center gap-2 select-none',
+				slot === 'header' && 'layout:hidden hidden min-[960px]:flex',
+				slot === 'page' &&
+					'layout:flex layout-sm:fixed before:bg-glass-light/65 dark:before:bg-glass-dark/65 absolute top-10 right-11 z-50 -mr-2 hidden px-2 before:absolute before:inset-0 before:-translate-y-full before:rounded-xl before:opacity-0 before:backdrop-blur-xs before:transition-[opacity,transform] before:duration-1000 [&:has([data-state="open"])]:before:translate-y-0 [&:has([data-state="open"])]:before:opacity-100',
+			)}
+		>
 			<AnimatedContent
 				distance={65}
 				config={{ tension: 60, friction: 15 }}

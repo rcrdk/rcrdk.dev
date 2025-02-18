@@ -90,8 +90,8 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 	return (
 		<Dialog.Root open={open && !!data?.project} onOpenChange={handleOpenChange}>
 			<Dialog.Portal>
-				<Dialog.Overlay className="data-[state=open]:animate-dialog-overlay-show data-[state=closed]:animate-dialog-overlay-hide fixed inset-0 z-[99] overflow-x-hidden overflow-y-auto bg-white/50 backdrop-blur-xs dark:bg-black/50">
-					<div className="xs:p-6 pointer-events-none flex min-h-full items-end justify-center p-4 max-sm:pt-16 sm:items-center sm:p-12 lg:p-20">
+				<Dialog.Overlay className="data-[state=open]:animate-dialog-overlay-show data-[state=closed]:animate-dialog-overlay-hide fixed inset-0 z-[99] overflow-x-hidden overflow-y-auto scroll-smooth bg-white/50 backdrop-blur-xs dark:bg-black/50">
+					<div className="xs:p-4 pointer-events-none flex min-h-full items-end justify-center p-3 max-sm:pt-20 sm:items-center sm:p-12 lg:p-20">
 						<Dialog.Content
 							className="data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all shadow-dialog relative max-w-[440px] overflow-hidden rounded-3xl border border-black/15 bg-white will-change-transform outline-none md:max-w-[540px] dark:border-white/20 dark:bg-black"
 							onOpenAutoFocus={(e) => e.preventDefault()}

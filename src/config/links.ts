@@ -1,4 +1,4 @@
-export const links = {
+export const LINKS = {
 	linkedIn: 'https://linkedin.com/in/rcrdk',
 	github: 'https://github.com/rcrdk',
 	behance: 'https://behance.net/rcrdk',

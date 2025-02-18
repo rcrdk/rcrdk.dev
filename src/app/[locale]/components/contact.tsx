@@ -12,7 +12,7 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
-import { links } from '@/content/_links'
+import { LINKS } from '@/config/links'
 import { LocalesType } from '@/i18n/routing'
 
 export function Contact() {
@@ -37,12 +37,17 @@ export function Contact() {
 					/>
 				</AnimatedContent>
 
-				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} delay={500} rootMargin="0px 0px 125px">
-					<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
-						<li>
+				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
+					<li>
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={250}
+							rootMargin="0px 0px 125px"
+						>
 							<Button
 								as="a"
-								href={links.linkedIn}
+								href={LINKS.linkedIn}
 								target="_blank"
 								size="lg"
 								variant="outline"
@@ -51,12 +56,19 @@ export function Contact() {
 							>
 								<IconBrandLinkedin className="size-8" strokeWidth={1.5} />
 							</Button>
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li>
+					<li>
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={300}
+							rootMargin="0px 0px 125px"
+						>
 							<Button
 								as="a"
-								href={links.github}
+								href={LINKS.github}
 								target="_blank"
 								size="lg"
 								variant="outline"
@@ -65,12 +77,19 @@ export function Contact() {
 							>
 								<IconBrandGithub className="size-8" strokeWidth={1.5} />
 							</Button>
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li>
+					<li>
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={350}
+							rootMargin="0px 0px 125px"
+						>
 							<Button
 								as="a"
-								href={links.behance}
+								href={LINKS.behance}
 								target="_blank"
 								size="lg"
 								variant="outline"
@@ -79,12 +98,19 @@ export function Contact() {
 							>
 								<IconBrandBehance className="size-8" strokeWidth={1.5} />
 							</Button>
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li>
+					<li>
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={400}
+							rootMargin="0px 0px 125px"
+						>
 							<Button
 								as="a"
-								href={links.discord}
+								href={LINKS.discord}
 								target="_blank"
 								size="lg"
 								variant="outline"
@@ -93,12 +119,19 @@ export function Contact() {
 							>
 								<IconBrandDiscord className="size-8" strokeWidth={1.5} />
 							</Button>
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li>
+					<li>
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={450}
+							rootMargin="0px 0px 125px"
+						>
 							<Button
 								as="a"
-								href={links.spotify}
+								href={LINKS.spotify}
 								target="_blank"
 								size="lg"
 								variant="outline"
@@ -107,20 +140,34 @@ export function Contact() {
 							>
 								<IconBrandSpotify className="size-8" strokeWidth={1.5} />
 							</Button>
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li className="w-full grow self-center sm:w-auto">
+					<li className="w-full grow self-center sm:w-auto">
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={500}
+							rootMargin="0px 0px 125px"
+						>
 							<hr className="mx-6 my-6 h-12 grow self-center border-t-0 border-l border-black/10 sm:mx-0 sm:h-auto sm:border-t sm:border-l-0 lg:mx-5 lg:my-0 dark:border-white/15" />
-						</li>
+						</AnimatedContent>
+					</li>
 
-						<li className="flex w-full justify-start sm:justify-end">
-							<Button as="a" href={links.resume[locale]} target="_blank" size="lg" variant="outline">
+					<li className="flex w-full justify-start sm:justify-end">
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={550}
+							rootMargin="0px 0px 125px"
+						>
+							<Button as="a" href={LINKS.resume[locale]} target="_blank" size="lg" variant="outline">
 								<IconFileDescription className="size-8" strokeWidth={1.5} />
 								<span className="font-medium">{__('buttons.cv')}</span>
 							</Button>
-						</li>
-					</ul>
-				</AnimatedContent>
+						</AnimatedContent>
+					</li>
+				</ul>
 			</div>
 		</Section>
 	)

@@ -7,7 +7,7 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
-import { links } from '@/content/_links'
+import { LINKS } from '@/config/links'
 import { LocalesType } from '@/i18n/routing'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -26,7 +26,7 @@ type EducationEntry = {
 	title: string
 	time_range: string
 	location: string
-	description: string
+	info: string[]
 }
 
 export function Journey() {
@@ -170,17 +170,12 @@ export function Journey() {
 							</h4>
 
 							<div className="order-3 grow pl-6">
-								<p className="dark:text-content-dark text-content-light text-sm sm:text-base">{item.description}</p>
-
-								{/* line-clamp-2 */}
-
-								{/* <a
-									href=""
-									className="text-content-light mt-4 inline-flex items-center gap-1 text-sm font-semibold sm:text-base md:mt-3 dark:text-white"
-								>
-									<IconCirclePlus className="size-5" />
-									Leia mais
-								</a> */}
+								{/* <p className="dark:text-content-dark text-content-light text-sm sm:text-base">{item.description}</p> */}
+								<ul className="dark:text-content-dark text-content-light list-disc pl-4 text-sm text-pretty sm:text-base">
+									{item.info.map((detail, n) => (
+										<li key={n}>{detail}</li>
+									))}
+								</ul>
 							</div>
 						</AnimatedContent>
 					</li>
@@ -201,7 +196,7 @@ export function Journey() {
 					<div className="xs:w-auto flex w-full gap-2">
 						<Button
 							as="a"
-							href={links.linkedIn}
+							href={LINKS.linkedIn}
 							target="_blank"
 							size="sm"
 							variant="outline"
@@ -213,7 +208,7 @@ export function Journey() {
 
 						<Button
 							as="a"
-							href={links.resume[locale]}
+							href={LINKS.resume[locale]}
 							target="_blank"
 							size="sm"
 							variant="outline"
