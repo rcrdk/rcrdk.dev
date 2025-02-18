@@ -1,14 +1,13 @@
 'use client'
 
 import { IconBrandLinkedin, IconFileDescription } from '@tabler/icons-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
-import { LocalesType } from '@/i18n/routing'
 import { cn } from '@/utils/tailwind-cn'
 
 type WorkExperienceEntry = {
@@ -31,7 +30,6 @@ type EducationEntry = {
 
 export function Journey() {
 	const __ = useTranslations('Journey')
-	const locale = useLocale() as LocalesType
 
 	const workExperiences = __.raw('work_experience.list') as WorkExperienceEntry[]
 	const education = __.raw('education.list') as EducationEntry[]
@@ -208,7 +206,7 @@ export function Journey() {
 
 						<Button
 							as="a"
-							href={LINKS.resume[locale]}
+							href={LINKS.resume}
 							target="_blank"
 							size="sm"
 							variant="outline"

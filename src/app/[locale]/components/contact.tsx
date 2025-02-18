@@ -6,18 +6,16 @@ import {
 	IconBrandSpotify,
 	IconFileDescription,
 } from '@tabler/icons-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
-import { LocalesType } from '@/i18n/routing'
 
 export function Contact() {
 	const __ = useTranslations('Contact')
-	const locale = useLocale() as LocalesType
 
 	return (
 		<Section>
@@ -161,7 +159,7 @@ export function Contact() {
 							delay={550}
 							rootMargin="0px 0px 125px"
 						>
-							<Button as="a" href={LINKS.resume[locale]} target="_blank" size="lg" variant="outline">
+							<Button as="a" href={LINKS.resume} target="_blank" size="lg" variant="outline">
 								<IconFileDescription className="size-8" strokeWidth={1.5} />
 								<span className="font-medium">{__('buttons.cv')}</span>
 							</Button>
