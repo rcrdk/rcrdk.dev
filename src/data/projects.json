@@ -41,8 +41,8 @@
 			"en": "Website for the management tool that simplifies organization and drive better results for beauty consultants, product resellers, and entrepreneurs's businesses."
 		},
 		"description": {
-			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. Este é o website oficial, criado para apresentar as principais funcionalidades e vantagens que a ferramenta oferece. Essa nova versão reflete as mudanças e novidades que a ferramenta vem trazendo nas grandes atualizações dos últimos anos e muitas que ainda estão por vir.",
-			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. This is the official website, created to showcase the tool’s key features and benefits. This new version reflects the changes and innovations introduced in major updates over the past years, with many more to come."
+			"pt-br": "O Rosinha é uma ferramenta de gestão que nasceu em 2016 pensado especialmente para consultoras de beleza, revendedoras de produtos e empresárias. Criado para ser um assistente inteligente, para simplificar o negócio e proporcionar mais resultados. \n Este é o website oficial, criado para apresentar as principais funcionalidades e vantagens que a ferramenta oferece. Essa nova versão reflete as mudanças e novidades que a ferramenta vem trazendo nas grandes atualizações dos últimos anos e muitas que ainda estão por vir.",
+			"en": "Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \n This is the official website, created to showcase the tool’s key features and benefits. This new version reflects the changes and innovations introduced in major updates over the past years, with many more to come."
 		}
 	},
 	{
@@ -98,12 +98,12 @@
 		"year": 2025,
 		"employer": null,
 		"intro": {
-			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication.",
-			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication."
+			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase Google Authentication e Stripe API.",
+			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase, Google Authentication and Stripe API."
 		},
 		"description": {
-			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase e Google Authentication. Neste caso de uso, os usuários podem criar sua própria página compartilhável para usar em redes sociais como Linkedin, GitHub, Instagram e outras. Este aplicativo foi desenvolvido durante meus estudos sobre Micro SaaS na Rocketseat.",
-			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase and Google Authentication. In this use case users can create their own shareble page to use on social media such as Linkedin, GitHub, Instagram and others. This app was developed during my studies about micro SaaS app at Rocketseat."
+			"pt-br": "Este projeto contém todo o boilerplate necessário para configurar um Micro SaaS usando React, Next.js, Firebase, Google Authentication e Stripe API. Neste caso de uso, os usuários podem criar sua própria página compartilhável para usar em redes sociais como Linkedin, GitHub, Instagram e outras. Este aplicativo foi desenvolvido durante meus estudos sobre Micro SaaS na Rocketseat.",
+			"en": "This project contains all the necessary boilerplate to setup a Micro SaaS using React, Next.js, Firebase, Google Authentication and Stripe API. In this use case users can create their own shareble page to use on social media such as Linkedin, GitHub, Instagram and others. This app was developed during my studies about micro SaaS app at Rocketseat."
 		}
 	},
 	{
@@ -142,8 +142,8 @@
 			"en": "This project contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization."
 		},
 		"description": {
-			"pt-br": "É um monorepo gerido com TurboRepo que contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC. Este projeto foi desenvolvido como um caso de aprendizado na Rocketseat.",
-			"en": "It's a monorepo managed with TurboRepo that contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization. This project was developed for learning case at Rocketseat."
+			"pt-br": "Este projeto é um monorepo gerido com TurboRepo que contém todo o boilerplate necessário para configurar um SaaS multi-tenant com Next.js e Fastify, incluindo autenticação e autorização RBAC. Foi desenvolvido como um caso de aprendizado na Rocketseat.",
+			"en": "This projects is a monorepo managed with TurboRepo that contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js and Fastify including authentication and RBAC authorization. It was developed for learning case at Rocketseat."
 		}
 	},
 	{
@@ -165,8 +165,8 @@
 			"en": "Leading worldwide manufacturer of highest quality geophysical, geotechnical products and all related services."
 		},
 		"description": {
-			"pt-br": "Principal fabricante mundial de produtos geofísicos e geotécnicos de alta qualidade e todos os serviços relacionados.",
-			"en": "Leading worldwide manufacturer of highest quality geophysical, geotechnical products and all related services."
+			"pt-br": "A Geo Marine Survey Systems é uma fabricante global líder de equipamentos e serviços geofísicos e geotécnicos de alta qualidade. Com sede em Rotterdam, na Holanda, e uma unidade em Prak Nam Pran, na Tailândia, além de centros de distribuição no Brasil, China e Estados Unidos, a empresa se especializa na produção de sistemas sísmicos inovadores de Ultra-Alta-Resolução (UHR) 2D e 3D, incluindo sistemas de gravação de 24 bits e streamers.",
+			"en": "Geo Marine Survey Systems is a leading global manufacturer of high-quality geophysical and geotechnical equipment and services. Headquartered in Rotterdam, The Netherlands, with a facility in Prak Nam Pran, Thailand, and distribution centers in Brazil, China, and the United States, the company specializes in producing innovative 2D and 3D Ultra-High-Resolution (UHR) seismic systems, including 24-bit recording systems and streamers."
 		}
 	},
 	{
@@ -188,8 +188,8 @@
 			"en": "Help non-native English speaking lawyers, legal professionals and their support staff to succeed in the international marketplace."
 		},
 		"description": {
-			"pt-br": "Ajuda advogados, profissionais jurídicos e suas equipes de apoio que não falam inglês nativo a ter sucesso no mercado internacional.",
-			"en": "Help non-native English speaking lawyers, legal professionals and their support staff to succeed in the international marketplace."
+			"pt-br": "A Linklaw é uma empresa que oferece cursos de inglês jurídico, especializados em áreas como redação de contratos, direito empresarial e negociações legais. Desde 2004, eles ajudam advogados, departamentos jurídicos e órgãos governamentais a melhorar suas habilidades de comunicação no campo jurídico. Seus instrutores, com experiências variadas, fornecem treinamentos personalizados para falantes não nativos, tanto individuais quanto em grupo.",
+			"en": "Linklaw is dedicated to helping law firms, legal departments, and government agencies improve their legal and communication skills in English. Since 2004, their team of instructors has provided courses in areas like Contract Drafting, Business Law, and Legal Negotiations. They offer tailored training for non-native speakers, focusing on professional communication in the legal field. Their instructors come from diverse backgrounds, and they provide both individual and group courses."
 		}
 	},
 	{
@@ -207,12 +207,12 @@
 		"year": 2023,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Desenvolve roupas confortáveis, com estampas divertidas e inusitadas que contam histórias e vestem meninos e meninas de 01 a 10 anos mostrando ao mundo o que Brasil tem de melhor.",
-			"en": "Creates comfortable clothing with fun and unique prints that tell stories, dressing boys and girls from 1 to 10 years old, showcasing the best of what Brazil has to offer."
+			"pt-br": "Uma marca de moda criativa infantil que existe para valorizar presente e futuro conectando infância, cultura brasileira e sustentabilidade.",
+			"en": "A children’s creative fashion brand focused on celebrating the present and future by connecting childhood, Brazilian culture, and sustainability."
 		},
 		"description": {
-			"pt-br": "Desenvolve roupas confortáveis, com estampas divertidas e inusitadas que contam histórias e vestem meninos e meninas de 01 a 10 anos mostrando ao mundo o que Brasil tem de melhor.",
-			"en": "Creates comfortable clothing with fun and unique prints that tell stories, dressing boys and girls from 1 to 10 years old, showcasing the best of what Brazil has to offer."
+			"pt-br": "Chilique da Mamãe é uma marca de moda infantil que oferece roupas criativas e sustentáveis para crianças de 1 a 10 anos. Com sede em Jaraguá do Sul, Santa Catarina, a empresa se destaca por desenvolver estampas divertidas e inusitadas, conectando infância, cultura brasileira e sustentabilidade.",
+			"en": "Chilique da Mamãe is a children’s fashion brand that offers creative and sustainable clothing for children aged 1 to 10 years old. Based in Jaraguá do Sul, Santa Catarina, Brazil, the company stands out for developing fun and unique prints, connecting childhood, Brazilian culture, and sustainability."
 		}
 	},
 	{
@@ -234,8 +234,8 @@
 			"en": "Consulting and training for digital transformation and innovation, serving all of Brazil with personalized projects and guaranteed results."
 		},
 		"description": {
-			"pt-br": "Consultoria e capacitação para transformação digital e inovação que atende todo o Brasil com projetos personalizados e resultados garantidos.",
-			"en": "Consulting and training for digital transformation and innovation, serving all of Brazil with personalized projects and guaranteed results."
+			"pt-br": "DoWork é uma empresa que oferece soluções para potencializar resultados empresariais, focando em consultoria e ferramentas para melhorar a performance e produtividade das empresas. Eles personalizam abordagens para ajudar seus clientes a otimizar operações e alcançar crescimento mensurável.",
+			"en": "DoWork is a company focused on enhancing results through innovative strategies. They specialize in offering solutions aimed at improving business performance, providing consulting and tools to help companies streamline operations, and achieving measurable success. Their services involve personalized approaches to boost productivity and growth for their clients."
 		}
 	},
 	{
@@ -257,8 +257,8 @@
 			"en": "Works in the real estate development area, prioritizing excellence throughout the construction cycle."
 		},
 		"description": {
-			"pt-br": "Atua na área de incorporação imobiliária priorizando a excelência em todo o ciclo construtivo, da elaboração à execução dos projetos, promovendo experiências de alto padrão alinhadas às tendências globais do mercado.",
-			"en": "Works in the real estate development area, prioritizing excellence throughout the construction cycle, from the elaboration to the execution of projects, promoting high standard experiences in line with global market trends."
+			"pt-br": "A Città Construtora é especializada no desenvolvimento de empreendimentos imobiliários com foco na excelência e inovação. A empresa busca integrar ambientes naturais e urbanos, oferecendo experiências de alto padrão. Além de realizar projetos próprios, também gerencia obras de terceiros, priorizando qualidade e a satisfação dos clientes.",
+			"en": "Città Construtora focuses on real estate development, with an emphasis on excellence throughout the construction process. Their goal is to turn dreams into reality, offering high-standard experiences in line with global market trends. The company manages both their own and third-party projects, prioritizing the integration of natural and urban environments."
 		}
 	},
 	{
@@ -280,8 +280,8 @@
 			"en": "An architecture firm with a few years of experience and many years of deconstruction."
 		},
 		"description": {
-			"pt-br": "Escritório de arquitetura com alguns anos de trajetória e muitos de desconstrução. Aliando criatividade e performance para transformar o jeito de morar e viver, ampliando possibilidades e proporcionando mais conexão: com a cidade, com os espaços, com a natureza.",
-			"en": "An architecture firm with a few years of experience and many years of deconstruction. Combining creativity and performance to transform the way we live and inhabit, expanding possibilities and providing more connection: with the city, with spaces, and with nature."
+			"pt-br": "A Alencar Arquitetura é um escritório de arquitetura localizado em Blumenau, Santa Catarina, que se dedica a criar projetos autênticos e relevantes, incentivando novas formas de viver. Eles oferecem serviços integrados de arquitetura, design de interiores e administração de obras, assumindo todas as etapas de um projeto para garantir resultados surpreendentes.",
+			"en": "Alencar Arquitetura is an architecture firm based in Blumenau, Santa Catarina, dedicated to creating authentic and relevant projects that encourage new ways of living. They offer integrated services in architecture, interior design, and project management, overseeing all stages of a project to ensure outstanding results."
 		}
 	},
 	{
@@ -303,8 +303,8 @@
 			"en": "Software development to simplify the flow of information within companies, enhancing organizational control and management."
 		},
 		"description": {
-			"pt-br": "Desenvolvimento de softwares para simplificar o fluxo de informações de empresas, favorecendo o controle organizacional e a gestão.",
-			"en": "Software development to simplify the flow of information within companies, enhancing organizational control and management."
+			"pt-br": "A Adapcon é uma empresa especializada em desenvolvimento de software e inovação, com o objetivo de facilitar o fluxo de informações nas empresas, promovendo o controle organizacional e a gestão eficiente. Eles oferecem soluções personalizadas em desenvolvimento de software, integração de sistemas e portais para clientes, visando aumentar a produtividade e o progresso dos negócios.",
+			"en": "Adapcon is a company specializing in software development and innovation, focused on simplifying information flow for businesses. They provide customized software solutions, software integration, and customer portals to help companies improve organizational control and productivity. Their services aim to enhance business management through strategic solutions and technology integrations."
 		}
 	},
 	{
@@ -418,8 +418,8 @@
 			"en": "Studio of artists who look at the image as an opportunity to discover something new."
 		},
 		"description": {
-			"pt-br": "Estúdio de artistas que olham para a imagem como a chance de descobrir algo novo.",
-			"en": "Studio of artists who look at the image as an opportunity to discover something new."
+			"pt-br": "Simultaneo é um estúdio de arquitetura e design focado em criar projetos distintos e visualmente impactantes, com forte ênfase na narrativa por meio do design. Eles trabalham em uma variedade de projetos arquitetônicos, como residências e espaços comerciais, buscando sempre a expressão criativa e estética.",
+			"en": "Simultaneo is an architecture and design studio focused on creating distinctive, visually compelling projects. Their approach emphasizes storytelling through architecture, where each design conveys a unique narrative. The studio works on a wide range of architectural designs, from homes to commercial projects, with a strong emphasis on aesthetics and creative expression."
 		}
 	},
 	{
@@ -464,8 +464,8 @@
 			"en": "A company specialized in hardware solutions for doors and windows, formed by the merger of the German company Roto Frank and the Brazilian company Fermax."
 		},
 		"description": {
-			"pt-br": "Empresa especializada em soluções de ferragens para portas e janelas, resultante da união entre a alemã Roto Frank e a brasileira Fermax.",
-			"en": "A company specialized in hardware solutions for doors and windows, formed by the merger of the German company Roto Frank and the Brazilian company Fermax."
+			"pt-br": "A Roto Fermax é uma empresa especializada em soluções de ferragens de alta qualidade para janelas e portas, oferecendo sistemas de correr, basculantes e deslizantes. Seus produtos se destacam pela funcionalidade, inovação e design moderno, sendo ideais para aplicações residenciais e comerciais. A empresa é reconhecida pela engenharia de precisão e pelo compromisso com a qualidade.",
+			"en": "Roto Fermax is a company that specializes in providing high-quality hardware solutions for windows and doors. They offer a wide range of products, such as lifting, sliding, and hinged systems, designed for both residential and commercial applications. Their solutions focus on functionality, performance, and modern design, with an emphasis on innovation and reliability. Roto Fermax is known for its commitment to quality and German engineering."
 		}
 	},
 	{
@@ -575,12 +575,12 @@
 		"year": 2021,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Objetivo em desenvolver iniciativas e produtos sempre com um olhar sustentável.",
-			"en": "Objective in develop initiatives and products with a sustainable look."
+			"pt-br": "Desenvolve iniciativas e produtos sempre com um olhar sustentável.",
+			"en": "Develop initiatives and products with a sustainable look."
 		},
 		"description": {
-			"pt-br": "Objetivo em desenvolver iniciativas e produtos sempre com um olhar sustentável. Só faz sentido criar, se for para gerar algo bom. E, para ser bom para as pessoas, tem que ser bom também para o planeta.",
-			"en": "Objective in develop initiatives and products with a sustainable look. This is their main condition to exist and is what makes them different. The meaning of creating something is to create something good. Therefore, to be good for people it has to be good for the planet."
+			"pt-br": "O Grupo EuroFios é uma empresa especializada na gestão de resíduos e na reciclagem de materiais, com foco em práticas sustentáveis. A empresa trabalha com processos de coleta, classificação, recuperação e fiação, buscando sempre minimizar impactos ambientais. Seu objetivo é promover soluções que favoreçam a sustentabilidade e o uso responsável dos recursos naturais.",
+			"en": "Grupo EuroFios is a company focused on sustainable business practices that positively impact society. They specialize in waste management and the recycling of materials, with a clear commitment to improving the environment and engaging people in sustainability efforts. The company emphasizes processes such as collection, classification, recovery, and spinning, ensuring that every cycle is part of a continuous, environmentally responsible loop. "
 		}
 	},
 	{
@@ -598,12 +598,12 @@
 		"year": 2017,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Top antirrugas para mulheres que dormem de lado ou de bruços.",
-			"en": "Top anti-wrinkle products for women who sleep on their sides or stomachs."
+			"pt-br": "Oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo.",
+			"en": "It offers a unique anti-aging top designed for women who sleep on their sides or stomachs."
 		},
 		"description": {
-			"pt-br": "Top antirrugas para mulheres que dormem de lado ou de bruços. Sua função é prevenir a formação de vincos e rugas (sleep lines) e amenizar os já existentes.",
-			"en": "Top anti-wrinkle products for women who sleep on their sides or stomachs. Their function is to prevent the formation of sleep lines and reduce existing ones."
+			"pt-br": "A Colotop é uma marca brasileira que oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo. Ele ajuda a prevenir e reduzir rugas (linhas de sono) e proporciona suporte aos seios, garantindo conforto e bem-estar durante o sono. O produto está disponível em diversos modelos e cores, combinando cuidados com a pele e uma boa noite de descanso.",
+			"en": "Colotop is a Brazilian brand that offers a unique anti-aging top designed for women who sleep on their sides or stomachs. It helps prevent and reduce wrinkles (sleep lines) and provides support to the breasts, using a NASA-developed foam technology. The product is comfortable, available in various designs and colors, and aims to improve women’s well-being while they sleep."
 		}
 	},
 	{
@@ -644,11 +644,11 @@
 		"year": 2019,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Escritório de advocacia empresarial que atuamos prestando serviços jurídicos.",
+			"pt-br": "Escritório de advocacia empresarial que atua prestando serviços jurídicos.",
 			"en": "A corporate law firm providing legal services."
 		},
 		"description": {
-			"pt-br": "Escritório de advocacia empresarial que atuamos prestando serviços jurídicos em áreas como: tributário e planejamento fiscal, direito societário, comércio exterior e direito de energia.",
+			"pt-br": "Escritório de advocacia empresarial que atua prestando serviços jurídicos em áreas como: tributário e planejamento fiscal, direito societário, comércio exterior e direito de energia.",
 			"en": "A corporate law firm providing legal services in areas such as tax and fiscal planning, corporate law, international trade, and energy law."
 		}
 	},
@@ -694,8 +694,8 @@
 			"en": "Conscious architectural projects, based on bioclimatic architecture and sustainability, always combined with aesthetics and functionality."
 		},
 		"description": {
-			"pt-br": "Projetos arquitetônicos conscientes, com base nos recursos da arquitetura bioclimática e sustentabilidade, sempre aliados à estética e funcionalidade.",
-			"en": "Conscious architectural projects, based on bioclimatic architecture and sustainability, always combined with aesthetics and functionality."
+			"pt-br": "A JJD Arquitetura é um escritório de arquitetura localizado em Jaraguá do Sul, Santa Catarina. Desde 2001, a empresa desenvolve projetos exclusivos, com foco em arquitetura bioclimática e sustentabilidade, buscando sempre respeitar a natureza e atender às necessidades e desejos de seus clientes. O portfólio inclui uma variedade de projetos, como residências, espaços corporativos e comerciais, além de participações em mostras de arquitetura, como a Casacor.",
+			"en": "JJD Arquitetura is an architecture firm located in Jaraguá do Sul, Santa Catarina, Brazil. Since 2001, the company has been developing exclusive projects with a focus on bioclimatic architecture and sustainability, always aiming to respect nature and meet the needs and desires of its clients. The portfolio includes a variety of projects, such as residential, corporate, and commercial spaces, as well as participation in architecture exhibitions like Casacor."
 		}
 	},
 	{
@@ -855,8 +855,8 @@
 			"en": "An initiative by Viacredi, the Feira de Oportunidades is a major business showcase for local small entrepreneurs."
 		},
 		"description": {
-			"pt-br": "Iniciativa da Viacredi, a Feira de Oportunidades é uma grande vitrine de negócios dos pequenos empreendedores locais para fomentar a economia na região do Médio Vale do Itajai em Santa Catarina.",
-			"en": "An initiative by Viacredi, the Feira de Oportunidades is a major business showcase for local small entrepreneurs, aimed at boosting the economy in the Médio Vale do Itajaí region in Santa Catarina, Brazil."
+			"pt-br": "A Feira de Oportunidades Viacredi é um evento promovido pela cooperativa Viacredi, com o objetivo de fortalecer e valorizar os negócios locais, especialmente os empreendedores cooperados. O evento oferece uma plataforma para exposição e comercialização de produtos e serviços, além de proporcionar atividades culturais, educativas e de lazer para a comunidade. \n A feira inclui atrações como exposições de negócios locais, apresentações artísticas, espaços de alimentação e atividades físicas, como corridas e caminhadas. Além disso, oferece oportunidades de capacitação por meio de cursos e workshops, visando o desenvolvimento pessoal e profissional dos participantes.",
+			"en": "The Viacredi Opportunity Fair is an event organized by the Viacredi cooperative, aimed at strengthening and valuing local businesses, especially cooperative entrepreneurs. The event provides a platform for the exhibition and commercialization of products and services, while also offering cultural, educational, and leisure activities for the community. \n The fair features attractions such as local business exhibitions, artistic performances, food stalls, and physical activities like races and walks. Additionally, it offers training opportunities through courses and workshops, focusing on the personal and professional development of the participants."
 		}
 	},
 	{
@@ -878,8 +878,8 @@
 			"en": "The station invites visitors to take a virtual tour and explore the production process."
 		},
 		"description": {
-			"pt-br": "A estação convida o visitante a fazer um passeio virtual e conhecer o processo produtivo em um amplo parque fabril, com maquinários de última geração.",
-			"en": "The station invites visitors to take a virtual tour and explore the production process in a large industrial park, featuring state-of-the-art machinery."
+			"pt-br": "A estação convida o visitante a fazer um passeio virtual e conhecer o processo produtivo em um amplo parque fabril, com maquinários de última geração do Grupo Kyly.",
+			"en": "The station invites visitors to take a virtual tour and explore the production process in a large industrial park, featuring state-of-the-art machinery of Grupo Kyly."
 		}
 	},
 	{
@@ -930,8 +930,8 @@
 		"year": 2025,
 		"employer": null,
 		"intro": {
-			"pt-br": "Este é um aplicativo projetado para simplificar o processo de pedir café, e café é VIDA.",
-			"en": "This is a app designed to simplify the process of ordering coffee, and coffee is LIFE."
+			"pt-br": "Simplificar o processo de pedir café, e café é VIDA.",
+			"en": "Simplify the process of ordering coffee, and coffee is LIFE."
 		},
 		"description": {
 			"pt-br": "Este é um aplicativo projetado para simplificar o processo de pedir café, e café é VIDA. O aplicativo foi desenvolvido como um desafio durante minhas aulas na Rocketseat. O maior desafio foi criar animações, microinterações, adicionar feedback sonoro/vibratório e animar vetores.",
@@ -953,8 +953,8 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Este aplicativo ajuda os usuários a acompanharem seus exercícios na academia.",
-			"en": "This app helps users tracking their gym exercises."
+			"pt-br": "Ajuda os usuários a acompanharem seus exercícios na academia.",
+			"en": "Helps users tracking their gym exercises."
 		},
 		"description": {
 			"pt-br": "Este aplicativo ajuda os usuários a acompanharem seus exercícios na academia. O projeto foi desenvolvido como parte das minhas aulas na Rocketseat.",
@@ -986,12 +986,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Projetado para simplificar o processo de compra e venda de produtos.",
-			"en": "This is a app designed to simplify the process of buying and selling products."
+			"pt-br": "Simplifica o processo de compra e venda de produtos.",
+			"en": "Simplify the process of buying and selling products."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo projetado para simplificar o processo de compra e venda de produtos. O aplicativo foi desenvolvido como um desafio durante minhas aulas na Rocketseat.",
-			"en": "This is an app designed to simplify the process of buying and selling products. The app was developed as a challenge during my lessons at Rocketseat."
+			"pt-br": "Este é um aplicativo projetado para simplificar o processo de compra e venda de produtos. Foi desenvolvido como um desafio durante minhas aulas na Rocketseat.",
+			"en": "This is an app designed to simplify the process of buying and selling products. Was developed as a challenge during my lessons at Rocketseat."
 		}
 	},
 	{
@@ -1009,12 +1009,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Projetado para ajudar os usuários a monitorarem seus hábitos alimentares.",
-			"en": "This is a app designed to help users monitor their eating habits."
+			"pt-br": "Ajudar os usuários a monitorarem seus hábitos alimentares.",
+			"en": "Help users monitor their eating habits."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo projetado para ajudar os usuários a monitorarem seus hábitos alimentares. Os usuários podem registrar refeições e acompanhar seu progresso. O aplicativo foi desenvolvido como um desafio durante minhas aulas na Rocketseat.",
-			"en": "This is an app designed to help users monitor their eating habits. Users can log meals, track their progress. The app was developed as a challenge during my lessons at Rocketseat."
+			"pt-br": "Este é um aplicativo projetado para ajudar os usuários a monitorarem seus hábitos alimentares. Os usuários podem registrar refeições e acompanhar seu progresso. Foi desenvolvido como um desafio durante minhas aulas na Rocketseat.",
+			"en": "This is an app designed to help users monitor their eating habits. Users can log meals, track their progress. Was developed as a challenge during my lessons at Rocketseat."
 		}
 	},
 	{
@@ -1032,12 +1032,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Projetado para ajudar os usuários a organizarem times de futebol em grupos e gerenciarem os participantes.",
-			"en": "This is a app designed to help users organize soccer teams into groups and manage participants."
+			"pt-br": "Ajudar os usuários a organizarem times de futebol em grupos e organizar os jogadores.",
+			"en": "Help users organize soccer teams into groups and manage players."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo projetado para ajudar os usuários a organizarem times de futebol em grupos e gerenciarem os participantes. Os usuários podem criar grupos, adicionar e remover participantes, e atribuí-los ao Time A ou Time B. Este aplicativo foi desenvolvido como um caso de aprendizado durante minhas aulas na Rocketseat.",
-			"en": "This is an app designed to help users organize soccer teams into groups and manage participants. Users can create groups, add and remove participants, and assign them to Team A or Team B. This app was developed as a learning case during my lessons at Rocketseat."
+			"pt-br": "Este é um aplicativo projetado para ajudar os usuários a organizarem times de futebol em grupos e organiozar os jogadores. Os usuários podem criar grupos, adicionar e remover jogadores, e atribuí-los ao Time A ou Time B. Foi desenvolvido como um caso de aprendizado durante minhas aulas na Rocketseat.",
+			"en": "This is an app designed to help users organize soccer teams into groups and manage players. Users can create groups, add and remove players, and assign them to Team A or Team B. Was developed as a learning case during my lessons at Rocketseat."
 		}
 	},
 	{
@@ -1055,8 +1055,8 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Este é um aplicativo para gerenciar uma lista de tarefas.",
-			"en": "This is a app for managing a to-do list."
+			"pt-br": "Uma simples lista de tarefas.",
+			"en": "A simple to-do list."
 		},
 		"description": {
 			"pt-br": "Este é um aplicativo para gerenciar uma lista de tarefas, desenvolvido como um desafio das minhas últimas aulas na Rocketseat. Ele possui três funcionalidades principais: criar uma tarefa, remover uma tarefa e alternar o status da tarefa.",
@@ -1088,12 +1088,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "API de uma transportadora onde é possível gerenciar a entrega de pedidos.",
-			"en": "API of a carrier company where it's possible to manage orders delivering."
+			"pt-br": "API de uma transportadora onde é possível gerenciar o processo de entrega de pedidos.",
+			"en": "Carrier company management API where it's possible to manage the process of orders delivering."
 		},
 		"description": {
-			"pt-br": "Esta é uma API de uma transportadora onde é possível gerenciar a entrega de pedidos. Esta API foi desenvolvida como um caso de aprendizado de Node durante minhas aulas na Rocketseat.",
-			"en": "This is an API of a carrier company where it's possible to manage orders delivering. I developed this project during my latest studies on Node lessons at Rocketseat."
+			"pt-br": "A API FastFeet é uma plataforma para gerenciamento de encomendas em uma transportadora fictícia, com funcionalidades de controle de usuários (entregadores e admins), CRUD de encomendas e destinatários, e atualização de status das encomendas com notificações para os destinatários. Desenvolvida como um caso de aprendizado de Node durante minhas aulas na Rocketseat.",
+			"en": "The FastFeet API is a carrier management system built with NestJS, utilizing Domain-Driven Design (DDD), Clean Architecture, SOLID principles, and various design patterns, offering role-based CRUD operations for administrators and delivery people to manage orders, users, receivers, and distribution centers, with JWT authentication, data persistence in PostgreSQL, file storage on Cloudflare R2, and robust testing with Vitest and Supertest. I developed this project during my latest studies on Node lessons at Rocketseat."
 		}
 	},
 	{
@@ -1126,8 +1126,8 @@
 			"en": "API of a simple forum to learn DDD and Clean Architecture principles."
 		},
 		"description": {
-			"pt-br": "Esta é uma API de um fórum simples para aprender os princípios de DDD e Clean Architecture. Desenvolvi este projeto durante meus últimos estudos nas aulas de Node na Rocketseat.",
-			"en": "This is an API of a simple forum to learn DDD and Clean Architecture principles. I developed this project during my latest studies on Node lessons at Rocketseat."
+			"pt-br": "Uma API de fórum construída usando Node.js, NestJS e Domain-Driven Design (DDD). Ela implementa uma estrutura robusta que inclui funcionalidades como registro de usuários, autenticação e gerenciamento de postagens de fórum. O projeto é projetado com princípios de arquitetura limpa e foca em escalabilidade, manutenibilidade e testabilidade. Este projeto foi desenvolvido para mostrar como implementar um sistema de fórum utilizando as melhores práticas de desenvolvimento backend, com ênfase em código limpo, modularidade e manutenibilidade. Eu desenvolvi este projeto durante meus estudos mais recentes de Node na Rocketseat.",
+			"en": "A forum API built using Node.js, NestJS, and Domain-Driven Design (DDD). It implements a robust structure that includes features such as user registration, authentication, and managing forum posts. The project is designed with clean architecture principles and focuses on scalability, maintainability, and testability. This project is primarily designed to showcase how to implement a forum system using best practices for backend development, especially focusing on clean code, modularity, and maintainability. I developed this project during my latest studies on Node lessons at Rocketseat."
 		}
 	},
 	{
@@ -1145,7 +1145,7 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "API Projetada para um aplicativo semelhante ao Gym Pass, onde os usuários podem se registrar, autenticar e interagir com academias.",
+			"pt-br": "API para um aplicativo semelhante ao Gym Pass, onde os usuários podem se registrar, autenticar e interagir com academias.",
 			"en": "API designed for a Gym Pass-like application, where users can register, authenticate, and interact with gyms."
 		},
 		"description": {
@@ -1168,8 +1168,8 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "API Projetada para um aplicativo “Find a Friend” para encontrar um pet para adoção.",
-			"en": "API designed for a “Find a Friend” application to find a pet to adopt."
+			"pt-br": "API para um aplicativo de encontro de pets para adoção.",
+			"en": "API designed for a application to find a pet to adopt."
 		},
 		"description": {
 			"pt-br": "Esta API foi projetada para um aplicativo “Find a Friend” para encontrar um pet para adoção. Os usuários podem se registrar, autenticar e interagir com perfis de pets. Ela permite que os usuários vejam e atualizem seus próprios perfis, busquem outros usuários por localização e gerenciem seus pets (criar, atualizar e excluir) se estiverem autenticados. Usuários públicos podem buscar pets por localização e características e visualizar perfis de pets disponíveis para adoção. Desenvolvi este projeto durante meus últimos estudos nas aulas de Node na Rocketseat.",
@@ -1191,7 +1191,7 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "API Projetada para gerenciar e acompanhar as refeições dos usuários, permitindo que monitorem sua dieta. ",
+			"pt-br": "API para gerenciar e acompanhar as refeições dos usuários, permitindo o monitoramento de sua dieta.",
 			"en": "API designed to manage and track meals for users, allowing them to monitor their diet."
 		},
 		"description": {
@@ -1201,7 +1201,7 @@
 	},
 	{
 		"id": 50,
-		"title": "Coffe Delivery",
+		"title": "Coffee Delivery",
 		"image": "coffee-shop-web.png",
 		"categories": ["web_app"],
 		"roles": ["Front-End"],
@@ -1224,11 +1224,11 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Web app projetado para tornar o pedido de café fácil",
-			"en": "Web app designed to make ordering coffee easy."
+			"pt-br": "Simplificar o processo de pedir café, e café é VIDA.",
+			"en": "Simplify the process of ordering coffee, and coffee is LIFE."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo web projetado para tornar o pedido de café fácil e prazeroso, porque convenhamos, café é simplesmente incrível! Desenvolvi este projeto como um desafio durante meus estudos mais recentes de React na Rocketseat.",
+			"pt-br": "Este é um aplicativo web projetado para tornar o pedido de café fácil e prazeroso, porque convenhamos, café é simplesmente incrível! Desenvolvi este projeto como um desafio durante meus estudos de React na Rocketseat.",
 			"en": "This is a web app designed to make ordering coffee easy and enjoyable—because let’s face it, coffee is simply amazing! I developed this project as a challenge of my latest studies on React lessons at Rocketseat."
 		}
 	},
@@ -1259,12 +1259,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Web app no estilo “Rate a Book” que permite ao usuários acompanharem e compartilharem avaliações.",
-			"en": "Web app for a “Rate a Book” style app that allows users to rate books, view their latest ratings, and explore books."
+			"pt-br": "Permite aos usuários acompanharem e compartilharem avaliações de livros.",
+			"en": "Allows users to rate books, view their latest ratings, and explore books."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo web full-stack no estilo “Rate a Book” que permite aos usuários fazer login ou navegar como convidados. Os usuários podem avaliar livros, visualizar suas últimas avaliações e explorar livros por pesquisa e categoria. As principais funcionalidades incluem um painel de controle com as últimas avaliações, livros populares e estatísticas do usuário, além de uma página detalhada do livro para mais avaliações. Desenvolvi este projeto como parte de um desafio dos meus estudos mais recentes de React na Rocketseat.",
-			"en": "This is a full-stack “Rate a Book” web app that allows users to sign in or browse as guests. Users can rate books, view their latest ratings, and explore books by search and category. Key features include a dashboard displaying recent ratings, popular books, and user stats, along with a detailed book page for further ratings. I developed this project as a challenge of my latest studies on React lessons at Rocketseat."
+			"pt-br": "Este é um aplicativo web full-stack que permite aos usuários fazer login ou navegar como convidados. Os usuários podem avaliar livros, visualizar suas últimas avaliações e explorar livros por pesquisa e categoria. As principais funcionalidades incluem um painel de controle com as últimas avaliações, livros populares e estatísticas do usuário, além de uma página detalhada do livro para mais avaliações. Desenvolvi este projeto como parte de um desafio dos meus estudos mais recentes de React na Rocketseat.",
+			"en": "This is a full-stack web app that allows users to sign in or browse as guests. Users can rate books, view their latest ratings, and explore books by search and category. Key features include a dashboard displaying recent ratings, popular books, and user stats, along with a detailed book page for further ratings. I developed this project as a challenge of my latest studies on React lessons at Rocketseat."
 		}
 	},
 	{
@@ -1293,12 +1293,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Web app para agendamento de compromissos em horários livres.",
-			"en": "Web app for scheduling appointments on free time."
+			"pt-br": "Agendamento de compromissos em horários livres.",
+			"en": "Scheduling appointments on free time."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo web full-stack para agendamento de compromissos em horários livres. Após o registro e configuração da conta, o usuário recebe um link único e compartilhável para agendar um compromisso. Desenvolvi este projeto como desafio durante meus estudos mais recentes de React na Rocketseat.",
-			"en": "This is a full-stack web app for scheduling appointments on free time, after registering and setting up their account, it's provided an unique sharable link to schedule an appointment. I developed this project as a challenge of my latest studies on React lessons at Rocketseat."
+			"pt-br": "Este é um aplicativo web full-stack para agendamento de compromissos em horários livres. Após o registro e configuração da conta, o usuário recebe um link único e compartilhável para que as pessoas possam agendar um compromisso com o usuário. Desenvolvi este projeto como desafio durante meus estudos mais recentes de React na Rocketseat.",
+			"en": "This is a full-stack web app for scheduling appointments on free time, after registering and setting up their account, it's provided an unique sharable link where people can schedule an appointment with the user. I developed this project as a challenge of my latest studies on React lessons at Rocketseat."
 		}
 	},
 	{
@@ -1332,8 +1332,8 @@
 			"en": "Design system that features a set of reusable components like buttons, inputs, and avatars."
 		},
 		"description": {
-			"pt-br": "Este é um design system que apresenta um conjunto de componentes reutilizáveis, como botões, campos de entrada e avatares. A documentação é hospedada no Storybook. Este projeto foi desenvolvido com base em um design Figma fornecido pela escola, como parte do meu aprendizado na Rocketseat.",
-			"en": "This is a design system that features a set of reusable components like buttons, inputs, and avatars. Documentation is hosted with Storybook. This project was developed based on a Figma design provided by the school as part of my learning at Rocketseat."
+			"pt-br": "Este é um design system que apresenta um conjunto de componentes reutilizáveis, como botões, campos de entrada e avatares. A documentação foi feita no Storybook e publicada no GitHub Pages e disponibilizada como pacote NPM. Este projeto foi desenvolvido com base em um design Figma fornecido pela escola, como parte do meu aprendizado na Rocketseat.",
+			"en": "This is a design system that features a set of reusable components like buttons, inputs, and avatars. Documentation was created with Storybook, published at GitHub Pages and shared as a NPM package. This project was developed based on a Figma design provided by the school as part of my learning at Rocketseat."
 		}
 	},
 	{
@@ -1363,12 +1363,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "E-commerce desenvolvido utilizando a API Stripe para gerenciar listagens de produtos, pedidos e o processo de checkout.",
-			"en": "E-commerce web app developed usign Stripe API for handling product listings, orders, and checkout."
+			"pt-br": "E-commerce desenvolvido utilizando a API Stripe para vender camisetas.",
+			"en": "E-commerce developed usign Stripe API for selling t-shirts."
 		},
 		"description": {
-			"pt-br": "Este é um aplicativo web de e-commerce desenvolvido utilizando a API Stripe para gerenciar listagens de produtos, pedidos e o processo de checkout. O aplicativo inclui uma página inicial exibindo os produtos da Stripe, páginas individuais de produtos com detalhes e uma funcionalidade de “Adicionar ao Carrinho”, um carrinho de compras para gerenciar os itens selecionados e um processo de checkout integrado com a Stripe. Este projeto foi desenvolvido como parte de um desafio de aprendizado na Rocketseat, com foco na integração de APIs e otimização da experiência do usuário.",
-			"en": "This is an e-commerce web app developed usign Stripe API for handling product listings, orders, and checkout. The app includes a homepage displaying products from Stripe, individual product pages with details and an “Add to Cart” feature, a shopping cart for managing selected items, and a checkout process integrated with Stripe. This project was built as part of a learning challenge at Rocketseat, focusing on integrating APIs and optimizing user experience."
+			"pt-br": "Este é um aplicativo web de e-commerce desenvolvido utilizando a API Stripe para gerenciar listagens de camisetas e fazer p processo de checkout. O aplicativo inclui uma página inicial exibindo os produtos da Stripe, páginas individuais de produtos com detalhes e uma funcionalidade de “Adicionar ao Carrinho”, um carrinho de compras para gerenciar os itens selecionados e um processo de checkout integrado com a Stripe. Este projeto foi desenvolvido como parte de um desafio de aprendizado na Rocketseat, com foco na integração de APIs e otimização da experiência do usuário.",
+			"en": "This is an e-commerce web app developed usign Stripe API for handling t-shirst listings and dealing with checkout. The app includes a homepage displaying products from Stripe, individual product pages with details and an “Add to Cart” feature, a shopping cart for managing selected items, and a checkout process integrated with Stripe. This project was built as part of a learning challenge at Rocketseat, focusing on integrating APIs and optimizing user experience."
 		}
 	},
 	{
@@ -1402,12 +1402,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Web app de entrega de pizza que inclui um dashboard, gestão de pedidos e configurações do restaurante.",
-			"en": "Pizza delivery web app that includes a dashboard, order management and restaurant settings."
+			"pt-br": "Gestão de deliverys de pizzarias que inclui um dashboard, gestão de pedidos e configurações do estabelecimento.",
+			"en": "Pizza delivery management web app that includes a dashboard, order management and restaurant settings."
 		},
 		"description": {
-			"pt-br": "Esse é um web app de entrega de pizza que inclui páginas para cadastro e login, um dashboard com resumos e gráficos, um formulário para editar informações do restaurante e um módulo de pedidos com gerenciamento de status. O projeto foi desenvolvido como um desafio durante meus estudos de React na Rocketseat.",
-			"en": "This is a pizza delivery web app that includes pages for sign-up and sign-in, a dashboard with summaries and graphs, a modal form for editing restaurant info, and an orders module with status management. I developed this project as a challenge during my React studies at Rocketseat."
+			"pt-br": "Esse é um web app de gestão de deliverys de pizza que inclui páginas para cadastro e login, um dashboard com resumos e gráficos, um formulário para editar informações do restaurante e um módulo de pedidos com gerenciamento de status. O projeto foi desenvolvido como um desafio durante meus estudos de React na Rocketseat.",
+			"en": "This is a pizza delivery management web app that includes pages for sign-up and sign-in, a dashboard with summaries and graphs, a modal form for editing restaurant info, and an orders module with status management. I developed this project as a challenge during my React studies at Rocketseat."
 		}
 	},
 	{
@@ -1437,12 +1437,12 @@
 		"year": 2024,
 		"employer": null,
 		"intro": {
-			"pt-br": "Web app no formato blog que integra com a API do GitHub para exibir dados do usuário e posts do blog.",
-			"en": "Web app for a blog that integrates with the GitHub API to display user data and blog posts. "
+			"pt-br": "Blog com inegração com a API do GitHub para exibir dados do usuário e posts (issues) no blog.",
+			"en": "A blog integrated with the GitHub API to display user data and blog posts (issues)."
 		},
 		"description": {
-			"pt-br": "Este é um web app de blog que integra com a API do GitHub para exibir dados do usuário e posts do blog. O app inclui uma página inicial mostrando o card do usuário e uma lista de posts com paginação e a capacidade de filtrar por query string. Cada post possui sua própria página dedicada com o conteúdo completo. Eu desenvolvi este projeto como um desafio durante meus estudos de React na Rocketseat.",
-			"en": "This is a web app for a blog that integrates with the GitHub API to display user data and blog posts. The app includes a homepage showing the user’s card and a list of posts with pagination and the ability to filter by query string. Each post has its own dedicated page displaying the post content. I developed this project as a challenge during my React studies at Rocketseat."
+			"pt-br": "Este é um web app de blog que se integra com a API do GitHub para exibir dados do usuário e posts do blog (issues). O app inclui uma página inicial mostrando o card do usuário e uma lista de posts com paginação e a capacidade de filtrar por query string. Cada post possui sua própria página dedicada com o conteúdo completo. Eu desenvolvi este projeto como um desafio durante meus estudos de React na Rocketseat.",
+			"en": "This is a web app for a blog that integrates with the GitHub API to display user data and blog posts (issues). The app includes a homepage showing the user’s card and a list of posts with pagination and the ability to filter by query string. Each post has its own dedicated page displaying the post content. I developed this project as a challenge during my React studies at Rocketseat."
 		}
 	},
 	{
@@ -1460,12 +1460,12 @@
 		"year": 2023,
 		"employer": null,
 		"intro": {
-			"pt-br": "Simples web app para uma lista de tarefas durante aprendizado do básico em React. ",
-			"en": "Simple to-do app for practicing React fundamentals."
+			"pt-br": "Uma simples lista de tarefas.",
+			"en": "A simple to-do list."
 		},
 		"description": {
-			"pt-br": "simples web app para uma lista de tarefas",
-			"en": "This is a simple web app for a to-do list. Features a add and remove tasks; mark and unmark task as finished; calculate and show progress of finished tasks. I developed this project as a during my React studies at Rocketseat."
+			"pt-br": "Este é um web app para gerenciar uma lista de tarefas, desenvolvido como um desafio das minhas últimas aulas na Rocketseat. Ele possui três funcionalidades principais: criar uma tarefa, remover uma tarefa e alternar o status da tarefa.",
+			"en": "This is an web app for managing a to-do list developed as a challenge of my latest lessons at Rocketseat. It has three core functionalities: create a task, remove a task and toggle task status."
 		}
 	}
 ]
