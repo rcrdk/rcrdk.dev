@@ -17,20 +17,30 @@ import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
 import { LocalesType, routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
+import { env } from '@/lib/env'
 import { trackServerEvent } from '@/lib/mixpanel'
 
-export async function generateMetadata(): Promise<Metadata> {
+export type MetadataProps = {
+	params: Promise<{ locale: LocalesType }>
+}
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+	const { locale } = await params
 	const __ = await getTranslations('Seo')
 
 	return {
 		title: __('title'),
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+		openGraph: {
+			siteName: 'Ricardo Augusto Kowalski',
+			url: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
+		},
 		keywords: __.raw('keywords'),
 		alternates: {
-			canonical: '/pt-br',
+			canonical: '/en',
 			languages: {
-				pt: '/pt-br',
 				en: '/en',
+				pt: '/pt-br',
 			},
 		},
 	}
