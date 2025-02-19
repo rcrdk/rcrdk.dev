@@ -1,11 +1,12 @@
 'use client'
 
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { scrollToSection } from '@/utils/scroll-to-section'
 
 export function ThemeSwitcher() {
 	const __ = useTranslations('Default')
@@ -22,9 +23,7 @@ export function ThemeSwitcher() {
 	}, [__])
 
 	const getActiveTheme = useMemo(
-		() =>
-			themesAvailable.find((theme) => theme.mode === currentTheme) ??
-			themesAvailable[0],
+		() => themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0],
 		[currentTheme, themesAvailable],
 	)
 
@@ -55,14 +54,26 @@ export function ThemeSwitcher() {
 		}
 	}, [currentTheme])
 
+	useEffect(() => {
+		const onKeyUp = (e: KeyboardEvent) => {
+			if (e.ctrlKey && e.key === 't') handleChangeTheme()
+
+			if (e.key === '1') scrollToSection(null, '#home')
+			if (e.key === '2') scrollToSection(null, '#about')
+			if (e.key === '3') scrollToSection(null, '#skills')
+			if (e.key === '4') scrollToSection(null, '#projects')
+			if (e.key === '5') scrollToSection(null, '#journey')
+			if (e.key === '6') scrollToSection(null, '#contact')
+		}
+
+		document.addEventListener('keyup', onKeyUp)
+
+		return () => document.removeEventListener('keyup', onKeyUp)
+	}, [handleChangeTheme])
+
 	if (!mounted) {
 		return (
-			<Button
-				as="div"
-				variant="discret"
-				className="pointer-events-none opacity-60"
-				icon
-			>
+			<Button as="div" variant="discret" className="pointer-events-none opacity-60" icon>
 				<IconSunMoon />
 			</Button>
 		)
@@ -71,12 +82,7 @@ export function ThemeSwitcher() {
 	const { title, icon } = getActiveTheme
 
 	return (
-		<Button
-			aria-label={title}
-			onClick={handleChangeTheme}
-			variant="discret"
-			icon
-		>
+		<Button aria-label={title} onClick={handleChangeTheme} variant="discret" icon>
 			{icon}
 		</Button>
 	)

@@ -5,19 +5,14 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 	sideSpacing?: 'base' | 'lg'
 	classNameCenter?: React.HTMLAttributes<HTMLDivElement>['className']
 }
-export function Container({
-	size = 'fluid',
-	sideSpacing = 'base',
-	classNameCenter,
-	...props
-}: Props) {
+export function Container({ size = 'fluid', sideSpacing = 'base', classNameCenter, ...props }: Props) {
 	return (
 		<div
 			{...props}
 			className={cn(
 				'w-full max-w-full',
 				sideSpacing === 'base' && 'xs:px-6 px-4 sm:px-8 md:px-10',
-				sideSpacing === 'lg' && 'xs:px-12 px-8 sm:px-16 md:px-20',
+				sideSpacing === 'lg' && 'xs:px-12 px-6 sm:px-16 md:px-20',
 				props.className,
 			)}
 		>

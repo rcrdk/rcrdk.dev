@@ -1,0 +1,3 @@
+export const CONFIG = {
+	SCREENSAVER_TIMEOUT: 10000,
+}

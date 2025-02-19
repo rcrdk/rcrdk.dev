@@ -1,15 +1,17 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
 
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
+import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { Container } from '@/components/ui/container'
-import { Link } from '@/i18n/routing'
+import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
 type Props = {
@@ -18,6 +20,7 @@ type Props = {
 
 function HeaderInset({ animationEnter }: Props) {
 	const ref = useRef<HTMLSpanElement>(null)
+
 	const [showLettering, setShowLettering] = useState(false)
 
 	const t = useTranslations('Default')
@@ -26,6 +29,13 @@ function HeaderInset({ animationEnter }: Props) {
 		const element = ref.current
 		if (!element) return
 
+		if (process.env.NODE_ENV === 'production') {
+			console.log(
+				'%cFront-end is my passion! 🐶 ',
+				'font-weight: bold; font-size: 50px;color: white; text-shadow: 0 0 16px rgba(0, 0, 0, 0.25), 1px 1px 0 rgb(217,31,38) , 2px 2px 0 rgb(226,91,14) , 3px 3px 0 rgb(245,221,8) , 4px 4px 0 rgb(5,148,68) , 5px 5px 0 rgb(2,135,206) , 6px 6px 0 rgb(4,77,145) , 7px 7px 0 rgb(42,21,113)',
+			)
+		}
+
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
@@ -33,7 +43,7 @@ function HeaderInset({ animationEnter }: Props) {
 					observer.unobserve(element)
 				}
 			},
-			{ threshold: 1 },
+			{ threshold: 0.1 },
 		)
 
 		observer.observe(element)
@@ -45,7 +55,7 @@ function HeaderInset({ animationEnter }: Props) {
 		<AnimatedContent
 			direction={animationEnter}
 			className={cn(
-				'xs:py-0 xs:border-b-0 border-b border-black/5 py-4 dark:border-white/10',
+				'xs:py-0 xs:border-b-0 border-b border-black/5 py-3 dark:border-white/10',
 				animationEnter === 'vertical' && 'layout:hidden flex grow',
 				animationEnter === 'horizontal' && 'layout:flex hidden grow',
 			)}
@@ -57,9 +67,10 @@ function HeaderInset({ animationEnter }: Props) {
 				className="layout:pl-11 layout:pr-0 layout:flex"
 				classNameCenter="flex items-center justify-between layout:flex-col layout:min-h-fit"
 			>
-				<Link
+				<a
 					href="/"
 					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
+					onClick={(e) => scrollToSection(e, '#home')}
 				>
 					<Image
 						src={avatarPicture}
@@ -69,22 +80,20 @@ function HeaderInset({ animationEnter }: Props) {
 						className="xs:size-10 size-9 rounded-full"
 					/>
 
-					<span
-						className="xs:pl-3 layout:pt-3 layout:pl-0 block overflow-hidden pl-2"
-						ref={ref}
-					>
+					<span className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2" ref={ref}>
 						<span
 							className={cn(
-								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pl-1 block -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
-								!showLettering &&
-									'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
+								'font-heading xs:text-3xl layout:[writing-mode:vertical-rl] layout:[text-orientation:mixed] layout:rotate-180 layout:pr-[0.15rem] block w-full -translate-y-0.5 text-2xl leading-none font-black tracking-tight transition-all duration-1000',
+								!showLettering && 'layout:-translate-y-full layout:translate-x-0 -translate-x-full opacity-0',
 							)}
 						>
 							rcrdk
 							<span className="text-accent-blue">.dev</span>
 						</span>
 					</span>
-				</Link>
+				</a>
+
+				<Nav slot="header" />
 
 				<div className="layout:flex-col flex gap-2">
 					<LocaleSwitcher />

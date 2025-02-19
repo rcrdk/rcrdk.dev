@@ -1,31 +1,51 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { Content } from '@/app/[locale]/components/content'
+import { About } from '@/app/[locale]/components/about'
+import { Contact } from '@/app/[locale]/components/contact'
+import { Hero } from '@/app/[locale]/components/hero'
+import { Journey } from '@/app/[locale]/components/journey'
+import { Projects } from '@/app/[locale]/components/projects'
+import { Skills } from '@/app/[locale]/components/skills'
 import { Header } from '@/components/common/header'
+import { Nav } from '@/components/common/nav'
+import { Screensaver } from '@/components/common/screensaver'
+import { ScrollStart } from '@/components/common/scroll-start'
+import { SpecialDates } from '@/components/common/special-dates'
+import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
-import { routing } from '@/i18n/routing'
+import { FULL_DATES } from '@/config/dates'
+import { LocalesType, routing } from '@/i18n/routing'
+import { yearsFromThen } from '@/lib/dayjs'
 import { trackServerEvent } from '@/lib/mixpanel'
 
+export type MetadataProps = {
+	params: Promise<{ locale: LocalesType }>
+}
+
 export async function generateMetadata(): Promise<Metadata> {
-	const __ = await getTranslations('Home')
+	const __ = await getTranslations('Seo')
 
 	return {
-		title: __('seo.title'),
-		description: __('seo.description'),
-		keywords: __.raw('seo.keywords'),
+		title: __('title'),
+		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+		// openGraph: {
+		// 	siteName: 'Ricardo Augusto Kowalski',
+		// 	url: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
+		// },
+		keywords: __.raw('keywords'),
 		alternates: {
-			canonical: '/pt-br',
+			canonical: '/en',
 			languages: {
-				pt: '/pt-br',
 				en: '/en',
+				pt: '/pt-br',
 			},
 		},
 	}
 }
 
 export type Props = {
-	params: Promise<{ locale: (typeof routing.locales)[number] }>
+	params: Promise<{ locale: LocalesType }>
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
@@ -42,14 +62,40 @@ export default async function HomePage({ params }: Props) {
 	}
 
 	return (
-		<div className="layout:flex-row layout:items-start flex flex-col items-center">
+		<div className="layout:flex-row layout:items-start relative flex flex-col items-center">
 			<Header />
+			<Nav slot="page" />
 
 			<main className="layout:self-stretch flex max-w-full grow">
-				<Container size="center" sideSpacing="lg">
-					<Content />
+				<Container
+					size="center"
+					sideSpacing="lg"
+					className="xs:pb-18 layout:pb-0 my-auto pb-14 sm:pb-20"
+					classNameCenter="divide-black/10 dark:divide-white/15 divide-y sm:divide-y-0"
+				>
+					<Anchor id="home" />
+					<Hero />
+
+					<Anchor id="about" />
+					<About />
+
+					<Anchor id="skills" />
+					<Skills />
+
+					<Anchor id="projects" />
+					<Projects />
+
+					<Anchor id="journey" />
+					<Journey />
+
+					<Anchor id="contact" />
+					<Contact />
 				</Container>
 			</main>
+
+			<ScrollStart />
+			<Screensaver />
+			<SpecialDates />
 		</div>
 	)
 }

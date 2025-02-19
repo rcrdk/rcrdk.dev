@@ -6,7 +6,7 @@ async function getIpDataFn(ip: string | null): Promise<Record<string, string | n
 		const response = await fetch(`http://ip-api.com/json/${ip ?? ''}?fields=status,countryCode,regionName,city&lang=pt-BR`)
 		return await response.json()
 	} catch (error) {
-		console.error(error)
+		console.error('Error :::', error)
 		return {}
 	}
 }

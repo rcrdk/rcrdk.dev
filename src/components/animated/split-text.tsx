@@ -1,8 +1,8 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import type { SpringConfig } from '@react-spring/web'
 import { animated, useSprings } from '@react-spring/web'
-import { useEffect, useRef, useState } from 'react'
 
 interface SplitTextProps {
 	text?: string
@@ -14,6 +14,7 @@ interface SplitTextProps {
 	threshold?: number
 	rootMargin?: string
 	textAlign?: 'left' | 'right' | 'center' | 'justify' | 'start' | 'end'
+	breakWords?: boolean
 	onLetterAnimationComplete?: () => void
 }
 
@@ -26,7 +27,8 @@ const SplitText: React.FC<SplitTextProps> = ({
 	easing = (t: number) => t,
 	threshold = 0.1,
 	rootMargin = '-100px',
-	textAlign = 'center',
+	textAlign = 'left',
+	breakWords = false,
 	onLetterAnimationComplete,
 }) => {
 	const words = text.split(' ').map((word) => word.split(''))
@@ -63,10 +65,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 				? async (next: (props: unknown) => Promise<void>) => {
 						await next(animationTo)
 						animatedCount.current += 1
-						if (
-							animatedCount.current === letters.length &&
-							onLetterAnimationComplete
-						) {
+						if (animatedCount.current === letters.length && onLetterAnimationComplete) {
 							onLetterAnimationComplete()
 						}
 					}
@@ -87,26 +86,26 @@ const SplitText: React.FC<SplitTextProps> = ({
 			{words.map((word, wordIndex) => (
 				<span
 					key={wordIndex}
-					style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
+					style={{
+						display: breakWords ? 'block' : 'inline-block',
+						textAlign: 'left',
+						whiteSpace: 'nowrap',
+					}}
 				>
 					{word.map((letter, letterIndex) => {
-						const index =
-							words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) +
-							letterIndex
+						const index = words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) + letterIndex
 
 						return (
 							<Animated
 								key={index}
 								style={springs[index] as unknown as React.CSSProperties}
-								className="inline-block transform transition-opacity will-change-transform"
+								className="inline-block transform transition-opacity will-change-[transform,opacity]"
 							>
 								{letter}
 							</Animated>
 						)
 					})}
-					<span style={{ display: 'inline-block', width: '0.3em' }}>
-						&nbsp;
-					</span>
+					<span style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>
 				</span>
 			))}
 		</span>
