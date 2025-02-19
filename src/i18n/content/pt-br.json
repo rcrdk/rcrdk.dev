@@ -14,7 +14,23 @@
 			"journey": "Trajetória",
 			"contact": "Contato"
 		},
-		"screensaver": "Você está aí?"
+		"screensaver": "Você está aí?",
+		"specialDates": {
+			"title": "Hoje é um dia especial, está curioso? Descubra agora!",
+			"button": {
+				"discover": "Revelar!",
+				"more": "Confetes!"
+			},
+			"dates": {
+				"birthday": "Hoje estou completando {age} anos, Uhuu! Acho que minha coluna já está pedindo aposentadoria!",
+				"careerBirthday": "Fazem {years} anos desde que comecei minha carreira como desenvolvedor. O tempo voa!",
+				"coffeeDay": "Hoje é o Dia Internacional do Café! Acho que vou tomar (mais) um cafézinho para comemorar!",
+				"publicistDay": "Hoje é o Dia do Publicitário! Parabéns a todos os colegas de profissão! Graphic design is my passion!",
+				"developersDay": "Hoje é o Dia Internacional do Programador! Bora codar!?",
+				"brazilianHrDay": "Hoje é o Dia Nacional do Profissional de RH! Bora marcar uma entrevista?",
+				"internationalHrDay": "Hoje é o Dia Internacional do Profissional de RH! Bora marcar uma entrevista?"
+			}
+		}
 	},
 
 	"NotFound": {
@@ -24,13 +40,13 @@
 
 	"Seo": {
 		"title": "Ricardo Augusto Kowalski | Desenvolvedor Front-End",
-		"description": "",
+		"description": "Desenvolvedor front-end com mais de {years} anos de experiência, especializado em Typescript, React, Next.js e Node.js. Apaixonado por tecnologia, café e playlists, criando soluções como sistemas web, websites e e-commerces.",
 		"keywords": ["desenvolvedor front-end", "desenvolvedor web", "React", "Next.js", "TypeScript", "JavaScript", "Node.js", "PHP", "Laravel", "HTML", "CSS", "acessibilidade", "SEO", "performance web", "design responsivo", "UI/UX", "desenvolvimento mobile", "React Native", "tecnologia", "publicidade e propaganda", "desenvolvimento de websites", "web apps", "Timbó", "Santa Catarina", "desenvolvedor remoto", "projetos digitais", "boas práticas de código"]
 	},
 
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "Sou <strong>desenvolvedor front-end</strong> movido a café, uma boa seleção de playlists e entusiasmo pela área tech. Há mais de 12 anos venho desenvolvendo projetos como <strong>sistemas web, websites, landing pages e e-commerces.</strong> Tenho habilidades sólidas em <strong>Typescript, React, Next.js e Node.js.</strong>",
+		"text": "Sou <strong>desenvolvedor front-end</strong> movido a café, uma boa seleção de playlists e entusiasmo pela área tech. Há mais de {years} anos venho desenvolvendo projetos como <strong>sistemas web, websites, landing pages e e-commerces.</strong> Tenho habilidades sólidas em <strong>Typescript, React, Next.js e Node.js.</strong>",
 		"buttons": {
 			"aboutLong": "Quem é o Ricardo?",
 			"aboutShort": "Quem sou eu",
@@ -43,7 +59,7 @@
 		"title": "Sobre mim",
 		"expand": "Pegue um café e continue lendo",
 		"contents": [
-			"<strong>Meu nome é Ricardo</strong>, tenho 29 anos e vivo em Timbó, Santa Catarina. Sou uma pessoa <strong>detalhista, persistente e movida a café.</strong> Além de código, sou <strong>apaixonado por música</strong>, minhas playlists variam entre pop, rock, MPB, indie, disco, entre tantas outros; sou fã da rainha, da mulher, <strong>Madonna</strong>; sou leitor fiel de <strong>Stephen King</strong> e maratoneiro de <strong>séries e novelas.</strong> Tenho um carinho especial por tudo que remete ao passado.",
+			"<strong>Meu nome é Ricardo</strong>, tenho {age} anos e vivo em Timbó, Santa Catarina. Sou uma pessoa <strong>detalhista, persistente e movida a café.</strong> Além de código, sou <strong>apaixonado por música</strong>, minhas playlists variam entre pop, rock, MPB, indie, disco, entre tantas outros; sou fã da rainha, da mulher, <strong>Madonna</strong>; sou leitor fiel de <strong>Stephen King</strong> e maratoneiro de <strong>séries e novelas.</strong> Tenho um carinho especial por tudo que remete ao passado.",
 			"<strong>Desde cedo, a tecnologia me fascinava.</strong> Minha curiosidade pela web começou em meados dos anos 2000, explorando sites, Orkut, MSN e, claro, baixando músicas lentamente na internet discada. Fiz cursos de <strong>informática e manutenção de computadores</strong>, mas foi um jogo, entre tantos outros, que realmente acendeu minha paixão pelo desenvolvimento: <strong>The Sims.</strong>",
 			"Conheci ele nos computadores amarelados antigos da escola e passei anos jogando com o simulador de vida e, com o tempo, me envolvi na construção e compartilhamento de casas e mundos do jogo, mantendo um blog no Blogger como tantos outros jogadores faziam. <strong>Foi ali que descobri a possibilidade de editar temas e mexer no código-fonte.</strong> Mesmo sem entender muito, eu mergulhei nisso e me apaixonei pelo processo. Poucos anos depois <strong>tudo faria sentido.</strong>",
 			"Em 2011 fiz um curso de <strong>Delphi</strong>, onde apenas dois alunos concluíram, eu era um deles, afinal, sou persistente. Esse curso rendeu um pequeno programa que desenvolvi para realizar a votação do grêmio estudantil da minha escola, então, <strong>meu primeiro projeto funcional.</strong>",

@@ -8,7 +8,9 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
+import { FULL_DATES } from '@/config/dates'
 import { LINKS } from '@/config/links'
+import { yearsFromThen } from '@/lib/dayjs'
 import { scrollToSection } from '@/utils/scroll-to-section'
 
 export function Hero() {
@@ -57,7 +59,9 @@ export function Hero() {
 					>
 						<p
 							className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty md:pl-40"
-							dangerouslySetInnerHTML={{ __html: __.raw('text') }}
+							dangerouslySetInnerHTML={{
+								__html: __.raw('text').replace('{years}', yearsFromThen(FULL_DATES.careerBirthday)),
+							}}
 						/>
 					</AnimatedContent>
 				</div>

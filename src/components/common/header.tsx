@@ -20,6 +20,7 @@ type Props = {
 
 function HeaderInset({ animationEnter }: Props) {
 	const ref = useRef<HTMLSpanElement>(null)
+
 	const [showLettering, setShowLettering] = useState(false)
 
 	const t = useTranslations('Default')
@@ -27,6 +28,13 @@ function HeaderInset({ animationEnter }: Props) {
 	useEffect(() => {
 		const element = ref.current
 		if (!element) return
+
+		if (process.env.NODE_ENV === 'production') {
+			console.log(
+				'%cFront-end is my passion! 🐶 ',
+				'font-weight: bold; font-size: 50px;color: white; text-shadow: 0 0 16px rgba(0, 0, 0, 0.25), 1px 1px 0 rgb(217,31,38) , 2px 2px 0 rgb(226,91,14) , 3px 3px 0 rgb(245,221,8) , 4px 4px 0 rgb(5,148,68) , 5px 5px 0 rgb(2,135,206) , 6px 6px 0 rgb(4,77,145) , 7px 7px 0 rgb(42,21,113)',
+			)
+		}
 
 		const observer = new IntersectionObserver(
 			([entry]) => {

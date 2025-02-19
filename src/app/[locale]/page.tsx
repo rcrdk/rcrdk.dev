@@ -11,9 +11,12 @@ import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
 import { Screensaver } from '@/components/common/screensaver'
 import { ScrollStart } from '@/components/common/scroll-start'
+import { SpecialDates } from '@/components/common/special-dates'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
+import { FULL_DATES } from '@/config/dates'
 import { LocalesType, routing } from '@/i18n/routing'
+import { yearsFromThen } from '@/lib/dayjs'
 import { trackServerEvent } from '@/lib/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 	return {
 		title: __('title'),
-		description: __('description'),
+		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
 		keywords: __.raw('keywords'),
 		alternates: {
 			canonical: '/pt-br',
@@ -84,6 +87,7 @@ export default async function HomePage({ params }: Props) {
 
 			<ScrollStart />
 			<Screensaver />
+			<SpecialDates />
 		</div>
 	)
 }

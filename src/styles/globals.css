@@ -104,6 +104,12 @@
 	p b {
 		@apply font-semibold text-black dark:text-white;
 	}
+
+	@media (min-width: 601px) {
+		ol[data-sonner-toaster] {
+			--width: 420px !important;
+		}
+	}
 }
 
 @font-face {

@@ -11,6 +11,8 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
+import { FULL_DATES } from '@/config/dates'
+import { yearsFromThen } from '@/lib/dayjs'
 
 export function About() {
 	const [showContents, setShowContents] = useState(false)
@@ -33,7 +35,9 @@ export function About() {
 					<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
 						<p
 							className="xs:text-lg text-md xs:leading-loose mb-0 leading-[1.8] text-pretty"
-							dangerouslySetInnerHTML={{ __html: contents.at(0) ?? '' }}
+							dangerouslySetInnerHTML={{
+								__html: contents.at(0)?.replace('{age}', yearsFromThen(FULL_DATES.birthday).toString()) ?? '',
+							}}
 						/>
 					</AnimatedContent>
 				</div>

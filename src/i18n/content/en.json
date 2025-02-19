@@ -14,7 +14,23 @@
 			"journey": "Journey",
 			"contact": "Contact"
 		},
-		"screensaver": "Are you there?"
+		"screensaver": "Are you there?",
+		"specialDates": {
+			"title": "It's a special day, are you curious? Discover now!",
+			"button": {
+				"discover": "Reaveal!",
+				"more": "Confetti!"
+			},
+			"dates": {
+				"birthday": "Today I'm turning {age} years old, YAY! My warranty just expired!",
+				"careerBirthday": "It's been {years} years since I started my career as a developer. Time flies!",
+				"coffeeDay": "Today is International Coffee Day! Let's celebrate with a good cup of coffee!",
+				"publicistDay": "Today is the brazilian Publicist Day! Congratulations to all my colleagues! Graphic design is my passion!",
+				"developersDay": "Today is the International Programmers' Day. Let's code!",
+				"brazilianHrDay": "Today is the Brazilian HR Professional Day! Let's schedule an interview?",
+				"internationalHrDay": "Today is the International HR Professional Day! Let's schedule an interview?"
+			}
+		}
 	},
 
 	"NotFound": {
@@ -24,13 +40,13 @@
 	
 	"Seo": {
 		"title": "Ricardo Augusto Kowalski | Front-End Developer",
-		"description": "",
+		"description": "Front-end developer with over {years} years of experience, specializing in Typescript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web systems, websites, and e-commerce platforms.",
 		"keywords": ["front-end developer", "web developer", "React", "Next.js", "TypeScript", "JavaScript", "Node.js", "PHP", "Laravel", "HTML", "CSS", "accessibility", "SEO", "web performance", "responsive design", "UI/UX", "mobile development", "React Native", "technology", "advertising and marketing", "website development", "web apps", "Timbó", "Santa Catarina", "remote developer", "digital projects", "clean code best practices"]
 	},
 
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over +12 years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong skills in <strong>Typescript, React, Next.js and Node.js.</strong>",
+		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over {years} years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong skills in <strong>Typescript, React, Next.js and Node.js.</strong>",
 		"buttons": {
 			"aboutLong": "Who is Ricardo?",
 			"aboutShort": "Who I am",
@@ -43,7 +59,7 @@
 		"title": "About me",
 		"expand": "Grab a coffee and know me more",
 		"contents": [
-			"<strong>My name is Ricardo</strong>, I am 29 years old, and I live in Timbó, Santa Catarina, Brazil. I am a <strong>detail-oriented, persistent, and coffee-driven person.</strong> Besides coding, I am <strong>passionate about music</strong> — my playlists range from pop, rock, MPB, indie, disco, and many more. I’m a fan of the queen, the woman, <strong>Madonna.</strong> I’m also a <strong>Stephen King</strong> constant reader and a binge-watcher of <strong>series and brazilian novelas</strong>. I have a special fondness for everything that brings back the past.",
+			"<strong>My name is Ricardo</strong>, I am {age} years old, and I live in Timbó, Santa Catarina, Brazil. I am a <strong>detail-oriented, persistent, and coffee-driven person.</strong> Besides coding, I am <strong>passionate about music</strong> — my playlists range from pop, rock, MPB, indie, disco, and many more. I’m a fan of the queen, the woman, <strong>Madonna.</strong> I’m also a <strong>Stephen King</strong> constant reader and a binge-watcher of <strong>series and brazilian novelas</strong>. I have a special fondness for everything that brings back the past.",
 			"<strong>Technology has fascinated me from an early age.</strong> My curiosity about the web began in the early 2000s as I explored websites, Orkut, MSN, and, of course, slowly downloaded music over dial-up internet. I took <strong>computer and hardware maintenance courses</strong>, but it was a game — among many others — that truly sparked my passion for development: <strong>The Sims.</strong>",
 			"I first played it on the old yellowed computers at school and spent years immersed in the life simulator. Over time, I got involved in building and sharing houses and worlds from the game, maintaining a blog on Blogger, just like many other players did. That was when <strong>I discovered the ability to edit themes and tweak the source code.</strong> Even without fully understanding what I was doing, I dived into it and fell in love with the process. A few years later, <strong>it all started making sense.</strong>",
 			"In 2011, I took a <strong>Delphi</strong> course, where only two students completed the program — I was one of them. After all, I am persistent. This course led to a small program I developed to handle the student council elections at my school, marking <strong>my first functional project.</strong>",
