@@ -206,7 +206,7 @@ export function ProjectsComponent() {
 
 											<span className="mt-auto flex items-center gap-1">
 												<IconCirclePlus className="size-5" />
-												<span className="text-sm font-bold">Detalhes</span>
+												<span className="text-sm font-bold">{__('action')}</span>
 											</span>
 										</div>
 									</button>

@@ -34,3 +34,6 @@ There are some easter eggs in this project.
 - Speaking of, try to access some invalid route. 
 - On special and selected dates you may get some message with some confetti, you can check on code or you can wait until those selected days would come, I wouldn't recommend that.
 - Have you opened dev tools?
+- Shortcuts:
+    - `control` + `t`: toggle color theme.
+    - `1` to `6`: navigate through sections.

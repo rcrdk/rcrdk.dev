@@ -146,7 +146,8 @@
 			"website": "Visit the Website",
 			"github": "Project on GitHub",
 			"behance": "Project on Behance"
-		}
+		},
+		"action": "Details"
 	},
 
 	"Journey": {
