@@ -7,7 +7,7 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
   <img alt="" src="https://github.com/rcrdk/rcrdk.dev/blob/main/public/site-light.png?raw=true">
 </picture>
 
-**You can contact me on:**
+## 💻 Contact me
 <p>
   <a href="https://linkedin.com/in/rcrdk" target="_blank"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 	<a href="https://github.com/rcrdk" target="_blank"><img alt="GitHub Profile" src="https://img.shields.io/badge/GitHub%20Profile-545454?style=for-the-badge&logo=github&logoColor=white" /></a>
@@ -18,7 +18,7 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 
 ---
 
-**Additional credits:**
+## 💙 Additional credits
 - [**React DVD Screen Saver**](https://github.com/samuelweckstrom/react-dvd-screensaver): for my screensaver, I adapted the source code and used my own useWindowSize hook.
 - [**React Bits**](https://www.reactbits.dev/): I used some of their cool components including animated content, animated text and follow cursor.
 - [**React Haiku**](https://www.reacthaiku.dev/): I used some of their custom hooks and used some as base to create my own.
@@ -27,7 +27,7 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 
 ---
 
-**Spoiler Alert:**
+## ⚠️ Spoiler Alert
 There are some easter eggs in this project.
 
 - If there are not mouse movements for over 10 seconds, a screensaver will be displayed with a random selection of gifs.
