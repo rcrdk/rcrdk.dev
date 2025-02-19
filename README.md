@@ -20,20 +20,20 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 
 ## 💙 Additional credits
 - [**React DVD Screen Saver**](https://github.com/samuelweckstrom/react-dvd-screensaver): for my screensaver, I adapted the source code and used my own useWindowSize hook.
-- [**React Bits**](https://www.reactbits.dev/): I used some of their cool components including animated content, animated text and follow cursor.
-- [**React Haiku**](https://www.reacthaiku.dev/): I used some of their custom hooks and used some as base to create my own.
-- [**Canvas Confetti**](https://github.com/catdad/canvas-confetti): Who wouldn't be happy with confetti? 
-- You can check on `package.json` for more cool packages.
+- [**React Bits**](https://www.reactbits.dev/): I used the base of some of their coolest components including animated content, animated text and follow cursor.
+- [**React Haiku**](https://www.reacthaiku.dev/): I used some of their custom hooks and for some I use as base to create my owns.
+- [**Canvas Confetti**](https://github.com/catdad/canvas-confetti): Everybody loves confetti. That's it! 
+- You can check on `package.json` for more cool packages that I used.
 
 ---
 
 ## ⚠️ Spoiler Alert
 There are some easter eggs in this project.
 
-- If there are not mouse movements for over 10 seconds, a screensaver will be displayed with a random selection of gifs.
-- Speaking of, try to access some invalid route. 
-- On special and selected dates you may get some message with some confetti, you can check on code or you can wait until those selected days would come, I wouldn't recommend that.
-- Have you opened dev tools?
-- Shortcuts:
+- ☃️ If your mouse doesn't move for over 10 seconds, a screensaver will be displayed with a random selection of gifs, enjoy!
+- 😵 Speaking of gifs, try to access some invalid page route, it's even coolest if you access it on your desktop. 
+- 🔮 On special and selected dates you may get a message with some confetti. You can check the dates on code or you can wait until one of those days come, but I would never recommend that.
+- 💻 Did you opened DevTools already?
+- ⌨️ Shortcuts:
     - `control` + `t`: toggle color theme.
     - `1` to `6`: navigate through sections.
