@@ -16,19 +16,20 @@
 		},
 		"screensaver": "Você está aí?",
 		"specialDates": {
-			"title": "Hoje é um dia especial, está curioso? Descubra agora!",
+			"title": "Hoje é um dia especial, está curioso? Descubra agora clicando no botão 👉🏻",
 			"button": {
-				"discover": "Revelar!",
-				"more": "Confetes!"
+				"discover": "Eu tô curioso!",
+				"more": "Mais confetes!"
 			},
 			"dates": {
-				"birthday": "Hoje estou completando {age} anos, Uhuu! Acho que minha coluna já está pedindo aposentadoria!",
-				"careerBirthday": "Fazem {years} anos desde que comecei minha carreira como desenvolvedor. O tempo voa!",
+				"birthday": "Hoje estou completando {age} anos, Weeee! Acho que minha coluna já está pedindo aposentadoria! (socorro!)",
+				"careerBirthday": "Hoje estão completando {years} anos desde que comecei minha carreira como desenvolvedor. O tempo está passando, né, Sueli? Viu!? O tempo passou de novo!",
 				"coffeeDay": "Hoje é o Dia Internacional do Café! Acho que vou tomar (mais) um cafézinho para comemorar!",
-				"publicistDay": "Hoje é o Dia do Publicitário! Parabéns a todos os colegas de profissão! Graphic design is my passion!",
-				"developersDay": "Hoje é o Dia Internacional do Programador! Bora codar!?",
-				"brazilianHrDay": "Hoje é o Dia Nacional do Profissional de RH! Bora marcar uma entrevista?",
-				"internationalHrDay": "Hoje é o Dia Internacional do Profissional de RH! Bora marcar uma entrevista?"
+				"publicistDay": "Hoje é o Dia do Publicitário! Parabéns a todos os colegas de profissão! Graphic design is also my passion!",
+				"developersDay": "Hoje é o Dia Internacional do Programador! Weeee! Hora comemorar tomando aquele cafézinho e... bora codar!?",
+				"brazilianHrDay": "Hoje é o Dia Nacional do Profissional de RH! Weee! Bora marcar uma entrevista?",
+				"internationalHrDay": "Hoje é o Dia Internacional do Profissional de RH! Weee! Bora marcar uma entrevista?",
+				"cssReleaseDate": "Quem mais está fazendo {years} anos este ano? Hoje é o aniversário do CSS 1.0! Weee! Dia de comemorar com estilos!"
 			}
 		}
 	},

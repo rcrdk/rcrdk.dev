@@ -3,7 +3,6 @@
 import { useCallback, useEffect } from 'react'
 import dayjs from 'dayjs'
 import { useTranslations } from 'next-intl'
-import { useMediaQuery } from 'react-haiku'
 import { toast } from 'sonner'
 
 import { DATES, FULL_DATES } from '@/config/dates'
@@ -23,11 +22,25 @@ const ActionButton = ({ label, onClick }: { label: string; onClick: VoidFunction
 export function SpecialDates() {
 	const { fireConfetti } = useConfetti()
 	const __ = useTranslations('Default')
-	const isMobile = useMediaQuery('(max-width: 600px)', false)
 
 	const triggerConfetti = useCallback(() => {
 		fireConfetti()
 		new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+
+		const timer1 = setTimeout(() => {
+			fireConfetti()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+		}, 750)
+
+		const timer2 = setTimeout(() => {
+			fireConfetti()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+		}, 1500)
+
+		return () => {
+			clearTimeout(timer1)
+			clearTimeout(timer2)
+		}
 	}, [fireConfetti])
 
 	const showSpecialDate = useCallback(() => {
@@ -65,6 +78,10 @@ export function SpecialDates() {
 				icon: '💬',
 				text: __('specialDates.dates.brazilianHrDay'),
 			},
+			[DATES.cssReleaseDate]: {
+				icon: '🎨',
+				text: __('specialDates.dates.cssReleaseDate', { years: yearsFromThen(FULL_DATES.cssReleaseDate) }),
+			},
 		} as Record<string, { icon: string; text: string }>
 
 		triggerConfetti()
@@ -73,10 +90,10 @@ export function SpecialDates() {
 		toast(data[today].text, {
 			duration: 10000,
 			icon: data[today].icon,
-			position: isMobile ? 'bottom-center' : 'top-center',
+			position: 'bottom-center',
 			action: <ActionButton label={__('specialDates.button.more')} onClick={triggerConfetti} />,
 		})
-	}, [__, triggerConfetti, isMobile])
+	}, [__, triggerConfetti])
 
 	useEffect(() => {
 		const isASpecialDate = Object.values(DATES).includes(dayjs().format('MM-DD'))
@@ -84,7 +101,7 @@ export function SpecialDates() {
 		if (isASpecialDate) {
 			const timer = setTimeout(() => {
 				toast(__('specialDates.title'), {
-					position: isMobile ? 'bottom-center' : 'top-center',
+					position: 'bottom-center',
 					action: <ActionButton label={__('specialDates.button.discover')} onClick={showSpecialDate} />,
 					duration: Infinity,
 					icon: '🎉',
@@ -94,7 +111,7 @@ export function SpecialDates() {
 
 			return () => clearTimeout(timer)
 		}
-	}, [__, showSpecialDate, isMobile])
+	}, [__, showSpecialDate])
 
 	return null
 }

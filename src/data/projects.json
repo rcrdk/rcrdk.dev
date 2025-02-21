@@ -193,29 +193,6 @@
 		}
 	},
 	{
-		"id": 6,
-		"title": "Chilique da mamãe",
-		"image": "chilique-da-mamae.webp",
-		"categories": ["ecommerce"],
-		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/166966545/Chilique-da-Mamae",
-		"github": null,
-		"website": "https://www.chiliquedamamae.com.br/",
-		"highlighted": true,
-		"stack": ["Tray", "PHP", "Twig Template Engine", "Javascript Vanilla", "Sass", "HTML", "CSS"],
-		"designer": "Firmorama",
-		"year": 2023,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Uma marca de moda criativa infantil que existe para valorizar presente e futuro conectando infância, cultura brasileira e sustentabilidade.",
-			"en": "A children’s creative fashion brand focused on celebrating the present and future by connecting childhood, Brazilian culture, and sustainability."
-		},
-		"description": {
-			"pt-br": "Chilique da Mamãe é uma marca de moda infantil que oferece roupas criativas e sustentáveis para crianças de 1 a 10 anos. Com sede em Jaraguá do Sul, Santa Catarina, a empresa se destaca por desenvolver estampas divertidas e inusitadas, conectando infância, cultura brasileira e sustentabilidade.",
-			"en": "Chilique da Mamãe is a children’s fashion brand that offers creative and sustainable clothing for children aged 1 to 10 years old. Based in Jaraguá do Sul, Santa Catarina, Brazil, the company stands out for developing fun and unique prints, connecting childhood, Brazilian culture, and sustainability."
-		}
-	},
-	{
 		"id": 7,
 		"title": "DoWork",
 		"image": "dowork.webp",
@@ -262,95 +239,26 @@
 		}
 	},
 	{
-		"id": 9,
-		"title": "Alencar Arquitetura",
-		"image": "alencar-arquitetura.webp",
-		"categories": ["website"],
-		"roles": ["Front-End", "Back-End"],
-		"behance": "https://www.behance.net/gallery/150663469/Alencar-Arquitetura",
-		"github": null,
-		"website": "http://alencar.arq.br/",
-		"highlighted": true,
-		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Firmorama",
-		"year": 2022,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Escritório de arquitetura com alguns anos de trajetória e muitos de desconstrução.",
-			"en": "An architecture firm with a few years of experience and many years of deconstruction."
-		},
-		"description": {
-			"pt-br": "A Alencar Arquitetura é um escritório de arquitetura localizado em Blumenau, Santa Catarina, que se dedica a criar projetos autênticos e relevantes, incentivando novas formas de viver. Eles oferecem serviços integrados de arquitetura, design de interiores e administração de obras, assumindo todas as etapas de um projeto para garantir resultados surpreendentes.",
-			"en": "Alencar Arquitetura is an architecture firm based in Blumenau, Santa Catarina, dedicated to creating authentic and relevant projects that encourage new ways of living. They offer integrated services in architecture, interior design, and project management, overseeing all stages of a project to ensure outstanding results."
-		}
-	},
-	{
-		"id": 10,
-		"title": "Adapcon",
-		"image": "adapcon.webp",
+		"id": 14,
+		"title": "Tonino Lamborghini Residences Balneário Camboriú",
+		"image": "tonino-lamborghini.jpg",
 		"categories": ["website"],
 		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/114173323/Adapcon-Software-e-Inovacao",
+		"behance": "https://www.behance.net/gallery/103281689/Tonino-Lamborghini-Residences-Balneario-Camboriu",
 		"github": null,
-		"website": "https://adapcon.com.br/",
+		"website": null,
 		"highlighted": false,
 		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
 		"designer": "Firmorama",
-		"year": 2017,
+		"year": 2020,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Desenvolvimento de softwares para simplificar o fluxo de informações de empresas, favorecendo o controle organizacional e a gestão.",
-			"en": "Software development to simplify the flow of information within companies, enhancing organizational control and management."
+			"pt-br": "Empreendimento de luxo desenvolvido pela Embraed Empreendimentos em parceria com a marca Tonino Lamborghini.",
+			"en": "A luxury development by Embraed Empreendimentos in partnership with the Tonino Lamborghini brand."
 		},
 		"description": {
-			"pt-br": "A Adapcon é uma empresa especializada em desenvolvimento de software e inovação, com o objetivo de facilitar o fluxo de informações nas empresas, promovendo o controle organizacional e a gestão eficiente. Eles oferecem soluções personalizadas em desenvolvimento de software, integração de sistemas e portais para clientes, visando aumentar a produtividade e o progresso dos negócios.",
-			"en": "Adapcon is a company specializing in software development and innovation, focused on simplifying information flow for businesses. They provide customized software solutions, software integration, and customer portals to help companies improve organizational control and productivity. Their services aim to enhance business management through strategic solutions and technology integrations."
-		}
-	},
-	{
-		"id": 11,
-		"title": "Butzke Móveis",
-		"image": "butzke.webp",
-		"categories": ["website"],
-		"roles": ["Front-End", "Back-End"],
-		"behance": "https://www.behance.net/gallery/156857923/Butzke-Moveis",
-		"github": null,
-		"website": "https://www.butzke.com.br/",
-		"highlighted": true,
-		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Sou Digital",
-		"year": 2022,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Especializada na produção de móveis de alto padrão para áreas internas e externas.",
-			"en": "Specialized in the production of high-end furniture for indoor and outdoor areas."
-		},
-		"description": {
-			"pt-br": "Especializada na produção de móveis de alto padrão para áreas internas e externas. Destaca-se pelo compromisso com o ecodesign, inovação e sustentabilidade, oferecendo produtos com acabamentos exclusivos e materiais de alta qualidade. A empresa exporta seus produtos para diversos países, consolidando sua presença internacional. ",
-			"en": "Specialized in the production of high-end furniture for indoor and outdoor areas. It stands out for its commitment to eco-design, innovation, and sustainability, offering products with exclusive finishes and high-quality materials. The company exports its products to several countries, consolidating its international presence."
-		}
-	},
-	{
-		"id": 12,
-		"title": "Stannis Cervejaria e Pub",
-		"image": "stannis.webp",
-		"categories": ["website"],
-		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/104331941/STANNIS-Cerveja-Pub",
-		"github": null,
-		"website": null,
-		"highlighted": true,
-		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Firmorama",
-		"year": 2019,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Cervejaria e pub que combina a produção de cervejas artesanais com a experiência de pub.",
-			"en": "Brewery and pub that combines the production of craft beers with the pub experience."
-		},
-		"description": {
-			"pt-br": "Cervejaria e pub que combina a produção de cervejas artesanais com a experiência de pub, oferecendo um ambiente acolhedor para os apreciadores de cerveja. Além de sua sede em Jaraguá do Sul, a Stannis possui unidades em Blumenau e Itajaí, todas em Santa Catarina.",
-			"en": "Brewery and pub that combines the production of craft beers with the pub experience, offering a cozy environment for beer enthusiasts. In addition to its headquarters in Jaraguá do Sul, Stannis has locations in Blumenau and Itajaí, all in Santa Catarina, Brazil."
+			"pt-br": "O Tonino Lamborghini Balneário Camboriú é um empreendimento de luxo desenvolvido pela Embraed Empreendimentos em parceria com a marca Tonino Lamborghini. Localizado a 50 metros da praia em Balneário Camboriú, o projeto possui 53 andares e 67 apartamentos, incluindo coberturas e unidades com vistas panorâmicas. O design italiano sofisticado está presente em todos os detalhes, refletindo um estilo de vida exclusivo e elegante.",
+			"en": "Tonino Lamborghini Balneário Camboriú is a luxury development by Embraed Empreendimentos in partnership with the Tonino Lamborghini brand. Located just 50 meters from the beach in Balneário Camboriú (Santa Catarina, Brazil), the project features 53 floors and 67 apartments, including penthouses and units with panoramic views. The sophisticated Italian design is present in every detail, reflecting an exclusive and elegant lifestyle."
 		}
 	},
 	{
@@ -377,49 +285,141 @@
 		}
 	},
 	{
-		"id": 14,
-		"title": "Tonino Lamborghini Residences Balneário Camboriú",
-		"image": "tonino-lamborghini.jpg",
+		"id": 9,
+		"title": "Alencar Arquitetura",
+		"image": "alencar-arquitetura.webp",
+		"categories": ["website"],
+		"roles": ["Front-End", "Back-End"],
+		"behance": "https://www.behance.net/gallery/150663469/Alencar-Arquitetura",
+		"github": null,
+		"website": "http://alencar.arq.br/",
+		"highlighted": true,
+		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Firmorama",
+		"year": 2022,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Escritório de arquitetura com alguns anos de trajetória e muitos de desconstrução.",
+			"en": "An architecture firm with a few years of experience and many years of deconstruction."
+		},
+		"description": {
+			"pt-br": "A Alencar Arquitetura é um escritório de arquitetura localizado em Blumenau, Santa Catarina, que se dedica a criar projetos autênticos e relevantes, incentivando novas formas de viver. Eles oferecem serviços integrados de arquitetura, design de interiores e administração de obras, assumindo todas as etapas de um projeto para garantir resultados surpreendentes.",
+			"en": "Alencar Arquitetura is an architecture firm based in Blumenau, Santa Catarina, dedicated to creating authentic and relevant projects that encourage new ways of living. They offer integrated services in architecture, interior design, and project management, overseeing all stages of a project to ensure outstanding results."
+		}
+	},
+	{
+		"id": 27,
+		"title": "JJD Arquitetura",
+		"image": "jjd-arquitetura.jpg",
 		"categories": ["website"],
 		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/103281689/Tonino-Lamborghini-Residences-Balneario-Camboriu",
+		"behance": "https://www.behance.net/gallery/156858625/JJD-Arquitetura",
 		"github": null,
 		"website": null,
 		"highlighted": false,
 		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
 		"designer": "Firmorama",
-		"year": 2020,
+		"year": 2017,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Empreendimento de luxo desenvolvido pela Embraed Empreendimentos em parceria com a marca Tonino Lamborghini.",
-			"en": "A luxury development by Embraed Empreendimentos in partnership with the Tonino Lamborghini brand."
+			"pt-br": "Projetos arquitetônicos conscientes, com base nos recursos da arquitetura bioclimática e sustentabilidade, sempre aliados à estética e funcionalidade.",
+			"en": "Conscious architectural projects, based on bioclimatic architecture and sustainability, always combined with aesthetics and functionality."
 		},
 		"description": {
-			"pt-br": "O Tonino Lamborghini Balneário Camboriú é um empreendimento de luxo desenvolvido pela Embraed Empreendimentos em parceria com a marca Tonino Lamborghini. Localizado a 50 metros da praia em Balneário Camboriú, o projeto possui 53 andares e 67 apartamentos, incluindo coberturas e unidades com vistas panorâmicas. O design italiano sofisticado está presente em todos os detalhes, refletindo um estilo de vida exclusivo e elegante.",
-			"en": "Tonino Lamborghini Balneário Camboriú is a luxury development by Embraed Empreendimentos in partnership with the Tonino Lamborghini brand. Located just 50 meters from the beach in Balneário Camboriú (Santa Catarina, Brazil), the project features 53 floors and 67 apartments, including penthouses and units with panoramic views. The sophisticated Italian design is present in every detail, reflecting an exclusive and elegant lifestyle."
+			"pt-br": "A JJD Arquitetura é um escritório de arquitetura localizado em Jaraguá do Sul, Santa Catarina. Desde 2001, a empresa desenvolve projetos exclusivos, com foco em arquitetura bioclimática e sustentabilidade, buscando sempre respeitar a natureza e atender às necessidades e desejos de seus clientes. O portfólio inclui uma variedade de projetos, como residências, espaços corporativos e comerciais, além de participações em mostras de arquitetura, como a Casacor.",
+			"en": "JJD Arquitetura is an architecture firm located in Jaraguá do Sul, Santa Catarina, Brazil. Since 2001, the company has been developing exclusive projects with a focus on bioclimatic architecture and sustainability, always aiming to respect nature and meet the needs and desires of its clients. The portfolio includes a variety of projects, such as residential, corporate, and commercial spaces, as well as participation in architecture exhibitions like Casacor."
 		}
 	},
 	{
-		"id": 15,
-		"title": "Simultaneo",
-		"image": "simultaneo.jpg",
+		"id": 24,
+		"title": "Metroquadrado",
+		"image": "metroquadrado.jpg",
 		"categories": ["website"],
 		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/163965329/Simultaneo",
+		"behance": "https://www.behance.net/gallery/125469953/Metroquadrado-Arquitetura",
 		"github": null,
-		"website": "https://smtn.cc/",
+		"website": "https://www.metroquadrado.sc/",
 		"highlighted": false,
 		"stack": ["Laravel", "PHP", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Molde",
-		"year": 2023,
+		"designer": "Sou Digital",
+		"year": 2021,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Estúdio de artistas que olham para a imagem como a chance de descobrir algo novo.",
-			"en": "Studio of artists who look at the image as an opportunity to discover something new."
+			"pt-br": "Grupo de criação que atua no desenvolvimento de soluções para áreas de arquitetura e design.",
+			"en": "A creative group focused on developing solutions for architecture and design."
 		},
 		"description": {
-			"pt-br": "Simultaneo é um estúdio de arquitetura e design focado em criar projetos distintos e visualmente impactantes, com forte ênfase na narrativa por meio do design. Eles trabalham em uma variedade de projetos arquitetônicos, como residências e espaços comerciais, buscando sempre a expressão criativa e estética.",
-			"en": "Simultaneo is an architecture and design studio focused on creating distinctive, visually compelling projects. Their approach emphasizes storytelling through architecture, where each design conveys a unique narrative. The studio works on a wide range of architectural designs, from homes to commercial projects, with a strong emphasis on aesthetics and creative expression."
+			"pt-br": "Grupo de criação que atua no desenvolvimento de soluções para áreas de arquitetura e design. Com um amplo espectro de projetos com distintas escalas e programas: do mobiliário à edifícios de grande porte. Dedicados em desenvolver projetos arquitetônicos nas áreas residencial, comercial, industrial, corporativa e interiores.",
+			"en": "A creative group focused on developing solutions for architecture and design. With a wide range of projects of various scales and programs, from furniture to large buildings. Dedicated to developing architectural projects in residential, commercial, industrial, corporate, and interior design sectors."
+		}
+	},
+	{
+		"id": 10,
+		"title": "Adapcon",
+		"image": "adapcon.webp",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/114173323/Adapcon-Software-e-Inovacao",
+		"github": null,
+		"website": "https://adapcon.com.br/",
+		"highlighted": false,
+		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Firmorama",
+		"year": 2017,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Desenvolvimento de softwares para simplificar o fluxo de informações de empresas, favorecendo o controle organizacional e a gestão.",
+			"en": "Software development to simplify the flow of information within companies, enhancing organizational control and management."
+		},
+		"description": {
+			"pt-br": "A Adapcon é uma empresa especializada em desenvolvimento de software e inovação, com o objetivo de facilitar o fluxo de informações nas empresas, promovendo o controle organizacional e a gestão eficiente. Eles oferecem soluções personalizadas em desenvolvimento de software, integração de sistemas e portais para clientes, visando aumentar a produtividade e o progresso dos negócios.",
+			"en": "Adapcon is a company specializing in software development and innovation, focused on simplifying information flow for businesses. They provide customized software solutions, software integration, and customer portals to help companies improve organizational control and productivity. Their services aim to enhance business management through strategic solutions and technology integrations."
+		}
+	},
+	{
+		"id": 12,
+		"title": "Stannis Cervejaria e Pub",
+		"image": "stannis.webp",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/104331941/STANNIS-Cerveja-Pub",
+		"github": null,
+		"website": null,
+		"highlighted": true,
+		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Firmorama",
+		"year": 2019,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Cervejaria e pub que combina a produção de cervejas artesanais com a experiência de pub.",
+			"en": "Brewery and pub that combines the production of craft beers with the pub experience."
+		},
+		"description": {
+			"pt-br": "Cervejaria e pub que combina a produção de cervejas artesanais com a experiência de pub, oferecendo um ambiente acolhedor para os apreciadores de cerveja. Além de sua sede em Jaraguá do Sul, a Stannis possui unidades em Blumenau e Itajaí, todas em Santa Catarina.",
+			"en": "Brewery and pub that combines the production of craft beers with the pub experience, offering a cozy environment for beer enthusiasts. In addition to its headquarters in Jaraguá do Sul, Stannis has locations in Blumenau and Itajaí, all in Santa Catarina, Brazil."
+		}
+	},
+	{
+		"id": 60,
+		"title": "Graal Beer",
+		"image": "graal-beer.png",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/219774091/Graal-Beer",
+		"github": null,
+		"website": "https://www.graalbeer.com.br/",
+		"highlighted": true,
+		"stack": ["PHP", "Laravel", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Self Design Studio",
+		"year": 2019,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Cervejaria artesanal dedicada à produção de cervejas de alta qualidade.",
+			"en": "Craft brewery dedicated to producing high-quality beers."
+		},
+		"description": {
+			"pt-br": "A Graal Beer é uma cervejaria artesanal localizada em Jaraguá do Sul, Santa Catarina, dedicada à produção de cervejas de alta qualidade. Fundada em dezembro de 2018, a empresa oferece uma variedade de estilos, incluindo Pilsen, Weizenbier, American IPA e Dunkel. Além disso, a Graal Beer disponibiliza serviços de delivery de chopp artesanal para Jaraguá do Sul e regiões próximas, permitindo que os clientes apreciem suas bebidas em casa ou em eventos especiais. A empresa também conta com o Clube Graal Beer, um serviço de assinatura que entrega regularmente chopp fresco aos associados.",
+			"en": "Graal Beer is a craft brewery located in Jaraguá do Sul, Santa Catarina, Brazil, dedicated to producing high-quality beers. Founded in December 2018, the company offers a variety of styles, including Pilsen, Weizenbier, American IPA, and Dunkel. Additionally, Graal Beer provides a craft draft beer delivery service for Jaraguá do Sul and nearby regions, allowing customers to enjoy their beverages at home or special events. The company also features the Graal Beer Club, a subscription service that regularly delivers fresh draft beer to members."
 		}
 	},
 	{
@@ -443,6 +443,29 @@
 		"description": {
 			"pt-br": "Situada em Jaraguá do Sul, Santa Catarina, é especializada na fabricação de máquinas para produção de cerveja artesanal, máquinas para indústria alimentícia e de bebidas e peças especiais em aço inoxidável polido, escovado ou espelhado. Oferece produtos  para cervejeiros caseiros e micro cervejarias. Focada em equipamentos elétricos, automatizados e equipamentos para o aumento da capacidade produtiva com redução de tempo e esforço.",
 			"en": "Located in Jaraguá do Sul, Santa Catarina, Brazil, it specializes in the manufacturing of machines for craft beer production, machinery for the food and beverage industry, and custom-made stainless steel parts in polished, brushed, or mirrored finishes. It offers products for homebrewers and microbreweries, focusing on electrical and automated equipment designed to increase production capacity while reducing time and effort."
+		}
+	},
+	{
+		"id": 15,
+		"title": "Simultaneo",
+		"image": "simultaneo.jpg",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/163965329/Simultaneo",
+		"github": null,
+		"website": "https://smtn.cc/",
+		"highlighted": false,
+		"stack": ["Laravel", "PHP", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Molde",
+		"year": 2023,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Estúdio de artistas que olham para a imagem como a chance de descobrir algo novo.",
+			"en": "Studio of artists who look at the image as an opportunity to discover something new."
+		},
+		"description": {
+			"pt-br": "Simultaneo é um estúdio de arquitetura e design focado em criar projetos distintos e visualmente impactantes, com forte ênfase na narrativa por meio do design. Eles trabalham em uma variedade de projetos arquitetônicos, como residências e espaços comerciais, buscando sempre a expressão criativa e estética.",
+			"en": "Simultaneo is an architecture and design studio focused on creating distinctive, visually compelling projects. Their approach emphasizes storytelling through architecture, where each design conveys a unique narrative. The studio works on a wide range of architectural designs, from homes to commercial projects, with a strong emphasis on aesthetics and creative expression."
 		}
 	},
 	{
@@ -538,26 +561,72 @@
 		}
 	},
 	{
-		"id": 21,
-		"title": "Euroroma",
-		"image": "euroroma.jpg",
+		"id": 26,
+		"title": "Julian Gallash",
+		"image": "julian-gallasch.jpg",
 		"categories": ["website"],
-		"roles": ["Front-End", "Back-end"],
-		"behance": "https://www.behance.net/gallery/163966105/EuroRoma",
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/114175065/Julian-Gallasch",
 		"github": null,
-		"website": "https://euroroma.com.br/",
+		"website": null,
 		"highlighted": false,
-		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
+		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
 		"designer": "Firmorama",
-		"year": 2023,
+		"year": 2017,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Marca brasileira de fios e barbantes sustentáveis criados a partir de resíduos da indústria têxtil.",
-			"en": "Brazilian brand of sustainable yarns created from waste from the textile industry."
+			"pt-br": "Artista de artes visuais com habilidade de desenho e pintura.",
+			"en": "Visual artist with skills in drawing and painting."
 		},
 		"description": {
-			"pt-br": "Marca brasileira de fios e barbantes sustentáveis criados a partir de resíduos da indústria têxtil. São reciclados toneladas destes excedentes e transformados em novas matérias-primas em um processo controlado que envolve coleta, desenvolvimento e distribuição, tudo isso para que as pessoas possam criar, se inspirar e descobrir muitas possibilidades em conexão com o meio ambiente.",
-			"en": "Brazilian brand of sustainable yarns created from waste from the textile industry. It's recycled tons of these surpluses and it all turned into new raw materials in a controlled process that involves collection, development, and distribution, all so people can create, inspire, and discover many possibilities in connection with the environment."
+			"pt-br": "Artista de artes visuais com habilidade de desenho e pintura. Possui  obras executadas utilizando técnicas variadas, que unem todas as suas experiências artísticas no seu estilo contemporâneo.",
+			"en": "Visual artist with skills in drawing and painting. He has created works using various techniques that combine all his artistic experiences in his contemporary style."
+		}
+	},
+	{
+		"id": 58,
+		"title": "Yakã",
+		"image": "yaka.jpg",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/157068279/Instituto-Yaka",
+		"github": null,
+		"website": null,
+		"highlighted": false,
+		"stack": ["PHP", "Laravel", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Sou Digital",
+		"year": 2021,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "É uma organização não governamental brasileira, sem fins lucrativos ou vínculos políticos, dedicada ao desenvolvimento social.",
+			"en": "Brazilian non-governmental, non-profit, and non-political organization dedicated to social development."
+		},
+		"description": {
+			"pt-br": "O Instituto Yakã é uma organização não governamental brasileira, sem fins lucrativos ou vínculos políticos, dedicada ao desenvolvimento social. Sua missão é promover o empreendedorismo social e apoiar comunidades em situação de vulnerabilidade. Suas iniciativas incluem projetos voltados à valorização e preservação dos saberes e práticas tradicionais das populações indígenas e das comunidades periféricas. Com um compromisso ético com a sustentabilidade, o Instituto busca equilibrar a preservação do meio ambiente, a cultura e as relações sociais.",
+			"en": "The Yakã Institute is a Brazilian non-governmental, non-profit, and non-political organization dedicated to social development. Its mission is to promote social entrepreneurship and support communities in vulnerable situations. The institute’s initiatives include projects focused on valuing and preserving the traditional knowledge and practices of Indigenous populations and peripheral communities. With a strong ethical commitment to sustainability, the Yakã Institute strives to balance environmental preservation, culture, and social relations."
+		}
+	},
+	{
+		"id": 61,
+		"title": "Freitag Laboratórios",
+		"image": "freitag.png",
+		"categories": ["website"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/219774057/Freitag-Laboratorios",
+		"github": null,
+		"website": "https://freitag.com.br/",
+		"highlighted": false,
+		"stack": ["PHP", "Laravel", "Javascript", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Ultra Comunicação",
+		"year": 2022,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Especializada em análises laboratoriais, oferece serviços como análises microbiológicas, físico-químicas e microscópicas.",
+			"en": "Specializing in laboratory analysis, it offers services such as microbiological, physicochemical, and microscopic analyses."
+		},
+		"description": {
+			"pt-br": "A Freitag Laboratórios é uma empresa especializada em análises laboratoriais e oferece serviços como análises microbiológicas, físico-químicas e microscópicas em diversas matrizes, incluindo águas, alimentos, ar, solo, cosméticos e resíduos sólidos. Localizada em Timbó, Santa Catarina, o laboratório possui uma estrutura de 2.400 m² e é reconhecida por seu amplo escopo de ensaios acreditados, sendo considerado a maior do estado.",
+			"en": "Freitag Laboratórios is a company specialized in laboratory analysis, offering services such as microbiological, physicochemical, and microscopic analyses across various matrices, including water, food, air, soil, cosmetics, and solid waste. Located in Timbó, Santa Catarina, Brazil, the laboratory has a 2,400 m² facility and is recognized for its extensive range of accredited tests, being considered the largest in the state."
 		}
 	},
 	{
@@ -584,49 +653,72 @@
 		}
 	},
 	{
-		"id": 23,
-		"title": "Colotop",
-		"image": "colotop.jpg",
-		"categories": ["landing_page", "ecommerce"],
-		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/156858119/Colotop",
+		"id": 21,
+		"title": "Euroroma",
+		"image": "euroroma.jpg",
+		"categories": ["website"],
+		"roles": ["Front-End", "Back-end"],
+		"behance": "https://www.behance.net/gallery/163966105/EuroRoma",
 		"github": null,
-		"website": "https://www.colotop.com.br/",
+		"website": "https://euroroma.com.br/",
 		"highlighted": false,
-		"stack": ["Laravel", "PHP", "Open Cart", "Javascript Vanilla", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
 		"designer": "Firmorama",
-		"year": 2017,
+		"year": 2023,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo.",
-			"en": "It offers a unique anti-aging top designed for women who sleep on their sides or stomachs."
+			"pt-br": "Marca brasileira de fios e barbantes sustentáveis criados a partir de resíduos da indústria têxtil.",
+			"en": "Brazilian brand of sustainable yarns created from waste from the textile industry."
 		},
 		"description": {
-			"pt-br": "A Colotop é uma marca brasileira que oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo. Ele ajuda a prevenir e reduzir rugas (linhas de sono) e proporciona suporte aos seios, garantindo conforto e bem-estar durante o sono. O produto está disponível em diversos modelos e cores, combinando cuidados com a pele e uma boa noite de descanso.",
-			"en": "Colotop is a Brazilian brand that offers a unique anti-aging top designed for women who sleep on their sides or stomachs. It helps prevent and reduce wrinkles (sleep lines) and provides support to the breasts, using a NASA-developed foam technology. The product is comfortable, available in various designs and colors, and aims to improve women’s well-being while they sleep."
+			"pt-br": "Marca brasileira de fios e barbantes sustentáveis criados a partir de resíduos da indústria têxtil. São reciclados toneladas destes excedentes e transformados em novas matérias-primas em um processo controlado que envolve coleta, desenvolvimento e distribuição, tudo isso para que as pessoas possam criar, se inspirar e descobrir muitas possibilidades em conexão com o meio ambiente.",
+			"en": "Brazilian brand of sustainable yarns created from waste from the textile industry. It's recycled tons of these surpluses and it all turned into new raw materials in a controlled process that involves collection, development, and distribution, all so people can create, inspire, and discover many possibilities in connection with the environment."
 		}
 	},
 	{
-		"id": 24,
-		"title": "Metroquadrado",
-		"image": "metroquadrado.jpg",
+		"id": 11,
+		"title": "Butzke Móveis",
+		"image": "butzke.webp",
+		"categories": ["website"],
+		"roles": ["Front-End", "Back-End"],
+		"behance": "https://www.behance.net/gallery/156857923/Butzke-Moveis",
+		"github": null,
+		"website": "https://www.butzke.com.br/",
+		"highlighted": true,
+		"stack": ["Laravel", "PHP", "MySQL", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Sou Digital",
+		"year": 2022,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Especializada na produção de móveis de alto padrão para áreas internas e externas.",
+			"en": "Specialized in the production of high-end furniture for indoor and outdoor areas."
+		},
+		"description": {
+			"pt-br": "Especializada na produção de móveis de alto padrão para áreas internas e externas. Destaca-se pelo compromisso com o ecodesign, inovação e sustentabilidade, oferecendo produtos com acabamentos exclusivos e materiais de alta qualidade. A empresa exporta seus produtos para diversos países, consolidando sua presença internacional. ",
+			"en": "Specialized in the production of high-end furniture for indoor and outdoor areas. It stands out for its commitment to eco-design, innovation, and sustainability, offering products with exclusive finishes and high-quality materials. The company exports its products to several countries, consolidating its international presence."
+		}
+	},
+	{
+		"id": 29,
+		"title": "Brasil Botões",
+		"image": "brasil-botoes.jpg",
 		"categories": ["website"],
 		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/125469953/Metroquadrado-Arquitetura",
+		"behance": "https://www.behance.net/gallery/125470921/Brasil-Botoes",
 		"github": null,
-		"website": "https://www.metroquadrado.sc/",
+		"website": "https://www.brasilbotoes.com.br/",
 		"highlighted": false,
-		"stack": ["Laravel", "PHP", "Javascript Vanilla", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Sou Digital",
+		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Self Design Studio",
 		"year": 2021,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Grupo de criação que atua no desenvolvimento de soluções para áreas de arquitetura e design.",
-			"en": "A creative group focused on developing solutions for architecture and design."
+			"pt-br": "Especializada na fabricação de botões e aviamentos para a indústria têxtil",
+			"en": "Specialized in manufacturing buttons and accessories for the textile industry."
 		},
 		"description": {
-			"pt-br": "Grupo de criação que atua no desenvolvimento de soluções para áreas de arquitetura e design. Com um amplo espectro de projetos com distintas escalas e programas: do mobiliário à edifícios de grande porte. Dedicados em desenvolver projetos arquitetônicos nas áreas residencial, comercial, industrial, corporativa e interiores.",
-			"en": "A creative group focused on developing solutions for architecture and design. With a wide range of projects of various scales and programs, from furniture to large buildings. Dedicated to developing architectural projects in residential, commercial, industrial, corporate, and interior design sectors."
+			"pt-br": "Especializada na fabricação de botões e aviamentos para a indústria têxtil. Destaca-se pela qualidade, inovação e variedade de produtos, atendendo às necessidades de estilistas, confecções e grandes marcas. Além disso, a empresa investe em tecnologia e sustentabilidade para oferecer soluções diferenciadas ao setor da moda.",
+			"en": "Specialized in manufacturing buttons and accessories for the textile industry. Stands out for its quality, innovation, and product variety, meeting the needs of designers, clothing manufacturers, and major brands. Additionally, the company invests in technology and sustainability to offer unique solutions to the fashion industry."
 		}
 	},
 	{
@@ -653,52 +745,6 @@
 		}
 	},
 	{
-		"id": 26,
-		"title": "Julian Gallash",
-		"image": "julian-gallasch.jpg",
-		"categories": ["website"],
-		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/114175065/Julian-Gallasch",
-		"github": null,
-		"website": null,
-		"highlighted": false,
-		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Firmorama",
-		"year": 2017,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Artista de artes visuais com habilidade de desenho e pintura.",
-			"en": "Visual artist with skills in drawing and painting."
-		},
-		"description": {
-			"pt-br": "Artista de artes visuais com habilidade de desenho e pintura. Possui  obras executadas utilizando técnicas variadas, que unem todas as suas experiências artísticas no seu estilo contemporâneo.",
-			"en": "Visual artist with skills in drawing and painting. He has created works using various techniques that combine all his artistic experiences in his contemporary style."
-		}
-	},
-	{
-		"id": 27,
-		"title": "JJD Arquitetura",
-		"image": "jjd-arquitetura.jpg",
-		"categories": ["website"],
-		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/156858625/JJD-Arquitetura",
-		"github": null,
-		"website": null,
-		"highlighted": false,
-		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Firmorama",
-		"year": 2017,
-		"employer": "Sou Digital",
-		"intro": {
-			"pt-br": "Projetos arquitetônicos conscientes, com base nos recursos da arquitetura bioclimática e sustentabilidade, sempre aliados à estética e funcionalidade.",
-			"en": "Conscious architectural projects, based on bioclimatic architecture and sustainability, always combined with aesthetics and functionality."
-		},
-		"description": {
-			"pt-br": "A JJD Arquitetura é um escritório de arquitetura localizado em Jaraguá do Sul, Santa Catarina. Desde 2001, a empresa desenvolve projetos exclusivos, com foco em arquitetura bioclimática e sustentabilidade, buscando sempre respeitar a natureza e atender às necessidades e desejos de seus clientes. O portfólio inclui uma variedade de projetos, como residências, espaços corporativos e comerciais, além de participações em mostras de arquitetura, como a Casacor.",
-			"en": "JJD Arquitetura is an architecture firm located in Jaraguá do Sul, Santa Catarina, Brazil. Since 2001, the company has been developing exclusive projects with a focus on bioclimatic architecture and sustainability, always aiming to respect nature and meet the needs and desires of its clients. The portfolio includes a variety of projects, such as residential, corporate, and commercial spaces, as well as participation in architecture exhibitions like Casacor."
-		}
-	},
-	{
 		"id": 28,
 		"title": "Recobrança",
 		"image": "recobranca.jpg",
@@ -722,26 +768,72 @@
 		}
 	},
 	{
-		"id": 29,
-		"title": "Brasil Botões",
-		"image": "brasil-botoes.jpg",
+		"id": 59,
+		"title": "Patrimono",
+		"image": "patrimono.png",
 		"categories": ["website"],
 		"roles": ["Front-End"],
-		"behance": "https://www.behance.net/gallery/125470921/Brasil-Botoes",
+		"behance": "https://www.behance.net/gallery/156858853/Patrimono",
 		"github": null,
-		"website": "https://www.brasilbotoes.com.br/",
+		"website": null,
 		"highlighted": false,
-		"stack": ["Laravel", "PHP", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
-		"designer": "Self Design Studio",
-		"year": 2021,
+		"stack": ["PHP", "Laravel", "Javascript", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Firmorama",
+		"year": 2019,
 		"employer": "Sou Digital",
 		"intro": {
-			"pt-br": "Especializada na fabricação de botões e aviamentos para a indústria têxtil",
-			"en": "Specialized in manufacturing buttons and accessories for the textile industry."
+			"pt-br": "Foi uma empresa de investimentos que oferecia serviços de investimentos e gerenciava ativos. Em março de 2020, a Patrimono se fundiu com a Warren.",
+			"en": "Was a Brazilian investment firm and offered investment services and managed assets. In March 2020, Patrimono merged with Warren."
 		},
 		"description": {
-			"pt-br": "Especializada na fabricação de botões e aviamentos para a indústria têxtil. Destaca-se pela qualidade, inovação e variedade de produtos, atendendo às necessidades de estilistas, confecções e grandes marcas. Além disso, a empresa investe em tecnologia e sustentabilidade para oferecer soluções diferenciadas ao setor da moda.",
-			"en": "Specialized in manufacturing buttons and accessories for the textile industry. Stands out for its quality, innovation, and product variety, meeting the needs of designers, clothing manufacturers, and major brands. Additionally, the company invests in technology and sustainability to offer unique solutions to the fashion industry."
+			"pt-br": "A Patrimono foi uma empresa de investimentos brasileira, com sede em Jaraguá do Sul, Santa Catarina, e operações em Santa Catarina e Paraná. A empresa oferecia serviços de investimentos e gerenciava ativos que totalizavam cerca de R$ 3 bilhões para aproximadamente 3.000 clientes. Em março de 2020, a Patrimono se fundiu com a Warren, uma plataforma digital de investimentos líder no Brasil. Essa fusão permitiu que os sócios da Patrimono assumissem cargos executivos e adquirissem participação na Warren, transitando de um modelo tradicional de agentes para uma abordagem de gestão de patrimônio mais transparente e voltada para o cliente.",
+			"en": "Patrimono was a Brazilian investment firm based in Jaraguá do Sul, Santa Catarina, with operations in both Santa Catarina and Paraná. The company offered investment services and managed assets totaling approximately R$ 3 billion for around 3,000 clients. In March 2020, Patrimono merged with Warren, a leading digital investment platform in Brazil. This merger allowed Patrimono’s partners to take on executive roles and acquire equity in Warren, transitioning from the traditional agent model to a more transparent and client-focused wealth management approach."
+		}
+	},
+	{
+		"id": 6,
+		"title": "Chilique da mamãe",
+		"image": "chilique-da-mamae.webp",
+		"categories": ["ecommerce"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/166966545/Chilique-da-Mamae",
+		"github": null,
+		"website": "https://www.chiliquedamamae.com.br/",
+		"highlighted": true,
+		"stack": ["Tray", "PHP", "Twig Template Engine", "Javascript Vanilla", "Sass", "HTML", "CSS"],
+		"designer": "Firmorama",
+		"year": 2023,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Uma marca de moda criativa infantil que existe para valorizar presente e futuro conectando infância, cultura brasileira e sustentabilidade.",
+			"en": "A children’s creative fashion brand focused on celebrating the present and future by connecting childhood, Brazilian culture, and sustainability."
+		},
+		"description": {
+			"pt-br": "Chilique da Mamãe é uma marca de moda infantil que oferece roupas criativas e sustentáveis para crianças de 1 a 10 anos. Com sede em Jaraguá do Sul, Santa Catarina, a empresa se destaca por desenvolver estampas divertidas e inusitadas, conectando infância, cultura brasileira e sustentabilidade.",
+			"en": "Chilique da Mamãe is a children’s fashion brand that offers creative and sustainable clothing for children aged 1 to 10 years old. Based in Jaraguá do Sul, Santa Catarina, Brazil, the company stands out for developing fun and unique prints, connecting childhood, Brazilian culture, and sustainability."
+		}
+	},
+	{
+		"id": 23,
+		"title": "Colotop",
+		"image": "colotop.jpg",
+		"categories": ["landing_page", "ecommerce"],
+		"roles": ["Front-End"],
+		"behance": "https://www.behance.net/gallery/156858119/Colotop",
+		"github": null,
+		"website": "https://www.colotop.com.br/",
+		"highlighted": false,
+		"stack": ["Laravel", "PHP", "Open Cart", "Javascript Vanilla", "jQuery", "Sass", "HTML", "CSS", "Bootstrap"],
+		"designer": "Firmorama",
+		"year": 2017,
+		"employer": "Sou Digital",
+		"intro": {
+			"pt-br": "Oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo.",
+			"en": "It offers a unique anti-aging top designed for women who sleep on their sides or stomachs."
+		},
+		"description": {
+			"pt-br": "A Colotop é uma marca brasileira que oferece um top exclusivo com tecnologia desenvolvida pela NASA, voltado para mulheres que dormem de lado ou de barriga para baixo. Ele ajuda a prevenir e reduzir rugas (linhas de sono) e proporciona suporte aos seios, garantindo conforto e bem-estar durante o sono. O produto está disponível em diversos modelos e cores, combinando cuidados com a pele e uma boa noite de descanso.",
+			"en": "Colotop is a Brazilian brand that offers a unique anti-aging top designed for women who sleep on their sides or stomachs. It helps prevent and reduce wrinkles (sleep lines) and provides support to the breasts, using a NASA-developed foam technology. The product is comfortable, available in various designs and colors, and aims to improve women’s well-being while they sleep."
 		}
 	},
 	{
