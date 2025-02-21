@@ -107,7 +107,7 @@
 
 	@media (min-width: 601px) {
 		ol[data-sonner-toaster] {
-			--width: 420px !important;
+			--width: 540px !important;
 		}
 	}
 }

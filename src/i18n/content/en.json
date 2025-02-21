@@ -16,19 +16,20 @@
 		},
 		"screensaver": "Are you there?",
 		"specialDates": {
-			"title": "It's a special day, are you curious? Discover now!",
+			"title": "It's a special day, are you curious? Discover now pressing the button 👉🏻",
 			"button": {
-				"discover": "Reaveal!",
-				"more": "Confetti!"
+				"discover": "I'm curious!",
+				"more": "More Confettis!"
 			},
 			"dates": {
-				"birthday": "Today I'm turning {age} years old, YAY! My warranty just expired!",
-				"careerBirthday": "It's been {years} years since I started my career as a developer. Time flies!",
-				"coffeeDay": "Today is International Coffee Day! Let's celebrate with a good cup of coffee!",
-				"publicistDay": "Today is the brazilian Publicist Day! Congratulations to all my colleagues! Graphic design is my passion!",
-				"developersDay": "Today is the International Programmers' Day. Let's code!",
-				"brazilianHrDay": "Today is the Brazilian HR Professional Day! Let's schedule an interview?",
-				"internationalHrDay": "Today is the International HR Professional Day! Let's schedule an interview?"
+				"birthday": "Today I'm turning {age} years old, Yaaay! My warranty just expired. Damn!",
+				"careerBirthday": "It's been {years} years since I started my career as a developer. Time goes by... 🪩 so fast?!",
+				"coffeeDay": "Today is International Coffee Day! Let's celebrate with a good cup of coffee! (just to get started)",
+				"publicistDay": "Today is the brazilian Publicist Day! Congratulations to all my colleagues! Graphic design is also my passion!",
+				"developersDay": "Today is the International Programmers' Day! Yaaay! It's time grab a cup of coffee and... let's code!",
+				"brazilianHrDay": "Today is the Brazilian HR Professional Day!  Yaaay! Let's schedule an interview?",
+				"internationalHrDay": "Today is the International HR Professional Day! Yaaay! Let's schedule an interview?",
+				"cssReleaseDate": "Who else is turning {years} this year? Today is the anniversary of of CSS 1.0! Yaaay! Let's celebrate with styles!"
 			}
 		}
 	},

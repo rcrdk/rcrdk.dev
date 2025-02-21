@@ -195,7 +195,7 @@ export function ProjectsComponent() {
 											)}
 										</div>
 
-										<div className="relative flex grow flex-col p-4">
+										<div className="relative flex w-full grow flex-col p-4">
 											<h3 className="mb-2 line-clamp-2 text-base leading-tight font-bold text-balance dark:text-white">
 												{item.title}
 											</h3>

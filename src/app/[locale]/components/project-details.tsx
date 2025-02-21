@@ -172,35 +172,38 @@ export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 									))}
 								</div>
 
-								<div className="xs:p-8 flex flex-col gap-2 p-6 sm:p-8 lg:px-10 lg:py-9">
+								<div className="xs:p-8 grid grid-cols-2 gap-4 p-6 sm:p-8 lg:px-10 lg:py-9">
 									{project.categories && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.category')}:</strong> {project.categories}
+										<p className="xs:text-base flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.category')}:</strong>{' '}
+											{project.categories}
 										</p>
 									)}
 									{project.roles && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.roles')}:</strong> {project.roles}
+										<p className="xs:text-base flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.roles')}:</strong> {project.roles}
 										</p>
 									)}
 									{project.employer && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.employer')}:</strong> {project.employer}
+										<p className="xs:text-base flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.employer')}:</strong>{' '}
+											{project.employer}
 										</p>
 									)}
 									{project.designer && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.designer')}:</strong> {project.designer}
+										<p className="xs:text-base flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.designer')}:</strong>{' '}
+											{project.designer}
 										</p>
 									)}
 									{project.year && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.year')}:</strong> {project.year}
+										<p className="xs:text-base flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.year')}:</strong> {project.year}
 										</p>
 									)}
 									{project.stack && (
-										<p className="xs:text-base text-[15px] text-pretty">
-											<strong>{__('details.stack')}:</strong> {project.stack}
+										<p className="xs:text-base col-span-2 flex flex-col gap-1 text-[15px] text-pretty">
+											<strong className="text-xs font-bold uppercase">{__('details.stack')}:</strong> {project.stack}
 										</p>
 									)}
 								</div>

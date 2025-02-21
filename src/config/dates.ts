@@ -8,9 +8,11 @@ export const DATES = {
 	developersDay: isLeapYearCheck() ? '09-12' : '09-13',
 	brazilianHrDay: '06-03',
 	internationalHrDay: '05-20',
+	cssReleaseDate: '12-17',
 }
 
 export const FULL_DATES = {
 	birthday: '1996-03-03',
 	careerBirthday: '2013-05-02',
+	cssReleaseDate: '1996-12-17',
 } as Record<string, `${string}-${string}-${string}`>
