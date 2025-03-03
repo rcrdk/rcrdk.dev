@@ -63,7 +63,7 @@ export function Screensaver() {
 		<div
 			ref={containerRef}
 			className={cn(
-				'fixed inset-0 z-[100] bg-white transition-opacity duration-700 dark:bg-black',
+				'fixed inset-0 z-[9999999999] bg-white transition-opacity duration-700 dark:bg-black',
 				isIddle ? 'opacity-100' : 'pointer-events-none opacity-0',
 			)}
 		>

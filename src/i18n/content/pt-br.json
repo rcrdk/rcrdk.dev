@@ -77,7 +77,7 @@
 		"list": [
 			{
 				"title": "Idiomas",
-				"text": "Português (Nativo), Inglês (Intermediário)"
+				"text": "Português (Nativo), Inglês (Intermediário B2)"
 			},
 			{
 				"title": "Linguagens e tecnologias",
@@ -250,7 +250,7 @@
 					"time_range": "2019 - 2023",
 					"location": "Remoto",
 					"info": [
-						"Front-end: HTML5, CSS3, JavaScript (ES6+), React, Vue, Angular.",
+						"Front-end: HTML5, CSS3, JavaScript (ES6+), React, Vue.js, Angular.",
 						"Back-end: PHP e Node.js, criando aplicações com bancos de dados relacionais (MySQL, PostgreSQL) e NoSQL (MongoDB), implementando autenticação.",
 						"Paradigmas de Programação: Programação funcional, Programação Orientada a Objetos (POO).",
 						"Ferramentas: Gulp e Webpack para otimização e automação de builds."

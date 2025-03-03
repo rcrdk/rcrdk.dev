@@ -77,7 +77,7 @@
 		"list": [
 			{
 				"title": "Communication",
-				"text": "Portuguese (Native), English (Intermediate)"
+				"text": "Portuguese (Native), English (B2 Upper Intermediate)"
 			},
 			{
 				"title": "Languages & techs",
@@ -251,7 +251,7 @@
 					"time_range": "2019 - 2023",
 					"location": "Remote",
 					"info": [
-						"Front-end: HTML5, CSS3, JavaScript (ES6+), React, Vue, Angular.",
+						"Front-end: HTML5, CSS3, JavaScript (ES6+), React, Vue.js, Angular.",
 						"Back-end: PHP and Node.js, building applications with relational (MySQL, PostgreSQL) and NoSQL (MongoDB) databases, implementing authentication.",
 						"Tools: Gulp and Webpack for build optimization and automation.",
 						"Programming Paradigms: Functional programming, Object-Oriented Programming (OOP)."
