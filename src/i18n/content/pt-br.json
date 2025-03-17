@@ -80,24 +80,28 @@
 				"text": "Português (Nativo), Inglês (Intermediário B2)"
 			},
 			{
-				"title": "Linguagens e tecnologias",
-				"text": "Javascript, Typescript, React, Next.js, Vue.js, Node.js, Fastify, NestJS, React Native, Expo, PHP, Laravel, HTML, CSS"
+				"title": "Desenvolvimento Front-End",
+				"text": "Javascript, Typescript, React, Next.js, Vue.js, HTML, CSS, Redux, Zustand, Context API, Styled Components, TailwindCSS, Sass, API Rest, React Query, React Hook Form, Zod, Radix UI, shadcn/ui, Storybook, JQuery"
 			},
 			{
-				"title": "Bibliotecas e ferramentas",
-				"text": "React Query, React Hook Form, Zod, TailwindCSS, Sass, Styled Components, Radix UI, shadcn/ui, Stripe API, Redux, Zustand, Context API, Server Components, API REST"
+				"title": "Desenvolvimento Back-End",
+				"text": "Javascript, Typescript, Node.js, Fastify, NestJS, PHP, Laravel (criacão de CMS's), API Rest, Stripe API, Auth.js, PostgreSQL, Firebase Store e Database, CloudFlare R2, Prisma ORM, Laravel Eloquent"
 			},
 			{
-				"title": "Banco de dados",
-				"text": "PostgreSQL, MySQL, Firebase, Prisma ORM"
+				"title": "Desenvolvimento Mobile",
+				"text": "React Native, React, Expo, React Native Reanimated, React Native Gesture Handler, Styled Components, Gluestack UI"
 			},
 			{
-				"title": "Softwares e serviços",
-				"text": "Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, Docker, Git, GitHub, BitBucket, Notion, Trello"
+				"title": "Testes",
+				"text": "Vitest, React Testing Library, Playwright, MSW"
 			},
 			{
-				"title": "Metodologias e práticas",
-				"text": "Kanban, UI/UX, Design Responsivo, Mobile First, SEO, Pixel Perfect, SOLID, Clean Architecture, Design Patterns"
+				"title": "Softwares e Ferramentas",
+				"text": "macOS, Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, Docker, Git, GitHub, BitBucket, Notion, Trello, ESLint, Prettier, EditorConfig"
+			},
+			{
+				"title": "Outras Atividades",
+				"text": "Kanban, UI/UX, design responsivo, mobile first, SEO, acessibilidade, SOLID, Clean Architecture, design patterns, orientação a detalhes, criatividade, trabalho em equipe, resolução de problemas"
 			}
 		]
 	},
