@@ -35,7 +35,7 @@ export function Button<T extends React.ElementType = 'button'>({
 				size === 'sm' && icon && 'w-10 !px-0 xs:w-10',
 
 				size === 'xs' && 'h-8 gap-4 px-4 xs:h-8 xs:ap-4 xs:px-5',
-				size === 'xs' && icon && 'w-8 !px-0 xs:w-9',
+				size === 'xs' && icon && 'w-8 !px-0 xs:w-8',
 				
 
 				variant === 'solid' && 'bg-content-light dark:bg-white text-white dark:text-black hover:bg-content-light/80 dark:hover:bg-white/85 focus-visible:!bg-accent-blue focus-visible:text-white focus-visible:border-white dark:focus-visible:border-black',

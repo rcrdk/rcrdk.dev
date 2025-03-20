@@ -31,6 +31,10 @@
 				"internationalHrDay": "Hoje é o Dia Internacional do Profissional de RH! Weee! Bora marcar uma entrevista?",
 				"cssReleaseDate": "Quem mais está fazendo {years} anos este ano? Hoje é o aniversário do CSS 1.0! Weee! Dia de comemorar com estilos!"
 			}
+		},
+		"lastfm": {
+			"title": "Últimas músicas tocadas",
+			"button": "Ouça minhas playlists"
 		}
 	},
 

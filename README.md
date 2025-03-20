@@ -34,6 +34,3 @@ There are some easter eggs in this project.
 - 😵 Speaking of gifs, try to access some invalid page route, it's even coolest if you access it on your desktop. 
 - 🔮 On special and selected dates you may get a message with some confetti. You can check the dates on code or you can wait until one of those days come, but I would never recommend that.
 - 💻 Did you opened DevTools already?
-- ⌨️ Shortcuts:
-    - `control` + `t`: toggle color theme.
-    - `1` to `6`: navigate through sections.

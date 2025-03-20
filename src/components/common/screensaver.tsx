@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useIdle, useMediaQuery } from 'react-haiku'
 
 import { CONFIG } from '@/config'
-import { useDvdScreensaver } from '@/hooks/dvd-screensaver'
+import { useDvdScreensaver } from '@/hooks/use-dvd-screensaver'
 import { cn } from '@/utils/tailwind-cn'
 
 export function Screensaver() {

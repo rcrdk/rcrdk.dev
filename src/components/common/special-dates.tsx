@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
 import { DATES, FULL_DATES } from '@/config/dates'
-import { useConfetti } from '@/hooks/confetti'
+import { useConfetti } from '@/hooks/use-confetti'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 

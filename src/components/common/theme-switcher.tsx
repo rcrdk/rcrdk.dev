@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
-import { scrollToSection } from '@/utils/scroll-to-section'
 
 export function ThemeSwitcher() {
 	const __ = useTranslations('Default')
@@ -53,23 +52,6 @@ export function ThemeSwitcher() {
 			clearTimeout(timer)
 		}
 	}, [currentTheme])
-
-	useEffect(() => {
-		const onKeyUp = (e: KeyboardEvent) => {
-			if (e.ctrlKey && e.key === 't') handleChangeTheme()
-
-			if (e.key === '1') scrollToSection(null, '#home')
-			if (e.key === '2') scrollToSection(null, '#about')
-			if (e.key === '3') scrollToSection(null, '#skills')
-			if (e.key === '4') scrollToSection(null, '#projects')
-			if (e.key === '5') scrollToSection(null, '#journey')
-			if (e.key === '6') scrollToSection(null, '#contact')
-		}
-
-		document.addEventListener('keyup', onKeyUp)
-
-		return () => document.removeEventListener('keyup', onKeyUp)
-	}, [handleChangeTheme])
 
 	if (!mounted) {
 		return (
