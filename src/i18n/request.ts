@@ -13,6 +13,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 	return {
 		locale,
 		messages: (await import(`./content/${locale}.json`)).default,
+		timeZone: 'America/Sao_Paulo',
 		onError(error) {
 			if (error.code === IntlErrorCode.MISSING_MESSAGE) {
 				console.error(error)

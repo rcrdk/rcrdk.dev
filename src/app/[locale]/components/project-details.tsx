@@ -4,11 +4,10 @@
 import { useCallback, useEffect, useMemo } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconBrandBehance, IconBrandGithub, IconLink, IconX } from '@tabler/icons-react'
-import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
-import { getProject } from '@/http/get-project'
+import { useProject } from '@/hooks/use-project'
 import { env } from '@/lib/env'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -21,10 +20,9 @@ type Props = {
 export function ProjectDetails({ open, onOpenChange, projectId }: Props) {
 	const __ = useTranslations('Projects')
 
-	const { data, error } = useQuery({
-		queryKey: ['project', projectId],
+	const { data, error } = useProject({
 		enabled: open && !!projectId,
-		queryFn: async () => await getProject({ id: projectId! }),
+		projectId: projectId!,
 	})
 
 	function handleOpenChange() {

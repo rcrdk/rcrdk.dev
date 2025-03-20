@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-import { useWindowSize } from '@/hooks/window-size'
+import { useWindowSize } from '@/hooks/use-window-size'
 
 export type Options = {
 	freezeOnHover?: boolean

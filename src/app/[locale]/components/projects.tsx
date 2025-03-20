@@ -5,7 +5,6 @@ import 'swiper/css'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { IconCirclePlus, IconPhotoOff } from '@tabler/icons-react'
-import { QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useDraggable } from 'react-use-draggable-scroll'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
@@ -15,9 +14,8 @@ import AnimatedContent from '@/components/animated/animated-content'
 import SplitText from '@/components/animated/split-text'
 import { Image } from '@/components/ui/image'
 import { Section } from '@/components/ui/section'
-import { getProjects } from '@/http/get-projects'
+import { useProjects } from '@/hooks/use-projects'
 import { ProjectFilters } from '@/http/types/project'
-import { queryClient } from '@/lib/react-query'
 import { cn } from '@/utils/tailwind-cn'
 
 type CategoryDTO = {
@@ -25,7 +23,7 @@ type CategoryDTO = {
 	label: string
 }
 
-export function ProjectsComponent() {
+export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
 	const refScroller = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>
 	const swiperRef = useRef<SwiperRef>(null)
@@ -47,9 +45,8 @@ export function ProjectsComponent() {
 		setProjectSelected(id)
 	}, [])
 
-	const { data, isLoading, isFetching, error } = useQuery({
-		queryKey: ['projects', filter],
-		queryFn: async () => await getProjects({ filter }),
+	const { data, isLoading, isFetching, error } = useProjects({
+		filter,
 	})
 
 	useEffect(() => {
@@ -218,13 +215,5 @@ export function ProjectsComponent() {
 
 			<ProjectDetails open={!!projectSelected} onOpenChange={handleSelectProject} projectId={projectSelected} />
 		</Section>
-	)
-}
-
-export function Projects() {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<ProjectsComponent />
-		</QueryClientProvider>
 	)
 }

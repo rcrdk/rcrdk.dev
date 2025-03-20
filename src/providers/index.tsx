@@ -1,0 +1,25 @@
+'use client'
+
+import { QueryClientProvider } from '@tanstack/react-query'
+import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
+import { ThemeProvider } from 'next-themes'
+
+import { queryClient } from '@/lib/react-query'
+
+type Props = {
+	children: React.ReactNode
+	i18n: {
+		locale: string
+		messages: AbstractIntlMessages
+	}
+}
+
+export function Providers({ children, i18n }: Props) {
+	return (
+		<NextIntlClientProvider messages={i18n.messages} locale={i18n.locale}>
+			<QueryClientProvider client={queryClient}>
+				<ThemeProvider attribute="data-mode">{children}</ThemeProvider>
+			</QueryClientProvider>
+		</NextIntlClientProvider>
+	)
+}
