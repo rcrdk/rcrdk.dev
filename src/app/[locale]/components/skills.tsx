@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
-import SplitText from '@/components/animated/split-text'
 import { Section } from '@/components/ui/section'
 
 export function Skills() {
@@ -36,13 +35,11 @@ export function Skills() {
 	return (
 		<Section classNameCenter="max-xs:pt-9" className="layout:border-t-0">
 			<div ref={ref}>
-				<h2 className="layout:mb-8 mb-8 items-center sm:mb-12 lg:static lg:block lg:h-auto lg:pr-0">
-					<SplitText
-						text={__('title')}
-						delay={50}
-						className="font-heading layout:text-6xl block text-3xl font-black tracking-tight text-balance sm:text-4xl md:max-w-full dark:text-white"
-					/>
-				</h2>
+				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+					<h2 className="layout:mb-8 font-heading layout:text-6xl mb-8 block items-center text-3xl font-black tracking-tight text-balance sm:mb-12 sm:text-4xl md:max-w-full lg:static lg:block lg:h-auto lg:pr-0 dark:text-white">
+						{__('title')}
+					</h2>
+				</AnimatedContent>
 
 				<div className="flex flex-col gap-4 sm:gap-2">
 					{list.map((item, index) => (

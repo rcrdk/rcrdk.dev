@@ -3,15 +3,14 @@
 
 import 'swiper/css'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { IconCirclePlus, IconPhotoOff } from '@tabler/icons-react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import * as Dropdown from '@radix-ui/react-dropdown-menu'
+import { IconChevronDown, IconCirclePlus, IconPhotoOff } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
-import { useDraggable } from 'react-use-draggable-scroll'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 
 import { ProjectDetails } from '@/app/[locale]/components/project-details'
 import AnimatedContent from '@/components/animated/animated-content'
-import SplitText from '@/components/animated/split-text'
 import { Image } from '@/components/ui/image'
 import { Section } from '@/components/ui/section'
 import { useProjects } from '@/hooks/use-projects'
@@ -25,10 +24,8 @@ type CategoryDTO = {
 
 export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
-	const refScroller = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>
-	const swiperRef = useRef<SwiperRef>(null)
 
-	const { events } = useDraggable(refScroller)
+	const swiperRef = useRef<SwiperRef>(null)
 
 	const [projectSelected, setProjectSelected] = useState<number>()
 	const [filter, setFilter] = useState<ProjectFilters>('highlights')
@@ -48,6 +45,8 @@ export function Projects() {
 	const { data, isLoading, isFetching, error } = useProjects({
 		filter,
 	})
+
+	const currentCategory = useMemo(() => categories.find((item) => item.id === filter), [categories, filter])
 
 	useEffect(() => {
 		if (!refContainer.current || typeof window === 'undefined') return
@@ -89,15 +88,60 @@ export function Projects() {
 
 	return (
 		<Section>
-			<h2 className="layout:mb-8 xs:mb-8 mb-6 sm:mb-12">
-				<SplitText
-					text={__('title')}
-					delay={50}
-					className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white"
-				/>
-			</h2>
+			<Dropdown.Root>
+				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+					<Dropdown.Trigger asChild>
+						<button className="group w-full cursor-pointer text-start outline-none">
+							<h2 className="font-heading flex items-center gap-6 text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white">
+								{currentCategory?.label ?? __('title')}
+
+								<span
+									className={cn(
+										'mt-3 flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 transition-all dark:bg-white/10',
+										'group-focus-visible:!border-accent-blue group-focus-visible:bg-accent-blue/10 dark:group-focus-visible:bg-accent-blue/20 group-focus-visible:ring-accent-blue/40 group-focus-visible:text-accent-blue group-focus-visible:ring-4',
+										'group-hover:bg-black/10 dark:bg-white/10 dark:group-hover:bg-white/15',
+									)}
+								>
+									<IconChevronDown className="size-6" />
+								</span>
+							</h2>
+						</button>
+					</Dropdown.Trigger>
+				</AnimatedContent>
+
+				<Dropdown.Portal>
+					<Dropdown.Content
+						className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-5 py-3 whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
+						align="start"
+						side="bottom"
+						sideOffset={24}
+					>
+						{categories.map((item) => (
+							<Dropdown.Item key={item.id} disabled={isFetching || isLoading || filter === item.id} asChild>
+								<button
+									className={cn(
+										'font-heading cursor-pointer rounded-2xl border-0 px-5 py-3 text-start text-2xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none dark:text-white',
+										'hover:bg-black/5 dark:hover:bg-white/10',
+										(isFetching || isLoading) && 'pointer-events-none opacity-60',
+									)}
+									tabIndex={filter === item.id ? -1 : 0}
+									onClick={() => handleChangeFilter(item.id)}
+									disabled={isFetching || isLoading}
+								>
+									{item.label}
+								</button>
+							</Dropdown.Item>
+						))}
+					</Dropdown.Content>
+				</Dropdown.Portal>
+			</Dropdown.Root>
 
 			<div
+				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 max-[929px]:before:hidden sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
+				ref={refContainer}
+			/>
+
+			{/* <div
 				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 max-[929px]:before:hidden sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
 				ref={refContainer}
 			>
@@ -138,7 +182,7 @@ export function Projects() {
 						))}
 					</div>
 				</div>
-			</div>
+			</div> */}
 
 			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
 				<div

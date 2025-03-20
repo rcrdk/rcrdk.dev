@@ -55,7 +55,7 @@ export function LastFmHistory() {
 				</div>
 
 				{shouldDisplaySkeletons &&
-					Array.from({ length: 6 }).map((_, i) => (
+					Array.from({ length: 5 }).map((_, i) => (
 						<div className="flex items-center gap-3 py-3 pr-5 pl-3" key={i}>
 							<div className="size-12 animate-pulse rounded-sm bg-black/10 [animation-duration:1s] dark:bg-white/15" />
 							<div className="flex flex-col items-start gap-2">

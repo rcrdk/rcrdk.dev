@@ -115,7 +115,7 @@
 		"categories": [
 			{
 				"id": "highlights",
-				"label": "Highlighted"
+				"label": "Highlighted projects"
 			}, {
 				"id": "web_app",
 				"label": "Web Apps"
@@ -161,7 +161,7 @@
 
 	"Journey": {
 		"title": "My journey",
-		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>, but my focus has always been on web development. Currently, I work at <strong>Meu Rosinha</strong> and also take on parallel projects. In the future, I seek <strong>new experiences and challenges.</strong>",
+		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>. Currently, I work at <strong>Meu Rosinha</strong> and also take on parallel projects. In the future, I seek <strong>new experiences and challenges.</strong>",
 		"box": {
 			"text": "Check out my full profile with experiences, courses, and certifications on LinkedIn, or take a look at my resume.",
 			"button": {
@@ -175,12 +175,12 @@
 				{
 					"company": "Meu Rosinha",
 					"url": "https://meurosinha.com.br",
-					"role": "Front-End Developer",
-					"time_range": "2021 - Present",
+					"title": "Front-End Developer",
+					"time_range": "2021 - 2025",
 					"location": "Remote",
 					"info": [
-						"I develop the web app, website, and online store of the platform alongside the team using React, Next.js, TypeScript, and Sass.",
-						"I design page layouts and visuals, as well as some graphic materials for the projects.",
+						"I developed the web app, website, and online store of the platform alongside the team using React, Next.js, TypeScript, and Sass.",
+						"I designed page layouts and visuals, as well as some graphic materials for the projects.",
 						"I assisted in the brand rebranding by recreating its visual identity; the platform’s original name was SmartMK.",
 						"I developed the previous website and worked on maintaining the legacy web app.",
 						"Rosinha has nearly 1,000 subscribers, and this number is expected to grow with new features such as WhatsApp integration and catalog expansion, now including Customizados, Natura, Boticário, Avon, and others, beyond Mary Kay, which was the only one available until then.",
@@ -190,7 +190,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Full-Stack Developer",
+					"title": "Full-Stack Developer",
 					"time_range": "2019 - 2025",
 					"location": "Remote",
 					"info": [
@@ -202,7 +202,7 @@
 				{
 					"company": "Sonica",
 					"url": "https://sonica.xyz/",
-					"role": "Front-End Developer",
+					"title": "Front-End Developer",
 					"time_range": "2017 - 2021",
 					"location": "Timbó, SC, Brazil",
 					"info": [
@@ -214,7 +214,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Front-End Developer",
+					"title": "Front-End Developer",
 					"time_range": "2013 - 2019",
 					"location": "Timbó, SC, Brazil",
 					"info": [

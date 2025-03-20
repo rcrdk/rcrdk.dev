@@ -9,7 +9,6 @@ import {
 import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
-import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
@@ -19,13 +18,11 @@ export function Contact() {
 
 	return (
 		<Section>
-			<h2 className="layout:mb-8 mb-8 sm:mb-12">
-				<SplitText
-					text={__('title')}
-					delay={50}
-					className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white"
-				/>
-			</h2>
+			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+				<h2 className="layout:mb-8 font-heading mb-8 block text-5xl font-black tracking-tight text-balance sm:mb-12 sm:text-7xl lg:text-6xl dark:text-white">
+					{__('title')}
+				</h2>
+			</AnimatedContent>
 
 			<div className="layout:mt-8 mt-8 sm:mt-12">
 				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} delay={250} rootMargin="0px 0px 125px">

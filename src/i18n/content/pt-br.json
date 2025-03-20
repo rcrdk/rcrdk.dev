@@ -115,7 +115,7 @@
 		"categories": [
 			{
 				"id": "highlights",
-				"label": "Destaques"
+				"label": "Projetos em destaque"
 			}, {
 				"id": "web_app",
 				"label": "Web Apps"
@@ -161,7 +161,7 @@
 
 	"Journey": {
 		"title": "Minha trajetória",
-		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando ingressei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>, mas sempre mantive o foco no desenvolvimento web. Atualmente, trabalho no <strong>Meu Rosinha</strong> e também atuo em projetos paralelos. Para o futuro, busco <strong>novas experiências e desafios.</strong>",
+		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando ingressei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Atualmente, trabalho no <strong>Meu Rosinha</strong> e também atuo em projetos paralelos. Para o futuro, busco <strong>novas experiências e desafios.</strong>",
 		"box": {
 			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
 			"button": {
@@ -175,8 +175,8 @@
 				{
 					"company": "Meu Rosinha",
 					"url": "https://meurosinha.com.br",
-					"role": "Desenvolvedor Front-End",
-					"time_range": "2021 - Presente",
+					"title": "Desenvolvedor Front-End",
+					"time_range": "2021 - 2025",
 					"location": "Remoto",
 					"info": [
 						"Desenvolvo o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
@@ -190,7 +190,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Desenvolvedor Full-Stack",
+					"title": "Desenvolvedor Full-Stack",
 					"time_range": "2019 - 2025",
 					"location": "Remoto",
 					"info": [
@@ -202,7 +202,7 @@
 				{
 					"company": "Sonica",
 					"url": "https://sonica.xyz/",
-					"role": "Desenvolvedor Front-End",
+					"title": "Desenvolvedor Front-End",
 					"time_range": "2017 - 2021",
 					"location": "Timbó, SC",
 					"info": [
@@ -214,7 +214,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Desenvolvedor Front-End",
+					"title": "Desenvolvedor Front-End",
 					"time_range": "2013 - 2019",
 					"location": "Timbó, SC",
 					"info": [
