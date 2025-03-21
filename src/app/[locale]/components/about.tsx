@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl'
 
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
-import SplitText from '@/components/animated/split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { FULL_DATES } from '@/config/dates'
@@ -25,11 +24,11 @@ export function About() {
 			<div className="-md-14 relative flex flex-col-reverse items-center sm:-mt-20 sm:items-end lg:mt-0 lg:flex-row lg:items-center">
 				<div>
 					<h2 className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 left-0 flex aspect-[16/15] items-end justify-start sm:aspect-auto sm:h-[26rem] lg:static lg:mb-12 lg:block lg:h-auto">
-						<SplitText
-							text={__('title')}
-							delay={50}
-							className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl md:max-w-full lg:text-6xl dark:text-white"
-						/>
+						<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
+							<span className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl md:max-w-full lg:text-6xl dark:text-white">
+								{__('title')}
+							</span>
+						</AnimatedContent>
 					</h2>
 
 					<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
@@ -53,10 +52,9 @@ export function About() {
 						<Image src={avatarPicture} width={800} height={800} quality={100} alt="" className="shrink-0" />
 
 						<span className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 flex aspect-[16/15] w-full max-w-[768px] translate-3d items-end justify-start sm:aspect-auto sm:h-[26rem] sm:w-[calc(100vw-(var(--spacing)*32))] md:w-[calc(100vw-(var(--spacing)*40))] lg:hidden">
-							<SplitText
-								text={__('title')}
-								className="font-heading block text-5xl font-black tracking-tight text-balance text-white sm:text-7xl md:max-w-full lg:text-6xl"
-							/>
+							<span className="font-heading block text-5xl font-black tracking-tight text-balance text-white sm:text-7xl md:max-w-full lg:text-6xl">
+								{__('title')}
+							</span>
 						</span>
 					</AnimatedContent>
 				</div>

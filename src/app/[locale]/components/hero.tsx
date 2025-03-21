@@ -72,7 +72,7 @@ export function Hero() {
 					config={{ tension: 60, friction: 15 }}
 					rootMargin="0px 0px 125px"
 				>
-					<div className="layout:mt-14 mt-12 flex justify-between gap-4 sm:mt-18 sm:gap-0">
+					<div className="layout:pt-14 flex justify-between gap-4 pt-12 sm:gap-0 sm:pt-18">
 						<Button
 							as="a"
 							href="#about"

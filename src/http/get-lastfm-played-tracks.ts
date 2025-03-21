@@ -11,7 +11,7 @@ type GetLastFmPlayedTracks = {
 	}[]
 }
 
-export async function getLastFmPlayedTracks(): Promise<GetLastFmPlayedTracks> {
+export async function getLastFmPlayedTracks(): Promise<GetLastFmPlayedTracks | undefined> {
 	try {
 		await new Promise((resolve) => setTimeout(resolve, 500))
 
@@ -27,9 +27,5 @@ export async function getLastFmPlayedTracks(): Promise<GetLastFmPlayedTracks> {
 		return data
 	} catch (error) {
 		console.error(error)
-
-		return {
-			tracks: [],
-		}
 	}
 }

@@ -78,34 +78,26 @@
 
 	"Skills": {
 		"title": "Conhecimentos e habilidades",
-		"list": [
+		"categories": [
 			{
-				"title": "Idiomas",
-				"text": "Português (Nativo), Inglês (Intermediário B2)"
+				"id": "front-end",
+				"title": "Front-End"
 			},
 			{
-				"title": "Desenvolvimento Front-End",
-				"text": "Javascript, Typescript, React, Next.js, Vue.js, HTML, CSS, Redux, Zustand, Context API, Styled Components, TailwindCSS, Sass, API Rest, React Query, React Hook Form, Zod, Radix UI, shadcn/ui, Storybook, JQuery"
+				"id": "back-end",
+				"title": "Back-End"
 			},
 			{
-				"title": "Desenvolvimento Back-End",
-				"text": "Javascript, Typescript, Node.js, Fastify, NestJS, PHP, Laravel (criacão de CMS's), API Rest, Stripe API, Auth.js, PostgreSQL, Firebase Store e Database, CloudFlare R2, Prisma ORM, Laravel Eloquent"
+				"id": "mobile",
+				"title": "Mobile"
 			},
 			{
-				"title": "Desenvolvimento Mobile",
-				"text": "React Native, React, Expo, React Native Reanimated, React Native Gesture Handler, Styled Components, Gluestack UI"
+				"id": "tools",
+				"title": "Softwares e Ferramentas"
 			},
 			{
-				"title": "Testes",
-				"text": "Vitest, React Testing Library, Playwright, MSW"
-			},
-			{
-				"title": "Softwares e Ferramentas",
-				"text": "macOS, Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, Docker, Git, GitHub, BitBucket, Notion, Trello, ESLint, Prettier, EditorConfig"
-			},
-			{
-				"title": "Outras Atividades",
-				"text": "Kanban, UI/UX, design responsivo, mobile first, SEO, acessibilidade, SOLID, Clean Architecture, design patterns, orientação a detalhes, criatividade, trabalho em equipe, resolução de problemas"
+				"id": "misc",
+				"title": "Outras habilidades"
 			}
 		]
 	},
@@ -115,7 +107,7 @@
 		"categories": [
 			{
 				"id": "highlights",
-				"label": "Destaques"
+				"label": "Projetos em destaque"
 			}, {
 				"id": "web_app",
 				"label": "Web Apps"
@@ -161,7 +153,7 @@
 
 	"Journey": {
 		"title": "Minha trajetória",
-		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando ingressei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>, mas sempre mantive o foco no desenvolvimento web. Atualmente, trabalho no <strong>Meu Rosinha</strong> e também atuo em projetos paralelos. Para o futuro, busco <strong>novas experiências e desafios.</strong>",
+		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos.",
 		"box": {
 			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
 			"button": {
@@ -175,12 +167,12 @@
 				{
 					"company": "Meu Rosinha",
 					"url": "https://meurosinha.com.br",
-					"role": "Desenvolvedor Front-End",
-					"time_range": "2021 - Presente",
+					"title": "Desenvolvedor Front-End",
+					"time_range": "2021 - 2025",
 					"location": "Remoto",
 					"info": [
-						"Desenvolvo o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
-						"Desenvolvo o layout e design das páginas além de alguns materiais gráficos dos projetos.",
+						"Desenvolvi o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
+						"Desenvolvi o layout e design das páginas além de alguns materiais gráficos dos projetos.",
 						"Auxiliei o rebranding da marca recriando a identidade visual, o nome original da ferramenta era SmartMK.",
 						"Desenvolvi o web site antigo e trabalhei na manutenção do web app legado.",
 						"O Rosinha tem quase 1.000 assinantes, e esse número deve crescer com novas features, como integração com WhatsApp e expansão dos catálogos, que agora incluem Customizados, Natura, Boticário, Avon e outros além da Mary Kay que era o único até então.",
@@ -190,7 +182,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Desenvolvedor Full-Stack",
+					"title": "Desenvolvedor Full-Stack",
 					"time_range": "2019 - 2025",
 					"location": "Remoto",
 					"info": [
@@ -202,7 +194,7 @@
 				{
 					"company": "Sonica",
 					"url": "https://sonica.xyz/",
-					"role": "Desenvolvedor Front-End",
+					"title": "Desenvolvedor Front-End",
 					"time_range": "2017 - 2021",
 					"location": "Timbó, SC",
 					"info": [
@@ -214,7 +206,7 @@
 				{
 					"company": "Sou Digital",
 					"url": "https://sou.digital",
-					"role": "Desenvolvedor Front-End",
+					"title": "Desenvolvedor Front-End",
 					"time_range": "2013 - 2019",
 					"location": "Timbó, SC",
 					"info": [

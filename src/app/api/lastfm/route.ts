@@ -4,7 +4,7 @@ import { env } from '@/lib/env'
 
 export async function GET() {
 	try {
-		const lastPlayedTracksUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${env.LASTFM_USENAME}&api_key=${env.LASTFM_API_KEY}&format=json&limit=5`
+		const lastPlayedTracksUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${env.LASTFM_USENAME}&api_key=${env.LASTFM_API_KEY}&format=json&limit=10`
 
 		const response = await fetch(lastPlayedTracksUrl)
 		const data = await response.json()
