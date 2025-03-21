@@ -35,6 +35,14 @@
 		"lastfm": {
 			"title": "Recently played tracks",
 			"button": "Check out my playlists"
+		},
+		"game": {
+			"title": "Let's play a game",
+			"text": "Do you think you can fin all my website easter eggs?",
+			"button": "[spoiler alert]",
+			"score": "Your score:",
+			"reset": "Reset",
+			"modalTitle": "Easter Eggs"
 		}
 	},
 

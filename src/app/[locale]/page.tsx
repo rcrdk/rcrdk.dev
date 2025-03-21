@@ -7,6 +7,7 @@ import { Hero } from '@/app/[locale]/components/hero'
 import { Journey } from '@/app/[locale]/components/journey'
 import { Projects } from '@/app/[locale]/components/projects'
 import { Skills } from '@/app/[locale]/components/skills'
+import { GameModal } from '@/components/common/game-modal'
 import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
 import { Screensaver } from '@/components/common/screensaver'
@@ -96,6 +97,7 @@ export default async function HomePage({ params }: Props) {
 			<ScrollStart />
 			<Screensaver />
 			<SpecialDates />
+			<GameModal />
 		</div>
 	)
 }

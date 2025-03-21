@@ -3,7 +3,7 @@ import { cn } from '@/utils/tailwind-cn'
 
 type Props<T extends React.ElementType> = {
 	as?: T
-	variant?: 'solid' | 'outline' | 'outline-touch' | 'discret'
+	variant?: 'solid' | 'outline' | 'outline-touch' | 'discret' | 'glowing'
 	size?: 'base' | 'lg' | 'sm' | 'xs'
 	icon?: boolean
 }
@@ -41,8 +41,8 @@ export function Button<T extends React.ElementType = 'button'>({
 				variant === 'solid' && 'bg-content-light dark:bg-white text-white dark:text-black hover:bg-content-light/80 dark:hover:bg-white/85 focus-visible:!bg-accent-blue focus-visible:text-white focus-visible:border-white dark:focus-visible:border-black',
 				variant === 'outline' && 'bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border-black/20 hover:border-black/60 dark:border-white/20 dark:text-white dark:hover:border-white/50 focus-visible:!border-accent-blue focus-visible:bg-accent-blue/10 dark:focus-visible:bg-accent-blue/20',
 				variant === 'discret' && 'bg-black/5 dark:bg-white/10  hover:bg-black/10 dark:hover:bg-white/15 focus-visible:bg-accent-blue/10 focus-visible:dark:bg-accent-blue/20',
-
 				variant === 'outline-touch' && 'bg-white/10 hover:bg-white/15 border-white/20 text-white hover:border-white/50 focus-visible:!border-accent-blue focus-visible:bg-accent-blue/20',
+				variant === 'glowing' && 'bg-white/65 dark:bg-black/75 hover:bg-white dark:hover:bg-black',
 			
 				props.className,
 			)}

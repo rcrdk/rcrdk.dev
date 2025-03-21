@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 
 import avatarPicture from '@/assets/avatar.jpg'
 import AnimatedContent from '@/components/animated/animated-content'
+import { Game } from '@/components/common/game-toggle'
 import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
@@ -100,6 +101,7 @@ function HeaderInset({ animationEnter }: Props) {
 					<LocaleSwitcher />
 					<ThemeSwitcher />
 					<LastFmHistory />
+					<Game />
 				</div>
 			</Container>
 		</AnimatedContent>

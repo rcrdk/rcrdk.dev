@@ -6,10 +6,12 @@ import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
+import { useGame } from '@/hooks/use-game'
 
 export function ThemeSwitcher() {
 	const __ = useTranslations('Default')
 	const { setTheme, theme: currentTheme, resolvedTheme } = useTheme()
+	const { onCompleteTask } = useGame()
 
 	const [mounted, setMounted] = useState(false)
 
@@ -31,6 +33,8 @@ export function ThemeSwitcher() {
 
 		document.documentElement.classList.add('disable-transitions')
 
+		onCompleteTask('switch-theme')
+
 		switch (currentTheme) {
 			case 'system':
 				return setTheme(isSystemDarkTheme ? 'light' : 'dark')
@@ -39,7 +43,7 @@ export function ThemeSwitcher() {
 			case 'dark':
 				return setTheme('light')
 		}
-	}, [currentTheme, resolvedTheme, setTheme])
+	}, [currentTheme, onCompleteTask, resolvedTheme, setTheme])
 
 	useEffect(() => setMounted(true), [])
 
