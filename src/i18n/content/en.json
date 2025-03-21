@@ -78,34 +78,26 @@
 
 	"Skills": {
 		"title": "Skills and expertise",
-		"list": [
+		"categories": [
 			{
-				"title": "Communication",
-				"text": "Portuguese (Native), English (B2 Upper Intermediate)"
+				"id": "front-end",
+				"title": "Front-End"
 			},
 			{
-				"title": "Front-End Development",
-				"text": "Javascript, Typescript, React, Next.js, Vue.js, HTML, CSS, Redux, Zustand, Context API, Styled Components, TailwindCSS, Sass, Rest API, React Query, React Hook Form, Zod, Radix UI, shadcn/ui, Storybook, JQuery"
+				"id": "mobile",
+				"title": "Mobile"
 			},
 			{
-				"title": "Back-End Development",
-				"text": "Javascript, Typescript, Node.js, Fastify, NestJS, PHP, Laravel (CMS's development), Rest API, Stripe API, Auth.js, PostgreSQL, Firebase Store and Database, CloudFlare R2, Prisma ORM, Laravel Eloquent"
+				"id": "back-end",
+				"title": "Back-End"
 			},
 			{
-				"title": "Mobile Development",
-				"text": "React Native, React, Expo, React Native Reanimated, React Native Gesture Handler, Styled Components, Gluestack UI"
+				"id": "tools",
+				"title": "Softwares & Tools"
 			},
 			{
-				"title": "Testing",
-				"text": "Vitest, React Testing Library, Playwright, MSW"
-			},
-			{
-				"title": "Softwares & Tools",
-				"text": "macOS, Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, Docker, Git, GitHub, BitBucket, Notion, Trello, ESLint, Prettier, EditorConfig"
-			},
-			{
-				"title": "Metodologies & Others",
-				"text": "Kanban, UI/UX, responsive design, mobile first, SEO, accessibility, SOLID, Clean Architecture, design patterns, detailed-oriented person, creativity, teamwork, problem-solving"
+				"id": "misc",
+				"title": "Other skills"
 			}
 		]
 	},
