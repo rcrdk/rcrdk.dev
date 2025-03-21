@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Image from 'next/image'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react'
@@ -17,10 +17,14 @@ export function LastFmHistory() {
 	const locale = useLocale()
 	const __ = useTranslations('Default')
 
-	const { data, isFetching, isLoading, error } = useLastFM({ enabled: open })
+	const { data, isFetching, isLoading } = useLastFM({ enabled: open })
 
-	const shouldDisplayList = data?.tracks && !isFetching && !isLoading && !error
-	const shouldDisplaySkeletons = isLoading || isFetching || error
+	const tracks = useMemo(() => {
+		return data?.tracks?.slice(0, 7)
+	}, [data?.tracks])
+
+	const shouldDisplayList = tracks && !isFetching && !isLoading
+	const shouldDisplaySkeletons = isLoading || isFetching || !tracks
 
 	return (
 		<Dropdown.Root open={open} onOpenChange={() => setOpen((prev) => !prev)}>
@@ -55,9 +59,9 @@ export function LastFmHistory() {
 				</div>
 
 				{shouldDisplaySkeletons &&
-					Array.from({ length: 5 }).map((_, i) => (
-						<div className="flex items-center gap-3 py-3 pr-5 pl-3" key={i}>
-							<div className="size-12 animate-pulse rounded-sm bg-black/10 [animation-duration:1s] dark:bg-white/15" />
+					Array.from({ length: 7 }).map((_, i) => (
+						<div className="flex items-center gap-3 py-2.5 pr-5 pl-3" key={i}>
+							<div className="size-10 animate-pulse rounded-sm bg-black/10 [animation-duration:1s] dark:bg-white/15" />
 							<div className="flex flex-col items-start gap-2">
 								<span className="block h-3 w-72 animate-pulse rounded-sm bg-black/10 [animation-duration:1s] dark:bg-white/15" />
 								<span className="block h-2 w-52 animate-pulse rounded-sm bg-black/10 [animation-duration:1s] dark:bg-white/15" />
@@ -66,23 +70,26 @@ export function LastFmHistory() {
 					))}
 
 				{shouldDisplayList &&
-					data.tracks.map((item, index) => (
-						<div key={index} className="flex min-w-0 items-center gap-3 py-3 pr-5 pl-3">
+					tracks?.map((item, index) => (
+						<div key={index} className="flex min-w-0 items-center gap-3 py-2.5 pr-5 pl-3">
 							<Image
-								className="block size-12 shrink-0 rounded-sm bg-black/5 dark:bg-white/15"
+								className="block size-10 shrink-0 rounded-sm bg-black/5 dark:bg-white/15"
 								src={item.cover}
-								width={250}
-								height={250}
+								width={150}
+								height={150}
 								alt={`${item.artist} - ${item.name}`}
 							/>
 
 							<div className="min-w-0 grow pr-4 capitalize">
-								<h2 className="overflow-hidden text-sm font-semibold overflow-ellipsis" title={item.name}>
+								<h2
+									className="overflow-hidden text-sm font-semibold tracking-tight overflow-ellipsis"
+									title={item.name}
+								>
 									{item.name}
 								</h2>
 
 								<p
-									className="overflow-hidden text-xs overflow-ellipsis text-black/75 dark:text-white/75"
+									className="overflow-hidden text-xs tracking-tight overflow-ellipsis text-black/75 dark:text-white/75"
 									title={`${item.artist} • ${item.album}`}
 								>
 									{item.artist} • {item.album}
@@ -90,7 +97,7 @@ export function LastFmHistory() {
 							</div>
 
 							{item.playedAt === 'Now Playing' ? (
-								<div className="flex h-full shrink-0 items-center justify-center">
+								<div className="bg-accent-blue/15 flex size-10 shrink-0 items-center justify-center rounded-full">
 									<div className="animate-wave bg-accent-blue mx-[2px] h-2 w-[3px] rounded-xl [animation-delay:-0.4s]" />
 									<div className="animate-wave bg-accent-blue mx-[2px] h-3 w-[3px] rounded-xl [animation-delay:-0.2s]" />
 									<div className="animate-wave bg-accent-blue mx-[2px] h-4 w-[3px] rounded-xl" />

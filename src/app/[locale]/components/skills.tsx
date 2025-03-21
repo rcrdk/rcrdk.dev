@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { SkillItem } from '@/app/[locale]/components/skill-item'
@@ -10,10 +10,13 @@ import { SkillCategories, SKILLS } from '@/data/skills'
 import { cn } from '@/utils/tailwind-cn'
 
 export function Skills() {
+	const listRef = useRef<HTMLDivElement>(null)
+
 	const __ = useTranslations('Skills')
 	const categories = __.raw('categories') as { id: SkillCategories; title: string }[]
 
 	const [selectedCategory, setSelectedCategory] = useState<SkillCategories>('front-end')
+	const [listHeight, setListHeight] = useState(0)
 
 	const skills = useMemo(() => {
 		return SKILLS.filter((item) => item.categories.includes(selectedCategory))
@@ -22,6 +25,12 @@ export function Skills() {
 	function handleChangeCategory(category: SkillCategories) {
 		setSelectedCategory(category)
 	}
+
+	useEffect(() => {
+		if (!listRef.current) return
+
+		setListHeight(listRef.current.offsetHeight)
+	}, [selectedCategory])
 
 	return (
 		<Section classNameCenter="max-xs:pt-9" className="layout:border-t-0">
@@ -56,13 +65,17 @@ export function Skills() {
 				))}
 			</div>
 
-			<hr className="my-8 border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
+			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+				<hr className="my-8 border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
 
-			<div className="flex flex-wrap gap-2">
-				{skills.map((item) => (
-					<SkillItem name={item.name} key={item.name} />
-				))}
-			</div>
+				<div className="[transition:height_500ms_ease]" style={{ height: `${listHeight}px` }}>
+					<div className="flex flex-wrap gap-2 md:gap-3" ref={listRef}>
+						{skills.map((item) => (
+							<SkillItem skill={item} key={item.title.en} />
+						))}
+					</div>
+				</div>
+			</AnimatedContent>
 		</Section>
 	)
 }

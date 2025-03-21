@@ -153,7 +153,7 @@
 
 	"Journey": {
 		"title": "Minha trajetória",
-		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando ingressei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Atualmente, trabalho no <strong>Meu Rosinha</strong> e também atuo em projetos paralelos. Para o futuro, busco <strong>novas experiências e desafios.</strong>",
+		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos.",
 		"box": {
 			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
 			"button": {
@@ -171,8 +171,8 @@
 					"time_range": "2021 - 2025",
 					"location": "Remoto",
 					"info": [
-						"Desenvolvo o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
-						"Desenvolvo o layout e design das páginas além de alguns materiais gráficos dos projetos.",
+						"Desenvolvi o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
+						"Desenvolvi o layout e design das páginas além de alguns materiais gráficos dos projetos.",
 						"Auxiliei o rebranding da marca recriando a identidade visual, o nome original da ferramenta era SmartMK.",
 						"Desenvolvi o web site antigo e trabalhei na manutenção do web app legado.",
 						"O Rosinha tem quase 1.000 assinantes, e esse número deve crescer com novas features, como integração com WhatsApp e expansão dos catálogos, que agora incluem Customizados, Natura, Boticário, Avon e outros além da Mary Kay que era o único até então.",

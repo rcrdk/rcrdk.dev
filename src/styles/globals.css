@@ -138,7 +138,11 @@
 	}
 
 	a {
-		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all;
+		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all [user-drag:none] [-webkit-user-drag:none];
+	}
+
+	img {
+		@apply pointer-events-none select-none [user-drag:none] [-webkit-user-drag:none];
 	}
 
 	p strong,

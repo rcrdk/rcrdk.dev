@@ -22,7 +22,7 @@ export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
 				tabIndex={open ? -1 : 0}
 				onClick={onOpenChange}
 			>
-				<h3 className="font-heading flex items-center justify-between text-2xl tracking-tight dark:text-white">
+				<h3 className="font-heading flex items-center justify-between gap-4 text-2xl tracking-tight dark:text-white">
 					{title}
 
 					<span
@@ -40,7 +40,7 @@ export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
 
 			<Collapsible.Root open={open} onOpenChange={onOpenChange}>
 				<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden">
-					<ul className="flex flex-col gap-8 py-12">
+					<ul className="flex flex-col gap-8 py-12 pl-1 md:pl-0">
 						{items.map((item, index) => (
 							<li key={index}>
 								<div className="grid grid-cols-[auto_1fr] md:grid-cols-[10rem_1px_1fr]">

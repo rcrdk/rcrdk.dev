@@ -110,7 +110,7 @@ export function Projects() {
 
 				<Dropdown.Portal>
 					<Dropdown.Content
-						className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-5 py-3 whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
+						className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-5 py-6 whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
 						align="start"
 						side="bottom"
 						sideOffset={24}
@@ -119,8 +119,10 @@ export function Projects() {
 							<Dropdown.Item key={category.id} disabled={selectedCategory === category.id} asChild>
 								<button
 									className={cn(
-										'font-heading cursor-pointer rounded-2xl border-0 px-5 py-3 text-start text-2xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none dark:text-white',
-										'hover:bg-black/5 dark:hover:bg-white/10',
+										'font-heading rounded-2xl border-0 px-5 py-3 text-start text-2xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none dark:text-white',
+										selectedCategory === category.id
+											? 'bg-black/5 dark:bg-white/10'
+											: 'cursor-pointer hover:bg-black/5 dark:hover:bg-white/10',
 									)}
 									tabIndex={selectedCategory === category.id ? -1 : 0}
 									onClick={() => handleChangeCategory(category.id)}
