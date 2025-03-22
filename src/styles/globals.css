@@ -38,7 +38,8 @@
 	--animate-dropdown-in: scaleIn 300ms ease;
 	--animate-dropdown-out: scaleOut 300ms ease;
 
-	--animate-glowing: glowing 20s linear infinite;
+	--animate-glowing: glowing 120s linear infinite;
+	--animate-glowing-rotate: glowingRotate 20s linear infinite;
 
 	@keyframes avatar {
 		from { border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%; }
@@ -122,6 +123,12 @@
 	}
 
 	@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 1000% 0; }
+    100% { background-position: 0 0; }
+	}
+
+	@keyframes glowingRotate {
     0% { background-position: 0 0; transform: rotate(0deg); }
     50% { background-position: 400% 0; transform: rotate(360deg); }
     100% { background-position: 0 0; transform: rotate(0deg); }

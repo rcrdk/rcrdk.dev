@@ -37,12 +37,11 @@
 			"button": "Check out my playlists"
 		},
 		"game": {
-			"title": "Let's play a game",
-			"text": "Do you think you can fin all my website easter eggs?",
+			"title": "Let's play a game!",
+			"text": "Can you find all easter eggs that I planted in here?",
 			"button": "[spoiler alert]",
 			"score": "Your score:",
-			"reset": "Reset",
-			"modalTitle": "Easter Eggs"
+			"reset": "Reset"
 		}
 	},
 

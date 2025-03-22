@@ -3,7 +3,7 @@ import { cn } from '@/utils/tailwind-cn'
 
 type Props<T extends React.ElementType> = {
 	as?: T
-	variant?: 'solid' | 'outline' | 'outline-touch' | 'discret' | 'glowing'
+	variant?: 'solid' | 'outline' | 'outline-touch' | 'discret' | 'glowing' | 'outline-warning'
 	size?: 'base' | 'lg' | 'sm' | 'xs'
 	icon?: boolean
 }
@@ -43,6 +43,7 @@ export function Button<T extends React.ElementType = 'button'>({
 				variant === 'discret' && 'bg-black/5 dark:bg-white/10  hover:bg-black/10 dark:hover:bg-white/15 focus-visible:bg-accent-blue/10 focus-visible:dark:bg-accent-blue/20',
 				variant === 'outline-touch' && 'bg-white/10 hover:bg-white/15 border-white/20 text-white hover:border-white/50 focus-visible:!border-accent-blue focus-visible:bg-accent-blue/20',
 				variant === 'glowing' && 'bg-white/65 dark:bg-black/75 hover:bg-white dark:hover:bg-black',
+				variant === 'outline-warning' && 'bg-orange-500/15 dark:bg-orange-400/20 hover:bg-orange-500/25 dark:hover:bg-orange/40 border-orange-600/75  dark:border-orange-500/50 text-orange-600 dark:text-orange-400 dark:hover:border-orange-400/75    hover:border-orange-700 focus-visible:text-orange-600 dark:focus-visible:text-orange-400 dark:focus-visible:border-orange-500/50 focus-visible:border-orange-600/75 focus-visible:ring-orange-500/20 dark:focus-visible:ring-orange-300/30 font-medium',
 			
 				props.className,
 			)}

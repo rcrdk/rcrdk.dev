@@ -10,6 +10,8 @@ import { Metadata } from 'next'
 import { IconArrowLeft } from '@tabler/icons-react'
 import { getTranslations } from 'next-intl/server'
 
+import { RegisterGameTask } from '@/components/common/register-game-task'
+
 export async function generateMetadata(): Promise<Metadata> {
 	const __ = await getTranslations('NotFound')
 
@@ -56,6 +58,8 @@ export default async function NotFound() {
 				offsetY={-200}
 				className="pointer-events-none fixed inset-1/2 z-[40] opacity-0 transition-opacity duration-500 in-hover:!opacity-100"
 			/>
+
+			<RegisterGameTask taskId="not-found" />
 
 			<div className="only-touch:opacity-100 absolute inset-0 bg-black opacity-0" />
 

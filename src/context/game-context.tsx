@@ -18,8 +18,10 @@ interface GameContextDataProps {
 	pointsTotal: number
 	onCompleteTask: (taskId: GameTaskTypes) => void
 	onResetGame: VoidFunction
-	showGameHistory: boolean
-	onShowGameHistory: VoidFunction
+	showGameModal: boolean
+	onShowGameModal: VoidFunction
+	showGameTasks: boolean
+	onShowGameTasks: VoidFunction
 }
 
 export const GameContext = createContext<GameContextDataProps>({} as GameContextDataProps)
@@ -32,7 +34,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	const localStorageKey = '@RCRDK.DEV:GAME_TASKS-1.0.0'
 
 	const [tasksComleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
-	const [showGameHistory, setShowGameHistory] = useState(false)
+	const [showGameModal, setShowGameModal] = useState(false)
+	const [showGameTasks, setShowGameTasks] = useState(false)
 	const [isScreenSizeAllowed, setIsScreenSizeAllowed] = useState(false)
 
 	const locale = useLocale() as LocalesType
@@ -60,16 +63,25 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	)
 
 	function onResetGame() {
-		setTasksCompleted([])
+		if (showGameTasks) {
+			setTasksCompleted(['has-opened-hints'])
+		} else {
+			setTasksCompleted([])
+		}
 
 		if (typeof window !== 'undefined') {
 			window.localStorage.setItem(localStorageKey, JSON.stringify([]))
 		}
 	}
 
-	function onShowGameHistory() {
-		setShowGameHistory((prev) => !prev)
+	function onShowGameModal() {
+		setShowGameModal((prev) => !prev)
 	}
+
+	const onShowGameTasks = useCallback(() => {
+		setShowGameTasks((prev) => !prev)
+		onCompleteTask('has-opened-hints')
+	}, [onCompleteTask])
 
 	const gameTasks: GameTask[] = useMemo(() => {
 		return GAME_TASKS.map((task) => ({
@@ -124,8 +136,10 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				pointsTotal,
 				onCompleteTask,
 				onResetGame,
-				showGameHistory,
-				onShowGameHistory,
+				showGameModal,
+				onShowGameModal,
+				showGameTasks,
+				onShowGameTasks,
 			}}
 		>
 			{children}

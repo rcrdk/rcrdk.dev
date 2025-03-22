@@ -7,6 +7,7 @@ import { useIdle, useMediaQuery } from 'react-haiku'
 
 import { CONFIG } from '@/config'
 import { useDvdScreensaver } from '@/hooks/use-dvd-screensaver'
+import { useGame } from '@/hooks/use-game'
 import { cn } from '@/utils/tailwind-cn'
 
 export function Screensaver() {
@@ -37,6 +38,8 @@ export function Screensaver() {
 	const isTouchDevice = useMediaQuery('(hover : none)', false)
 	const __ = useTranslations('Default')
 
+	const { onCompleteTask } = useGame()
+
 	const { containerRef, elementRef } = useDvdScreensaver({
 		speed: 3,
 	})
@@ -52,8 +55,12 @@ export function Screensaver() {
 			}, 700)
 		}
 
+		if (isIddle) {
+			onCompleteTask('screensaver')
+		}
+
 		return () => clearTimeout(timer)
-	}, [gifs, isIddle])
+	}, [gifs, isIddle, onCompleteTask])
 
 	if (isTouchDevice || process.env.NODE_ENV !== 'production') {
 		return null
