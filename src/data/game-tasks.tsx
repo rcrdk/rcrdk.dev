@@ -12,7 +12,7 @@ export type GameTaskTypes =
 	| 'not-found'
 	| 'dev-tools'
 	| 'konami'
-	| 'random-fact' // add button
+	| 'random-fact'
 	| 'about-me'
 
 type GameTaskObject = {
