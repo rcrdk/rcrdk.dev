@@ -56,7 +56,10 @@ export function Screensaver() {
 		}
 
 		if (isIddle) {
-			onCompleteTask('screensaver')
+			timer = setTimeout(() => {
+				setGif(random)
+				onCompleteTask('screensaver')
+			}, 700)
 		}
 
 		return () => clearTimeout(timer)

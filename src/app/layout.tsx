@@ -54,12 +54,13 @@ export default async function RootLayout({ children }: Props) {
 					<Toaster
 						offset={40}
 						mobileOffset={24}
+						className="!pointer-events-auto"
 						toastOptions={{
 							unstyled: false,
 							classNames: {
 								content: 'grow',
 								toast:
-									'select-none !py-3 !px-5 xs:!py-4 xs!px-7 !rounded-3xl !h-auto !border-black/15 !shadow-2xl max-[600px]:!w-[calc(100vw-48px)] !w-[540px] !gap-2 xs:!gap-3 !bg-white/90 backdrop-blur-xs dark:!bg-black/70 dark:!border-white/20 max-xs:!flex-col',
+									'select-none !py-3 !px-5 xs:!py-4 xs!px-7 !rounded-3xl !h-auto !border-black/15 !shadow-2xl max-[600px]:!w-[calc(100vw-48px)] !w-[540px] !gap-2 xs:!gap-3 !bg-white/90 backdrop-blur-xs dark:!bg-dropdown-dark dark:!border-white/20 max-xs:!flex-col',
 								title: '!text-sm text-balance !leading-[1.25] !text-content-light dark:!text-white max-xs:!text-center',
 								icon: '!text-3xl !size-auto',
 							},

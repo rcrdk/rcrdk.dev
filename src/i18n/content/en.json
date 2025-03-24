@@ -41,7 +41,12 @@
 			"text": "Can you find all easter eggs that I planted in here?",
 			"button": "[spoiler alert]",
 			"score": "Your score:",
-			"reset": "Reset"
+			"reset": "Reset",
+			"taskButtons": {
+				"devTools": "I just did that!",
+				"randomFact": "I need to know!",
+				"notFound": "Let's get lost!"
+			}
 		}
 	},
 

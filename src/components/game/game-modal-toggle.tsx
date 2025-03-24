@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
 
-export function Game() {
+export function GameModalToggle() {
 	const { onShowGameModal } = useGame()
 	const __ = useTranslations('Default')
 

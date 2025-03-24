@@ -41,7 +41,12 @@
 			"text": "Você acha que consegue encontrar todos easter eggs no meu site?",
 			"button": "[alerta de spoiler]",
 			"score": "Seus pontos:",
-			"reset": "Recomeçar"
+			"reset": "Recomeçar",
+			"taskButtons": {
+				"devTools": "Já fiz isso!",
+				"randomFact": "Quero saber!",
+				"notFound": "Quero me perder!"
+			}
 		}
 	},
 

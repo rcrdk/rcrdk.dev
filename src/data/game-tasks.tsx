@@ -1,0 +1,199 @@
+import { DevToolsGameTaskButton } from '@/components/game/tasks/devtools-task'
+import { NotFoundGameTaskButton } from '@/components/game/tasks/not-found-task'
+import { RandomFactGameTaskButton } from '@/components/game/tasks/random-fact-task'
+import { LocalesType } from '@/i18n/routing'
+
+export type GameTaskTypes =
+	| 'has-opened-hints'
+	| 'switch-theme'
+	| 'switch-language'
+	| 'now-playing'
+	| 'screensaver'
+	| 'not-found'
+	| 'dev-tools'
+	| 'konami'
+	| 'random-fact' // add button
+	| 'about-me'
+
+type GameTaskObject = {
+	id: GameTaskTypes
+	icon: string
+	listItem: {
+		title: Record<LocalesType, string>
+		hint: Record<LocalesType, string>
+	}
+	toastItem: {
+		title: Record<LocalesType, string>
+		hint: Record<LocalesType, string>
+	}
+	points: number
+	button?: React.ReactNode
+}
+
+export const GAME_TASKS: GameTaskObject[] = [
+	{
+		id: 'has-opened-hints',
+		icon: '🕵🏼',
+		listItem: {
+			title: { en: 'Spoiler hunter', 'pt-br': 'Caçador de spoilers' },
+			hint: {
+				en: "You can't live without a good spoiler.",
+				'pt-br': 'Você não consegue viver sem um bom spoiler.',
+			},
+		},
+		toastItem: {
+			title: { en: 'Spoiler hunter on sight!', 'pt-br': 'Você é um caçador de spoilers!' },
+			hint: {
+				en: "Yeah, you can't live without a good spoiler. I can relate!",
+				'pt-br': 'Você não consegue viver sem um bom spoiler. Eu entendo bem!',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'switch-theme',
+		icon: '🕯️',
+		listItem: {
+			title: { en: 'Color theme', 'pt-br': 'Tema do site' },
+			hint: {
+				en: 'You changed the site color theme.',
+				'pt-br': 'Você mudou as cores do site.',
+			},
+		},
+		toastItem: {
+			title: { en: 'You just switched the theme!', 'pt-br': 'Você acabou de mudar o tema!' },
+			hint: {
+				en: 'What is your favorite color theme? Mine is the light one.',
+				'pt-br': 'Qual o seu modo de cores favorito? O meu é o claro.',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'switch-language',
+		icon: '🌎',
+		listItem: {
+			title: { en: 'Bilingual', 'pt-br': 'Bilingue' },
+			hint: { en: 'You changed the site language.', 'pt-br': 'Você alterou o idioma do site.' },
+		},
+		toastItem: {
+			title: { en: 'You just changed the language!', 'pt-br': 'Você acabou de mudar o idioma!' },
+			hint: {
+				en: 'Can you get to know me in english?',
+				'pt-br': 'Acha que consegue me conhecer melhor em português?',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'now-playing',
+		icon: '🎸',
+		listItem: {
+			title: { en: 'Music lover', 'pt-br': 'Amante de música' },
+			hint: { en: "Checked what I've been listinign on Spotify.", 'pt-br': 'Viu o que andei ouvindo no Spotify.' },
+		},
+		toastItem: {
+			title: { en: 'So, what do you think?', 'pt-br': 'Então, o que achou?' },
+			hint: { en: 'Have you ever listened to one o those songs?', 'pt-br': 'Já ouviu alguma dessas músicas?' },
+		},
+		points: 10,
+	},
+	{
+		id: 'screensaver',
+		icon: '😴',
+		listItem: {
+			title: { en: 'Screensaver', 'pt-br': 'Protetor de tela' },
+			hint: {
+				en: 'Just take your hand of your mouse for a while. Tip: do it more than one time.',
+				'pt-br': 'Tire a mão do seu mouse por um tempinho. Dica: faça mais de uma vez.',
+			},
+		},
+		toastItem: {
+			title: { en: 'Knock, Knock! Are you there?', 'pt-br': 'Toc, Toc! Ainda está aí?' },
+			hint: { en: "I don't see any movment around here.", 'pt-br': 'Não estou vendo nenhuma movimentação por aqui.' },
+		},
+		points: 10,
+	},
+	{
+		id: 'not-found',
+		icon: '😵',
+		listItem: {
+			title: { en: 'Page not found', 'pt-br': 'Página não encontrada' },
+			hint: { en: 'Tip: do it more than one time.', 'pt-br': 'Dica: faça mais de uma vez.' },
+		},
+		toastItem: {
+			title: { en: 'Feeling lost?', 'pt-br': 'Se sentido pedido?' },
+			hint: {
+				en: 'The bad news is: you are lost. The good news: you just earned 10 points.',
+				'pt-br': 'O lado negativo: estar perdido. O lado positivo: ganhar 10 pontos.',
+			},
+		},
+		points: 10,
+		button: <NotFoundGameTaskButton />,
+	},
+	{
+		id: 'dev-tools',
+		icon: '👨🏼‍💻',
+		listItem: {
+			title: { en: 'Opened DevTools', 'pt-br': 'Abriu o DevTools' },
+			hint: { en: 'Look a the console message.', 'pt-br': 'Olhou a mensagem no console.' },
+		},
+		toastItem: {
+			title: { en: 'You just opened the DevTools!', 'pt-br': 'Você acabou de abrir o DevTools!' },
+			hint: { en: 'Do you also love front-end? I hope so.', 'pt-br': 'Você também ama o front-end? Espero que sim.' },
+		},
+		button: <DevToolsGameTaskButton />,
+		points: 10,
+	},
+	{
+		id: 'konami',
+		icon: '🎮',
+		listItem: {
+			title: { en: 'Konami code', 'pt-br': 'Código Konami' },
+			hint: { en: 'Simply: ↑ ↑ ↓ ↓ ← → ← → B A', 'pt-br': 'Simples: ↑ ↑ ↓ ↓ ← → ← → B A' },
+		},
+		toastItem: {
+			title: { en: "You did't miss a key!", 'pt-br': 'Você não errou uma tecla!' },
+			hint: {
+				en: "Konami code is a classic easter egg, it's fundamental.",
+				'pt-br': 'Não podia faltar o código Konami, um clássico necessário.',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'random-fact',
+		icon: '🤓',
+		listItem: {
+			title: { en: 'Random fact', 'pt-br': 'Fato aleatório' },
+			hint: { en: 'Have you ever listened to CSS?', 'pt-br': 'Você já ouviu CSS nos streamings?' },
+		},
+		toastItem: {
+			title: { en: 'CSS: Cansei de Ser Sexy', 'pt-br': 'CSS: Cansei de Ser Sexy' },
+			hint: {
+				en: "Translated to `I'm tired of being sexy`, CSS is a 2000's brazilian indie band, and just like Cascading Style Sheets, I JUST LOVE IT!",
+				'pt-br':
+					'CSS é uma banda brasileira indie que surgiu nos anos 2000, e assim como o Cascading Style Sheets, É BOM DEMAISSSS.',
+			},
+		},
+		button: <RandomFactGameTaskButton />,
+		points: 10,
+	},
+	{
+		id: 'about-me',
+		icon: '👽',
+		listItem: {
+			title: { en: 'More about me', 'pt-br': 'Mais sobre mim' },
+			hint: { en: 'Get to know more my history.', 'pt-br': 'Conheça um pouco da minha história.' },
+		},
+		toastItem: {
+			title: { en: 'Are you curious or a game player?', 'pt-br': 'Você é curioso ou um grande jogador?' },
+			hint: {
+				en: "If you are curious about me, I'm happy. If you a game player, I'm happy with you 10 extra points.",
+				'pt-br':
+					'Se você está curioso a meu respeito, fico feliz. Se você é um jogador, fico feliz com seus 10 pontos extras.',
+			},
+		},
+		points: 10,
+	},
+]
