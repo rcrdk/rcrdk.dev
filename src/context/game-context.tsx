@@ -30,6 +30,7 @@ interface GameContextDataProps {
 	onShowGameTasks: VoidFunction
 	showGameTetris: boolean
 	onShowGameTetris: VoidFunction
+	isGameCompleted: boolean
 }
 
 export const GameContext = createContext<GameContextDataProps>({} as GameContextDataProps)
@@ -144,6 +145,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		return GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
 	}, [])
 
+	const isGameCompleted = useMemo(() => pointsEarned >= pointsTotal, [pointsEarned, pointsTotal])
+
 	useEffect(() => {
 		if (typeof window === 'undefined') return
 
@@ -182,6 +185,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				onShowGameTasks,
 				showGameTetris,
 				onShowGameTetris,
+				isGameCompleted,
 			}}
 		>
 			{children}

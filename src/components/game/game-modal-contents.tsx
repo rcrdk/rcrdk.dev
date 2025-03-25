@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback, useEffect } from 'react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import * as Dialog from '@radix-ui/react-dialog'
 import { IconRefresh, IconX } from '@tabler/icons-react'
@@ -8,7 +9,9 @@ import { useTranslations } from 'next-intl'
 import { GameTaskItem } from '@/components/game/game-task-item'
 import { Button } from '@/components/ui/button'
 import useDetectBrowser from '@/hooks/use-browser'
+import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
+import { env } from '@/lib/env'
 import { cn } from '@/utils/tailwind-cn'
 
 export function GameModalContents() {
@@ -21,10 +24,39 @@ export function GameModalContents() {
 		onResetGame,
 		onShowGameTasks,
 		showGameTasks,
+		isGameCompleted,
 	} = useGame()
 
 	const __ = useTranslations('Default')
 	const browser = useDetectBrowser()
+
+	const { fireConfetti } = useConfetti()
+
+	const triggerConfetti = useCallback(() => {
+		fireConfetti()
+		new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+
+		const timer1 = setTimeout(() => {
+			fireConfetti()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+		}, 750)
+
+		const timer2 = setTimeout(() => {
+			fireConfetti()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+		}, 1500)
+
+		return () => {
+			clearTimeout(timer1)
+			clearTimeout(timer2)
+		}
+	}, [fireConfetti])
+
+	useEffect(() => {
+		if (isGameCompleted && showGameModal) {
+			triggerConfetti()
+		}
+	}, [triggerConfetti, isGameCompleted, showGameModal])
 
 	return (
 		<Dialog.Root open={showGameModal} onOpenChange={onShowGameModal}>
@@ -52,14 +84,14 @@ export function GameModalContents() {
 									<IconX className="size-5" />
 								</Dialog.Close>
 
-								<span className="text-6xl">🕹️</span>
+								<span className="text-6xl">{isGameCompleted ? '🥇' : '🕹️'}</span>
 
 								<Dialog.Title className="mt-4 mb-3 block text-3xl font-bold tracking-tight text-black dark:text-white">
-									{__('game.title')}
+									{isGameCompleted ? __('game.winner.title') : __('game.title')}
 								</Dialog.Title>
 
 								<Dialog.Description className="dark:text-content-dark text-content-light text-base">
-									{__('game.text')}
+									{isGameCompleted ? __('game.winner.text') : __('game.text')}
 								</Dialog.Description>
 
 								<div className="mt-6 mb-10 flex items-center justify-between rounded-2xl bg-black/5 px-5 py-3 dark:bg-white/10">
@@ -77,7 +109,7 @@ export function GameModalContents() {
 									</button>
 								</div>
 
-								<Collapsible.Root open={showGameModal && showGameTasks}>
+								<Collapsible.Root open={(showGameModal && showGameTasks) || isGameCompleted}>
 									<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out flex flex-col gap-4 overflow-hidden will-change-contents ![animation-duration:500ms]">
 										{gameTasks.map((task) => (
 											<GameTaskItem key={task.id} task={task} />
@@ -85,7 +117,7 @@ export function GameModalContents() {
 									</Collapsible.Content>
 								</Collapsible.Root>
 
-								<Collapsible.Root open={showGameModal && !showGameTasks}>
+								<Collapsible.Root open={showGameModal && !showGameTasks && !isGameCompleted}>
 									<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden will-change-contents ![animation-duration:500ms]">
 										<Button variant="outline-warning" className="w-full" onClick={() => onShowGameTasks()}>
 											<span className="text-2xl">🫣</span>

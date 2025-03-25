@@ -1,11 +1,11 @@
-import { IconDeviceGamepad2 } from '@tabler/icons-react'
+import { IconDeviceGamepad2, IconTrophy } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
 
 export function GameModalToggle() {
-	const { onShowGameModal } = useGame()
+	const { onShowGameModal, isGameCompleted } = useGame()
 	const __ = useTranslations('Default')
 
 	return (
@@ -19,7 +19,7 @@ export function GameModalToggle() {
 				aria-label={__('game.title')}
 				onClick={() => onShowGameModal()}
 			>
-				<IconDeviceGamepad2 />
+				{isGameCompleted ? <IconTrophy /> : <IconDeviceGamepad2 />}
 			</Button>
 		</div>
 	)

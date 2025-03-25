@@ -42,6 +42,10 @@
 			"button": "[spoiler alert]",
 			"score": "Your score:",
 			"reset": "Reset",
+			"winner": {
+				"title": "You just nailed it!",
+				"text": "You found (maybe with a little help) all easter eggs that a planted in here."
+			},
 			"taskButtons": {
 				"devTools": "I just did that!",
 				"randomFact": "I need to know!",
