@@ -1,10 +1,5 @@
 {
-	"typescript.preferences.importModuleSpecifier": "non-relative",
-	"tailwindCSS.classAttributes": [
-		"class",
-		"className",
-		"classNameCenter",
-		".*Styles"
-	],
-	"px-to-rem.px-per-rem": 16
+	"px-to-rem.px-per-rem": 16,
+	"tailwindCSS.classAttributes": ["class", "className", "classNameCenter", ".*Styles"],
+	"typescript.preferences.importModuleSpecifier": "non-relative"
 }

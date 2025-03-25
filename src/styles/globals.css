@@ -1,15 +1,31 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));
-@custom-variant layout {@media (width >= 70rem) and (height >= 35rem) { @slot }};
-@custom-variant layout-sm {@media (width >= 70rem) and (height >= 43.75rem) { @slot }};
-@custom-variant only-touch {@media (hover : none) { @slot }};
-@custom-variant only-mouse {@media (hover : hover) { @slot }};
+@custom-variant layout {
+	@media (width >= 70rem) and (height >= 35rem) {
+		@slot;
+	}
+}
+@custom-variant layout-sm {
+	@media (width >= 70rem) and (height >= 43.75rem) {
+		@slot;
+	}
+}
+@custom-variant only-touch {
+	@media (hover: none) {
+		@slot;
+	}
+}
+@custom-variant only-mouse {
+	@media (hover: hover) {
+		@slot;
+	}
+}
 
 @theme {
 	--breakpoint-xs: 30rem;
 
-  --font-heading: "Circular STD", "sans-serif"; 
+	--font-heading: 'Circular STD', 'sans-serif';
 
 	--color-accent-blue: #00a5bc;
 	--color-content-light: #242424;
@@ -42,28 +58,48 @@
 	--animate-glowing-rotate: glowingRotate 20s linear infinite;
 
 	@keyframes avatar {
-		from { border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%; }
-		to { border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%; }
+		from {
+			border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+		}
+		to {
+			border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+		}
 	}
-	
+
 	@keyframes collapsibleIn {
-		from { height: 0; }
-		to { height: var(--radix-collapsible-content-height); }
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-collapsible-content-height);
+		}
 	}
-	
+
 	@keyframes collapsibleOut {
-		from { height: var(--radix-collapsible-content-height); }
-		to { height: 0; }
+		from {
+			height: var(--radix-collapsible-content-height);
+		}
+		to {
+			height: 0;
+		}
 	}
 
 	@keyframes dialogOverlayShow {
-		from { opacity: 0; }
-		to { opacity: 1; }
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 
 	@keyframes dialogOverlayHide {
-		from { opacity: 1; }
-		to { opacity: 0; }
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
 	}
 
 	@keyframes dialogContentShow {
@@ -123,29 +159,44 @@
 	}
 
 	@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 1000% 0; }
-    100% { background-position: 0 0; }
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 1000% 0;
+		}
+		100% {
+			background-position: 0 0;
+		}
 	}
 
 	@keyframes glowingRotate {
-    0% { background-position: 0 0; transform: rotate(0deg); }
-    50% { background-position: 400% 0; transform: rotate(360deg); }
-    100% { background-position: 0 0; transform: rotate(0deg); }
+		0% {
+			background-position: 0 0;
+			transform: rotate(0deg);
+		}
+		50% {
+			background-position: 400% 0;
+			transform: rotate(360deg);
+		}
+		100% {
+			background-position: 0 0;
+			transform: rotate(0deg);
+		}
 	}
 }
 
 @utility about-title {
-	@apply xs:!text-nowrap [&>span>span]:!block xs:[&>span>span]:!inline-block;
+	@apply xs:!text-nowrap xs:[&>span>span]:!inline-block [&>span>span]:!block;
 }
 
 @utility scrollbar-hidden {
-	@apply [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none];
+	@apply [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
 
 @layer base {
 	::selection {
-		@apply bg-accent-blue/10 text-accent-blue dark:text-white dark:bg-accent-blue/80;
+		@apply bg-accent-blue/10 text-accent-blue dark:bg-accent-blue/80 dark:text-white;
 	}
 
 	.disable-transitions * {
@@ -153,11 +204,11 @@
 	}
 
 	a {
-		@apply rounded-lg outline-none focus-visible:ring-4 focus-visible:ring-accent-blue/40 transition-all [user-drag:none] [-webkit-user-drag:none];
+		@apply focus-visible:ring-accent-blue/40 rounded-lg transition-all [-webkit-user-drag:none] [user-drag:none] outline-none focus-visible:ring-4;
 	}
 
 	img {
-		@apply pointer-events-none select-none [user-drag:none] [-webkit-user-drag:none];
+		@apply pointer-events-none [-webkit-user-drag:none] [user-drag:none] select-none;
 	}
 
 	p strong,
@@ -166,7 +217,7 @@
 	}
 
 	kbd {
-		@apply inline-block border border-b-2 border-black/15 rounded-lg bg-black/5 py-0.5 px-1.5 text-xs font-bold leading-none dark:bg-white/10 dark:border-white/10 dark:text-white;
+		@apply inline-block rounded-lg border border-b-2 border-black/15 bg-black/5 px-1.5 py-0.5 text-xs leading-none font-bold dark:border-white/10 dark:bg-white/10 dark:text-white;
 	}
 
 	@media (min-width: 601px) {
@@ -177,9 +228,9 @@
 }
 
 @font-face {
-	font-family: "Circular STD";
+	font-family: 'Circular STD';
 	font-style: normal;
 	font-weight: 900;
 	font-display: swap;
-	src: url("CircularStd-Black.woff2") format("woff2");
+	src: url('CircularStd-Black.woff2') format('woff2');
 }

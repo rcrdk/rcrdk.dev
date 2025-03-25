@@ -1,4 +1,5 @@
-# 👋🏻 Hi, there! 
+# 👋🏻 Hi, there!
+
 This is the repo of my [personal website](https://rcrdk.dev/). It took a long time to get it done, but here it is. It's in constant development, so new updates will come when you least expect. Hope you enjoyed!
 
 > [!WARNING]  
@@ -11,6 +12,7 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 </picture>
 
 ## 💻 Contact me
+
 <p>
   <a href="https://linkedin.com/in/rcrdk" target="_blank"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 	<a href="https://github.com/rcrdk" target="_blank"><img alt="GitHub Profile" src="https://img.shields.io/badge/GitHub%20Profile-545454?style=for-the-badge&logo=github&logoColor=white" /></a>
@@ -22,9 +24,10 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 ---
 
 ## 💙 Additional credits
+
 - [**React DVD Screen Saver**](https://github.com/samuelweckstrom/react-dvd-screensaver): for my screensaver, I adapted the source code and used my own useWindowSize hook.
 - [**React Bits**](https://www.reactbits.dev/): I used the base of some of their coolest components including animated content, animated text and follow cursor.
 - [**React Haiku**](https://www.reacthaiku.dev/): I used some of their custom hooks and for some I use as base to create my owns.
 - [**React Tetris**](https://github.com/brandly/react-tetris): Ok, a giving you a spoiler of one of my easter eggs here.
-- [**Canvas Confetti**](https://github.com/catdad/canvas-confetti): Everybody loves confetti. That's it! 
+- [**Canvas Confetti**](https://github.com/catdad/canvas-confetti): Everybody loves confetti. That's it!
 - You can check on `package.json` for more cool packages that I used.
