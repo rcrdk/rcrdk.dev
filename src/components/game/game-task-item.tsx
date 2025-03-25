@@ -38,7 +38,7 @@ function GameTaskItemComponent({ task }: Props) {
 					</span>
 				</div>
 
-				{!task.completed && task.button}
+				{(!task.completed || task.id === 'tetris') && task.button}
 			</div>
 		</div>
 	)

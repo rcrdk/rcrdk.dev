@@ -1,6 +1,7 @@
 import { DevToolsGameTaskButton } from '@/components/game/tasks/devtools-task'
 import { NotFoundGameTaskButton } from '@/components/game/tasks/not-found-task'
 import { RandomFactGameTaskButton } from '@/components/game/tasks/random-fact-task'
+import { TetrisGameTaskButton } from '@/components/game/tasks/tetris-task'
 import { LocalesType } from '@/i18n/routing'
 
 export type GameTaskTypes =
@@ -14,6 +15,7 @@ export type GameTaskTypes =
 	| 'konami'
 	| 'random-fact'
 	| 'about-me'
+	| 'tetris'
 
 type GameTaskObject = {
 	id: GameTaskTypes
@@ -115,37 +117,6 @@ export const GAME_TASKS: GameTaskObject[] = [
 		points: 10,
 	},
 	{
-		id: 'not-found',
-		icon: '😵',
-		listItem: {
-			title: { en: 'Page not found', 'pt-br': 'Página não encontrada' },
-			hint: { en: 'Tip: do it more than one time.', 'pt-br': 'Dica: faça mais de uma vez.' },
-		},
-		toastItem: {
-			title: { en: 'Feeling lost?', 'pt-br': 'Se sentido pedido?' },
-			hint: {
-				en: 'The bad news is: you are lost. The good news: you just earned 10 points.',
-				'pt-br': 'O lado negativo: estar perdido. O lado positivo: ganhar 10 pontos.',
-			},
-		},
-		points: 10,
-		button: <NotFoundGameTaskButton />,
-	},
-	{
-		id: 'dev-tools',
-		icon: '👨🏼‍💻',
-		listItem: {
-			title: { en: 'Opened DevTools', 'pt-br': 'Abriu o DevTools' },
-			hint: { en: 'Look a the console message.', 'pt-br': 'Olhou a mensagem no console.' },
-		},
-		toastItem: {
-			title: { en: 'You just opened the DevTools!', 'pt-br': 'Você acabou de abrir o DevTools!' },
-			hint: { en: 'Do you also love front-end? I hope so.', 'pt-br': 'Você também ama o front-end? Espero que sim.' },
-		},
-		button: <DevToolsGameTaskButton />,
-		points: 10,
-	},
-	{
 		id: 'konami',
 		icon: '🎮',
 		listItem: {
@@ -157,6 +128,23 @@ export const GAME_TASKS: GameTaskObject[] = [
 			hint: {
 				en: "Konami code is a classic easter egg, it's fundamental.",
 				'pt-br': 'Não podia faltar o código Konami, um clássico necessário.',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'about-me',
+		icon: '👽',
+		listItem: {
+			title: { en: 'More about me', 'pt-br': 'Mais sobre mim' },
+			hint: { en: 'Get to know more my history.', 'pt-br': 'Conheça um pouco da minha história.' },
+		},
+		toastItem: {
+			title: { en: 'Are you curious or a game player?', 'pt-br': 'Você é curioso ou um grande jogador?' },
+			hint: {
+				en: "If you are curious about me, I'm happy. If you a game player, I'm happy with you 10 extra points.",
+				'pt-br':
+					'Se você está curioso a meu respeito, fico feliz. Se você é um jogador, fico feliz com seus 10 pontos extras.',
 			},
 		},
 		points: 10,
@@ -180,20 +168,54 @@ export const GAME_TASKS: GameTaskObject[] = [
 		points: 10,
 	},
 	{
-		id: 'about-me',
-		icon: '👽',
+		id: 'dev-tools',
+		icon: '👨🏼‍💻',
 		listItem: {
-			title: { en: 'More about me', 'pt-br': 'Mais sobre mim' },
-			hint: { en: 'Get to know more my history.', 'pt-br': 'Conheça um pouco da minha história.' },
+			title: { en: 'Opened DevTools', 'pt-br': 'Abriu o DevTools' },
+			hint: { en: 'Look a the console message.', 'pt-br': 'Olhou a mensagem no console.' },
 		},
 		toastItem: {
-			title: { en: 'Are you curious or a game player?', 'pt-br': 'Você é curioso ou um grande jogador?' },
+			title: { en: 'You just opened the DevTools!', 'pt-br': 'Você acabou de abrir o DevTools!' },
+			hint: { en: 'Do you also love front-end? I hope so.', 'pt-br': 'Você também ama o front-end? Espero que sim.' },
+		},
+		button: <DevToolsGameTaskButton />,
+		points: 10,
+	},
+	{
+		id: 'tetris',
+		icon: '👾',
+		listItem: {
+			title: { en: 'Tetris', 'pt-br': 'Tetris' },
 			hint: {
-				en: "If you are curious about me, I'm happy. If you a game player, I'm happy with you 10 extra points.",
-				'pt-br':
-					'Se você está curioso a meu respeito, fico feliz. Se você é um jogador, fico feliz com seus 10 pontos extras.',
+				en: 'What about an actual game?',
+				'pt-br': 'Que tal um jogo de verdade?',
+			},
+		},
+		toastItem: {
+			title: { en: 'Finally an actual game!', 'pt-br': 'Finalmente um jogo de verdade!' },
+			hint: {
+				en: 'I probably spend more time playing than developing this feature.',
+				'pt-br': 'Eu devo ter passado mais tempo jogando do que implementando o jogo.',
+			},
+		},
+		button: <TetrisGameTaskButton />,
+		points: 10,
+	},
+	{
+		id: 'not-found',
+		icon: '😵',
+		listItem: {
+			title: { en: 'Page not found', 'pt-br': 'Página não encontrada' },
+			hint: { en: 'Tip: do it more than one time.', 'pt-br': 'Dica: faça mais de uma vez.' },
+		},
+		toastItem: {
+			title: { en: 'Feeling lost?', 'pt-br': 'Se sentido pedido?' },
+			hint: {
+				en: 'The bad news is: you are lost. The good news: you just earned 10 points.',
+				'pt-br': 'O lado negativo: estar perdido. O lado positivo: ganhar 10 pontos.',
 			},
 		},
 		points: 10,
+		button: <NotFoundGameTaskButton />,
 	},
 ]

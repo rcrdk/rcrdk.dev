@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/tetris.css'
 
 import type { Metadata, Viewport } from 'next'
 import { cookies } from 'next/headers'

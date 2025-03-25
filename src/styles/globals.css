@@ -165,6 +165,10 @@
 		@apply font-semibold text-black dark:text-white;
 	}
 
+	kbd {
+		@apply inline-block border border-b-2 border-black/15 rounded-lg bg-black/5 py-0.5 px-1.5 text-xs font-bold leading-none dark:bg-white/10 dark:border-white/10 dark:text-white;
+	}
+
 	@media (min-width: 601px) {
 		ol[data-sonner-toaster] {
 			--width: 540px !important;

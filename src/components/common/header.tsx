@@ -11,6 +11,7 @@ import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
+import { GameModalTetris } from '@/components/game/game-modal-tetris'
 import { GameModalToggle } from '@/components/game/game-modal-toggle'
 import { Container } from '@/components/ui/container'
 import { scrollToSection } from '@/utils/scroll-to-section'
@@ -99,6 +100,7 @@ function HeaderInset({ animationEnter }: Props) {
 					<LocaleSwitcher />
 					<ThemeSwitcher />
 					<LastFmHistory />
+
 					<GameModalToggle />
 				</div>
 			</Container>
@@ -111,6 +113,8 @@ export function Header() {
 		<header className="xs:pt-6 xs:pb-0 xs:static layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 w-full bg-white/90 text-black/85 backdrop-blur-xs select-none dark:bg-black/90 dark:text-white">
 			<HeaderInset animationEnter="horizontal" />
 			<HeaderInset animationEnter="vertical" />
+
+			<GameModalTetris />
 		</header>
 	)
 }

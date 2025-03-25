@@ -38,7 +38,7 @@ export function Screensaver() {
 	const isTouchDevice = useMediaQuery('(hover : none)', false)
 	const __ = useTranslations('Default')
 
-	const { onCompleteTask } = useGame()
+	const { onCompleteTask, showGameTetris } = useGame()
 
 	const { containerRef, elementRef } = useDvdScreensaver({
 		speed: 3,
@@ -58,14 +58,17 @@ export function Screensaver() {
 		if (isIddle) {
 			timer = setTimeout(() => {
 				setGif(random)
-				onCompleteTask('screensaver')
+
+				if (!showGameTetris) {
+					onCompleteTask('screensaver')
+				}
 			}, 700)
 		}
 
 		return () => clearTimeout(timer)
-	}, [gifs, isIddle, onCompleteTask])
+	}, [gifs, isIddle, onCompleteTask, showGameTetris])
 
-	if (isTouchDevice || process.env.NODE_ENV !== 'production') {
+	if (isTouchDevice || process.env.NODE_ENV !== 'production' || showGameTetris) {
 		return null
 	}
 

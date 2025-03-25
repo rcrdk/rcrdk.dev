@@ -18,7 +18,7 @@ import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
 import { LocalesType, routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
-import { trackServerEvent } from '@/lib/mixpanel'
+import { trackServerEvent } from '@/services/mixpanel'
 
 export type MetadataProps = {
 	params: Promise<{ locale: LocalesType }>

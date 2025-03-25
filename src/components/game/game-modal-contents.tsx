@@ -7,7 +7,9 @@ import { useTranslations } from 'next-intl'
 
 import { GameTaskItem } from '@/components/game/game-task-item'
 import { Button } from '@/components/ui/button'
+import useDetectBrowser from '@/hooks/use-browser'
 import { useGame } from '@/hooks/use-game'
+import { cn } from '@/utils/tailwind-cn'
 
 export function GameModalContents() {
 	const {
@@ -22,6 +24,7 @@ export function GameModalContents() {
 	} = useGame()
 
 	const __ = useTranslations('Default')
+	const browser = useDetectBrowser()
 
 	return (
 		<Dialog.Root open={showGameModal} onOpenChange={onShowGameModal}>
@@ -37,7 +40,12 @@ export function GameModalContents() {
 								}
 							}}
 						>
-							<div className="animate-glowing absolute -inset-2 -z-10 block rounded-3xl bg-[linear-gradient(45deg,_#ff0000,_#ff7300,_#fffb00,_#48ff00,_#00ffd5,_#002bff,_#7a00ff,_#ff00c8,_#ff0000)] [background-size:1000%] blur-[120px]" />
+							<div
+								className={cn(
+									'animate-glowing absolute -inset-2 -z-10 block rounded-3xl bg-[linear-gradient(45deg,_#ff0000,_#ff7300,_#fffb00,_#48ff00,_#00ffd5,_#002bff,_#7a00ff,_#ff00c8,_#ff0000)] [background-size:1000%]',
+									browser !== 'Apple Safari' && 'blur-[120px]',
+								)}
+							/>
 
 							<div className="shadow-dialog xs:p-10 relative z-10 rounded-3xl bg-white px-6 pt-10 pb-6 text-center text-balance select-none dark:bg-black">
 								<Dialog.Close className="focus-visible:ring-accent-blue/50 focus-visible:border-accent-blue focus-visible:bg-accent-blue xs:top-6 xs:right-6 focus-visible:ring-4', absolute top-4 right-4 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/5 text-black/35 shadow-2xl backdrop-blur-xs transition-all outline-none hover:bg-black/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/25">

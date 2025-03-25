@@ -28,6 +28,8 @@ interface GameContextDataProps {
 	onShowGameModal: VoidFunction
 	showGameTasks: boolean
 	onShowGameTasks: VoidFunction
+	showGameTetris: boolean
+	onShowGameTetris: VoidFunction
 }
 
 export const GameContext = createContext<GameContextDataProps>({} as GameContextDataProps)
@@ -39,6 +41,7 @@ interface GameContextProviderProps {
 export function CartContextProvider({ children }: GameContextProviderProps) {
 	const [tasksComleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
 	const [showGameModal, setShowGameModal] = useState(false)
+	const [showGameTetris, setShowGameTetris] = useState(false)
 	const [showGameTasks, setShowGameTasks] = useState(false)
 	const [isScreenSizeAllowed, setIsScreenSizeAllowed] = useState(false)
 
@@ -118,6 +121,13 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setShowGameModal((prev) => !prev)
 	}
 
+	function onShowGameTetris() {
+		onCompleteTask('tetris')
+
+		setShowGameModal(false)
+		setShowGameTetris((prev) => !prev)
+	}
+
 	const onShowGameTasks = useCallback(() => {
 		setShowGameTasks((prev) => !prev)
 		onCompleteTask('has-opened-hints')
@@ -170,6 +180,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				onShowGameModal,
 				showGameTasks,
 				onShowGameTasks,
+				showGameTetris,
+				onShowGameTetris,
 			}}
 		>
 			{children}
