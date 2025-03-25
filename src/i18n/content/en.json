@@ -76,7 +76,7 @@
 				"game_paused": {
 					"title": "Game paused",
 					"text": "Take a break, grab a coffee and resume the game.",
-					"button": "Resume game"
+					"button": "Resume game!"
 				},
 				"too_small": {
 					"title": "The game is only available in larger screens.",

@@ -76,7 +76,7 @@
 				"game_paused": {
 					"title": "Jogo pausado",
 					"text": "Descanse um pouco, pegue um café e continue jogando.",
-					"button": "Continuar jogando"
+					"button": "Continuar jogando!"
 				},
 				"too_small": {
 					"title": "O jogo está disponível apenas em telas maiores.",

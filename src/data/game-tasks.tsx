@@ -63,7 +63,7 @@ export const GAME_TASKS: GameTaskObject[] = [
 			},
 		},
 		toastItem: {
-			title: { en: 'You just switched the theme!', 'pt-br': 'Você acabou de mudar o tema!' },
+			title: { en: 'You just changed the theme!', 'pt-br': 'Você acabou de mudar o tema!' },
 			hint: {
 				en: 'What is your favorite color theme? Mine is the light one.',
 				'pt-br': 'Qual o seu modo de cores favorito? O meu é o claro.',
@@ -76,12 +76,12 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '🌎',
 		listItem: {
 			title: { en: 'Bilingual', 'pt-br': 'Bilingue' },
-			hint: { en: 'You changed the site language.', 'pt-br': 'Você alterou o idioma do site.' },
+			hint: { en: 'You changed the site language.', 'pt-br': 'Você mudou o idioma do site.' },
 		},
 		toastItem: {
 			title: { en: 'You just changed the language!', 'pt-br': 'Você acabou de mudar o idioma!' },
 			hint: {
-				en: 'Can you get to know me in english?',
+				en: 'Can you get to know me best in english?',
 				'pt-br': 'Acha que consegue me conhecer melhor em português?',
 			},
 		},
@@ -92,11 +92,14 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '🎸',
 		listItem: {
 			title: { en: 'Music lover', 'pt-br': 'Amante de música' },
-			hint: { en: "Checked what I've been listinign on Spotify.", 'pt-br': 'Viu o que andei ouvindo no Spotify.' },
+			hint: { en: "Checked what I've been listening on Spotify.", 'pt-br': 'Viu o que andei ouvindo no Spotify.' },
 		},
 		toastItem: {
 			title: { en: 'So, what do you think?', 'pt-br': 'Então, o que achou?' },
-			hint: { en: 'Have you ever listened to one o those songs?', 'pt-br': 'Já ouviu alguma dessas músicas?' },
+			hint: {
+				en: 'Have you ever listened to one o those songs?',
+				'pt-br': 'Já ouviu alguma vez algumas dessas músicas?',
+			},
 		},
 		points: 10,
 	},
@@ -106,7 +109,7 @@ export const GAME_TASKS: GameTaskObject[] = [
 		listItem: {
 			title: { en: 'Screensaver', 'pt-br': 'Protetor de tela' },
 			hint: {
-				en: 'Just take your hand of your mouse for a while. Tip: do it more than one time.',
+				en: 'Just take your hand of your mouse for a while. Hint: repeat it some times.',
 				'pt-br': 'Tire a mão do seu mouse por um tempinho. Dica: faça mais de uma vez.',
 			},
 		},
@@ -121,12 +124,12 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '🎮',
 		listItem: {
 			title: { en: 'Konami code', 'pt-br': 'Código Konami' },
-			hint: { en: 'Simply: ↑ ↑ ↓ ↓ ← → ← → B A', 'pt-br': 'Simples: ↑ ↑ ↓ ↓ ← → ← → B A' },
+			hint: { en: 'Simply: ↑ ↑ ↓ ↓ ← → ← → B A', 'pt-br': 'Resumo: ↑ ↑ ↓ ↓ ← → ← → B A' },
 		},
 		toastItem: {
-			title: { en: "You did't miss a key!", 'pt-br': 'Você não errou uma tecla!' },
+			title: { en: "You did't miss a key!", 'pt-br': 'Você não errou um dígito!' },
 			hint: {
-				en: "Konami code is a classic easter egg, it's fundamental.",
+				en: 'Konami code is a classic easter egg, it seemed fundamental.',
 				'pt-br': 'Não podia faltar o código Konami, um clássico necessário.',
 			},
 		},
@@ -137,7 +140,7 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '👽',
 		listItem: {
 			title: { en: 'More about me', 'pt-br': 'Mais sobre mim' },
-			hint: { en: 'Get to know more my history.', 'pt-br': 'Conheça um pouco da minha história.' },
+			hint: { en: 'Get to know more about my history.', 'pt-br': 'Conheça um pouco da minha história.' },
 		},
 		toastItem: {
 			title: { en: 'Are you curious or a game player?', 'pt-br': 'Você é curioso ou um grande jogador?' },
@@ -172,11 +175,14 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '👨🏼‍💻',
 		listItem: {
 			title: { en: 'Opened DevTools', 'pt-br': 'Abriu o DevTools' },
-			hint: { en: 'Look a the console message.', 'pt-br': 'Olhou a mensagem no console.' },
+			hint: { en: 'Look at the console message.', 'pt-br': 'Olhou a mensagem no console.' },
 		},
 		toastItem: {
 			title: { en: 'You just opened the DevTools!', 'pt-br': 'Você acabou de abrir o DevTools!' },
-			hint: { en: 'Do you also love front-end? I hope so.', 'pt-br': 'Você também ama o front-end? Espero que sim.' },
+			hint: {
+				en: "Do you also love front-end? If you say no, I think you're crazy!",
+				'pt-br': 'Você também ama o front-end? Se não amar eu acho que está doido!',
+			},
 		},
 		button: <DevToolsGameTaskButton />,
 		points: 10,
@@ -194,8 +200,9 @@ export const GAME_TASKS: GameTaskObject[] = [
 		toastItem: {
 			title: { en: 'Finally an actual game!', 'pt-br': 'Finalmente um jogo de verdade!' },
 			hint: {
-				en: 'I probably spend more time playing than developing this feature.',
-				'pt-br': 'Eu devo ter passado mais tempo jogando do que implementando o jogo.',
+				en: 'I probably spend more time playing than developing this feature. P.s.: I marked over 7,000 points.',
+				'pt-br':
+					'Eu devo ter passado mais tempo jogando do que implementando o jogo. P.s.: Marquei mais de 7.000 pontos.,',
 			},
 		},
 		button: <TetrisGameTaskButton />,
@@ -206,7 +213,7 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '😵',
 		listItem: {
 			title: { en: 'Page not found', 'pt-br': 'Página não encontrada' },
-			hint: { en: 'Tip: do it more than one time.', 'pt-br': 'Dica: faça mais de uma vez.' },
+			hint: { en: 'Hint: refresh the page as long as you want.', 'pt-br': 'Dica: atualize a página algumas vezes.' },
 		},
 		toastItem: {
 			title: { en: 'Feeling lost?', 'pt-br': 'Se sentido pedido?' },
