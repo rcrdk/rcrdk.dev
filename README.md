@@ -1,5 +1,8 @@
 # 👋🏻 Hi, there! 
-This is the repo of my [personal website](https://rcrdk.dev/). It took a long time to get it done, but here it is. It's in constant development, so new updates will come when you least expects. Hope you enjoyed!
+This is the repo of my [personal website](https://rcrdk.dev/). It took a long time to get it done, but here it is. It's in constant development, so new updates will come when you least expect. Hope you enjoyed!
+
+> [!WARNING]  
+> This site contains some easter eggs. Are you ready to play? 👀
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/rcrdk/rcrdk.dev/blob/main/public/site-dark.png?raw=true">
@@ -22,15 +25,6 @@ This is the repo of my [personal website](https://rcrdk.dev/). It took a long ti
 - [**React DVD Screen Saver**](https://github.com/samuelweckstrom/react-dvd-screensaver): for my screensaver, I adapted the source code and used my own useWindowSize hook.
 - [**React Bits**](https://www.reactbits.dev/): I used the base of some of their coolest components including animated content, animated text and follow cursor.
 - [**React Haiku**](https://www.reacthaiku.dev/): I used some of their custom hooks and for some I use as base to create my owns.
+- [**React Tetris**](https://github.com/brandly/react-tetris): Ok, a giving you a spoiler of one of my easter eggs here.
 - [**Canvas Confetti**](https://github.com/catdad/canvas-confetti): Everybody loves confetti. That's it! 
 - You can check on `package.json` for more cool packages that I used.
-
----
-
-## ⚠️ Spoiler Alert
-There are some easter eggs in this project.
-
-- ☃️ If your mouse doesn't move for over 10 seconds, a screensaver will be displayed with a random selection of gifs, enjoy!
-- 😵 Speaking of gifs, try to access some invalid page route, it's even coolest if you access it on your desktop. 
-- 🔮 On special and selected dates you may get a message with some confetti. You can check the dates on code or you can wait until one of those days come, but I would never recommend that.
-- 💻 Did you opened DevTools already?
