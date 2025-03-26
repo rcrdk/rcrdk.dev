@@ -27,6 +27,7 @@
 			"cv": "Veja o meu CV"
 		}
 	},
+
 	"Default": {
 		"mode": {
 			"light": "Modo claro",
@@ -66,7 +67,7 @@
 		},
 		"game": {
 			"title": "Vamos jogar um jogo!",
-			"text": "Você acha que consegue encontrar todos easter eggs no meu site?",
+			"text": "Você acha que consegue encontrar todos os {quantity} easter eggs no meu site?",
 			"button": "[alerta de spoiler]",
 			"score": "Seus pontos:",
 			"reset": "Recomeçar",

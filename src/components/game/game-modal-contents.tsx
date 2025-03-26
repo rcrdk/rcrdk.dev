@@ -71,7 +71,7 @@ export function GameModalContents() {
 			</DialogRadix.Title>
 
 			<DialogRadix.Description className="dark:text-content-dark text-content-light text-base">
-				{isGameCompleted ? __('game.winner.text') : __('game.text')}
+				{isGameCompleted ? __('game.winner.text') : __('game.text', { quantity: gameTasks.length })}
 			</DialogRadix.Description>
 
 			{!isGameActive && (

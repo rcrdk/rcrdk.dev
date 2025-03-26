@@ -27,6 +27,7 @@
 			"cv": "Checkout my resume"
 		}
 	},
+
 	"Default": {
 		"mode": {
 			"light": "Light mode",
@@ -66,7 +67,7 @@
 		},
 		"game": {
 			"title": "Let's play a game!",
-			"text": "Can you find all easter eggs that I planted in here?",
+			"text": "Can you find all {quantity} easter eggs that I planted in here?",
 			"button": "[spoiler alert]",
 			"score": "Your score:",
 			"reset": "Reset",
