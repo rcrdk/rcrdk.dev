@@ -100,7 +100,6 @@ function HeaderInset({ animationEnter }: Props) {
 					<LocaleSwitcher />
 					<ThemeSwitcher />
 					<LastFmHistory />
-
 					<GameModalToggle />
 				</div>
 			</Container>
