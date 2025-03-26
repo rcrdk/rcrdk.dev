@@ -7,6 +7,7 @@ import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react
 import { useLocale, useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { LINKS } from '@/config/links'
 import { useGame } from '@/hooks/use-game'
 import { useLastFM } from '@/hooks/use-last-fm'
@@ -42,17 +43,10 @@ export function LastFmHistory() {
 				</Button>
 			</Dropdown.Trigger>
 
-			<Dropdown.Content
-				side="right"
-				align="end"
-				avoidCollisions={false}
-				sideOffset={40}
-				className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark w-[500px] [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] divide-y divide-black/10 rounded-xl border border-black/20 bg-white whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
-			>
+			<DropdownMenu className="w-[500px]" side="right" align="end" avoidCollisions={false} sideOffset={40}>
 				<div className="flex items-center gap-2 py-3 pr-4 pl-3">
 					<IconBrandSpotify className="size-7 stroke-[1.5]" />
 					<strong className="block grow">{__('lastfm.title')}</strong>
-
 					<Button
 						as="a"
 						href={LINKS.spotify}
@@ -117,7 +111,7 @@ export function LastFmHistory() {
 							)}
 						</div>
 					))}
-			</Dropdown.Content>
+			</DropdownMenu>
 		</Dropdown.Root>
 	)
 }
