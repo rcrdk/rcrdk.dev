@@ -16,6 +16,7 @@ export type GameTaskTypes =
 	| 'random-fact'
 	| 'about-me'
 	| 'tetris'
+	| 'rick-rolling'
 
 type GameTaskObject = {
 	id: GameTaskTypes
@@ -148,6 +149,26 @@ export const GAME_TASKS: GameTaskObject[] = [
 				en: "If you are curious about me, I'm happy. If you a game player, I'm happy with you 10 extra points.",
 				'pt-br':
 					'Se você está curioso a meu respeito, fico feliz. Se você é um jogador, fico feliz com seus 10 pontos extras.',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'rick-rolling',
+		icon: '🔮',
+		listItem: {
+			title: { en: 'Mysterious button', 'pt-br': 'Botão misterioso' },
+			hint: {
+				en: "Find a button that doesn't seems to be... right. Hint: wait some seconds to grab your points.",
+				'pt-br':
+					'Encontre um botão que não parece ser... certo. Dica: aguarde alguns segundos para pegar seus pontos. ',
+			},
+		},
+		toastItem: {
+			title: { en: 'Easter eggs without Rickrolling?', 'pt-br': 'Easter eggs sem Rickrolling?' },
+			hint: {
+				en: 'Impossible! Well done, you listened till the end.',
+				'pt-br': 'Impossível! Muito bem, você ouviu até o fim.',
 			},
 		},
 		points: 10,

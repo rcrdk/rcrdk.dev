@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import {
 	IconBrandBehance,
 	IconBrandDiscord,
@@ -9,11 +12,14 @@ import {
 import { useTranslations } from 'next-intl'
 
 import AnimatedContent from '@/components/animated/animated-content'
+import FollowCursor from '@/components/animated/follow-cursor'
+import { RickRollingGameTaskButton } from '@/components/game/tasks/rickrolling-task'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
 
 export function Contact() {
+	const [showAnimated, setShowAnimated] = useState(false)
 	const __ = useTranslations('Contact')
 
 	return (
@@ -138,6 +144,17 @@ export function Contact() {
 						</AnimatedContent>
 					</li>
 
+					<li className="layout:block hidden">
+						<AnimatedContent
+							distance={125}
+							config={{ tension: 60, friction: 15 }}
+							delay={450}
+							rootMargin="0px 0px 125px"
+						>
+							<RickRollingGameTaskButton onShowAnimated={setShowAnimated} />
+						</AnimatedContent>
+					</li>
+
 					<li className="w-full grow self-center sm:w-auto">
 						<AnimatedContent
 							distance={125}
@@ -164,6 +181,17 @@ export function Contact() {
 					</li>
 				</ul>
 			</div>
+
+			{showAnimated && (
+				<FollowCursor
+					backgroundImage="https://media1.tenor.com/m/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif"
+					rotationFactor={50}
+					cardWidth="400px"
+					offsetX={-200}
+					offsetY={-200}
+					className="pointer-events-none fixed inset-1/2 z-[9999] opacity-0 transition-opacity duration-500 in-hover:!opacity-100 [&_>_div]:!max-w-none"
+				/>
+			)}
 		</Section>
 	)
 }
