@@ -52,7 +52,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 	return (
 		<Dialog open={open} onOpenChange={handleOpenChange} mode="content" hasImageUnderClose={!!project?.image}>
 			{project?.image && (
-				<div className="xs:!m-0 relative before:absolute before:inset-0 before:border-b before:border-black/10 dark:before:border-white/15">
+				<div className="xs:!m-0 relative overflow-hidden rounded-t-3xl before:absolute before:inset-0 before:border-b before:border-black/10 dark:before:border-white/15">
 					<img src={`${env.NEXT_PUBLIC_APP_URL}/projects/${project?.image}`} alt={project?.title} className="w-full" />
 				</div>
 			)}

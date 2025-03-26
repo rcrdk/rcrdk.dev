@@ -5,6 +5,7 @@
 	height: 1.25rem;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 }
+
 [data-mode='dark'] .game-block {
 	border: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -42,8 +43,9 @@
 }
 
 .piece-preview {
-	background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(0, 0, 0, 0.12);
 }
+
 [data-mode='dark'] .piece-preview {
 	background-color: rgba(255, 255, 255, 0.2);
 }
@@ -51,6 +53,7 @@
 .piece-view:not(:first-child) {
 	margin-top: 1.25rem;
 }
+
 .piece-view:nth-child(n + 4) {
 	display: none;
 }

@@ -165,7 +165,7 @@ export const GAME_TASKS: GameTaskObject[] = [
 			},
 		},
 		toastItem: {
-			title: { en: 'Easter eggs without Rickrolling?', 'pt-br': 'Easter eggs sem Rickrolling?' },
+			title: { en: 'Easter eggs without rickrolling?', 'pt-br': 'Easter eggs sem rickrolling?' },
 			hint: {
 				en: 'Impossible! Well done, you listened till the end.',
 				'pt-br': 'Impossível! Muito bem, você ouviu até o fim.',
@@ -183,9 +183,9 @@ export const GAME_TASKS: GameTaskObject[] = [
 		toastItem: {
 			title: { en: 'CSS: Cansei de Ser Sexy', 'pt-br': 'CSS: Cansei de Ser Sexy' },
 			hint: {
-				en: "Translated to `I'm tired of being sexy`, CSS is a 2000's brazilian indie band, and just like Cascading Style Sheets, I JUST LOVE IT!",
+				en: "Translated to I'm Tired of Being Sexy, CSS is a 2000's brazilian indie band, and like Cascading Style Sheets, I LOVE IT!",
 				'pt-br':
-					'CSS é uma banda brasileira indie que surgiu nos anos 2000, e assim como o Cascading Style Sheets, É BOM DEMAISSSS.',
+					'CSS é uma banda brasileira indie que surgiu nos anos 2000, e assim como Cascading Style Sheets, É BOM DEMAISSSS.',
 			},
 		},
 		button: <RandomFactGameTaskButton />,

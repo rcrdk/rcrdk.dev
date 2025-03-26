@@ -45,7 +45,9 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
 				size="lg"
 				disabled={playing}
 				className={
-					playing ? '!border-accent-blue pointer-events-none relative overflow-hidden bg-white dark:bg-black' : ''
+					playing
+						? '!border-accent-blue pointer-events-none relative overflow-hidden border-2 bg-white dark:bg-black'
+						: ''
 				}
 				icon
 			>

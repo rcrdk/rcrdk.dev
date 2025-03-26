@@ -40,6 +40,7 @@
 	--text-md: 1.0625rem;
 
 	--shadow-dialog: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+	--shadow-dialog-inverted: rgba(120, 120, 120, 0.4) 0px 30px 90px;
 
 	--animate-avatar: avatar 3s ease infinite alternate;
 	--animate-collapsible-in: collapsibleIn 1000ms ease-out;

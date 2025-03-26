@@ -38,8 +38,7 @@ export function Dialog({ open, onOpenChange, mode, hasImageUnderClose = false, h
 						<DialogComponent.Content
 							className={cn(
 								'data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all relative z-10 w-full rounded-3xl will-change-transform outline-none',
-								mode === 'content' &&
-									'max-w-[440px] overflow-hidden border border-black/15 md:max-w-[540px] dark:border-white/20',
+								mode === 'content' && 'max-w-[440px] border border-black/15 md:max-w-[540px] dark:border-white/20',
 								mode === 'game' && !hasTetris && 'sm:max-w-[440px]',
 								mode === 'game' && hasTetris && 'sm:max-w-[490px]',
 							)}
@@ -57,7 +56,7 @@ export function Dialog({ open, onOpenChange, mode, hasImageUnderClose = false, h
 
 							<div
 								className={cn(
-									'shadow-dialog dark:bg-black" relative z-10 rounded-3xl bg-white select-none dark:bg-black',
+									'shadow-dialog dark:shadow-dialog-inverted dark:bg-black" relative z-10 rounded-3xl bg-white select-none dark:bg-black',
 									mode === 'game' && 'xs:p-10 px-6 pt-10 pb-6 text-center text-balance',
 								)}
 							>

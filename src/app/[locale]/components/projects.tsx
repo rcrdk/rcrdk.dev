@@ -110,16 +110,17 @@ export function Projects() {
 
 				<Dropdown.Portal>
 					<Dropdown.Content
-						className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-5 py-6 whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
+						className="data-[state=open]:animate-dropdown-in data-[state=closed]:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col gap-[2px] divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-3 py-4 whitespace-nowrap will-change-transform sm:px-5 sm:py-6 dark:divide-white/15 dark:border-white/20"
 						align="start"
 						side="bottom"
 						sideOffset={24}
+						avoidCollisions={false}
 					>
 						{categories.map((category) => (
 							<Dropdown.Item key={category.id} disabled={selectedCategory === category.id} asChild>
 								<button
 									className={cn(
-										'font-heading rounded-2xl border-0 px-5 py-3 text-start text-2xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none dark:text-white',
+										'font-heading rounded-2xl border-0 px-5 py-2.5 text-start text-xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none sm:px-5 sm:py-3 sm:text-2xl dark:text-white',
 										selectedCategory === category.id
 											? 'bg-black/5 dark:bg-white/10'
 											: 'cursor-pointer hover:bg-black/5 dark:hover:bg-white/10',

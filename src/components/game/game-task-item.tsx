@@ -24,7 +24,7 @@ function GameTaskItemComponent({ task }: Props) {
 				<div className="flex w-full items-start">
 					<p key={task.id} className={cn('flex w-full flex-col gap-0.5 ps-3 pe-5', !task.completed && 'opacity-45')}>
 						<strong>{task.listItem.title}</strong>
-						<span className="text-sm">{task.listItem.hint}</span>
+						<span className="text-sm leading-tight">{task.listItem.hint}</span>
 					</p>
 
 					<span
