@@ -29,7 +29,7 @@ export function GameToastContent({ task }: Props) {
 				<span className="text-content-light dark:text-content-dark">{task.toastItem.hint}</span>
 			</p>
 
-			<Button size="xs" onClick={() => handleDismissToast()}>
+			<Button size="xs" onClick={handleDismissToast}>
 				Dispensar
 			</Button>
 		</div>

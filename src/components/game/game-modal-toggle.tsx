@@ -12,13 +12,7 @@ export function GameModalToggle() {
 		<div className="layout:flex relative mt-2 hidden">
 			<div className="animate-glowing-rotate game-gradient absolute inset-0 -z-10 block [background-size:400%] blur-md" />
 
-			<Button
-				variant="glowing"
-				className="relative z-10"
-				icon
-				aria-label={__('game.title')}
-				onClick={() => onShowGameModal()}
-			>
+			<Button variant="glowing" className="relative z-10" icon aria-label={__('game.title')} onClick={onShowGameModal}>
 				{isGameCompleted ? <IconTrophy /> : <IconDeviceGamepad2 />}
 			</Button>
 		</div>

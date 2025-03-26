@@ -36,7 +36,7 @@ export function LastFmHistory() {
 	const shouldDisplaySkeletons = isLoading || isFetching || !tracks
 
 	return (
-		<Dropdown.Root open={open} onOpenChange={() => handleToggleVisibility()}>
+		<Dropdown.Root open={open} onOpenChange={handleToggleVisibility}>
 			<Dropdown.Trigger asChild>
 				<Button variant="discret" icon className="layout:flex hidden" aria-label={__('lastfm.title')}>
 					<IconMusic />

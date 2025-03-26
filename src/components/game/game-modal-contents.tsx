@@ -96,7 +96,7 @@ export function GameModalContents() {
 						</p>
 
 						<button
-							onClick={() => onResetGame()}
+							onClick={onResetGame}
 							disabled={pointsEarned === 0}
 							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
 						>
