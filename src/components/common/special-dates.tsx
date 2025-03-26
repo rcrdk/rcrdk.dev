@@ -25,16 +25,16 @@ export function SpecialDates() {
 
 	const triggerConfetti = useCallback(() => {
 		fireConfetti()
-		new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
 
 		const timer1 = setTimeout(() => {
 			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
 		}, 750)
 
 		const timer2 = setTimeout(() => {
 			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/confetti-pop.mp3`).play()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
 		}, 1500)
 
 		return () => {

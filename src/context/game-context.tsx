@@ -73,7 +73,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 			if (!task) return
 
 			try {
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/game-points.mp3`).play()
+				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audiop/game-points.mp3`).play()
 			} catch (error) {
 				console.error(error)
 			}

@@ -62,7 +62,7 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
 				)}
 			</Button>
 
-			<audio src={`${env.NEXT_PUBLIC_APP_URL}/rick-roll.mp3`} onEnded={handleEnded} ref={ref} />
+			<audio src={`${env.NEXT_PUBLIC_APP_URL}/audio/rick-roll.mp3`} onEnded={handleEnded} ref={ref} />
 		</>
 	)
 }
