@@ -1,4 +1,33 @@
 {
+	"About": {
+		"title": "About me",
+		"expand": "Grab a coffee and know me more",
+		"contents": [
+			"<strong>My name is Ricardo</strong>, I am {age} years old, and I live in Timbó, Santa Catarina, Brazil. I am a <strong>detail-oriented, persistent, and coffee-driven person.</strong> Besides coding, I am <strong>passionate about music</strong> — my playlists range from pop, rock, MPB, indie, disco, and many more. I’m a fan of the queen, the woman, <strong>Madonna.</strong> I’m also a <strong>Stephen King</strong> constant reader and a binge-watcher of <strong>series and brazilian novelas</strong>. I have a special fondness for everything that brings back the past.",
+			"<strong>Technology has fascinated me from an early age.</strong> My curiosity about the web began in the early 2000s as I explored websites, Orkut, MSN, and, of course, slowly downloaded music over dial-up internet. I took <strong>computer and hardware maintenance courses</strong>, but it was a game — among many others — that truly sparked my passion for development: <strong>The Sims.</strong>",
+			"I first played it on the old yellowed computers at school and spent years immersed in the life simulator. Over time, I got involved in building and sharing houses and worlds from the game, maintaining a blog on Blogger, just like many other players did. That was when <strong>I discovered the ability to edit themes and tweak the source code.</strong> Even without fully understanding what I was doing, I dived into it and fell in love with the process. A few years later, <strong>it all started making sense.</strong>",
+			"In 2011, I took a <strong>Delphi</strong> course, where only two students completed the program — I was one of them. After all, I am persistent. This course led to a small program I developed to handle the student council elections at my school, marking <strong>my first functional project.</strong>",
+			"In 2013, I moved to Timbó and began my professional journey at <strong>Sou Digital</strong>, where I started as an apprentice and was later hired as a <strong>front-end developer.</strong> I developed <strong>websites, web apps and e-commerce.</strong> I worked with <strong>HTML, CSS, and jQuery</strong>, eventually learning some <strong>PHP and Laravel</strong>, always striving to improve my work. Over the years, I refined my knowledge, sharpened my eye for <strong>code, design, and accessibility, and delivered high-quality projects.</strong>",
+			"At the same time, between 2014 and 2017, I pursued a degree in <strong>Advertising and Marketing</strong>. Although I never worked directly in this field, the degree added a lot of value to my work, providing insights into <strong>design, marketing, consumer behavior, and technology.</strong>",
+			"In 2017, within Sou Digital, what is now known as <strong>Sonica</strong> was born — a <strong>no-code</strong> platform designed to deliver functional and customizable websites without the need to deal with code. Today, Sonica is a startup positioned as a <strong>multi-chain</strong> platform for asset tokenization, focused on developing an ecosystem that connects originators, tokenizers, and distributors.",
+			"From 2019 onwards, as I transitioned to <strong>remote work</strong>, I took the opportunity to dive deeper into my studies and enhance my skills in <strong>React, Next.js, TypeScript, Node.js, PHP, and Laravel.</strong> Today, I work as a front-end developer at <strong>Meu Rosinha</strong> while also being involved in other projects. My main focus is working with the <strong>React</strong> ecosystem, but I remain open to exploring <strong>other frameworks</strong> or even mobile development with <strong>React Native</strong>, which I am currently learning. On the back-end, <strong>Node.js</strong> has become a natural complement to <strong>Next.js</strong> or event using on of its frameworks like <strong>Fastify</strong>, while <strong>PHP and Laravel</strong> serve as more of a backup solution when needed.",
+			"<strong>In the future,</strong> my goal is to continue growing as a developer, exploring <strong>new technologies,</strong> and getting involved in challenging projects where I can leave a meaningful mark. While my focus remains on front-end development, I am always looking for new tools and best practices to expand my skill set. <strong>I want to collaborate with innovative teams, share knowledge, and contribute to the creation of products that truly make a difference.</strong> I strive to always keep moving forward—one day at a time, one line of code at a time."
+		]
+	},
+
+	"Contact": {
+		"title": "Contact me",
+		"text": "<strong>How about we have a chat?</strong> I’m open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let’s connect!</strong>",
+		"buttons": {
+			"linkedin": "Connect with me on LinkedIn",
+			"github": "Check out my projects and activities on GitHub",
+			"behance": "Check out my visual projects on Behance",
+			"discord": "Contact me on Discord",
+			"spotify": "Let's listen to CSS on Spotify!",
+			"cv": "Checkout my resume"
+		}
+	},
+
 	"Default": {
 		"mode": {
 			"light": "Light mode",
@@ -35,18 +64,60 @@
 		"lastfm": {
 			"title": "Recently played tracks",
 			"button": "Check out my playlists"
+		},
+		"game": {
+			"title": "Let's play a game!",
+			"text": "Can you find all {quantity} easter eggs that I planted in here?",
+			"button": "[spoiler alert]",
+			"score": "Score:",
+			"reset": "Reset",
+			"stop": "Stop",
+			"optIn": {
+				"button": "Press here to play",
+				"sound": "Turn on your sound"
+			},
+			"winner": {
+				"title": "You just nailed it!",
+				"text": "You found (maybe with a little help) all easter eggs that a planted in here."
+			},
+			"taskButtons": {
+				"devTools": "I just did that!",
+				"randomFact": "I need to know!",
+				"notFound": "Let's get lost!",
+				"tetris": "I want to play!"
+			},
+			"tetris": {
+				"title": "Tetris",
+				"points": "Points",
+				"lines": "Lines",
+				"instructions": {
+					"popover": "How to play",
+					"or": "or",
+					"hold": "Hold or use piece",
+					"status": "Pause or resume game",
+					"move_down": "Move Down",
+					"move_left": "Move Left",
+					"move_right": "Move Right",
+					"hard_drop": "Hard Drop",
+					"flip_counterclockwise": "Flip counterclockwise",
+					"flip_clockwise": "Flip clockwise"
+				},
+				"game_over": {
+					"title": "Game over!",
+					"text": "It's not the end, actually. You can have another try.",
+					"button": "Let's go!"
+				},
+				"game_paused": {
+					"title": "Game paused",
+					"text": "Take a break, grab a coffee and resume the game.",
+					"button": "Resume game!"
+				},
+				"too_small": {
+					"title": "The game is only available in larger screens.",
+					"button": "Ok, I got it!"
+				}
+			}
 		}
-	},
-
-	"NotFound": {
-		"title": "Page not found",
-		"button": "Take me to a real page"
-	},
-	
-	"Seo": {
-		"title": "Ricardo Augusto Kowalski | Front-End Developer",
-		"description": "Front-end developer with over {years} years of experience, specializing in Typescript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web systems, websites, and e-commerce platforms.",
-		"keywords": ["front-end developer", "web developer", "React", "Next.js", "TypeScript", "JavaScript", "Node.js", "PHP", "Laravel", "HTML", "CSS", "accessibility", "SEO", "web performance", "responsive design", "UI/UX", "mobile development", "React Native", "technology", "advertising and marketing", "website development", "web apps", "Timbó", "Santa Catarina", "remote developer", "digital projects", "clean code best practices"]
 	},
 
 	"Hero": {
@@ -58,97 +129,6 @@
 			"linkedin": "Connect with me on LinkedIn",
 			"github": "Check out my projects and activities on GitHub"
 		}
-	},
-
-	"About": {
-		"title": "About me",
-		"expand": "Grab a coffee and know me more",
-		"contents": [
-			"<strong>My name is Ricardo</strong>, I am {age} years old, and I live in Timbó, Santa Catarina, Brazil. I am a <strong>detail-oriented, persistent, and coffee-driven person.</strong> Besides coding, I am <strong>passionate about music</strong> — my playlists range from pop, rock, MPB, indie, disco, and many more. I’m a fan of the queen, the woman, <strong>Madonna.</strong> I’m also a <strong>Stephen King</strong> constant reader and a binge-watcher of <strong>series and brazilian novelas</strong>. I have a special fondness for everything that brings back the past.",
-			"<strong>Technology has fascinated me from an early age.</strong> My curiosity about the web began in the early 2000s as I explored websites, Orkut, MSN, and, of course, slowly downloaded music over dial-up internet. I took <strong>computer and hardware maintenance courses</strong>, but it was a game — among many others — that truly sparked my passion for development: <strong>The Sims.</strong>",
-			"I first played it on the old yellowed computers at school and spent years immersed in the life simulator. Over time, I got involved in building and sharing houses and worlds from the game, maintaining a blog on Blogger, just like many other players did. That was when <strong>I discovered the ability to edit themes and tweak the source code.</strong> Even without fully understanding what I was doing, I dived into it and fell in love with the process. A few years later, <strong>it all started making sense.</strong>",
-			"In 2011, I took a <strong>Delphi</strong> course, where only two students completed the program — I was one of them. After all, I am persistent. This course led to a small program I developed to handle the student council elections at my school, marking <strong>my first functional project.</strong>",
-			"In 2013, I moved to Timbó and began my professional journey at <strong>Sou Digital</strong>, where I started as an apprentice and was later hired as a <strong>front-end developer.</strong> I developed <strong>websites, web apps and e-commerce.</strong> I worked with <strong>HTML, CSS, and jQuery</strong>, eventually learning some <strong>PHP and Laravel</strong>, always striving to improve my work. Over the years, I refined my knowledge, sharpened my eye for <strong>code, design, and accessibility, and delivered high-quality projects.</strong>",
-			"At the same time, between 2014 and 2017, I pursued a degree in <strong>Advertising and Marketing</strong>. Although I never worked directly in this field, the degree added a lot of value to my work, providing insights into <strong>design, marketing, consumer behavior, and technology.</strong>",
-			"In 2017, within Sou Digital, what is now known as <strong>Sonica</strong> was born — a <strong>no-code</strong> platform designed to deliver functional and customizable websites without the need to deal with code. Today, Sonica is a startup positioned as a <strong>multi-chain</strong> platform for asset tokenization, focused on developing an ecosystem that connects originators, tokenizers, and distributors.",
-			"From 2019 onwards, as I transitioned to <strong>remote work</strong>, I took the opportunity to dive deeper into my studies and enhance my skills in <strong>React, Next.js, TypeScript, Node.js, PHP, and Laravel.</strong> Today, I work as a front-end developer at <strong>Meu Rosinha</strong> while also being involved in other projects. My main focus is working with the <strong>React</strong> ecosystem, but I remain open to exploring <strong>other frameworks</strong> or even mobile development with <strong>React Native</strong>, which I am currently learning. On the back-end, <strong>Node.js</strong> has become a natural complement to <strong>Next.js</strong> or event using on of its frameworks like <strong>Fastify</strong>, while <strong>PHP and Laravel</strong> serve as more of a backup solution when needed.",
-			"<strong>In the future,</strong> my goal is to continue growing as a developer, exploring <strong>new technologies,</strong> and getting involved in challenging projects where I can leave a meaningful mark. While my focus remains on front-end development, I am always looking for new tools and best practices to expand my skill set. <strong>I want to collaborate with innovative teams, share knowledge, and contribute to the creation of products that truly make a difference.</strong> I strive to always keep moving forward—one day at a time, one line of code at a time."
-		]
-	},
-
-	"Skills": {
-		"title": "Skills and expertise",
-		"categories": [
-			{
-				"id": "front-end",
-				"title": "Front-End"
-			},
-			{
-				"id": "mobile",
-				"title": "Mobile"
-			},
-			{
-				"id": "back-end",
-				"title": "Back-End"
-			},
-			{
-				"id": "tools",
-				"title": "Softwares & Tools"
-			},
-			{
-				"id": "misc",
-				"title": "Other skills"
-			}
-		]
-	},
-
-	"Projects": {
-		"title": "Projects",
-		"categories": [
-			{
-				"id": "highlights",
-				"label": "Highlighted projects"
-			}, {
-				"id": "web_app",
-				"label": "Web Apps"
-			}, {
-				"id": "website",
-				"label": "Websites"
-			}, {
-				"id": "landing_page",
-				"label": "Landing Pages"
-			}, {
-				"id": "ecommerce",
-				"label": "E-commerces"
-			}, {
-				"id": "mobile_app",
-				"label": "Mobile Apps"
-			}, {
-				"id": "api",
-				"label": "APIs"
-			}
-		],
-		"details": {
-			"categories": {
-				"highlights": "Highlighted",
-				"web_app": "Web App",
-				"website": "Website",
-				"landing_page": "Landing Page",
-				"ecommerce": "E-commerce",
-				"mobile_app": "Mobile App",
-				"api": "API"
-			},
-			"category": "Categories",
-			"roles": "Roles",
-			"employer": "Team",
-			"designer": "UI/UX",
-			"year": "Year",
-			"stack": "Stack",
-			"website": "Visit the Website",
-			"github": "Project on GitHub",
-			"behance": "Project on Behance"
-		},
-		"action": "Details"
 	},
 
 	"Journey": {
@@ -276,16 +256,123 @@
 		}
 	},
 
-	"Contact": {
-		"title": "Contact me",
-		"text": "<strong>How about we have a chat?</strong> I’m open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let’s connect!</strong>",
-		"buttons": {
-			"linkedin": "Connect with me on LinkedIn",
-			"github": "Check out my projects and activities on GitHub",
-			"behance": "Check out my visual projects on Behance",
-			"discord": "Contact me on Discord",
-			"spotify": "Let's listen to CSS on Spotify!",
-			"cv": "Checkout my resume"
-		}
+	"NotFound": {
+		"title": "Page not found",
+		"button": "Take me to a real page"
+	},
+
+	"Projects": {
+		"title": "Projects",
+		"categories": [
+			{
+				"id": "highlights",
+				"label": "Highlighted projects"
+			},
+			{
+				"id": "web_app",
+				"label": "Web Apps"
+			},
+			{
+				"id": "website",
+				"label": "Websites"
+			},
+			{
+				"id": "landing_page",
+				"label": "Landing Pages"
+			},
+			{
+				"id": "ecommerce",
+				"label": "Online Stores"
+			},
+			{
+				"id": "mobile_app",
+				"label": "Mobile Apps"
+			},
+			{
+				"id": "api",
+				"label": "APIs"
+			}
+		],
+		"details": {
+			"categories": {
+				"highlights": "Highlighted",
+				"web_app": "Web App",
+				"website": "Website",
+				"landing_page": "Landing Page",
+				"ecommerce": "E-commerce",
+				"mobile_app": "Mobile App",
+				"api": "API"
+			},
+			"category": "Categories",
+			"roles": "Roles",
+			"employer": "Team",
+			"designer": "UI/UX",
+			"year": "Year",
+			"stack": "Stack",
+			"website": "Visit the Website",
+			"github": "Project on GitHub",
+			"behance": "Project on Behance"
+		},
+		"action": "Details"
+	},
+
+	"Seo": {
+		"title": "Ricardo Augusto Kowalski | Front-End Developer",
+		"description": "Front-end developer with over {years} years of experience, specializing in Typescript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web systems, websites, and e-commerce platforms.",
+		"keywords": [
+			"front-end developer",
+			"web developer",
+			"React",
+			"Next.js",
+			"TypeScript",
+			"JavaScript",
+			"Node.js",
+			"PHP",
+			"Laravel",
+			"HTML",
+			"CSS",
+			"accessibility",
+			"SEO",
+			"web performance",
+			"responsive design",
+			"UI/UX",
+			"mobile development",
+			"React Native",
+			"technology",
+			"advertising and marketing",
+			"website development",
+			"web apps",
+			"Timbó",
+			"Santa Catarina",
+			"remote developer",
+			"digital projects",
+			"clean code best practices"
+		]
+	},
+
+	"Skills": {
+		"title": "Skills and expertise",
+		"categories": [
+			{
+				"id": "front-end",
+				"title": "Front-End"
+			},
+			{
+				"id": "mobile",
+				"title": "Mobile"
+			},
+			{
+				"id": "back-end",
+				"title": "Back-End"
+			},
+			{
+				"id": "tools",
+				"title": "Softwares & Tools"
+			},
+			{
+				"id": "misc",
+				"title": "Other skills"
+			}
+		]
 	}
 }

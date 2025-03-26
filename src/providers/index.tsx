@@ -4,6 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
 
+import { CartContextProvider } from '@/context/game-context'
 import { queryClient } from '@/lib/react-query'
 
 type Props = {
@@ -18,7 +19,9 @@ export function Providers({ children, i18n }: Props) {
 	return (
 		<NextIntlClientProvider messages={i18n.messages} locale={i18n.locale}>
 			<QueryClientProvider client={queryClient}>
-				<ThemeProvider attribute="data-mode">{children}</ThemeProvider>
+				<ThemeProvider attribute="data-mode">
+					<CartContextProvider>{children}</CartContextProvider>
+				</ThemeProvider>
 			</QueryClientProvider>
 		</NextIntlClientProvider>
 	)

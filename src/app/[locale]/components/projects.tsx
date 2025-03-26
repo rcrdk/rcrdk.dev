@@ -11,6 +11,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { ProjectDetails } from '@/app/[locale]/components/project-details'
 import { ProjectItem } from '@/app/[locale]/components/project-item'
 import AnimatedContent from '@/components/animated/animated-content'
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { Section } from '@/components/ui/section'
 import { ProjectCategories, PROJECTS, ProjectTranslatedObject } from '@/data/projects'
 import { LocalesType } from '@/i18n/routing'
@@ -93,14 +94,7 @@ export function Projects() {
 						<button className="group w-full cursor-pointer text-start outline-none">
 							<h2 className="font-heading flex items-center gap-6 text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white">
 								{currentCategory?.label ?? __('title')}
-
-								<span
-									className={cn(
-										'mt-3 flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 transition-all dark:bg-white/10',
-										'group-focus-visible:!border-accent-blue group-focus-visible:bg-accent-blue/10 dark:group-focus-visible:bg-accent-blue/20 group-focus-visible:ring-accent-blue/40 group-focus-visible:text-accent-blue group-focus-visible:ring-4',
-										'group-hover:bg-black/10 dark:bg-white/10 dark:group-hover:bg-white/15',
-									)}
-								>
+								<span className="group-focus-visible:!border-accent-blue group-focus-visible:bg-accent-blue/10 dark:group-focus-visible:bg-accent-blue/20 group-focus-visible:ring-accent-blue/40 group-focus-visible:text-accent-blue mt-3 flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 transition-all group-hover:bg-black/10 group-focus-visible:ring-4 dark:bg-white/10 dark:group-hover:bg-white/15">
 									<IconChevronDown className="size-6" />
 								</span>
 							</h2>
@@ -108,31 +102,30 @@ export function Projects() {
 					</Dropdown.Trigger>
 				</AnimatedContent>
 
-				<Dropdown.Portal>
-					<Dropdown.Content
-						className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark flex [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] flex-col divide-y divide-black/10 rounded-xl border border-black/20 bg-white px-5 py-6 whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
-						align="start"
-						side="bottom"
-						sideOffset={24}
-					>
-						{categories.map((category) => (
-							<Dropdown.Item key={category.id} disabled={selectedCategory === category.id} asChild>
-								<button
-									className={cn(
-										'font-heading rounded-2xl border-0 px-5 py-3 text-start text-2xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none dark:text-white',
-										selectedCategory === category.id
-											? 'bg-black/5 dark:bg-white/10'
-											: 'cursor-pointer hover:bg-black/5 dark:hover:bg-white/10',
-									)}
-									tabIndex={selectedCategory === category.id ? -1 : 0}
-									onClick={() => handleChangeCategory(category.id)}
-								>
-									{category.label}
-								</button>
-							</Dropdown.Item>
-						))}
-					</Dropdown.Content>
-				</Dropdown.Portal>
+				<DropdownMenu
+					className="gap-[2px] px-3 py-4 sm:px-5 sm:py-6"
+					align="start"
+					side="bottom"
+					sideOffset={24}
+					avoidCollisions={false}
+				>
+					{categories.map((category) => (
+						<Dropdown.Item key={category.id} disabled={selectedCategory === category.id} asChild>
+							<button
+								className={cn(
+									'font-heading rounded-2xl border-0 px-5 py-2.5 text-start text-xl leading-none font-bold tracking-tight whitespace-nowrap text-black transition-all outline-none select-none sm:px-5 sm:py-3 sm:text-2xl dark:text-white',
+									selectedCategory === category.id
+										? 'bg-black/5 dark:bg-white/10'
+										: 'cursor-pointer hover:bg-black/5 dark:hover:bg-white/10',
+								)}
+								tabIndex={selectedCategory === category.id ? -1 : 0}
+								onClick={() => handleChangeCategory(category.id)}
+							>
+								{category.label}
+							</button>
+						</Dropdown.Item>
+					))}
+				</DropdownMenu>
 			</Dropdown.Root>
 
 			<div

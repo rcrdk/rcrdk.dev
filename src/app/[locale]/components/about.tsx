@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Image from 'next/image'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import { IconCoffee } from '@tabler/icons-react'
@@ -11,6 +11,7 @@ import AnimatedContent from '@/components/animated/animated-content'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { FULL_DATES } from '@/config/dates'
+import { useGame } from '@/hooks/use-game'
 import { yearsFromThen } from '@/lib/dayjs'
 
 export function About() {
@@ -18,6 +19,13 @@ export function About() {
 
 	const __ = useTranslations('About')
 	const contents = __.raw('contents') as string[]
+
+	const { onCompleteTask } = useGame()
+
+	const handleShowContents = useCallback(() => {
+		setShowContents((prev) => !prev)
+		onCompleteTask('about-me')
+	}, [onCompleteTask])
 
 	return (
 		<Section classNameCenter="max-xs:py-9">
@@ -63,7 +71,7 @@ export function About() {
 			<Collapsible.Root
 				className="xs:min-h-14 relative mt-6 min-h-12 lg:min-h-12"
 				open={showContents}
-				onOpenChange={() => setShowContents((prev) => !prev)}
+				onOpenChange={handleShowContents}
 			>
 				<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden">
 					<div className="flex flex-col gap-6">

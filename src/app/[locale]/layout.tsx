@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 
 import { notFound } from 'next/navigation'
 
+import { KonamiCodeGameTask } from '@/components/game/tasks/konami-code-task'
+import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { routing } from '@/i18n/routing'
 
 type Props = {
@@ -16,5 +18,12 @@ export default async function LocaleLayout({ children, params }: Props) {
 		notFound()
 	}
 
-	return <>{children}</>
+	return (
+		<>
+			<LocaleGameTask />
+			<KonamiCodeGameTask />
+
+			{children}
+		</>
+	)
 }

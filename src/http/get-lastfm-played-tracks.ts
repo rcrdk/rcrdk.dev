@@ -15,7 +15,7 @@ export async function getLastFmPlayedTracks(): Promise<GetLastFmPlayedTracks | u
 	try {
 		await new Promise((resolve) => setTimeout(resolve, 500))
 
-		const response = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/lastfm`, {
+		const response = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/last-fm`, {
 			next: {
 				revalidate: 60 * 10, // 10min
 				tags: ['LASTFM_LAST_PLAYED_TRACKS'],

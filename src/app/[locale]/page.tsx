@@ -12,12 +12,13 @@ import { Nav } from '@/components/common/nav'
 import { Screensaver } from '@/components/common/screensaver'
 import { ScrollStart } from '@/components/common/scroll-start'
 import { SpecialDates } from '@/components/common/special-dates'
+import { GameModalContents } from '@/components/game/game-modal-contents'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
 import { LocalesType, routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
-import { trackServerEvent } from '@/lib/mixpanel'
+import { trackServerEvent } from '@/services/mixpanel'
 
 export type MetadataProps = {
 	params: Promise<{ locale: LocalesType }>
@@ -96,6 +97,7 @@ export default async function HomePage({ params }: Props) {
 			<ScrollStart />
 			<Screensaver />
 			<SpecialDates />
+			<GameModalContents />
 		</div>
 	)
 }

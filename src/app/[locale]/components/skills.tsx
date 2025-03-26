@@ -40,7 +40,7 @@ export function Skills() {
 				</h2>
 			</AnimatedContent>
 
-			<div className="flex flex-wrap gap-2">
+			<div className="xs:gap-2 flex flex-wrap gap-1">
 				{categories.map((item) => (
 					<AnimatedContent
 						distance={125}
@@ -50,7 +50,7 @@ export function Skills() {
 					>
 						<button
 							className={cn(
-								'rounded-2xl border px-4 py-2 text-xs leading-none font-bold tracking-tight whitespace-nowrap uppercase transition-all select-none',
+								'xs:px-4 xs:text-xs rounded-2xl border px-3 py-2 text-[0.63rem] leading-none font-bold tracking-tight whitespace-nowrap uppercase transition-all select-none',
 								selectedCategory === item.id &&
 									'bg-content-light pointer-events-none border-transparent text-white dark:bg-white dark:text-black',
 								selectedCategory !== item.id &&
@@ -66,10 +66,10 @@ export function Skills() {
 			</div>
 
 			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
-				<hr className="my-8 border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
+				<hr className="xs:my-8 my-6 border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />
 
 				<div className="[transition:height_500ms_ease]" style={{ height: `${listHeight}px` }}>
-					<div className="flex flex-wrap gap-2 md:gap-3" ref={listRef}>
+					<div className="xs:gap-2 flex flex-wrap gap-1 md:gap-3" ref={listRef}>
 						{skills.map((item) => (
 							<SkillItem skill={item} key={item.title.en} />
 						))}

@@ -1,23 +1,32 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { LINKS } from '@/config/links'
+import { useGame } from '@/hooks/use-game'
 import { useLastFM } from '@/hooks/use-last-fm'
 import { lastFmRelativeTime } from '@/lib/dayjs'
 
 export function LastFmHistory() {
 	const [open, setOpen] = useState(false)
 
+	const { onCompleteTask } = useGame()
+
 	const locale = useLocale()
 	const __ = useTranslations('Default')
 
 	const { data, isFetching, isLoading } = useLastFM({ enabled: open })
+
+	const handleToggleVisibility = useCallback(() => {
+		setOpen((prev) => !prev)
+		onCompleteTask('now-playing')
+	}, [onCompleteTask])
 
 	const tracks = useMemo(() => {
 		return data?.tracks?.slice(0, 7)
@@ -27,24 +36,17 @@ export function LastFmHistory() {
 	const shouldDisplaySkeletons = isLoading || isFetching || !tracks
 
 	return (
-		<Dropdown.Root open={open} onOpenChange={() => setOpen((prev) => !prev)}>
+		<Dropdown.Root open={open} onOpenChange={handleToggleVisibility}>
 			<Dropdown.Trigger asChild>
 				<Button variant="discret" icon className="layout:flex hidden" aria-label={__('lastfm.title')}>
 					<IconMusic />
 				</Button>
 			</Dropdown.Trigger>
 
-			<Dropdown.Content
-				side="right"
-				align="end"
-				avoidCollisions={false}
-				sideOffset={40}
-				className="data-[state='open']:animate-dropdown-in data-[state='closed']:animate-dropdown-out shadow-dialog dark:bg-dropdown-dark w-[500px] [transform-origin:var(--radix-dropdown-menu-content-transform-origin)] divide-y divide-black/10 rounded-xl border border-black/20 bg-white whitespace-nowrap will-change-transform dark:divide-white/15 dark:border-white/20"
-			>
+			<DropdownMenu className="w-[500px]" side="right" align="end" avoidCollisions={false} sideOffset={40}>
 				<div className="flex items-center gap-2 py-3 pr-4 pl-3">
 					<IconBrandSpotify className="size-7 stroke-[1.5]" />
 					<strong className="block grow">{__('lastfm.title')}</strong>
-
 					<Button
 						as="a"
 						href={LINKS.spotify}
@@ -73,7 +75,7 @@ export function LastFmHistory() {
 					tracks?.map((item, index) => (
 						<div key={index} className="flex min-w-0 items-center gap-3 py-2.5 pr-5 pl-3">
 							<Image
-								className="block size-10 shrink-0 rounded-sm bg-black/5 dark:bg-white/15"
+								className="block size-10 shrink-0 rounded-sm bg-black/5 shadow shadow-black/20 dark:bg-white/15"
 								src={item.cover}
 								width={150}
 								height={150}
@@ -109,7 +111,7 @@ export function LastFmHistory() {
 							)}
 						</div>
 					))}
-			</Dropdown.Content>
+			</DropdownMenu>
 		</Dropdown.Root>
 	)
 }

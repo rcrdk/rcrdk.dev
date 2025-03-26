@@ -1,0 +1,59 @@
+.game-block {
+	margin: 0;
+	padding: 0;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+[data-mode='dark'] .game-block {
+	border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.piece-i {
+	background-color: #1abc9c;
+}
+.piece-j {
+	background-color: #f1c40f;
+}
+.piece-l {
+	background-color: #e74c3c;
+}
+.piece-o {
+	background-color: #9b59b6;
+}
+.piece-s {
+	background-color: #3498db;
+}
+.piece-t {
+	background-color: #e67e22;
+}
+.piece-z {
+	background-color: #2ecc71;
+}
+
+[data-mode='dark'] .piece-i,
+[data-mode='dark'] .piece-j,
+[data-mode='dark'] .piece-l,
+[data-mode='dark'] .piece-o,
+[data-mode='dark'] .piece-s,
+[data-mode='dark'] .piece-t,
+[data-mode='dark'] .piece-z {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.piece-preview {
+	background-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-mode='dark'] .piece-preview {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.piece-view:not(:first-child) {
+	margin-top: 1.25rem;
+}
+
+.piece-view:nth-child(n + 4) {
+	display: none;
+}
