@@ -17,10 +17,13 @@ import { RickRollingGameTaskButton } from '@/components/game/tasks/rickrolling-t
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
+import { useGame } from '@/hooks/use-game'
 
 export function Contact() {
 	const [showAnimated, setShowAnimated] = useState(false)
+
 	const __ = useTranslations('Contact')
+	const { isGameActive } = useGame()
 
 	return (
 		<Section>
@@ -144,16 +147,18 @@ export function Contact() {
 						</AnimatedContent>
 					</li>
 
-					<li className="layout:block hidden">
-						<AnimatedContent
-							distance={125}
-							config={{ tension: 60, friction: 15 }}
-							delay={450}
-							rootMargin="0px 0px 125px"
-						>
-							<RickRollingGameTaskButton onShowAnimated={setShowAnimated} />
-						</AnimatedContent>
-					</li>
+					{isGameActive && (
+						<li className="layout:block hidden">
+							<AnimatedContent
+								distance={125}
+								config={{ tension: 60, friction: 15 }}
+								delay={450}
+								rootMargin="0px 0px 125px"
+							>
+								<RickRollingGameTaskButton onShowAnimated={setShowAnimated} />
+							</AnimatedContent>
+						</li>
+					)}
 
 					<li className="w-full grow self-center sm:w-auto">
 						<AnimatedContent

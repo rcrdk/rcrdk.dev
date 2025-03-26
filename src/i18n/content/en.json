@@ -70,6 +70,10 @@
 			"button": "[spoiler alert]",
 			"score": "Your score:",
 			"reset": "Reset",
+			"optIn": {
+				"button": "Press here to play",
+				"sound": "Turn on your sound"
+			},
 			"winner": {
 				"title": "You just nailed it!",
 				"text": "You found (maybe with a little help) all easter eggs that a planted in here."

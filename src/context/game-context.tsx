@@ -31,6 +31,8 @@ interface GameContextDataProps {
 	showGameTetris: boolean
 	onShowGameTetris: VoidFunction
 	isGameCompleted: boolean
+	isGameActive: boolean
+	onActivateGame: VoidFunction
 }
 
 export const GameContext = createContext<GameContextDataProps>({} as GameContextDataProps)
@@ -40,6 +42,7 @@ interface GameContextProviderProps {
 }
 
 export function CartContextProvider({ children }: GameContextProviderProps) {
+	const [isGameActive, setIsGameActive] = useState(false)
 	const [tasksComleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
 	const [showGameModal, setShowGameModal] = useState(false)
 	const [showGameTetris, setShowGameTetris] = useState(false)
@@ -66,17 +69,23 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		}))
 	}, [locale, tasksComleted])
 
+	const onActivateGame = useCallback(() => {
+		setIsGameActive(true)
+
+		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`).play()
+
+		if (typeof window !== 'undefined') {
+			window.localStorage.setItem(KEYS.gameActive, 'true')
+		}
+	}, [])
+
 	const notifyCompletedTask = useCallback(
 		(taskId: GameTaskTypes) => {
 			const task = gameTasks.find((item) => item.id === taskId)
 
 			if (!task) return
 
-			try {
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audiop/game-points.mp3`).play()
-			} catch (error) {
-				console.error(error)
-			}
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`).play()
 
 			toast(<GameToastContent task={task} />, {
 				id: taskId,
@@ -91,7 +100,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		(taskId: GameTaskTypes) => {
 			const taskAlreadyExists = tasksComleted.find((task) => task === taskId)
 
-			if (!taskAlreadyExists && isScreenSizeAllowed) {
+			if (!taskAlreadyExists && isScreenSizeAllowed && isGameActive) {
 				setTasksCompleted((prev) => {
 					const updatedTasks = [...prev, taskId] as GameTaskTypes[]
 
@@ -105,7 +114,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				notifyCompletedTask(taskId)
 			}
 		},
-		[isScreenSizeAllowed, notifyCompletedTask, tasksComleted],
+		[isGameActive, isScreenSizeAllowed, notifyCompletedTask, tasksComleted],
 	)
 
 	function onResetGame() {
@@ -114,6 +123,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 		if (typeof window !== 'undefined') {
 			window.localStorage.removeItem(KEYS.initialLocale)
+			window.localStorage.removeItem(KEYS.gameTasksVisible)
 			window.localStorage.setItem(KEYS.gameTasks, JSON.stringify([]))
 		}
 	}
@@ -130,8 +140,12 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	const onShowGameTasks = useCallback(() => {
-		setShowGameTasks((prev) => !prev)
+		setShowGameTasks(true)
 		onCompleteTask('has-opened-hints')
+
+		if (typeof window !== 'undefined') {
+			window.localStorage.setItem(KEYS.gameTasksVisible, 'true')
+		}
 	}, [onCompleteTask])
 
 	const pointsEarned = useMemo(() => {
@@ -164,11 +178,13 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	useEffect(() => {
 		if (typeof window === 'undefined') return
 
-		const localTasksCompleted = window.localStorage.getItem(KEYS.gameTasks)
+		const checkForSavedTasksCompleted = window.localStorage.getItem(KEYS.gameTasks)
+		const checkIfGameTasksListAreVisible = window.localStorage.getItem(KEYS.gameTasksVisible)
+		const checkIfGameIsActive = window.localStorage.getItem(KEYS.gameActive)
 
-		if (localTasksCompleted) {
-			setTasksCompleted(JSON.parse(localTasksCompleted))
-		}
+		if (checkForSavedTasksCompleted) setTasksCompleted(JSON.parse(checkForSavedTasksCompleted))
+		if (checkIfGameTasksListAreVisible && checkIfGameTasksListAreVisible === 'true') setShowGameTasks(true)
+		if (checkIfGameIsActive && checkIfGameIsActive === 'true') setIsGameActive(true)
 	}, [])
 
 	return (
@@ -186,6 +202,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				showGameTetris,
 				onShowGameTetris,
 				isGameCompleted,
+				isGameActive,
+				onActivateGame,
 			}}
 		>
 			{children}

@@ -70,6 +70,10 @@
 			"button": "[alerta de spoiler]",
 			"score": "Seus pontos:",
 			"reset": "Recomeçar",
+			"optIn": {
+				"button": "Pressione aqui para jogar",
+				"sound": "Ative seu som"
+			},
 			"winner": {
 				"title": "Você mandou muito bem!",
 				"text": "Encontrou (talvez com uma ajudinha) todos os easter eggs que eu plantei aqui."

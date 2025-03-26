@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from 'react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import * as Dialog from '@radix-ui/react-dialog'
-import { IconRefresh, IconX } from '@tabler/icons-react'
+import { IconRefresh, IconVolume, IconX } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { GameTaskItem } from '@/components/game/game-task-item'
@@ -25,6 +25,8 @@ export function GameModalContents() {
 		onShowGameTasks,
 		showGameTasks,
 		isGameCompleted,
+		isGameActive,
+		onActivateGame,
 	} = useGame()
 
 	const __ = useTranslations('Default')
@@ -57,6 +59,9 @@ export function GameModalContents() {
 			triggerConfetti()
 		}
 	}, [triggerConfetti, isGameCompleted, showGameModal])
+
+	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
+	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted
 
 	return (
 		<Dialog.Root open={showGameModal} onOpenChange={onShowGameModal}>
@@ -94,37 +99,68 @@ export function GameModalContents() {
 									{isGameCompleted ? __('game.winner.text') : __('game.text')}
 								</Dialog.Description>
 
-								<div className="mt-6 mb-10 flex items-center justify-between rounded-2xl bg-black/5 px-5 py-3 dark:bg-white/10">
-									<p className="p-1 text-sm text-black dark:text-white">
-										<strong className="font-semibold">{__('game.score')}</strong> {pointsEarned}/{pointsTotal}
-									</p>
-
-									<button
-										onClick={() => onResetGame()}
-										disabled={pointsEarned === 0}
-										className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
-									>
-										<IconRefresh size={16} />
-										{__('game.reset')}
-									</button>
-								</div>
-
-								<Collapsible.Root open={(showGameModal && showGameTasks) || isGameCompleted}>
-									<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out flex flex-col gap-4 overflow-hidden will-change-contents ![animation-duration:500ms]">
-										{gameTasks.map((task) => (
-											<GameTaskItem key={task.id} task={task} />
-										))}
-									</Collapsible.Content>
-								</Collapsible.Root>
-
-								<Collapsible.Root open={showGameModal && !showGameTasks && !isGameCompleted}>
-									<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden will-change-contents ![animation-duration:500ms]">
-										<Button variant="outline-warning" className="w-full" onClick={() => onShowGameTasks()}>
-											<span className="text-2xl">🫣</span>
-											{__('game.button')}
+								{!isGameActive && (
+									<>
+										<Button
+											variant="outline-warning"
+											className="mt-8 mb-6 w-full font-semibold"
+											onClick={onActivateGame}
+										>
+											<span className="text-2xl">🤠</span>
+											{__('game.optIn.button')}
 										</Button>
-									</Collapsible.Content>
-								</Collapsible.Root>
+
+										<p className="opacity-50c flex items-center justify-center gap-1 text-sm dark:opacity-80">
+											<IconVolume className="stroke-1" />
+											{__('game.optIn.sound')}
+										</p>
+									</>
+								)}
+
+								{isGameActive && (
+									<>
+										<div className="mt-6 mb-10 flex items-center justify-between rounded-2xl bg-black/5 px-5 py-3 dark:bg-white/10">
+											<p className="p-1 text-sm text-black dark:text-white">
+												<strong className="font-semibold">{__('game.score')}</strong> {pointsEarned}/{pointsTotal}
+											</p>
+
+											<button
+												onClick={() => onResetGame()}
+												disabled={pointsEarned === 0}
+												className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
+											>
+												<IconRefresh size={16} />
+												{__('game.reset')}
+											</button>
+										</div>
+
+										<div className="relative min-h-12">
+											<Button
+												variant="outline-warning"
+												className={cn(
+													'absolute top-0 left-0 w-full',
+													!shouldDisplayTasksTrigger && 'opacity-0 duration-100',
+												)}
+												tabIndex={shouldDisplayTasksTrigger ? 0 : -1}
+												onClick={(e) => {
+													e.currentTarget.blur()
+													onShowGameTasks()
+												}}
+											>
+												<span className="text-2xl">🫣</span>
+												{__('game.button')}
+											</Button>
+
+											<Collapsible.Root open={shouldDisplayTasks}>
+												<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out flex flex-col gap-4 overflow-hidden will-change-contents ![animation-duration:500ms]">
+													{gameTasks.map((task) => (
+														<GameTaskItem key={task.id} task={task} />
+													))}
+												</Collapsible.Content>
+											</Collapsible.Root>
+										</div>
+									</>
+								)}
 							</div>
 						</Dialog.Content>
 					</div>
