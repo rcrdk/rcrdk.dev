@@ -108,6 +108,7 @@ export function Projects() {
 					side="bottom"
 					sideOffset={24}
 					avoidCollisions={false}
+					portal
 				>
 					{categories.map((category) => (
 						<Dropdown.Item key={category.id} disabled={selectedCategory === category.id} asChild>
