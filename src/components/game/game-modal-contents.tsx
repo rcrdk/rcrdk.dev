@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from 'react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import * as DialogRadix from '@radix-ui/react-dialog'
-import { IconRefresh, IconVolume } from '@tabler/icons-react'
+import { IconRefresh, IconSkull, IconVolume } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { GameTaskItem } from '@/components/game/game-task-item'
@@ -27,6 +27,7 @@ export function GameModalContents() {
 		isGameCompleted,
 		isGameActive,
 		onActivateGame,
+		onStopGame,
 	} = useGame()
 
 	const __ = useTranslations('Default')
@@ -81,7 +82,7 @@ export function GameModalContents() {
 						{__('game.optIn.button')}
 					</Button>
 
-					<p className="opacity-50c flex items-center justify-center gap-1 text-sm dark:opacity-80">
+					<p className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
 						<IconVolume className="stroke-1" />
 						{__('game.optIn.sound')}
 					</p>
@@ -90,10 +91,18 @@ export function GameModalContents() {
 
 			{isGameActive && (
 				<>
-					<div className="mt-6 mb-10 flex items-center justify-between rounded-2xl bg-black/5 px-5 py-3 dark:bg-white/10">
-						<p className="p-1 text-sm text-black dark:text-white">
+					<div className="mt-6 mb-10 flex items-center gap-1 rounded-2xl bg-black/5 py-3 pr-4 pl-5 dark:bg-white/10">
+						<p className="grow p-1 text-start text-sm text-black dark:text-white">
 							<strong className="font-semibold">{__('game.score')}</strong> {pointsEarned}/{pointsTotal}
 						</p>
+
+						<button
+							onClick={onStopGame}
+							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
+						>
+							<IconSkull size={16} />
+							{__('game.stop')}
+						</button>
 
 						<button
 							onClick={onResetGame}

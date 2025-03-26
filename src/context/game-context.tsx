@@ -33,6 +33,7 @@ interface GameContextDataProps {
 	isGameCompleted: boolean
 	isGameActive: boolean
 	onActivateGame: VoidFunction
+	onStopGame: VoidFunction
 }
 
 export const GameContext = createContext<GameContextDataProps>({} as GameContextDataProps)
@@ -117,14 +118,29 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		[isGameActive, isScreenSizeAllowed, notifyCompletedTask, tasksComleted],
 	)
 
-	function onResetGame() {
+	function onResetGame(soundEffect?: boolean) {
 		setTasksCompleted([])
 		setShowGameTasks(false)
+
+		if (soundEffect) {
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`).play()
+		}
 
 		if (typeof window !== 'undefined') {
 			window.localStorage.removeItem(KEYS.initialLocale)
 			window.localStorage.removeItem(KEYS.gameTasksVisible)
 			window.localStorage.setItem(KEYS.gameTasks, JSON.stringify([]))
+		}
+	}
+
+	function onStopGame() {
+		onResetGame(false)
+		setIsGameActive(false)
+
+		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-over.mp3`).play()
+
+		if (typeof window !== 'undefined') {
+			window.localStorage.removeItem(KEYS.gameActive)
 		}
 	}
 
@@ -204,6 +220,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				isGameCompleted,
 				isGameActive,
 				onActivateGame,
+				onStopGame,
 			}}
 		>
 			{children}

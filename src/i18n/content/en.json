@@ -69,8 +69,9 @@
 			"title": "Let's play a game!",
 			"text": "Can you find all {quantity} easter eggs that I planted in here?",
 			"button": "[spoiler alert]",
-			"score": "Your score:",
+			"score": "Score:",
 			"reset": "Reset",
+			"stop": "Stop",
 			"optIn": {
 				"button": "Press here to play",
 				"sound": "Turn on your sound"
