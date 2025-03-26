@@ -10,7 +10,7 @@ export function GameModalToggle() {
 
 	return (
 		<div className="layout:flex relative mt-2 hidden">
-			<div className="animate-glowing-rotate absolute inset-0 -z-10 block bg-[linear-gradient(45deg,_#ff0000,_#ff7300,_#fffb00,_#48ff00,_#00ffd5,_#002bff,_#7a00ff,_#ff00c8,_#ff0000)] [background-size:400%] blur-md" />
+			<div className="animate-glowing-rotate game-gradient absolute inset-0 -z-10 block [background-size:400%] blur-md" />
 
 			<Button
 				variant="glowing"
