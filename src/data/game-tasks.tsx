@@ -110,8 +110,8 @@ export const GAME_TASKS: GameTaskObject[] = [
 		listItem: {
 			title: { en: 'Screensaver', 'pt-br': 'Protetor de tela' },
 			hint: {
-				en: 'Just take your hand of your mouse for a while. Hint: repeat it some times.',
-				'pt-br': 'Tire a mão do seu mouse por um tempinho. Dica: faça mais de uma vez.',
+				en: 'Just close this dialog and take your hand of your mouse for a while. Hint: repeat it some times.',
+				'pt-br': 'Feche essa modal e tire a mão do seu mouse por um tempinho. Dica: faça mais de uma vez.',
 			},
 		},
 		toastItem: {
