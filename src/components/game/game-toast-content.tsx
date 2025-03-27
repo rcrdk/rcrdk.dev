@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
@@ -9,6 +10,8 @@ type Props = {
 }
 
 export function GameToastContent({ task }: Props) {
+	const __ = useTranslations('Default')
+
 	const handleDismissToast = useCallback(() => {
 		toast.dismiss(task.id)
 	}, [task.id])
@@ -30,7 +33,7 @@ export function GameToastContent({ task }: Props) {
 			</p>
 
 			<Button size="xs" onClick={handleDismissToast}>
-				Dispensar
+				{__('game.dismiss')}
 			</Button>
 		</div>
 	)

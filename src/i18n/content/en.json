@@ -72,6 +72,7 @@
 			"score": "Score:",
 			"reset": "Reset",
 			"stop": "Stop",
+			"dismiss": "Dismiss",
 			"optIn": {
 				"button": "Press here to play",
 				"sound": "Turn on your sound"
