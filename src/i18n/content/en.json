@@ -7,10 +7,12 @@
 			"<strong>Technology has fascinated me from an early age.</strong> My curiosity about the web began in the early 2000s as I explored websites, Orkut, MSN, and, of course, slowly downloaded music over dial-up internet. I took <strong>computer and hardware maintenance courses</strong>, but it was a game — among many others — that truly sparked my passion for development: <strong>The Sims.</strong>",
 			"I first played it on the old yellowed computers at school and spent years immersed in the life simulator. Over time, I got involved in building and sharing houses and worlds from the game, maintaining a blog on Blogger, just like many other players did. That was when <strong>I discovered the ability to edit themes and tweak the source code.</strong> Even without fully understanding what I was doing, I dived into it and fell in love with the process. A few years later, <strong>it all started making sense.</strong>",
 			"In 2011, I took a <strong>Delphi</strong> course, where only two students completed the program — I was one of them. After all, I am persistent. This course led to a small program I developed to handle the student council elections at my school, marking <strong>my first functional project.</strong>",
-			"In 2013, I moved to Timbó and began my professional journey at <strong>Sou Digital</strong>, where I started as an apprentice and was later hired as a <strong>front-end developer.</strong> I developed <strong>websites, web apps and e-commerce.</strong> I worked with <strong>HTML, CSS, and jQuery</strong>, eventually learning some <strong>PHP and Laravel</strong>, always striving to improve my work. Over the years, I refined my knowledge, sharpened my eye for <strong>code, design, and accessibility, and delivered high-quality projects.</strong>",
+			"In 2013, I moved to Timbó and began my professional journey at <strong>Sou Digital</strong>, where I started as an apprentice and was later hired as a <strong>front-end developer.</strong> I developed <strong>websites, web apps and online stores.</strong> I worked with <strong>HTML, CSS, and jQuery</strong>, eventually learning some <strong>PHP and Laravel</strong>, always striving to improve my work. Over the years, I refined my knowledge, sharpened my eye for <strong>code, design, and accessibility, and delivered high-quality projects.</strong>",
 			"At the same time, between 2014 and 2017, I pursued a degree in <strong>Advertising and Marketing</strong>. Although I never worked directly in this field, the degree added a lot of value to my work, providing insights into <strong>design, marketing, consumer behavior, and technology.</strong>",
 			"In 2017, within Sou Digital, what is now known as <strong>Sonica</strong> was born — a <strong>no-code</strong> platform designed to deliver functional and customizable websites without the need to deal with code. Today, Sonica is a startup positioned as a <strong>multi-chain</strong> platform for asset tokenization, focused on developing an ecosystem that connects originators, tokenizers, and distributors.",
-			"From 2019 onwards, as I transitioned to <strong>remote work</strong>, I took the opportunity to dive deeper into my studies and enhance my skills in <strong>React, Next.js, TypeScript, Node.js, PHP, and Laravel.</strong> Today, I work as a front-end developer at <strong>Meu Rosinha</strong> while also being involved in other projects. My main focus is working with the <strong>React</strong> ecosystem, but I remain open to exploring <strong>other frameworks</strong> or even mobile development with <strong>React Native</strong>, which I am currently learning. On the back-end, <strong>Node.js</strong> has become a natural complement to <strong>Next.js</strong> or event using on of its frameworks like <strong>Fastify</strong>, while <strong>PHP and Laravel</strong> serve as more of a backup solution when needed.",
+			"From 2019 onwards, as I transitioned to <strong>remote work</strong>, I took the opportunity to dive deeper into my studies and enhance my skills in <strong>React, Next.js, TypeScript, Node.js, PHP, and Laravel.</strong> I kept working in my previous position at <strong>Sou Digital</strong> and also worked as a front-end developer at <strong>Meu Rosinha</strong> helping to build a web app for beauty consultants, and of course, working with these modern technologies.",
+			"For 2025, I challenged myself to make this year a watershed year. So, my main goal was to find a new position as front-end developer and I did it by starting at <strong>MySide</strong>, a real estate brazilian startup. But this history is yet to be written.",
+			"My main focus in these last few years was to work with the <strong>JavaScript</strong> ecosystem, most specifically with <strong>React</strong>, but always remaining open to exploring <strong>other frameworks</strong> or even mobile development with <strong>React Native</strong>, which I am currently learning. On the back-end, <strong>Node.js</strong> has become a natural complement to <strong>Next.js</strong> or even using one of its frameworks like <strong>Fastify</strong>, while <strong>PHP and Laravel</strong> serve as more of a backup solution when needed.",
 			"<strong>In the future,</strong> my goal is to continue growing as a developer, exploring <strong>new technologies,</strong> and getting involved in challenging projects where I can leave a meaningful mark. While my focus remains on front-end development, I am always looking for new tools and best practices to expand my skill set. <strong>I want to collaborate with innovative teams, share knowledge, and contribute to the creation of products that truly make a difference.</strong> I strive to always keep moving forward—one day at a time, one line of code at a time."
 		]
 	},
@@ -123,7 +125,7 @@
 
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over {years} years I've been developing projects like <strong>web apps, websites, landing pages and e-commerces.</strong> I have strong skills in <strong>Typescript, React, Next.js and Node.js.</strong>",
+		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over {years} years I've been developing projects like <strong>web apps, websites, landing pages and online stores.</strong> I have strong skills in <strong>TypeScript, React, Next.js and Node.js.</strong>",
 		"buttons": {
 			"aboutLong": "Who is Ricardo?",
 			"aboutShort": "Who I am",
@@ -146,6 +148,17 @@
 			"title": "Work experience",
 			"list": [
 				{
+					"company": "MySide",
+					"url": "https://myside.com.br",
+					"title": "Front-End Developer",
+					"time_range": "2025 - Present",
+					"location": "Remote",
+					"info": [
+						"Development of Progressive Web App (PWA) for for MySide's Personal Shoppers.",
+						"I'll tell you more soon..."
+					]
+				},
+				{
 					"company": "Meu Rosinha",
 					"url": "https://meurosinha.com.br",
 					"title": "Front-End Developer",
@@ -167,7 +180,7 @@
 					"time_range": "2019 - 2025",
 					"location": "Remote",
 					"info": [
-						"I developed websites, landing pages, web apps, and e-commerce platforms alongside the team, now also working as a back-end developer, using HTML, CSS, Sass, Bootstrap, Vanilla JavaScript, PHP, Laravel, MySQL with Eloquent, Webpack, Laravel Mix, and the Tray platform.",
+						"I developed websites, landing pages, web apps, and online stores at platforms alongside the team, now also working as a back-end developer, using HTML, CSS, Sass, Bootstrap, Vanilla JavaScript, PHP, Laravel, MySQL with Eloquent, Webpack, Laravel Mix, and the Tray platform.",
 						"I developed over 50 projects for clients such as Uniasselvi, Roto Fermax, Viacredi, Móveis Butzke, Geo Marine Survey Systems, Linklaw, and Cadastra.",
 						"I implemented continuous improvements to the company’s core CMS, which sped up the development process of content management modules for new projects by at least 2x."
 					]
@@ -191,7 +204,7 @@
 					"time_range": "2013 - 2019",
 					"location": "Timbó, SC, Brazil",
 					"info": [
-						"I developed websites, landing pages, web apps, and e-commerce platforms alongside the team using HTML, CSS, Sass, Bootstrap, Vanilla JavaScript, jQuery, Webpack, PHP, Laravel, and OpenCart.",
+						"I developed websites, landing pages, web apps, and online stores at platforms alongside the team using HTML, CSS, Sass, Bootstrap, Vanilla JavaScript, jQuery, Webpack, PHP, Laravel, and OpenCart.",
 						"I developed over 200 projects for clients such as Uniasselvi, Unifique, Mueller, Grupo Kyly, Adapcon, Oficina3D, B+CA (Milton Nascimento, Emicida, Cazuza), and the Municipality of Blumenau."
 					]
 				}
@@ -319,7 +332,7 @@
 
 	"Seo": {
 		"title": "Ricardo Augusto Kowalski | Front-End Developer",
-		"description": "Front-end developer with over {years} years of experience, specializing in Typescript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web systems, websites, and e-commerce platforms.",
+		"description": "Front-end developer with over {years} years of experience, specializing in TypeScript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web apps, websites, landing pages and online stores.",
 		"keywords": [
 			"front-end developer",
 			"web developer",

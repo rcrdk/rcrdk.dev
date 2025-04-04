@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
 	IconApi,
 	IconBrandAdobeIllustrator,
@@ -37,12 +36,12 @@ export type SkillObject = {
 
 export const SKILLS: SkillObject[] = [
 	{
-		title: { en: 'Javascript', 'pt-br': 'Javascript' },
+		title: { en: 'JavaScript', 'pt-br': 'JavaScript' },
 		categories: ['front-end', 'back-end', 'mobile'],
 		icon: <Icon.Javascript />,
 	},
 	{
-		title: { en: 'Typescript', 'pt-br': 'Typescript' },
+		title: { en: 'TypeScript', 'pt-br': 'TypeScript' },
 		categories: ['front-end', 'back-end', 'mobile'],
 		icon: <Icon.Typescript />,
 	},

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { cn } from '@/utils/tailwind-cn'
 
 type Props<T extends React.ElementType> = {
