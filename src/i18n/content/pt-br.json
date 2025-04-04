@@ -7,12 +7,12 @@
 			"<strong>Desde cedo, a tecnologia me fascinava.</strong> Minha curiosidade pela web começou em meados dos anos 2000, explorando sites, Orkut, MSN e, claro, baixando músicas lentamente na internet discada. Fiz cursos de <strong>informática e manutenção de computadores</strong>, mas foi um jogo, entre tantos outros, que realmente acendeu minha paixão pelo desenvolvimento: <strong>The Sims.</strong>",
 			"Conheci ele nos computadores amarelados antigos da escola e passei anos jogando com o simulador de vida e, com o tempo, me envolvi na construção e compartilhamento de casas e mundos do jogo, mantendo um blog no Blogger como tantos outros jogadores faziam. <strong>Foi ali que descobri a possibilidade de editar temas e mexer no código-fonte.</strong> Mesmo sem entender muito, eu mergulhei nisso e me apaixonei pelo processo. Poucos anos depois <strong>tudo faria sentido.</strong>",
 			"Em 2011 fiz um curso de <strong>Delphi</strong>, onde apenas dois alunos concluíram, eu era um deles, afinal, sou persistente. Esse curso rendeu um pequeno programa que desenvolvi para realizar a votação do grêmio estudantil da minha escola, então, <strong>meu primeiro projeto funcional.</strong>",
-			"Em 2013 me mudei para Timbó e iniciei minha trajetória profissional na <strong>Sou Digital</strong>, onde comecei como aprendiz e, mais tarde, fui contratado como <strong>desenvolvedor front-end.</strong> Trabalhei com desenvolvimento de <strong>websites, web apps e e-commerces.</strong> Trabalhei com <strong>HTML, CSS, jQuery,</strong> eventualmente aprendendo um pouco de <strong>PHP e Laravel</strong>, sempre buscando aprimorar minhas entregas. Ao longo dos anos, evoluí meu conhecimento, refinei meu olhar para o <strong>código, design e acessibilidade e entregando projetos de qualidade.</strong>",
+			"Em 2013 me mudei para Timbó e iniciei minha trajetória profissional na <strong>Sou Digital</strong>, onde comecei como aprendiz e, mais tarde, fui contratado como <strong>desenvolvedor front-end.</strong> Trabalhei com desenvolvimento de <strong>websites, web apps e lojas online.</strong> Trabalhei com <strong>HTML, CSS, jQuery,</strong> eventualmente aprendendo um pouco de <strong>PHP e Laravel</strong>, sempre buscando aprimorar minhas entregas. Ao longo dos anos, evoluí meu conhecimento, refinei meu olhar para o <strong>código, design e acessibilidade e entregando projetos de qualidade.</strong>",
 			"Paralelamente, cursei <strong>Publicidade e Propaganda</strong> entre 2014 e 2017. Apesar de nunca ter atuado diretamente na área, a formação agregou muito ao meu trabalho, trazendo conceitos de <strong>design, marketing, comportamento e tecnologia.</strong>",
 			"Em 2017, dentro da Sou Digital, nasceu o que hoje é chamada <strong>Sonica</strong>, uma plataforma <strong>no-code</strong> com a proposta de entregar websites funcionais e personalizáveis sem precisar lidar obrigatoriamente com código. A Sonica hoje é uma startup que se posiciona como uma uma <strong>plataforma multi-chain para tokenização de ativos</strong>, focada em desenvolver um ecossistema unindo originadores, tokenizadoras e distribuidores.",
-			"A partir de 2019, com o <strong>trabalho remoto</strong>, aproveitei para intensificar meus estudos e aprofundar minhas habilidades em <strong>React, Next.js, TypeScript, Node.js, PHP e Laravel</strong>. COntinuei trabalhando na minha posição anterior na <strong>Sou Digital</strong> e também trabalhei como desenvolvedor front-end no <strong>Meu Rosinha</strong>, um sistema de organização para consultoras de beleza, e claro, trabalhando com essas novas tecnologias.",
-			"Meu foco principal é trabalhar com o ecossistema <strong>React</strong>, sem descartar o uso de <strong>outros frameworks</strong> ou até mesmo mobile com <strong>React Native</strong> no qual estou aprendendo. No back-end, <strong>Node.js</strong> tem sido um complemento natural do <strong>Next.js</strong> ou mesmo usando algum de seus frameworks como o <strong>Fastify</strong>, enquanto <strong>PHP e Laravel</strong> são mais um quebra-galho.",
+			"A partir de 2019, com o <strong>trabalho remoto</strong>, aproveitei para intensificar meus estudos e aprofundar minhas habilidades em <strong>React, Next.js, TypeScript, Node.js, PHP e Laravel</strong>. Continuei trabalhando na minha posição anterior na <strong>Sou Digital</strong> e também trabalhei como desenvolvedor front-end no <strong>Meu Rosinha</strong>, um sistema de organização para consultoras de beleza, e claro, trabalhando com essas novas tecnologias.",
 			"Agora em 2025, me desafiei a transformar o ano em um divisor de águas. Então, o maior objetivo era encontrar uma nova posição como desenvolvedor front-end. Dito e feito, estou começando na <strong>MySide</strong>, um personal shopper imobiliário. Mas essa história ainda está para ser escrita.",
+			"Meu foco principal nesses últimos anos vem sendo trabalhar com o ecossistema <strong>JavaScript</strong>, mais especificamente com <strong>React</strong>, sem descartar o uso de <strong>outros frameworks</strong> ou até mesmo mobile com <strong>React Native</strong> no qual estou aprendendo. No back-end, <strong>Node.js</strong> tem sido um complemento natural do <strong>Next.js</strong> ou mesmo usando algum de seus frameworks como o <strong>Fastify</strong>, enquanto <strong>PHP e Laravel</strong> são mais um quebra-galho.",
 			"<strong>No futuro</strong>, meu objetivo é continuar crescendo como desenvolvedor, explorando <strong>novas tecnologias</strong> e me envolvendo em projetos desafiadores que me permitam deixar uma marca significativa. Embora meu foco continue no front-end, estou sempre em busca de novas ferramentas e práticas para expandir minhas habilidades. <strong>Quero colaborar com equipes inovadoras, compartilhar conhecimento e contribuir para a criação de produtos que realmente façam a diferença.</strong> Quero estar sempre em movimento, um dia de cada vez, uma linha de código por vez."
 		]
 	},
@@ -125,7 +125,7 @@
 
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "Sou <strong>desenvolvedor front-end</strong> movido a café, uma boa seleção de playlists e entusiasmo pela área tech. Há mais de {years} anos venho desenvolvendo projetos como <strong>sistemas web, websites, landing pages e e-commerces.</strong> Tenho habilidades sólidas em <strong>Typescript, React, Next.js e Node.js.</strong>",
+		"text": "Sou <strong>desenvolvedor front-end</strong> movido a café, uma boa seleção de playlists e entusiasmo pela área tech. Há mais de {years} anos venho desenvolvendo projetos como <strong>sistemas web, websites, landing pages e lojas online.</strong> Tenho habilidades sólidas em <strong>TypeScript, React, Next.js e Node.js.</strong>",
 		"buttons": {
 			"aboutLong": "Quem é o Ricardo?",
 			"aboutShort": "Quem sou eu",
@@ -165,7 +165,7 @@
 					"time_range": "2021 - 2025",
 					"location": "Remoto",
 					"info": [
-						"Desenvolvi o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, Typescript e Sass.",
+						"Desenvolvi o web app, website e lojinha online da ferramenta junto com o time utilizando React, Next.js, TypeScript e Sass.",
 						"Desenvolvi o layout e design das páginas além de alguns materiais gráficos dos projetos.",
 						"Auxiliei o rebranding da marca recriando a identidade visual, o nome original da ferramenta era SmartMK.",
 						"Desenvolvi o web site antigo e trabalhei na manutenção do web app legado.",
@@ -180,7 +180,7 @@
 					"time_range": "2019 - 2025",
 					"location": "Remoto",
 					"info": [
-						"Desenvolvi websites, landing pages, web apps e e-commerces junto com o time, agora como desenvolvedor back-end também, utilizando HTML, CSS, Sass, Bootstrap, Javascript Vanilla, PHP, Laravel, MySQL com Eloquent, Webpack, Laravel Mix e a plataforma Tray.",
+						"Desenvolvi websites, landing pages, web apps e lojas online junto com o time, agora como desenvolvedor back-end também, utilizando HTML, CSS, Sass, Bootstrap, JavaScript Vanilla, PHP, Laravel, MySQL com Eloquent, Webpack, Laravel Mix e a plataforma Tray.",
 						"Desenvolvi mais de 50 projetos para clientes como Uniasselvi, Roto Fermax, Viacredi, Móveis Butzke, Geo Marine Survey Systems, Linklaw e Cadastra.",
 						"Apliquei melhorias constantes no CMS base da empresa, o que acelerou em pelo menos 2x o processo de desenvolvimento da etapa de criação de módulos para gestão de conteúdo em novos projetos."
 					]
@@ -192,7 +192,7 @@
 					"time_range": "2017 - 2021",
 					"location": "Timbó, SC",
 					"info": [
-						"Participei no desenvolvimento da plataforma no-code junto com o time nos anos iniciais da startup dentro da Sou Digital utilizando HTML, CSS, Sass, Bootstrap, Javascript, jQuery, Webpack, PHP e Laravel.",
+						"Participei no desenvolvimento da plataforma no-code junto com o time nos anos iniciais da startup dentro da Sou Digital utilizando HTML, CSS, Sass, Bootstrap, JavaScript, jQuery, Webpack, PHP e Laravel.",
 						"Trabalhei no desenvolvimento de novas features e fixes da interface dos sites e do CMS da ferramenta.",
 						"Auxiliei na criação de alguns sites dentro da plataforma."
 					]
@@ -204,7 +204,7 @@
 					"time_range": "2013 - 2019",
 					"location": "Timbó, SC",
 					"info": [
-						"Desenvolvi websites, landing pages, web apps e ecommerces junto com o time utilizando HTML, CSS, Sass, Bootstrap, Javascript Vanilla, jQuery, Webpack, PHP, Laravel e Open Cart.",
+						"Desenvolvi websites, landing pages, web apps e ecommerces junto com o time utilizando HTML, CSS, Sass, Bootstrap, JavaScript Vanilla, jQuery, Webpack, PHP, Laravel e Open Cart.",
 						"Desenvolvi mais de 200 projetos para clientes como Uniasselvi, Unifique, Mueller, Grupo Kyly, Adapcon, Oficina3D, B+CA (Milton Nascimento, Emicida, Cazuza) e Prefeitura de Blumenau."
 					]
 				}
@@ -331,7 +331,7 @@
 
 	"Seo": {
 		"title": "Ricardo Augusto Kowalski | Desenvolvedor Front-End",
-		"description": "Desenvolvedor front-end com mais de {years} anos de experiência, especializado em Typescript, React, Next.js e Node.js. Apaixonado por tecnologia, café e playlists, criando soluções como sistemas web, websites e e-commerces.",
+		"description": "Desenvolvedor front-end com mais de {years} anos de experiência, especializado em TypeScript, React, Next.js e Node.js. Apaixonado por tecnologia, café e playlists, criando soluções como sistemas web, websites, landing pages e lojas online.",
 		"keywords": [
 			"desenvolvedor front-end",
 			"desenvolvedor web",

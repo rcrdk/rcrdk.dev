@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { unstable_cache as cache } from 'next/cache'
 
 async function getIpDataFn(ip: string | null): Promise<Record<string, string | number>> {

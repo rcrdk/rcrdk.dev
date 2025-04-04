@@ -7,16 +7,19 @@
 		@slot;
 	}
 }
+
 @custom-variant layout-sm {
 	@media (width >= 70rem) and (height >= 43.75rem) {
 		@slot;
 	}
 }
+
 @custom-variant only-touch {
 	@media (hover: none) {
 		@slot;
 	}
 }
+
 @custom-variant only-mouse {
 	@media (hover: hover) {
 		@slot;
@@ -220,11 +223,11 @@
 	}
 
 	a {
-		@apply focus-visible:ring-accent-blue/40 rounded-lg transition-all [-webkit-user-drag:none] [user-drag:none] outline-none focus-visible:ring-4;
+		@apply focus-visible:ring-accent-blue/40 rounded-lg transition-all outline-none [-webkit-user-drag:none] [user-drag:none] focus-visible:ring-4;
 	}
 
 	img {
-		@apply pointer-events-none [-webkit-user-drag:none] [user-drag:none] select-none;
+		@apply pointer-events-none select-none [-webkit-user-drag:none] [user-drag:none];
 	}
 
 	p strong,
