@@ -136,7 +136,7 @@
 
 	"Journey": {
 		"title": "Minha trajetória",
-		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos.",
+		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Atualmente estou ajudando a construir o assistente <strong>Hero</strong> na <strong>MySide</strong>.",
 		"box": {
 			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
 			"button": {
@@ -154,8 +154,9 @@
 					"time_range": "2025 - Presente",
 					"location": "Remoto",
 					"info": [
-						"Desenvolvimento do Progressive Web App para os Personal Shoppers da MySide.",
-						"Vou te contar mais sobre em breve..."
+						"Desenvolvo o Hero, um assistente inteligente para os melhores amigos de compradores de imóveis: os Personal Shoppers da MySide.",
+						"O projeto é desenvolvido como um Progressive Web App (PWA) utilizando como base o Next.js e com foco no desenvolvimento mobile.",
+						"Com o crescimento da empresa é esperado que o número de Personal Shoppers se multiplique no futuro e o Hero é uma solução que promete auxiliá-los no dia a dia."
 					]
 				},
 				{
@@ -360,7 +361,8 @@
 			"desenvolvedor remoto",
 			"projetos digitais",
 			"boas práticas de código"
-		]
+		],
+		"jobTitle": "Desenvolvedor Front-End"
 	},
 
 	"Skills": {
