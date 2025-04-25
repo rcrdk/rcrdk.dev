@@ -136,7 +136,7 @@
 
 	"Journey": {
 		"title": "My journey",
-		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>. In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects.",
+		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>. In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. I'm currently helping to build <strong>Hero</strong> assistant at <strong>MySide</strong>.",
 		"box": {
 			"text": "Check out my full profile with experiences, courses, and certifications on LinkedIn, or take a look at my resume.",
 			"button": {
@@ -154,8 +154,9 @@
 					"time_range": "2025 - Present",
 					"location": "Remote",
 					"info": [
-						"Development of Progressive Web App (PWA) for for MySide's Personal Shoppers.",
-						"I'll tell you more soon..."
+						"I develop Hero, a smart assistant for real estate buyers best friends: MySide's Personal Shoppers.",
+						"The project is developed as a Progressive Web App (PWA) using Next.js as the base framework and built as a mobile-driven app.",
+						"As the company grows, the number of Personal Shoppers is expected to multiply in the future and Hero is a solution that promises to help them in their daily lives."
 					]
 				},
 				{
