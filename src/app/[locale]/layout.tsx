@@ -34,11 +34,6 @@ export default async function LocaleLayout({ children, params }: Props) {
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
 		sameAs: ['https://github.com/rcrdk', 'https://www.behance.net/rcrdk', 'https://www.linkedin.com/in/rcrdk'],
 		jobTitle: __('jobTitle'),
-		publisher: {
-			'@type': 'Organization',
-			name: 'rcrdk.dev',
-			url: 'https://rcrdk.dev',
-		},
 	}
 
 	return (
