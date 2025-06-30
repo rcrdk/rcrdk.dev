@@ -87,7 +87,7 @@ export function Journey() {
 							variant="outline"
 							className="xs:grow-0 grow bg-transparent dark:bg-transparent"
 						>
-							<IconBrandLinkedin />
+							<IconBrandLinkedin aria-hidden />
 							<span className="font-semibold">{__('box.button.linkedin')}</span>
 						</Button>
 
@@ -99,7 +99,7 @@ export function Journey() {
 							variant="outline"
 							className="xs:grow-0 grow bg-transparent dark:bg-transparent"
 						>
-							<IconFileDescription />
+							<IconFileDescription aria-hidden />
 							<span className="font-semibold">{__('box.button.cv')}</span>
 						</Button>
 					</div>

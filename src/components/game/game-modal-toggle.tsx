@@ -13,7 +13,7 @@ export function GameModalToggle() {
 			<div className="animate-glowing-rotate game-gradient absolute inset-0 -z-10 block [background-size:400%] blur-md" />
 
 			<Button variant="glowing" className="relative z-10" icon aria-label={__('game.title')} onClick={onShowGameModal}>
-				{isGameCompleted ? <IconTrophy /> : <IconDeviceGamepad2 />}
+				{isGameCompleted ? <IconTrophy aria-hidden /> : <IconDeviceGamepad2 aria-hidden />}
 			</Button>
 		</div>
 	)

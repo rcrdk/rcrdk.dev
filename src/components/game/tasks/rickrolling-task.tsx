@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { IconMicrophone } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
@@ -13,6 +14,7 @@ type Props = {
 
 export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
 	const ref = useRef<HTMLAudioElement>(null)
+	const __ = useTranslations('Default')
 
 	const [playing, setPlaying] = useState(false)
 
@@ -50,6 +52,7 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
 						: ''
 				}
 				icon
+				aria-label={__('game.rickRolling')}
 			>
 				{playing ? (
 					<div className="flex items-center">
@@ -60,7 +63,7 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
 						<div className="animate-rick-roll bg-accent-blue/25 absolute inset-y-0 left-0 w-full" />
 					</div>
 				) : (
-					<IconMicrophone className="size-8" strokeWidth={1.5} />
+					<IconMicrophone className="size-8" strokeWidth={1.5} aria-hidden />
 				)}
 			</Button>
 

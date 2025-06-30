@@ -83,7 +83,7 @@ export function GameModalContents() {
 					</Button>
 
 					<p className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
-						<IconVolume className="stroke-1" />
+						<IconVolume className="stroke-1" aria-hidden />
 						{__('game.optIn.sound')}
 					</p>
 				</>
@@ -100,7 +100,7 @@ export function GameModalContents() {
 							onClick={onStopGame}
 							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
 						>
-							<IconSkull size={16} />
+							<IconSkull size={16} aria-hidden />
 							{__('game.stop')}
 						</button>
 
@@ -109,7 +109,7 @@ export function GameModalContents() {
 							disabled={pointsEarned === 0}
 							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
 						>
-							<IconRefresh size={16} />
+							<IconRefresh size={16} aria-hidden />
 							{__('game.reset')}
 						</button>
 					</div>

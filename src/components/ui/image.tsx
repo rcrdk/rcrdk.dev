@@ -22,6 +22,7 @@ export function Image({ src, folder = 'projects' }: Props) {
 					'absolute top-1/2 left-1/2 size-10 -translate-1/2 animate-spin stroke-1 transition-opacity [animation-duration:2000ms]',
 					loading ? 'opacity-50' : 'opacity-0',
 				)}
+				aria-hidden
 			/>
 
 			<img

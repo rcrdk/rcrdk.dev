@@ -17,9 +17,9 @@ export function ThemeSwitcher() {
 
 	const themesAvailable = useMemo(() => {
 		return [
-			{ mode: 'system', title: __('mode.default'), icon: <IconSunMoon /> },
-			{ mode: 'light', title: __('mode.light'), icon: <IconSun /> },
-			{ mode: 'dark', title: __('mode.dark'), icon: <IconMoon /> },
+			{ mode: 'system', title: __('mode.default'), icon: <IconSunMoon aria-hidden /> },
+			{ mode: 'light', title: __('mode.light'), icon: <IconSun aria-hidden /> },
+			{ mode: 'dark', title: __('mode.dark'), icon: <IconMoon aria-hidden /> },
 		]
 	}, [__])
 
@@ -60,7 +60,7 @@ export function ThemeSwitcher() {
 	if (!mounted) {
 		return (
 			<Button as="div" variant="discret" className="pointer-events-none opacity-60" icon>
-				<IconSunMoon />
+				<IconSunMoon aria-hidden />
 			</Button>
 		)
 	}

@@ -81,7 +81,7 @@ export default async function NotFound() {
 						size="lg"
 						variant="outline-touch"
 					>
-						<IconArrowLeft />
+						<IconArrowLeft aria-hidden />
 						{__('button')}
 					</Button>
 

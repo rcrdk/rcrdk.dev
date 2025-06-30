@@ -39,7 +39,7 @@ export function GameModalTetris() {
 
 										<HoverCard.Root openDelay={0}>
 											<HoverCard.Trigger className="flex cursor-help items-center gap-0.5 text-sm font-medium text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white">
-												<IconHelpCircle className="size-4" />
+												<IconHelpCircle className="size-4" aria-hidden />
 												{__('game.tetris.instructions.popover')}
 											</HoverCard.Trigger>
 
@@ -121,7 +121,7 @@ export function GameModalTetris() {
 														className="font-medium"
 														onClick={() => controller.restart()}
 													>
-														<IconRotateClockwise2 className="size-5 stroke-[1.5]" />
+														<IconRotateClockwise2 className="size-5 stroke-[1.5]" aria-hidden />
 														{__('game.tetris.game_over.button')}
 													</Button>
 												</>
@@ -135,7 +135,7 @@ export function GameModalTetris() {
 													</strong>
 													<span className="mt-1 mb-4 text-balance">{__('game.tetris.game_paused.text')}</span>
 													<Button variant="solid" size="sm" className="font-medium" onClick={() => controller.resume()}>
-														<IconPlayerPlay className="size-5 stroke-[1.5]" />
+														<IconPlayerPlay className="size-5 stroke-[1.5]" aria-hidden />
 														{__('game.tetris.game_paused.button')}
 													</Button>
 												</>

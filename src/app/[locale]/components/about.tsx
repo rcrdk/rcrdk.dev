@@ -103,7 +103,7 @@ export function About() {
 							className="max-xs:px-0 max-xs:w-full xs:h-14 xs:gap-5 xs:px-6 h-12 gap-4 px-6 lg:h-12 lg:gap-3 lg:px-5"
 							hidden={showContents}
 						>
-							<IconCoffee />
+							<IconCoffee aria-hidden />
 							<span className="font-medium">{__('expand')}</span>
 						</Button>
 					</Collapsible.Trigger>

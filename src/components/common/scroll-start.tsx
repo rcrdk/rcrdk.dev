@@ -52,7 +52,7 @@ export function ScrollStart() {
 					onClick={(e) => scrollToSection(e, '#home')}
 					icon
 				>
-					<IconArrowUp />
+					<IconArrowUp aria-hidden />
 				</Button>
 			</div>
 		</>

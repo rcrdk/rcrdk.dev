@@ -2,6 +2,7 @@
 
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { IconX } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl'
 
 import useDetectBrowser from '@/hooks/use-browser'
 import { cn } from '@/utils/tailwind-cn'
@@ -19,6 +20,7 @@ type Props = {
 
 export function Dialog({ open, onOpenChange, mode, hasImageUnderClose = false, hasTetris = false, children }: Props) {
 	const browser = useDetectBrowser()
+	const __ = useTranslations('Default')
 
 	function onOpenAutoFocus(e: Event) {
 		e.preventDefault()
@@ -67,8 +69,9 @@ export function Dialog({ open, onOpenChange, mode, hasImageUnderClose = false, h
 											? 'bg-black/35 text-white hover:bg-black'
 											: 'bg-black/5 text-black/35 hover:bg-black/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/25',
 									)}
+									aria-label={__('close')}
 								>
-									<IconX className="size-5" />
+									<IconX className="size-5" aria-hidden />
 								</DialogComponent.Close>
 
 								{children}

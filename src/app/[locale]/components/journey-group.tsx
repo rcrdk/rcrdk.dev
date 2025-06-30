@@ -33,7 +33,7 @@ export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
 							open && 'opacity-0',
 						)}
 					>
-						<IconChevronDown />
+						<IconChevronDown aria-hidden />
 					</span>
 				</h3>
 			</button>

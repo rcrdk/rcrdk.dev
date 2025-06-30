@@ -83,7 +83,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 								icon
 								aria-label={__('details.website')}
 							>
-								<IconLink />
+								<IconLink aria-hidden />
 							</Button>
 						)}
 
@@ -96,7 +96,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 								icon
 								aria-label={__('details.github')}
 							>
-								<IconBrandGithub />
+								<IconBrandGithub aria-hidden />
 							</Button>
 						)}
 
@@ -109,7 +109,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 								icon
 								aria-label={__('details.behance')}
 							>
-								<IconBrandBehance />
+								<IconBrandBehance aria-hidden />
 							</Button>
 						)}
 					</div>

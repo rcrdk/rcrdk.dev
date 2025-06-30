@@ -23,7 +23,7 @@ function ProjectItemComponent({ project, onOpenChange }: Props) {
 				{project.image ? (
 					<Image src={project.image} />
 				) : (
-					<IconPhotoOff className="m-auto size-20 stroke-1 opacity-20" />
+					<IconPhotoOff className="m-auto size-20 stroke-1 opacity-20" aria-hidden />
 				)}
 			</div>
 
@@ -35,7 +35,7 @@ function ProjectItemComponent({ project, onOpenChange }: Props) {
 				<p className="mb-4 line-clamp-3 text-sm text-pretty text-black/60 dark:text-white/50">{project.intro}</p>
 
 				<span className="mt-auto flex items-center gap-1">
-					<IconCirclePlus className="size-5" />
+					<IconCirclePlus className="size-5" aria-hidden />
 					<span className="text-sm font-bold">{__('action')}</span>
 				</span>
 			</div>

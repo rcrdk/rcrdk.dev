@@ -31,6 +31,7 @@
 	},
 
 	"Default": {
+		"close": "Fechar",
 		"mode": {
 			"light": "Modo claro",
 			"dark": "Modo escuro",
@@ -119,7 +120,8 @@
 					"title": "O jogo está disponível apenas em telas maiores.",
 					"button": "Ok, entendi!"
 				}
-			}
+			},
+			"rickRolling": "Abra para ver uma surpresa!"
 		}
 	},
 
@@ -136,7 +138,7 @@
 
 	"Journey": {
 		"title": "Minha trajetória",
-		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Atualmente estou ajudando a construir o assistente <strong>Hero</strong> na <strong>MySide</strong>.",
+		"intro": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Atualmente estou construindo o <strong>Hero</strong>, um assistente para os Personal Shoppers da <strong>MySide</strong>.",
 		"box": {
 			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
 			"button": {

@@ -31,6 +31,7 @@
 	},
 
 	"Default": {
+		"close": "Close",
 		"mode": {
 			"light": "Light mode",
 			"dark": "Dark mode",
@@ -119,7 +120,8 @@
 					"title": "The game is only available in larger screens.",
 					"button": "Ok, I got it!"
 				}
-			}
+			},
+			"rickRolling": "Open to see a surprise!"
 		}
 	},
 
@@ -136,7 +138,7 @@
 
 	"Journey": {
 		"title": "My journey",
-		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>. In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. I'm currently helping to build <strong>Hero</strong> assistant at <strong>MySide</strong>.",
+		"intro": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> Between 2014 and 2017, I studied <strong>Advertising and Marketing</strong>. In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. I'm currently building <strong>Hero</strong> e smart assistant for <strong>MySide</strong> Personal Shoppers.",
 		"box": {
 			"text": "Check out my full profile with experiences, courses, and certifications on LinkedIn, or take a look at my resume.",
 			"button": {

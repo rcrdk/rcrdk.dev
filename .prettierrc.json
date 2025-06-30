@@ -15,5 +15,13 @@
 	"semi": false,
 	"singleQuote": true,
 	"tabWidth": 2,
-	"trailingComma": "all"
+	"trailingComma": "all",
+	"overrides": [
+		{
+			"files": ["src/data/skills.tsx"],
+			"options": {
+				"printWidth": 300
+			}
+		}
+	]
 }

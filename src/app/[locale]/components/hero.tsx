@@ -81,7 +81,7 @@ export function Hero() {
 							onClick={(e) => scrollToSection(e, '#about')}
 							className="grow sm:grow-0"
 						>
-							<IconCircleArrowDown className="size-7" strokeWidth={1.5} />
+							<IconCircleArrowDown className="size-7" strokeWidth={1.5} aria-hidden />
 
 							<span className="hidden font-medium sm:block">{__('buttons.aboutLong')}</span>
 
@@ -101,7 +101,7 @@ export function Hero() {
 									icon
 									aria-label={__('buttons.linkedin')}
 								>
-									<IconBrandLinkedin className="size-8" strokeWidth={1.5} />
+									<IconBrandLinkedin className="size-8" strokeWidth={1.5} aria-hidden />
 								</Button>
 							</li>
 
@@ -115,7 +115,7 @@ export function Hero() {
 									icon
 									aria-label={__('buttons.github')}
 								>
-									<IconBrandGithub className="size-8" strokeWidth={1.5} />
+									<IconBrandGithub className="size-8" strokeWidth={1.5} aria-hidden />
 								</Button>
 							</li>
 						</ul>

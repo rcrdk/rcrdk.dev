@@ -95,7 +95,7 @@ export function Projects() {
 							<h2 className="font-heading flex items-center gap-6 text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white">
 								{currentCategory?.label ?? __('title')}
 								<span className="group-focus-visible:!border-accent-blue group-focus-visible:bg-accent-blue/10 dark:group-focus-visible:bg-accent-blue/20 group-focus-visible:ring-accent-blue/40 group-focus-visible:text-accent-blue mt-3 flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 transition-all group-hover:bg-black/10 group-focus-visible:ring-4 dark:bg-white/10 dark:group-hover:bg-white/15">
-									<IconChevronDown className="size-6" />
+									<IconChevronDown className="size-6" aria-hidden />
 								</span>
 							</h2>
 						</button>

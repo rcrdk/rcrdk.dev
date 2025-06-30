@@ -58,7 +58,7 @@ export function Contact() {
 								icon
 								aria-label={__('buttons.linkedin')}
 							>
-								<IconBrandLinkedin className="size-8" strokeWidth={1.5} />
+								<IconBrandLinkedin className="size-8" strokeWidth={1.5} aria-hidden />
 							</Button>
 						</AnimatedContent>
 					</li>
@@ -79,7 +79,7 @@ export function Contact() {
 								icon
 								aria-label={__('buttons.github')}
 							>
-								<IconBrandGithub className="size-8" strokeWidth={1.5} />
+								<IconBrandGithub className="size-8" strokeWidth={1.5} aria-hidden />
 							</Button>
 						</AnimatedContent>
 					</li>
@@ -100,7 +100,7 @@ export function Contact() {
 								icon
 								aria-label={__('buttons.behance')}
 							>
-								<IconBrandBehance className="size-8" strokeWidth={1.5} />
+								<IconBrandBehance className="size-8" strokeWidth={1.5} aria-hidden />
 							</Button>
 						</AnimatedContent>
 					</li>
@@ -121,7 +121,7 @@ export function Contact() {
 								icon
 								aria-label={__('buttons.discord')}
 							>
-								<IconBrandDiscord className="size-8" strokeWidth={1.5} />
+								<IconBrandDiscord className="size-8" strokeWidth={1.5} aria-hidden />
 							</Button>
 						</AnimatedContent>
 					</li>
@@ -142,7 +142,7 @@ export function Contact() {
 								icon
 								aria-label={__('buttons.spotify')}
 							>
-								<IconBrandSpotify className="size-8" strokeWidth={1.5} />
+								<IconBrandSpotify className="size-8" strokeWidth={1.5} aria-hidden />
 							</Button>
 						</AnimatedContent>
 					</li>
@@ -179,7 +179,7 @@ export function Contact() {
 							rootMargin="0px 0px 125px"
 						>
 							<Button as="a" href={LINKS.resume} target="_blank" size="lg" variant="outline">
-								<IconFileDescription className="size-8" strokeWidth={1.5} />
+								<IconFileDescription className="size-8" strokeWidth={1.5} aria-hidden />
 								<span className="font-medium">{__('buttons.cv')}</span>
 							</Button>
 						</AnimatedContent>

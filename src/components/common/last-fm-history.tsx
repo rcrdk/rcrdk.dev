@@ -39,13 +39,13 @@ export function LastFmHistory() {
 		<Dropdown.Root open={open} onOpenChange={handleToggleVisibility}>
 			<Dropdown.Trigger asChild>
 				<Button variant="discret" icon className="layout:flex hidden" aria-label={__('lastfm.title')}>
-					<IconMusic />
+					<IconMusic aria-hidden />
 				</Button>
 			</Dropdown.Trigger>
 
 			<DropdownMenu className="w-[500px]" side="right" align="end" avoidCollisions={false} sideOffset={40}>
 				<div className="flex items-center gap-2 py-3 pr-4 pl-3">
-					<IconBrandSpotify className="size-7 stroke-[1.5]" />
+					<IconBrandSpotify className="size-7 stroke-[1.5]" aria-hidden />
 					<strong className="block grow">{__('lastfm.title')}</strong>
 					<Button
 						as="a"
@@ -56,7 +56,7 @@ export function LastFmHistory() {
 						size="xs"
 						icon
 					>
-						<IconArrowRight className="stroke-[1.25]" />
+						<IconArrowRight className="stroke-[1.25]" aria-hidden />
 					</Button>
 				</div>
 
