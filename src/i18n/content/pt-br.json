@@ -122,6 +122,11 @@
 				}
 			},
 			"rickRolling": "Abra para ver uma surpresa!"
+		},
+		"ariaLabels": {
+			"stopGame": "Parar jogo",
+			"resetGame": "Recomeçar progresso do jogo",
+			"showTasks": "Mostrar tarefas do jogo - {taskName}"
 		}
 	},
 
@@ -329,7 +334,10 @@
 			"github": "Projeto no GitHub",
 			"behance": "Projeto no Behance"
 		},
-		"action": "Detalhes"
+		"action": "Detalhes",
+		"ariaLabels": {
+			"viewProject": "Ver detalhes do projeto {title}"
+		}
 	},
 
 	"Seo": {

@@ -57,7 +57,14 @@ export function About() {
 						config={{ tension: 60, friction: 15 }}
 						delay={200}
 					>
-						<Image src={avatarPicture} width={800} height={800} quality={100} alt="" className="shrink-0" />
+						<Image
+							src={avatarPicture}
+							width={800}
+							height={800}
+							quality={100}
+							alt="Ricardo Augusto Kowalski - Front-end Developer"
+							className="shrink-0"
+						/>
 
 						<span className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 flex aspect-[16/15] w-full max-w-[768px] translate-3d items-end justify-start sm:aspect-auto sm:h-[26rem] sm:w-[calc(100vw-(var(--spacing)*32))] md:w-[calc(100vw-(var(--spacing)*40))] lg:hidden">
 							<span className="font-heading block text-5xl font-black tracking-tight text-balance text-white sm:text-7xl md:max-w-full lg:text-6xl">

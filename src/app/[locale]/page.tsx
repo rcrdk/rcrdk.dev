@@ -18,21 +18,45 @@ import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
 import { LocalesType, routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
+import { env } from '@/lib/env'
 import { trackServerEvent } from '@/services/mixpanel'
 
 export type MetadataProps = {
 	params: Promise<{ locale: LocalesType }>
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+	const { locale } = await params
 	const __ = await getTranslations('Seo')
 
 	return {
 		title: __('title'),
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
 		keywords: __.raw('keywords'),
+		openGraph: {
+			title: __('title'),
+			description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+			url: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
+			siteName: 'Ricardo Augusto Kowalski',
+			images: [
+				{
+					url: `${env.NEXT_PUBLIC_APP_URL}/opengraph-image.jpg`,
+					width: 1200,
+					height: 630,
+					alt: __('title'),
+				},
+			],
+			locale: locale,
+			type: 'website',
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title: __('title'),
+			description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+			images: [`${env.NEXT_PUBLIC_APP_URL}/twitter-image.jpg`],
+		},
 		alternates: {
-			canonical: '/en',
+			canonical: `/${locale}`,
 			languages: {
 				en: '/en',
 				pt: '/pt-br',

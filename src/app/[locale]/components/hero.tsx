@@ -80,6 +80,7 @@ export function Hero() {
 							size="lg"
 							onClick={(e) => scrollToSection(e, '#about')}
 							className="grow sm:grow-0"
+							aria-controls="about"
 						>
 							<IconCircleArrowDown className="size-7" strokeWidth={1.5} aria-hidden />
 

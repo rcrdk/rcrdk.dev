@@ -85,7 +85,11 @@ export function Screensaver() {
 			</h1>
 
 			<div ref={elementRef} className="relative size-48 overflow-hidden rounded-xl sm:size-64 lg:size-80">
-				<img src={gifs[gif]} alt="" className="absolute inset-0 size-full object-cover object-center" />
+				<img
+					src={gifs[gif]}
+					alt="Decorative screensaver animation"
+					className="absolute inset-0 size-full object-cover object-center"
+				/>
 			</div>
 		</div>
 	)

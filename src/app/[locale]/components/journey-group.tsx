@@ -12,6 +12,8 @@ type Props = {
 }
 
 export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
+	const contentId = `journey-${title.toLowerCase().replace(/\s+/g, '-')}`
+
 	return (
 		<div>
 			<button
@@ -21,6 +23,8 @@ export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
 				)}
 				tabIndex={open ? -1 : 0}
 				onClick={onOpenChange}
+				aria-expanded={open}
+				aria-controls={contentId}
 			>
 				<h3 className="font-heading flex items-center justify-between gap-4 text-2xl tracking-tight dark:text-white">
 					{title}
@@ -39,7 +43,10 @@ export function JourneyGroup({ title, items, open, onOpenChange }: Props) {
 			</button>
 
 			<Collapsible.Root open={open} onOpenChange={onOpenChange}>
-				<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden">
+				<Collapsible.Content
+					id={contentId}
+					className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden"
+				>
 					<ul className="flex flex-col gap-8 py-12 pl-1 md:pl-0">
 						{items.map((item, index) => (
 							<li key={index}>

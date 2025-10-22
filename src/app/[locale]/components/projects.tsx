@@ -42,6 +42,7 @@ export function Projects() {
 	const [projectSelected, setProjectSelected] = useState<ProjectTranslatedObject>()
 	const [selectedCategory, setSelectedCategory] = useState<ProjectCategories>('highlights')
 	const [sideOffset, setSideOffset] = useState(0)
+	const [dropdownOpen, setDropdownOpen] = useState(false)
 
 	const __ = useTranslations('Projects')
 	const locale = useLocale() as LocalesType
@@ -102,10 +103,14 @@ export function Projects() {
 
 	return (
 		<Section>
-			<Dropdown.Root>
+			<Dropdown.Root open={dropdownOpen} onOpenChange={setDropdownOpen}>
 				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
 					<Dropdown.Trigger asChild>
-						<button className="group w-full cursor-pointer text-start outline-none">
+						<button
+							className="group w-full cursor-pointer text-start outline-none"
+							aria-haspopup="menu"
+							aria-expanded={dropdownOpen}
+						>
 							<h2 className="font-heading flex items-center gap-6 text-5xl font-black tracking-tight text-balance sm:text-7xl lg:text-6xl dark:text-white">
 								{currentCategory?.label ?? __('title')}
 								<span className="group-focus-visible:!border-accent-blue group-focus-visible:bg-accent-blue/10 dark:group-focus-visible:bg-accent-blue/20 group-focus-visible:ring-accent-blue/40 group-focus-visible:text-accent-blue mt-3 flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 transition-all group-hover:bg-black/10 group-focus-visible:ring-4 dark:bg-white/10 dark:group-hover:bg-white/15">
@@ -135,6 +140,7 @@ export function Projects() {
 								)}
 								tabIndex={selectedCategory === category.id ? -1 : 0}
 								onClick={() => handleChangeCategory(category.id)}
+								aria-pressed={selectedCategory === category.id}
 							>
 								{category.label}
 							</button>

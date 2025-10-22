@@ -40,7 +40,7 @@ export function Nav({ slot }: Props) {
 				reverse
 				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="#about" className={linkClass} onClick={(e) => scrollToSection(e, '#about')}>
+				<a href="#about" className={linkClass} onClick={(e) => scrollToSection(e, '#about')} aria-controls="about">
 					{__('navigation.about')}
 				</a>
 			</AnimatedContent>
@@ -52,7 +52,7 @@ export function Nav({ slot }: Props) {
 				reverse
 				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="#skills" className={linkClass} onClick={(e) => scrollToSection(e, '#skills')}>
+				<a href="#skills" className={linkClass} onClick={(e) => scrollToSection(e, '#skills')} aria-controls="skills">
 					{__('navigation.skills')}
 				</a>
 			</AnimatedContent>
@@ -64,7 +64,12 @@ export function Nav({ slot }: Props) {
 				reverse
 				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="#projects" className={linkClass} onClick={(e) => scrollToSection(e, '#projects')}>
+				<a
+					href="#projects"
+					className={linkClass}
+					onClick={(e) => scrollToSection(e, '#projects')}
+					aria-controls="projects"
+				>
 					{__('navigation.projects')}
 				</a>
 			</AnimatedContent>
@@ -76,7 +81,12 @@ export function Nav({ slot }: Props) {
 				reverse
 				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="#journey" className={linkClass} onClick={(e) => scrollToSection(e, '#journey')}>
+				<a
+					href="#journey"
+					className={linkClass}
+					onClick={(e) => scrollToSection(e, '#journey')}
+					aria-controls="journey"
+				>
 					{__('navigation.journey')}
 				</a>
 			</AnimatedContent>
@@ -88,7 +98,12 @@ export function Nav({ slot }: Props) {
 				reverse
 				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="#contact" className={linkClass} onClick={(e) => scrollToSection(e, '#contact')}>
+				<a
+					href="#contact"
+					className={linkClass}
+					onClick={(e) => scrollToSection(e, '#contact')}
+					aria-controls="contact"
+				>
 					{__('navigation.contact')}
 				</a>
 			</AnimatedContent>
