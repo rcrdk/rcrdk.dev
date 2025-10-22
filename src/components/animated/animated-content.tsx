@@ -5,6 +5,14 @@ import { useEffect, useRef, useState } from 'react'
 import type { SpringConfig } from '@react-spring/web'
 import { animated, useSpring } from '@react-spring/web'
 
+const DEFAULT_DISTANCE = 100
+const DEFAULT_TENSION = 50
+const DEFAULT_FRICTION = 25
+const DEFAULT_INITIAL_OPACITY = 0
+const DEFAULT_SCALE = 1
+const DEFAULT_THRESHOLD = 0.1
+const DEFAULT_DELAY = 0
+
 interface AnimatedContentProps {
 	children: ReactNode
 	className?: string
@@ -20,19 +28,19 @@ interface AnimatedContentProps {
 	delay?: number
 }
 
-const AnimatedContent: React.FC<AnimatedContentProps> = ({
+const AnimatedContent: React.FC<Readonly<AnimatedContentProps>> = ({
 	children,
 	className,
-	distance = 100,
+	distance = DEFAULT_DISTANCE,
 	direction = 'vertical',
 	reverse = false,
-	config = { tension: 50, friction: 25 },
-	initialOpacity = 0,
+	config = { tension: DEFAULT_TENSION, friction: DEFAULT_FRICTION },
+	initialOpacity = DEFAULT_INITIAL_OPACITY,
 	animateOpacity = true,
-	scale = 1,
-	threshold = 0.1,
+	scale = DEFAULT_SCALE,
+	threshold = DEFAULT_THRESHOLD,
 	rootMargin,
-	delay = 0,
+	delay = DEFAULT_DELAY,
 }) => {
 	const [inView, setInView] = useState(false)
 	const ref = useRef<HTMLDivElement | null>(null)

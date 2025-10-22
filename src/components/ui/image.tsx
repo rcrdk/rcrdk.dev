@@ -6,12 +6,12 @@ import { IconLoader } from '@tabler/icons-react'
 import { env } from '@/lib/env'
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = {
+interface ImageProps {
 	src: string
 	folder?: 'projects'
 }
 
-export function Image({ src, folder = 'projects' }: Props) {
+export function Image({ src, folder = 'projects' }: Readonly<ImageProps>) {
 	const [loading, setLoading] = useState(true)
 
 	return (

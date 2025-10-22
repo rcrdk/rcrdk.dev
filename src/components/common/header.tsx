@@ -16,11 +16,19 @@ import { Container } from '@/components/ui/container'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = {
+const INTERSECTION_THRESHOLD = 0.1
+const ANIMATION_TENSION = 60
+const ANIMATION_FRICTION = 15
+const VERTICAL_DISTANCE = 40
+const HORIZONTAL_DISTANCE = 80
+const AVATAR_WIDTH = 200
+const AVATAR_HEIGHT = 100
+
+interface HeaderInsetProps {
 	animationEnter: 'vertical' | 'horizontal'
 }
 
-function HeaderInset({ animationEnter }: Props) {
+function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 	const ref = useRef<HTMLSpanElement>(null)
 
 	const [showLettering, setShowLettering] = useState(false)
@@ -43,7 +51,7 @@ function HeaderInset({ animationEnter }: Props) {
 					observer.unobserve(element)
 				}
 			},
-			{ threshold: 0.1 },
+			{ threshold: INTERSECTION_THRESHOLD },
 		)
 
 		observer.observe(element)
@@ -60,8 +68,8 @@ function HeaderInset({ animationEnter }: Props) {
 				animationEnter === 'horizontal' && 'layout:flex hidden grow',
 			)}
 			reverse
-			distance={animationEnter === 'vertical' ? 40 : 80}
-			config={{ tension: 60, friction: 15 }}
+			distance={animationEnter === 'vertical' ? VERTICAL_DISTANCE : HORIZONTAL_DISTANCE}
+			config={{ tension: ANIMATION_TENSION, friction: ANIMATION_FRICTION }}
 		>
 			<Container
 				className="layout:pl-11 layout:pr-0 layout:flex"
@@ -74,8 +82,8 @@ function HeaderInset({ animationEnter }: Props) {
 				>
 					<Image
 						src={avatarPicture}
-						width={200}
-						height={100}
+						width={AVATAR_WIDTH}
+						height={AVATAR_HEIGHT}
 						alt={t('avatarAlt')}
 						className="xs:size-10 size-9 rounded-full"
 					/>

@@ -4,6 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import type { SpringConfig } from '@react-spring/web'
 import { animated, useSprings } from '@react-spring/web'
 
+const DEFAULT_DELAY = 100
+const DEFAULT_THRESHOLD = 0.1
+const DEFAULT_ROOT_MARGIN = '-100px'
+const DEFAULT_TRANSFORM_Y = '40px'
+const SPACE_WIDTH = '0.3em'
+
 interface SplitTextProps {
 	text?: string
 	className?: string
@@ -18,15 +24,15 @@ interface SplitTextProps {
 	onLetterAnimationComplete?: () => void
 }
 
-const SplitText: React.FC<SplitTextProps> = ({
+const SplitText: React.FC<Readonly<SplitTextProps>> = ({
 	text = '',
 	className = '',
-	delay = 100,
-	animationFrom = { opacity: 0, transform: 'translate3d(0,40px,0)' },
+	delay = DEFAULT_DELAY,
+	animationFrom = { opacity: 0, transform: `translate3d(0,${DEFAULT_TRANSFORM_Y},0)` },
 	animationTo = { opacity: 1, transform: 'translate3d(0,0,0)' },
 	easing = (t: number) => t,
-	threshold = 0.1,
-	rootMargin = '-100px',
+	threshold = DEFAULT_THRESHOLD,
+	rootMargin = DEFAULT_ROOT_MARGIN,
 	textAlign = 'left',
 	breakWords = false,
 	onLetterAnimationComplete,
@@ -42,17 +48,13 @@ const SplitText: React.FC<SplitTextProps> = ({
 			([entry]) => {
 				if (entry.isIntersecting) {
 					setInView(true)
-					if (ref.current) {
-						observer.unobserve(ref.current)
-					}
+					if (ref.current) observer.unobserve(ref.current)
 				}
 			},
 			{ threshold, rootMargin },
 		)
 
-		if (ref.current) {
-			observer.observe(ref.current)
-		}
+		if (ref.current) observer.observe(ref.current)
 
 		return () => observer.disconnect()
 	}, [threshold, rootMargin])
@@ -65,9 +67,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 				? async (next: (props: unknown) => Promise<void>) => {
 						await next(animationTo)
 						animatedCount.current += 1
-						if (animatedCount.current === letters.length && onLetterAnimationComplete) {
-							onLetterAnimationComplete()
-						}
+						if (animatedCount.current === letters.length && onLetterAnimationComplete) onLetterAnimationComplete()
 					}
 				: animationFrom,
 			delay: i * delay,
@@ -105,7 +105,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 							</Animated>
 						)
 					})}
-					<span style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>
+					<span style={{ display: 'inline-block', width: SPACE_WIDTH }}>&nbsp;</span>
 				</span>
 			))}
 		</span>

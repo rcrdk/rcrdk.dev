@@ -1,12 +1,12 @@
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = {
+interface SectionProps {
 	children: React.ReactNode
 	className?: string
 	classNameCenter?: string
 }
 
-export function Section({ children, className, classNameCenter }: Props) {
+export function Section({ children, className, classNameCenter }: Readonly<SectionProps>) {
 	return (
 		<section className={cn('layout:snap-start layout:min-h-dvh flex w-full [&_div]:max-w-full', className)}>
 			<div

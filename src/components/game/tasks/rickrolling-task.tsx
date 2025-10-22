@@ -8,11 +8,11 @@ import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
 import { env } from '@/lib/env'
 
-type Props = {
+interface RickRollingGameTaskButtonProps {
 	onShowAnimated: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function RickRollingGameTaskButton({ onShowAnimated }: Props) {
+export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRollingGameTaskButtonProps>) {
 	const ref = useRef<HTMLAudioElement>(null)
 	const __ = useTranslations('Default')
 

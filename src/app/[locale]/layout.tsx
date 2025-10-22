@@ -7,22 +7,20 @@ import profilePicture from '@/assets/avatar.jpg'
 import { KonamiCodeGameTask } from '@/components/game/tasks/konami-code-task'
 import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { FULL_DATES } from '@/config/dates'
-import { routing } from '@/i18n/routing'
+import { LocalesType, routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 
 type Props = {
 	children: React.ReactNode
-	params: Promise<{ locale: 'pt-br' | 'en' }>
+	params: Promise<{ locale: LocalesType }>
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
 	const { locale } = await params
 	const __ = await getTranslations('Seo')
 
-	if (!routing.locales.includes(locale)) {
-		notFound()
-	}
+	if (!routing.locales.includes(locale)) return notFound()
 
 	const jsonLd = {
 		'@context': 'https://schema.org',

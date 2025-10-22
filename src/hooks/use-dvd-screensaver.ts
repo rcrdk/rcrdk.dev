@@ -2,6 +2,11 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { useWindowSize } from '@/hooks/use-window-size'
 
+const DEFAULT_SPEED = 2
+const DEFAULT_ANIMATION_FRAME_ID = 0
+const DEFAULT_IMPACT_COUNT = 0
+const DEFAULT_POSITION = 0
+
 type Options = {
 	freezeOnHover?: boolean
 	hoverCallback?: () => void
@@ -30,10 +35,10 @@ export function useDvdScreensaver<T extends HTMLDivElement>(options?: Partial<Op
 	const { width: windowWidth } = useWindowSize()
 
 	const animationRef = useRef<AnimationRef>({
-		animationFrameId: 0,
-		containerHeight: 0,
-		containerWidth: 0,
-		impactCount: 0,
+		animationFrameId: DEFAULT_ANIMATION_FRAME_ID,
+		containerHeight: DEFAULT_POSITION,
+		containerWidth: DEFAULT_POSITION,
+		impactCount: DEFAULT_IMPACT_COUNT,
 		isPosXIncrement: true,
 		isPosYIncrement: true,
 		positionX: Math.random() * windowWidth,
@@ -68,7 +73,7 @@ export function useDvdScreensaver<T extends HTMLDivElement>(options?: Partial<Op
 			const containerWidth = elementRef.current.parentElement.clientWidth
 			const elementHeight = elementRef.current.clientHeight
 			const elementWidth = elementRef.current.clientWidth
-			const delta = options?.speed || 2
+			const delta = options?.speed || DEFAULT_SPEED
 
 			const posX = updatePosition(
 				containerWidth,
@@ -97,15 +102,13 @@ export function useDvdScreensaver<T extends HTMLDivElement>(options?: Partial<Op
 		if (options?.freezeOnHover) {
 			if (hovered) {
 				cancelAnimationFrame(animationRef.current.animationFrameId)
-				animationRef.current.animationFrameId = 0
+				animationRef.current.animationFrameId = DEFAULT_ANIMATION_FRAME_ID
 			}
 			if (!hovered && !animationRef.current.animationFrameId) {
 				animationRef.current.animationFrameId = requestAnimationFrame(animate)
 			}
 		}
-		if (options?.hoverCallback) {
-			options.hoverCallback()
-		}
+		if (options?.hoverCallback) options.hoverCallback()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hovered, options])
 

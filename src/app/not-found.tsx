@@ -12,6 +12,17 @@ import { getTranslations } from 'next-intl/server'
 
 import { NotFoundGameTask } from '@/components/game/tasks/not-found-task'
 
+const FOLLOW_CURSOR_ROTATION_FACTOR = 50
+const FOLLOW_CURSOR_CARD_WIDTH = '400px'
+const FOLLOW_CURSOR_OFFSET_X = -200
+const FOLLOW_CURSOR_OFFSET_Y = -200
+const FOLLOW_CURSOR_Z_INDEX = 40
+const FOLLOW_CURSOR_DURATION = 500
+const SPLIT_TEXT_DELAY = 200
+const BUTTON_HEIGHT_DEFAULT = 14
+const BUTTON_HEIGHT_MD = 16
+const BUTTON_MAX_WIDTH_XS = '90vw'
+
 export async function generateMetadata(): Promise<Metadata> {
 	const __ = await getTranslations('NotFound')
 
@@ -52,11 +63,11 @@ export default async function NotFound() {
 		<>
 			<FollowCursor
 				backgroundImage={randomGif}
-				rotationFactor={50}
-				cardWidth="400px"
-				offsetX={-200}
-				offsetY={-200}
-				className="pointer-events-none fixed inset-1/2 z-[40] opacity-0 transition-opacity duration-500 in-hover:!opacity-100"
+				rotationFactor={FOLLOW_CURSOR_ROTATION_FACTOR}
+				cardWidth={FOLLOW_CURSOR_CARD_WIDTH}
+				offsetX={FOLLOW_CURSOR_OFFSET_X}
+				offsetY={FOLLOW_CURSOR_OFFSET_Y}
+				className={`pointer-events-none fixed inset-1/2 z-[${FOLLOW_CURSOR_Z_INDEX}] opacity-0 transition-opacity duration-${FOLLOW_CURSOR_DURATION} in-hover:!opacity-100`}
 			/>
 
 			<NotFoundGameTask />
@@ -70,14 +81,14 @@ export default async function NotFound() {
 
 			<div className="flex min-h-dvh w-full flex-col items-center justify-center gap-6">
 				<h2 className="font-heading only-touch:text-white pr-4 text-[50vw] leading-none tracking-tighter sm:text-[40vw] md:text-[33vw] lg:text-[25vw] dark:text-white [&>span>span>span:last-child]:!hidden">
-					<SplitText text="404" delay={200} />
+					<SplitText text="404" delay={SPLIT_TEXT_DELAY} />
 				</h2>
 
 				<AnimatedContent className="relative z-50">
 					<Button
 						as={Link}
 						href="/"
-						className="max-xs:w-[90vw] only-mouse:hidden !h-14 font-medium backdrop-blur-sm md:!h-16"
+						className={`max-xs:w-[${BUTTON_MAX_WIDTH_XS}] only-mouse:hidden !h-${BUTTON_HEIGHT_DEFAULT} font-medium backdrop-blur-sm md:!h-${BUTTON_HEIGHT_MD}`}
 						size="lg"
 						variant="outline-touch"
 					>
@@ -88,7 +99,7 @@ export default async function NotFound() {
 					<Button
 						as={Link}
 						href="/"
-						className="max-xs:w-[90vw] only-touch:hidden !h-14 font-medium backdrop-blur-sm hover:!bg-white hover:!text-black md:!h-16"
+						className={`max-xs:w-[${BUTTON_MAX_WIDTH_XS}] only-touch:hidden !h-${BUTTON_HEIGHT_DEFAULT} font-medium backdrop-blur-sm hover:!bg-white hover:!text-black md:!h-${BUTTON_HEIGHT_MD}`}
 						size="lg"
 						variant="outline"
 					>
