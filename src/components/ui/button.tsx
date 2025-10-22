@@ -1,6 +1,6 @@
 import { cn } from '@/utils/tailwind-cn'
 
-type Props<T extends React.ElementType> = {
+interface ButtonProps<T extends React.ElementType> {
 	as?: T
 	variant?: 'solid' | 'outline' | 'outline-touch' | 'discret' | 'glowing' | 'outline-warning'
 	size?: 'base' | 'lg' | 'sm' | 'xs'
@@ -13,7 +13,7 @@ export function Button<T extends React.ElementType = 'button'>({
 	size = 'base',
 	icon = false,
 	...props
-}: Props<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof Props<T>>) {
+}: Readonly<ButtonProps<T>> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
 	const Component = as || 'button'
 
 	return (

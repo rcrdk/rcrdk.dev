@@ -17,6 +17,23 @@ import { ProjectCategories, PROJECTS, ProjectTranslatedObject } from '@/data/pro
 import { LocalesType } from '@/i18n/routing'
 import { cn } from '@/utils/tailwind-cn'
 
+const ANIMATION_DISTANCE = 125
+const ANIMATION_TENSION = 60
+const ANIMATION_FRICTION = 15
+const ANIMATION_ROOT_MARGIN = '0px 0px 125px'
+const SWIPER_SPACE_BETWEEN_DEFAULT = 16
+const SWIPER_SPACE_BETWEEN_MOBILE = 24
+const SWIPER_SPACE_BETWEEN_DESKTOP = 32
+const PROJECT_CARD_MIN_HEIGHT = 360
+const PROJECT_CARD_WIDTH = 240
+const PROJECT_CARD_MIN_HEIGHT_SM = 400
+const PROJECT_CARD_WIDTH_SM = 290
+const GRADIENT_WIDTH_XS = 12
+const GRADIENT_WIDTH_DEFAULT = 6
+const GRADIENT_LEFT_SM = 40
+const GRADIENT_LEFT_DEFAULT = 6
+const GRADIENT_LEFT_XS = 12
+
 export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
 
@@ -50,11 +67,8 @@ export function Projects() {
 			description: project.description[locale],
 		}))
 
-		if (selectedCategory === 'highlights') {
-			return items.filter((project) => project.highlighted)
-		} else {
-			return items.filter((project) => project.categories.includes(selectedCategory))
-		}
+		if (selectedCategory === 'highlights') return items.filter((project) => project.highlighted)
+		return items.filter((project) => project.categories.includes(selectedCategory))
 	}, [locale, selectedCategory])
 
 	useEffect(() => {
@@ -130,11 +144,15 @@ export function Projects() {
 			</Dropdown.Root>
 
 			<div
-				className="xs:before:-left-12 xs:before:w-12 relative w-full before:absolute before:inset-y-0 before:-left-6 before:z-10 before:w-6 before:bg-gradient-to-r before:from-white before:to-white/0 max-[929px]:before:hidden sm:before:-left-[40px] sm:before:w-[calc(40px)] dark:before:from-black dark:before:to-black/0"
+				className={`xs:before:-left-${GRADIENT_LEFT_XS} xs:before:w-${GRADIENT_WIDTH_XS} relative w-full before:absolute before:inset-y-0 before:-left-${GRADIENT_LEFT_DEFAULT} before:z-10 before:w-${GRADIENT_WIDTH_DEFAULT} before:bg-gradient-to-r before:from-white before:to-white/0 max-[929px]:before:hidden sm:before:-left-[${GRADIENT_LEFT_SM}px] sm:before:w-[calc(${GRADIENT_LEFT_SM}px)] dark:before:from-black dark:before:to-black/0`}
 				ref={refContainer}
 			/>
 
-			<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+			<AnimatedContent
+				distance={ANIMATION_DISTANCE}
+				config={{ tension: ANIMATION_TENSION, friction: ANIMATION_FRICTION }}
+				rootMargin={ANIMATION_ROOT_MARGIN}
+			>
 				<div
 					className={cn(
 						'scrollbar-hidden relative !max-w-none overflow-hidden max-[929px]:!w-screen min-[929px]:w-[calc(100%+64px+var(--offset))]',
@@ -146,21 +164,21 @@ export function Projects() {
 				>
 					<Swiper
 						slidesPerView="auto"
-						spaceBetween={16}
+						spaceBetween={SWIPER_SPACE_BETWEEN_DEFAULT}
 						className="!overflow-visible !py-[4px] select-none"
 						breakpoints={{
 							480: {
-								spaceBetween: 24,
+								spaceBetween: SWIPER_SPACE_BETWEEN_MOBILE,
 							},
 							640: {
-								spaceBetween: 32,
+								spaceBetween: SWIPER_SPACE_BETWEEN_DESKTOP,
 							},
 						}}
 						ref={swiperRef}
 					>
 						{projects.map((item) => (
 							<SwiperSlide
-								className="!flex !min-h-[360px] !w-[240px] !max-w-none min-sm:!min-h-[400px] min-sm:!w-[290px]"
+								className={`!flex !min-h-[${PROJECT_CARD_MIN_HEIGHT}px] !w-[${PROJECT_CARD_WIDTH}px] !max-w-none min-sm:!min-h-[${PROJECT_CARD_MIN_HEIGHT_SM}px] min-sm:!w-[${PROJECT_CARD_WIDTH_SM}px]`}
 								key={item.id}
 							>
 								<ProjectItem project={item} onOpenChange={() => handleSelectProject(item)} />

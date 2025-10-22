@@ -5,7 +5,7 @@ const HALF_DAY = 60 * 60 * 12
 async function getIpDataFn(ip: string | null): Promise<Record<string, string | number>> {
 	try {
 		const response = await fetch(
-			`http://ip-api.com/json/${ip ?? ''}?fields=status,countryCode,regionName,city&lang=pt-BR`,
+			`https://ip-api.com/json/${ip ?? ''}?fields=status,countryCode,regionName,city&lang=pt-BR`,
 		)
 		return await response.json()
 	} catch (error) {

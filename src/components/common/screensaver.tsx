@@ -9,6 +9,10 @@ import { useDvdScreensaver } from '@/hooks/use-dvd-screensaver'
 import { useGame } from '@/hooks/use-game'
 import { cn } from '@/utils/tailwind-cn'
 
+const GIF_CHANGE_DELAY = 700
+const DVD_SPEED = 3
+const Z_INDEX_MAX = 9999999999
+
 export function Screensaver() {
 	const gifs = useMemo(() => {
 		return [
@@ -40,7 +44,7 @@ export function Screensaver() {
 	const { onCompleteTask, showGameTetris, showGameModal } = useGame()
 
 	const { containerRef, elementRef } = useDvdScreensaver({
-		speed: 3,
+		speed: DVD_SPEED,
 	})
 
 	useEffect(() => {
@@ -51,33 +55,30 @@ export function Screensaver() {
 		if (!isIddle) {
 			timer = setTimeout(() => {
 				setGif(random)
-			}, 700)
+			}, GIF_CHANGE_DELAY)
 		}
 
 		if (isIddle) {
 			timer = setTimeout(() => {
 				setGif(random)
 
-				if (!showGameTetris && !showGameModal) {
-					onCompleteTask('screensaver')
-				}
-			}, 700)
+				if (!showGameTetris && !showGameModal) onCompleteTask('screensaver')
+			}, GIF_CHANGE_DELAY)
 		}
 
 		return () => clearTimeout(timer)
 	}, [gifs, isIddle, onCompleteTask, showGameTetris, showGameModal])
 
-	if (isTouchDevice || process.env.NODE_ENV !== 'production' || showGameTetris || showGameModal) {
-		return null
-	}
+	if (isTouchDevice || process.env.NODE_ENV !== 'production' || showGameTetris || showGameModal) return null
 
 	return (
 		<div
 			ref={containerRef}
 			className={cn(
-				'fixed inset-0 z-[9999999999] bg-white transition-opacity duration-700 dark:bg-black',
+				'fixed inset-0 bg-white transition-opacity duration-700 dark:bg-black',
 				isIddle ? 'opacity-100' : 'pointer-events-none opacity-0',
 			)}
+			style={{ zIndex: Z_INDEX_MAX }}
 		>
 			<h1 className="font-heading xs:text-7xl absolute inset-0 flex items-center justify-center p-16 text-center text-6xl font-black tracking-tighter text-balance md:text-8xl lg:text-9xl dark:text-white">
 				{__('screensaver')}

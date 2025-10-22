@@ -3,11 +3,11 @@ import { memo } from 'react'
 import { GameTaskUser } from '@/context/game-context'
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = {
+interface GameTaskItemProps {
 	task: GameTaskUser
 }
 
-function GameTaskItemComponent({ task }: Props) {
+function GameTaskItemComponent({ task }: Readonly<GameTaskItemProps>) {
 	return (
 		<div
 			className={cn(

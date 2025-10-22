@@ -10,6 +10,12 @@ import { Toaster } from 'sonner'
 import { env } from '@/lib/env'
 import { Providers } from '@/providers'
 
+const DEFAULT_LOCALE = 'en'
+const TOASTER_OFFSET = 40
+const TOASTER_MOBILE_OFFSET = 24
+const TOASTER_MAX_WIDTH = 540
+const TOASTER_MAX_MOBILE_WIDTH = 48
+
 type Props = {
 	children: React.ReactNode
 }
@@ -37,7 +43,7 @@ export default async function RootLayout({ children }: Props) {
 	const messages = await getMessages()
 
 	const cookieStore = await cookies()
-	const locale = cookieStore.get('NEXT_LOCALE')?.value ?? 'en'
+	const locale = cookieStore.get('NEXT_LOCALE')?.value ?? DEFAULT_LOCALE
 
 	const shouldEnableGA = process.env.NODE_ENV === 'production' && !!env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
@@ -53,15 +59,14 @@ export default async function RootLayout({ children }: Props) {
 					{children}
 
 					<Toaster
-						offset={40}
-						mobileOffset={24}
+						offset={TOASTER_OFFSET}
+						mobileOffset={TOASTER_MOBILE_OFFSET}
 						className="!pointer-events-auto"
 						toastOptions={{
 							unstyled: false,
 							classNames: {
 								content: 'grow',
-								toast:
-									'select-none !py-3 !px-5 xs:!py-4 xs!px-7 !rounded-3xl !h-auto !border-black/15 !shadow-2xl max-[600px]:!w-[calc(100vw-48px)] !w-[540px] !gap-2 xs:!gap-3 !bg-white/90 backdrop-blur-xs dark:!bg-dropdown-dark dark:!border-white/20 max-xs:!flex-col',
+								toast: `select-none !py-3 !px-5 xs:!py-4 xs!px-7 !rounded-3xl !h-auto !border-black/15 !shadow-2xl max-[600px]:!w-[calc(100vw-${TOASTER_MAX_MOBILE_WIDTH}px)] !w-[${TOASTER_MAX_WIDTH}px] !gap-2 xs:!gap-3 !bg-white/90 backdrop-blur-xs dark:!bg-dropdown-dark dark:!border-white/20 max-xs:!flex-col`,
 								title: '!text-sm text-balance !leading-[1.25] !text-content-light dark:!text-white max-xs:!text-center',
 								icon: '!text-3xl !size-auto',
 							},

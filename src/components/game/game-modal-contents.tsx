@@ -55,9 +55,7 @@ export function GameModalContents() {
 	}, [fireConfetti])
 
 	useEffect(() => {
-		if (isGameCompleted && showGameModal) {
-			triggerConfetti()
-		}
+		if (isGameCompleted && showGameModal) triggerConfetti()
 	}, [triggerConfetti, isGameCompleted, showGameModal])
 
 	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted

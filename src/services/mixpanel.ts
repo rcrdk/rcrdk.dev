@@ -9,9 +9,7 @@ import { getHeadersData } from '@/lib/headers-data'
 const mixpanelEvent = env.MIXPANEL_SECRET ? Mixpanel.init(env.MIXPANEL_SECRET) : undefined
 
 export async function trackServerEvent(eventName: string, properties: Record<string, string | number | boolean>) {
-	if (process.env.NODE_ENV !== 'production' || !env.MIXPANEL_SECRET || !mixpanelEvent) {
-		return
-	}
+	if (process.env.NODE_ENV !== 'production' || !env.MIXPANEL_SECRET || !mixpanelEvent) return
 
 	const headersData = await getHeadersData()
 	const ipData = await getIpData(headersData.ip)

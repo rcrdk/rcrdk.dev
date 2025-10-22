@@ -17,11 +17,8 @@ export function ScrollStart() {
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
-				if (entry.isIntersecting) {
-					setShowButton(true)
-				} else {
-					setShowButton(false)
-				}
+				if (entry.isIntersecting) setShowButton(true)
+				else setShowButton(false)
 			},
 			{ threshold: 0.1 },
 		)

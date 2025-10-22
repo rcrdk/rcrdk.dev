@@ -1,11 +1,16 @@
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = React.HTMLAttributes<HTMLDivElement> & {
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	size?: 'fluid' | 'center'
 	sideSpacing?: 'base' | 'lg'
 	classNameCenter?: React.HTMLAttributes<HTMLDivElement>['className']
 }
-export function Container({ size = 'fluid', sideSpacing = 'base', classNameCenter, ...props }: Props) {
+export function Container({
+	size = 'fluid',
+	sideSpacing = 'base',
+	classNameCenter,
+	...props
+}: Readonly<ContainerProps>) {
 	return (
 		<div
 			{...props}

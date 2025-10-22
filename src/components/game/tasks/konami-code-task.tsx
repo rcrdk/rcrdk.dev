@@ -4,28 +4,28 @@ import { useEffect, useState } from 'react'
 
 import { useGame } from '@/hooks/use-game'
 
+const KONAMI_CODE = [
+	'ArrowUp',
+	'ArrowUp',
+	'ArrowDown',
+	'ArrowDown',
+	'ArrowLeft',
+	'ArrowRight',
+	'ArrowLeft',
+	'ArrowRight',
+	'b',
+	'a',
+]
+
 export function KonamiCodeGameTask() {
 	const [input, setInput] = useState<string[]>([])
 	const { onCompleteTask } = useGame()
 
 	useEffect(() => {
-		const konamiCode = [
-			'ArrowUp',
-			'ArrowUp',
-			'ArrowDown',
-			'ArrowDown',
-			'ArrowLeft',
-			'ArrowRight',
-			'ArrowLeft',
-			'ArrowRight',
-			'b',
-			'a',
-		]
-
 		const handleKeyDown = (event: KeyboardEvent) => {
-			setInput((prev) => [...prev, event.key].slice(-konamiCode.length))
+			setInput((prev) => [...prev, event.key].slice(-KONAMI_CODE.length))
 
-			if ([...input, event.key].slice(-konamiCode.length).join('') === konamiCode.join('')) {
+			if ([...input, event.key].slice(-KONAMI_CODE.length).join('') === KONAMI_CODE.join('')) {
 				onCompleteTask('konami')
 				setInput([])
 			}

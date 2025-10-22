@@ -9,7 +9,7 @@ import { cn } from '@/utils/tailwind-cn'
 
 type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>
 
-type Props = {
+interface DialogProps {
 	open: boolean
 	onOpenChange: VoidFunction
 	mode: 'content' | 'game'
@@ -18,7 +18,14 @@ type Props = {
 	hasTetris?: boolean
 }
 
-export function Dialog({ open, onOpenChange, mode, hasImageUnderClose = false, hasTetris = false, children }: Props) {
+export function Dialog({
+	open,
+	onOpenChange,
+	mode,
+	hasImageUnderClose = false,
+	hasTetris = false,
+	children,
+}: Readonly<DialogProps>) {
 	const browser = useDetectBrowser()
 	const __ = useTranslations('Default')
 

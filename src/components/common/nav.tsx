@@ -6,6 +6,12 @@ import AnimatedContent from '@/components/animated/animated-content'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
+const NAV_DISTANCE = 65
+const NAV_TENSION = 60
+const NAV_FRICTION = 15
+const NAV_ROOT_MARGIN = '65px 0px 0px'
+const DELAY_INCREMENT = 100
+
 type Props = {
 	slot: 'header' | 'page'
 }
@@ -28,11 +34,11 @@ export function Nav({ slot }: Props) {
 			)}
 		>
 			<AnimatedContent
-				distance={65}
-				config={{ tension: 60, friction: 15 }}
-				delay={100}
+				distance={NAV_DISTANCE}
+				config={{ tension: NAV_TENSION, friction: NAV_FRICTION }}
+				delay={DELAY_INCREMENT}
 				reverse
-				rootMargin="65px 0px 0px"
+				rootMargin={NAV_ROOT_MARGIN}
 			>
 				<a href="#about" className={linkClass} onClick={(e) => scrollToSection(e, '#about')}>
 					{__('navigation.about')}
@@ -40,11 +46,11 @@ export function Nav({ slot }: Props) {
 			</AnimatedContent>
 
 			<AnimatedContent
-				distance={65}
-				config={{ tension: 60, friction: 15 }}
-				delay={200}
+				distance={NAV_DISTANCE}
+				config={{ tension: NAV_TENSION, friction: NAV_FRICTION }}
+				delay={DELAY_INCREMENT * 2}
 				reverse
-				rootMargin="65px 0px 0px"
+				rootMargin={NAV_ROOT_MARGIN}
 			>
 				<a href="#skills" className={linkClass} onClick={(e) => scrollToSection(e, '#skills')}>
 					{__('navigation.skills')}
@@ -52,37 +58,37 @@ export function Nav({ slot }: Props) {
 			</AnimatedContent>
 
 			<AnimatedContent
-				distance={65}
-				config={{ tension: 60, friction: 15 }}
-				delay={300}
+				distance={NAV_DISTANCE}
+				config={{ tension: NAV_TENSION, friction: NAV_FRICTION }}
+				delay={DELAY_INCREMENT * 3}
 				reverse
-				rootMargin="65px 0px 0px"
+				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="" className={linkClass} onClick={(e) => scrollToSection(e, '#projects')}>
+				<a href="#projects" className={linkClass} onClick={(e) => scrollToSection(e, '#projects')}>
 					{__('navigation.projects')}
 				</a>
 			</AnimatedContent>
 
 			<AnimatedContent
-				distance={65}
-				config={{ tension: 60, friction: 15 }}
-				delay={400}
+				distance={NAV_DISTANCE}
+				config={{ tension: NAV_TENSION, friction: NAV_FRICTION }}
+				delay={DELAY_INCREMENT * 4}
 				reverse
-				rootMargin="65px 0px 0px"
+				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="" className={linkClass} onClick={(e) => scrollToSection(e, '#journey')}>
+				<a href="#journey" className={linkClass} onClick={(e) => scrollToSection(e, '#journey')}>
 					{__('navigation.journey')}
 				</a>
 			</AnimatedContent>
 
 			<AnimatedContent
-				distance={65}
-				config={{ tension: 60, friction: 15 }}
-				delay={500}
+				distance={NAV_DISTANCE}
+				config={{ tension: NAV_TENSION, friction: NAV_FRICTION }}
+				delay={DELAY_INCREMENT * 5}
 				reverse
-				rootMargin="65px 0px 0px"
+				rootMargin={NAV_ROOT_MARGIN}
 			>
-				<a href="" className={linkClass} onClick={(e) => scrollToSection(e, '#contact')}>
+				<a href="#contact" className={linkClass} onClick={(e) => scrollToSection(e, '#contact')}>
 					{__('navigation.contact')}
 				</a>
 			</AnimatedContent>

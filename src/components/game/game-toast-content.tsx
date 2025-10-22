@@ -5,11 +5,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { GameTaskUser } from '@/context/game-context'
 
-type Props = {
+interface GameToastContentProps {
 	task: GameTaskUser
 }
 
-export function GameToastContent({ task }: Props) {
+export function GameToastContent({ task }: Readonly<GameToastContentProps>) {
 	const __ = useTranslations('Default')
 
 	const handleDismissToast = useCallback(() => {

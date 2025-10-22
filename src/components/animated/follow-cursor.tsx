@@ -46,7 +46,7 @@ interface TouchState {
 	offsetY?: number
 }
 
-const FollowCursor: React.FC<FollowCursorProps> = ({
+const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 	children,
 	className = '',
 	animationConfig = { mass: 5, tension: 350, friction: 40 },

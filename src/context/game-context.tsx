@@ -8,6 +8,10 @@ import { GAME_TASKS, GameTaskTypes } from '@/data/game-tasks'
 import { LocalesType } from '@/i18n/routing'
 import { env } from '@/lib/env'
 
+const TOAST_DURATION = 20000
+const MEDIA_QUERY_MIN_WIDTH = '70rem'
+const MEDIA_QUERY_MIN_HEIGHT = '35rem'
+
 export interface GameTaskUser {
 	id: GameTaskTypes
 	icon: string
@@ -44,7 +48,7 @@ interface GameContextProviderProps {
 
 export function CartContextProvider({ children }: GameContextProviderProps) {
 	const [isGameActive, setIsGameActive] = useState(false)
-	const [tasksComleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
+	const [tasksCompleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
 	const [showGameModal, setShowGameModal] = useState(false)
 	const [showGameTetris, setShowGameTetris] = useState(false)
 	const [showGameTasks, setShowGameTasks] = useState(false)
@@ -65,19 +69,18 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				hint: task.toastItem.hint[locale],
 			},
 			points: task.points,
-			completed: tasksComleted.includes(task.id),
+			completed: tasksCompleted.includes(task.id),
 			button: task.button,
 		}))
-	}, [locale, tasksComleted])
+	}, [locale, tasksCompleted])
 
 	const onActivateGame = useCallback(() => {
 		setIsGameActive(true)
 
-		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`).play()
+		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`)
+		audio.play()
 
-		if (typeof window !== 'undefined') {
-			window.localStorage.setItem(KEYS.gameActive, 'true')
-		}
+		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameActive, 'true')
 	}, [])
 
 	const notifyCompletedTask = useCallback(
@@ -86,12 +89,13 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 			if (!task) return
 
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`).play()
+			const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`)
+			audio.play()
 
 			toast(<GameToastContent task={task} />, {
 				id: taskId,
 				position: 'top-center',
-				duration: 20000,
+				duration: TOAST_DURATION,
 			})
 		},
 		[gameTasks],
@@ -99,15 +103,13 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 	const onCompleteTask = useCallback(
 		(taskId: GameTaskTypes) => {
-			const taskAlreadyExists = tasksComleted.find((task) => task === taskId)
+			const taskAlreadyExists = tasksCompleted.find((task) => task === taskId)
 
 			if (!taskAlreadyExists && isScreenSizeAllowed && isGameActive) {
 				setTasksCompleted((prev) => {
 					const updatedTasks = [...prev, taskId] as GameTaskTypes[]
 
-					if (typeof window !== 'undefined') {
-						window.localStorage.setItem(KEYS.gameTasks, JSON.stringify(updatedTasks))
-					}
+					if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasks, JSON.stringify(updatedTasks))
 
 					return updatedTasks
 				})
@@ -115,7 +117,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 				notifyCompletedTask(taskId)
 			}
 		},
-		[isGameActive, isScreenSizeAllowed, notifyCompletedTask, tasksComleted],
+		[isGameActive, isScreenSizeAllowed, notifyCompletedTask, tasksCompleted],
 	)
 
 	function onResetGame(soundEffect?: boolean) {
@@ -123,7 +125,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setShowGameTasks(false)
 
 		if (soundEffect) {
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`).play()
+			const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`)
+			audio.play()
 		}
 
 		if (typeof window !== 'undefined') {
@@ -137,11 +140,10 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		onResetGame(false)
 		setIsGameActive(false)
 
-		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-over.mp3`).play()
+		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-over.mp3`)
+		audio.play()
 
-		if (typeof window !== 'undefined') {
-			window.localStorage.removeItem(KEYS.gameActive)
-		}
+		if (typeof window !== 'undefined') window.localStorage.removeItem(KEYS.gameActive)
 	}
 
 	function onShowGameModal() {
@@ -159,17 +161,15 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setShowGameTasks(true)
 		onCompleteTask('has-opened-hints')
 
-		if (typeof window !== 'undefined') {
-			window.localStorage.setItem(KEYS.gameTasksVisible, 'true')
-		}
+		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasksVisible, 'true')
 	}, [onCompleteTask])
 
 	const pointsEarned = useMemo(() => {
-		return GAME_TASKS.filter((task) => tasksComleted.includes(task.id)).reduce(
+		return GAME_TASKS.filter((task) => tasksCompleted.includes(task.id)).reduce(
 			(previous, current) => previous + current.points,
 			0,
 		)
-	}, [tasksComleted])
+	}, [tasksCompleted])
 
 	const pointsTotal = useMemo(() => {
 		return GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
@@ -181,7 +181,9 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		if (typeof window === 'undefined') return
 
 		const checkMedia = () => {
-			const checkMedia = window.matchMedia('(min-width: 70rem) and (min-height: 35rem)')
+			const checkMedia = window.matchMedia(
+				`(min-width: ${MEDIA_QUERY_MIN_WIDTH}) and (min-height: ${MEDIA_QUERY_MIN_HEIGHT})`,
+			)
 			setIsScreenSizeAllowed(checkMedia.matches)
 		}
 
