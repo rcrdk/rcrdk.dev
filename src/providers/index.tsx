@@ -15,9 +15,11 @@ type Props = {
 	}
 }
 
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
 export function Providers({ children, i18n }: Props) {
 	return (
-		<NextIntlClientProvider messages={i18n.messages} locale={i18n.locale}>
+		<NextIntlClientProvider messages={i18n.messages} locale={i18n.locale} timeZone={timeZone}>
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider attribute="data-mode">
 					<CartContextProvider>{children}</CartContextProvider>

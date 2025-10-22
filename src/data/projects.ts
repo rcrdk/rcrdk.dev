@@ -9,7 +9,7 @@ export type ProjectCategories =
 	| 'mobile_app'
 	| 'api'
 
-export type ProjectObject = {
+type ProjectObject = {
 	id: number
 	title: string
 	image: string | null

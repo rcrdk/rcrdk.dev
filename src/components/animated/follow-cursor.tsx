@@ -83,7 +83,6 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
 		config: wheelConfig,
 	}))
 
-	// Touch handling logic
 	useEffect(() => {
 		if (!isMobile() || !domTarget.current || !enableDrag) return
 
@@ -171,9 +170,8 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
 		}
 	}, [api, x, y, zoom, rotateZ, wheelY, wheelApi, enableDrag, enableZoom, zoomSensitivity, hoverScale])
 
-	// Mouse movement logic
 	useEffect(() => {
-		if (!isMobile() && enableTilt) {
+		if (!isMobile() && enableTilt && typeof window !== 'undefined') {
 			const handleMouseMove = (event: MouseEvent) => {
 				const container = containerRef.current
 				if (!container) return
