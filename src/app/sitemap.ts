@@ -3,20 +3,23 @@ import type { MetadataRoute } from 'next'
 import { env } from '@/lib/env'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+	const baseUrl = env.NEXT_PUBLIC_APP_URL
+	const currentDate = new Date().toISOString()
+
 	const staticEntries: MetadataRoute.Sitemap = [
 		{
-			url: `${env.NEXT_PUBLIC_APP_URL}/pt-br`,
-			lastModified: new Date().toISOString(),
+			url: `${baseUrl}/pt-br`,
+			lastModified: currentDate,
 			changeFrequency: 'monthly',
 			priority: 1,
 		},
 		{
-			url: `${env.NEXT_PUBLIC_APP_URL}/en`,
-			lastModified: new Date().toISOString(),
+			url: `${baseUrl}/en`,
+			lastModified: currentDate,
 			changeFrequency: 'monthly',
 			priority: 1,
 		},
 	]
 
-	return [...staticEntries]
+	return staticEntries
 }

@@ -28,10 +28,51 @@ export default async function LocaleLayout({ children, params }: Props) {
 		name: 'Ricardo Augusto Kowalski',
 		birthDate: '1996-03-03',
 		image: `${env.NEXT_PUBLIC_APP_URL}${profilePicture.src}`,
-		url: 'https://rcrdk.dev',
+		url: env.NEXT_PUBLIC_APP_URL,
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
 		sameAs: ['https://github.com/rcrdk', 'https://www.behance.net/rcrdk', 'https://www.linkedin.com/in/rcrdk'],
 		jobTitle: __('jobTitle'),
+		worksFor: {
+			'@type': 'Organization',
+			name: 'MySide',
+			url: 'https://myside.com.br',
+		},
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Timbó',
+			addressRegion: 'Santa Catarina',
+			addressCountry: 'BR',
+		},
+		knowsAbout: [
+			'Front-end Development',
+			'React',
+			'Next.js',
+			'TypeScript',
+			'Node.js',
+			'JavaScript',
+			'PHP',
+			'Laravel',
+			'Web Development',
+			'UI/UX Design',
+			'Responsive Design',
+			'Web Performance',
+			'Accessibility',
+		],
+		alumniOf: {
+			'@type': 'Organization',
+			name: 'Uniasselvi',
+			url: 'https://portal.uniasselvi.com.br/',
+		},
+		hasOccupation: {
+			'@type': 'Occupation',
+			name: 'Front-End Developer',
+			occupationLocation: {
+				'@type': 'City',
+				name: 'Timbó',
+				addressRegion: 'Santa Catarina',
+				addressCountry: 'BR',
+			},
+		},
 	}
 
 	return (

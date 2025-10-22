@@ -75,12 +75,17 @@ export function GameModalContents() {
 
 			{!isGameActive && (
 				<>
-					<Button variant="outline-warning" className="mt-8 mb-6 w-full font-semibold" onClick={onActivateGame}>
+					<Button
+						variant="outline-warning"
+						className="mt-8 mb-6 w-full font-semibold"
+						onClick={onActivateGame}
+						aria-describedby="game-sound-note"
+					>
 						<span className="text-2xl">🤠</span>
 						{__('game.optIn.button')}
 					</Button>
 
-					<p className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
+					<p id="game-sound-note" className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
 						<IconVolume className="stroke-1" aria-hidden />
 						{__('game.optIn.sound')}
 					</p>
@@ -97,6 +102,7 @@ export function GameModalContents() {
 						<button
 							onClick={onStopGame}
 							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
+							aria-label={__('game.ariaLabels.stopGame')}
 						>
 							<IconSkull size={16} aria-hidden />
 							{__('game.stop')}
@@ -106,6 +112,7 @@ export function GameModalContents() {
 							onClick={onResetGame}
 							disabled={pointsEarned === 0}
 							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
+							aria-label={__('game.ariaLabels.resetGame')}
 						>
 							<IconRefresh size={16} aria-hidden />
 							{__('game.reset')}
@@ -121,6 +128,7 @@ export function GameModalContents() {
 								e.currentTarget.blur()
 								onShowGameTasks()
 							}}
+							aria-label={__('game.ariaLabels.showTasks', { taskName: __('game.taskButtons.tetris') })}
 						>
 							<span className="text-2xl">🫣</span>
 							{__('game.button')}

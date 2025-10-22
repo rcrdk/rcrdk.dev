@@ -9,9 +9,10 @@ import { cn } from '@/utils/tailwind-cn'
 interface ImageProps {
 	src: string
 	folder?: 'projects'
+	alt?: string
 }
 
-export function Image({ src, folder = 'projects' }: Readonly<ImageProps>) {
+export function Image({ src, folder = 'projects', alt = '' }: Readonly<ImageProps>) {
 	const [loading, setLoading] = useState(true)
 
 	return (
@@ -26,7 +27,7 @@ export function Image({ src, folder = 'projects' }: Readonly<ImageProps>) {
 
 			<img
 				src={`${env.NEXT_PUBLIC_APP_URL}/${folder}/${src}`}
-				alt=""
+				alt={alt}
 				className={cn(
 					'h-full w-full object-cover transition-all duration-500 group-hover:scale-105',
 					loading ? 'opacity-0' : 'opacity-100',
