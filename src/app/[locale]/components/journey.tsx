@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
 import { LINKS } from '@/config/links'
 
-export type ExperiencesCollapse = 'work' | 'education'
+type ExperiencesCollapse = 'work' | 'education'
 
 export type JourneyExperience = {
 	company: string

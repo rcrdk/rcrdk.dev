@@ -7,7 +7,6 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { getMessages } from 'next-intl/server'
 import { Toaster } from 'sonner'
 
-import { ServiceWorker } from '@/components/config/service-worker'
 import { env } from '@/lib/env'
 import { Providers } from '@/providers'
 
@@ -70,8 +69,6 @@ export default async function RootLayout({ children }: Props) {
 					/>
 
 					{shouldEnableGA && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />}
-
-					<ServiceWorker />
 				</Providers>
 			</body>
 		</html>

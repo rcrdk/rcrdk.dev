@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { useWindowSize } from '@/hooks/use-window-size'
 
-export type Options = {
+type Options = {
 	freezeOnHover?: boolean
 	hoverCallback?: () => void
 	speed?: number
@@ -19,7 +19,7 @@ type AnimationRef = {
 	positionY: number
 }
 
-export type UseDvdScreensaver<T> = {
+type UseDvdScreensaver<T> = {
 	containerRef: React.Ref<T>
 	elementRef: React.Ref<T>
 	hovered: boolean

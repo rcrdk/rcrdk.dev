@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useMemo } from 'react'
@@ -50,7 +49,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 	}, [__, locale, project])
 
 	return (
-		<Dialog open={open} onOpenChange={handleOpenChange} mode="content" hasImageUnderClose={!!project?.image}>
+		<Dialog open={open} onOpenChange={handleOpenChange} mode="content" hasImageUnderClose={Boolean(project?.image)}>
 			{project?.image && (
 				<div className="xs:!m-0 relative overflow-hidden rounded-t-3xl before:absolute before:inset-0 before:border-b before:border-black/10 dark:before:border-white/15">
 					<img src={`${env.NEXT_PUBLIC_APP_URL}/projects/${project?.image}`} alt={project?.title} className="w-full" />
@@ -61,7 +60,7 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 				<div
 					className={cn(
 						'xs:p-8 xs:gap-6 flex flex-col gap-4 p-6 sm:p-8 lg:px-10 lg:py-9',
-						!!project?.image ? 'md:flex-row md:gap-8' : 'md:gap-3',
+						project?.image ? 'md:flex-row md:gap-8' : 'md:gap-3',
 					)}
 				>
 					<div className="flex grow flex-col gap-1">

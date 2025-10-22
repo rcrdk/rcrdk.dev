@@ -30,10 +30,6 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: __('title'),
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
-		// openGraph: {
-		// 	siteName: 'Ricardo Augusto Kowalski',
-		// 	url: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
-		// },
 		keywords: __.raw('keywords'),
 		alternates: {
 			canonical: '/en',

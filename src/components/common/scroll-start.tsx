@@ -22,8 +22,6 @@ export function ScrollStart() {
 				} else {
 					setShowButton(false)
 				}
-
-				// observer.unobserve(element)
 			},
 			{ threshold: 0.1 },
 		)

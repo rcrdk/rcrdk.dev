@@ -1,5 +1,7 @@
 import { unstable_cache as cache } from 'next/cache'
 
+const HALF_DAY = 60 * 60 * 12
+
 async function getIpDataFn(ip: string | null): Promise<Record<string, string | number>> {
 	try {
 		const response = await fetch(
@@ -13,7 +15,7 @@ async function getIpDataFn(ip: string | null): Promise<Record<string, string | n
 }
 
 export async function getIpData(ip: string | null) {
-	const expirationInSeconds = 60 * 60 * 12 // half-day
+	const expirationInSeconds = HALF_DAY
 	const ipAsCacheKey = ip?.replaceAll('.', '').replaceAll(':', '') ?? ''
 
 	return cache(() => getIpDataFn(ip), [`get-ip-info-${ipAsCacheKey}`], {
