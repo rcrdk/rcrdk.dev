@@ -24,10 +24,6 @@ const ANIMATION_ROOT_MARGIN = '0px 0px 125px'
 const SWIPER_SPACE_BETWEEN_DEFAULT = 16
 const SWIPER_SPACE_BETWEEN_MOBILE = 24
 const SWIPER_SPACE_BETWEEN_DESKTOP = 32
-const PROJECT_CARD_MIN_HEIGHT = 360
-const PROJECT_CARD_WIDTH = 240
-const PROJECT_CARD_MIN_HEIGHT_SM = 400
-const PROJECT_CARD_WIDTH_SM = 290
 const GRADIENT_WIDTH_XS = 12
 const GRADIENT_WIDTH_DEFAULT = 6
 const GRADIENT_LEFT_SM = 40
@@ -184,7 +180,7 @@ export function Projects() {
 					>
 						{projects.map((item) => (
 							<SwiperSlide
-								className={`!flex !min-h-[${PROJECT_CARD_MIN_HEIGHT}px] !w-[${PROJECT_CARD_WIDTH}px] !max-w-none min-sm:!min-h-[${PROJECT_CARD_MIN_HEIGHT_SM}px] min-sm:!w-[${PROJECT_CARD_WIDTH_SM}px]`}
+								className={`!flex !min-h-[360px] !w-[240px] !max-w-none min-sm:!min-h-[400px] min-sm:!w-[290px]`}
 								key={item.id}
 							>
 								<ProjectItem project={item} onOpenChange={() => handleSelectProject(item)} />

@@ -429,8 +429,8 @@ function BrandCursor() {
 					y1="12"
 					y2="24"
 				>
-					<stop offset=".16" stopColor="currentColor" stop-opacity=".39"></stop>
-					<stop offset=".658" stopColor="currentColor" stop-opacity=".8"></stop>
+					<stop offset=".16" stopColor="currentColor" stopOpacity=".39"></stop>
+					<stop offset=".658" stopColor="currentColor" stopOpacity=".8"></stop>
 				</linearGradient>
 				<linearGradient
 					gradientUnits="userSpaceOnUse"
@@ -440,8 +440,8 @@ function BrandCursor() {
 					y1="6.037"
 					y2="12.15"
 				>
-					<stop offset=".182" stopColor="currentColor" stop-opacity=".31"></stop>
-					<stop offset=".715" stopColor="currentColor" stop-opacity="0"></stop>
+					<stop offset=".182" stopColor="currentColor" stopOpacity=".31"></stop>
+					<stop offset=".715" stopColor="currentColor" stopOpacity="0"></stop>
 				</linearGradient>
 				<linearGradient
 					gradientUnits="userSpaceOnUse"
@@ -451,8 +451,8 @@ function BrandCursor() {
 					y1="0"
 					y2="18"
 				>
-					<stop stopColor="currentColor" stop-opacity=".6"></stop>
-					<stop offset=".667" stopColor="currentColor" stop-opacity=".22"></stop>
+					<stop stopColor="currentColor" stopOpacity=".6"></stop>
+					<stop offset=".667" stopColor="currentColor" stopOpacity=".22"></stop>
 				</linearGradient>
 			</defs>
 		</svg>
