@@ -56,10 +56,10 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 			images: [`${env.NEXT_PUBLIC_APP_URL}/twitter-image.jpg`],
 		},
 		alternates: {
-			canonical: `/${locale}`,
+			canonical: `${env.NEXT_PUBLIC_APP_URL}/${locale}`,
 			languages: {
-				en: '/en',
-				pt: '/pt-br',
+				en: `${env.NEXT_PUBLIC_APP_URL}/en`,
+				'pt-BR': `${env.NEXT_PUBLIC_APP_URL}/pt-br`,
 			},
 		},
 	}
