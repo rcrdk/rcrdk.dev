@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import { IconCoffee } from '@tabler/icons-react'
@@ -22,10 +22,10 @@ export function About() {
 
 	const { onCompleteTask } = useGame()
 
-	const handleShowContents = useCallback(() => {
+	function handleShowContents() {
 		setShowContents((prev) => !prev)
 		onCompleteTask('about-me')
-	}, [onCompleteTask])
+	}
 
 	return (
 		<Section classNameCenter="max-xs:py-9">

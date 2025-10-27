@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import * as DialogRadix from '@radix-ui/react-dialog'
 import { IconRefresh, IconSkull, IconVolume } from '@tabler/icons-react'
@@ -13,6 +13,9 @@ import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
 import { env } from '@/lib/env'
 import { cn } from '@/utils/tailwind-cn'
+
+const DELAY_CONFETTI_1 = 750
+const DELAY_CONFETTI_2 = 1500
 
 export function GameModalContents() {
 	const {
@@ -34,29 +37,31 @@ export function GameModalContents() {
 
 	const { fireConfetti } = useConfetti()
 
-	const triggerConfetti = useCallback(() => {
-		fireConfetti()
-		new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-
-		const timer1 = setTimeout(() => {
-			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-		}, 750)
-
-		const timer2 = setTimeout(() => {
-			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-		}, 1500)
-
-		return () => {
-			clearTimeout(timer1)
-			clearTimeout(timer2)
-		}
-	}, [fireConfetti])
-
 	useEffect(() => {
-		if (isGameCompleted && showGameModal) triggerConfetti()
-	}, [triggerConfetti, isGameCompleted, showGameModal])
+		if (!isGameCompleted || !showGameModal) return
+
+		function triggerConfetti() {
+			fireConfetti()
+			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
+
+			const timer1 = setTimeout(() => {
+				fireConfetti()
+				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
+			}, DELAY_CONFETTI_1)
+
+			const timer2 = setTimeout(() => {
+				fireConfetti()
+				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
+			}, DELAY_CONFETTI_2)
+
+			return () => {
+				clearTimeout(timer1)
+				clearTimeout(timer2)
+			}
+		}
+
+		triggerConfetti()
+	}, [fireConfetti, isGameCompleted, showGameModal])
 
 	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
 	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted

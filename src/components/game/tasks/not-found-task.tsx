@@ -17,13 +17,15 @@ export function NotFoundGameTaskButton() {
 	)
 }
 
+const DELAY_NOT_FOUND = 700
+
 export function NotFoundGameTask() {
 	const { onCompleteTask } = useGame()
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			onCompleteTask('not-found')
-		}, 700)
+		}, DELAY_NOT_FOUND)
 
 		return () => clearTimeout(timer)
 	}, [onCompleteTask])

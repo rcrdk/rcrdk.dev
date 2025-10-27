@@ -6,6 +6,8 @@ import { useLocale } from 'next-intl'
 import { KEYS } from '@/config/keys'
 import { useGame } from '@/hooks/use-game'
 
+const DELAY_LOCALE = 700
+
 export function LocaleGameTask() {
 	const locale = useLocale()
 	const { onCompleteTask } = useGame()
@@ -20,7 +22,7 @@ export function LocaleGameTask() {
 		if (entryExists && entryExists !== locale) {
 			timer = setTimeout(() => {
 				onCompleteTask('switch-language')
-			}, 700)
+			}, DELAY_LOCALE)
 		}
 
 		if (!entryExists) {

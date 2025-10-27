@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react'
@@ -23,14 +23,12 @@ export function LastFmHistory() {
 
 	const { data, isFetching, isLoading } = useLastFM({ enabled: open })
 
-	const handleToggleVisibility = useCallback(() => {
+	function handleToggleVisibility() {
 		setOpen((prev) => !prev)
 		onCompleteTask('now-playing')
-	}, [onCompleteTask])
+	}
 
-	const tracks = useMemo(() => {
-		return data?.tracks?.slice(0, 7)
-	}, [data?.tracks])
+	const tracks = data?.tracks?.slice(0, 7)
 
 	const shouldDisplayList = tracks && !isFetching && !isLoading
 	const shouldDisplaySkeletons = isLoading || isFetching || !tracks

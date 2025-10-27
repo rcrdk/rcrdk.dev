@@ -1,34 +1,29 @@
 'use client'
 
-import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/tailwind-cn'
 
+const languagesAvailable = [
+	{
+		prefix: 'en',
+		title: 'English',
+		acronym: 'EN',
+	},
+	{
+		prefix: 'pt-br',
+		title: 'Português',
+		acronym: 'PT',
+	},
+]
+
 export function LocaleSwitcher() {
 	const __ = useTranslations('Default')
 	const { locale: currentLocale } = useParams()
 
-	const languagesAvailable = useMemo(() => {
-		return [
-			{
-				prefix: 'en',
-				title: 'English',
-				acronym: 'EN',
-			},
-			{
-				prefix: 'pt-br',
-				title: 'Português',
-				acronym: 'PT',
-			},
-		]
-	}, [])
-
-	const getActiveLocale = useMemo(() => {
-		return languagesAvailable.find((locale) => locale.prefix === currentLocale) ?? languagesAvailable[0]
-	}, [currentLocale, languagesAvailable])
+	const getActiveLocale = languagesAvailable.find((locale) => locale.prefix === currentLocale) ?? languagesAvailable[0]
 
 	return (
 		<nav>

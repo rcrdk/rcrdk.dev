@@ -2,7 +2,7 @@
 
 import 'swiper/css'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconChevronDown } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
@@ -29,6 +29,7 @@ const GRADIENT_WIDTH_DEFAULT = 6
 const GRADIENT_LEFT_SM = 40
 const GRADIENT_LEFT_DEFAULT = 6
 const GRADIENT_LEFT_XS = 12
+const RESIZE_DELAY = 150
 
 export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
@@ -44,29 +45,26 @@ export function Projects() {
 	const locale = useLocale() as LocalesType
 	const categories = __.raw('categories') as { id: ProjectCategories; label: string }[]
 
-	const handleChangeCategory = useCallback((id: ProjectCategories) => {
+	function handleChangeCategory(id: ProjectCategories) {
 		setSelectedCategory(id)
-	}, [])
+	}
 
-	const handleSelectProject = useCallback((project?: ProjectTranslatedObject) => {
+	function handleSelectProject(project?: ProjectTranslatedObject) {
 		setProjectSelected(project)
-	}, [])
+	}
 
-	const currentCategory = useMemo(
-		() => categories.find((item) => item.id === selectedCategory),
-		[categories, selectedCategory],
-	)
+	const currentCategory = categories.find((item) => item.id === selectedCategory)
 
-	const projects = useMemo(() => {
-		const items: ProjectTranslatedObject[] = PROJECTS.map((project) => ({
-			...project,
-			intro: project.intro[locale],
-			description: project.description[locale],
-		}))
+	const items: ProjectTranslatedObject[] = PROJECTS.map((project) => ({
+		...project,
+		intro: project.intro[locale],
+		description: project.description[locale],
+	}))
 
-		if (selectedCategory === 'highlights') return items.filter((project) => project.highlighted)
-		return items.filter((project) => project.categories.includes(selectedCategory))
-	}, [locale, selectedCategory])
+	const projects =
+		selectedCategory === 'highlights'
+			? items.filter((project) => project.highlighted)
+			: items.filter((project) => project.categories.includes(selectedCategory))
 
 	useEffect(() => {
 		if (!refContainer.current || typeof window === 'undefined') return
@@ -81,7 +79,7 @@ export function Projects() {
 				if (!refContainer.current || document.documentElement.offsetWidth < 640) return
 				const rightOffset = document.documentElement.offsetWidth - refContainer.current.getBoundingClientRect().right
 				setSideOffset(rightOffset)
-			}, 150)
+			}, RESIZE_DELAY)
 		}
 
 		window.addEventListener('resize', handleResize)

@@ -12,10 +12,11 @@ type GetLastFmPlayedTracks = {
 }
 
 const TEN_MINUTES = 60 * 10
+const DELAY_LAST_FM = 500
 
 export async function getLastFmPlayedTracks(): Promise<GetLastFmPlayedTracks | undefined> {
 	try {
-		await new Promise((resolve) => setTimeout(resolve, 500))
+		await new Promise((resolve) => setTimeout(resolve, DELAY_LAST_FM))
 
 		const response = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/last-fm`, {
 			next: {

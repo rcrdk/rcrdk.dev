@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { SkillItem } from '@/app/[locale]/components/skill-item'
@@ -18,9 +18,7 @@ export function Skills() {
 	const [selectedCategory, setSelectedCategory] = useState<SkillCategories>('front-end')
 	const [listHeight, setListHeight] = useState(0)
 
-	const skills = useMemo(() => {
-		return SKILLS.filter((item) => item.categories.includes(selectedCategory))
-	}, [selectedCategory])
+	const skills = SKILLS.filter((item) => item.categories.includes(selectedCategory))
 
 	function handleChangeCategory(category: SkillCategories) {
 		setSelectedCategory(category)

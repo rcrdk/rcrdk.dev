@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
@@ -12,9 +11,9 @@ interface GameToastContentProps {
 export function GameToastContent({ task }: Readonly<GameToastContentProps>) {
 	const __ = useTranslations('Default')
 
-	const handleDismissToast = useCallback(() => {
+	function handleDismissToast() {
 		toast.dismiss(task.id)
-	}, [task.id])
+	}
 
 	return (
 		<div className="xs:gap-3 flex items-center gap-2">

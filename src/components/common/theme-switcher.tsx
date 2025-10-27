@@ -1,12 +1,14 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
+
+const DISABLE_TRANSITIONS_DELAY = 100
 
 export function ThemeSwitcher() {
 	const __ = useTranslations('Default')
@@ -15,20 +17,15 @@ export function ThemeSwitcher() {
 
 	const [mounted, setMounted] = useState(false)
 
-	const themesAvailable = useMemo(() => {
-		return [
-			{ mode: 'system', title: __('mode.default'), icon: <IconSunMoon aria-hidden /> },
-			{ mode: 'light', title: __('mode.light'), icon: <IconSun aria-hidden /> },
-			{ mode: 'dark', title: __('mode.dark'), icon: <IconMoon aria-hidden /> },
-		]
-	}, [__])
+	const themesAvailable = [
+		{ mode: 'system', title: __('mode.default'), icon: <IconSunMoon aria-hidden /> },
+		{ mode: 'light', title: __('mode.light'), icon: <IconSun aria-hidden /> },
+		{ mode: 'dark', title: __('mode.dark'), icon: <IconMoon aria-hidden /> },
+	]
 
-	const getActiveTheme = useMemo(
-		() => themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0],
-		[currentTheme, themesAvailable],
-	)
+	const getActiveTheme = themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0]
 
-	const handleChangeTheme = useCallback(() => {
+	function handleChangeTheme() {
 		const isSystemDarkTheme = resolvedTheme === 'dark'
 
 		document.documentElement.classList.add('disable-transitions')
@@ -43,27 +40,24 @@ export function ThemeSwitcher() {
 			case 'dark':
 				return setTheme('light')
 		}
-	}, [currentTheme, onCompleteTask, resolvedTheme, setTheme])
+	}
 
 	useEffect(() => setMounted(true), [])
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			document.documentElement.classList.remove('disable-transitions')
-		}, 100)
-
-		return () => {
-			clearTimeout(timer)
-		}
+		const timer = setTimeout(
+			() => document.documentElement.classList.remove('disable-transitions'),
+			DISABLE_TRANSITIONS_DELAY,
+		)
+		return () => clearTimeout(timer)
 	}, [currentTheme])
 
-	if (!mounted) {
+	if (!mounted)
 		return (
 			<Button as="div" variant="discret" className="pointer-events-none opacity-60" icon>
 				<IconSunMoon aria-hidden />
 			</Button>
 		)
-	}
 
 	const { title, icon } = getActiveTheme
 

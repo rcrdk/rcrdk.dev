@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
 import * as DialogRadix from '@radix-ui/react-dialog'
 import { IconBrandBehance, IconBrandGithub, IconLink } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
@@ -25,28 +24,26 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 		onOpenChange()
 	}
 
-	const projectFormatted = useMemo(() => {
-		const formatter = new Intl.ListFormat(locale, {
-			style: 'long',
-			type: 'conjunction',
-		})
+	const formatter = new Intl.ListFormat(locale, {
+		style: 'long',
+		type: 'conjunction',
+	})
 
-		const categories = project?.categories?.map((item) => {
-			if (item === 'web_app') return __('details.categories.web_app')
-			if (item === 'website') return __('details.categories.website')
-			if (item === 'landing_page') return __('details.categories.landing_page')
-			if (item === 'ecommerce') return __('details.categories.ecommerce')
-			if (item === 'mobile_app') return __('details.categories.mobile_app')
-			if (item === 'api') return __('details.categories.api')
-			return ''
-		})
+	const categories = project?.categories?.map((item) => {
+		if (item === 'web_app') return __('details.categories.web_app')
+		if (item === 'website') return __('details.categories.website')
+		if (item === 'landing_page') return __('details.categories.landing_page')
+		if (item === 'ecommerce') return __('details.categories.ecommerce')
+		if (item === 'mobile_app') return __('details.categories.mobile_app')
+		if (item === 'api') return __('details.categories.api')
+		return ''
+	})
 
-		return {
-			categories: formatter.format(categories ?? []),
-			roles: formatter.format(project?.roles ?? []),
-			stack: formatter.format(project?.stack ?? []),
-		}
-	}, [__, locale, project])
+	const projectFormatted = {
+		categories: formatter.format(categories ?? []),
+		roles: formatter.format(project?.roles ?? []),
+		stack: formatter.format(project?.stack ?? []),
+	}
 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenChange} mode="content" hasImageUnderClose={Boolean(project?.image)}>

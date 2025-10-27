@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 
@@ -56,69 +56,61 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 	const locale = useLocale() as LocalesType
 
-	const gameTasks: GameTaskUser[] = useMemo(() => {
-		return GAME_TASKS.map((task) => ({
-			id: task.id,
-			icon: task.icon,
-			listItem: {
-				title: task.listItem.title[locale],
-				hint: task.listItem.hint[locale],
-			},
-			toastItem: {
-				title: task.toastItem.title[locale],
-				hint: task.toastItem.hint[locale],
-			},
-			points: task.points,
-			completed: tasksCompleted.includes(task.id),
-			button: task.button,
-		}))
-	}, [locale, tasksCompleted])
+	const gameTasks: GameTaskUser[] = GAME_TASKS.map((task) => ({
+		id: task.id,
+		icon: task.icon,
+		listItem: {
+			title: task.listItem.title[locale],
+			hint: task.listItem.hint[locale],
+		},
+		toastItem: {
+			title: task.toastItem.title[locale],
+			hint: task.toastItem.hint[locale],
+		},
+		points: task.points,
+		completed: tasksCompleted.includes(task.id),
+		button: task.button,
+	}))
 
-	const onActivateGame = useCallback(() => {
+	function onActivateGame() {
 		setIsGameActive(true)
 
 		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`)
 		audio.play()
 
 		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameActive, 'true')
-	}, [])
+	}
 
-	const notifyCompletedTask = useCallback(
-		(taskId: GameTaskTypes) => {
-			const task = gameTasks.find((item) => item.id === taskId)
+	function notifyCompletedTask(taskId: GameTaskTypes) {
+		const task = gameTasks.find((item) => item.id === taskId)
 
-			if (!task) return
+		if (!task) return
 
-			const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`)
-			audio.play()
+		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`)
+		audio.play()
 
-			toast(<GameToastContent task={task} />, {
-				id: taskId,
-				position: 'top-center',
-				duration: TOAST_DURATION,
+		toast(<GameToastContent task={task} />, {
+			id: taskId,
+			position: 'top-center',
+			duration: TOAST_DURATION,
+		})
+	}
+
+	function onCompleteTask(taskId: GameTaskTypes) {
+		const taskAlreadyExists = tasksCompleted.find((task) => task === taskId)
+
+		if (!taskAlreadyExists && isScreenSizeAllowed && isGameActive) {
+			setTasksCompleted((prev) => {
+				const updatedTasks = [...prev, taskId] as GameTaskTypes[]
+
+				if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasks, JSON.stringify(updatedTasks))
+
+				return updatedTasks
 			})
-		},
-		[gameTasks],
-	)
 
-	const onCompleteTask = useCallback(
-		(taskId: GameTaskTypes) => {
-			const taskAlreadyExists = tasksCompleted.find((task) => task === taskId)
-
-			if (!taskAlreadyExists && isScreenSizeAllowed && isGameActive) {
-				setTasksCompleted((prev) => {
-					const updatedTasks = [...prev, taskId] as GameTaskTypes[]
-
-					if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasks, JSON.stringify(updatedTasks))
-
-					return updatedTasks
-				})
-
-				notifyCompletedTask(taskId)
-			}
-		},
-		[isGameActive, isScreenSizeAllowed, notifyCompletedTask, tasksCompleted],
-	)
+			notifyCompletedTask(taskId)
+		}
+	}
 
 	function onResetGame(soundEffect?: boolean) {
 		setTasksCompleted([])
@@ -157,25 +149,21 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setShowGameTetris((prev) => !prev)
 	}
 
-	const onShowGameTasks = useCallback(() => {
+	function onShowGameTasks() {
 		setShowGameTasks(true)
 		onCompleteTask('has-opened-hints')
 
 		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasksVisible, 'true')
-	}, [onCompleteTask])
+	}
 
-	const pointsEarned = useMemo(() => {
-		return GAME_TASKS.filter((task) => tasksCompleted.includes(task.id)).reduce(
-			(previous, current) => previous + current.points,
-			0,
-		)
-	}, [tasksCompleted])
+	const pointsEarned = GAME_TASKS.filter((task) => tasksCompleted.includes(task.id)).reduce(
+		(previous, current) => previous + current.points,
+		0,
+	)
 
-	const pointsTotal = useMemo(() => {
-		return GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
-	}, [])
+	const pointsTotal = GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
 
-	const isGameCompleted = useMemo(() => pointsEarned >= pointsTotal, [pointsEarned, pointsTotal])
+	const isGameCompleted = pointsEarned >= pointsTotal
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return
