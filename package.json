@@ -28,7 +28,7 @@
     "canvas-confetti": "1.9.3",
     "dayjs": "1.11.13",
     "mixpanel": "0.18.0",
-    "next": "16.0.0",
+    "next": "16.0.10",
     "next-intl": "4.4.0",
     "next-themes": "0.4.6",
     "react": "19.2.0",
