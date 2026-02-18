@@ -32,14 +32,14 @@ export function About() {
 			<div className="-md-14 relative flex flex-col-reverse items-center sm:-mt-20 sm:items-end lg:mt-0 lg:flex-row lg:items-center">
 				<div>
 					<h2 className="about-title layout:mb-8 xs:pr-0 absolute top-0 right-0 left-0 flex aspect-[16/15] items-end justify-start sm:aspect-auto sm:h-[26rem] lg:static lg:mb-12 lg:block lg:h-auto">
-						<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
+						<AnimatedContent>
 							<span className="font-heading block text-5xl font-black tracking-tight text-balance sm:text-7xl md:max-w-full lg:text-6xl dark:text-white">
 								{__('title')}
 							</span>
 						</AnimatedContent>
 					</h2>
 
-					<AnimatedContent distance={125} rootMargin="0px 0px 125px" config={{ tension: 60, friction: 15 }}>
+					<AnimatedContent>
 						<p
 							className="xs:text-lg text-md xs:leading-loose mb-0 leading-[1.8] text-pretty"
 							dangerouslySetInnerHTML={{
@@ -50,13 +50,7 @@ export function About() {
 				</div>
 
 				<div className="layout:-mr-44 layout:ml-14 xs:mb-9 layout:size-96 animate-avatar mb-7 shrink-0 overflow-hidden will-change-[transform] sm:mb-10 sm:size-[30rem] lg:-mr-20 lg:mb-0 lg:ml-8 lg:size-96">
-					<AnimatedContent
-						scale={2}
-						distance={50}
-						rootMargin="0px 0px 50px"
-						config={{ tension: 60, friction: 15 }}
-						delay={200}
-					>
+					<AnimatedContent scale={2} distance={50} rootMargin="0px 0px 50px" delay={200}>
 						<Image
 							src={avatarPicture}
 							width={800}
@@ -83,12 +77,7 @@ export function About() {
 				<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden">
 					<div className="flex flex-col gap-6">
 						{contents.slice(1).map((item, index) => (
-							<AnimatedContent
-								distance={125}
-								rootMargin="0px 0px 125px"
-								config={{ tension: 60, friction: 15 }}
-								key={index}
-							>
+							<AnimatedContent key={index}>
 								<p
 									className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty"
 									dangerouslySetInnerHTML={{ __html: item }}
@@ -98,12 +87,7 @@ export function About() {
 					</div>
 				</Collapsible.Content>
 
-				<AnimatedContent
-					distance={125}
-					rootMargin="0px 0px 125px"
-					config={{ tension: 60, friction: 15 }}
-					className="absolute right-0 bottom-0 left-0"
-				>
+				<AnimatedContent className="absolute right-0 bottom-0 left-0">
 					<Collapsible.Trigger asChild>
 						<Button
 							variant="solid"

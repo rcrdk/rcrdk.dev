@@ -82,27 +82,29 @@ export default async function NotFound() {
 				</h2>
 
 				<AnimatedContent className="relative z-50">
-					<Button
-						as={Link}
-						href="/"
-						className={`max-xs:w-[90vw] only-mouse:hidden !h-14 font-medium backdrop-blur-sm md:!h-16`}
-						size="lg"
-						variant="outline-touch"
-					>
-						<IconArrowLeft aria-hidden />
-						{__('button')}
-					</Button>
+					<Link href="/">
+						<Button
+							as="span"
+							className={`max-xs:w-[90vw] only-mouse:hidden !h-14 font-medium backdrop-blur-sm md:!h-16`}
+							size="lg"
+							variant="outline-touch"
+						>
+							<IconArrowLeft aria-hidden />
+							{__('button')}
+						</Button>
+					</Link>
 
-					<Button
-						as={Link}
-						href="/"
-						className={`max-xs:w-[90vw] only-touch:hidden !h-14 font-medium backdrop-blur-sm hover:!bg-white hover:!text-black md:!h-16`}
-						size="lg"
-						variant="outline"
-					>
-						<IconArrowLeft />
-						{__('button')}
-					</Button>
+					<Link href="/">
+						<Button
+							as="span"
+							className={`max-xs:w-[90vw] only-touch:hidden !h-14 font-medium backdrop-blur-sm hover:!bg-white hover:!text-black md:!h-16`}
+							size="lg"
+							variant="outline"
+						>
+							<IconArrowLeft aria-hidden />
+							{__('button')}
+						</Button>
+					</Link>
 				</AnimatedContent>
 			</div>
 		</>

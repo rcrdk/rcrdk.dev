@@ -23,10 +23,7 @@ export function NotFoundGameTask() {
 	const { onCompleteTask } = useGame()
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			onCompleteTask('not-found')
-		}, DELAY_NOT_FOUND)
-
+		const timer = setTimeout(() => onCompleteTask('not-found'), DELAY_NOT_FOUND)
 		return () => clearTimeout(timer)
 	}, [onCompleteTask])
 

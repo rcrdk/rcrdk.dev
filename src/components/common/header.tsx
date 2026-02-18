@@ -59,17 +59,23 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 		return () => observer.disconnect()
 	}, [])
 
+	const isAnimationEnterVertical = animationEnter === 'vertical'
+	const isAnimationEnterHorizontal = animationEnter === 'horizontal'
+
+	const distance = isAnimationEnterVertical ? VERTICAL_DISTANCE : HORIZONTAL_DISTANCE
+	const config = { tension: ANIMATION_TENSION, friction: ANIMATION_FRICTION }
+
 	return (
 		<AnimatedContent
 			direction={animationEnter}
 			className={cn(
 				'xs:py-0 xs:border-b-0 border-b border-black/5 py-3 dark:border-white/10',
-				animationEnter === 'vertical' && 'layout:hidden flex grow',
-				animationEnter === 'horizontal' && 'layout:flex hidden grow',
+				isAnimationEnterVertical && 'layout:hidden flex grow',
+				isAnimationEnterHorizontal && 'layout:flex hidden grow',
 			)}
 			reverse
-			distance={animationEnter === 'vertical' ? VERTICAL_DISTANCE : HORIZONTAL_DISTANCE}
-			config={{ tension: ANIMATION_TENSION, friction: ANIMATION_FRICTION }}
+			distance={distance}
+			config={config}
 		>
 			<Container
 				className="layout:pl-11 layout:pr-0 layout:flex"

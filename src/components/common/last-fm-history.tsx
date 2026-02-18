@@ -70,45 +70,52 @@ export function LastFmHistory() {
 					))}
 
 				{shouldDisplayList &&
-					tracks?.map((item, index) => (
-						<div key={index} className="flex min-w-0 items-center gap-3 py-2.5 pr-5 pl-3">
-							<Image
-								className="block size-10 shrink-0 rounded-sm bg-black/5 shadow shadow-black/20 dark:bg-white/15"
-								src={item.cover}
-								width={150}
-								height={150}
-								alt={`${item.artist} - ${item.name}`}
-							/>
+					tracks?.map((item, index) => {
+						const isNowPlaying = item.playedAt === 'Now Playing'
+						const artistAndAlbum = `${item.artist} • ${item.album}`
 
-							<div className="min-w-0 grow pr-4 capitalize">
-								<h2
-									className="overflow-hidden text-sm font-semibold tracking-tight overflow-ellipsis"
-									title={item.name}
-								>
-									{item.name}
-								</h2>
+						return (
+							<div key={index} className="flex min-w-0 items-center gap-3 py-2.5 pr-5 pl-3">
+								<Image
+									className="block size-10 shrink-0 rounded-sm bg-black/5 shadow shadow-black/20 dark:bg-white/15"
+									src={item.cover}
+									width={150}
+									height={150}
+									alt={`${artistAndAlbum} - ${item.name}`}
+								/>
 
-								<p
-									className="overflow-hidden text-xs tracking-tight overflow-ellipsis text-black/75 dark:text-white/75"
-									title={`${item.artist} • ${item.album}`}
-								>
-									{item.artist} • {item.album}
-								</p>
+								<div className="min-w-0 grow pr-4 capitalize">
+									<h2
+										className="overflow-hidden text-sm font-semibold tracking-tight overflow-ellipsis"
+										title={item.name}
+									>
+										{item.name}
+									</h2>
+
+									<p
+										className="overflow-hidden text-xs tracking-tight overflow-ellipsis text-black/75 dark:text-white/75"
+										title={artistAndAlbum}
+									>
+										{artistAndAlbum}
+									</p>
+								</div>
+
+								{isNowPlaying && (
+									<div className="bg-accent-blue/15 flex size-10 shrink-0 items-center justify-center rounded-full">
+										<div className="animate-wave bg-accent-blue mx-[2px] h-2 w-[3px] rounded-xl [animation-delay:-0.4s]" />
+										<div className="animate-wave bg-accent-blue mx-[2px] h-3 w-[3px] rounded-xl [animation-delay:-0.2s]" />
+										<div className="animate-wave bg-accent-blue mx-[2px] h-4 w-[3px] rounded-xl" />
+									</div>
+								)}
+
+								{!isNowPlaying && (
+									<div className="shrink-0 text-xs text-black/50 dark:text-white/50">
+										{lastFmRelativeTime(item.playedAt, locale)}
+									</div>
+								)}
 							</div>
-
-							{item.playedAt === 'Now Playing' ? (
-								<div className="bg-accent-blue/15 flex size-10 shrink-0 items-center justify-center rounded-full">
-									<div className="animate-wave bg-accent-blue mx-[2px] h-2 w-[3px] rounded-xl [animation-delay:-0.4s]" />
-									<div className="animate-wave bg-accent-blue mx-[2px] h-3 w-[3px] rounded-xl [animation-delay:-0.2s]" />
-									<div className="animate-wave bg-accent-blue mx-[2px] h-4 w-[3px] rounded-xl" />
-								</div>
-							) : (
-								<div className="shrink-0 text-xs text-black/50 dark:text-white/50">
-									{lastFmRelativeTime(item.playedAt, locale)}
-								</div>
-							)}
-						</div>
-					))}
+						)
+					})}
 			</DropdownMenu>
 		</Dropdown.Root>
 	)

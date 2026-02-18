@@ -1,4 +1,4 @@
-export function scrollToSection(e: React.MouseEvent<HTMLAnchorElement> | null, selector: string) {
+export const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, selector: string) => {
 	e?.preventDefault()
 
 	document.querySelector(selector)?.scrollIntoView({

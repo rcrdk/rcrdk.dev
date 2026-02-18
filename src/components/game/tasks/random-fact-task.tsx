@@ -9,8 +9,10 @@ export function RandomFactGameTaskButton() {
 	const { onCompleteTask } = useGame()
 	const __ = useTranslations('Default')
 
+	const handleCompleteTask = () => onCompleteTask('random-fact')
+
 	return (
-		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={() => onCompleteTask('random-fact')}>
+		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={handleCompleteTask}>
 			{__('game.taskButtons.randomFact')}
 		</Button>
 	)

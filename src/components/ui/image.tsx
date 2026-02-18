@@ -15,6 +15,8 @@ interface ImageProps {
 export function Image({ src, folder = 'projects', alt = '' }: Readonly<ImageProps>) {
 	const [loading, setLoading] = useState(true)
 
+	const imageUrl = `${env.NEXT_PUBLIC_APP_URL}/${folder}/${src}`
+
 	return (
 		<>
 			<IconLoader
@@ -26,11 +28,12 @@ export function Image({ src, folder = 'projects', alt = '' }: Readonly<ImageProp
 			/>
 
 			<img
-				src={`${env.NEXT_PUBLIC_APP_URL}/${folder}/${src}`}
+				src={imageUrl}
 				alt={alt}
 				className={cn(
 					'h-full w-full object-cover transition-all duration-500 group-hover:scale-105',
-					loading ? 'opacity-0' : 'opacity-100',
+					loading && 'opacity-0',
+					!loading && 'opacity-100',
 				)}
 				loading="lazy"
 				onLoad={(e) => e.currentTarget.complete && setLoading(false)}

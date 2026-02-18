@@ -34,10 +34,14 @@ export function Dialog({
 	}
 
 	function onPointerDownOutside(e: PointerDownOutsideEvent) {
-		if (e.target instanceof Element && e.target.closest('[data-sonner-toast]')) {
-			e.preventDefault()
-		}
+		const isToast = e.target instanceof Element && e.target.closest('[data-sonner-toast]')
+		if (isToast) e.preventDefault()
 	}
+
+	const isContentMode = mode === 'content'
+	const isGameMode = mode === 'game'
+	const isGameWithoutTetris = mode === 'game' && !hasTetris
+	const isGameWithTetris = mode === 'game' && hasTetris
 
 	return (
 		<DialogComponent.Root open={open} onOpenChange={onOpenChange}>
@@ -47,14 +51,14 @@ export function Dialog({
 						<DialogComponent.Content
 							className={cn(
 								'data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all relative z-10 w-full rounded-3xl will-change-transform outline-none',
-								mode === 'content' && 'max-w-[440px] border border-black/15 md:max-w-[540px] dark:border-white/20',
-								mode === 'game' && !hasTetris && 'sm:max-w-[440px]',
-								mode === 'game' && hasTetris && 'sm:max-w-[490px]',
+								isContentMode && 'max-w-[440px] border border-black/15 md:max-w-[540px] dark:border-white/20',
+								isGameWithoutTetris && 'sm:max-w-[440px]',
+								isGameWithTetris && 'sm:max-w-[490px]',
 							)}
 							onOpenAutoFocus={onOpenAutoFocus}
 							onPointerDownOutside={onPointerDownOutside}
 						>
-							{mode === 'game' && (
+							{isGameMode && (
 								<div
 									className={cn(
 										'animate-glowing game-gradient absolute -inset-2 -z-10 block rounded-3xl [background-size:1000%]',
@@ -66,15 +70,15 @@ export function Dialog({
 							<div
 								className={cn(
 									'shadow-dialog dark:shadow-dialog-inverted dark:bg-black" relative z-10 rounded-3xl bg-white select-none dark:bg-black',
-									mode === 'game' && 'xs:p-10 px-6 pt-10 pb-6 text-center text-balance',
+									isGameMode && 'xs:p-10 px-6 pt-10 pb-6 text-center text-balance',
 								)}
 							>
 								<DialogComponent.Close
 									className={cn(
 										'focus-visible:ring-accent-blue/50 focus-visible:bg-accent-blue xs:top-6 xs:right-6 absolute top-4 right-4 z-10 flex size-8 cursor-pointer items-center justify-center rounded-full backdrop-blur-xs transition-all outline-none focus-visible:text-white focus-visible:ring-4',
-										hasImageUnderClose
-											? 'bg-black/35 text-white hover:bg-black'
-											: 'bg-black/5 text-black/35 hover:bg-black/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/25',
+										hasImageUnderClose && 'bg-black/35 text-white hover:bg-black',
+										!hasImageUnderClose &&
+											'bg-black/5 text-black/35 hover:bg-black/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/25',
 									)}
 									aria-label={__('close')}
 								>

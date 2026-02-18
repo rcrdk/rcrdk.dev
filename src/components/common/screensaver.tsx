@@ -11,7 +11,6 @@ import { cn } from '@/utils/tailwind-cn'
 
 const GIF_CHANGE_DELAY = 700
 const DVD_SPEED = 3
-const Z_INDEX_MAX = 9999999999
 
 const GIFS = [
 	'https://media1.tenor.com/m/Pt-w7oWaXRgAAAAd/alma-gemea-brazilian-telenovela.gif',
@@ -40,10 +39,7 @@ export function Screensaver() {
 	const __ = useTranslations('Default')
 
 	const { onCompleteTask, showGameTetris, showGameModal } = useGame()
-
-	const { containerRef, elementRef } = useDvdScreensaver({
-		speed: DVD_SPEED,
-	})
+	const { containerRef, elementRef } = useDvdScreensaver({ speed: DVD_SPEED })
 
 	useEffect(() => {
 		const random = Math.floor(Math.random() * GIFS.length)
@@ -67,10 +63,10 @@ export function Screensaver() {
 		<div
 			ref={containerRef}
 			className={cn(
-				'fixed inset-0 bg-white transition-opacity duration-700 dark:bg-black',
-				isIddle ? 'opacity-100' : 'pointer-events-none opacity-0',
+				'fixed inset-0 !z-99999999 bg-white transition-opacity duration-700 dark:bg-black',
+				isIddle && 'opacity-100',
+				!isIddle && 'pointer-events-none',
 			)}
-			style={{ zIndex: Z_INDEX_MAX }}
 		>
 			<h1 className="font-heading xs:text-7xl absolute inset-0 flex items-center justify-center p-16 text-center text-6xl font-black tracking-tighter text-balance md:text-8xl lg:text-9xl dark:text-white">
 				{__('screensaver')}

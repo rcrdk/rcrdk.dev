@@ -5,8 +5,8 @@ import { toast } from 'sonner'
 import { GameToastContent } from '@/components/game/game-toast-content'
 import { KEYS } from '@/config/keys'
 import { GAME_TASKS, GameTaskTypes } from '@/data/game-tasks'
+import { useSoundEffect } from '@/hooks/use-sound-effect'
 import { LocalesType } from '@/i18n/routing'
-import { env } from '@/lib/env'
 
 const TOAST_DURATION = 20000
 const MEDIA_QUERY_MIN_WIDTH = '70rem'
@@ -55,6 +55,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	const [isScreenSizeAllowed, setIsScreenSizeAllowed] = useState(false)
 
 	const locale = useLocale() as LocalesType
+	const { playSound } = useSoundEffect()
 
 	const gameTasks: GameTaskUser[] = GAME_TASKS.map((task) => ({
 		id: task.id,
@@ -74,9 +75,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 	function onActivateGame() {
 		setIsGameActive(true)
-
-		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`)
-		audio.play()
+		playSound('game-start')
 
 		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameActive, 'true')
 	}
@@ -86,8 +85,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 
 		if (!task) return
 
-		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-points.mp3`)
-		audio.play()
+		playSound('game-points')
 
 		toast(<GameToastContent task={task} />, {
 			id: taskId,
@@ -116,10 +114,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setTasksCompleted([])
 		setShowGameTasks(false)
 
-		if (soundEffect) {
-			const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-start.mp3`)
-			audio.play()
-		}
+		if (soundEffect) playSound('game-start')
 
 		if (typeof window !== 'undefined') {
 			window.localStorage.removeItem(KEYS.initialLocale)
@@ -131,9 +126,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	function onStopGame() {
 		onResetGame(false)
 		setIsGameActive(false)
-
-		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/game-over.mp3`)
-		audio.play()
+		playSound('game-over')
 
 		if (typeof window !== 'undefined') window.localStorage.removeItem(KEYS.gameActive)
 	}

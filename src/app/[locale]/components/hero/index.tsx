@@ -13,6 +13,14 @@ import { LINKS } from '@/config/links'
 import { yearsFromThen } from '@/lib/dayjs'
 import { scrollToSection } from '@/utils/scroll-to-section'
 
+const buttonLinkProps = {
+	as: 'a',
+	target: '_blank',
+	size: 'lg',
+	variant: 'outline',
+	icon: true,
+} as const
+
 export function Hero() {
 	const [canDelayAnimations, setCanDelayAnimations] = useState(false)
 	const ref = useRef<HTMLDivElement>(null)
@@ -51,12 +59,7 @@ export function Hero() {
 				</h1>
 
 				<div className="layout:mt-9 mt-8 sm:mt-16">
-					<AnimatedContent
-						distance={125}
-						config={{ tension: 60, friction: 15 }}
-						delay={canDelayAnimations ? 500 : 0}
-						rootMargin="0px 0px 125px"
-					>
+					<AnimatedContent delay={canDelayAnimations ? 500 : 0}>
 						<p
 							className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty md:pl-40"
 							dangerouslySetInnerHTML={{
@@ -66,12 +69,7 @@ export function Hero() {
 					</AnimatedContent>
 				</div>
 
-				<AnimatedContent
-					distance={125}
-					delay={canDelayAnimations ? 750 : 0}
-					config={{ tension: 60, friction: 15 }}
-					rootMargin="0px 0px 125px"
-				>
+				<AnimatedContent delay={canDelayAnimations ? 750 : 0}>
 					<div className="layout:pt-14 flex justify-between gap-4 pt-12 sm:gap-0 sm:pt-18">
 						<Button
 							as="a"
@@ -93,29 +91,13 @@ export function Hero() {
 
 						<ul className="flex gap-2 sm:gap-3">
 							<li>
-								<Button
-									as="a"
-									href={LINKS.linkedIn}
-									target="_blank"
-									size="lg"
-									variant="outline"
-									icon
-									aria-label={__('buttons.linkedin')}
-								>
+								<Button {...buttonLinkProps} href={LINKS.linkedIn} aria-label={__('buttons.linkedin')}>
 									<IconBrandLinkedin className="size-8" strokeWidth={1.5} aria-hidden />
 								</Button>
 							</li>
 
 							<li>
-								<Button
-									as="a"
-									href={LINKS.github}
-									target="_blank"
-									size="lg"
-									variant="outline"
-									icon
-									aria-label={__('buttons.github')}
-								>
+								<Button {...buttonLinkProps} href={LINKS.github} aria-label={__('buttons.github')}>
 									<IconBrandGithub className="size-8" strokeWidth={1.5} aria-hidden />
 								</Button>
 							</li>

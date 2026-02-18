@@ -7,8 +7,8 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { getMessages } from 'next-intl/server'
 import { Toaster } from 'sonner'
 
+import { Providers } from '@/components/providers'
 import { env } from '@/lib/env'
-import { Providers } from '@/providers'
 
 const DEFAULT_LOCALE = 'en'
 const TOASTER_OFFSET = 40

@@ -28,6 +28,8 @@ export function ScrollStart() {
 		return () => observer.disconnect()
 	}, [])
 
+	const tabIndex = showButton ? 0 : -1
+
 	return (
 		<>
 			<div className="inset-top-0 pointer-events-none absolute inset-x-0 h-dvh" ref={ref} />
@@ -35,7 +37,8 @@ export function ScrollStart() {
 			<div
 				className={cn(
 					'xs:right-6 xs:bottom-6 layout:right-11 fixed right-4 bottom-4 z-50 transition-transform sm:right-8 sm:bottom-8 md:right-10 md:bottom-10',
-					showButton ? 'translate-y-[200%] duration-1000' : 'translate-y-0 duration-300',
+					showButton && 'translate-y-[200%] duration-1000',
+					!showButton && 'translate-y-0 duration-300',
 				)}
 			>
 				<Button
@@ -43,7 +46,7 @@ export function ScrollStart() {
 					href="#home"
 					variant="discret"
 					className="backdrop-blur-xs"
-					tabIndex={showButton ? 0 : -1}
+					tabIndex={tabIndex}
 					onClick={(e) => scrollToSection(e, '#home')}
 					icon
 				>

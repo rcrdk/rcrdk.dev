@@ -16,6 +16,13 @@ type Props = {
 	project?: ProjectTranslatedObject
 }
 
+const externalButtonLinkProps = {
+	as: 'a',
+	target: '_blank',
+	variant: 'outline',
+	icon: true,
+} as const
+
 export function ProjectDetails({ open, onOpenChange, project }: Props) {
 	const __ = useTranslations('Projects')
 	const locale = useLocale()
@@ -71,40 +78,19 @@ export function ProjectDetails({ open, onOpenChange, project }: Props) {
 
 					<div className="flex gap-2">
 						{project?.website && (
-							<Button
-								as="a"
-								href={project?.website}
-								target="_blank"
-								variant="outline"
-								icon
-								aria-label={__('details.website')}
-							>
+							<Button {...externalButtonLinkProps} href={project?.website} aria-label={__('details.website')}>
 								<IconLink aria-hidden />
 							</Button>
 						)}
 
 						{project?.github && (
-							<Button
-								as="a"
-								href={project?.github}
-								target="_blank"
-								variant="outline"
-								icon
-								aria-label={__('details.github')}
-							>
+							<Button {...externalButtonLinkProps} href={project?.github} aria-label={__('details.github')}>
 								<IconBrandGithub aria-hidden />
 							</Button>
 						)}
 
 						{project?.behance && (
-							<Button
-								as="a"
-								href={project?.behance}
-								target="_blank"
-								variant="outline"
-								icon
-								aria-label={__('details.behance')}
-							>
+							<Button {...externalButtonLinkProps} href={project?.behance} aria-label={__('details.behance')}>
 								<IconBrandBehance aria-hidden />
 							</Button>
 						)}

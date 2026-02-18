@@ -18,9 +18,9 @@ export function ThemeSwitcher() {
 	const [mounted, setMounted] = useState(false)
 
 	const themesAvailable = [
-		{ mode: 'system', title: __('mode.default'), icon: <IconSunMoon aria-hidden /> },
-		{ mode: 'light', title: __('mode.light'), icon: <IconSun aria-hidden /> },
-		{ mode: 'dark', title: __('mode.dark'), icon: <IconMoon aria-hidden /> },
+		{ mode: 'system', title: __('mode.default'), Icon: IconSunMoon },
+		{ mode: 'light', title: __('mode.light'), Icon: IconSun },
+		{ mode: 'dark', title: __('mode.dark'), Icon: IconMoon },
 	]
 
 	const getActiveTheme = themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0]
@@ -59,11 +59,11 @@ export function ThemeSwitcher() {
 			</Button>
 		)
 
-	const { title, icon } = getActiveTheme
+	const { title, Icon } = getActiveTheme
 
 	return (
 		<Button aria-label={title} onClick={handleChangeTheme} variant="discret" icon>
-			{icon}
+			<Icon aria-hidden />
 		</Button>
 	)
 }

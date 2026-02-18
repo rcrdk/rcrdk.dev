@@ -8,10 +8,7 @@ import { toast } from 'sonner'
 import { DATES, FULL_DATES } from '@/config/dates'
 import { useConfetti } from '@/hooks/use-confetti'
 import { yearsFromThen } from '@/lib/dayjs'
-import { env } from '@/lib/env'
 
-const DELAY_CONFETTI_1 = 750
-const DELAY_CONFETTI_2 = 1500
 const DELAY_SPECIAL_DATE = 1250
 const TOAST_DURATION = 10000
 
@@ -25,30 +22,10 @@ const ActionButton = ({ label, onClick }: { label: string; onClick: VoidFunction
 )
 
 export function SpecialDates() {
-	const { fireConfetti } = useConfetti()
+	const { fireConfettiWithSound } = useConfetti()
 	const __ = useTranslations('Default')
 
 	useEffect(() => {
-		function triggerConfetti() {
-			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-
-			const timer1 = setTimeout(() => {
-				fireConfetti()
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-			}, DELAY_CONFETTI_1)
-
-			const timer2 = setTimeout(() => {
-				fireConfetti()
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-			}, DELAY_CONFETTI_2)
-
-			return () => {
-				clearTimeout(timer1)
-				clearTimeout(timer2)
-			}
-		}
-
 		function showSpecialDate() {
 			const isASpecialDate = Object.values(DATES).includes(dayjs().format('MM-DD'))
 			const today = dayjs().format('MM-DD')
@@ -90,14 +67,14 @@ export function SpecialDates() {
 				},
 			} as Record<string, { icon: string; text: string }>
 
-			triggerConfetti()
+			fireConfettiWithSound()
 			toast.dismiss('special-dates-existence')
 
 			toast(data[today].text, {
 				duration: TOAST_DURATION,
 				icon: data[today].icon,
 				position: 'bottom-center',
-				action: <ActionButton label={__('specialDates.button.more')} onClick={triggerConfetti} />,
+				action: <ActionButton label={__('specialDates.button.more')} onClick={fireConfettiWithSound} />,
 			})
 		}
 
@@ -116,7 +93,7 @@ export function SpecialDates() {
 
 			return () => clearTimeout(timer)
 		}
-	}, [__, fireConfetti])
+	}, [__, fireConfettiWithSound])
 
 	return null
 }

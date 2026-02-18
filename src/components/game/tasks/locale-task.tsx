@@ -20,14 +20,10 @@ export function LocaleGameTask() {
 		const entryExists = window.localStorage.getItem(KEYS.initialLocale)
 
 		if (entryExists && entryExists !== locale) {
-			timer = setTimeout(() => {
-				onCompleteTask('switch-language')
-			}, DELAY_LOCALE)
+			timer = setTimeout(() => onCompleteTask('switch-language'), DELAY_LOCALE)
 		}
 
-		if (!entryExists) {
-			window.localStorage.setItem(KEYS.initialLocale, locale)
-		}
+		if (!entryExists) window.localStorage.setItem(KEYS.initialLocale, locale)
 
 		return () => clearTimeout(timer)
 	}, [locale, onCompleteTask])

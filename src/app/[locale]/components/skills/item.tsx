@@ -7,8 +7,8 @@ type Props = {
 	skill: SkillObject
 }
 
-export function SkillItem({ skill }: Props) {
-	const locale = useLocale()
+export function SkillItem({ skill }: Readonly<Props>) {
+	const locale = useLocale() as LocalesType
 
 	return (
 		<p className="xs:text-sm xs:py-1 xs:gap-2 flex items-center gap-1 rounded-xl border border-black/15 px-2 py-1 text-xs text-black select-none sm:text-base dark:border-white/15 dark:text-white">
@@ -17,9 +17,7 @@ export function SkillItem({ skill }: Props) {
 					{skill.icon}
 				</span>
 			)}
-			<span className="xs:leading-normal xs:pe-1 block leading-none font-medium">
-				{skill.title[locale as LocalesType]}
-			</span>
+			<span className="xs:leading-normal xs:pe-1 block leading-none font-medium">{skill.title[locale]}</span>
 		</p>
 	)
 }

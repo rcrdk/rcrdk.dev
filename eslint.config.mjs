@@ -75,6 +75,17 @@ export default [
 			'react-hooks/rules-of-hooks': 'error',
 			'react-hooks/exhaustive-deps': 'warn',
 			'no-extra-boolean-cast': 'error',
+			'no-restricted-imports': [
+				'error',
+				{
+					patterns: [
+						{
+							group: ['../../**', '../../../**', '../../../../**'],
+							message: 'Use absolute imports instead of deep (“../../”) relative imports.',
+						},
+					],
+				},
+			],
 		},
 	},
 	{

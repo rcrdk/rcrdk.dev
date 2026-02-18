@@ -5,13 +5,14 @@ import { useEffect, useRef, useState } from 'react'
 import type { SpringConfig } from '@react-spring/web'
 import { animated, useSpring } from '@react-spring/web'
 
-const DEFAULT_DISTANCE = 100
-const DEFAULT_TENSION = 50
-const DEFAULT_FRICTION = 25
+const DEFAULT_DISTANCE = 125
+const DEFAULT_TENSION = 60
+const DEFAULT_FRICTION = 15
 const DEFAULT_INITIAL_OPACITY = 0
 const DEFAULT_SCALE = 1
 const DEFAULT_THRESHOLD = 0.1
 const DEFAULT_DELAY = 0
+const DEFAULT_ROOT_MARGIN = '0px 0px 125px'
 
 interface AnimatedContentProps {
 	children: ReactNode
@@ -39,7 +40,7 @@ const AnimatedContent: React.FC<Readonly<AnimatedContentProps>> = ({
 	animateOpacity = true,
 	scale = DEFAULT_SCALE,
 	threshold = DEFAULT_THRESHOLD,
-	rootMargin,
+	rootMargin = DEFAULT_ROOT_MARGIN,
 	delay = DEFAULT_DELAY,
 }) => {
 	const [inView, setInView] = useState(false)

@@ -7,15 +7,16 @@ import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconChevronDown } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import { useHaptic } from 'use-haptic'
 
-import { ProjectDetails } from '@/app/[locale]/components/project-details'
-import { ProjectItem } from '@/app/[locale]/components/project-item'
 import AnimatedContent from '@/components/animated/animated-content'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { Section } from '@/components/ui/section'
 import { ProjectCategories, PROJECTS, ProjectTranslatedObject } from '@/data/projects'
 import { LocalesType } from '@/i18n/routing'
 import { cn } from '@/utils/tailwind-cn'
+import { ProjectDetails } from './details'
+import { ProjectItem } from './item'
 
 const ANIMATION_DISTANCE = 125
 const ANIMATION_TENSION = 60
@@ -33,8 +34,9 @@ const RESIZE_DELAY = 150
 
 export function Projects() {
 	const refContainer = useRef<HTMLDivElement>(null)
-
 	const swiperRef = useRef<SwiperRef>(null)
+
+	const { triggerHaptic } = useHaptic()
 
 	const [projectSelected, setProjectSelected] = useState<ProjectTranslatedObject>()
 	const [selectedCategory, setSelectedCategory] = useState<ProjectCategories>('highlights')
@@ -46,11 +48,18 @@ export function Projects() {
 	const categories = __.raw('categories') as { id: ProjectCategories; label: string }[]
 
 	function handleChangeCategory(id: ProjectCategories) {
+		triggerHaptic()
 		setSelectedCategory(id)
 	}
 
 	function handleSelectProject(project?: ProjectTranslatedObject) {
+		triggerHaptic()
 		setProjectSelected(project)
+	}
+
+	function handleOpenChange(open: boolean) {
+		triggerHaptic()
+		setDropdownOpen(open)
 	}
 
 	const currentCategory = categories.find((item) => item.id === selectedCategory)
@@ -97,8 +106,8 @@ export function Projects() {
 
 	return (
 		<Section>
-			<Dropdown.Root open={dropdownOpen} onOpenChange={setDropdownOpen}>
-				<AnimatedContent distance={125} config={{ tension: 60, friction: 15 }} rootMargin="0px 0px 125px">
+			<Dropdown.Root open={dropdownOpen} onOpenChange={handleOpenChange}>
+				<AnimatedContent>
 					<Dropdown.Trigger asChild>
 						<button
 							className="group w-full cursor-pointer text-start outline-none"

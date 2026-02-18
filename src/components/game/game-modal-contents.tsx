@@ -11,11 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog } from '@/components/ui/dialog'
 import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
-import { env } from '@/lib/env'
 import { cn } from '@/utils/tailwind-cn'
-
-const DELAY_CONFETTI_1 = 750
-const DELAY_CONFETTI_2 = 1500
 
 export function GameModalContents() {
 	const {
@@ -35,33 +31,13 @@ export function GameModalContents() {
 
 	const __ = useTranslations('Default')
 
-	const { fireConfetti } = useConfetti()
+	const { fireConfettiWithSound } = useConfetti()
 
 	useEffect(() => {
 		if (!isGameCompleted || !showGameModal) return
 
-		function triggerConfetti() {
-			fireConfetti()
-			new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-
-			const timer1 = setTimeout(() => {
-				fireConfetti()
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-			}, DELAY_CONFETTI_1)
-
-			const timer2 = setTimeout(() => {
-				fireConfetti()
-				new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/confetti-pop.mp3`).play()
-			}, DELAY_CONFETTI_2)
-
-			return () => {
-				clearTimeout(timer1)
-				clearTimeout(timer2)
-			}
-		}
-
-		triggerConfetti()
-	}, [fireConfetti, isGameCompleted, showGameModal])
+		return fireConfettiWithSound()
+	}, [fireConfettiWithSound, isGameCompleted, showGameModal])
 
 	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
 	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted

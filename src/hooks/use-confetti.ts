@@ -1,7 +1,12 @@
 import confetti from 'canvas-confetti'
 
+import { useSoundEffect } from '@/hooks/use-sound-effect'
+
 const PARTICLE_COUNT = 400
 const DEFAULT_ORIGIN_Y = 0.7
+const DELAY_CONFETTI_1 = 750
+const DELAY_CONFETTI_2 = 1500
+
 const CONFETTI_CONFIGS = {
 	FIRST: { particleRatio: 0.25, spread: 26, startVelocity: 55 },
 	SECOND: { particleRatio: 0.2, spread: 60 },
@@ -11,6 +16,8 @@ const CONFETTI_CONFIGS = {
 } as const
 
 export function useConfetti() {
+	const { playSound } = useSoundEffect()
+
 	const defaults = {
 		origin: { y: DEFAULT_ORIGIN_Y },
 	}
@@ -23,34 +30,44 @@ export function useConfetti() {
 		})
 	}
 
+	function fireConfetti() {
+		const { FIRST, SECOND, THIRD, FOURTH, FIFTH } = CONFETTI_CONFIGS
+
+		const { particleRatio: firstParticleRatio, ...firstOptions } = FIRST
+		const { particleRatio: secondParticleRatio, ...secondOptions } = SECOND
+		const { particleRatio: thirdParticleRatio, ...thirdOptions } = THIRD
+		const { particleRatio: fourthParticleRatio, ...fourthOptions } = FOURTH
+		const { particleRatio: fifthParticleRatio, ...fifthOptions } = FIFTH
+
+		fire(firstParticleRatio, firstOptions)
+		fire(secondParticleRatio, secondOptions)
+		fire(thirdParticleRatio, thirdOptions)
+		fire(fourthParticleRatio, fourthOptions)
+		fire(fifthParticleRatio, fifthOptions)
+	}
+
+	function fireConfettiWithSound() {
+		fireConfetti()
+		playSound('confetti-pop')
+
+		const timer1 = setTimeout(() => {
+			fireConfetti()
+			playSound('confetti-pop')
+		}, DELAY_CONFETTI_1)
+
+		const timer2 = setTimeout(() => {
+			fireConfetti()
+			playSound('confetti-pop')
+		}, DELAY_CONFETTI_2)
+
+		return () => {
+			clearTimeout(timer1)
+			clearTimeout(timer2)
+		}
+	}
+
 	return {
-		fireConfetti() {
-			fire(CONFETTI_CONFIGS.FIRST.particleRatio, {
-				spread: CONFETTI_CONFIGS.FIRST.spread,
-				startVelocity: CONFETTI_CONFIGS.FIRST.startVelocity,
-			})
-
-			fire(CONFETTI_CONFIGS.SECOND.particleRatio, {
-				spread: CONFETTI_CONFIGS.SECOND.spread,
-			})
-
-			fire(CONFETTI_CONFIGS.THIRD.particleRatio, {
-				spread: CONFETTI_CONFIGS.THIRD.spread,
-				decay: CONFETTI_CONFIGS.THIRD.decay,
-				scalar: CONFETTI_CONFIGS.THIRD.scalar,
-			})
-
-			fire(CONFETTI_CONFIGS.FOURTH.particleRatio, {
-				spread: CONFETTI_CONFIGS.FOURTH.spread,
-				startVelocity: CONFETTI_CONFIGS.FOURTH.startVelocity,
-				decay: CONFETTI_CONFIGS.FOURTH.decay,
-				scalar: CONFETTI_CONFIGS.FOURTH.scalar,
-			})
-
-			fire(CONFETTI_CONFIGS.FIFTH.particleRatio, {
-				spread: CONFETTI_CONFIGS.FIFTH.spread,
-				startVelocity: CONFETTI_CONFIGS.FIFTH.startVelocity,
-			})
-		},
+		fireConfetti,
+		fireConfettiWithSound,
 	}
 }
