@@ -8,11 +8,11 @@ import { useGame } from '@/hooks/use-game'
 import { Link } from '@/i18n/routing'
 
 export function NotFoundGameTaskButton() {
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	return (
 		<Button variant="outline" size="xs" href="/non-existent-page" as={Link} className="text-sm font-semibold">
-			{__('game.taskButtons.notFound')}
+			{__('taskButtons.notFound')}
 		</Button>
 	)
 }

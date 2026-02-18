@@ -9,7 +9,7 @@ interface GameToastContentProps {
 }
 
 export function GameToastContent({ task }: Readonly<GameToastContentProps>) {
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	function handleDismissToast() {
 		toast.dismiss(task.id)
@@ -32,7 +32,7 @@ export function GameToastContent({ task }: Readonly<GameToastContentProps>) {
 			</p>
 
 			<Button size="xs" onClick={handleDismissToast}>
-				{__('game.dismiss')}
+				{__('dismiss')}
 			</Button>
 		</div>
 	)

@@ -1,0 +1,12 @@
+{
+	"Hero": {
+		"title": "Ricardo Augusto Kowalski",
+		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over {years} years I've been developing projects like <strong>web apps, websites, landing pages and online stores.</strong> I have strong skills in <strong>TypeScript, React, Next.js and Node.js.</strong>",
+		"buttons": {
+			"aboutLong": "Who is Ricardo?",
+			"aboutShort": "Who I am",
+			"linkedin": "Connect with me on LinkedIn",
+			"github": "Check out my projects and activities on GitHub"
+		}
+	}
+}

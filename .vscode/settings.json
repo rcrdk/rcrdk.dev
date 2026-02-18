@@ -1,5 +1,12 @@
 {
-	"px-to-rem.px-per-rem": 16,
-	"tailwindCSS.classAttributes": ["class", "className", "classNameCenter", ".*Styles"],
+  "tailwindCSS.classAttributes": ["className", "classNames", "classes", "containerClassName", "rightClassName", "classNameCenter"],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "'([^']*)'"],
+    ["cn\\(([^)]*)\\)", "'([^']*)'"]
+  ],
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/{page,layout,index,context,route}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
+    "**/index.{ts,tsx}": "${dirname}/index.${extname}"
+  },
 	"typescript.preferences.importModuleSpecifier": "non-relative"
 }

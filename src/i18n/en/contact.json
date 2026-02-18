@@ -1,0 +1,14 @@
+{
+	"Contact": {
+		"title": "Contact me",
+		"text": "<strong>How about we have a chat?</strong> I’m open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let’s connect!</strong>",
+		"buttons": {
+			"linkedin": "Connect with me on LinkedIn",
+			"github": "Check out my projects and activities on GitHub",
+			"behance": "Check out my visual projects on Behance",
+			"discord": "Contact me on Discord",
+			"spotify": "Let's listen to CSS on Spotify!",
+			"cv": "Checkout my resume"
+		}
+	}
+}

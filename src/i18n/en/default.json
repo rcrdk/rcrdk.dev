@@ -1,0 +1,41 @@
+{
+	"Default": {
+		"close": "Close",
+		"mode": {
+			"light": "Light mode",
+			"dark": "Dark mode",
+			"default": "System color mode"
+		},
+		"changeLocale": "Change language",
+		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski",
+		"navigation": {
+			"about": "About me",
+			"skills": "Skills",
+			"projects": "Projects",
+			"journey": "Journey",
+			"contact": "Contact"
+		},
+		"screensaver": "Are you there?",
+		"specialDates": {
+			"title": "It's a special day, are you curious? Discover now pressing the button 👉🏻",
+			"button": {
+				"discover": "I'm curious!",
+				"more": "More Confettis!"
+			},
+			"dates": {
+				"birthday": "Today I'm turning {age} years old, Yaaay! My warranty just expired. Damn!",
+				"careerBirthday": "It's been {years} years since I started my career as a developer. Time goes by... 🪩 so fast?!",
+				"coffeeDay": "Today is International Coffee Day! Let's celebrate with a good cup of coffee! (just to get started)",
+				"publicistDay": "Today is the brazilian Publicist Day! Congratulations to all my colleagues! Graphic design is also my passion!",
+				"developersDay": "Today is the International Programmers' Day! Yaaay! It's time grab a cup of coffee and... let's code!",
+				"brazilianHrDay": "Today is the Brazilian HR Professional Day!  Yaaay! Let's schedule an interview?",
+				"internationalHrDay": "Today is the International HR Professional Day! Yaaay! Let's schedule an interview?",
+				"cssReleaseDate": "Who else is turning {years} this year? Today is the anniversary of of CSS 1.0! Yaaay! Let's celebrate with styles!"
+			}
+		},
+		"lastfm": {
+			"title": "Recently played tracks",
+			"button": "Check out my playlists"
+		}
+	}
+}

@@ -15,13 +15,13 @@ const DynamicTetris = dynamic(() => import('react-tetris'), { ssr: false })
 export function GameModalTetris() {
 	const { showGameTetris, onShowGameTetris } = useGame()
 
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	return (
 		<Dialog open={showGameTetris} onOpenChange={onShowGameTetris} mode="game" hasTetris>
 			<div className="sr-only">
-				<DialogRadix.Title>{__('game.tetris.title')}</DialogRadix.Title>
-				<DialogRadix.Description>{__('game.tetris.title')}</DialogRadix.Description>
+				<DialogRadix.Title>{__('tetris.title')}</DialogRadix.Title>
+				<DialogRadix.Description>{__('tetris.title')}</DialogRadix.Description>
 			</div>
 
 			<div className="sm:min-h-[485px]">
@@ -34,13 +34,13 @@ export function GameModalTetris() {
 
 									<div>
 										<strong className="mb-1 flex items-center gap-2 font-mono text-2xl leading-none font-black tracking-tighter text-black dark:text-white">
-											{__('game.tetris.title')}
+											{__('tetris.title')}
 										</strong>
 
 										<HoverCard.Root openDelay={0}>
 											<HoverCard.Trigger className="flex cursor-help items-center gap-0.5 text-sm font-medium text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white">
 												<IconHelpCircle className="size-4" aria-hidden />
-												{__('game.tetris.instructions.popover')}
+												{__('tetris.instructions.popover')}
 											</HoverCard.Trigger>
 
 											<HoverCard.Content
@@ -50,37 +50,36 @@ export function GameModalTetris() {
 												sideOffset={8}
 											>
 												<p>
-													<kbd>Shift</kbd> {__('game.tetris.instructions.or')} <kbd>C</kbd>:{' '}
-													{__('game.tetris.instructions.hold')}
+													<kbd>Shift</kbd> {__('tetris.instructions.or')} <kbd>C</kbd>: {__('tetris.instructions.hold')}
 												</p>
 
 												<p>
-													<kbd>P</kbd>: {__('game.tetris.instructions.status')}
+													<kbd>P</kbd>: {__('tetris.instructions.status')}
 												</p>
 
 												<p>
-													<kbd>↓</kbd>: {__('game.tetris.instructions.move_down')}
+													<kbd>↓</kbd>: {__('tetris.instructions.move_down')}
 												</p>
 
 												<p>
-													<kbd>←</kbd>: {__('game.tetris.instructions.move_left')}
+													<kbd>←</kbd>: {__('tetris.instructions.move_left')}
 												</p>
 
 												<p>
-													<kbd>→</kbd>: {__('game.tetris.instructions.move_right')}
+													<kbd>→</kbd>: {__('tetris.instructions.move_right')}
 												</p>
 
 												<p>
-													<kbd>Space</kbd>: {__('game.tetris.instructions.hard_drop')}
+													<kbd>Space</kbd>: {__('tetris.instructions.hard_drop')}
 												</p>
 
 												<p>
-													<kbd>z</kbd>: {__('game.tetris.instructions.flip_counterclockwise')}
+													<kbd>z</kbd>: {__('tetris.instructions.flip_counterclockwise')}
 												</p>
 
 												<p>
-													<kbd>x</kbd> {__('game.tetris.instructions.or')} <kbd>↑</kbd>:{' '}
-													{__('game.tetris.instructions.flip_clockwise')}
+													<kbd>x</kbd> {__('tetris.instructions.or')} <kbd>↑</kbd>:{' '}
+													{__('tetris.instructions.flip_clockwise')}
 												</p>
 											</HoverCard.Content>
 										</HoverCard.Root>
@@ -89,11 +88,11 @@ export function GameModalTetris() {
 
 								<div className="pe-6 text-end">
 									<p className="font-mono text-black dark:text-white">
-										{__('game.tetris.points')}: {String(points).padStart(4, '0')}
+										{__('tetris.points')}: {String(points).padStart(4, '0')}
 									</p>
 
 									<p className="font-mono text-black dark:text-white">
-										{__('game.tetris.lines')}: {String(linesCleared).padStart(4, '0')}
+										{__('tetris.lines')}: {String(linesCleared).padStart(4, '0')}
 									</p>
 								</div>
 							</div>
@@ -111,10 +110,8 @@ export function GameModalTetris() {
 											{state === 'LOST' && (
 												<>
 													<span className="text-5xl">😵</span>
-													<strong className="text-xl text-black dark:text-white">
-														{__('game.tetris.game_over.title')}
-													</strong>
-													<span className="mt-1 mb-4 text-balance">{__('game.tetris.game_over.text')}</span>
+													<strong className="text-xl text-black dark:text-white">{__('tetris.game_over.title')}</strong>
+													<span className="mt-1 mb-4 text-balance">{__('tetris.game_over.text')}</span>
 													<Button
 														variant="solid"
 														size="sm"
@@ -122,7 +119,7 @@ export function GameModalTetris() {
 														onClick={() => controller.restart()}
 													>
 														<IconRotateClockwise2 className="size-5 stroke-[1.5]" aria-hidden />
-														{__('game.tetris.game_over.button')}
+														{__('tetris.game_over.button')}
 													</Button>
 												</>
 											)}
@@ -131,12 +128,12 @@ export function GameModalTetris() {
 												<>
 													<span className="text-5xl">☕️</span>
 													<strong className="text-xl text-black dark:text-white">
-														{__('game.tetris.game_paused.title')}
+														{__('tetris.game_paused.title')}
 													</strong>
-													<span className="mt-1 mb-4 text-balance">{__('game.tetris.game_paused.text')}</span>
+													<span className="mt-1 mb-4 text-balance">{__('tetris.game_paused.text')}</span>
 													<Button variant="solid" size="sm" className="font-medium" onClick={() => controller.resume()}>
 														<IconPlayerPlay className="size-5 stroke-[1.5]" aria-hidden />
-														{__('game.tetris.game_paused.button')}
+														{__('tetris.game_paused.button')}
 													</Button>
 												</>
 											)}
@@ -151,11 +148,11 @@ export function GameModalTetris() {
 
 			<div className="flex flex-col gap-4 text-center sm:hidden">
 				<span className="text-6xl">🖥️</span>
-				<strong className="text-2xl">{__('game.tetris.too_small.title')}</strong>
+				<strong className="text-2xl">{__('tetris.too_small.title')}</strong>
 
 				<DialogRadix.Close asChild>
 					<Button variant="outline" className="font-medium">
-						{__('game.tetris.too_small.button')}
+						{__('tetris.too_small.button')}
 					</Button>
 				</DialogRadix.Close>
 			</div>

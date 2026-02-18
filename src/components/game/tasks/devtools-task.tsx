@@ -7,11 +7,11 @@ import { useGame } from '@/hooks/use-game'
 
 export function DevToolsGameTaskButton() {
 	const { onCompleteTask } = useGame()
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	return (
 		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={() => onCompleteTask('dev-tools')}>
-			{__('game.taskButtons.devTools')}
+			{__('taskButtons.devTools')}
 		</Button>
 	)
 }

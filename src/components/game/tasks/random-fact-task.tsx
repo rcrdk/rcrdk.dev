@@ -7,13 +7,13 @@ import { useGame } from '@/hooks/use-game'
 
 export function RandomFactGameTaskButton() {
 	const { onCompleteTask } = useGame()
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	const handleCompleteTask = () => onCompleteTask('random-fact')
 
 	return (
 		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={handleCompleteTask}>
-			{__('game.taskButtons.randomFact')}
+			{__('taskButtons.randomFact')}
 		</Button>
 	)
 }

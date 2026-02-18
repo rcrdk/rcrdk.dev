@@ -1,0 +1,14 @@
+{
+	"Contact": {
+		"title": "Chama aí",
+		"text": "<strong>Que tal a gente trocar uma ideia?</strong> Estou aberto para conversar e explorar novas oportunidades. Pode me chamar no <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> ou pelas minhas redes sociais. <strong>Vamos nos conectar!</strong>",
+		"buttons": {
+			"linkedin": "Conecte-se comigo no LinkedIn",
+			"github": "Veja minha atividade e projetos no GitHub",
+			"behance": "Veja meus projetos visuais no Behance",
+			"discord": "Fale comigo no Discord",
+			"spotify": "Vamos ouvir CSS no Spotify!",
+			"cv": "Veja o meu CV"
+		}
+	}
+}

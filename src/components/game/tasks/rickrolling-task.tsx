@@ -15,7 +15,7 @@ interface RickRollingGameTaskButtonProps {
 
 export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRollingGameTaskButtonProps>) {
 	const ref = useRef<HTMLAudioElement>(null)
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	const [playing, setPlaying] = useState(false)
 
@@ -51,7 +51,7 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRolli
 					playing && '!border-accent-blue pointer-events-none relative overflow-hidden border-2 bg-white dark:bg-black',
 				)}
 				icon
-				aria-label={__('game.rickRolling')}
+				aria-label={__('rickRolling')}
 			>
 				{playing && (
 					<div className="flex items-center">

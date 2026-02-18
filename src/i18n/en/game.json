@@ -1,0 +1,62 @@
+{
+	"Game": {
+		"title": "Let's play a game!",
+		"text": "Can you find all {quantity} easter eggs that I planted in here?",
+		"button": "[spoiler alert]",
+		"score": "Score:",
+		"reset": "Reset",
+		"stop": "Stop",
+		"dismiss": "Dismiss",
+		"optIn": {
+			"button": "Press here to play",
+			"sound": "Turn on your sound"
+		},
+		"winner": {
+			"title": "You just nailed it!",
+			"text": "You found (maybe with a little help) all easter eggs that a planted in here."
+		},
+		"taskButtons": {
+			"devTools": "I just did that!",
+			"randomFact": "I need to know!",
+			"notFound": "Let's get lost!",
+			"tetris": "I want to play!"
+		},
+		"tetris": {
+			"title": "Tetris",
+			"points": "Points",
+			"lines": "Lines",
+			"instructions": {
+				"popover": "How to play",
+				"or": "or",
+				"hold": "Hold or use piece",
+				"status": "Pause or resume game",
+				"move_down": "Move Down",
+				"move_left": "Move Left",
+				"move_right": "Move Right",
+				"hard_drop": "Hard Drop",
+				"flip_counterclockwise": "Flip counterclockwise",
+				"flip_clockwise": "Flip clockwise"
+			},
+			"game_over": {
+				"title": "Game over!",
+				"text": "It's not the end, actually. You can have another try.",
+				"button": "Let's go!"
+			},
+			"game_paused": {
+				"title": "Game paused",
+				"text": "Take a break, grab a coffee and resume the game.",
+				"button": "Resume game!"
+			},
+			"too_small": {
+				"title": "The game is only available in larger screens.",
+				"button": "Ok, I got it!"
+			}
+		},
+		"rickRolling": "Open to see a surprise!"
+	},
+	"ariaLabels": {
+		"stopGame": "Stop game",
+		"resetGame": "Reset game progress",
+		"showTasks": "Show game tasks - {taskName}"
+	}
+}

@@ -10,7 +10,18 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
 	return {
 		locale,
-		messages: (await import(`./content/${locale}.json`)).default,
+		messages: {
+			...(await import(`./${locale}/about.json`)).default,
+			...(await import(`./${locale}/contact.json`)).default,
+			...(await import(`./${locale}/default.json`)).default,
+			...(await import(`./${locale}/game.json`)).default,
+			...(await import(`./${locale}/hero.json`)).default,
+			...(await import(`./${locale}/journey.json`)).default,
+			...(await import(`./${locale}/projects.json`)).default,
+			...(await import(`./${locale}/skills.json`)).default,
+			...(await import(`./${locale}/seo.json`)).default,
+			...(await import(`./${locale}/not-found.json`)).default,
+		},
 		timeZone: 'America/Sao_Paulo',
 		now: new Date(),
 		formats: {

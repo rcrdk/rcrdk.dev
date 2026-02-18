@@ -1,0 +1,62 @@
+{
+	"Game": {
+		"title": "Vamos jogar um jogo!",
+		"text": "Você acha que consegue encontrar todos os {quantity} easter eggs no meu site?",
+		"button": "[alerta de spoiler]",
+		"score": "Pontos:",
+		"reset": "Recomeçar",
+		"stop": "Finalizar",
+		"dismiss": "Dispensar",
+		"optIn": {
+			"button": "Pressione aqui para jogar",
+			"sound": "Ative seu som"
+		},
+		"winner": {
+			"title": "Você mandou muito bem!",
+			"text": "Encontrou (talvez com uma ajudinha) todos os easter eggs que eu plantei aqui."
+		},
+		"taskButtons": {
+			"devTools": "Já fiz isso!",
+			"randomFact": "Quero saber!",
+			"notFound": "Quero me perder!",
+			"tetris": "Quero jogar!"
+		},
+		"tetris": {
+			"title": "Tetris",
+			"points": "Pontos",
+			"lines": "Linhas",
+			"instructions": {
+				"popover": "Como jogar",
+				"or": "ou",
+				"hold": "Guardar ou usar peça guardada",
+				"status": "Pausar ou continuar o jogo",
+				"move_down": "Mover para baixo",
+				"move_left": "Mover para esquerda",
+				"move_right": "Mover para direita",
+				"hard_drop": "Mover para baixo imediatamente",
+				"flip_counterclockwise": "Girar no sentido anti-horário",
+				"flip_clockwise": "Girar no sentido horário"
+			},
+			"game_over": {
+				"title": "Game over!",
+				"text": "Não é o fim. Até porque, você pode tentar novamente.",
+				"button": "Vamos lá!"
+			},
+			"game_paused": {
+				"title": "Jogo pausado",
+				"text": "Descanse um pouco, pegue um café e continue jogando.",
+				"button": "Continuar jogando!"
+			},
+			"too_small": {
+				"title": "O jogo está disponível apenas em telas maiores.",
+				"button": "Ok, entendi!"
+			}
+		},
+		"rickRolling": "Abra para ver uma surpresa!"
+	},
+	"ariaLabels": {
+		"stopGame": "Parar jogo",
+		"resetGame": "Recomeçar progresso do jogo",
+		"showTasks": "Mostrar tarefas do jogo - {taskName}"
+	}
+}

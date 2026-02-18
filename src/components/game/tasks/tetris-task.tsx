@@ -6,13 +6,13 @@ import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
 
 export function TetrisGameTaskButton() {
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	const { onShowGameTetris } = useGame()
 
 	return (
 		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={onShowGameTetris}>
-			{__('game.taskButtons.tetris')}
+			{__('taskButtons.tetris')}
 		</Button>
 	)
 }

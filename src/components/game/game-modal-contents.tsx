@@ -29,7 +29,7 @@ export function GameModalContents() {
 		onStopGame,
 	} = useGame()
 
-	const __ = useTranslations('Default')
+	const __ = useTranslations('Game')
 
 	const { fireConfettiWithSound } = useConfetti()
 
@@ -47,11 +47,11 @@ export function GameModalContents() {
 			<span className="text-6xl">{isGameCompleted ? '🥇' : '🕹️'}</span>
 
 			<DialogRadix.Title className="mt-4 mb-3 block text-3xl font-bold tracking-tight text-black dark:text-white">
-				{isGameCompleted ? __('game.winner.title') : __('game.title')}
+				{isGameCompleted ? __('winner.title') : __('title')}
 			</DialogRadix.Title>
 
 			<DialogRadix.Description className="dark:text-content-dark text-content-light text-base">
-				{isGameCompleted ? __('game.winner.text') : __('game.text', { quantity: gameTasks.length })}
+				{isGameCompleted ? __('winner.text') : __('text', { quantity: gameTasks.length })}
 			</DialogRadix.Description>
 
 			{!isGameActive && (
@@ -63,12 +63,12 @@ export function GameModalContents() {
 						aria-describedby="game-sound-note"
 					>
 						<span className="text-2xl">🤠</span>
-						{__('game.optIn.button')}
+						{__('optIn.button')}
 					</Button>
 
 					<p id="game-sound-note" className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
 						<IconVolume className="stroke-1" aria-hidden />
-						{__('game.optIn.sound')}
+						{__('optIn.sound')}
 					</p>
 				</>
 			)}
@@ -77,7 +77,7 @@ export function GameModalContents() {
 				<>
 					<div className="mt-6 mb-10 flex items-center gap-1 rounded-2xl bg-black/5 py-3 pr-4 pl-5 dark:bg-white/10">
 						<p className="grow p-1 text-start text-sm text-black dark:text-white">
-							<strong className="font-semibold">{__('game.score')}</strong> {pointsEarned}/{pointsTotal}
+							<strong className="font-semibold">{__('score')}</strong> {pointsEarned}/{pointsTotal}
 						</p>
 
 						<button
@@ -86,7 +86,7 @@ export function GameModalContents() {
 							aria-label={__('ariaLabels.stopGame')}
 						>
 							<IconSkull size={16} aria-hidden />
-							{__('game.stop')}
+							{__('stop')}
 						</button>
 
 						<button
@@ -96,7 +96,7 @@ export function GameModalContents() {
 							aria-label={__('ariaLabels.resetGame')}
 						>
 							<IconRefresh size={16} aria-hidden />
-							{__('game.reset')}
+							{__('reset')}
 						</button>
 					</div>
 
@@ -109,10 +109,10 @@ export function GameModalContents() {
 								e.currentTarget.blur()
 								onShowGameTasks()
 							}}
-							aria-label={__('ariaLabels.showTasks', { taskName: __('game.taskButtons.tetris') })}
+							aria-label={__('ariaLabels.showTasks', { taskName: __('taskButtons.tetris') })}
 						>
 							<span className="text-2xl">🫣</span>
-							{__('game.button')}
+							{__('button')}
 						</Button>
 
 						<Collapsible.Root open={shouldDisplayTasks}>

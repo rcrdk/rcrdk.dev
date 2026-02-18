@@ -1,0 +1,27 @@
+{
+	"Skills": {
+		"title": "Skills and expertise",
+		"categories": [
+			{
+				"id": "front-end",
+				"title": "Front-End"
+			},
+			{
+				"id": "mobile",
+				"title": "Mobile"
+			},
+			{
+				"id": "back-end",
+				"title": "Back-End"
+			},
+			{
+				"id": "tools",
+				"title": "Softwares & Tools"
+			},
+			{
+				"id": "misc",
+				"title": "Other skills"
+			}
+		]
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"Skills": {
+		"title": "Conhecimentos e habilidades",
+		"categories": [
+			{
+				"id": "front-end",
+				"title": "Front-End"
+			},
+			{
+				"id": "back-end",
+				"title": "Back-End"
+			},
+			{
+				"id": "mobile",
+				"title": "Mobile"
+			},
+			{
+				"id": "tools",
+				"title": "Softwares e Ferramentas"
+			},
+			{
+				"id": "misc",
+				"title": "Outras habilidades"
+			}
+		]
+	}
+}

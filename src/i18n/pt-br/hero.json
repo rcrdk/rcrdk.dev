@@ -1,0 +1,12 @@
+{
+	"Hero": {
+		"title": "Ricardo Augusto Kowalski",
+		"text": "Sou <strong>desenvolvedor front-end</strong> movido a café, uma boa seleção de playlists e entusiasmo pela área tech. Há mais de {years} anos venho desenvolvendo projetos como <strong>sistemas web, websites, landing pages e lojas online.</strong> Tenho habilidades sólidas em <strong>TypeScript, React, Next.js e Node.js.</strong>",
+		"buttons": {
+			"aboutLong": "Quem é o Ricardo?",
+			"aboutShort": "Quem sou eu",
+			"linkedin": "Conecte-se comigo no LinkedIn",
+			"github": "Veja minha atividade e projetos no GitHub"
+		}
+	}
+}
