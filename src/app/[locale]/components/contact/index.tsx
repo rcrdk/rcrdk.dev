@@ -27,6 +27,37 @@ const externalButtonLinkProps = {
 	icon: true,
 } as const
 
+const BUTTONS = [
+	{
+		href: LINKS.linkedIn,
+		labelKey: 'linkedin',
+		icon: IconBrandLinkedin,
+	},
+	{
+		href: LINKS.github,
+		labelKey: 'github',
+		icon: IconBrandGithub,
+	},
+	{
+		href: LINKS.behance,
+		labelKey: 'behance',
+		icon: IconBrandBehance,
+	},
+	{
+		href: LINKS.discord,
+		labelKey: 'discord',
+		icon: IconBrandDiscord,
+	},
+	{
+		href: LINKS.spotify,
+		labelKey: 'spotify',
+		icon: IconBrandSpotify,
+	},
+]
+
+const INITIAL_DELAY = 250
+const DELAY_INCREMENT = 50
+
 export function Contact() {
 	const [showAnimated, setShowAnimated] = useState(false)
 
@@ -50,45 +81,19 @@ export function Contact() {
 				</AnimatedContent>
 
 				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
-					<li>
-						<AnimatedContent delay={250}>
-							<Button {...externalButtonLinkProps} href={LINKS.linkedIn} aria-label={__('buttons.linkedin')}>
-								<IconBrandLinkedin className="size-8" strokeWidth={1.5} aria-hidden />
-							</Button>
-						</AnimatedContent>
-					</li>
+					{BUTTONS.map((button, index) => {
+						const delay = INITIAL_DELAY + index * DELAY_INCREMENT
 
-					<li>
-						<AnimatedContent delay={300}>
-							<Button {...externalButtonLinkProps} href={LINKS.github} aria-label={__('buttons.github')}>
-								<IconBrandGithub className="size-8" strokeWidth={1.5} aria-hidden />
-							</Button>
-						</AnimatedContent>
-					</li>
-
-					<li>
-						<AnimatedContent delay={350}>
-							<Button {...externalButtonLinkProps} href={LINKS.behance} aria-label={__('buttons.behance')}>
-								<IconBrandBehance className="size-8" strokeWidth={1.5} aria-hidden />
-							</Button>
-						</AnimatedContent>
-					</li>
-
-					<li>
-						<AnimatedContent delay={400}>
-							<Button {...externalButtonLinkProps} href={LINKS.discord} aria-label={__('buttons.discord')}>
-								<IconBrandDiscord className="size-8" strokeWidth={1.5} aria-hidden />
-							</Button>
-						</AnimatedContent>
-					</li>
-
-					<li>
-						<AnimatedContent delay={450}>
-							<Button {...externalButtonLinkProps} href={LINKS.spotify} aria-label={__('buttons.spotify')}>
-								<IconBrandSpotify className="size-8" strokeWidth={1.5} aria-hidden />
-							</Button>
-						</AnimatedContent>
-					</li>
+						return (
+							<li key={button.labelKey}>
+								<AnimatedContent delay={delay}>
+									<Button {...externalButtonLinkProps} href={button.href} aria-label={__(`buttons.${button.labelKey}`)}>
+										<button.icon className="size-8" strokeWidth={1.5} aria-hidden />
+									</Button>
+								</AnimatedContent>
+							</li>
+						)
+					})}
 
 					{isGameActive && (
 						<li className="layout:block hidden">

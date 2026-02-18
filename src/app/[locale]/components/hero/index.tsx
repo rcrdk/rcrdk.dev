@@ -21,6 +21,19 @@ const buttonLinkProps = {
 	icon: true,
 } as const
 
+const BUTTONS = [
+	{
+		href: LINKS.linkedIn,
+		labelKey: 'linkedin',
+		icon: IconBrandLinkedin,
+	},
+	{
+		href: LINKS.github,
+		labelKey: 'github',
+		icon: IconBrandGithub,
+	},
+]
+
 export function Hero() {
 	const [canDelayAnimations, setCanDelayAnimations] = useState(false)
 	const ref = useRef<HTMLDivElement>(null)
@@ -46,6 +59,11 @@ export function Hero() {
 		return () => observer.disconnect()
 	}, [])
 
+	const descriptionDelay = canDelayAnimations ? 500 : 0
+	const buttonsDelay = canDelayAnimations ? 750 : 0
+
+	const descriptionHTML = __.raw('text').replace('{years}', yearsFromThen(FULL_DATES.careerBirthday))
+
 	return (
 		<Section>
 			<div ref={ref}>
@@ -59,17 +77,15 @@ export function Hero() {
 				</h1>
 
 				<div className="layout:mt-9 mt-8 sm:mt-16">
-					<AnimatedContent delay={canDelayAnimations ? 500 : 0}>
+					<AnimatedContent delay={descriptionDelay}>
 						<p
 							className="xs:text-lg text-md xs:leading-loose leading-[1.8] text-pretty md:pl-40"
-							dangerouslySetInnerHTML={{
-								__html: __.raw('text').replace('{years}', yearsFromThen(FULL_DATES.careerBirthday)),
-							}}
+							dangerouslySetInnerHTML={{ __html: descriptionHTML }}
 						/>
 					</AnimatedContent>
 				</div>
 
-				<AnimatedContent delay={canDelayAnimations ? 750 : 0}>
+				<AnimatedContent delay={buttonsDelay}>
 					<div className="layout:pt-14 flex justify-between gap-4 pt-12 sm:gap-0 sm:pt-18">
 						<Button
 							as="a"
@@ -81,26 +97,20 @@ export function Hero() {
 							aria-controls="about"
 						>
 							<IconCircleArrowDown className="size-7" strokeWidth={1.5} aria-hidden />
-
 							<span className="hidden font-medium sm:block">{__('buttons.aboutLong')}</span>
-
 							<span className="font-medium sm:hidden">{__('buttons.aboutShort')}</span>
 						</Button>
 
 						<hr className="mx-8 hidden grow self-center border-t border-black/25 sm:block dark:border-white/20" />
 
 						<ul className="flex gap-2 sm:gap-3">
-							<li>
-								<Button {...buttonLinkProps} href={LINKS.linkedIn} aria-label={__('buttons.linkedin')}>
-									<IconBrandLinkedin className="size-8" strokeWidth={1.5} aria-hidden />
-								</Button>
-							</li>
-
-							<li>
-								<Button {...buttonLinkProps} href={LINKS.github} aria-label={__('buttons.github')}>
-									<IconBrandGithub className="size-8" strokeWidth={1.5} aria-hidden />
-								</Button>
-							</li>
+							{BUTTONS.map((button) => (
+								<li key={button.labelKey}>
+									<Button {...buttonLinkProps} href={button.href} aria-label={__(`buttons.${button.labelKey}`)}>
+										<button.icon className="size-8" strokeWidth={1.5} aria-hidden />
+									</Button>
+								</li>
+							))}
 						</ul>
 					</div>
 				</AnimatedContent>
