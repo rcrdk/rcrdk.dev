@@ -3,10 +3,11 @@ import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 
 import { GameToastContent } from '@/components/game/game-toast-content'
-import { KEYS } from '@/config/keys'
-import { GAME_TASKS, GameTaskTypes } from '@/data/game-tasks'
+import { LOCAL_STORAGE_KEYS } from '@/config/keys'
+import type { GameTaskTypes } from '@/data/game-tasks'
+import { GAME_TASKS } from '@/data/game-tasks'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
-import { LocalesType } from '@/i18n/routing'
+import type { LocalesType } from '@/i18n/routing'
 
 const TOAST_DURATION = 20000
 const MEDIA_QUERY_MIN_WIDTH = '70rem'
@@ -46,7 +47,7 @@ interface GameContextProviderProps {
 	children: React.ReactNode
 }
 
-export function CartContextProvider({ children }: GameContextProviderProps) {
+export function GameContextProvider({ children }: GameContextProviderProps) {
 	const [isGameActive, setIsGameActive] = useState(false)
 	const [tasksCompleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
 	const [showGameModal, setShowGameModal] = useState(false)
@@ -77,7 +78,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setIsGameActive(true)
 		playSound('game-start')
 
-		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameActive, 'true')
+		if (typeof window !== 'undefined') window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameActive, 'true')
 	}
 
 	function notifyCompletedTask(taskId: GameTaskTypes) {
@@ -101,7 +102,8 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 			setTasksCompleted((prev) => {
 				const updatedTasks = [...prev, taskId] as GameTaskTypes[]
 
-				if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasks, JSON.stringify(updatedTasks))
+				if (typeof window !== 'undefined')
+					window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasks, JSON.stringify(updatedTasks))
 
 				return updatedTasks
 			})
@@ -117,9 +119,9 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		if (soundEffect) playSound('game-start')
 
 		if (typeof window !== 'undefined') {
-			window.localStorage.removeItem(KEYS.initialLocale)
-			window.localStorage.removeItem(KEYS.gameTasksVisible)
-			window.localStorage.setItem(KEYS.gameTasks, JSON.stringify([]))
+			window.localStorage.removeItem(LOCAL_STORAGE_KEYS.initialLocale)
+			window.localStorage.removeItem(LOCAL_STORAGE_KEYS.gameTasksVisible)
+			window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasks, JSON.stringify([]))
 		}
 	}
 
@@ -128,7 +130,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setIsGameActive(false)
 		playSound('game-over')
 
-		if (typeof window !== 'undefined') window.localStorage.removeItem(KEYS.gameActive)
+		if (typeof window !== 'undefined') window.localStorage.removeItem(LOCAL_STORAGE_KEYS.gameActive)
 	}
 
 	function onShowGameModal() {
@@ -146,7 +148,7 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 		setShowGameTasks(true)
 		onCompleteTask('has-opened-hints')
 
-		if (typeof window !== 'undefined') window.localStorage.setItem(KEYS.gameTasksVisible, 'true')
+		if (typeof window !== 'undefined') window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasksVisible, 'true')
 	}
 
 	const pointsEarned = GAME_TASKS.filter((task) => tasksCompleted.includes(task.id)).reduce(
@@ -177,9 +179,9 @@ export function CartContextProvider({ children }: GameContextProviderProps) {
 	useEffect(() => {
 		if (typeof window === 'undefined') return
 
-		const checkForSavedTasksCompleted = window.localStorage.getItem(KEYS.gameTasks)
-		const checkIfGameTasksListAreVisible = window.localStorage.getItem(KEYS.gameTasksVisible)
-		const checkIfGameIsActive = window.localStorage.getItem(KEYS.gameActive)
+		const checkForSavedTasksCompleted = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasks)
+		const checkIfGameTasksListAreVisible = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasksVisible)
+		const checkIfGameIsActive = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameActive)
 
 		if (checkForSavedTasksCompleted) setTasksCompleted(JSON.parse(checkForSavedTasksCompleted))
 		if (checkIfGameTasksListAreVisible && checkIfGameTasksListAreVisible === 'true') setShowGameTasks(true)

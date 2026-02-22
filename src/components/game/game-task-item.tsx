@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { GameTaskUser } from '@/context/game-context'
+import type { GameTaskUser } from '@/context/game-context'
 import { cn } from '@/utils/tailwind-cn'
 
 interface GameTaskItemProps {
@@ -11,7 +11,7 @@ function GameTaskItemComponent({ task }: Readonly<GameTaskItemProps>) {
 	return (
 		<div
 			className={cn(
-				'relative flex items-start rounded-lg border px-5 py-3 text-start',
+				'squircle-rounded relative flex items-start rounded-lg border px-5 py-3 text-start',
 				task.completed && 'border-black/15 dark:border-white/20',
 				!task.completed && 'border-black/7 dark:border-white/12',
 			)}
@@ -29,7 +29,7 @@ function GameTaskItemComponent({ task }: Readonly<GameTaskItemProps>) {
 
 					<span
 						className={cn(
-							'flex aspect-square shrink-0 items-center self-center rounded-2xl border px-1 py-1 text-xs leading-none font-semibold text-nowrap',
+							'squircle-rounded flex aspect-square shrink-0 items-center self-center rounded-2xl border px-1 py-1 text-xs leading-none font-semibold text-nowrap',
 							task.completed && 'bg-accent-blue border-accent-blue text-white',
 							!task.completed && 'border-black/50 opacity-35 dark:border-white/50 dark:opacity-50',
 						)}

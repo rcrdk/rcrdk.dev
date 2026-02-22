@@ -42,28 +42,31 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRolli
 
 	return (
 		<>
-			<Button
-				onClick={handlePlaySong}
-				variant="outline"
-				size="lg"
-				disabled={playing}
-				className={cn(
-					playing && '!border-accent-blue pointer-events-none relative overflow-hidden border-2 bg-white dark:bg-black',
-				)}
-				icon
-				aria-label={__('rickRolling')}
-			>
-				{playing && (
-					<div className="flex items-center">
-						<div className="animate-wave bg-accent-blue mx-[2px] h-2 w-[3px] rounded-xl [animation-delay:-0.4s]" />
-						<div className="animate-wave bg-accent-blue mx-[2px] h-3 w-[3px] rounded-xl [animation-delay:-0.2s]" />
-						<div className="animate-wave bg-accent-blue mx-[2px] h-4 w-[3px] rounded-xl" />
-						<div className="animate-rick-roll bg-accent-blue/25 absolute inset-y-0 left-0 w-full" />
-					</div>
-				)}
+			<div className={cn('inline-block origin-center', playing && 'animate-sound-pulse-scale')}>
+				<Button
+					onClick={handlePlaySong}
+					variant="outline"
+					size="lg"
+					disabled={playing}
+					className={cn(
+						playing &&
+							'animate-sound-pulse pointer-events-none relative overflow-hidden border-2 border-black bg-black',
+					)}
+					icon
+					aria-label={__('rickRolling')}
+				>
+					{playing && (
+						<div className="flex items-center">
+							<div className="animate-wave mx-[2px] h-2 w-[3px] rounded-xl bg-white [animation-delay:-0.4s]" />
+							<div className="animate-wave mx-[2px] h-3 w-[3px] rounded-xl bg-white [animation-delay:-0.2s]" />
+							<div className="animate-wave mx-[2px] h-4 w-[3px] rounded-xl bg-white" />
+							<div className="animate-rick-roll absolute inset-y-0 left-0 w-full bg-white/25" />
+						</div>
+					)}
 
-				{!playing && <IconMicrophone className="size-8" strokeWidth={1.5} aria-hidden />}
-			</Button>
+					{!playing && <IconMicrophone aria-hidden />}
+				</Button>
+			</div>
 
 			<audio src={`${env.NEXT_PUBLIC_APP_URL}/audio/rick-roll.mp3`} onEnded={handleEnded} ref={ref} />
 		</>

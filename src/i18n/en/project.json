@@ -1,0 +1,12 @@
+{
+	"Project": {
+		"team": "Team",
+		"techStack": "Tech Stack",
+		"startYear": "Started in",
+		"categories": "Categories",
+		"links": "Links",
+		"website": "Visit the Website",
+		"github": "Project on GitHub",
+		"behance": "Project on Behance"
+	}
+}

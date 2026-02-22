@@ -41,8 +41,14 @@ export function LastFmHistory() {
 				</Button>
 			</Dropdown.Trigger>
 
-			<DropdownMenu className="w-[500px]" side="right" align="end" avoidCollisions={false} sideOffset={40}>
-				<div className="flex items-center gap-2 py-3 pr-4 pl-3">
+			<DropdownMenu
+				className="scrollbar-hidden max-h-[calc(var(--radix-dropdown-menu-content-available-height)-2.5rem)] w-[500px] overflow-x-hidden overflow-y-auto"
+				side="right"
+				align="end"
+				avoidCollisions={false}
+				sideOffset={40}
+			>
+				<div className="dark:bg-dropdown-dark sticky top-0 z-10 flex items-center gap-2 bg-white py-3 pr-4 pl-3">
 					<IconBrandSpotify className="size-7 stroke-[1.5]" aria-hidden />
 					<strong className="block grow">{__('lastfm.title')}</strong>
 					<Button
@@ -54,7 +60,7 @@ export function LastFmHistory() {
 						size="xs"
 						icon
 					>
-						<IconArrowRight className="stroke-[1.25]" aria-hidden />
+						<IconArrowRight aria-hidden />
 					</Button>
 				</div>
 

@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server'
 
+import { LAST_FM_CONFIG } from '@/config/last-fm'
 import { env } from '@/lib/env'
-
-const MAX_TRACKS = 10
 
 export async function GET() {
 	try {
-		const lastPlayedTracksUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${env.LASTFM_USERNAME}&api_key=${env.LASTFM_API_KEY}&format=json&limit=${MAX_TRACKS}`
+		const lastPlayedTracksUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${env.LASTFM_USERNAME}&api_key=${env.LASTFM_API_KEY}&format=json&limit=${LAST_FM_CONFIG.MAX_TRACKS}`
 
 		const response = await fetch(lastPlayedTracksUrl)
 		const data = await response.json()

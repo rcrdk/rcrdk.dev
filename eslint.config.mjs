@@ -104,6 +104,7 @@ export default [
 		},
 		rules: {
 			...typescriptEslintEslintPlugin.configs.recommended.rules,
+			'@typescript-eslint/consistent-type-imports': 'error',
 			'@typescript-eslint/explicit-function-return-type': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
 			'no-use-before-define': [0],

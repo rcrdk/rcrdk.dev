@@ -35,7 +35,7 @@ export function LocaleSwitcher() {
 		<nav>
 			<span className="sr-only">{__('changeLocale')}</span>
 
-			<div className="layout:w-12 layout:h-auto layout:px-0 layout:py-2 layout:flex-col flex h-12 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10">
+			<div className="layout:w-12 layout:h-auto layout:px-0 layout:py-2 layout:flex-col squircle-rounded flex h-12 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10">
 				{languagesAvailable.map((lang) => {
 					const isActive = getActiveLocale.prefix === lang.prefix
 					const tabIndex = isActive ? -1 : undefined

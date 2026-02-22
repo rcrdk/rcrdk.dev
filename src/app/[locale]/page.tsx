@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-import { About } from '@/app/[locale]/components/about'
-import { Contact } from '@/app/[locale]/components/contact'
-import { Hero } from '@/app/[locale]/components/hero'
-import { Journey } from '@/app/[locale]/components/journey'
-import { Projects } from '@/app/[locale]/components/projects'
-import { Skills } from '@/app/[locale]/components/skills'
+import { Contact } from '@/app/[locale]/sections/contact'
+import { Education } from '@/app/[locale]/sections/education'
+import { Experiences } from '@/app/[locale]/sections/experiences'
+import { Hero } from '@/app/[locale]/sections/hero'
+import { Skills } from '@/app/[locale]/sections/skills'
 import { Header } from '@/components/common/header'
 import { Nav } from '@/components/common/nav'
 import { Screensaver } from '@/components/common/screensaver'
@@ -16,7 +15,8 @@ import { GameModalContents } from '@/components/game/game-modal-contents'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
-import { LocalesType, routing } from '@/i18n/routing'
+import type { LocalesType } from '@/i18n/routing'
+import { routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 import { trackServerEvent } from '@/services/mixpanel'
@@ -75,12 +75,11 @@ export default async function HomePage({ params }: Props) {
 
 	const isValidLocaleSlug = routing.locales.includes(locale)
 
-	if (isValidLocaleSlug) {
+	if (isValidLocaleSlug)
 		trackServerEvent('page_view', {
 			page: `home-${locale.split('-')[0]}`,
 			url: `/${locale}`,
 		})
-	}
 
 	return (
 		<div className="layout:flex-row layout:items-start relative flex flex-col items-center">
@@ -92,22 +91,19 @@ export default async function HomePage({ params }: Props) {
 					size="center"
 					sideSpacing="lg"
 					className="xs:pb-18 layout:pb-0 my-auto pb-14 sm:pb-20"
-					classNameCenter="divide-black/10 dark:divide-white/15 divide-y sm:divide-y-0"
+					classNameCenter="divide-y divide-black/10 sm:divide-y-0 dark:divide-white/15"
 				>
-					<Anchor id="home" />
+					<Anchor id="about" />
 					<Hero />
 
-					<Anchor id="about" />
-					<About />
+					<Anchor id="experiences" />
+					<Experiences />
+
+					<Anchor id="education" />
+					<Education />
 
 					<Anchor id="skills" />
 					<Skills />
-
-					<Anchor id="projects" />
-					<Projects />
-
-					<Anchor id="journey" />
-					<Journey />
 
 					<Anchor id="contact" />
 					<Contact />

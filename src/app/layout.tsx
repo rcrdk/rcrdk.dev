@@ -3,18 +3,12 @@ import '@/styles/tetris.css'
 
 import type { Metadata, Viewport } from 'next'
 import { cookies } from 'next/headers'
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { getMessages } from 'next-intl/server'
-import { Toaster } from 'sonner'
 
 import { Providers } from '@/components/providers'
 import { env } from '@/lib/env'
 
 const DEFAULT_LOCALE = 'en'
-const TOASTER_OFFSET = 40
-const TOASTER_MOBILE_OFFSET = 24
-const TOASTER_MAX_WIDTH = 540
-const TOASTER_MAX_MOBILE_WIDTH = 48
 
 type Props = {
 	children: React.ReactNode
@@ -39,7 +33,7 @@ export const viewport: Viewport = {
 	],
 }
 
-export default async function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Readonly<Props>) {
 	const messages = await getMessages()
 
 	const cookieStore = await cookies()
@@ -55,25 +49,8 @@ export default async function RootLayout({ children }: Props) {
 			suppressHydrationWarning
 		>
 			<body className="text-content-light dark:text-content-dark layout:overflow-y-auto layout:snap-y layout:snap-mandatory layout:h-dvh w-full overflow-x-hidden scroll-smooth">
-				<Providers i18n={{ messages, locale }}>
+				<Providers i18n={{ messages, locale }} shouldEnableGA={shouldEnableGA}>
 					{children}
-
-					<Toaster
-						offset={TOASTER_OFFSET}
-						mobileOffset={TOASTER_MOBILE_OFFSET}
-						className="!pointer-events-auto"
-						toastOptions={{
-							unstyled: false,
-							classNames: {
-								content: 'grow',
-								toast: `select-none !py-3 !px-5 xs:!py-4 xs!px-7 !rounded-3xl !h-auto !border-black/15 !shadow-2xl max-[600px]:!w-[calc(100vw-${TOASTER_MAX_MOBILE_WIDTH}px)] !w-[${TOASTER_MAX_WIDTH}px] !gap-2 xs:!gap-3 !bg-white/90 backdrop-blur-xs dark:!bg-dropdown-dark dark:!border-white/20 max-xs:!flex-col`,
-								title: '!text-sm text-balance !leading-[1.25] !text-content-light dark:!text-white max-xs:!text-center',
-								icon: '!text-3xl !size-auto',
-							},
-						}}
-					/>
-
-					{shouldEnableGA && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />}
 				</Providers>
 			</body>
 		</html>

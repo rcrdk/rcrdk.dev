@@ -1,0 +1,81 @@
+{
+	"Experiences": {
+		"title": "Work experience",
+		"text": "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. I'm currently building <strong>Hero</strong> a smart assistant for <strong>MySide</strong> Personal Shoppers.",
+		"scrollButton": "Drag to see my experiences",
+		"list": [
+			{
+				"id": "myside",
+				"companyWebsiteUrl": "https://myside.com.br",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/myside",
+				"companyLogo": "/companies/myside.jpeg",
+				"companyLogoAlt": "Logo of MySide",
+				"title": "Front-End Developer at MySide",
+				"timeRange": "2025 - Present",
+				"location": "Florianópolis, SC, Brazil",
+				"remoteOrPresencial": "Remote",
+				"description": [
+					"Developed <strong>Hero</strong>, an internal intelligent assistant used daily by <strong>40+</strong> Personal Shoppers for real estate service and negotiation workflows.",
+					"Used <strong>AI tools</strong> during development to generate components, business logic, and automated tests, optimizing implementation time and solution experimentation.",
+					"Built two main products: a <strong>mobile PWA</strong> with AI-integrated chat for querying developments, builders, and property types, plus a negotiation pipeline module with task and event management; and a <strong>desktop application</strong> featuring negotiation management, property search, and an interactive presentation tool used during initial strategic client meetings.",
+					"Designed and implemented front-end architecture using <strong>React 19, Next.js 15 (App Router) and TypeScript</strong>, focusing on scalability, performance, and modular organization.",
+					"Implemented offline-first strategies with <strong>Service Workers, IndexedDB, and cache persistence</strong>, ensuring continuous application usage even under unstable connectivity.",
+					"Structured unit and component testing using <strong>Jest and React Testing Library</strong>."
+				]
+			},
+			{
+				"id": "meu-rosinha",
+				"companyWebsiteUrl": "https://meurosinha.com.br",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/meurosinha",
+				"companyLogo": "/companies/meu-rosinha.jpeg",
+				"companyLogoAlt": "Logo of Meu Rosinha",
+				"title": "Front-End Developer at Meu Rosinha",
+				"timeRange": "2021 - 2025",
+				"location": "Timbó, SC, Brazil",
+				"remoteOrPresencial": "Remote",
+				"description": [
+					"Development of several projects including a <strong>website, a web application, and an online store</strong>. In the past I also worked on legacy projects.",
+					"Migrated and upgraded the stack to <strong>React, Next.js, and TypeScript</strong>, ensuring greater scalability, maintainability, and long-term technical sustainability.",
+					"<strong>Re-architected the front-end structure</strong> focusing on componentization and reuse, reducing complexity and enabling continuous product evolution.",
+					"Directly contributed to supporting and growing a user base of <strong>1,200+</strong> subscribers through ongoing improvements and the development of new features such as a WhatsApp module and catalog expansion.",
+					"Actively participated in the visual <strong>identity rebranding</strong>, delivering a more consistent, modern interface aligned with the brand’s positioning."
+				]
+			},
+			{
+				"id": "sou-digital",
+				"companyWebsiteUrl": "https://sou.digital",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/soudigital",
+				"companyLogo": "/companies/sou-digital.jpeg",
+				"companyLogoAlt": "Logo of Sou Digital",
+				"title": "Front-End/Full-Stack Developer at Sou Digital",
+				"timeRange": "2013 - 2025",
+				"location": "Timbó, SC, Brazil",
+				"remoteOrPresencial": "On-site",
+				"description": [
+					"Contributed to the design and development of <strong>websites, landing pages, web applications, e-commerce platforms, and proprietary systems</strong>, supporting the technical evolution and scalability of company solutions.",
+					"<strong>Delivered 200+ projects</strong> throughout career for national and international clients across multiple industries.",
+					"Actively contributed to the evolution of a <strong>proprietary CMS</strong>, implementing structural improvements that accelerated module creation and content management processes by at least 2x.",
+					"Built complex interfaces focused on performance, code organization, and architectural standardization using <strong>HTML, CSS, Sass, JavaScript, jQuery, and Webpack</strong>.",
+					"In specific projects, also worked as a Full-Stack developer, building integrations and back-end features using <strong>PHP, Laravel, MySQL (Eloquent), OpenCart, and platforms such as Tray</strong>."
+				]
+			},
+			{
+				"id": "sonica",
+				"companyWebsiteUrl": "https://sonica.xyz",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/sonica",
+				"companyLogo": "/companies/sonica.jpeg",
+				"companyLogoAlt": "Logo of Sonica",
+				"title": "Front-End Developer at Sonica",
+				"timeRange": "2017 - 2021",
+				"location": "Timbó, SC, Brazil",
+				"remoteOrPresencial": "On-site",
+				"description": [
+					"Worked on the development of the <strong>no-code platform Sonica</strong> during the early years of the startup within Sou Digital, directly contributing to the product’s evolution and consolidation.",
+					"Actively collaborated with the technical team on platform development using <strong>HTML, CSS, Sass, Bootstrap, JavaScript, jQuery, Webpack, PHP, and Laravel</strong>.",
+					"Implemented new features and interface fixes for both generated websites and the platform’s CMS.",
+					"Contributed to the creation of <strong>projects published on the platform</strong>, supporting real-world validation and continuous experience improvement."
+				]
+			}
+		]
+	}
+}

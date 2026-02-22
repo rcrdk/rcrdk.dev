@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
-import { GameTaskUser } from '@/context/game-context'
+import type { GameTaskUser } from '@/context/game-context'
 
 interface GameToastContentProps {
 	task: GameTaskUser
@@ -23,7 +23,7 @@ export function GameToastContent({ task }: Readonly<GameToastContentProps>) {
 				<strong className="text-content-light max-xs:text-center flex grow items-center gap-2 text-sm leading-[1.25] text-balance dark:text-white">
 					{task.toastItem.title}
 
-					<span className="bg-accent-blue rounded-xl px-2 py-1 text-xs leading-none font-semibold text-nowrap text-white">
+					<span className="bg-accent-blue squircle-rounded rounded-xl px-2 py-1 text-xs leading-none font-semibold text-nowrap text-white">
 						+{task.points}
 					</span>
 				</strong>

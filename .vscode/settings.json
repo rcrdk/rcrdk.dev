@@ -1,4 +1,5 @@
 {
+	"editor.formatOnSave": true,
   "tailwindCSS.classAttributes": ["className", "classNames", "classes", "containerClassName", "rightClassName", "classNameCenter"],
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "'([^']*)'"],
@@ -8,5 +9,8 @@
     "**/app/**/{page,layout,index,context,route}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
     "**/index.{ts,tsx}": "${dirname}/index.${extname}"
   },
-	"typescript.preferences.importModuleSpecifier": "non-relative"
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

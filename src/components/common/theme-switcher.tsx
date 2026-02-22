@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
+import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
+import { MotionSpan } from '@/components/animated/motion'
 import { Button } from '@/components/ui/button'
+import { DEFAULT_MOTION_TWEEN_CONFIG } from '@/config/motion'
 import { useGame } from '@/hooks/use-game'
 
 const DISABLE_TRANSITIONS_DELAY = 100
@@ -63,7 +66,20 @@ export function ThemeSwitcher() {
 
 	return (
 		<Button aria-label={title} onClick={handleChangeTheme} variant="discret" icon>
-			<Icon aria-hidden />
+			<div className="relative size-6">
+				<AnimatePresence initial={false} mode="wait">
+					<MotionSpan
+						key={currentTheme ?? 'system'}
+						className="absolute inset-0 flex items-center justify-center"
+						initial={{ opacity: 0, scale: 0.6 }}
+						animate={{ opacity: 1, scale: 1 }}
+						exit={{ opacity: 0, scale: 0.6 }}
+						transition={{ ...DEFAULT_MOTION_TWEEN_CONFIG, duration: 0.15 }}
+					>
+						<Icon aria-hidden className="size-5" />
+					</MotionSpan>
+				</AnimatePresence>
+			</div>
 		</Button>
 	)
 }

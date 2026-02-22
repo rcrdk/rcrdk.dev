@@ -1,7 +1,10 @@
 'use client'
 
-import React, { ReactNode, useEffect, useRef } from 'react'
-import { animated, SpringValue, to, useSpring } from '@react-spring/web'
+import type { ReactNode } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+
+import { MotionDiv } from '@/components/animated/motion'
 
 interface FollowCursorProps {
 	children?: ReactNode
@@ -10,7 +13,7 @@ interface FollowCursorProps {
 		mass?: number
 		tension?: number
 		friction?: number
-		[key: string]: any
+		[key: string]: unknown
 	}
 	hoverScale?: number
 	offsetX?: number
@@ -23,7 +26,7 @@ interface FollowCursorProps {
 		mass?: number
 		tension?: number
 		friction?: number
-		[key: string]: any
+		[key: string]: unknown
 	}
 	enableTilt?: boolean
 	enableZoom?: boolean
@@ -46,6 +49,14 @@ interface TouchState {
 	offsetY?: number
 }
 
+function toMotionSpring(config: { mass?: number; tension?: number; friction?: number }) {
+	return {
+		mass: config.mass ?? 5,
+		stiffness: config.tension ?? 350,
+		damping: config.friction ?? 40,
+	}
+}
+
 const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 	children,
 	className = '',
@@ -57,7 +68,7 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 	rotationFactor = 20,
 	perspective = '300px',
 	zoomSensitivity = 200,
-	wheelConfig = { mass: 1, tension: 200, friction: 30 },
+	wheelConfig: _wheelConfig = { mass: 1, tension: 200, friction: 30 },
 	enableTilt = true,
 	enableZoom = true,
 	enableDrag = true,
@@ -67,21 +78,28 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 	const containerRef = useRef<HTMLDivElement | null>(null)
 	const touchState = useRef<TouchState>({})
 
-	const [{ x, y, rotateX, rotateY, rotateZ, zoom, scale }, api] = useSpring(() => ({
-		rotateX: 0,
-		rotateY: 0,
-		rotateZ: 0,
-		scale: 1,
-		zoom: 0,
-		x: 0,
-		y: 0,
-		config: animationConfig,
-	}))
+	const mainSpring = toMotionSpring(animationConfig)
 
-	const [{ wheelY }, wheelApi] = useSpring(() => ({
-		wheelY: 0,
-		config: wheelConfig,
-	}))
+	const x = useSpring(0, mainSpring)
+	const y = useSpring(0, mainSpring)
+	const rotateX = useSpring(0, mainSpring)
+	const rotateY = useSpring(0, mainSpring)
+	const rotateZ = useSpring(0, mainSpring)
+	const scale = useSpring(1, mainSpring)
+	const zoom = useSpring(0, mainSpring)
+	const wheelY = useMotionValue(0)
+
+	const scaleWithZoom = useTransform(() => scale.get() + zoom.get())
+
+	const wheelTransform = useTransform(() => {
+		const yValue = wheelY.get()
+		const imgHeight = containerRef.current
+			? containerRef.current.offsetWidth * (parseFloat(cardWidth) / 100) - 20
+			: typeof window !== 'undefined'
+				? window.innerWidth * 0.3 - 20
+				: 200
+		return `translateY(${-imgHeight * (yValue < 0 ? 6 : 1) - (yValue % (imgHeight * 5))}px)`
+	})
 
 	useEffect(() => {
 		if (!isMobile() || !domTarget.current || !enableDrag) return
@@ -118,16 +136,14 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 
 			if (e.touches.length === 1 && isDragging) {
 				const touch = e.touches[0]
-				const deltaX = touch.clientX - (touchState.current.startX || 0)
-				const deltaY = touch.clientY - (touchState.current.startY || 0)
+				const deltaX = touch.clientX - (touchState.current.startX ?? 0)
+				const deltaY = touch.clientY - (touchState.current.startY ?? 0)
 
-				api.start({
-					x: (touchState.current.offsetX || 0) + deltaX,
-					y: (touchState.current.offsetY || 0) + deltaY,
-					rotateX: 0,
-					rotateY: 0,
-					scale: 1,
-				})
+				x.set((touchState.current.offsetX ?? 0) + deltaX)
+				y.set((touchState.current.offsetY ?? 0) + deltaY)
+				rotateX.set(0)
+				rotateY.set(0)
+				scale.set(1)
 			} else if (e.touches.length === 2 && enableZoom) {
 				const touch1 = e.touches[0]
 				const touch2 = e.touches[1]
@@ -137,29 +153,25 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 				const zoomDelta = (currentDistance - pinchStartDistance) / zoomSensitivity
 				const rotateDelta = currentAngle - pinchStartAngle
 
-				api.start({
-					zoom: initialZoom + zoomDelta,
-					rotateZ: initialRotateZ + rotateDelta,
-				})
+				zoom.set(initialZoom + zoomDelta)
+				rotateZ.set(initialRotateZ + rotateDelta)
 			}
 		}
 
 		const handleTouchEnd = () => {
 			isDragging = false
-			api.start({ scale: hoverScale })
+			scale.set(hoverScale)
 		}
 
 		const handleWheel = (e: WheelEvent) => {
 			e.preventDefault()
-			wheelApi.start({
-				wheelY: wheelY.get() + e.deltaY,
-				immediate: true,
-			})
+			wheelY.set(wheelY.get() + e.deltaY)
 		}
 
 		card.addEventListener('touchstart', handleTouchStart, { passive: false })
 		card.addEventListener('touchmove', handleTouchMove, { passive: false })
 		card.addEventListener('touchend', handleTouchEnd)
+
 		if (enableZoom) card.addEventListener('wheel', handleWheel, { passive: false })
 
 		return () => {
@@ -168,7 +180,7 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 			card.removeEventListener('touchend', handleTouchEnd)
 			card.removeEventListener('wheel', handleWheel)
 		}
-	}, [api, x, y, zoom, rotateZ, wheelY, wheelApi, enableDrag, enableZoom, zoomSensitivity, hoverScale])
+	}, [x, y, zoom, rotateZ, rotateX, rotateY, scale, wheelY, enableDrag, enableZoom, zoomSensitivity, hoverScale])
 
 	useEffect(() => {
 		if (!isMobile() && enableTilt && typeof window !== 'undefined') {
@@ -191,49 +203,37 @@ const FollowCursor: React.FC<Readonly<FollowCursorProps>> = ({
 				const calculatedOffsetX = calculatedWidth / 2 + offsetX
 				const calculatedOffsetY = calculatedWidth / 2 + offsetY
 
-				api.start({
-					x: xPos + calculatedOffsetX,
-					y: yPos + calculatedOffsetY,
-					rotateX: enableTilt ? calcX(py, y.get(), containerCenterY, rotationFactor) : 0,
-					rotateY: enableTilt ? calcY(px, x.get(), containerCenterX, rotationFactor) : 0,
-					scale: hoverScale,
-				})
+				x.set(xPos + calculatedOffsetX)
+				y.set(yPos + calculatedOffsetY)
+				rotateX.set(enableTilt ? calcX(py, y.get(), containerCenterY, rotationFactor) : 0)
+				rotateY.set(enableTilt ? calcY(px, x.get(), containerCenterX, rotationFactor) : 0)
+				scale.set(hoverScale)
 			}
 
 			window.addEventListener('mousemove', handleMouseMove)
 			return () => window.removeEventListener('mousemove', handleMouseMove)
 		}
-	}, [api, y, x, cardWidth, offsetX, hoverScale, enableTilt, rotationFactor, offsetY])
-
-	const wheelTransform = (yValue: number): string => {
-		const imgHeight = containerRef.current
-			? containerRef.current.offsetWidth * (parseFloat(cardWidth) / 100) - 20
-			: window.innerWidth * 0.3 - 20
-		return `translateY(${-imgHeight * (yValue < 0 ? 6 : 1) - (yValue % (imgHeight * 5))}px)`
-	}
-
-	const Animated = animated('div')
-	const AnimatedAlt = animated('div')
+	}, [x, y, scale, rotateX, rotateY, cardWidth, offsetX, hoverScale, enableTilt, rotationFactor, offsetY])
 
 	return (
 		<div className={className} ref={containerRef}>
-			<Animated
+			<motion.div
 				ref={domTarget}
 				className="absolute aspect-square w-[180px] touch-none rounded-xl bg-cover transition-opacity duration-500 [will-change:transform]"
 				style={{
 					width: cardWidth,
 					backgroundImage: `url(${backgroundImage})`,
-					transform: `perspective(${perspective})`,
-					x: x as SpringValue<number>,
-					y: y as SpringValue<number>,
-					scale: to([scale, zoom], (s, z) => s + z),
-					rotateX: enableTilt ? (rotateX as SpringValue<number>) : 0,
-					rotateY: enableTilt ? (rotateY as SpringValue<number>) : 0,
-					rotateZ: enableZoom ? (rotateZ as SpringValue<number>) : 0,
+					perspective,
+					x,
+					y,
+					scale: scaleWithZoom,
+					rotateX: enableTilt ? rotateX : 0,
+					rotateY: enableTilt ? rotateY : 0,
+					rotateZ: enableZoom ? rotateZ : 0,
 				}}
 			>
-				<AnimatedAlt style={{ transform: wheelY.to(wheelTransform) }}>{children}</AnimatedAlt>
-			</Animated>
+				<MotionDiv style={{ transform: wheelTransform }}>{children}</MotionDiv>
+			</motion.div>
 		</div>
 	)
 }

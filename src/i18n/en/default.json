@@ -10,9 +10,9 @@
 		"avatarAlt": "Profile picture of Ricardo Augusto Kowalski",
 		"navigation": {
 			"about": "About me",
+			"experiences": "Experiences",
+			"education": "Education",
 			"skills": "Skills",
-			"projects": "Projects",
-			"journey": "Journey",
 			"contact": "Contact"
 		},
 		"screensaver": "Are you there?",
@@ -36,6 +36,12 @@
 		"lastfm": {
 			"title": "Recently played tracks",
 			"button": "Check out my playlists"
+		},
+		"company": {
+			"site": "Site",
+			"linkedin": "LinkedIn",
+			"websiteTitle": "Checkout company's website",
+			"linkedinTitle": "Checkout company's profile on LinkedIn"
 		}
 	}
 }

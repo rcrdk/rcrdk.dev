@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import avatarPicture from '@/assets/avatar.jpg'
-import AnimatedContent from '@/components/animated/animated-content'
+import { AnimatedContent } from '@/components/animated/animated-content'
 import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
@@ -13,6 +13,7 @@ import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { GameModalTetris } from '@/components/game/game-modal-tetris'
 import { GameModalToggle } from '@/components/game/game-modal-toggle'
 import { Container } from '@/components/ui/container'
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -30,34 +31,17 @@ interface HeaderInsetProps {
 
 function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 	const ref = useRef<HTMLSpanElement>(null)
-
-	const [showLettering, setShowLettering] = useState(false)
+	const showLettering = useIntersectionObserver(ref, { threshold: INTERSECTION_THRESHOLD })
 
 	const t = useTranslations('Default')
 
 	useEffect(() => {
-		const element = ref.current
-		if (!element) return
-
-		console.log(
-			'%cFront-end is my passion! 🐶 ',
-			'font-weight: bold; font-size: 50px;color: white; text-shadow: 0 0 16px rgba(0, 0, 0, 0.25), 1px 1px 0 rgb(217,31,38) , 2px 2px 0 rgb(226,91,14) , 3px 3px 0 rgb(245,221,8) , 4px 4px 0 rgb(5,148,68) , 5px 5px 0 rgb(2,135,206) , 6px 6px 0 rgb(4,77,145) , 7px 7px 0 rgb(42,21,113)',
-		)
-
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setShowLettering(true)
-					observer.unobserve(element)
-				}
-			},
-			{ threshold: INTERSECTION_THRESHOLD },
-		)
-
-		observer.observe(element)
-
-		return () => observer.disconnect()
-	}, [])
+		if (showLettering)
+			console.log(
+				'%cFront-end is my passion! 🐶 ',
+				'font-weight: bold; font-size: 50px;color: white; text-shadow: 0 0 16px rgba(0, 0, 0, 0.25), 1px 1px 0 rgb(217,31,38) , 2px 2px 0 rgb(226,91,14) , 3px 3px 0 rgb(245,221,8) , 4px 4px 0 rgb(5,148,68) , 5px 5px 0 rgb(2,135,206) , 6px 6px 0 rgb(4,77,145) , 7px 7px 0 rgb(42,21,113)',
+			)
+	}, [showLettering])
 
 	const isAnimationEnterVertical = animationEnter === 'vertical'
 	const isAnimationEnterHorizontal = animationEnter === 'horizontal'
@@ -79,19 +63,19 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 		>
 			<Container
 				className="layout:pl-11 layout:pr-0 layout:flex"
-				classNameCenter="flex items-center justify-between layout:flex-col layout:min-h-fit"
+				classNameCenter="layout:flex-col layout:min-h-fit flex items-center justify-between"
 			>
 				<a
 					href="/"
 					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
-					onClick={(e) => scrollToSection(e, '#home')}
+					onClick={(e) => scrollToSection(e, '#about')}
 				>
 					<Image
 						src={avatarPicture}
 						width={AVATAR_WIDTH}
 						height={AVATAR_HEIGHT}
 						alt={t('avatarAlt')}
-						className="xs:size-10 size-9 rounded-full"
+						className="xs:size-10 pointer-events-auto relative z-10 size-9 rounded-full"
 					/>
 
 					<span className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2" ref={ref}>

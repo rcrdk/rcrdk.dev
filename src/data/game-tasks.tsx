@@ -2,7 +2,7 @@ import { DevToolsGameTaskButton } from '@/components/game/tasks/devtools-task'
 import { NotFoundGameTaskButton } from '@/components/game/tasks/not-found-task'
 import { RandomFactGameTaskButton } from '@/components/game/tasks/random-fact-task'
 import { TetrisGameTaskButton } from '@/components/game/tasks/tetris-task'
-import { LocalesType } from '@/i18n/routing'
+import type { LocalesType } from '@/i18n/routing'
 
 export type GameTaskTypes =
 	| 'has-opened-hints'

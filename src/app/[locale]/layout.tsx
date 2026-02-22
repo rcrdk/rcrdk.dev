@@ -7,7 +7,9 @@ import profilePicture from '@/assets/avatar.jpg'
 import { KonamiCodeGameTask } from '@/components/game/tasks/konami-code-task'
 import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { FULL_DATES } from '@/config/dates'
-import { LocalesType, routing } from '@/i18n/routing'
+import { LINKS } from '@/config/links'
+import type { LocalesType } from '@/i18n/routing'
+import { routing } from '@/i18n/routing'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 
@@ -16,7 +18,7 @@ type Props = {
 	params: Promise<{ locale: LocalesType }>
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ children, params }: Readonly<Props>) {
 	const { locale } = await params
 	const __ = await getTranslations('Seo')
 
@@ -30,7 +32,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 		image: `${env.NEXT_PUBLIC_APP_URL}${profilePicture.src}`,
 		url: env.NEXT_PUBLIC_APP_URL,
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
-		sameAs: ['https://github.com/rcrdk', 'https://www.behance.net/rcrdk', 'https://www.linkedin.com/in/rcrdk'],
+		sameAs: [LINKS.github, LINKS.behance, LINKS.linkedIn],
 		jobTitle: __('jobTitle'),
 		worksFor: {
 			'@type': 'Organization',

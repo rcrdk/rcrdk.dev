@@ -1,0 +1,81 @@
+{
+	"Experiences": {
+		"title": "Experiências profissionais",
+		"text": "Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Atualmente estou construindo o <strong>Hero</strong>, um assistente para os Personal Shoppers da <strong>MySide</strong>.",
+		"scrollButton": "Arraste para ver mais",
+		"list": [
+			{
+				"id": "myside",
+				"companyWebsiteUrl": "https://myside.com.br",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/myside",
+				"companyLogo": "/companies/myside.jpeg",
+				"companyLogoAlt": "Logo da MySide",
+				"title": "Desenvolvedor Front-End na MySide",
+				"timeRange": "2025 - Presente",
+				"location": "Florianópolis, SC",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"Desenvolvimento do <strong>Hero</strong>, assistente inteligente interno utilizado por mais de <strong>40+</strong> Personal Shoppers na rotina de atendimento e negociação imobiliária.",
+					"Uso de <strong>ferramentas IA</strong> no desenvolvimento para geração de componentes, lógica e testes automatizados, otimizando tempo de implementação e experimentação de soluções.",
+					"Implementação de dois produtos principais: um <strong>PWA mobile</strong> com chat integrado a IA para consulta de empreendimentos, construtoras e tipologias, além de módulo de gestão de negociações estruturado em pipeline com controle de tarefas e eventos; e uma <strong>aplicação desktop</strong> com gestão de negociações, buscador de imóveis e ferramenta de apresentação interativa utilizada no primeiro contato estratégico com clientes.",
+					"Construção da arquitetura front-end com <strong>React 19, Next.js 15 (App Router) e TypeScript</strong>, com foco em escalabilidade, performance e organização modular.",
+					"Implementação de estratégias offline com <strong>Service Workers, IndexedDB e persistência de cache</strong>, garantindo uso contínuo da aplicação mesmo em cenários de conectividade instável.",
+					"Estruturação de testes unitários e de componentes com <strong>Jest e React Testing Library</strong>."
+				]
+			},
+			{
+				"id": "meu-rosinha",
+				"companyWebsiteUrl": "https://meurosinha.com.br",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/meurosinha",
+				"companyLogo": "/companies/meu-rosinha.jpeg",
+				"companyLogoAlt": "Logo do Meu Rosinha",
+				"title": "Desenvolvedor Front-End no Meu Rosinha",
+				"timeRange": "2021 - 2025",
+				"location": "Timbó, SC",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"Desenvolvimento de vários projetos incluindo um <strong>website, um aplicativo web e uma lojinha online</strong>. No passado trabalhei também em projetos legados.",
+					"Migração e atualização da stack para <strong>React, Next.js e TypeScript</strong>, garantindo maior escalabilidade, manutenibilidade e sustentabilidade técnica.",
+					"<strong>Reestruturação da arquitetura front-end</strong> com foco em componentização e reutilização, reduzindo complexidade e facilitando evolução contínua do produto.",
+					"Contribuição direta para a sustentação e crescimento da base atual de mais de <strong>1,200+</strong> assinantes, através de melhorias contínuas e criação de novas features como módulo de WhatsApp e expansão do catálogo.",
+					"Participação ativa no rebranding da <strong>identidade visual</strong>, promovendo uma interface mais consistente, moderna e alinhada ao posicionamento da marca."
+				]
+			},
+			{
+				"id": "sou-digital",
+				"companyWebsiteUrl": "https://sou.digital",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/soudigital",
+				"companyLogo": "/companies/sou-digital.jpeg",
+				"companyLogoAlt": "Logo da Sou Digital",
+				"title": "Desenvolvedor Front-End/Full-Stack na Sou Digital",
+				"timeRange": "2013 - 2025",
+				"location": "Timbó, SC",
+				"remoteOrPresencial": "Presencial",
+				"description": [
+					"Atuação na concepção e desenvolvimento de <strong>websites, landing pages, web apps, e-commerces e plataformas proprietárias</strong>, contribuindo para a evolução técnica e escalabilidade das soluções entregues pela empresa.",
+					"Desenvolvimento de mais de <strong>200+ projetos</strong> ao longo da trajetória, atendendo clientes como Uniasselvi, Unifique, Mueller, Grupo Kyly, Adapcon, Oficina3D, B+CA (Milton Nascimento, Emicida, Cazuza), Prefeitura de Blumenau, Roto Fermax, Viacredi, Móveis Butzke, G eo Marine Survey Systems, Linklaw e Cadastra.",
+					"Participação ativa na evolução do <strong>CMS proprietário</strong>, implementando melhorias estruturais que aceleraram em pelo menos 2x o processo de criação de módulos e gestão de conteúdo em novos projetos.",
+					"Desenvolvimento de interfaces complexas com foco em performance, organização de código e padronização arquitetural utilizando <strong>HTML, CSS, Sass, JavaScript, jQuery e Webpack</strong>.",
+					"Em projetos específicos, atuação também como Full-Stack, desenvolvendo integrações e funcionalidades back-end com <strong>PHP, Laravel, MySQL (Eloquent), Opencart e plataformas como Tray</strong>."
+				]
+			},
+			{
+				"id": "sonica",
+				"companyWebsiteUrl": "https://sonica.xyz",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/sonica",
+				"companyLogo": "/companies/sonica.jpeg",
+				"companyLogoAlt": "Logo da Sonica",
+				"title": "Desenvolvedor Front-End na Sonica",
+				"timeRange": "2017 - 2021",
+				"location": "Timbó, SC",
+				"remoteOrPresencial": "Presencial",
+				"description": [
+					"Atuação no desenvolvimento da <strong>plataforma no-code Sonica</strong>, durante os primeiros anos da startup dentro da Sou Digital, contribuindo diretamente para a evolução e consolidação do produto.",
+					"Participação ativa no desenvolvimento da plataforma ao lado do time técnico, utilizando <strong>HTML, CSS, Sass, Bootstrap, JavaScript, jQuery, Webpack, PHP e Laravel</strong>.",
+					"Implementação de novas funcionalidades e correções de interface tanto nos sites gerados quanto no <strong>CMS da ferramenta</strong>.",
+					"Colaboração na criação de <strong>projetos publicados na própria plataforma</strong>, apoiando validação prática e melhoria contínua da experiência."
+				]
+			}
+		]
+	}
+}

@@ -69,7 +69,7 @@ export function Dialog({
 
 							<div
 								className={cn(
-									'shadow-dialog dark:shadow-dialog-inverted dark:bg-black" relative z-10 rounded-3xl bg-white select-none dark:bg-black',
+									'shadow-dialog dark:shadow-dialog-inverted dark:bg-black" squircle-rounded-dialog relative z-10 rounded-3xl bg-white select-none dark:bg-black',
 									isGameMode && 'xs:p-10 px-6 pt-10 pb-6 text-center text-balance',
 								)}
 							>

@@ -1,0 +1,200 @@
+@theme {
+	--animate-avatar: avatar 3s ease infinite alternate;
+	--animate-collapsible-in: collapsibleIn 1000ms ease-out;
+	--animate-collapsible-out: collapsibleOut 1000ms ease-out;
+
+	--animate-dialog-overlay-show: dialogOverlayShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-overlay-hide: dialogOverlayHide 300ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-content-show: dialogContentShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+	--animate-dialog-content-hide: dialogContentHide 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
+	--animate-wave: wave 1s infinite ease-in-out;
+	--animate-rick-roll: rickRoll 16s linear;
+	--animate-sound-pulse: soundPulse 1.2s ease-in-out infinite;
+	--animate-sound-pulse-scale: soundPulseScale 0.65s ease-in-out infinite;
+
+	--animate-dropdown-in: scaleIn 300ms ease;
+	--animate-dropdown-out: scaleOut 300ms ease;
+
+	--animate-glowing: glowing 120s linear infinite;
+	--animate-glowing-rotate: glowingRotate 20s linear infinite;
+
+	@keyframes avatar {
+		from {
+			border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+		}
+		to {
+			border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+		}
+	}
+
+	@keyframes collapsibleIn {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-collapsible-content-height);
+		}
+	}
+
+	@keyframes collapsibleOut {
+		from {
+			height: var(--radix-collapsible-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+
+	@keyframes dialogOverlayShow {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes dialogOverlayHide {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes dialogContentShow {
+		from {
+			opacity: 0;
+			transform: translateY(4%) scale(0.96);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes dialogContentHide {
+		from {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(-4%) scale(0.96);
+		}
+	}
+
+	@keyframes wave {
+		0%,
+		100% {
+			transform: scaleY(0.5);
+		}
+		50% {
+			transform: scaleY(1.1);
+		}
+	}
+
+	@keyframes rickRoll {
+		from {
+			width: 0%;
+		}
+		to {
+			width: 100%;
+		}
+	}
+
+	@keyframes soundPulse {
+		0%,
+		100% {
+			box-shadow:
+				0 0 0 0 rgb(0 0 0 / 0.25),
+				0 0 12px rgb(0 0 0 / 0.2),
+				0 0 0 0 rgb(0 0 0 / 0.1),
+				0 0 20px 2px rgb(0 0 0 / 0.08);
+		}
+		25% {
+			box-shadow:
+				0 0 0 3px rgb(0 0 0 / 0.15),
+				0 0 16px rgb(0 0 0 / 0.25),
+				0 0 0 8px rgb(0 0 0 / 0.08),
+				0 0 32px 6px rgb(0 0 0 / 0.28);
+		}
+		50% {
+			box-shadow:
+				0 0 0 6px rgb(0 0 0 / 0.2),
+				0 0 24px rgb(0 0 0 / 0.35),
+				0 0 0 2px rgb(0 0 0 / 0.06),
+				0 0 18px 2px rgb(0 0 0 / 0.12);
+		}
+		75% {
+			box-shadow:
+				0 0 0 3px rgb(0 0 0 / 0.15),
+				0 0 16px rgb(0 0 0 / 0.25),
+				0 0 0 8px rgb(0 0 0 / 0.08),
+				0 0 32px 6px rgb(0 0 0 / 0.28);
+		}
+	}
+
+	@keyframes soundPulseScale {
+		0%,
+		100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.03);
+		}
+	}
+
+	@keyframes scaleIn {
+		from {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@keyframes scaleOut {
+		from {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		to {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+	}
+
+	@keyframes glowing {
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 1000% 0;
+		}
+		100% {
+			background-position: 0 0;
+		}
+	}
+
+	@keyframes glowingRotate {
+		0% {
+			background-position: 0 0;
+			transform: rotate(0deg);
+		}
+		50% {
+			background-position: 400% 0;
+			transform: rotate(360deg);
+		}
+		100% {
+			background-position: 0 0;
+			transform: rotate(0deg);
+		}
+	}
+}

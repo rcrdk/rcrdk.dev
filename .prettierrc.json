@@ -10,18 +10,27 @@
 		"^[./]"
 	],
 	"importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+	"overrides": [
+		{
+			"files": ["src/data/**/*.ts"],
+			"options": {
+				"printWidth": 60000
+			}
+		}
+	],
 	"plugins": ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-sort-json", "prettier-plugin-tailwindcss"],
 	"printWidth": 120,
 	"semi": false,
 	"singleQuote": true,
 	"tabWidth": 2,
-	"trailingComma": "all",
-	"overrides": [
-		{
-			"files": ["src/data/skills.tsx"],
-			"options": {
-				"printWidth": 300
-			}
-		}
-	]
+	"tailwindAttributes": [
+		"className",
+		"classNames",
+		"classes",
+		"containerClassName",
+		"rightClassName",
+		"classNameCenter"
+	],
+	"tailwindFunctions": ["cn", "cva"],
+	"trailingComma": "all"
 }

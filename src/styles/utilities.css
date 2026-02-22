@@ -1,0 +1,23 @@
+@utility about-title {
+	@apply xs:!text-nowrap xs:[&>span>span]:!inline-block [&>span>span]:!block;
+}
+
+@utility scrollbar-hidden {
+	@apply [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
+@utility game-gradient {
+	@apply bg-[linear-gradient(45deg,_#ff0000,_#ff7300,_#fffb00,_#48ff00,_#00ffd5,_#002bff,_#7a00ff,_#ff00c8,_#ff0000)];
+}
+
+@utility squircle-rounded {
+	@supports (corner-shape: squircle) {
+		@apply [corner-shape:squircle] !rounded-4xl;
+	}
+}
+
+@utility squircle-rounded-dialog {
+	@supports (corner-shape: squircle) {
+		@apply [corner-shape:squircle] !rounded-[4rem];
+	}
+}

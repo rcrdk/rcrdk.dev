@@ -52,11 +52,11 @@
 				"button": "Ok, entendi!"
 			}
 		},
-		"rickRolling": "Abra para ver uma surpresa!"
-	},
-	"ariaLabels": {
-		"stopGame": "Parar jogo",
-		"resetGame": "Recomeçar progresso do jogo",
-		"showTasks": "Mostrar tarefas do jogo - {taskName}"
+		"rickRolling": "Abra para ver uma surpresa!",
+		"ariaLabels": {
+			"stopGame": "Parar jogo",
+			"resetGame": "Recomeçar progresso do jogo",
+			"showTasks": "Mostrar tarefas do jogo - {taskName}"
+		}
 	}
 }

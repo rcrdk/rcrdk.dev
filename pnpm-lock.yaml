@@ -42,6 +42,9 @@ importers:
       mixpanel:
         specifier: 0.18.0
         version: 0.18.0
+      motion:
+        specifier: 12.34.2
+        version: 12.34.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next:
         specifier: 16.0.10
         version: 16.0.10(@babel/core@7.28.4)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -78,6 +81,9 @@ importers:
       uuid:
         specifier: 13.0.0
         version: 13.0.0
+      vaul:
+        specifier: ^1.1.2
+        version: 1.1.2(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       zod:
         specifier: 4.1.12
         version: 4.1.12
@@ -112,15 +118,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: 1.2.4
         version: 1.2.4(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@react-spring/types':
-        specifier: 9.7.5
-        version: 9.7.5
-      '@react-spring/web':
-        specifier: 10.0.3
-        version: 10.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tabler/icons-react':
-        specifier: 3.31.0
-        version: 3.31.0(react@19.2.0)
+        specifier: 3.36.1
+        version: 3.36.1(react@19.2.0)
       '@tailwindcss/postcss':
         specifier: 4.1.4
         version: 4.1.4
@@ -1406,36 +1406,6 @@ packages:
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
-  '@react-spring/animated@10.0.3':
-    resolution: {integrity: sha512-7MrxADV3vaUADn2V9iYhaIL6iOWRx9nCJjYrsk2AHD2kwPr6fg7Pt0v+deX5RnCDmCKNnD6W5fasiyM8D+wzJQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  '@react-spring/core@10.0.3':
-    resolution: {integrity: sha512-D4DwNO68oohDf/0HG2G0Uragzb9IA1oXblxrd6MZAcBcUQG2EHUWXewjdECMPLNmQvlYVyyBRH6gPxXM5DX7DQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  '@react-spring/rafz@10.0.3':
-    resolution: {integrity: sha512-Ri2/xqt8OnQ2iFKkxKMSF4Nqv0LSWnxXT4jXFzBDsHgeeH/cHxTLupAWUwmV9hAGgmEhBmh5aONtj3J6R/18wg==}
-
-  '@react-spring/shared@10.0.3':
-    resolution: {integrity: sha512-geCal66nrkaQzUVhPkGomylo+Jpd5VPK8tPMEDevQEfNSWAQP15swHm+MCRG4wVQrQlTi9lOzKzpRoTL3CA84Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  '@react-spring/types@10.0.3':
-    resolution: {integrity: sha512-H5Ixkd2OuSIgHtxuHLTt7aJYfhMXKXT/rK32HPD/kSrOB6q6ooeiWAXkBy7L8F3ZxdkBb9ini9zP9UwnEFzWgQ==}
-
-  '@react-spring/types@9.7.5':
-    resolution: {integrity: sha512-HVj7LrZ4ReHWBimBvu2SKND3cDVUPWKLqRTmWe/fNY6o1owGOX0cAHbdPDTMelgBlVbrTKrre6lFkhqGZErK/g==}
-
-  '@react-spring/web@10.0.3':
-    resolution: {integrity: sha512-ndU+kWY81rHsT7gTFtCJ6mrVhaJ6grFmgTnENipzmKqot4HGf5smPNK+cZZJqoGeDsj9ZsiWPW4geT/NyD484A==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
@@ -1474,13 +1444,13 @@ packages:
       zod:
         optional: true
 
-  '@tabler/icons-react@3.31.0':
-    resolution: {integrity: sha512-2rrCM5y/VnaVKnORpDdAua9SEGuJKVqPtWxeQ/vUVsgaUx30LDgBZph7/lterXxDY1IKR6NO//HDhWiifXTi3w==}
+  '@tabler/icons-react@3.36.1':
+    resolution: {integrity: sha512-/8nOXeNeMoze9xY/QyEKG65wuvRhkT3q9aytaur6Gj8bYU2A98YVJyLc9MRmc5nVvpy+bRlrrwK/Ykr8WGyUWg==}
     peerDependencies:
       react: '>= 16'
 
-  '@tabler/icons@3.31.0':
-    resolution: {integrity: sha512-dblAdeKY3+GA1U+Q9eziZ0ooVlZMHsE8dqP0RkwvRtEsAULoKOYaCUOcJ4oW1DjWegdxk++UAt2SlQVnmeHv+g==}
+  '@tabler/icons@3.36.1':
+    resolution: {integrity: sha512-f4Jg3Fof/Vru5ioix/UO4GX+sdDsF9wQo47FbtvG+utIYYVQ/QVAC0QYgcBbAjQGfbdOh2CCf0BgiFOF9Ixtjw==}
 
   '@tailwindcss/node@4.1.4':
     resolution: {integrity: sha512-MT5118zaiO6x6hNA04OWInuAiP1YISXql8Z+/Y8iisV5nuhM8VXlyhRuqc2PEviPszcXI66W44bCIk500Oolhw==}
@@ -2322,6 +2292,20 @@ packages:
     engines: {node: '>=18.3.0'}
     hasBin: true
 
+  framer-motion@12.34.2:
+    resolution: {integrity: sha512-CcnYTzbRybm1/OE8QLXfXI8gR1cx5T4dF3D2kn5IyqsGNeLAKl2iFHb2BzFyXBGqESntDt6rPYl4Jhrb7tdB8g==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
@@ -2873,6 +2857,26 @@ packages:
   mixpanel@0.18.0:
     resolution: {integrity: sha512-VyUoiLB/S/7abYYHGD5x0LijeuJCUabG8Hb+FvYU3Y99xHf1Qh+s4/pH9lt50fRitAHncWbU1FE01EknUfVVjQ==}
     engines: {node: '>=10.0'}
+
+  motion-dom@12.34.2:
+    resolution: {integrity: sha512-n7gknp7gHcW7DUcmet0JVPLVHmE3j9uWwDp5VbE3IkCNnW5qdu0mOhjNYzXMkrQjrgr+h6Db3EDM2QBhW2qNxQ==}
+
+  motion-utils@12.29.2:
+    resolution: {integrity: sha512-G3kc34H2cX2gI63RqU+cZq+zWRRPSsNIOjpdl9TN4AQwC4sgwYPl/Q/Obf/d53nOm569T0fYK+tcoSV50BWx8A==}
+
+  motion@12.34.2:
+    resolution: {integrity: sha512-QAthwCtW6N0TpZ+bBmBMzdwuftoay2yFV2DT44jRcUQhPbFPdAX+pjzmIUNM3sMYDD5OAraJagRGAKE8q5OsmA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -3569,6 +3573,12 @@ packages:
   uuid@13.0.0:
     resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
     hasBin: true
+
+  vaul@1.1.2:
+    resolution: {integrity: sha512-ZFkClGpWyI2WUQjdLJ/BaGuV6AVQiJ3uELGk3OYtP+B6yCO7Cmn9vPFXVJkRaGkOJu3m8bQMgtyzNHixULceQA==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
   walk-up-path@4.0.0:
     resolution: {integrity: sha512-3hu+tD8YzSLGuFYtPRb48vdhKMi0KQV5sn+uWr8+7dMEq/2G/dtLrdDinkLjqq5TIbIBjYJ4Ax/n3YiaW7QM8A==}
@@ -4792,40 +4802,6 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
-  '@react-spring/animated@10.0.3(react@19.2.0)':
-    dependencies:
-      '@react-spring/shared': 10.0.3(react@19.2.0)
-      '@react-spring/types': 10.0.3
-      react: 19.2.0
-
-  '@react-spring/core@10.0.3(react@19.2.0)':
-    dependencies:
-      '@react-spring/animated': 10.0.3(react@19.2.0)
-      '@react-spring/shared': 10.0.3(react@19.2.0)
-      '@react-spring/types': 10.0.3
-      react: 19.2.0
-
-  '@react-spring/rafz@10.0.3': {}
-
-  '@react-spring/shared@10.0.3(react@19.2.0)':
-    dependencies:
-      '@react-spring/rafz': 10.0.3
-      '@react-spring/types': 10.0.3
-      react: 19.2.0
-
-  '@react-spring/types@10.0.3': {}
-
-  '@react-spring/types@9.7.5': {}
-
-  '@react-spring/web@10.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      '@react-spring/animated': 10.0.3(react@19.2.0)
-      '@react-spring/core': 10.0.3(react@19.2.0)
-      '@react-spring/shared': 10.0.3(react@19.2.0)
-      '@react-spring/types': 10.0.3
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-
   '@rtsao/scc@1.1.0': {}
 
   '@schummar/icu-type-parser@1.21.5': {}
@@ -4850,12 +4826,12 @@ snapshots:
     transitivePeerDependencies:
       - arktype
 
-  '@tabler/icons-react@3.31.0(react@19.2.0)':
+  '@tabler/icons-react@3.36.1(react@19.2.0)':
     dependencies:
-      '@tabler/icons': 3.31.0
+      '@tabler/icons': 3.36.1
       react: 19.2.0
 
-  '@tabler/icons@3.31.0': {}
+  '@tabler/icons@3.36.1': {}
 
   '@tailwindcss/node@4.1.4':
     dependencies:
@@ -5951,6 +5927,15 @@ snapshots:
     dependencies:
       fd-package-json: 2.0.0
 
+  framer-motion@12.34.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      motion-dom: 12.34.2
+      motion-utils: 12.29.2
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
   function-bind@1.1.2: {}
 
   function.prototype.name@1.1.8:
@@ -6475,6 +6460,20 @@ snapshots:
       https-proxy-agent: 5.0.0
     transitivePeerDependencies:
       - supports-color
+
+  motion-dom@12.34.2:
+    dependencies:
+      motion-utils: 12.29.2
+
+  motion-utils@12.29.2: {}
+
+  motion@12.34.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      framer-motion: 12.34.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   ms@2.1.3: {}
 
@@ -7185,6 +7184,15 @@ snapshots:
       react: 19.2.0
 
   uuid@13.0.0: {}
+
+  vaul@1.1.2(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      '@radix-ui/react-dialog': 1.1.6(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
 
   walk-up-path@4.0.0: {}
 

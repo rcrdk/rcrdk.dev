@@ -7,8 +7,14 @@
 			"github": "Veja minha atividade e projetos no GitHub",
 			"behance": "Veja meus projetos visuais no Behance",
 			"discord": "Fale comigo no Discord",
-			"spotify": "Vamos ouvir CSS no Spotify!",
-			"cv": "Veja o meu CV"
+			"spotify": "Vamos ouvir CSS no Spotify!"
+		},
+		"box": {
+			"text": "Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.",
+			"button": {
+				"linkedin": "LinkedIn",
+				"cv": "Ver CV"
+			}
 		}
 	}
 }

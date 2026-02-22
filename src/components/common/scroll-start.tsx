@@ -1,32 +1,17 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { IconArrowUp } from '@tabler/icons-react'
 
 import { Button } from '@/components/ui/button'
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
 export function ScrollStart() {
-	const [showButton, setShowButton] = useState(false)
 	const ref = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const element = ref.current
-		if (!element) return
-
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) setShowButton(true)
-				else setShowButton(false)
-			},
-			{ threshold: 0.1 },
-		)
-
-		observer.observe(element)
-
-		return () => observer.disconnect()
-	}, [])
+	const showButton = useIntersectionObserver(ref, { threshold: 0.1, once: false })
 
 	const tabIndex = showButton ? 0 : -1
 
@@ -43,11 +28,11 @@ export function ScrollStart() {
 			>
 				<Button
 					as="a"
-					href="#home"
+					href="#about"
 					variant="discret"
 					className="backdrop-blur-xs"
 					tabIndex={tabIndex}
-					onClick={(e) => scrollToSection(e, '#home')}
+					onClick={(e) => scrollToSection(e, '#about')}
 					icon
 				>
 					<IconArrowUp aria-hidden />

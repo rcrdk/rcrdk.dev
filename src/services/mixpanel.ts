@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import Mixpanel from 'mixpanel'
 
-import { KEYS } from '@/config/keys'
+import { COOKIE_KEYS } from '@/config/keys'
 import { getIpData } from '@/http/get-ip-data'
 import { env } from '@/lib/env'
 import { getHeadersData } from '@/lib/headers-data'
@@ -15,7 +15,7 @@ export async function trackServerEvent(eventName: string, properties: Record<str
 	const ipData = await getIpData(headersData.ip)
 
 	const cookieStore = await cookies()
-	const userId = cookieStore.get(KEYS.userKey)?.value
+	const userId = cookieStore.get(COOKIE_KEYS.userKey)?.value
 
 	mixpanelEvent.track(eventName, {
 		$user_id: userId,

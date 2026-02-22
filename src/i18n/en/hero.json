@@ -1,10 +1,10 @@
 {
 	"Hero": {
 		"title": "Ricardo Augusto Kowalski",
-		"text": "I'm a <strong>front-end developer</strong> moved by coffee, a good playlist selection and entusiasm by tech area. For over {years} years I've been developing projects like <strong>web apps, websites, landing pages and online stores.</strong> I have strong skills in <strong>TypeScript, React, Next.js and Node.js.</strong>",
+		"text": "I’m a <strong>front-end developer</strong> fueled by coffee, good playlists, and complex challenges. I’ve been working with web development for over {years} years and, in recent years, I’ve specialized in <strong>React, Next.js and TypeScript</strong>, building scalable, high-performance applications with solid architecture and a focus on results.",
 		"buttons": {
-			"aboutLong": "Who is Ricardo?",
-			"aboutShort": "Who I am",
+			"about": "More about me",
+			"scroll": "My experiences",
 			"linkedin": "Connect with me on LinkedIn",
 			"github": "Check out my projects and activities on GitHub"
 		}

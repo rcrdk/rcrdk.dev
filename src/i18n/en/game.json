@@ -52,11 +52,11 @@
 				"button": "Ok, I got it!"
 			}
 		},
-		"rickRolling": "Open to see a surprise!"
-	},
-	"ariaLabels": {
-		"stopGame": "Stop game",
-		"resetGame": "Reset game progress",
-		"showTasks": "Show game tasks - {taskName}"
+		"rickRolling": "Open to see a surprise!",
+		"ariaLabels": {
+			"stopGame": "Stop game",
+			"resetGame": "Reset game progress",
+			"showTasks": "Show game tasks - {taskName}"
+		}
 	}
 }

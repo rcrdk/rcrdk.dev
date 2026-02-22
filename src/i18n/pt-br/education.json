@@ -1,0 +1,77 @@
+{
+	"Education": {
+		"title": "Estudos e certificações",
+		"text": "Tenho trabalhando com desenvolvimento há muito tempo, mas entre 2014 e 2017, cursei <strong>Publicidade e Propaganda</strong>. Minha paixão pelo desenvolvimento sempre foi maior, então decidi continuar com <strong>Desenvolvimento Web</strong>.",
+		"scrollButton": "Arraste para ver mais",
+		"list": [
+			{
+				"id": "rocketseat",
+				"companyWebsiteUrl": "https://www.rocketseat.com.br/",
+				"companyLinkedinUrl": "https://www.linkedin.com/school/rocketseat",
+				"companyLogo": "/companies/rocketseat.jpeg",
+				"companyLogoAlt": "Logo da Rocketseat",
+				"title": "Desenvolvimento Full-Stack e Mobile na Rocketseat",
+				"timeRange": "2023 - Presente",
+				"location": "Brasil",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"<strong>React:</strong> Hooks, Context API, consumo de APIs, testes unitários e de integração, Next.js, SSR, SSG, Full-Stack apps e design systems.",
+					"<strong>Node.js:</strong> Fastify, NestJS, princípios SOLID, design patterns, APIs escaláveis e testes automatizados.",
+					"<strong>React Native:</strong> Navegação, integração com APIs, notificações push, deep linking, animações, micro-interações e estratégias offline-first.",
+					"<strong>Habilidades Adicionais:</strong> JavaScript, TypeScript, Redux, Zustand, boilerplate SaaS multi-tenant com RBAC, acessibilidade web, SEO para desenvolvedores, desenvolvimento de Micro SaaS and funcional programming."
+				]
+			},
+			{
+				"id": "udemy",
+				"companyWebsiteUrl": "https://www.udemy.com/",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/udemy",
+				"companyLogo": "/companies/udemy.jpeg",
+				"companyLogoAlt": "Logo da Udemy",
+				"title": "Desenvolvimento Full-Stack na Udemy",
+				"timeRange": "2019 - 2023",
+				"location": "Brasil",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"<strong>Front-end:</strong> HTML5, CSS3, JavaScript (ES6+), React, Vue.js, Angular.",
+					"<strong>Back-end:</strong> PHP e Node.js, criando aplicações com bancos de dados relacionais (MySQL, PostgreSQL) e NoSQL (MongoDB), implementando autenticação.",
+					"<strong>Paradigmas de Programação:</strong> Programação funcional, Programação Orientada a Objetos (POO).",
+					"<strong>Ferramentas:</strong> Gulp e Webpack para otimização e automação de builds."
+				]
+			},
+			{
+				"id": "laravue",
+				"companyWebsiteUrl": "https://tiagomatos.com/",
+				"companyLinkedinUrl": "https://www.linkedin.com/in/tiagomatosweb",
+				"companyLogo": "/companies/laravue.png",
+				"companyLogoAlt": "Logo do Laravue",
+				"title": "Desenvolvimento Full-Stack na Laravue",
+				"timeRange": "2021 - 2022",
+				"location": "Austrália",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"<strong>Laravel:</strong> Configuração de ambientes, criação de rotas, controllers, middlewares e views. Domínio da injeção de dependência e melhores práticas para construção de aplicações escaláveis e seguras.",
+					"<strong>Vue.js:</strong> Diretivas, gerenciamento de estado com Vuex, troca de dados entre componentes e manipulação de rotas com Vue Router. Criação de interfaces de usuário dinâmicas e interativas."
+				]
+			},
+			{
+				"id": "uniasselvi",
+				"companyWebsiteUrl": "https://portal.uniasselvi.com.br/",
+				"companyLinkedinUrl": "https://www.linkedin.com/school/grupo-uniasselvi",
+				"companyLogo": "/companies/uniasselvi.jpeg",
+				"companyLogoAlt": "Logo da Uniasselvi",
+				"title": "Comunicação Social: Publicidade e Propaganda na Uniasselvi",
+				"timeRange": "2014 - 2017",
+				"location": "Indaial, SC",
+				"remoteOrPresencial": "Presencial",
+				"description": [
+					"Sou formado em publicidade e propaganda.",
+					"Compreensão ampla de comunicação, marketing e design.",
+					"Habilidades em criação publicitária, redação, fotografia, design gráfico, direção de arte e produção multimídia.",
+					"Conhecimento em estratégias de marketing, comportamento do consumidor, branding e planejamento de campanhas.",
+					"Estudo de mídias digitais, novas tecnologias aplicadas à comunicação e produção audiovisual.",
+					"Base sólida para atuar na interseção de criatividade e estratégia no ambiente digital."
+				]
+			}
+		]
+	}
+}

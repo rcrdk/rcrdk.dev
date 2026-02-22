@@ -1,0 +1,77 @@
+{
+	"Education": {
+		"title": "Education and certifications",
+		"text": "I've been working with development for so long, but between 2014 and 2017, I actually studied <strong>Advertising and Marketing</strong>. My passion for development was always bigger, so I decided to keep going with <strong>Web Development</strong>.",
+		"scrollButton": "Drag to see more",
+		"list": [
+			{
+				"id": "rocketseat",
+				"companyWebsiteUrl": "https://www.rocketseat.com.br/",
+				"companyLinkedinUrl": "https://www.linkedin.com/school/rocketseat",
+				"companyLogo": "/companies/rocketseat.jpeg",
+				"companyLogoAlt": "Logo of Rocketseat",
+				"title": "Full-Stack and Mobile Development at Rocketseat",
+				"timeRange": "2023 - Present",
+				"location": "Brazil",
+				"remoteOrPresencial": "Remote",
+				"description": [
+					"<strong>React:</strong> Hooks, Context API, API consumption, unit and integration testing, Next.js, SSR, SSG, Full-Stack apps and design systems.",
+					"<strong>Node.js:</strong> Fastify, NestJS, SOLID principles, design patterns, scalable APIs, and automated testing.",
+					"<strong>React Native:</strong> Navigation, API integration, push notifications, deep linking, animations, micro-interactions, and offline-first strategies.",
+					"<strong>Additional Skills:</strong> JavaScript, TypeScript, Redux, Zustand, multi-tenant SaaS boilerplate with RBAC, web accessibility, SEO for developers, Micro SaaS development and functional programming."
+				]
+			},
+			{
+				"id": "udemy",
+				"companyWebsiteUrl": "https://www.udemy.com/",
+				"companyLinkedinUrl": "https://www.linkedin.com/company/udemy",
+				"companyLogo": "/companies/udemy.jpeg",
+				"companyLogoAlt": "Logo of Udemy",
+				"title": "Full-Stack Development at Udemy",
+				"timeRange": "2019 - 2023",
+				"location": "Brazil",
+				"remoteOrPresencial": "Remote",
+				"description": [
+					"<strong>Front-end:</strong> HTML5, CSS3, JavaScript (ES6+), React, Vue.js, Angular.",
+					"<strong>Back-end:</strong> PHP and Node.js, building applications with relational (MySQL, PostgreSQL) and NoSQL (MongoDB) databases, implementing authentication.",
+					"<strong>Tools:</strong> Gulp and Webpack for build optimization and automation.",
+					"<strong>Programming Paradigms:</strong> Functional programming, Object-Oriented Programming (OOP)."
+				]
+			},
+			{
+				"id": "laravue",
+				"companyWebsiteUrl": "https://tiagomatos.com/",
+				"companyLinkedinUrl": "https://www.linkedin.com/in/tiagomatosweb",
+				"companyLogo": "/companies/laravue.png",
+				"companyLogoAlt": "Logo of Laravue",
+				"title": "Full-Stack Development at Laravue",
+				"timeRange": "2021 - 2022",
+				"location": "Australia",
+				"remoteOrPresencial": "Remoto",
+				"description": [
+					"<strong>Laravel:</strong> Environment setup, creating routes, controllers, middlewares, and views. Mastery of dependency injection and best practices for building scalable and secure applications.",
+					"<strong>Vue.js:</strong> Directives, state management with Vuex, data exchange between components, and route handling with Vue Router. Creating dynamic and interactive user interfaces."
+				]
+			},
+			{
+				"id": "uniasselvi",
+				"companyWebsiteUrl": "https://portal.uniasselvi.com.br/",
+				"companyLinkedinUrl": "https://www.linkedin.com/school/grupo-uniasselvi",
+				"companyLogo": "/companies/uniasselvi.jpeg",
+				"companyLogoAlt": "Logo of Uniasselvi",
+				"title": "Social Communication: Advertising and Marketing at Uniasselvi",
+				"timeRange": "2014 - 2017",
+				"location": "Indaial, SC, Brazil",
+				"remoteOrPresencial": "On-site",
+				"description": [
+					"I have a Bachelor’s degree in Advertising and Marketing.",
+					"Broad understanding of communication, marketing, and design.",
+					"Skills in advertising creation, copywriting, photography, graphic design, art direction, and multimedia production.",
+					"Knowledge of marketing strategies, consumer behavior, branding, and campaign planning.",
+					"Studied digital media, new technologies in communication, and audiovisual production.",
+					"Strong foundation for working at the intersection of creativity and strategy in the digital environment."
+				]
+			}
+		]
+	}
+}
