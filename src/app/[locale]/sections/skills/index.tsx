@@ -49,7 +49,7 @@ export function Skills() {
 	return (
 		<Section classNameCenter="max-xs:pt-9" className="layout:border-t-0">
 			<AnimatedContent>
-				<h2 className="layout:mb-8 font-heading mb-8 block items-center text-5xl font-black tracking-tight text-balance sm:mb-12 sm:text-7xl md:max-w-full lg:static lg:block lg:h-auto lg:pr-0 lg:text-6xl dark:text-white">
+				<h2 className="layout:mb-8 font-heading xs:text-5xl mb-8 block items-center text-4xl font-black tracking-tight text-balance sm:mb-12 sm:text-7xl md:max-w-full lg:static lg:block lg:h-auto lg:pr-0 lg:text-6xl dark:text-white">
 					{__('title')}
 				</h2>
 			</AnimatedContent>

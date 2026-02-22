@@ -10,7 +10,7 @@ interface Props {
 
 const SWIPER_CONFIG = {
 	slidesPerView: 'auto',
-	spaceBetween: 16,
+	spaceBetween: 12,
 	breakpoints: {
 		480: {
 			spaceBetween: 24,
@@ -33,7 +33,7 @@ export function HistoryListMobileItem({ data }: Readonly<Props>) {
 			{hasProjects && (
 				<Swiper {...SWIPER_CONFIG} className="mt-auto w-full !overflow-visible">
 					{data.projects.map((project) => (
-						<SwiperSlide className="!h-auto !w-60" key={project.id}>
+						<SwiperSlide className="!h-auto !w-45 sm:!w-60" key={project.id}>
 							<ProjectCard data={project} />
 						</SwiperSlide>
 					))}

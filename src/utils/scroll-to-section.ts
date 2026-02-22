@@ -4,6 +4,6 @@ export const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, s
 	document.querySelector(selector)?.scrollIntoView({
 		behavior: 'smooth',
 		block: 'start',
-		inline: 'start',
+		// inline: 'start',
 	})
 }

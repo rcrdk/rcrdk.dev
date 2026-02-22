@@ -53,7 +53,7 @@ export function HistoryCommonInfo({ data }: Readonly<Props>) {
 				</div>
 			</div>
 
-			<ul className="layout:text-[0.9375rem] layout-sm:text-base list-disc pl-4 text-sm text-pretty sm:text-base">
+			<ul className="layout:text-[0.9375rem] layout-sm:text-base list-disc space-y-1.5 pl-4 text-pretty sm:space-y-0">
 				{data.description.map((description) => (
 					<li key={description} dangerouslySetInnerHTML={{ __html: description }} />
 				))}
