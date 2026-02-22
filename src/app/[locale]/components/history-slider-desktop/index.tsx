@@ -26,12 +26,13 @@ const SWIPER_CONFIG = {
 } as const
 
 function handleParentTouchStart(swiper: SwiperInstance, event: TouchEvent | MouseEvent | PointerEvent) {
+	if (!swiper) return
 	const target = event?.target as Element | null
 	if (target?.closest?.(NESTED_SWIPER_SELECTOR)) swiper.allowTouchMove = false
 }
 
 function handleParentTouchEnd(swiper: SwiperInstance) {
-	swiper.allowTouchMove = true
+	if (swiper) swiper.allowTouchMove = true
 }
 
 interface Props {

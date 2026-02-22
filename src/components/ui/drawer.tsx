@@ -78,7 +78,7 @@ function DrawerHandler({ className, absolute = false, ...props }: Readonly<Drawe
 	return (
 		<div
 			className={cn(
-				'mx-auto my-6 h-1.5 w-40 rounded-full bg-black/20 dark:bg-white/15',
+				'mx-auto my-6 h-1.5 w-20 rounded-full bg-black/20 sm:w-40 dark:bg-white/15',
 				absolute && 'absolute top-0 left-1/2 z-1 -translate-x-1/2',
 				className,
 			)}

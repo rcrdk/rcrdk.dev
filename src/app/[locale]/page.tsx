@@ -86,7 +86,7 @@ export default async function HomePage({ params }: Props) {
 			<Header />
 			<Nav slot="page" />
 
-			<main className="layout:self-stretch flex w-screen max-w-screen grow overflow-hidden">
+			<main className="layout:self-stretch flex w-screen max-w-screen grow">
 				<Container
 					size="center"
 					sideSpacing="lg"

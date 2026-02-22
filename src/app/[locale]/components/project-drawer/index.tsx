@@ -1,6 +1,8 @@
 import { IconBrandBehance, IconBrandGithub, IconExternalLink } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
+import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import type { SwiperOptions } from 'swiper/types'
 
 import { ProjectDrawerEntity } from '@/app/[locale]/components/project-drawer/entity'
 import { ProjectDrawerGroup } from '@/app/[locale]/components/project-drawer/group'
@@ -21,19 +23,37 @@ interface Props {
 	onOpenChange: (open: boolean) => void
 }
 
-const SWIPER_CONFIG = {
-	centeredSlides: true,
+const FREE_MODE_CONFIG: SwiperOptions['freeMode'] = {
+	sticky: false,
+	momentum: true,
+	momentumBounce: true,
+	minimumVelocity: 0.02,
+	momentumBounceRatio: 1,
+	momentumRatio: 1,
+	momentumVelocityRatio: 1,
+} as const
+
+const SWIPER_CONFIG: SwiperOptions = {
+	modules: [FreeMode],
+	centeredSlides: false,
+	freeMode: { enabled: true, ...FREE_MODE_CONFIG },
 	slidesPerView: 'auto',
 	spaceBetween: 16,
 	breakpoints: {
 		480: {
 			spaceBetween: 24,
+			centeredSlides: false,
+			freeMode: { enabled: true, ...FREE_MODE_CONFIG },
 		},
 		640: {
 			spaceBetween: 32,
+			centeredSlides: true,
+			freeMode: { enabled: false, ...FREE_MODE_CONFIG },
 		},
 		960: {
 			spaceBetween: 60,
+			centeredSlides: true,
+			freeMode: { enabled: false, ...FREE_MODE_CONFIG },
 		},
 	},
 } as const
@@ -60,11 +80,16 @@ export function ProjectDrawer({ data, open, onOpenChange }: Readonly<Props>) {
 	const hasLinks = data.links.website || data.links.github || data.links.behance
 
 	const drawerContentSize = hasGallery ? 'center' : 'center-small'
+	const absoluteHandler = Boolean(!hasGallery || (data.image && !hasGallery))
 
 	return (
 		<Drawer open={open} onOpenChange={onOpenChange}>
 			<DrawerContent className="[&>div]:bg-black/2" size={drawerContentSize}>
-				<DrawerHandler className={cn(!hasGallery && 'my-5 h-1 w-30')} style={data.handler} absolute />
+				<DrawerHandler
+					className={cn('mb-0', !hasGallery && 'my-5 h-1 w-30')}
+					style={data.handler}
+					absolute={absoluteHandler}
+				/>
 
 				{!hasGallery && data.image && (
 					<div className="relative aspect-101/79 w-full">
@@ -75,10 +100,13 @@ export function ProjectDrawer({ data, open, onOpenChange }: Readonly<Props>) {
 				{hasGallery && (
 					<Swiper
 						{...SWIPER_CONFIG}
-						className="w-full shrink-0 !overflow-visible !px-[5vw] !py-[9vw] lg:!px-[9vw] lg:!pt-[5vw] lg:!pb-0"
+						className="w-full shrink-0 !overflow-visible !px-[5vw] !py-[9vw] lg:!px-[9vw] lg:!pt-[3vw] lg:!pb-0"
 					>
 						{data.gallery.map((item) => (
-							<SwiperSlide key={item.url} className={cn('!h-auto', item.format === 'desktop' ? '!w-full' : '!w-1/4')}>
+							<SwiperSlide
+								key={item.url}
+								className={cn('!h-auto', item.format === 'desktop' ? '!w-[150vw] sm:!w-full' : '!w-1/2 sm:!w-1/4')}
+							>
 								<div
 									className={cn(
 										'squircle-rounded relative h-full w-full overflow-hidden shadow-2xl',

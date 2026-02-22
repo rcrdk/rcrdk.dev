@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @import 'swiper/css';
+@import 'swiper/css/free-mode';
 
 @import './custom-variants.css';
 @import './animations.css';
