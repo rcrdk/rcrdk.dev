@@ -109,7 +109,7 @@ export function ProjectDrawer({ data, open, onOpenChange }: Readonly<Props>) {
 							>
 								<div
 									className={cn(
-										'squircle-rounded relative h-full w-full overflow-hidden shadow-2xl',
+										'squircle-rounded relative h-full w-full overflow-hidden rounded-2xl shadow-2xl',
 										item.format === 'desktop' ? 'aspect-16/9' : 'aspect-9/16',
 									)}
 								>

@@ -39,6 +39,6 @@ export const MYSIDE_PROJECTS: HistoryProject[] = [
 			{ id: 'leonardoRibeiro', roles: ['productDesigner'] },
 			{ id: 'mySide', roles: ['company'] },
 		],
-		handler: { backgroundColor: '#fff', opacity: 1 },
+		handler: { backgroundColor: '#000', opacity: 1 },
 	},
 ]
