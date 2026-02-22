@@ -26,7 +26,7 @@ export function HistoryCommonInfo({ data }: Readonly<Props>) {
 		<>
 			<div className="flex flex-col gap-4 sm:flex-row">
 				<div className="flex grow gap-4">
-					<div className="squircle-rounded layout:size-13 layout-sm:text-15 relative size-15 shrink-0 self-start overflow-hidden rounded-full shadow">
+					<div className="squircle-rounded layout:size-13 layout-sm:text-15 relative size-15 shrink-0 self-start overflow-hidden rounded-2xl shadow">
 						<Image src={data.companyLogo} alt={data.companyLogoAlt} width={120} height={120} />
 					</div>
 

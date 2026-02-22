@@ -40,7 +40,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 					<div className="max-layout-breakpoint:top-auto max-layout-breakpoint:bottom-0 max-layout-breakpoint:w-full max-layout-breakpoint:h-px absolute top-0 right-0 z-10 h-full w-px bg-black/15 transition-colors duration-400 group-hover/project-card:bg-black/30 dark:bg-white/20 dark:group-hover/project-card:bg-white/20" />
 				</div>
 
-				<div className="max-layout-breakpoint:p-4 max-layout-breakpoint:justify-start flex grow flex-col items-start justify-center gap-1.5 px-4 py-2 text-start text-balance">
+				<div className="max-layout-breakpoint:p-4 max-layout-breakpoint:!justify-between flex grow flex-col items-start justify-center gap-1.5 px-4 py-2 text-start text-balance">
 					<h4 className="line-clamp-2 text-base leading-tight font-semibold">{title}</h4>
 					<small className="max-layout-breakpoint:leading-normal text-sm leading-none text-black/50 dark:text-white/50">
 						{data.categories.at(0)}
@@ -48,7 +48,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 				</div>
 
 				<IconArrowRight
-					className="max-layout-breakpoint:mx-4 max-layout-breakpoint:self-end max-layout-breakpoint:mb-4 ms-2 me-4 size-6 shrink-0 self-center"
+					className="max-layout-breakpoint:m-0 max-layout-breakpoint:absolute max-layout-breakpoint:bottom-4 max-layout-breakpoint:right-4 ms-2 me-4 size-5 shrink-0 self-center sm:size-6"
 					aria-hidden
 				/>
 			</button>
