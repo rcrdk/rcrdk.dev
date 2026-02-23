@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
+import { useHaptic } from 'use-haptic'
 
 import { ProjectDrawer } from '@/app/[locale]/components/project-drawer'
 import { Image } from '@/components/ui/image'
@@ -13,9 +14,11 @@ interface Props {
 
 export function ProjectCard({ data }: Readonly<Props>) {
 	const [open, setOpen] = useState(false)
+	const { triggerHaptic } = useHaptic()
 
 	function handleOpenChange(open: boolean) {
 		setOpen(open)
+		triggerHaptic()
 	}
 
 	const locale = useLocale() as LocalesType
