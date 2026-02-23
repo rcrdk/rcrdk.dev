@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
 
 import { AnimatedContent } from '@/components/animated/animated-content'
@@ -42,7 +43,7 @@ export function Nav({ slot }: Readonly<Props>) {
 	const linkRefs = useRef<(HTMLDivElement | null)[]>([])
 
 	const linkClass = cn(
-		'squircle-rounded focus-visible:border-accent-blue focus-visible:text-accent-blue border border-transparent px-2 py-1 text-[15px] text-black/60 transition-colors',
+		'squircle-rounded focus-visible:border-accent-blue focus-visible:text-accent-blue block rounded-2xl border border-transparent px-3.5 py-2.5 text-sm text-black/60 transition-colors duration-300 hover:text-black dark:text-white/50 dark:hover:text-white',
 		'focus-visible:ring-accent-blue/40 cursor-pointer outline-none focus-visible:ring-4 dark:text-white/50',
 	)
 
@@ -85,7 +86,7 @@ export function Nav({ slot }: Readonly<Props>) {
 	return (
 		<div
 			className={cn(
-				'xs:h-10 relative h-9 select-none',
+				'relative select-none',
 				isSlotHeader && 'layout:hidden hidden min-[960px]:flex',
 				isSlotPage &&
 					'layout:flex layout-sm:fixed before:bg-glass-light/65 dark:before:bg-glass-dark/65 before:squircle-rounded absolute top-10 right-11 z-50 -mr-2 hidden before:absolute before:inset-0 before:-translate-y-full before:rounded-xl before:opacity-0 before:backdrop-blur-xs before:transition-[opacity,transform] before:duration-1000 [&:has([data-state="open"])]:before:translate-y-0 [&:has([data-state="open"])]:before:opacity-100',
@@ -96,20 +97,30 @@ export function Nav({ slot }: Readonly<Props>) {
 				setHoveredHref(null)
 			}}
 		>
-			<div ref={contentRef} className={cn('relative flex items-center gap-2', isSlotPage && 'px-2')}>
-				{showBackgroundHovered && (
-					<MotionDiv
-						className="squircle-rounded pointer-events-none absolute z-0 rounded-xl bg-white shadow-sm dark:bg-black dark:shadow-md dark:shadow-white/10"
-						transition={DEFAULT_MOTION_SPRING_CONFIG}
-						initial={false}
-						animate={{
-							left: backgroundRect.left,
-							top: backgroundRect.top,
-							width: backgroundRect.width,
-							height: backgroundRect.height,
-						}}
-					/>
-				)}
+			<div ref={contentRef} className={cn('relative flex items-center')}>
+				<AnimatePresence>
+					{showBackgroundHovered && (
+						<MotionDiv
+							className="squircle-rounded pointer-events-none absolute z-0 rounded-2xl border border-black/15 bg-white dark:border-white/15 dark:bg-white/20"
+							transition={DEFAULT_MOTION_SPRING_CONFIG}
+							initial={{
+								opacity: 0,
+								left: backgroundRect.left,
+								top: backgroundRect.top,
+								width: backgroundRect.width,
+								height: backgroundRect.height,
+							}}
+							animate={{
+								opacity: 1,
+								left: backgroundRect.left,
+								top: backgroundRect.top,
+								width: backgroundRect.width,
+								height: backgroundRect.height,
+							}}
+							exit={{ opacity: 0 }}
+						/>
+					)}
+				</AnimatePresence>
 
 				{ITEMS.map((item, index) => (
 					<AnimatedContent

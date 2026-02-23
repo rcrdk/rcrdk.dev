@@ -54,16 +54,20 @@ export function Skills() {
 				</h2>
 			</AnimatedContent>
 
-			<div className="xs:gap-2 flex flex-wrap gap-1">
-				{categories.map((item) => (
-					<SkillCategoryButton
-						key={item.id}
-						category={item}
-						selected={selectedCategory === item.id}
-						onSelect={() => handleChangeCategory(item.id)}
-					/>
-				))}
-			</div>
+			<AnimatedContent>
+				<div className="scrollbar-hidden max-xs:-mx-6 max-xs:px-6 overflow-x-auto max-sm:-mx-12 max-sm:flex max-sm:w-screen max-sm:!max-w-screen max-sm:px-12 sm:px-0">
+					<div className="squircle-rounded inline-flex min-w-fit items-center rounded-2xl bg-black/5 dark:bg-white/10">
+						{categories.map((item) => (
+							<SkillCategoryButton
+								key={item.id}
+								category={item}
+								selected={selectedCategory === item.id}
+								onSelect={() => handleChangeCategory(item.id)}
+							/>
+						))}
+					</div>
+				</div>
+			</AnimatedContent>
 
 			<AnimatedContent>
 				<hr className="xs:my-8 my-6 border-t border-black/10 dark:border-white/15 sm:dark:border-white/20" />

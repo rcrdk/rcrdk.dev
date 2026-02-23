@@ -14,11 +14,13 @@ export function HistoryListMobile({ title, text, list }: Readonly<Props>) {
 		<>
 			<AnimatedContent>
 				<HistoryCommonIntro heading={title} text={text} />
-
-				{list.map((item) => (
-					<HistoryListMobileItem data={item} key={item.id} />
-				))}
 			</AnimatedContent>
+
+			{list.map((item) => (
+				<AnimatedContent key={item.id}>
+					<HistoryListMobileItem data={item} />
+				</AnimatedContent>
+			))}
 		</>
 	)
 }
