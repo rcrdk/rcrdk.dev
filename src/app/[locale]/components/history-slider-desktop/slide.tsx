@@ -25,7 +25,7 @@ export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
 
 	return (
 		<div className="squircle-rounded flex min-w-full flex-col rounded-3xl border border-black/15 dark:border-white/20">
-			<div className="layout:gap-4 layout-sm:gap-6 flex flex-col gap-6 p-6">
+			<div className="flex flex-col p-6">
 				<HistoryCommonInfo data={data} />
 			</div>
 

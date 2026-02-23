@@ -1,7 +1,7 @@
 @theme {
 	--animate-avatar: avatar 3s ease infinite alternate;
-	--animate-collapsible-in: collapsibleIn 1000ms ease-out;
-	--animate-collapsible-out: collapsibleOut 1000ms ease-out;
+	--animate-collapsible-in: collapsibleIn 400ms ease-out;
+	--animate-collapsible-out: collapsibleOut 400ms ease-out;
 
 	--animate-dialog-overlay-show: dialogOverlayShow 500ms cubic-bezier(0.16, 1, 0.3, 1);
 	--animate-dialog-overlay-hide: dialogOverlayHide 300ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -31,18 +31,22 @@
 	@keyframes collapsibleIn {
 		from {
 			height: 0;
+			opacity: 0;
 		}
 		to {
 			height: var(--radix-collapsible-content-height);
+			opacity: 1;
 		}
 	}
 
 	@keyframes collapsibleOut {
 		from {
 			height: var(--radix-collapsible-content-height);
+			opacity: 1;
 		}
 		to {
 			height: 0;
+			opacity: 0;
 		}
 	}
 

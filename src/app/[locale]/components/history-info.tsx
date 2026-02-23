@@ -1,9 +1,12 @@
-import { IconBrandLinkedin, IconExternalLink } from '@tabler/icons-react'
+import { useState } from 'react'
+import { IconBrandLinkedin, IconCirclePlus, IconExternalLink } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible'
 import { Image } from '@/components/ui/image'
 import type { HistoryItem } from '@/types/history'
+import { cn } from '@/utils/tailwind-cn'
 
 interface Props {
 	data: HistoryItem
@@ -20,6 +23,8 @@ const defaultButtonProps = {
 } as const
 
 export function HistoryCommonInfo({ data }: Readonly<Props>) {
+	const [isOpen, setIsOpen] = useState(false)
+
 	const __ = useTranslations('Default')
 
 	return (
@@ -41,6 +46,17 @@ export function HistoryCommonInfo({ data }: Readonly<Props>) {
 				</div>
 
 				<div className="flex gap-2">
+					<Button
+						{...defaultButtonProps}
+						as="button"
+						className={cn('sm:hidden', defaultButtonProps.className)}
+						title={__('company.readMore')}
+						onClick={() => setIsOpen(!isOpen)}
+					>
+						<IconCirclePlus aria-hidden />
+						<span className="sm:hidden">{__('company.readMore')}</span>
+					</Button>
+
 					<Button {...defaultButtonProps} href={data.companyWebsiteUrl} title={__('company.websiteTitle')}>
 						<IconExternalLink aria-hidden />
 						<span className="sm:hidden">{__('company.site')}</span>
@@ -53,7 +69,19 @@ export function HistoryCommonInfo({ data }: Readonly<Props>) {
 				</div>
 			</div>
 
-			<ul className="layout:text-[0.9375rem] layout-sm:text-base list-disc space-y-1.5 pl-4 text-pretty sm:space-y-0">
+			<div className="block sm:hidden">
+				<Collapsible open={isOpen} onOpenChange={setIsOpen}>
+					<CollapsibleContent>
+						<ul className="layout:text-[0.9375rem] layout-sm:text-base layout:pt-4 layout-sm:pt-6 list-disc space-y-1.5 pt-6 pl-4 text-pretty sm:space-y-0">
+							{data.description.map((description) => (
+								<li key={description} dangerouslySetInnerHTML={{ __html: description }} />
+							))}
+						</ul>
+					</CollapsibleContent>
+				</Collapsible>
+			</div>
+
+			<ul className="layout:text-[0.9375rem] layout-sm:text-base layout:pt-4 layout-sm:pt-6 hidden list-disc space-y-1.5 pt-6 pl-4 text-pretty sm:block sm:space-y-0">
 				{data.description.map((description) => (
 					<li key={description} dangerouslySetInnerHTML={{ __html: description }} />
 				))}

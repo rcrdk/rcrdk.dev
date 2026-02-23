@@ -26,7 +26,7 @@ export function HistoryListMobileItem({ data }: Readonly<Props>) {
 
 	return (
 		<div className="mt-8 flex flex-col gap-8 border-t border-black/15 pt-8 sm:mt-12 sm:pt-12 dark:border-white/20">
-			<div className="flex flex-col gap-6">
+			<div className="flex flex-col">
 				<HistoryCommonInfo data={data} />
 			</div>
 

@@ -37,7 +37,9 @@
 		@apply bg-accent-blue/10 text-accent-blue dark:bg-accent-blue/80 dark:text-white;
 	}
 
-	.disable-transitions * {
+	.disable-transitions *,
+	.disable-transitions *:before,
+	.disable-transitions *:after {
 		@apply !transition-none;
 	}
 

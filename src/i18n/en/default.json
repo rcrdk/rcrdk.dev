@@ -41,7 +41,8 @@
 			"site": "Site",
 			"linkedin": "LinkedIn",
 			"websiteTitle": "Checkout company's website",
-			"linkedinTitle": "Checkout company's profile on LinkedIn"
+			"linkedinTitle": "Checkout company's profile on LinkedIn",
+			"readMore": "Info"
 		}
 	}
 }

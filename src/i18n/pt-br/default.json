@@ -41,7 +41,8 @@
 			"site": "Site",
 			"linkedin": "LinkedIn",
 			"websiteTitle": "Confira o site da empresa",
-			"linkedinTitle": "Confira o perfil da empresa no LinkedIn"
+			"linkedinTitle": "Confira o perfil da empresa no LinkedIn",
+			"readMore": "Info"
 		}
 	}
 }
