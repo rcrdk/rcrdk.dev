@@ -1,20 +1,22 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { MotionDiv } from '@/components/animated/motion'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { cn } from '@/utils/tailwind-cn'
 
-const DEFAULT_DISTANCE = 125
+const DEFAULT_DISTANCE = 90
 const DEFAULT_TENSION = 60
 const DEFAULT_FRICTION = 15
 const DEFAULT_INITIAL_OPACITY = 0
 const DEFAULT_SCALE = 1
 const DEFAULT_THRESHOLD = 0.1
 const DEFAULT_DELAY = 0
-const DEFAULT_ROOT_MARGIN = '0px 0px 125px'
+const DEFAULT_ROOT_MARGIN = '0px 0px 90px'
+
+const IN_VIEW_ANIMATION = { x: 0, y: 0, scale: 1, opacity: 1 } as const
 
 interface AnimatedContentConfig {
 	tension?: number
@@ -51,8 +53,18 @@ export function AnimatedContent({
 	rootMargin = DEFAULT_ROOT_MARGIN,
 	delay = DEFAULT_DELAY,
 }: Readonly<AnimatedContentProps>) {
-	const ref = useRef<HTMLDivElement>(null)
+	const ref = useRef<React.ComponentRef<'div'> | null>(null)
 	const inView = useIntersectionObserver(ref, { threshold, rootMargin })
+	const [reduceMotion, setReduceMotion] = useState(false)
+	const [animationDone, setAnimationDone] = useState(false)
+
+	useEffect(() => {
+		const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+		setReduceMotion(mq.matches)
+		const handler = () => setReduceMotion(mq.matches)
+		mq.addEventListener('change', handler)
+		return () => mq.removeEventListener('change', handler)
+	}, [])
 
 	const safeDistance = Number.isFinite(distance) ? distance : DEFAULT_DISTANCE
 	const offset = reverse ? -safeDistance : safeDistance
@@ -69,31 +81,43 @@ export function AnimatedContent({
 	const delaySeconds = Number.isFinite(Number(delay)) ? Number(delay) / 1000 : 0
 	const hasValidMass = config?.mass != null && Number.isFinite(config.mass)
 
-	const transition = {
-		type: 'spring',
-		stiffness: Number.isFinite(stiffness) ? stiffness : DEFAULT_TENSION,
-		damping: Number.isFinite(damping) ? damping : DEFAULT_FRICTION,
-		delay: delaySeconds >= 0 ? delaySeconds : 0,
-		...(hasValidMass && { mass: config.mass }),
-	} as const
+	const transition = useMemo(
+		() => ({
+			type: 'spring' as const,
+			stiffness: Number.isFinite(stiffness) ? stiffness : DEFAULT_TENSION,
+			damping: Number.isFinite(damping) ? damping : DEFAULT_FRICTION,
+			delay: delaySeconds >= 0 ? delaySeconds : 0,
+			...(hasValidMass && config?.mass != null && { mass: config.mass }),
+		}),
+		[stiffness, damping, delaySeconds, hasValidMass, config?.mass],
+	)
+
+	const initial = useMemo(
+		() =>
+			reduceMotion
+				? IN_VIEW_ANIMATION
+				: {
+						x: isVertical ? 0 : offset,
+						y: isVertical ? offset : 0,
+						scale: safeScale,
+						opacity: animateOpacity ? safeInitialOpacity : 1,
+					},
+		[reduceMotion, isVertical, offset, safeScale, animateOpacity, safeInitialOpacity],
+	)
 
 	const state = inView ? 'open' : 'closed'
-
-	const inViewAnimation = { x: 0, y: 0, scale: 1, opacity: 1 }
+	const showFinalState = reduceMotion || inView
+	const keepWillChange = !animationDone && !showFinalState
 
 	return (
 		<MotionDiv
 			ref={ref}
-			className={cn('will-change-transform', className)}
+			className={cn(keepWillChange && 'will-change-transform', className)}
 			data-state={state}
-			initial={{
-				x: isVertical ? 0 : offset,
-				y: isVertical ? offset : 0,
-				scale: safeScale,
-				opacity: animateOpacity ? safeInitialOpacity : 1,
-			}}
-			animate={inView ? inViewAnimation : undefined}
-			transition={transition}
+			initial={initial}
+			animate={showFinalState ? IN_VIEW_ANIMATION : undefined}
+			transition={reduceMotion ? { duration: 0 } : transition}
+			onAnimationComplete={inView ? () => setAnimationDone(true) : undefined}
 		>
 			{children}
 		</MotionDiv>

@@ -11,7 +11,7 @@ export function NotFoundGameTaskButton() {
 	const __ = useTranslations('Game')
 
 	return (
-		<Button variant="outline" size="xs" href="/non-existent-page" as={Link} className="text-sm font-semibold">
+		<Button variant="outline" size="xs" href="/non-existent-page" as={Link} className="text-sm font-semibold" haptic>
 			{__('taskButtons.notFound')}
 		</Button>
 	)

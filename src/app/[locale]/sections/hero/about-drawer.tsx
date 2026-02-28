@@ -5,17 +5,20 @@ import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Drawer, DrawerContent, DrawerHandler, DrawerTitle } from '@/components/ui/drawer'
 import { useGame } from '@/hooks/use-game'
+import { useHaptics } from '@/hooks/use-haptics'
 
 export function HeroAboutDrawer() {
 	const [showContents, setShowContents] = useState(false)
 
 	const { onCompleteTask } = useGame()
+	const { triggerHaptic } = useHaptics()
 
 	const __ = useTranslations('Hero')
 
 	function handleShowContents() {
 		setShowContents((prev) => !prev)
 		onCompleteTask('about-me')
+		triggerHaptic()
 	}
 
 	return (

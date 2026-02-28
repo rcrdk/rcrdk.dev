@@ -20,6 +20,7 @@ const defaultButtonProps = {
 	size: 'sm',
 	icon: true,
 	className: 'max-sm:grow',
+	haptic: true,
 } as const
 
 export function HistoryCommonInfo({ data }: Readonly<Props>) {
@@ -52,6 +53,7 @@ export function HistoryCommonInfo({ data }: Readonly<Props>) {
 						className={cn('sm:hidden', defaultButtonProps.className)}
 						title={__('company.readMore')}
 						onClick={() => setIsOpen(!isOpen)}
+						haptic
 					>
 						<IconCirclePlus aria-hidden />
 						<span className="sm:hidden">{__('company.readMore')}</span>

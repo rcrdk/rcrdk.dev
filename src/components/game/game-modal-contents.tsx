@@ -61,6 +61,7 @@ export function GameModalContents() {
 						className="mt-8 mb-6 w-full font-semibold"
 						onClick={onActivateGame}
 						aria-describedby="game-sound-note"
+						haptic
 					>
 						<span className="text-2xl">🤠</span>
 						{__('optIn.button')}
@@ -110,6 +111,7 @@ export function GameModalContents() {
 								onShowGameTasks()
 							}}
 							aria-label={__('ariaLabels.showTasks', { taskName: __('taskButtons.tetris') })}
+							haptic
 						>
 							<span className="text-2xl">🫣</span>
 							{__('button')}

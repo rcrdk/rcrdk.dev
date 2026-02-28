@@ -2,7 +2,6 @@
 
 import { useCallback, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useHaptic } from 'use-haptic'
 
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { MotionDiv } from '@/components/animated/motion'
@@ -11,6 +10,7 @@ import { Skill } from '@/components/ui/skill'
 import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
 import type { SkillCategories } from '@/data/skills'
 import { SKILLS_LIST } from '@/data/skills'
+import { useHaptics } from '@/hooks/use-haptics'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { SkillCategoryButton } from './category-button'
 
@@ -18,7 +18,7 @@ export function Skills() {
 	const __ = useTranslations('Skills')
 	const categories = __.raw('categories') as { id: SkillCategories; title: string }[]
 
-	const { triggerHaptic } = useHaptic()
+	const { triggerHaptic } = useHaptics()
 
 	const [selectedCategory, setSelectedCategory] = useState<SkillCategories>('front-end')
 

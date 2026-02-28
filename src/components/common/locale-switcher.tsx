@@ -2,9 +2,9 @@
 
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useHaptic } from 'use-haptic'
 
 import { Button } from '@/components/ui/button'
+import { useHaptics } from '@/hooks/use-haptics'
 import { cn } from '@/utils/tailwind-cn'
 
 const languagesAvailable = [
@@ -23,7 +23,7 @@ const languagesAvailable = [
 export function LocaleSwitcher() {
 	const __ = useTranslations('Default')
 	const { locale: currentLocale } = useParams()
-	const { triggerHaptic } = useHaptic()
+	const { triggerHaptic } = useHaptics()
 
 	const getActiveLocale = languagesAvailable.find((locale) => locale.prefix === currentLocale) ?? languagesAvailable[0]
 

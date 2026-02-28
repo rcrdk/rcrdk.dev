@@ -10,7 +10,13 @@ export function DevToolsGameTaskButton() {
 	const __ = useTranslations('Game')
 
 	return (
-		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={() => onCompleteTask('dev-tools')}>
+		<Button
+			variant="outline"
+			size="xs"
+			className="text-sm font-semibold"
+			onClick={() => onCompleteTask('dev-tools')}
+			haptic
+		>
 			{__('taskButtons.devTools')}
 		</Button>
 	)

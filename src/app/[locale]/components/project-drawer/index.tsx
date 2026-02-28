@@ -65,6 +65,7 @@ const BUTTON_PROPS = {
 	icon: true,
 	target: '_blank',
 	rel: 'noopener noreferrer',
+	haptic: true,
 } as const
 
 export function ProjectDrawer({ data, open, onOpenChange }: Readonly<Props>) {

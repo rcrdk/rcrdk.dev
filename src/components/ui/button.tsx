@@ -2,8 +2,8 @@
 
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
-import { useHaptic } from 'use-haptic'
 
+import { useHaptics } from '@/hooks/use-haptics'
 import { cn } from '@/utils/tailwind-cn'
 
 const baseVariants = cva(
@@ -77,6 +77,7 @@ interface ButtonProps<T extends React.ElementType> {
 	size?: ButtonVariantsProps['size']
 	icon?: ButtonVariantsProps['icon']
 	onClick?: React.MouseEventHandler<any>
+	haptic?: boolean
 }
 
 export function Button<T extends React.ElementType = 'button'>({
@@ -86,15 +87,16 @@ export function Button<T extends React.ElementType = 'button'>({
 	icon = false,
 	onClick,
 	className,
+	haptic = false,
 	...props
 }: Readonly<ButtonProps<T>> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
 	const Component = as || 'button'
 
-	const { triggerHaptic } = useHaptic()
+	const { triggerHaptic } = useHaptics()
 
 	function handleClick(e: React.MouseEvent<any>) {
-		triggerHaptic()
 		onClick?.(e)
+		requestAnimationFrame(() => haptic && triggerHaptic())
 	}
 
 	const classNames = cn(baseVariants({ variant, size, icon }), className)

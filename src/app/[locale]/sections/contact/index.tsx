@@ -33,6 +33,7 @@ const defaultButtonProps = {
 	size: 'sm',
 	variant: 'outline',
 	className: 'xs:grow-0 grow bg-transparent dark:bg-transparent',
+	haptic: true,
 } as const
 
 const BUTTONS = [

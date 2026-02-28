@@ -54,6 +54,7 @@ export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRolli
 					)}
 					icon
 					aria-label={__('rickRolling')}
+					haptic
 				>
 					{playing && (
 						<div className="flex items-center">

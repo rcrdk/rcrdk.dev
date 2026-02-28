@@ -57,6 +57,7 @@ export function Hero() {
 								size="lg"
 								onClick={(e) => scrollToSection(e, '#experiences')}
 								className="grow"
+								haptic
 							>
 								<IconCircleArrowDown aria-hidden />
 								<span className="font-medium">{__('buttons.scroll')}</span>

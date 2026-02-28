@@ -75,9 +75,6 @@ importers:
       tailwindcss:
         specifier: 4.1.4
         version: 4.1.4
-      use-haptic:
-        specifier: ^1.1.13
-        version: 1.1.13
       uuid:
         specifier: 13.0.0
         version: 13.0.0
@@ -3584,9 +3581,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  use-haptic@1.1.13:
-    resolution: {integrity: sha512-Kg6+MaksFTPlbAbf+WTbJPlsXt6z61LsQ1TfnGv29Q/Ewp2pmmAG6WipOMf89zDOiCZ004IHNs/iwpsxSbDa4w==}
 
   use-intl@4.4.0:
     resolution: {integrity: sha512-smFekJWtokDRBLC5/ZumlBREzdXOkw06+56Ifj2uRe9266Mk+yWQm2PcJO+EwlOE5sHIXHixOTzN6V8E0RGUbw==}
@@ -7224,11 +7218,6 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.2
-
-  use-haptic@1.1.13:
-    dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
 
   use-intl@4.4.0(react@19.2.0):
     dependencies:

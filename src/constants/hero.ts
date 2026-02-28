@@ -8,6 +8,7 @@ const BUTTON_PROPS = {
 	size: 'lg',
 	variant: 'outline',
 	icon: true,
+	haptic: true,
 } as const
 
 export const HERO_BUTTONS = [

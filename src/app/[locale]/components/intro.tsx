@@ -22,7 +22,7 @@ export function HistoryCommonIntro({ heading, text, buttonText, handleSlideNext,
 			/>
 
 			{buttonText && (
-				<Button variant="solid" className="layout:mt-8 mt-8 sm:mt-12" onClick={handleSlideNext}>
+				<Button variant="solid" className="layout:mt-8 mt-8 sm:mt-12" onClick={handleSlideNext} haptic>
 					{buttonText}
 					<IconArrowRight aria-hidden />
 				</Button>

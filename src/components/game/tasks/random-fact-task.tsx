@@ -12,7 +12,7 @@ export function RandomFactGameTaskButton() {
 	const handleCompleteTask = () => onCompleteTask('random-fact')
 
 	return (
-		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={handleCompleteTask}>
+		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={handleCompleteTask} haptic>
 			{__('taskButtons.randomFact')}
 		</Button>
 	)

@@ -6,6 +6,7 @@ import { GameToastContent } from '@/components/game/game-toast-content'
 import { LOCAL_STORAGE_KEYS } from '@/config/keys'
 import type { GameTaskTypes } from '@/data/game-tasks'
 import { GAME_TASKS } from '@/data/game-tasks'
+import { useHaptics } from '@/hooks/use-haptics'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
 import type { LocalesType } from '@/i18n/routing'
 
@@ -57,6 +58,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 
 	const locale = useLocale() as LocalesType
 	const { playSound } = useSoundEffect()
+	const { triggerHaptic } = useHaptics()
 
 	const gameTasks: GameTaskUser[] = GAME_TASKS.map((task) => ({
 		id: task.id,
@@ -115,6 +117,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	function onResetGame(soundEffect?: boolean) {
 		setTasksCompleted([])
 		setShowGameTasks(false)
+		triggerHaptic()
 
 		if (soundEffect) playSound('game-start')
 
@@ -129,6 +132,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		onResetGame(false)
 		setIsGameActive(false)
 		playSound('game-over')
+		triggerHaptic()
 
 		if (typeof window !== 'undefined') window.localStorage.removeItem(LOCAL_STORAGE_KEYS.gameActive)
 	}

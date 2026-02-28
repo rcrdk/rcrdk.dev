@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
-import { useHaptic } from 'use-haptic'
 
 import { ProjectDrawer } from '@/app/[locale]/components/project-drawer'
 import { Image } from '@/components/ui/image'
+import { useHaptics } from '@/hooks/use-haptics'
 import type { LocalesType } from '@/i18n/routing'
 import type { HistoryProject } from '@/types/history'
 
@@ -14,7 +14,7 @@ interface Props {
 
 export function ProjectCard({ data }: Readonly<Props>) {
 	const [open, setOpen] = useState(false)
-	const { triggerHaptic } = useHaptic()
+	const { triggerHaptic } = useHaptics()
 
 	function handleOpenChange(open: boolean) {
 		setOpen(open)
