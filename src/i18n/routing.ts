@@ -1,11 +1,3 @@
-import { createNavigation } from 'next-intl/navigation'
-import { defineRouting } from 'next-intl/routing'
+export { defaultLocale, isValidLocale, locales, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, type LocalesType } from './config'
 
-export const routing = defineRouting({
-	locales: ['pt-br', 'en'],
-	defaultLocale: 'en',
-})
-
-export type LocalesType = (typeof routing.locales)[number]
-
-export const { Link } = createNavigation(routing)
+export { detectLocaleFromAcceptLanguage } from './detect-locale'

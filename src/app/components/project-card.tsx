@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
 
-import { ProjectDrawer } from '@/app/[locale]/components/project-drawer'
+import { ProjectDrawer } from '@/app/components/project-drawer'
 import { Image } from '@/components/ui/image'
 import { useHaptics } from '@/hooks/use-haptics'
 import type { LocalesType } from '@/i18n/routing'

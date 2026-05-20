@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { IconCircleArrowDown } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
-import { HeroAboutDrawer } from '@/app/[locale]/sections/hero/about-drawer'
+import { HeroAboutDrawer } from '@/app/sections/hero/about-drawer'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { AnimatedSplitText } from '@/components/animated/animated-split-text'
 import { Button } from '@/components/ui/button'

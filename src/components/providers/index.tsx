@@ -3,12 +3,13 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { QueryClientProvider } from '@tanstack/react-query'
 import type { AbstractIntlMessages } from 'next-intl'
-import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from 'sonner'
 
 import { GameContextProvider } from '@/context/game-context'
 import { HapticsProvider } from '@/context/haptics-context'
+import { LocaleProvider } from '@/context/locale-context'
+import type { LocalesType } from '@/i18n/config'
 import { env } from '@/lib/env'
 import { queryClient } from '@/lib/react-query'
 
@@ -17,20 +18,18 @@ const TOASTER_MOBILE_OFFSET = 24
 const TOASTER_MAX_WIDTH = 540
 const TOASTER_MAX_MOBILE_WIDTH = 48
 
-type Props = {
+interface Props {
 	children: React.ReactNode
 	i18n: {
-		locale: string
+		locale: LocalesType
 		messages: AbstractIntlMessages
 	}
 	shouldEnableGA: boolean
 }
 
-const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-
 export function Providers({ children, i18n, shouldEnableGA }: Readonly<Props>) {
 	return (
-		<NextIntlClientProvider messages={i18n.messages} locale={i18n.locale} timeZone={timeZone}>
+		<LocaleProvider initialLocale={i18n.locale} initialMessages={i18n.messages}>
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider attribute="data-mode">
 					<HapticsProvider>
@@ -58,6 +57,6 @@ export function Providers({ children, i18n, shouldEnableGA }: Readonly<Props>) {
 					</HapticsProvider>
 				</ThemeProvider>
 			</QueryClientProvider>
-		</NextIntlClientProvider>
+		</LocaleProvider>
 	)
 }

@@ -8,6 +8,7 @@ import type { GameTaskTypes } from '@/data/game-tasks'
 import { GAME_TASKS } from '@/data/game-tasks'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
+import { clearGameLocalStorage, GAME_LANGUAGE_CHANGED_KEY, setLanguageChangedDuringGame } from '@/i18n/game'
 import type { LocalesType } from '@/i18n/routing'
 
 const TOAST_DURATION = 20000
@@ -80,7 +81,10 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		setIsGameActive(true)
 		playSound('game-start')
 
-		if (typeof window !== 'undefined') window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameActive, 'true')
+		if (typeof window !== 'undefined') {
+			window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameActive, 'true')
+			setLanguageChangedDuringGame(false)
+		}
 	}
 
 	function notifyCompletedTask(taskId: GameTaskTypes) {
@@ -122,19 +126,20 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		if (soundEffect) playSound('game-start')
 
 		if (typeof window !== 'undefined') {
-			window.localStorage.removeItem(LOCAL_STORAGE_KEYS.initialLocale)
+			setLanguageChangedDuringGame(false)
 			window.localStorage.removeItem(LOCAL_STORAGE_KEYS.gameTasksVisible)
 			window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasks, JSON.stringify([]))
 		}
 	}
 
 	function onStopGame() {
-		onResetGame(false)
+		setTasksCompleted([])
+		setShowGameTasks(false)
+		setShowGameTetris(false)
 		setIsGameActive(false)
 		playSound('game-over')
 		triggerHaptic()
-
-		if (typeof window !== 'undefined') window.localStorage.removeItem(LOCAL_STORAGE_KEYS.gameActive)
+		clearGameLocalStorage()
 	}
 
 	function onShowGameModal() {
@@ -189,7 +194,11 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 
 		if (checkForSavedTasksCompleted) setTasksCompleted(JSON.parse(checkForSavedTasksCompleted))
 		if (checkIfGameTasksListAreVisible && checkIfGameTasksListAreVisible === 'true') setShowGameTasks(true)
-		if (checkIfGameIsActive && checkIfGameIsActive === 'true') setIsGameActive(true)
+		if (checkIfGameIsActive && checkIfGameIsActive === 'true') {
+			setIsGameActive(true)
+
+			if (window.localStorage.getItem(GAME_LANGUAGE_CHANGED_KEY) == null) setLanguageChangedDuringGame(false)
+		}
 	}, [])
 
 	return (

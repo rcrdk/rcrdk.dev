@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import { HistoryListMobile } from '@/app/[locale]/components/history-list-mobile'
-import { HistorySliderDesktop } from '@/app/[locale]/components/history-slider-desktop'
+import { HistoryListMobile } from '@/app/components/history-list-mobile'
+import { HistorySliderDesktop } from '@/app/components/history-slider-desktop'
 import { Section } from '@/components/ui/section'
 import { APP_CONFIG } from '@/config/app'
 import { PROJECTS } from '@/data/projects/index'

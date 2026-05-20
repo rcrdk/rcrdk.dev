@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
-import { Link } from '@/i18n/routing'
 
 export function NotFoundGameTaskButton() {
 	const __ = useTranslations('Game')

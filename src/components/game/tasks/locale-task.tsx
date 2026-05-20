@@ -1,32 +1,35 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocale } from 'next-intl'
 
-import { LOCAL_STORAGE_KEYS } from '@/config/keys'
 import { useGame } from '@/hooks/use-game'
+import { hasChangedLanguageDuringGame, setLanguageChangedDuringGame } from '@/i18n/game'
 
 const DELAY_LOCALE = 700
 
 export function LocaleGameTask() {
 	const locale = useLocale()
-	const { onCompleteTask } = useGame()
+	const { onCompleteTask, isGameActive } = useGame()
+	const previousLocaleRef = useRef(locale)
 
 	useEffect(() => {
-		if (typeof window === 'undefined') return
-
-		let timer: NodeJS.Timeout
-
-		const entryExists = window.localStorage.getItem(LOCAL_STORAGE_KEYS.initialLocale)
-
-		if (entryExists && entryExists !== locale) {
-			timer = setTimeout(() => onCompleteTask('switch-language'), DELAY_LOCALE)
+		if (!isGameActive) {
+			previousLocaleRef.current = locale
+			return
 		}
 
-		if (!entryExists) window.localStorage.setItem(LOCAL_STORAGE_KEYS.initialLocale, locale)
+		const localeChanged = previousLocaleRef.current !== locale
+		previousLocaleRef.current = locale
+
+		if (!localeChanged || hasChangedLanguageDuringGame()) return
+
+		setLanguageChangedDuringGame(true)
+
+		const timer = setTimeout(() => onCompleteTask('switch-language'), DELAY_LOCALE)
 
 		return () => clearTimeout(timer)
-	}, [locale, onCompleteTask])
+	}, [locale, isGameActive, onCompleteTask])
 
 	return null
 }

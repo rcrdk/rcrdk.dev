@@ -1,28 +1,25 @@
+import { cookies, headers } from 'next/headers'
 import { IntlErrorCode } from 'next-intl'
 import { getRequestConfig } from 'next-intl/server'
 
-import { routing } from './routing'
+import { defaultLocale, isValidLocale, LOCALE_COOKIE } from './config'
+import { detectLocaleFromAcceptLanguage } from './detect-locale'
+import { loadMessages } from './load-messages'
 
-export default getRequestConfig(async ({ requestLocale }) => {
-	let locale = await requestLocale
+export default getRequestConfig(async () => {
+	const cookieStore = await cookies()
+	const cookieLocale = cookieStore.get(LOCALE_COOKIE)?.value
 
-	if (!locale || !routing.locales.includes(locale as 'pt-br' | 'en')) locale = routing.defaultLocale
+	let locale = isValidLocale(cookieLocale) ? cookieLocale : defaultLocale
+
+	if (!isValidLocale(cookieLocale)) {
+		const headerStore = await headers()
+		locale = detectLocaleFromAcceptLanguage(headerStore.get('accept-language'))
+	}
 
 	return {
 		locale,
-		messages: {
-			...(await import(`./${locale}/about.json`)).default,
-			...(await import(`./${locale}/contact.json`)).default,
-			...(await import(`./${locale}/default.json`)).default,
-			...(await import(`./${locale}/game.json`)).default,
-			...(await import(`./${locale}/hero.json`)).default,
-			...(await import(`./${locale}/project.json`)).default,
-			...(await import(`./${locale}/skills.json`)).default,
-			...(await import(`./${locale}/seo.json`)).default,
-			...(await import(`./${locale}/not-found.json`)).default,
-			...(await import(`./${locale}/experiences.json`)).default,
-			...(await import(`./${locale}/education.json`)).default,
-		},
+		messages: await loadMessages(locale),
 		timeZone: 'America/Sao_Paulo',
 		now: new Date(),
 		formats: {

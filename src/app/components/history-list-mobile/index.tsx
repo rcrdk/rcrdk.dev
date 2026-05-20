@@ -1,5 +1,5 @@
-import { HistoryListMobileItem } from '@/app/[locale]/components/history-list-mobile/item'
-import { HistoryCommonIntro } from '@/app/[locale]/components/intro'
+import { HistoryListMobileItem } from '@/app/components/history-list-mobile/item'
+import { HistoryCommonIntro } from '@/app/components/intro'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import type { HistoryItem } from '@/types/history'
 

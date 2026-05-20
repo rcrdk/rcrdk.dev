@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { HistoryCommonInfo } from '@/app/[locale]/components/history-info'
-import { ProjectCard } from '@/app/[locale]/components/project-card'
+import { HistoryCommonInfo } from '@/app/components/history-info'
+import { ProjectCard } from '@/app/components/project-card'
 import type { HistoryItem } from '@/types/history'
 
 interface Props {
