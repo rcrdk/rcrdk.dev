@@ -1,0 +1,55 @@
+---
+description: Prefer .at() over bracket notation for array element access
+alwaysApply: true
+---
+
+# Array Access
+
+### Prefer .at() over Bracket Notation
+
+- Always use `.at()` method instead of bracket notation `[]` for array element access.
+- The `.at()` method is safer, supports negative indices, and explicitly returns `undefined` for out-of-bounds access.
+
+- ✅ Good:
+
+  ```typescript
+  const firstItem = array.at(0)
+  const lastItem = array.at(-1)
+  const secondItem = array.at(1)
+  ```
+
+- ❌ Bad:
+  ```typescript
+  const firstItem = array[0] // can be undefined with noUncheckedIndexedAccess
+  const lastItem = array[array.length - 1] // verbose and error-prone
+  const secondItem = array[1] // unsafe access
+  ```
+
+### Benefits of .at()
+
+- **Negative indices**: Access elements from the end of the array using negative numbers
+- **Explicit undefined**: Returns `undefined` for out-of-bounds access instead of potentially throwing
+- **Type safety**: Works better with TypeScript's `noUncheckedIndexedAccess` setting
+- **Consistency**: More explicit about the possibility of undefined return values
+
+### When to Use
+
+- Use `.at()` for:
+  - Accessing array elements by index
+  - Accessing elements from the end of arrays (negative indices)
+  - Any array element access where the index might be out of bounds
+  - Working with arrays from APIs or external sources
+
+### Combining with Optional Chaining
+
+- When accessing array elements on potentially undefined objects, combine with optional chaining:
+  - ✅ Good:
+    ```typescript
+    const firstItem = data?.items?.at(0)
+    const lastItem = results?.at(-1)
+    ```
+  - ❌ Bad:
+    ```typescript
+    const firstItem = data?.items?.[0]
+    const lastItem = results?.[results.length - 1]
+    ```
