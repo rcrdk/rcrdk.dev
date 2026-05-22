@@ -11,13 +11,41 @@
 				"title": "Back-End"
 			},
 			{
-				"id": "mobile",
-				"title": "Mobile"
+				"id": "apis",
+				"title": "APIs"
+			},
+			{
+				"id": "libraries",
+				"title": "Bibliotecas"
+			},
+			{
+				"id": "testing-and-tooling",
+				"title": "Testes e Tooling"
 			},
 			{
 				"id": "tools",
 				"title": "Softwares e Ferramentas"
+			},
+			{
+				"id": "mobile",
+				"title": "Mobile"
+			},
+			{
+				"id": "soft-skills",
+				"title": "Soft Skills"
 			}
-		]
+		],
+		"softSkills": {
+			"communication": "Comunicação",
+			"team-collaboration": "Trabalho em equipe",
+			"problem-solving": "Resolução de problemas",
+			"critical-thinking": "Pensamento crítico",
+			"code-review": "Code review",
+			"time-management": "Gestão de tempo",
+			"technical-writing": "Documentação técnica",
+			"continuous-learning": "Aprendizado contínuo",
+			"ownership": "Ownership",
+			"ai-assisted-development": "Desenvolvimento assistido por IA"
+		}
 	}
 }

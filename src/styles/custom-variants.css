@@ -29,3 +29,9 @@
 		@slot;
 	}
 }
+
+@custom-variant skills-tablet {
+	@media (width >= 40rem) and (width < 64rem) {
+		@slot;
+	}
+}

@@ -1,12 +1,14 @@
 import type { SkillItem as SkillItemType } from '@/data/skills'
 import { cn } from '@/utils/tailwind-cn'
 
-type Props = {
+interface Props {
 	skill: SkillItemType
+	label?: string
 }
 
-export function Skill({ skill }: Readonly<Props>) {
+export function Skill({ skill, label }: Readonly<Props>) {
 	const { Icon, title, fill } = skill
+	const displayTitle = label ?? title
 
 	const shouldNotFill = fill === false
 
@@ -16,7 +18,7 @@ export function Skill({ skill }: Readonly<Props>) {
 				<Icon className={cn(shouldNotFill && '!fill-none')} />
 			</span>
 
-			<span className="xs:leading-normal xs:pe-1 block leading-none font-medium">{title}</span>
+			<span className="xs:leading-normal xs:pe-1 block leading-none font-medium">{displayTitle}</span>
 		</p>
 	)
 }

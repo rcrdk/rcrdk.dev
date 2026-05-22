@@ -14,6 +14,18 @@ import { useHaptics } from '@/hooks/use-haptics'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { SkillCategoryButton } from './category-button'
 
+type SoftSkillTranslationKey =
+	| 'communication'
+	| 'team-collaboration'
+	| 'problem-solving'
+	| 'critical-thinking'
+	| 'code-review'
+	| 'time-management'
+	| 'technical-writing'
+	| 'continuous-learning'
+	| 'ownership'
+	| 'ai-assisted-development'
+
 export function Skills() {
 	const __ = useTranslations('Skills')
 	const categories = __.raw('categories') as { id: SkillCategories; title: string }[]
@@ -55,8 +67,8 @@ export function Skills() {
 			</AnimatedContent>
 
 			<AnimatedContent>
-				<div className="scrollbar-hidden max-xs:-mx-6 max-xs:px-6 overflow-x-auto max-sm:-mx-12 max-sm:flex max-sm:w-screen max-sm:!max-w-screen max-sm:px-12 sm:px-0">
-					<div className="squircle-rounded inline-flex min-w-fit items-center rounded-2xl bg-black/5 dark:bg-white/10">
+				<div className="scrollbar-hidden max-xs:-mx-6 max-xs:px-6 max-sm:-mx-12 max-sm:flex max-sm:w-screen max-sm:!max-w-screen max-sm:overflow-x-auto max-sm:px-12 lg:px-0">
+					<div className="squircle-rounded skills-tablet:flex-wrap inline-flex min-w-fit items-center rounded-2xl bg-black/5 sm:!pe-[20%] md:!pe-[30%] lg:!pe-0 dark:bg-white/10">
 						{categories.map((item) => (
 							<SkillCategoryButton
 								key={item.id}
@@ -88,7 +100,14 @@ export function Skills() {
 									exit={{ opacity: 0, y: -40, scale: 0.8 }}
 									transition={{ ...DEFAULT_MOTION_SPRING_CONFIG, delay: index * 0.015 }}
 								>
-									<Skill skill={item} />
+									<Skill
+										skill={item}
+										label={
+											selectedCategory === 'soft-skills'
+												? __(`softSkills.${item.title as SoftSkillTranslationKey}`)
+												: undefined
+										}
+									/>
 								</MotionDiv>
 							))}
 						</div>

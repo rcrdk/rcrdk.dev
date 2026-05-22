@@ -7,7 +7,7 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		slug: 'rosinha-webapp',
 		image: '/projects/rosinha-webapp.webp',
 		categories: ['Web App'],
-		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Sass', 'HTML', 'CSS', 'Context API', 'React Hook Form', 'React Query', 'Zod'],
+		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Sass', 'HTML', 'CSS', 'Context API', 'Bootstrap', 'React Hook Form', 'TanStack Query', 'Zod', 'Axios', 'date-fns'],
 		year: 2023,
 		links: {
 			behance: 'https://www.behance.net/gallery/204162471/Meu-Rosinha-organizacao-para-consultoras-de-beleza',
@@ -45,7 +45,7 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		slug: 'rosinha-website',
 		image: '/projects/rosinha-website.webp',
 		categories: ['Website'],
-		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Stitches', 'HTML', 'CSS'],
+		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'JavaScript', 'Styled Components', 'Stitches', 'CSS-in-JS', 'HTML', 'CSS'],
 		year: 2024,
 		links: {
 			behance: 'https://www.behance.net/gallery/204372983/Meu-Rosinha-Website',
@@ -79,7 +79,7 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 			github: null,
 			website: 'https://loja.meurosinha.com.br/meurosinha',
 		},
-		stack: ['Laravel', 'JavaScript', 'Sass', 'HTML', 'CSS'],
+		stack: ['PHP', 'Laravel', 'JavaScript', 'Sass', 'Bootstrap', 'HTML', 'CSS', 'APIs Rest', 'Axios'],
 		year: 2022,
 		'pt-br': {
 			title: 'Meu Rosinha: Lojinha Online',
@@ -100,7 +100,7 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 			{ url: '/project/meu-rosinha-online-store/mobile-store.jpg', format: 'mobile' },
 		],
 		attributions: [
-			{ id: 'rcrdk', roles: ['frontEnd'] },
+			{ id: 'rcrdk', roles: ['frontEnd', 'designer'] },
 			{ id: 'cleitokarloh', roles: ['backEnd'] },
 			{ id: 'meuRosinha', roles: ['company'] },
 		],

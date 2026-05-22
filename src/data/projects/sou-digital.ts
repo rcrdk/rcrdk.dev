@@ -458,7 +458,7 @@ export const SOU_DIGITAL_PROJECTS: HistoryProject[] = [
 		image: '/projects/chilique-da-mamae.webp',
 		categories: ['eCommerce'],
 		links: { behance: 'https://www.behance.net/gallery/166966545/Chilique-da-Mamae', github: null, website: 'https://www.chiliquedamamae.com.br/' },
-		stack: ['Tray', 'PHP', 'Twig Template Engine', 'JavaScript', 'Sass', 'HTML', 'CSS'],
+		stack: ['PHP', 'JavaScript', 'Sass', 'HTML', 'CSS'],
 		year: 2023,
 		'pt-br': { title: 'Chilique da mamãe', description: 'Chilique da Mamãe é uma marca de moda infantil que oferece roupas criativas e sustentáveis para crianças de 1 a 10 anos. Com sede em Jaraguá do Sul, Santa Catarina, a empresa se destaca por desenvolver estampas divertidas e inusitadas, conectando infância, cultura brasileira e sustentabilidade.' },
 		en: { title: 'Chilique da mamãe', description: 'Chilique da Mamãe is a children’s fashion brand that offers creative and sustainable clothing for children aged 1 to 10 years old. Based in Jaraguá do Sul, Santa Catarina, Brazil, the company stands out for developing fun and unique prints, connecting childhood, Brazilian culture, and sustainability.' },
