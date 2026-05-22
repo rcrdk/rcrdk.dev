@@ -76,7 +76,13 @@ export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }
 	}
 
 	return (
-		<Dialog open={open} onOpenChange={onOpenChange} mode={dialogContentSize} disableTheme={disableTheme}>
+		<Dialog
+			open={open}
+			onOpenChange={onOpenChange}
+			mode={dialogContentSize}
+			disableTheme={disableTheme}
+			aria-describedby={undefined}
+		>
 			<div className="w-full overflow-hidden">
 				<ProjectImages
 					image={data.image}

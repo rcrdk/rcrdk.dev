@@ -17,6 +17,7 @@ interface DialogProps {
 	children: React.ReactNode
 	hasTetris?: boolean
 	disableTheme?: boolean
+	ariaDescribedby?: string
 }
 
 export function Dialog({
@@ -26,6 +27,7 @@ export function Dialog({
 	hasTetris = false,
 	children,
 	disableTheme = false,
+	ariaDescribedby,
 }: Readonly<DialogProps>) {
 	const browser = useDetectBrowser()
 	const __ = useTranslations('Default')
@@ -106,6 +108,7 @@ export function Dialog({
 							)}
 							onOpenAutoFocus={onOpenAutoFocus}
 							onPointerDownOutside={onPointerDownOutside}
+							aria-describedby={ariaDescribedby}
 						>
 							{isGameMode && (
 								<div
