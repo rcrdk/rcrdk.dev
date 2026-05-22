@@ -31,13 +31,13 @@ export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
 
 	return (
 		<div className="squircle-rounded flex min-w-full flex-col rounded-3xl border border-black/15 dark:border-white/20">
-			<div className="flex flex-col p-6">
+			<div className="layout-xl:p-10 flex flex-col p-6">
 				<HistoryCommonInfo data={data} />
 			</div>
 
 			{hasProjects && (
 				<div data-nested-swiper className="mt-auto w-full">
-					<Swiper {...SWIPER_CONFIG} className="w-full !p-6 !pt-0">
+					<Swiper {...SWIPER_CONFIG} className="layout-xl:!p-10 !layout-xl:!pt-0 w-full !p-6 !pt-0">
 						{visibleProjects.map((project) => (
 							<SwiperSlide className={SLIDE_CLASSNAME} key={project.id}>
 								<ProjectCard data={project} />

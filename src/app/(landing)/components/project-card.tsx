@@ -31,7 +31,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 				className="group/project-card before:squircle-rounded squircle-rounded max-layout-breakpoint:flex-col relative flex min-h-full w-1/3 min-w-full flex-1 shrink-1 cursor-pointer overflow-hidden rounded-3xl bg-black/2 transition-colors duration-400 before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-3xl before:border before:border-black/15 before:transition-colors before:duration-400 hover:bg-black/6 hover:before:border-black/30 dark:bg-white/10 dark:before:border-white/20 dark:hover:bg-white/12 dark:hover:before:border-white/20"
 				onClick={() => handleOpenChange(true)}
 			>
-				<div className="max-layout-breakpoint:w-full relative aspect-101/79 w-1/3 shrink-0">
+				<div className="max-layout-breakpoint:w-full layout-xl:w-5/12 relative aspect-101/79 w-1/3 shrink-0">
 					{data.image && <Image src={data.image} alt={title} width={200} height={200} />}
 					{!data.image && (
 						<IconPhotoOff
