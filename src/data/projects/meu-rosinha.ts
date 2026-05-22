@@ -60,7 +60,7 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 			title: 'Meu Rosinha: Website',
 			description: 'Rosinha is a management tool created in 2016, designed especially for beauty consultants, product resellers, and entrepreneurs. Built to be an intelligent assistant, it simplifies business operations and drives better results. \n This is the official website, created to showcase the tool’s key features and benefits. This new version reflects the changes and innovations introduced in major updates over the past years, with many more to come.',
 		},
-		// TODO: Add gallery
+		// TODO: Gallery, Description [Introdução, Meu Papel, Desafios técnicos, Impacto]
 		gallery: [],
 		attributions: [
 			{ id: 'rcrdk', roles: ['frontEnd', 'designer'] },

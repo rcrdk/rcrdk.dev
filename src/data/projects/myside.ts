@@ -1,6 +1,6 @@
 import type { HistoryProject } from '@/types/history'
 
-// TODO: Add descriptions and gallery
+// TODO: Gallery, Description [Introdução, Meu Papel, Desafios técnicos, Impacto]
 export const MYSIDE_PROJECTS: HistoryProject[] = [
 	{
 		id: 'heropwa',
