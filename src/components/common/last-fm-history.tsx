@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react'
@@ -23,18 +23,19 @@ export function LastFmHistory() {
 
 	const { data, isFetching, isLoading } = useLastFM({ enabled: open })
 
-	function handleToggleVisibility() {
-		setOpen((prev) => !prev)
-		onCompleteTask('now-playing')
-	}
-
 	const tracks = data?.tracks?.slice(0, 7)
+	const hasLoadedTracks = Boolean(tracks?.length) && !isFetching && !isLoading
 
-	const shouldDisplayList = tracks && !isFetching && !isLoading
+	useEffect(() => {
+		if (!open || !hasLoadedTracks) return
+		onCompleteTask('now-playing')
+	}, [open, hasLoadedTracks, onCompleteTask])
+
+	const shouldDisplayList = hasLoadedTracks
 	const shouldDisplaySkeletons = isLoading || isFetching || !tracks
 
 	return (
-		<Dropdown.Root open={open} onOpenChange={handleToggleVisibility}>
+		<Dropdown.Root open={open} onOpenChange={setOpen}>
 			<Dropdown.Trigger asChild>
 				<Button variant="discret" icon className="layout:flex hidden" aria-label={__('lastfm.title')}>
 					<IconMusic aria-hidden />
