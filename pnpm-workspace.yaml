@@ -1,4 +1,5 @@
 packages:
   - .
-allowBuilds:
-  sharp: true
+
+onlyBuiltDependencies:
+  - sharp
