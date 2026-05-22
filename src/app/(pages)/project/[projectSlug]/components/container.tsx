@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Skill } from '@/components/ui/skill'
 import type { LocalesType } from '@/i18n/config'
-import type { HistoryProject } from '@/types/history'
+import type { HistoryProject, HistoryProjectDescription } from '@/types/history'
 import { formatList } from '@/utils/format-list'
 import { getProjectAttributions } from '@/utils/get-project-attributions'
 import { getProjectSkills } from '@/utils/get-project-skills'
@@ -43,6 +43,35 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 	const hasGallery = data.gallery.length > 0
 	const hasLinks = data.links.website || data.links.github || data.links.behance
 
+	const renderDescription = (description: HistoryProjectDescription) => {
+		if (typeof description === 'string')
+			return (
+				<p
+					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&>a]:underline"
+					dangerouslySetInnerHTML={{ __html: description }}
+				/>
+			)
+
+		return description.map((item) => {
+			if (item.type === 'title')
+				return (
+					<h2
+						key={item.value}
+						className="font-heading mb-6 text-2xl font-bold tracking-tight text-balance md:text-3xl lg:text-4xl dark:text-white [&:not(:first-child)]:mt-8"
+						dangerouslySetInnerHTML={{ __html: item.value }}
+					/>
+				)
+
+			return (
+				<p
+					key={item.value}
+					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&:not(:first-child)]:mt-4 [&>a]:underline"
+					dangerouslySetInnerHTML={{ __html: item.value }}
+				/>
+			)
+		})
+	}
+
 	return (
 		<div className="w-full overflow-hidden bg-black/2">
 			<ProjectImages
@@ -57,11 +86,11 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 
 			<Container sideSpacing="pageContent">
 				<div className="text-base sm:text-lg lg:pt-[5vw]">
-					<h1 className="font-heading mb-6 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl dark:text-white">
+					<h1 className="font-heading mb-8 text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl dark:text-white">
 						{title}
 					</h1>
 
-					<p className="text-pretty text-black/75 dark:text-white/75">{description}</p>
+					<div>{renderDescription(description)}</div>
 
 					{description && <hr className="my-7 border-black/15 md:my-12 dark:border-white/15" />}
 

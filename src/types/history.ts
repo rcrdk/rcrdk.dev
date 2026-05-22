@@ -22,9 +22,11 @@ export type HistoryItem = {
 	projects: HistoryProject[]
 }
 
+export type HistoryProjectDescription = string | { type: 'title' | 'text'; value: string }[]
+
 type HistoryProjectTranslatedObject = {
 	title: string
-	description: string
+	description: HistoryProjectDescription
 }
 
 type TranslatedRecord = Record<LocalesType, HistoryProjectTranslatedObject>

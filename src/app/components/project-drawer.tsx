@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog } from '@/components/ui/dialog'
 import { Skill } from '@/components/ui/skill'
 import type { LocalesType } from '@/i18n/config'
-import type { HistoryProject } from '@/types/history'
+import type { HistoryProject, HistoryProjectDescription } from '@/types/history'
 import { formatList } from '@/utils/format-list'
 import { getProjectAttributions } from '@/utils/get-project-attributions'
 import { getProjectSkills } from '@/utils/get-project-skills'
@@ -46,6 +46,35 @@ export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }
 
 	const dialogContentSize = hasGallery ? 'projectWithGallery' : 'projectWithCover'
 
+	const renderDescription = (description: HistoryProjectDescription) => {
+		if (typeof description === 'string')
+			return (
+				<p
+					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&>a]:underline"
+					dangerouslySetInnerHTML={{ __html: description }}
+				/>
+			)
+
+		return description.map((item) => {
+			if (item.type === 'title')
+				return (
+					<h2
+						key={item.value}
+						className="font-heading mb-6 text-xl font-bold tracking-tight text-balance md:text-2xl lg:text-3xl dark:text-white [&:not(:first-child)]:mt-6"
+						dangerouslySetInnerHTML={{ __html: item.value }}
+					/>
+				)
+
+			return (
+				<p
+					key={item.value}
+					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&:not(:first-child)]:mt-2 [&>a]:underline"
+					dangerouslySetInnerHTML={{ __html: item.value }}
+				/>
+			)
+		})
+	}
+
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange} mode={dialogContentSize} disableTheme={disableTheme}>
 			<div className="w-full overflow-hidden">
@@ -74,7 +103,7 @@ export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }
 						</h5>
 					</DialogTitle>
 
-					<p className="text-pretty text-black/75 dark:text-white/75">{description}</p>
+					<div>{renderDescription(description)}</div>
 
 					{description && (
 						<hr

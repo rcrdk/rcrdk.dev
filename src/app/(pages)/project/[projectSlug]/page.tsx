@@ -27,10 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const locale = (await getLocale()) as LocalesType
 	const __ = await getTranslations('Seo')
 
-	const { title: projectTitle, description: projectDescription } = project[locale]
+	const { title: projectTitle } = project[locale]
 
 	const title = `${projectTitle} | ${__('title')}`
-	const description = projectDescription || undefined
 	const url = `${env.NEXT_PUBLIC_APP_URL}/project/${projectSlug}`
 
 	const imageSelected = project.image ?? project.gallery.at(0)?.url
@@ -43,10 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		robots: ignorePagesRobots,
 		title,
-		description,
 		openGraph: {
 			title,
-			description,
 			url,
 			type: 'article',
 			...openGraphImages,
@@ -54,7 +51,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		twitter: {
 			card: imageSelected ? 'summary_large_image' : 'summary',
 			title,
-			description,
 			...twitterImages,
 		},
 		alternates: { canonical: url },

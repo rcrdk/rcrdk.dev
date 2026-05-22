@@ -11,7 +11,10 @@ export const MYSIDE_PROJECTS: HistoryProject[] = [
 		links: { behance: null, github: null, website: 'https://myside.com.br' },
 		stack: ['React', 'Next.js', 'TypeScript', 'TailwindCSS', 'shadcn/ui', 'Radix UI', 'Jest', 'React Testing Library', 'APIs Rest', 'Figma', 'Browser APIs', 'React Query', 'React Hook Form', 'Zod', 'Framer Motion'],
 		year: 2025,
-		'pt-br': { title: 'Hero Mobile', description: '' },
+		'pt-br': {
+			title: 'Hero Mobile',
+			description: '',
+		},
 		en: { title: 'Hero Mobile', description: '' },
 		gallery: [],
 		attributions: [

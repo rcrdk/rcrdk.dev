@@ -28,7 +28,7 @@ export function HeroAboutDrawer() {
 				<span className="font-medium">{__('buttons.about')}</span>
 			</Button>
 
-			{/* TODO: Add contents */}
+			{/* TODO: Add contents, Use dialog, Remove Drawer component */}
 			<DrawerContent size="full" className="h-auto">
 				<DrawerHandler />
 				<DrawerTitle className="text-center text-[10rem]">👀</DrawerTitle>
