@@ -4,7 +4,8 @@ import type { HistoryProject } from '@/types/history'
 export const MYSIDE_PROJECTS: HistoryProject[] = [
 	{
 		id: 'heropwa',
-		companyId: 'myside',
+		slug: 'hero-mobile',
+		companySlug: 'myside',
 		categories: ['Web App', 'PWA'],
 		image: '/projects/hero-mobile.jpg',
 		links: { behance: null, github: null, website: 'https://myside.com.br' },
@@ -20,11 +21,11 @@ export const MYSIDE_PROJECTS: HistoryProject[] = [
 			{ id: 'leonardoRibeiro', roles: ['productDesigner'] },
 			{ id: 'mySide', roles: ['company'] },
 		],
-		handler: { backgroundColor: '#fff', opacity: 1 },
 	},
 	{
 		id: 'herodesktop',
-		companyId: 'myside',
+		slug: 'hero-desktop',
+		companySlug: 'myside',
 		categories: ['Web App'],
 		image: '/projects/hero-desktop.jpg',
 		links: { behance: null, github: null, website: 'https://myside.com.br' },
@@ -39,6 +40,5 @@ export const MYSIDE_PROJECTS: HistoryProject[] = [
 			{ id: 'leonardoRibeiro', roles: ['productDesigner'] },
 			{ id: 'mySide', roles: ['company'] },
 		],
-		handler: { backgroundColor: '#000', opacity: 1 },
 	},
 ]

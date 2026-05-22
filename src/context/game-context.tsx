@@ -8,8 +8,8 @@ import type { GameTaskTypes } from '@/data/game-tasks'
 import { GAME_TASKS } from '@/data/game-tasks'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
+import type { LocalesType } from '@/i18n/config'
 import { clearGameLocalStorage, GAME_LANGUAGE_CHANGED_KEY, setLanguageChangedDuringGame } from '@/i18n/game'
-import type { LocalesType } from '@/i18n/routing'
 
 const TOAST_DURATION = 20000
 const MEDIA_QUERY_MIN_WIDTH = '70rem'
@@ -36,7 +36,7 @@ interface GameContextDataProps {
 	showGameTasks: boolean
 	onShowGameTasks: VoidFunction
 	showGameTetris: boolean
-	onShowGameTetris: VoidFunction
+	onShowGameTetris: (open: boolean) => void
 	isGameCompleted: boolean
 	isGameActive: boolean
 	onActivateGame: VoidFunction
@@ -146,11 +146,15 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		setShowGameModal((prev) => !prev)
 	}
 
-	function onShowGameTetris() {
-		onCompleteTask('tetris')
+	function onShowGameTetris(open: boolean) {
+		if (open) {
+			setShowGameModal(false)
+			setShowGameTetris(true)
+			return
+		}
 
-		setShowGameModal(false)
-		setShowGameTetris((prev) => !prev)
+		setShowGameTetris(false)
+		onCompleteTask('tetris')
 	}
 
 	function onShowGameTasks() {

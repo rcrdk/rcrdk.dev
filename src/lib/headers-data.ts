@@ -1,7 +1,7 @@
 import { headers } from 'next/headers'
 import { userAgentFromString } from 'next/server'
 
-export async function getHeadersData() {
+export const getHeadersData = async () => {
 	const headersData = await headers()
 	const getUserAgentString = headersData.get('user-agent') ?? ''
 	const getUserIp = headersData.get('x-forwarded-for')

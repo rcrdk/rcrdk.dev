@@ -32,7 +32,12 @@ const LOCALE_INDICATOR_SPRING = {
 	mass: 0.45,
 }
 
-export function LocaleSwitcher() {
+interface Props {
+	variant?: 'vertical' | 'horizontal'
+}
+
+export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
+	const isHorizontal = variant === 'horizontal'
 	const __ = useTranslations('Default')
 	const { locale: currentLocale, setLocale } = useLocaleSwitcher()
 	const { triggerHaptic } = useHaptics()
@@ -74,7 +79,11 @@ export function LocaleSwitcher() {
 
 			<div
 				ref={containerRef}
-				className="layout:w-12 layout:h-auto layout:px-0 layout:py-2 layout:flex-col squircle-rounded relative flex h-12 items-center gap-2 rounded-xl bg-black/5 px-2 dark:bg-white/10"
+				className={cn(
+					'squircle-rounded relative flex h-12 items-center gap-2 rounded-xl bg-black/5 dark:bg-white/10',
+					isHorizontal && 'w-auto px-2',
+					!isHorizontal && 'layout:w-12 layout:h-auto layout:flex-col layout:px-0 layout:py-2 px-2',
+				)}
 			>
 				{indicator && (
 					<MotionDiv

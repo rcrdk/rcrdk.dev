@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { LocalesType } from '@/i18n/routing'
+import type { LocalesType } from '@/i18n/config'
 
 const ROLES_KEYS = ['frontEnd', 'backEnd', 'productDesigner', 'designer', 'fullStack', 'developmentAgency', 'communicationAgency', 'designStudio', 'school', 'designByClient', 'company'] as const
 
@@ -48,7 +48,7 @@ export const ATTRIBUTIONS = {
 	leonardoRibeiro: {
 		name: 'Leonardo Ribeiro',
 		avatarUrl: '/users/leonardo-ribeiro.webp',
-		url: 'https://www.linkedin.com/in/leonardoribeiropereira',
+		url: 'https://www.leonardojrpereira.com',
 	},
 	mySide: {
 		name: 'MySide',

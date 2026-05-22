@@ -2,8 +2,9 @@ import type { HistoryProject } from '@/types/history'
 
 export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 	{
-		companyId: 'meu-rosinha',
+		companySlug: 'meu-rosinha',
 		id: 'meu-rosinha-webapp',
+		slug: 'rosinha-webapp',
 		image: '/projects/rosinha-webapp.webp',
 		categories: ['Web App'],
 		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Sass', 'HTML', 'CSS', 'Context API', 'React Hook Form', 'React Query', 'Zod'],
@@ -39,8 +40,9 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		],
 	},
 	{
-		companyId: 'meu-rosinha',
+		companySlug: 'meu-rosinha',
 		id: 'meu-rosinha-website',
+		slug: 'rosinha-website',
 		image: '/projects/rosinha-website.webp',
 		categories: ['Website'],
 		stack: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Stitches', 'HTML', 'CSS'],
@@ -67,8 +69,9 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		],
 	},
 	{
-		companyId: 'meu-rosinha',
+		companySlug: 'meu-rosinha',
 		id: 'meu-rosinha-online-store',
+		slug: 'rosinha-online-store',
 		image: '/projects/rosinha-stores.webp',
 		categories: ['Web App'],
 		links: {

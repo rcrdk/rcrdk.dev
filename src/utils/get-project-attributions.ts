@@ -1,5 +1,5 @@
 import { ATTRIBUTIONS, ROLES } from '@/data/attributions'
-import type { LocalesType } from '@/i18n/routing'
+import type { LocalesType } from '@/i18n/config'
 import type { HistoryProjectAttribution } from '@/types/history'
 
 export type ProjectWithAttribution = {

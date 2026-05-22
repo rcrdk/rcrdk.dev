@@ -8,6 +8,7 @@ const baseVariants = cva('w-full max-w-full', {
 		sideSpacing: {
 			base: 'xs:px-6 px-4 sm:px-8 md:px-10',
 			lg: 'xs:px-12 px-6 sm:px-16 md:px-20',
+			pageContent: '!px-[5vw] lg:!px-[9vw]',
 		},
 	},
 })

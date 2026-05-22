@@ -71,7 +71,7 @@
 	@keyframes dialogContentShow {
 		from {
 			opacity: 0;
-			transform: translateY(4%) scale(0.96);
+			transform: translateY(20vh);
 		}
 		to {
 			opacity: 1;
@@ -86,7 +86,7 @@
 		}
 		to {
 			opacity: 0;
-			transform: translateY(-4%) scale(0.96);
+			transform: translateY(20vh);
 		}
 	}
 

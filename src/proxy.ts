@@ -7,11 +7,25 @@ import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from '@/i18n/config'
 import { detectLocaleFromAcceptLanguage } from '@/i18n/detect-locale'
 
 const LESS_THAN_A_YEAR = 60 * 60 * 24 * 30 * 12
+const NOINDEX_HEADER = 'noindex, nofollow, noarchive'
+const STATIC_FILE_EXTENSION = /\.(avif|gif|ico|jpe?g|pdf|png|svg|webp)$/i
+
+const isIgnorePagePath = (pathname: string) => {
+	const projectPage = pathname.match(/^\/project\/([^/]+)$/)
+	if (projectPage) return !STATIC_FILE_EXTENSION.test(projectPage[1])
+
+	const companyProjectsPage = pathname.match(/^\/projects\/([^/]+)$/)
+	if (companyProjectsPage) return !STATIC_FILE_EXTENSION.test(companyProjectsPage[1])
+
+	return false
+}
 
 export default async function proxy(request: NextRequest & { ip?: string }) {
 	const response = NextResponse.next()
 
 	response.headers.set('x-forwarded-for', request.ip ?? '')
+
+	if (isIgnorePagePath(request.nextUrl.pathname)) response.headers.set('X-Robots-Tag', NOINDEX_HEADER)
 
 	const doesCookieExists = request.cookies.has(COOKIE_KEYS.userKey)
 

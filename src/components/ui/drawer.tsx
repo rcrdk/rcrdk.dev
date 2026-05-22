@@ -58,7 +58,7 @@ function DrawerContent({ className, children, size = 'center', ...props }: Reado
 					'layout:max-h-[calc(100dvh-7.5rem)] max-h-[calc(100dvh-6.625rem)]',
 					isCenter &&
 						'layout:max-w-[calc(100dvw-17rem)] layout:border-t layout:border-x mx-auto border-t md:max-w-[calc(100dvw-5rem)] md:border-x md:border-t',
-					isCenterSmall && 'layout:border-t layout:border-x mx-auto border-t md:max-w-xl md:border-x md:border-t',
+					isCenterSmall && 'layout:border-t layout:border-x mx-auto border-t md:max-w-2xl md:border-x md:border-t',
 					isFull && 'size-full border-t',
 					className,
 				)}

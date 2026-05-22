@@ -6,6 +6,7 @@
 		"list": [
 			{
 				"id": "rocketseat",
+				"slug": "rocketseat",
 				"companyWebsiteUrl": "https://www.rocketseat.com.br/",
 				"companyLinkedinUrl": "https://www.linkedin.com/school/rocketseat",
 				"companyLogo": "/companies/rocketseat.jpeg",
@@ -23,6 +24,7 @@
 			},
 			{
 				"id": "udemy",
+				"slug": "udemy",
 				"companyWebsiteUrl": "https://www.udemy.com/",
 				"companyLinkedinUrl": "https://www.linkedin.com/company/udemy",
 				"companyLogo": "/companies/udemy.jpeg",
@@ -40,6 +42,7 @@
 			},
 			{
 				"id": "laravue",
+				"slug": "laravue",
 				"companyWebsiteUrl": "https://tiagomatos.com/",
 				"companyLinkedinUrl": "https://www.linkedin.com/in/tiagomatosweb",
 				"companyLogo": "/companies/laravue.png",
@@ -55,6 +58,7 @@
 			},
 			{
 				"id": "uniasselvi",
+				"slug": "uniasselvi",
 				"companyWebsiteUrl": "https://portal.uniasselvi.com.br/",
 				"companyLinkedinUrl": "https://www.linkedin.com/school/grupo-uniasselvi",
 				"companyLogo": "/companies/uniasselvi.jpeg",

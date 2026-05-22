@@ -11,7 +11,7 @@ export function TetrisGameTaskButton() {
 	const { onShowGameTetris } = useGame()
 
 	return (
-		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={onShowGameTetris} haptic>
+		<Button variant="outline" size="xs" className="text-sm font-semibold" onClick={() => onShowGameTetris(true)} haptic>
 			{__('taskButtons.tetris')}
 		</Button>
 	)

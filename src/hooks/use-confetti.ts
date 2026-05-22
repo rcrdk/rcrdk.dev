@@ -1,4 +1,8 @@
+'use client'
+
+import { useCallback, useEffect, useRef } from 'react'
 import confetti from 'canvas-confetti'
+import type { Options } from 'canvas-confetti'
 
 import { useSoundEffect } from '@/hooks/use-sound-effect'
 
@@ -6,6 +10,8 @@ const PARTICLE_COUNT = 400
 const DEFAULT_ORIGIN_Y = 0.7
 const DELAY_CONFETTI_1 = 750
 const DELAY_CONFETTI_2 = 1500
+
+const CONFETTI_Z_INDEX = 1000
 
 const CONFETTI_CONFIGS = {
 	FIRST: { particleRatio: 0.25, spread: 26, startVelocity: 55 },
@@ -15,22 +21,38 @@ const CONFETTI_CONFIGS = {
 	FIFTH: { particleRatio: 0.1, spread: 120, startVelocity: 45 },
 } as const
 
+const CONFETTI_DEFAULTS: Options = {
+	origin: { y: DEFAULT_ORIGIN_Y },
+	zIndex: CONFETTI_Z_INDEX,
+	disableForReducedMotion: false,
+}
+
 export function useConfetti() {
 	const { playSound } = useSoundEffect()
+	const confettiRef = useRef<ReturnType<typeof confetti.create> | null>(null)
 
-	const defaults = {
-		origin: { y: DEFAULT_ORIGIN_Y },
-	}
+	useEffect(() => {
+		confettiRef.current = confetti.create(undefined, {
+			resize: true,
+			useWorker: false,
+			disableForReducedMotion: false,
+		})
 
-	function fire(particleRatio: number, options: confetti.Options) {
-		confetti({
-			...defaults,
+		return () => {
+			confettiRef.current?.reset()
+			confettiRef.current = null
+		}
+	}, [])
+
+	const fire = useCallback((particleRatio: number, options: Options) => {
+		confettiRef.current?.({
+			...CONFETTI_DEFAULTS,
 			...options,
 			particleCount: Math.floor(PARTICLE_COUNT * particleRatio),
 		})
-	}
+	}, [])
 
-	function fireConfetti() {
+	const fireConfetti = useCallback(() => {
 		const { FIRST, SECOND, THIRD, FOURTH, FIFTH } = CONFETTI_CONFIGS
 
 		const { particleRatio: firstParticleRatio, ...firstOptions } = FIRST
@@ -44,9 +66,9 @@ export function useConfetti() {
 		fire(thirdParticleRatio, thirdOptions)
 		fire(fourthParticleRatio, fourthOptions)
 		fire(fifthParticleRatio, fifthOptions)
-	}
+	}, [fire])
 
-	function fireConfettiWithSound() {
+	const fireConfettiWithSound = useCallback(() => {
 		fireConfetti()
 		playSound('confetti-pop')
 
@@ -64,7 +86,7 @@ export function useConfetti() {
 			clearTimeout(timer1)
 			clearTimeout(timer2)
 		}
-	}
+	}, [fireConfetti, playSound])
 
 	return {
 		fireConfetti,

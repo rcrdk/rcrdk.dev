@@ -110,6 +110,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
 				<Providers i18n={{ messages, locale }} shouldEnableGA={shouldEnableGA}>
 					<LocaleGameTask />
 					<KonamiCodeGameTask />
+
 					{children}
 				</Providers>
 			</body>

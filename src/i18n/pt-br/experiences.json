@@ -6,6 +6,7 @@
 		"list": [
 			{
 				"id": "myside",
+				"slug": "myside",
 				"companyWebsiteUrl": "https://myside.com.br",
 				"companyLinkedinUrl": "https://www.linkedin.com/company/myside",
 				"companyLogo": "/companies/myside.jpeg",
@@ -25,6 +26,7 @@
 			},
 			{
 				"id": "meu-rosinha",
+				"slug": "meu-rosinha",
 				"companyWebsiteUrl": "https://meurosinha.com.br",
 				"companyLinkedinUrl": "https://www.linkedin.com/company/meurosinha",
 				"companyLogo": "/companies/meu-rosinha.jpeg",
@@ -43,6 +45,7 @@
 			},
 			{
 				"id": "sou-digital",
+				"slug": "sou-digital",
 				"companyWebsiteUrl": "https://sou.digital",
 				"companyLinkedinUrl": "https://www.linkedin.com/company/soudigital",
 				"companyLogo": "/companies/sou-digital.jpeg",
@@ -61,6 +64,7 @@
 			},
 			{
 				"id": "sonica",
+				"slug": "sonica",
 				"companyWebsiteUrl": "https://sonica.xyz",
 				"companyLinkedinUrl": "https://www.linkedin.com/company/sonica",
 				"companyLogo": "/companies/sonica.jpeg",

@@ -15,5 +15,6 @@ export async function loadMessages(locale: LocalesType): Promise<AbstractIntlMes
 		...(await import(`./${locale}/not-found.json`)).default,
 		...(await import(`./${locale}/experiences.json`)).default,
 		...(await import(`./${locale}/education.json`)).default,
+		...(await import(`./${locale}/share.json`)).default,
 	}
 }

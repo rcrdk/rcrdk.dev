@@ -1,4 +1,4 @@
-@custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));
+@custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *):not(.disable-themes *):not(.disable-themes));
 
 @custom-variant layout {
 	@media (width >= 70rem) and (height >= 35rem) {
@@ -8,6 +8,12 @@
 
 @custom-variant layout-sm {
 	@media (width >= 70rem) and (height >= 47rem) {
+		@slot;
+	}
+}
+
+@custom-variant layout-xl {
+	@media (width >= 80rem) and (height >= 57rem) {
 		@slot;
 	}
 }

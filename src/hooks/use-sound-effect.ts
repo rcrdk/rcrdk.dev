@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 
 import { env } from '@/lib/env'
 
@@ -15,10 +15,10 @@ type SoundKey = keyof typeof SOUND_FILES
 export function useSoundEffect() {
 	const cricketAudioRef = useRef<HTMLAudioElement | null>(null)
 
-	function playSound(name: SoundKey) {
+	const playSound = useCallback((name: SoundKey) => {
 		const audio = new Audio(`${env.NEXT_PUBLIC_APP_URL}/audio/${SOUND_FILES[name]}`)
-		audio.play()
-	}
+		void audio.play()
+	}, [])
 
 	function getCricketAudio() {
 		if (!cricketAudioRef.current) {
