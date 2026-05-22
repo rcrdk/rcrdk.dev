@@ -11,7 +11,10 @@ import { Button } from '@/components/ui/button'
 import { Dialog } from '@/components/ui/dialog'
 import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
+import { useSoundEffect } from '@/hooks/use-sound-effect'
 import { cn } from '@/utils/tailwind-cn'
+
+const GAME_WIN_CONFETTI_DELAY = 1000
 
 export function GameModalContents() {
 	const {
@@ -32,12 +35,24 @@ export function GameModalContents() {
 	const __ = useTranslations('Game')
 
 	const { fireConfettiWithSound } = useConfetti()
+	const { playSound } = useSoundEffect()
 
 	useEffect(() => {
 		if (!isGameCompleted || !showGameModal) return
 
-		return fireConfettiWithSound()
-	}, [fireConfettiWithSound, isGameCompleted, showGameModal])
+		playSound('game-tada')
+
+		let clearConfettiTimers: (() => void) | undefined
+
+		const confettiTimer = setTimeout(() => {
+			clearConfettiTimers = fireConfettiWithSound()
+		}, GAME_WIN_CONFETTI_DELAY)
+
+		return () => {
+			clearTimeout(confettiTimer)
+			clearConfettiTimers?.()
+		}
+	}, [fireConfettiWithSound, isGameCompleted, playSound, showGameModal])
 
 	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
 	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted
