@@ -16,10 +16,6 @@ import { formatList } from '@/utils/format-list'
 import { getProjectAttributions } from '@/utils/get-project-attributions'
 import { getProjectSkills } from '@/utils/get-project-skills'
 
-interface Props {
-	data: HistoryProject
-}
-
 const BUTTON_PROPS = {
 	as: 'a',
 	variant: 'outline',
@@ -29,6 +25,10 @@ const BUTTON_PROPS = {
 	rel: 'noopener noreferrer',
 	haptic: true,
 } as const
+
+interface Props {
+	data: HistoryProject
+}
 
 export function ProjectContainer({ data }: Readonly<Props>) {
 	const locale = useLocale() as LocalesType

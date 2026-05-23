@@ -45,16 +45,17 @@ export function Skills() {
 	const updateHeight = useCallback(() => {
 		const content = contentRef.current
 		if (!content) return
+
 		const nextHeight = content.offsetHeight
 		setContentHeight((prev) => (prev === nextHeight ? prev : nextHeight))
 	}, [])
-
-	useResizeObserver(contentRef, updateHeight, { runOnMount: true })
 
 	function handleChangeCategory(category: SkillCategories) {
 		triggerHaptic()
 		setSelectedCategory(category)
 	}
+
+	useResizeObserver(contentRef, updateHeight, { runOnMount: true })
 
 	const containerHeight = contentHeight != null ? `${contentHeight}px` : 'auto'
 
@@ -91,25 +92,25 @@ export function Skills() {
 				>
 					<MotionDiv layout className="xs:gap-2 flex flex-wrap gap-1 md:gap-3">
 						<div ref={contentRef} className="xs:gap-2 flex flex-wrap gap-1 md:gap-3">
-							{skills.map((item, index) => (
-								<MotionDiv
-									key={item.title}
-									layout
-									initial={{ opacity: 0, y: 40, scale: 0.8 }}
-									animate={{ opacity: 1, y: 0, scale: 1 }}
-									exit={{ opacity: 0, y: -40, scale: 0.8 }}
-									transition={{ ...DEFAULT_MOTION_SPRING_CONFIG, delay: index * 0.015 }}
-								>
-									<Skill
-										skill={item}
-										label={
-											selectedCategory === 'soft-skills'
-												? __(`softSkills.${item.title as SoftSkillTranslationKey}`)
-												: undefined
-										}
-									/>
-								</MotionDiv>
-							))}
+							{skills.map((item, index) => {
+								const label =
+									selectedCategory === 'soft-skills'
+										? __(`softSkills.${item.title as SoftSkillTranslationKey}`)
+										: undefined
+
+								return (
+									<MotionDiv
+										key={item.title}
+										layout
+										initial={{ opacity: 0, y: 40, scale: 0.8 }}
+										animate={{ opacity: 1, y: 0, scale: 1 }}
+										exit={{ opacity: 0, y: -40, scale: 0.8 }}
+										transition={{ ...DEFAULT_MOTION_SPRING_CONFIG, delay: index * 0.015 }}
+									>
+										<Skill skill={item} label={label} />
+									</MotionDiv>
+								)
+							})}
 						</div>
 					</MotionDiv>
 				</div>

@@ -15,13 +15,6 @@ import { getProjectAttributions } from '@/utils/get-project-attributions'
 import { getProjectSkills } from '@/utils/get-project-skills'
 import { cn } from '@/utils/tailwind-cn'
 
-interface Props {
-	data: HistoryProject
-	open: boolean
-	onOpenChange: (open: boolean) => void
-	disableTheme?: boolean
-}
-
 const BUTTON_PROPS = {
 	as: 'a',
 	variant: 'outline',
@@ -31,6 +24,13 @@ const BUTTON_PROPS = {
 	rel: 'noopener noreferrer',
 	haptic: true,
 } as const
+
+interface Props {
+	data: HistoryProject
+	open: boolean
+	onOpenChange: (open: boolean) => void
+	disableTheme?: boolean
+}
 
 export function ProjectDialog({ data, open, onOpenChange, disableTheme = false }: Readonly<Props>) {
 	const locale = useLocale() as LocalesType

@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import type { Swiper as SwiperInstance } from 'swiper'
 import { Swiper, SwiperSlide, type SwiperRef } from 'swiper/react'
 
 import { HistorySliderDesktopSlide } from '@/app/(landing)/components/history-slider-desktop/slide'
 import { HistoryCommonIntro } from '@/app/(landing)/components/intro'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import type { HistoryItem } from '@/types/history'
+import { handleParentTouchEnd, handleParentTouchStart } from '@/utils/swiper'
 import { cn } from '@/utils/tailwind-cn'
 
 const RESIZE_DELAY = 150
-
-const NESTED_SWIPER_SELECTOR = '[data-nested-swiper]'
 
 const SWIPER_CONFIG = {
 	slidesPerView: 'auto',
@@ -24,16 +22,6 @@ const SWIPER_CONFIG = {
 		},
 	},
 } as const
-
-function handleParentTouchStart(swiper: SwiperInstance, event: TouchEvent | MouseEvent | PointerEvent) {
-	if (!swiper) return
-	const target = event?.target as Element | null
-	if (target?.closest?.(NESTED_SWIPER_SELECTOR)) swiper.allowTouchMove = false
-}
-
-function handleParentTouchEnd(swiper: SwiperInstance) {
-	if (swiper) swiper.allowTouchMove = true
-}
 
 interface Props {
 	title: string
@@ -56,13 +44,16 @@ export function HistorySliderDesktop({ title, buttonNextSlideText, text, list }:
 		if (!refContainer.current || typeof window === 'undefined') return
 
 		const rightOffset = document.documentElement.offsetWidth - refContainer.current.getBoundingClientRect().right
+
 		setSideOffset(rightOffset)
 		let timeout: NodeJS.Timeout
 
 		const handleResize = () => {
 			clearTimeout(timeout)
+
 			timeout = setTimeout(() => {
 				if (!refContainer.current || document.documentElement.offsetWidth < 640) return
+
 				const rightOffset = document.documentElement.offsetWidth - refContainer.current.getBoundingClientRect().right
 				setSideOffset(rightOffset)
 			}, RESIZE_DELAY)

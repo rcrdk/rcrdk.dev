@@ -10,11 +10,7 @@ import { Container } from '@/components/ui/container'
 import { Image } from '@/components/ui/image'
 import { useHistoryItemBySlug } from '@/hooks/use-history-item-by-slug'
 
-interface Props {
-	companySlug: string
-}
-
-const buttonProps = {
+export const BUTTON_PROPS = {
 	as: 'a',
 	target: '_blank',
 	rel: 'noopener noreferrer',
@@ -24,6 +20,10 @@ const buttonProps = {
 	haptic: true,
 	className: 'max-sm:w-auto max-sm:flex-1',
 } as const
+
+interface Props {
+	companySlug: string
+}
 
 export function CompanyProjectsHero({ companySlug }: Readonly<Props>) {
 	const [isOpen, setIsOpen] = useState(false)
@@ -53,17 +53,17 @@ export function CompanyProjectsHero({ companySlug }: Readonly<Props>) {
 					</div>
 
 					<div className="flex gap-2">
-						<Button {...buttonProps} as="button" title={__('company.readMore')} onClick={() => setIsOpen(!isOpen)}>
+						<Button {...BUTTON_PROPS} as="button" title={__('company.readMore')} onClick={() => setIsOpen(!isOpen)}>
 							<IconCirclePlus aria-hidden />
 							<span className="sm:hidden">{__('company.readMore')}</span>
 						</Button>
 
-						<Button {...buttonProps} href={historyItem.companyWebsiteUrl} title={__('company.websiteTitle')}>
+						<Button {...BUTTON_PROPS} href={historyItem.companyWebsiteUrl} title={__('company.websiteTitle')}>
 							<IconExternalLink aria-hidden />
 							<span className="sm:hidden">{__('company.site')}</span>
 						</Button>
 
-						<Button {...buttonProps} href={historyItem.companyLinkedinUrl} title={__('company.linkedinTitle')}>
+						<Button {...BUTTON_PROPS} href={historyItem.companyLinkedinUrl} title={__('company.linkedinTitle')}>
 							<IconBrandLinkedin aria-hidden />
 							<span className="sm:hidden">{__('company.linkedin')}</span>
 						</Button>

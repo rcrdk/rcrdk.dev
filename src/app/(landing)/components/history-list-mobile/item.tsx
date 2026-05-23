@@ -5,10 +5,6 @@ import { ProjectCard } from '@/app/(landing)/components/project-card'
 import { ViewAllProjectsCard } from '@/app/(landing)/components/view-all-projects-card'
 import type { HistoryItem } from '@/types/history'
 
-interface Props {
-	data: HistoryItem
-}
-
 const SWIPER_CONFIG = {
 	slidesPerView: 'auto',
 	spaceBetween: 12,
@@ -23,7 +19,10 @@ const SWIPER_CONFIG = {
 } as const
 
 const MAX_VISIBLE_PROJECTS = 4
-const SLIDE_CLASSNAME = '!h-auto !w-45 sm:!w-60'
+
+interface Props {
+	data: HistoryItem
+}
 
 export function HistoryListMobileItem({ data }: Readonly<Props>) {
 	const hasProjects = data.projects.length > 0
@@ -39,13 +38,13 @@ export function HistoryListMobileItem({ data }: Readonly<Props>) {
 			{hasProjects && (
 				<Swiper {...SWIPER_CONFIG} className="mt-auto w-full !overflow-visible">
 					{visibleProjects.map((project) => (
-						<SwiperSlide className={SLIDE_CLASSNAME} key={project.id}>
+						<SwiperSlide className="!h-auto !w-45 sm:!w-60" key={project.id}>
 							<ProjectCard data={project} />
 						</SwiperSlide>
 					))}
 
 					{hasMoreProjects && (
-						<SwiperSlide className={SLIDE_CLASSNAME} key={`view-all-${data.slug}`}>
+						<SwiperSlide className="!h-auto !w-45 sm:!w-60" key={`view-all-${data.slug}`}>
 							<ViewAllProjectsCard
 								href={`/projects/${data.slug}`}
 								totalCount={data.projects.length}

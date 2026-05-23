@@ -1,62 +1,11 @@
 'use client'
 
-import {
-	IconBrandBehance,
-	IconBrandDiscord,
-	IconBrandGithub,
-	IconBrandLinkedin,
-	IconBrandSpotify,
-	IconFileDescription,
-} from '@tabler/icons-react'
+import { IconBrandLinkedin, IconFileDescription } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { LINKS } from '@/config/links'
-
-const externalButtonLinkProps = {
-	as: 'a',
-	target: '_blank',
-	size: 'lg',
-	variant: 'outline',
-	icon: true,
-} as const
-
-const defaultButtonProps = {
-	as: 'a',
-	target: '_blank',
-	size: 'sm',
-	variant: 'outline',
-	className: 'xs:grow-0 grow bg-transparent dark:bg-transparent',
-	haptic: true,
-} as const
-
-const BUTTONS = [
-	{
-		href: LINKS.linkedIn,
-		labelKey: 'linkedin',
-		Icon: IconBrandLinkedin,
-	},
-	{
-		href: LINKS.github,
-		labelKey: 'github',
-		Icon: IconBrandGithub,
-	},
-	{
-		href: LINKS.behance,
-		labelKey: 'behance',
-		Icon: IconBrandBehance,
-	},
-	{
-		href: LINKS.discord,
-		labelKey: 'discord',
-		Icon: IconBrandDiscord,
-	},
-	{
-		href: LINKS.spotify,
-		labelKey: 'spotify',
-		Icon: IconBrandSpotify,
-	},
-] as const
+import { BUTTONS, DEFAULT_BUTTON_PROPS, EXTERNAL_BUTTON_LINK_PROPS } from '@/constants/contact'
 
 export function PageContact() {
 	const __ = useTranslations('Contact')
@@ -76,7 +25,7 @@ export function PageContact() {
 				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
 					{BUTTONS.map(({ labelKey, href, Icon }) => (
 						<li key={labelKey}>
-							<Button {...externalButtonLinkProps} href={href} aria-label={__(`buttons.${labelKey}`)}>
+							<Button {...EXTERNAL_BUTTON_LINK_PROPS} href={href} aria-label={__(`buttons.${labelKey}`)}>
 								<Icon aria-hidden />
 							</Button>
 						</li>
@@ -93,12 +42,12 @@ export function PageContact() {
 					</p>
 
 					<div className="xs:w-auto flex w-full gap-2">
-						<Button {...defaultButtonProps} href={LINKS.linkedIn}>
+						<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.linkedIn}>
 							<IconBrandLinkedin aria-hidden />
 							<span className="font-semibold">{__('box.button.linkedin')}</span>
 						</Button>
 
-						<Button {...defaultButtonProps} href={LINKS.resume}>
+						<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.resume}>
 							<IconFileDescription aria-hidden />
 							<span className="font-semibold">{__('box.button.cv')}</span>
 						</Button>

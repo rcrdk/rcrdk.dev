@@ -9,16 +9,21 @@ import { useHaptics } from '@/hooks/use-haptics'
 import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject } from '@/types/history'
 
+const DISCOVER_PROJECT_DELAY_MS = 2500
+
 interface Props {
 	data: HistoryProject
 }
-
-const DISCOVER_PROJECT_DELAY_MS = 2500
 
 export function ProjectCard({ data }: Readonly<Props>) {
 	const [open, setOpen] = useState(false)
 	const { onCompleteTask } = useGame()
 	const { triggerHaptic } = useHaptics()
+
+	function handleOpenChange(nextOpen: boolean) {
+		setOpen(nextOpen)
+		triggerHaptic()
+	}
 
 	useEffect(() => {
 		if (!open) return
@@ -27,11 +32,6 @@ export function ProjectCard({ data }: Readonly<Props>) {
 
 		return () => window.clearTimeout(timer)
 	}, [open, onCompleteTask])
-
-	function handleOpenChange(nextOpen: boolean) {
-		setOpen(nextOpen)
-		triggerHaptic()
-	}
 
 	const locale = useLocale() as LocalesType
 	const { title } = data?.[locale] || {}

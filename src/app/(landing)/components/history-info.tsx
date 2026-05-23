@@ -8,10 +8,6 @@ import { Image } from '@/components/ui/image'
 import type { HistoryItem } from '@/types/history'
 import { cn } from '@/utils/tailwind-cn'
 
-interface Props {
-	data: HistoryItem
-}
-
 const defaultButtonProps = {
 	as: 'a',
 	target: '_blank',
@@ -22,6 +18,10 @@ const defaultButtonProps = {
 	className: 'max-sm:grow',
 	haptic: true,
 } as const
+
+interface Props {
+	data: HistoryItem
+}
 
 export function HistoryCommonInfo({ data }: Readonly<Props>) {
 	const [isOpen, setIsOpen] = useState(false)

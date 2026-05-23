@@ -10,7 +10,7 @@ import { useResizeObserver } from '@/hooks/use-resize-observer'
 import type { LocalesType } from '@/i18n/config'
 import { cn } from '@/utils/tailwind-cn'
 
-const languagesAvailable: { prefix: LocalesType; title: string; acronym: string }[] = [
+const LANGUAGES_AVAILABLE: { prefix: LocalesType; title: string; acronym: string }[] = [
 	{
 		prefix: 'en',
 		title: 'English',
@@ -99,7 +99,7 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
 					/>
 				)}
 
-				{languagesAvailable.map((lang) => {
+				{LANGUAGES_AVAILABLE.map((lang) => {
 					const isActive = currentLocale === lang.prefix
 					const tabIndex = isActive ? -1 : undefined
 

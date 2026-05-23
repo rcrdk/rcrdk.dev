@@ -72,17 +72,6 @@ export function HeaderAvatar({ className }: Readonly<HeaderAvatarProps>) {
 		if (node && typeof document !== 'undefined') setPortalTarget(document.body)
 	}, [])
 
-	useEffect(() => {
-		clickCountRef.current = 0
-		taskCompletedRef.current = false
-		setFallingAvatars([])
-	}, [gameSessionKey])
-
-	useEffect(() => {
-		if (!isGameActive) return
-		preloadRainImages()
-	}, [isGameActive])
-
 	function spawnFallingAvatar() {
 		const rect = avatarRef.current?.getBoundingClientRect()
 		if (!rect) return
@@ -133,6 +122,17 @@ export function HeaderAvatar({ className }: Readonly<HeaderAvatarProps>) {
 		setFallingAvatars((previous) => previous.filter((avatar) => avatar.id !== id))
 	}
 
+	useEffect(() => {
+		clickCountRef.current = 0
+		taskCompletedRef.current = false
+		setFallingAvatars([])
+	}, [gameSessionKey])
+
+	useEffect(() => {
+		if (!isGameActive) return
+		preloadRainImages()
+	}, [isGameActive])
+
 	return (
 		<>
 			<span ref={setAvatarRef} className="relative inline-flex shrink-0">
@@ -156,7 +156,7 @@ export function HeaderAvatar({ className }: Readonly<HeaderAvatarProps>) {
 
 			{portalTarget &&
 				createPortal(
-					<div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden" aria-hidden>
+					<div className="pointer-events-none fixed inset-0 z-100 overflow-hidden" aria-hidden>
 						{fallingAvatars.map((avatar) => (
 							<Image
 								key={avatar.id}
@@ -171,10 +171,10 @@ export function HeaderAvatar({ className }: Readonly<HeaderAvatarProps>) {
 									width: avatar.size,
 									height: avatar.size,
 									animationDuration: `${avatar.durationMs}ms`,
-									['--avatar-size' as string]: `${avatar.size}px`,
-									['--fall-start-top' as string]: `${avatar.top}px`,
-									['--fall-rotate' as string]: `${avatar.rotation}deg`,
-									['--fall-drift' as string]: `${avatar.drift}px`,
+									'--avatar-size': `${avatar.size}px`,
+									'--fall-start-top': `${avatar.top}px`,
+									'--fall-rotate': `${avatar.rotation}deg`,
+									'--fall-drift': `${avatar.drift}px`,
 								}}
 								onAnimationEnd={() => handleFallAnimationEnd(avatar.id)}
 							/>

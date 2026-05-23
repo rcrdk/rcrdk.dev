@@ -10,7 +10,7 @@ import { trackServerEvent } from '@/services/mixpanel'
 import { getAllProjectSlugs } from '@/utils/get-all-project-slugs'
 import { getProjectBySlug } from '@/utils/get-project-by-slug'
 
-type Props = {
+interface Props {
 	params: Promise<{ projectSlug: string }>
 }
 

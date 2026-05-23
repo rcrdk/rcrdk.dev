@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { getLastFmPlayedTracks } from '@/http/get-lastfm-played-tracks'
 
-type Props = {
+interface Props {
 	enabled: boolean
 }
 

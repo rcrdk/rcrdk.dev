@@ -14,7 +14,7 @@ import type { LocalesType } from '@/i18n/config'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 
-type Props = {
+interface Props {
 	children: React.ReactNode
 }
 

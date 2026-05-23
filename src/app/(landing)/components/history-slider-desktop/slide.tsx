@@ -5,10 +5,6 @@ import { ProjectCard } from '@/app/(landing)/components/project-card'
 import { ViewAllProjectsCard } from '@/app/(landing)/components/view-all-projects-card'
 import type { HistoryItem } from '@/types/history'
 
-interface Props {
-	data: HistoryItem
-}
-
 const SWIPER_CONFIG = {
 	nested: true,
 	touchMoveStopPropagation: true,
@@ -22,7 +18,10 @@ const SWIPER_CONFIG = {
 } as const
 
 const MAX_VISIBLE_PROJECTS = 4
-const SLIDE_CLASSNAME = '!flex !h-auto !w-1/3 max-xl:!w-2/5'
+
+interface Props {
+	data: HistoryItem
+}
 
 export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
 	const hasProjects = data.projects.length > 0
@@ -39,13 +38,13 @@ export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
 				<div data-nested-swiper className="mt-auto w-full">
 					<Swiper {...SWIPER_CONFIG} className="layout-xl:!p-10 !layout-xl:!pt-0 w-full !p-6 !pt-0">
 						{visibleProjects.map((project) => (
-							<SwiperSlide className={SLIDE_CLASSNAME} key={project.id}>
+							<SwiperSlide className="!flex !h-auto !w-1/3 max-xl:!w-2/5" key={project.id}>
 								<ProjectCard data={project} />
 							</SwiperSlide>
 						))}
 
 						{hasMoreProjects && (
-							<SwiperSlide className={SLIDE_CLASSNAME} key={`view-all-${data.slug}`}>
+							<SwiperSlide className="!flex !h-auto !w-1/3 max-xl:!w-2/5" key={`view-all-${data.slug}`}>
 								<ViewAllProjectsCard
 									href={`/projects/${data.slug}`}
 									totalCount={data.projects.length}

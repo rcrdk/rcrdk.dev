@@ -11,7 +11,7 @@ import { getCompanySlugsWithProjects } from '@/utils/get-company-slugs-with-proj
 import { getHistoryItemBySlug } from '@/utils/get-history-item-by-slug'
 import { getProjectsByCompanySlug } from '@/utils/get-projects-by-company-slug'
 
-type Props = {
+interface Props {
 	params: Promise<{ companySlug: string }>
 }
 

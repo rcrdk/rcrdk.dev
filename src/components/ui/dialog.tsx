@@ -108,7 +108,7 @@ export function Dialog({
 	}
 
 	const dialogOverlayBaseClassName = cn(
-		'fixed inset-0 z-[99] bg-white/50 backdrop-blur-xs dark:bg-black/50',
+		'fixed inset-0 z-99 bg-white/50 backdrop-blur-xs dark:bg-black/50',
 		disableTheme && 'disable-themes text-content-light',
 	)
 
@@ -120,7 +120,7 @@ export function Dialog({
 	const fullscreenOverlayClassName = cn(dialogOverlayBaseClassName, 'overflow-hidden')
 
 	const fullscreenContentClassName = cn(
-		'shadow-dialog dark:shadow-dialog-inverted pointer-events-auto fixed inset-x-0 bottom-0 z-[100] flex h-[calc(100dvh_-_7.5rem)] w-full flex-col overflow-hidden rounded-t-4xl border border-black/15 bg-white outline-none select-none dark:border-white/20 dark:bg-black',
+		'shadow-dialog dark:shadow-dialog-inverted pointer-events-auto fixed inset-x-0 bottom-0 z-100 flex h-[calc(100dvh_-_7.5rem)] w-full flex-col overflow-hidden rounded-t-4xl border border-black/15 bg-white outline-none select-none dark:border-white/20 dark:bg-black',
 	)
 
 	const dialogCloseButtonClassName = cn(
@@ -150,7 +150,7 @@ export function Dialog({
 								onClick={() => handleFullscreenOpenChange(false)}
 							/>
 							<MotionDiv
-								className="pointer-events-none fixed inset-x-0 top-0 z-[101] flex h-[7.5rem] w-full items-center justify-center"
+								className="pointer-events-none fixed inset-x-0 top-0 z-101 flex h-[7.5rem] w-full items-center justify-center"
 								{...dialogCloseMotionProps}
 							>
 								<DialogComponent.Close className={dialogCloseButtonClassName} aria-label={__('close')}>
