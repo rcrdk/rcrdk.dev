@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandBehance, IconBrandGithub, IconExternalLink } from '@tabler/icons-react'
+import { IconBrandBehance, IconBrandGithub, IconExternalLink, IconPlayerPlay } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { PageContact } from '@/app/(pages)/components/contact'
@@ -41,7 +41,7 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 	const description = data[locale].description
 
 	const hasGallery = data.gallery.length > 0
-	const hasLinks = data.links.website || data.links.github || data.links.behance
+	const hasLinks = data.links.website || data.links.github || data.links.behance || data.links.video
 
 	const renderDescription = (description: HistoryProjectDescription) => {
 		if (typeof description === 'string')
@@ -143,6 +143,12 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 									{data.links.behance && (
 										<Button {...BUTTON_PROPS} href={data.links.behance} title={__('behance')}>
 											<IconBrandBehance aria-hidden />
+										</Button>
+									)}
+
+									{data.links.video && (
+										<Button {...BUTTON_PROPS} href={data.links.video} title={__('video')}>
+											<IconPlayerPlay aria-hidden />
 										</Button>
 									)}
 								</div>

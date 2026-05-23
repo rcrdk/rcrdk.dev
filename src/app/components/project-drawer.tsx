@@ -1,5 +1,5 @@
 import { DialogTitle } from '@radix-ui/react-dialog'
-import { IconBrandBehance, IconBrandGithub, IconExternalLink } from '@tabler/icons-react'
+import { IconBrandBehance, IconBrandGithub, IconExternalLink, IconPlayerPlay } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { ProjectEntity } from '@/app/components/project-entity'
@@ -42,7 +42,7 @@ export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }
 	const skills = getProjectSkills(data)
 
 	const hasGallery = data.gallery.length > 0
-	const hasLinks = data.links.website || data.links.github || data.links.behance
+	const hasLinks = data.links.website || data.links.github || data.links.behance || data.links.video
 
 	const dialogContentSize = hasGallery ? 'projectWithGallery' : 'projectWithCover'
 
@@ -180,6 +180,12 @@ export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }
 									{data.links.behance && (
 										<Button {...BUTTON_PROPS} href={data.links.behance} title={__('behance')}>
 											<IconBrandBehance aria-hidden />
+										</Button>
+									)}
+
+									{data.links.video && (
+										<Button {...BUTTON_PROPS} href={data.links.video} title={__('video')}>
+											<IconPlayerPlay aria-hidden />
 										</Button>
 									)}
 								</div>

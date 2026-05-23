@@ -32,9 +32,10 @@ type HistoryProjectTranslatedObject = {
 type TranslatedRecord = Record<LocalesType, HistoryProjectTranslatedObject>
 
 type HistoryProjectLinks = {
-	behance: string | null
-	github: string | null
-	website: string | null
+	behance?: string
+	github?: string
+	website?: string
+	video?: string
 }
 
 export type HistoryProjectAttribution = {

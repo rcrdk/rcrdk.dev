@@ -11,7 +11,6 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		year: 2023,
 		links: {
 			behance: 'https://www.behance.net/gallery/204162471/Meu-Rosinha-organizacao-para-consultoras-de-beleza',
-			github: null,
 			website: 'https://app.meurosinha.com.br',
 		},
 		'pt-br': {
@@ -49,7 +48,6 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		year: 2024,
 		links: {
 			behance: 'https://www.behance.net/gallery/204372983/Meu-Rosinha-Website',
-			github: null,
 			website: 'https://meurosinha.com.br',
 		},
 		'pt-br': {
@@ -76,7 +74,6 @@ export const MEU_ROSINHA_PROJECTS: HistoryProject[] = [
 		categories: ['Web App'],
 		links: {
 			behance: 'https://www.behance.net/gallery/204376311/Meu-Rosinha-Loja-Online',
-			github: null,
 			website: 'https://loja.meurosinha.com.br/meurosinha',
 		},
 		stack: ['PHP', 'Laravel', 'JavaScript', 'Sass', 'Bootstrap', 'HTML', 'CSS', 'APIs Rest', 'Axios'],
