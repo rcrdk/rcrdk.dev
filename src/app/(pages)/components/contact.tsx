@@ -64,7 +64,7 @@ export function PageContact() {
 	return (
 		<div className="mx-auto max-w-[768px] py-[16vw] lg:py-[9vw]">
 			<h2 className="font-heading xs:text-5xl mb-8 block text-4xl font-black tracking-tight text-balance sm:mb-12 sm:text-7xl lg:text-6xl dark:text-white">
-				{__('title')}
+				{__('pagesTitle')}
 			</h2>
 
 			<div className="mt-8 sm:mt-12">

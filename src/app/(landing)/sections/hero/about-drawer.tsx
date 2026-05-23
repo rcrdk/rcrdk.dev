@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Image from 'next/image'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { IconArrowLeft, IconUserCircle } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
@@ -7,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import avatarPicture from '@/assets/avatar-v2.jpeg'
 import { Button } from '@/components/ui/button'
 import { Dialog } from '@/components/ui/dialog'
+import { Image } from '@/components/ui/image'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
 
@@ -37,22 +37,21 @@ export function HeroAboutDrawer() {
 			</Button>
 
 			<Dialog open={showContents} onOpenChange={setShowContents} mode="fullscreen" aria-describedby={undefined}>
-				<div className="flex min-h-full flex-col items-center justify-center gap-8 px-6 py-10 text-center sm:gap-6 sm:px-12 sm:py-14">
+				<div className="xs:gap-8 flex min-h-full flex-col items-center justify-center gap-6 px-6 py-10 text-center sm:gap-6 sm:px-12 sm:py-14">
 					<Image
 						src={avatarPicture}
 						width={280}
 						height={280}
 						alt={__('title')}
-						className="size-60 rounded-full object-cover"
-						priority
+						className="xs:size-50 size-36 rounded-full object-cover sm:size-60"
 					/>
 
-					<div className="flex max-w-[768px] flex-col gap-5">
-						<DialogComponent.Title className="font-heading xs:text-5xl text-4xl leading-none font-black tracking-tight text-balance sm:text-6xl dark:text-white">
+					<div className="xs:gap-5 flex max-w-[768px] flex-col gap-4">
+						<DialogComponent.Title className="font-heading xs:text-5xl text-3xl leading-none font-black tracking-tight text-balance sm:text-6xl dark:text-white">
 							{__('aboutDrawer.title')}
 						</DialogComponent.Title>
 
-						<p className="text-lg leading-relaxed text-balance text-black/75 sm:text-lg dark:text-white/75">
+						<p className="xs:text-lg text-base leading-relaxed text-balance text-black/75 sm:text-lg dark:text-white/75">
 							{__('aboutDrawer.description')}
 						</p>
 					</div>
