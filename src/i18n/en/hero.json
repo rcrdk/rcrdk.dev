@@ -8,7 +8,7 @@
 			"linkedin": "Connect with me on LinkedIn",
 			"github": "Check out my projects and activities on GitHub"
 		},
-		"aboutDrawer": {
+		"aboutDialog": {
 			"title": "I have bad news for you. 👀",
 			"description": "Writing about yourself, as you probably suspected, is hard. Between work, personal life, and projects, it's not easy to find time to write about yourself — but the content for this section is still on its way.",
 			"button": "Back to the site"

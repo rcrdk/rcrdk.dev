@@ -10,7 +10,7 @@ import { Image } from '@/components/ui/image'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
 
-export function HeroAboutDrawer() {
+export function HeroAboutDialog() {
 	const [showContents, setShowContents] = useState(false)
 
 	const { onCompleteTask } = useGame()
@@ -48,17 +48,17 @@ export function HeroAboutDrawer() {
 
 					<div className="xs:gap-5 flex max-w-[768px] flex-col gap-4">
 						<DialogComponent.Title className="font-heading xs:text-5xl text-3xl leading-none font-black tracking-tight text-balance sm:text-6xl dark:text-white">
-							{__('aboutDrawer.title')}
+							{__('aboutDialog.title')}
 						</DialogComponent.Title>
 
 						<p className="xs:text-lg text-base leading-relaxed text-balance text-black/75 sm:text-lg dark:text-white/75">
-							{__('aboutDrawer.description')}
+							{__('aboutDialog.description')}
 						</p>
 					</div>
 
 					<DialogComponent.Close asChild>
 						<Button variant="outline" size="lg" haptic onClick={handleCloseDrawer} className="mt-4 max-sm:w-full">
-							<span>{__('aboutDrawer.button')}</span>
+							<span>{__('aboutDialog.button')}</span>
 							<IconArrowLeft className="rotate-180" aria-hidden />
 						</Button>
 					</DialogComponent.Close>

@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { IconCircleArrowDown } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
-import { HeroAboutDrawer } from '@/app/(landing)/sections/hero/about-drawer'
+import { HeroAboutDialog } from '@/app/(landing)/sections/hero/about-dialog'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { AnimatedSplitText } from '@/components/animated/animated-split-text'
 import { Button } from '@/components/ui/button'
@@ -64,7 +64,7 @@ export function Hero() {
 							</Button>
 
 							<div className="hidden grow sm:flex">
-								<HeroAboutDrawer />
+								<HeroAboutDialog />
 							</div>
 						</div>
 
@@ -76,7 +76,7 @@ export function Hero() {
 							</li>
 
 							<li className="flex grow sm:hidden">
-								<HeroAboutDrawer />
+								<HeroAboutDialog />
 							</li>
 
 							{HERO_BUTTONS.map(({ labelKey, href, Icon, ...buttonProps }) => (

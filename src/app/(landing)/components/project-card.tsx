@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
 
-import { ProjectDrawer } from '@/app/components/project-drawer'
+import { ProjectDialog } from '@/app/components/project-dialog'
 import { Image } from '@/components/ui/image'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
@@ -68,7 +68,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 				/>
 			</button>
 
-			<ProjectDrawer data={data} open={open} onOpenChange={handleOpenChange} />
+			<ProjectDialog data={data} open={open} onOpenChange={handleOpenChange} />
 		</>
 	)
 }

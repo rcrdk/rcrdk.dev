@@ -32,7 +32,7 @@ const BUTTON_PROPS = {
 	haptic: true,
 } as const
 
-export function ProjectDrawer({ data, open, onOpenChange, disableTheme = false }: Readonly<Props>) {
+export function ProjectDialog({ data, open, onOpenChange, disableTheme = false }: Readonly<Props>) {
 	const locale = useLocale() as LocalesType
 	const __ = useTranslations('Project')
 

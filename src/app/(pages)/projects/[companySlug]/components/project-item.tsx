@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
 
-import { ProjectDrawer } from '@/app/components/project-drawer'
+import { ProjectDialog } from '@/app/components/project-dialog'
 import { Image } from '@/components/ui/image'
 import { useHaptics } from '@/hooks/use-haptics'
 import type { LocalesType } from '@/i18n/config'
@@ -52,7 +52,7 @@ export function ProjectItem({ data }: Readonly<Props>) {
 				<IconArrowRight className="absolute right-4 bottom-4 size-5 shrink-0 sm:size-6" aria-hidden />
 			</button>
 
-			<ProjectDrawer data={data} open={open} onOpenChange={handleOpenChange} disableTheme />
+			<ProjectDialog data={data} open={open} onOpenChange={handleOpenChange} disableTheme />
 		</>
 	)
 }
