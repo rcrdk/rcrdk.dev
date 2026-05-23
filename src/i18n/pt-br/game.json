@@ -13,7 +13,8 @@
 		},
 		"winner": {
 			"title": "Você mandou muito bem!",
-			"text": "Encontrou (talvez com uma ajudinha) todos os easter eggs que eu plantei aqui."
+			"text": "Encontrou (talvez com uma ajudinha) todos os easter eggs que eu plantei aqui.",
+			"celebrateAgain": "Comemorar de novo!"
 		},
 		"taskButtons": {
 			"devTools": "Já fiz isso!",

@@ -13,7 +13,8 @@
 		},
 		"winner": {
 			"title": "You just nailed it!",
-			"text": "You found (maybe with a little help) all easter eggs that a planted in here."
+			"text": "You found (maybe with a little help) all easter eggs that a planted in here.",
+			"celebrateAgain": "Celebrate again!"
 		},
 		"taskButtons": {
 			"devTools": "I just did that!",

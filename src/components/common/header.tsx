@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 
-import avatarPicture from '@/assets/avatar.jpg'
 import { AnimatedContent } from '@/components/animated/animated-content'
+import { HeaderAvatar } from '@/components/common/header-avatar'
 import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
@@ -22,9 +20,6 @@ const ANIMATION_TENSION = 60
 const ANIMATION_FRICTION = 15
 const VERTICAL_DISTANCE = 40
 const HORIZONTAL_DISTANCE = 80
-const AVATAR_WIDTH = 200
-const AVATAR_HEIGHT = 100
-
 interface HeaderInsetProps {
 	animationEnter: 'vertical' | 'horizontal'
 }
@@ -32,8 +27,6 @@ interface HeaderInsetProps {
 function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 	const ref = useRef<HTMLSpanElement>(null)
 	const showLettering = useIntersectionObserver(ref, { threshold: INTERSECTION_THRESHOLD })
-
-	const t = useTranslations('Default')
 
 	useEffect(() => {
 		if (showLettering)
@@ -70,13 +63,7 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
 					onClick={(e) => scrollToSection(e, '#about')}
 				>
-					<Image
-						src={avatarPicture}
-						width={AVATAR_WIDTH}
-						height={AVATAR_HEIGHT}
-						alt={t('avatarAlt')}
-						className="xs:size-10 pointer-events-auto relative z-10 size-9 rounded-full"
-					/>
+					<HeaderAvatar className="xs:size-10 pointer-events-auto relative z-10 size-9 rounded-full" />
 
 					<span className="xs:pl-3 layout:pt-3 layout:pl-0 block w-full overflow-hidden pl-2" ref={ref}>
 						<span

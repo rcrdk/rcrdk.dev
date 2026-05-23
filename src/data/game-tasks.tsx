@@ -15,6 +15,8 @@ export type GameTaskTypes =
 	| 'konami'
 	| 'random-fact'
 	| 'about-me'
+	| 'discover-project'
+	| 'avatar-rain'
 	| 'tetris'
 	| 'rick-rolling'
 
@@ -154,6 +156,44 @@ export const GAME_TASKS: GameTaskObject[] = [
 		points: 10,
 	},
 	{
+		id: 'discover-project',
+		icon: '💼',
+		listItem: {
+			title: { en: 'Discover a project of mine', 'pt-br': 'Descubra um projeto meu' },
+			hint: {
+				en: 'Open one of my portfolio projects and keep it open for a few seconds.',
+				'pt-br': 'Abra um dos projetos do meu portfólio e deixe aberto por alguns segundos.',
+			},
+		},
+		toastItem: {
+			title: { en: 'You opened a project!', 'pt-br': 'Você abriu um projeto!' },
+			hint: {
+				en: 'What did you like most about this one? There are more in my history worth exploring.',
+				'pt-br': 'O que você mais gostou neste? Tem outros no meu histórico que valem a pena conhecer.',
+			},
+		},
+		points: 10,
+	},
+	{
+		id: 'avatar-rain',
+		icon: '🌧️',
+		listItem: {
+			title: { en: 'Avatar rain', 'pt-br': 'Chuva de avatar' },
+			hint: {
+				en: 'Click my profile photo in the header several times.',
+				'pt-br': 'Clique na minha foto de perfil no cabeçalho várias vezes.',
+			},
+		},
+		toastItem: {
+			title: { en: "It's raining avatars!", 'pt-br': 'Está chovendo avatares!' },
+			hint: {
+				en: 'You found a silly secret — my face does not mind taking over the screen.',
+				'pt-br': 'Você achou um segredo bobo — minha cara não se importa de invadir a tela.',
+			},
+		},
+		points: 10,
+	},
+	{
 		id: 'rick-rolling',
 		icon: '🔮',
 		listItem: {
@@ -221,9 +261,9 @@ export const GAME_TASKS: GameTaskObject[] = [
 		toastItem: {
 			title: { en: 'Finally an actual game!', 'pt-br': 'Finalmente um jogo de verdade!' },
 			hint: {
-				en: 'I probably spend more time playing than developing this feature. P.s.: I marked over 7,000 points.',
+				en: 'I probably spend more time playing than developing this feature. P.s.: I marked 9,900 points.',
 				'pt-br':
-					'Eu devo ter passado mais tempo jogando do que implementando o jogo. P.s.: Marquei mais de 7.000 pontos.,',
+					'Eu devo ter passado mais tempo jogando do que implementando o jogo. P.s.: Marquei mais de 9.900 pontos.,',
 			},
 		},
 		button: <TetrisGameTaskButton />,

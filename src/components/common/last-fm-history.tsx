@@ -43,7 +43,7 @@ export function LastFmHistory() {
 			</Dropdown.Trigger>
 
 			<DropdownMenu
-				className="scrollbar-hidden max-h-[calc(var(--radix-dropdown-menu-content-available-height)-2.5rem)] w-[500px] overflow-x-hidden overflow-y-auto"
+				className="scrollbar-hidden z-1000 max-h-[calc(var(--radix-dropdown-menu-content-available-height)-2.5rem)] w-[500px] overflow-x-hidden overflow-y-auto"
 				side="right"
 				align="end"
 				avoidCollisions={false}

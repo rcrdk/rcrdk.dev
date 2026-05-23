@@ -8,6 +8,7 @@ const SOUND_FILES = {
 	'game-over': 'game-over.mp3',
 	'game-tada': 'game-tada.mp3',
 	'confetti-pop': 'confetti-pop.mp3',
+	'bubble-pop': 'bubble-pop.mp3',
 	cricket: 'cricket.mp3',
 } as const
 

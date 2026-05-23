@@ -7,6 +7,11 @@
 			"scroll": "Minhas experiências",
 			"linkedin": "Conecte-se comigo no LinkedIn",
 			"github": "Veja minha atividade e projetos no GitHub"
+		},
+		"aboutDrawer": {
+			"title": "Tenho uma má notícia para você. 👀",
+			"description": "Escrever sobre si mesmo, como já suspeitavam, é difícil. Entre trabalho, vida pessoal e projetos, não é fácil encontrar tempo para escrever sobre si mesmo, mas o conteúdo dessa seção ainda está vindo aí.",
+			"button": "Voltar para o site"
 		}
 	}
 }

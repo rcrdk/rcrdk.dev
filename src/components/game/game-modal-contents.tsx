@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import * as DialogRadix from '@radix-ui/react-dialog'
 import { IconRefresh, IconSkull, IconVolume } from '@tabler/icons-react'
@@ -36,23 +36,34 @@ export function GameModalContents() {
 
 	const { fireConfettiWithSound } = useConfetti()
 	const { playSound } = useSoundEffect()
+	const celebrateAgainTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const clearConfettiTimersRef = useRef<(() => void) | null>(null)
+
+	const celebrateWin = useCallback(() => {
+		playSound('game-tada')
+
+		if (celebrateAgainTimerRef.current) clearTimeout(celebrateAgainTimerRef.current)
+		clearConfettiTimersRef.current?.()
+
+		celebrateAgainTimerRef.current = setTimeout(() => {
+			clearConfettiTimersRef.current = fireConfettiWithSound()
+		}, GAME_WIN_CONFETTI_DELAY)
+	}, [fireConfettiWithSound, playSound])
 
 	useEffect(() => {
 		if (!isGameCompleted || !showGameModal) return
 
-		playSound('game-tada')
-
-		let clearConfettiTimers: (() => void) | undefined
-
-		const confettiTimer = setTimeout(() => {
-			clearConfettiTimers = fireConfettiWithSound()
-		}, GAME_WIN_CONFETTI_DELAY)
+		celebrateWin()
 
 		return () => {
-			clearTimeout(confettiTimer)
-			clearConfettiTimers?.()
+			if (celebrateAgainTimerRef.current) clearTimeout(celebrateAgainTimerRef.current)
+			clearConfettiTimersRef.current?.()
 		}
-	}, [fireConfettiWithSound, isGameCompleted, playSound, showGameModal])
+	}, [celebrateWin, isGameCompleted, showGameModal])
+
+	function handleCelebrateAgain() {
+		celebrateWin()
+	}
 
 	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
 	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted
@@ -68,6 +79,13 @@ export function GameModalContents() {
 			<DialogRadix.Description className="dark:text-content-dark text-content-light text-base">
 				{isGameCompleted ? __('winner.text') : __('text', { quantity: gameTasks.length })}
 			</DialogRadix.Description>
+
+			{isGameCompleted && isGameActive && (
+				<Button variant="outline-warning" className="mt-6 w-full font-semibold" onClick={handleCelebrateAgain} haptic>
+					<span className="text-2xl">🎉</span>
+					{__('winner.celebrateAgain')}
+				</Button>
+			)}
 
 			{!isGameActive && (
 				<>

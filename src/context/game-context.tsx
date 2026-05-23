@@ -39,6 +39,7 @@ interface GameContextDataProps {
 	onShowGameTetris: (open: boolean) => void
 	isGameCompleted: boolean
 	isGameActive: boolean
+	gameSessionKey: number
 	onActivateGame: VoidFunction
 	onStopGame: VoidFunction
 }
@@ -51,6 +52,7 @@ interface GameContextProviderProps {
 
 export function GameContextProvider({ children }: GameContextProviderProps) {
 	const [isGameActive, setIsGameActive] = useState(false)
+	const [gameSessionKey, setGameSessionKey] = useState(0)
 	const [tasksCompleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
 	const [showGameModal, setShowGameModal] = useState(false)
 	const [showGameTetris, setShowGameTetris] = useState(false)
@@ -118,9 +120,14 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		}
 	}
 
+	function bumpGameSessionKey() {
+		setGameSessionKey((previous) => previous + 1)
+	}
+
 	function onResetGame(soundEffect?: boolean) {
 		setTasksCompleted([])
 		setShowGameTasks(false)
+		bumpGameSessionKey()
 		triggerHaptic()
 
 		if (soundEffect) playSound('game-start')
@@ -137,6 +144,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		setShowGameTasks(false)
 		setShowGameTetris(false)
 		setIsGameActive(false)
+		bumpGameSessionKey()
 		playSound('game-over')
 		triggerHaptic()
 		clearGameLocalStorage()
@@ -221,6 +229,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 				onShowGameTetris,
 				isGameCompleted,
 				isGameActive,
+				gameSessionKey,
 				onActivateGame,
 				onStopGame,
 			}}

@@ -86,7 +86,7 @@ export function HistorySliderDesktop({ title, buttonNextSlideText, text, list }:
 			<AnimatedContent>
 				<div
 					className={cn(
-						'scrollbar-hidden relative !max-w-none overflow-hidden max-[929px]:!w-screen min-[929px]:w-[calc(100%+64px+var(--offset))]',
+						'scrollbar-hidden relative z-1 !max-w-none overflow-hidden max-[929px]:!w-screen min-[929px]:w-[calc(100%+64px+var(--offset))]',
 						'xs:-ml-12 -ml-6 min-[929px]:!-ml-16 sm:-ml-16 md:-ml-20',
 						'xs:px-12 px-6 min-[929px]:!px-16 sm:px-16 md:px-20 lg:pr-10',
 						'max-[929px]:before:hidden sm:before:absolute sm:before:inset-y-0 sm:before:left-0 sm:before:z-10 sm:before:w-16 sm:before:bg-gradient-to-r sm:before:from-white sm:before:to-white/0 dark:sm:before:from-black dark:sm:before:to-black/0',
