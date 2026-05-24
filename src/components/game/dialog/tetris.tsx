@@ -6,19 +6,19 @@ import * as HoverCard from '@radix-ui/react-hover-card'
 import { IconHelpCircle, IconPlayerPlay, IconRotateClockwise2 } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
+import { GameDialogWrapper } from '@/components/game/dialog/wrapper'
 import { Button } from '@/components/ui/button'
-import { Dialog } from '@/components/ui/dialog'
 import { useGame } from '@/hooks/use-game'
 
 const DynamicTetris = dynamic(() => import('react-tetris'), { ssr: false })
 
-export function GameModalTetris() {
+export function GameDialogTetris() {
 	const { showGameTetris, onShowGameTetris } = useGame()
 
 	const __ = useTranslations('Game')
 
 	return (
-		<Dialog open={showGameTetris} onOpenChange={onShowGameTetris} mode="game" hasTetris>
+		<GameDialogWrapper open={showGameTetris} onOpenChange={onShowGameTetris} hasTetris>
 			<div className="sr-only">
 				<DialogRadix.Title>{__('tetris.title')}</DialogRadix.Title>
 				<DialogRadix.Description>{__('tetris.title')}</DialogRadix.Description>
@@ -156,6 +156,6 @@ export function GameModalTetris() {
 					</Button>
 				</DialogRadix.Close>
 			</div>
-		</Dialog>
+		</GameDialogWrapper>
 	)
 }

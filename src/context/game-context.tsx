@@ -1,8 +1,10 @@
-import { createContext, useEffect, useState } from 'react'
+'use client'
+
+import { createContext, useEffect, useReducer } from 'react'
 import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 
-import { GameToastContent } from '@/components/game/game-toast-content'
+import { GameToast } from '@/components/game/toast'
 import { LOCAL_STORAGE_KEYS } from '@/config/keys'
 import type { GameTaskTypes } from '@/data/game-tasks'
 import { GAME_TASKS } from '@/data/game-tasks'
@@ -10,6 +12,7 @@ import { useHaptics } from '@/hooks/use-haptics'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
 import type { LocalesType } from '@/i18n/config'
 import { clearGameLocalStorage, GAME_LANGUAGE_CHANGED_KEY, setLanguageChangedDuringGame } from '@/i18n/game'
+import { gameReducer, INITIAL_GAME_STATE, type GameHydratePayload } from '@/reducers/game-reducer'
 
 const TOAST_DURATION = 20000
 const MEDIA_QUERY_MIN_WIDTH = '70rem'
@@ -31,8 +34,8 @@ interface GameContextDataProps {
 	pointsTotal: number
 	onCompleteTask: (taskId: GameTaskTypes) => void
 	onResetGame: VoidFunction
-	showGameModal: boolean
-	onShowGameModal: VoidFunction
+	showGameDialog: boolean
+	onShowGameDialog: VoidFunction
 	showGameTasks: boolean
 	onShowGameTasks: VoidFunction
 	showGameTetris: boolean
@@ -51,13 +54,7 @@ interface GameContextProviderProps {
 }
 
 export function GameContextProvider({ children }: GameContextProviderProps) {
-	const [isGameActive, setIsGameActive] = useState(false)
-	const [gameSessionKey, setGameSessionKey] = useState(0)
-	const [tasksCompleted, setTasksCompleted] = useState<GameTaskTypes[]>([])
-	const [showGameModal, setShowGameModal] = useState(false)
-	const [showGameTetris, setShowGameTetris] = useState(false)
-	const [showGameTasks, setShowGameTasks] = useState(false)
-	const [isScreenSizeAllowed, setIsScreenSizeAllowed] = useState(false)
+	const [state, dispatch] = useReducer(gameReducer, INITIAL_GAME_STATE)
 
 	const locale = useLocale() as LocalesType
 	const { playSound } = useSoundEffect()
@@ -75,12 +72,12 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 			hint: task.toastItem.hint[locale],
 		},
 		points: task.points,
-		completed: tasksCompleted.includes(task.id),
+		completed: state.tasksCompleted.includes(task.id),
 		button: task.button,
 	}))
 
 	function onActivateGame() {
-		setIsGameActive(true)
+		dispatch({ type: 'game/activate' })
 		playSound('game-start')
 
 		if (typeof window !== 'undefined') {
@@ -96,7 +93,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 
 		playSound('game-points')
 
-		toast(<GameToastContent task={task} />, {
+		toast(<GameToast task={task} />, {
 			id: taskId,
 			position: 'top-center',
 			duration: TOAST_DURATION,
@@ -104,30 +101,20 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	function onCompleteTask(taskId: GameTaskTypes) {
-		const taskAlreadyExists = tasksCompleted.find((task) => task === taskId)
+		const taskAlreadyExists = state.tasksCompleted.includes(taskId)
 
-		if (!taskAlreadyExists && isScreenSizeAllowed && isGameActive) {
-			setTasksCompleted((prev) => {
-				const updatedTasks = [...prev, taskId] as GameTaskTypes[]
+		if (taskAlreadyExists || !state.isScreenSizeAllowed || !state.isGameActive) return
 
-				if (typeof window !== 'undefined')
-					window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasks, JSON.stringify(updatedTasks))
+		dispatch({ type: 'game/completeTask', taskId })
 
-				return updatedTasks
-			})
+		if (typeof window !== 'undefined')
+			window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasks, JSON.stringify([...state.tasksCompleted, taskId]))
 
-			notifyCompletedTask(taskId)
-		}
-	}
-
-	function bumpGameSessionKey() {
-		setGameSessionKey((previous) => previous + 1)
+		notifyCompletedTask(taskId)
 	}
 
 	function onResetGame(soundEffect?: boolean) {
-		setTasksCompleted([])
-		setShowGameTasks(false)
-		bumpGameSessionKey()
+		dispatch({ type: 'game/reset' })
 		triggerHaptic()
 
 		if (soundEffect) playSound('game-start')
@@ -140,39 +127,30 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	function onStopGame() {
-		setTasksCompleted([])
-		setShowGameTasks(false)
-		setShowGameTetris(false)
-		setIsGameActive(false)
-		bumpGameSessionKey()
+		dispatch({ type: 'game/stop' })
 		playSound('game-over')
 		triggerHaptic()
 		clearGameLocalStorage()
 	}
 
-	function onShowGameModal() {
-		setShowGameModal((prev) => !prev)
+	function onShowGameDialog() {
+		dispatch({ type: 'game/toggleDialog' })
 	}
 
 	function onShowGameTetris(open: boolean) {
-		if (open) {
-			setShowGameModal(false)
-			setShowGameTetris(true)
-			return
-		}
+		dispatch({ type: 'game/setTetrisOpen', open })
 
-		setShowGameTetris(false)
-		onCompleteTask('tetris')
+		if (!open) onCompleteTask('tetris')
 	}
 
 	function onShowGameTasks() {
-		setShowGameTasks(true)
+		dispatch({ type: 'game/showTasks' })
 		onCompleteTask('has-opened-hints')
 
 		if (typeof window !== 'undefined') window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasksVisible, 'true')
 	}
 
-	const pointsEarned = GAME_TASKS.filter((task) => tasksCompleted.includes(task.id)).reduce(
+	const pointsEarned = GAME_TASKS.filter((task) => state.tasksCompleted.includes(task.id)).reduce(
 		(previous, current) => previous + current.points,
 		0,
 	)
@@ -185,10 +163,10 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		if (typeof window === 'undefined') return
 
 		const checkMedia = () => {
-			const checkMedia = window.matchMedia(
+			const mediaQuery = window.matchMedia(
 				`(min-width: ${MEDIA_QUERY_MIN_WIDTH}) and (min-height: ${MEDIA_QUERY_MIN_HEIGHT})`,
 			)
-			setIsScreenSizeAllowed(checkMedia.matches)
+			dispatch({ type: 'game/setScreenSizeAllowed', allowed: mediaQuery.matches })
 		}
 
 		checkMedia()
@@ -200,17 +178,21 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	useEffect(() => {
 		if (typeof window === 'undefined') return
 
-		const checkForSavedTasksCompleted = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasks)
-		const checkIfGameTasksListAreVisible = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasksVisible)
-		const checkIfGameIsActive = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameActive)
+		const savedTasksCompleted = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasks)
+		const gameTasksListVisible = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasksVisible)
+		const gameIsActive = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameActive)
 
-		if (checkForSavedTasksCompleted) setTasksCompleted(JSON.parse(checkForSavedTasksCompleted))
-		if (checkIfGameTasksListAreVisible && checkIfGameTasksListAreVisible === 'true') setShowGameTasks(true)
-		if (checkIfGameIsActive && checkIfGameIsActive === 'true') {
-			setIsGameActive(true)
+		const hydratePayload: GameHydratePayload = {}
+
+		if (savedTasksCompleted) hydratePayload.tasksCompleted = JSON.parse(savedTasksCompleted) as GameTaskTypes[]
+		if (gameTasksListVisible === 'true') hydratePayload.showGameTasks = true
+		if (gameIsActive === 'true') {
+			hydratePayload.isGameActive = true
 
 			if (window.localStorage.getItem(GAME_LANGUAGE_CHANGED_KEY) == null) setLanguageChangedDuringGame(false)
 		}
+
+		if (Object.keys(hydratePayload).length > 0) dispatch({ type: 'game/hydrate', payload: hydratePayload })
 	}, [])
 
 	return (
@@ -221,15 +203,15 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 				pointsTotal,
 				onCompleteTask,
 				onResetGame,
-				showGameModal,
-				onShowGameModal,
-				showGameTasks,
+				showGameDialog: state.showGameDialog,
+				onShowGameDialog,
+				showGameTasks: state.showGameTasks,
 				onShowGameTasks,
-				showGameTetris,
+				showGameTetris: state.showGameTetris,
 				onShowGameTetris,
 				isGameCompleted,
-				isGameActive,
-				gameSessionKey,
+				isGameActive: state.isGameActive,
+				gameSessionKey: state.gameSessionKey,
 				onActivateGame,
 				onStopGame,
 			}}

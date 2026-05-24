@@ -3,9 +3,9 @@ import * as DialogComponent from '@radix-ui/react-dialog'
 import { IconArrowLeft, IconUserCircle } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
+import { AboutDialogWrapper } from '@/app/(landing)/sections/hero/about-dialog-wrapper'
 import avatarPicture from '@/assets/avatar-v2.jpeg'
 import { Button } from '@/components/ui/button'
-import { Dialog } from '@/components/ui/dialog'
 import { Image } from '@/components/ui/image'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
@@ -36,7 +36,7 @@ export function HeroAboutDialog() {
 				<span className="font-medium">{__('buttons.about')}</span>
 			</Button>
 
-			<Dialog open={showContents} onOpenChange={setShowContents} mode="fullscreen" aria-describedby={undefined}>
+			<AboutDialogWrapper open={showContents} onOpenChange={setShowContents} aria-describedby={undefined}>
 				<div className="xs:gap-8 flex min-h-full flex-col items-center justify-center gap-6 px-6 py-10 text-center sm:gap-6 sm:px-12 sm:py-14">
 					<Image
 						src={avatarPicture}
@@ -63,7 +63,7 @@ export function HeroAboutDialog() {
 						</Button>
 					</DialogComponent.Close>
 				</div>
-			</Dialog>
+			</AboutDialogWrapper>
 		</>
 	)
 }

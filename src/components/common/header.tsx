@@ -8,8 +8,8 @@ import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
-import { GameModalTetris } from '@/components/game/game-modal-tetris'
-import { GameModalToggle } from '@/components/game/game-modal-toggle'
+import { GameDialogTetris } from '@/components/game/dialog/tetris'
+import { GameToggle } from '@/components/game/dialog/toggle'
 import { Container } from '@/components/ui/container'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { scrollToSection } from '@/utils/scroll-to-section'
@@ -84,7 +84,7 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 					<LocaleSwitcher />
 					<ThemeSwitcher />
 					<LastFmHistory />
-					<GameModalToggle />
+					<GameToggle />
 				</div>
 			</Container>
 		</AnimatedContent>
@@ -97,7 +97,7 @@ export function Header() {
 			<HeaderInset animationEnter="horizontal" />
 			<HeaderInset animationEnter="vertical" />
 
-			<GameModalTetris />
+			<GameDialogTetris />
 		</header>
 	)
 }

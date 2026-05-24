@@ -6,9 +6,9 @@ import * as DialogRadix from '@radix-ui/react-dialog'
 import { IconRefresh, IconSkull, IconVolume } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
+import { GameDialogWrapper } from '@/components/game/dialog/wrapper'
 import { GameTaskItem } from '@/components/game/game-task-item'
 import { Button } from '@/components/ui/button'
-import { Dialog } from '@/components/ui/dialog'
 import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
@@ -16,10 +16,10 @@ import { cn } from '@/utils/tailwind-cn'
 
 const GAME_WIN_CONFETTI_DELAY = 1000
 
-export function GameModalContents() {
+export function GameDialog() {
 	const {
-		showGameModal,
-		onShowGameModal,
+		showGameDialog,
+		onShowGameDialog,
 		pointsEarned,
 		pointsTotal,
 		gameTasks,
@@ -51,7 +51,7 @@ export function GameModalContents() {
 	}, [fireConfettiWithSound, playSound])
 
 	useEffect(() => {
-		if (!isGameCompleted || !showGameModal) return
+		if (!isGameCompleted || !showGameDialog) return
 
 		celebrateWin()
 
@@ -59,17 +59,17 @@ export function GameModalContents() {
 			if (celebrateAgainTimerRef.current) clearTimeout(celebrateAgainTimerRef.current)
 			clearConfettiTimersRef.current?.()
 		}
-	}, [celebrateWin, isGameCompleted, showGameModal])
+	}, [celebrateWin, isGameCompleted, showGameDialog])
 
 	function handleCelebrateAgain() {
 		celebrateWin()
 	}
 
-	const shouldDisplayTasksTrigger = showGameModal && !showGameTasks && !isGameCompleted
-	const shouldDisplayTasks = (showGameModal && showGameTasks) || isGameCompleted
+	const shouldDisplayTasksTrigger = showGameDialog && !showGameTasks && !isGameCompleted
+	const shouldDisplayTasks = (showGameDialog && showGameTasks) || isGameCompleted
 
 	return (
-		<Dialog open={showGameModal} onOpenChange={onShowGameModal} mode="game">
+		<GameDialogWrapper open={showGameDialog} onOpenChange={onShowGameDialog}>
 			<span className="text-6xl">{isGameCompleted ? '🥇' : '🕹️'}</span>
 
 			<DialogRadix.Title className="mt-4 mb-3 block text-3xl font-bold tracking-tight text-black dark:text-white">
@@ -160,6 +160,6 @@ export function GameModalContents() {
 					</div>
 				</>
 			)}
-		</Dialog>
+		</GameDialogWrapper>
 	)
 }

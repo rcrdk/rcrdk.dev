@@ -22,15 +22,15 @@ export function Screensaver() {
 	const isTouchDevice = useMediaQuery('(hover : none)', false)
 	const __ = useTranslations('Default')
 
-	const { onCompleteTask, showGameTetris, showGameModal, isGameActive } = useGame()
+	const { onCompleteTask, showGameTetris, showGameDialog, isGameActive } = useGame()
 	const { containerRef, elementRef } = useDvdScreensaver({ speed: DVD_SPEED })
 	const { playCricket, pauseCricket } = useSoundEffect()
 
 	useEffect(() => {
-		if (!isGameActive || isDevelopment || showGameTetris || showGameModal) return
+		if (!isGameActive || isDevelopment || showGameTetris || showGameDialog) return
 		if (isIddle) playCricket()
 		if (!isIddle) pauseCricket()
-	}, [isIddle, playCricket, pauseCricket, isGameActive, showGameTetris, showGameModal])
+	}, [isIddle, playCricket, pauseCricket, isGameActive, showGameTetris, showGameDialog])
 
 	useEffect(() => {
 		const random = Math.floor(Math.random() * SCREENSAVER_GIFS.length)
@@ -42,13 +42,13 @@ export function Screensaver() {
 		if (isIddle)
 			timer = setTimeout(() => {
 				setGif(random)
-				if (!showGameTetris && !showGameModal) onCompleteTask('screensaver')
+				if (!showGameTetris && !showGameDialog) onCompleteTask('screensaver')
 			}, GIF_CHANGE_DELAY)
 
 		return () => clearTimeout(timer)
-	}, [isIddle, onCompleteTask, showGameTetris, showGameModal])
+	}, [isIddle, onCompleteTask, showGameTetris, showGameDialog])
 
-	if (isTouchDevice || process.env.NODE_ENV === 'development' || showGameTetris || showGameModal) return null
+	if (isTouchDevice || process.env.NODE_ENV === 'development' || showGameTetris || showGameDialog) return null
 
 	return (
 		<div
