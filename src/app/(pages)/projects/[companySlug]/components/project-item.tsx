@@ -4,9 +4,10 @@ import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
 
-import { ProjectDialog } from '@/app/components/project-dialog'
+import { LazyProjectDialog } from '@/app/components/project-dialog/lazy'
 import { Image } from '@/components/ui/image'
 import { useHaptics } from '@/hooks/use-haptics'
+import { useLazyMount } from '@/hooks/use-lazy-mount'
 import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject } from '@/types/history'
 
@@ -16,6 +17,7 @@ interface Props {
 
 export function ProjectItem({ data }: Readonly<Props>) {
 	const [open, setOpen] = useState(false)
+	const shouldMountDialog = useLazyMount(open)
 	const { triggerHaptic } = useHaptics()
 	const locale = useLocale() as LocalesType
 	const { title } = data[locale] || {}
@@ -52,7 +54,7 @@ export function ProjectItem({ data }: Readonly<Props>) {
 				<IconArrowRight className="absolute right-4 bottom-4 size-5 shrink-0 sm:size-6" aria-hidden />
 			</button>
 
-			<ProjectDialog data={data} open={open} onOpenChange={handleOpenChange} disableTheme />
+			{shouldMountDialog && <LazyProjectDialog data={data} open={open} onOpenChange={handleOpenChange} disableTheme />}
 		</>
 	)
 }

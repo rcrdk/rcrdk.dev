@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { HistoryListMobile } from '@/app/(landing)/components/history-list-mobile'
-import { HistorySliderDesktop } from '@/app/(landing)/components/history-slider-desktop'
+import { LazyHistorySliderDesktop } from '@/app/(landing)/components/history-slider-desktop/lazy'
 import { Section } from '@/components/ui/section'
 import { APP_CONFIG } from '@/config/app'
 import { PROJECTS } from '@/data/projects/index'
@@ -28,7 +28,7 @@ export function Experiences() {
 
 	return (
 		<Section>
-			{isDesktop && <HistorySliderDesktop list={listWithProjects} {...rest} />}
+			{isDesktop && <LazyHistorySliderDesktop list={listWithProjects} {...rest} />}
 			{!isDesktop && <HistoryListMobile {...rest} list={listWithProjects} />}
 		</Section>
 	)

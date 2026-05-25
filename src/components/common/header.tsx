@@ -8,7 +8,7 @@ import { LastFmHistory } from '@/components/common/last-fm-history'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Nav } from '@/components/common/nav'
 import { ThemeSwitcher } from '@/components/common/theme-switcher'
-import { GameDialogTetris } from '@/components/game/dialog/tetris'
+import { LazyGameDialogTetris } from '@/components/game/dialog/lazy-tetris-dialog'
 import { GameToggle } from '@/components/game/dialog/toggle'
 import { Container } from '@/components/ui/container'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
@@ -97,7 +97,7 @@ export function Header() {
 			<HeaderInset animationEnter="horizontal" />
 			<HeaderInset animationEnter="vertical" />
 
-			<GameDialogTetris />
+			<LazyGameDialogTetris />
 		</header>
 	)
 }

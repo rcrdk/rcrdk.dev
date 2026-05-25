@@ -7,7 +7,7 @@ import { Shell } from '@/app/components/project-dialog/shell'
 import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject } from '@/types/history'
 
-interface ProjectDialogProps {
+export interface ProjectDialogProps {
 	data: HistoryProject
 	open: boolean
 	onOpenChange: (open: boolean) => void

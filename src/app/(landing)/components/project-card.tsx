@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
 import { useLocale } from 'next-intl'
 
-import { ProjectDialog } from '@/app/components/project-dialog'
+import { LazyProjectDialog } from '@/app/components/project-dialog/lazy'
 import { Image } from '@/components/ui/image'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
+import { useLazyMount } from '@/hooks/use-lazy-mount'
 import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject } from '@/types/history'
 
@@ -17,6 +18,7 @@ interface Props {
 
 export function ProjectCard({ data }: Readonly<Props>) {
 	const [open, setOpen] = useState(false)
+	const shouldMountDialog = useLazyMount(open)
 	const { onCompleteTask } = useGame()
 	const { triggerHaptic } = useHaptics()
 
@@ -68,7 +70,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 				/>
 			</button>
 
-			<ProjectDialog data={data} open={open} onOpenChange={handleOpenChange} />
+			{shouldMountDialog && <LazyProjectDialog data={data} open={open} onOpenChange={handleOpenChange} />}
 		</>
 	)
 }

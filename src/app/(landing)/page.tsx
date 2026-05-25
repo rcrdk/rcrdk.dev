@@ -7,11 +7,11 @@ import { Experiences } from '@/app/(landing)/sections/experiences'
 import { Hero } from '@/app/(landing)/sections/hero'
 import { Skills } from '@/app/(landing)/sections/skills'
 import { Header } from '@/components/common/header'
+import { LazyScreensaver } from '@/components/common/lazy-screensaver'
+import { LazySpecialDates } from '@/components/common/lazy-special-dates'
 import { Nav } from '@/components/common/nav'
-import { Screensaver } from '@/components/common/screensaver'
 import { ScrollStart } from '@/components/common/scroll-start'
-import { SpecialDates } from '@/components/common/special-dates'
-import { GameDialog } from '@/components/game/dialog'
+import { LazyGameDialog } from '@/components/game/dialog/lazy-game-dialog'
 import { Anchor } from '@/components/ui/anchor'
 import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
@@ -93,9 +93,9 @@ export default async function HomePage() {
 			</main>
 
 			<ScrollStart />
-			<Screensaver />
-			<SpecialDates />
-			<GameDialog />
+			<LazyScreensaver />
+			<LazySpecialDates />
+			<LazyGameDialog />
 		</div>
 	)
 }
