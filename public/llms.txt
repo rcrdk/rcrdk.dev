@@ -1,0 +1,137 @@
+# Ricardo Augusto Kowalski
+
+> Front-end developer with 13+ years in web development, specializing in TypeScript, React, Next.js, and Node.js. Builds scalable, accessible web apps, PWAs, and design-system-driven interfaces. Based in Timbó, Santa Catarina, Brazil. Portfolio and primary source: https://rcrdk.dev
+
+## Summary
+
+Ricardo is a detail-oriented front-end engineer focused on performance, accessibility, DX, and UX. He works primarily in the JavaScript ecosystem (React, Next.js, TypeScript) and complements front-end work with Node.js (Fastify, NestJS) and PHP/Laravel when needed. He uses AI-assisted development in day-to-day workflows and is learning React Native.
+
+The site https://rcrdk.dev is available in English (`en`) and Brazilian Portuguese (`pt-br`).
+
+## Current role
+
+- **Front-End Developer at MySide** (2025 – Present, remote, Florianópolis, SC, Brazil)
+- **Company:** Brazilian real estate startup — https://myside.com.br
+- **Main product:** **Hero** — internal AI-powered assistant used daily by 40+ Personal Shoppers for real estate service and negotiation workflows
+- **Stack highlights:** React 19, Next.js 15 (App Router), TypeScript, TanStack Query, Radix UI, shadcn/ui, TailwindCSS, PWA, Service Workers, IndexedDB, Auth.js, Sentry, Jest, React Testing Library
+- **Deliverables:** Hero Mobile (PWA with AI chat, offline-first) and Hero Desktop (negotiation pipeline, property search, presentation tools)
+
+## Work experience
+
+### MySide — Front-End Developer (2025 – Present)
+- Hero: AI-integrated tools for personal shoppers; mobile PWA + desktop apps
+- Front-end architecture with React 19, Next.js 15, TypeScript
+- Offline-first: Service Workers, IndexedDB, cache persistence
+- Testing with Jest and React Testing Library
+
+### Meu Rosinha — Front-End Developer (2021 – 2025, remote)
+- Website, web app, and online store for beauty consultants — https://meurosinha.com.br
+- Migrated stack to React, Next.js, and TypeScript
+- Re-architected front-end for component reuse and maintainability
+- Supported 1,200+ subscribers; features include WhatsApp module and catalog expansion
+- Contributed to visual identity rebranding
+
+### Sou Digital — Front-End / Full-Stack Developer (2013 – 2025, on-site → remote)
+- Websites, landing pages, web apps, e-commerce, proprietary CMS — https://sou.digital
+- 200+ delivered projects for national and international clients
+- HTML, CSS, Sass, JavaScript, jQuery, Webpack; PHP, Laravel, MySQL, OpenCart on full-stack work
+- Improved proprietary CMS (faster module and content workflows)
+
+### Sonica — Front-End Developer (2017 – 2021, within Sou Digital)
+- Early no-code platform (now multi-chain asset tokenization ecosystem) — https://sonica.xyz
+- HTML, CSS, Sass, Bootstrap, JavaScript, jQuery, Webpack, PHP, Laravel
+- CMS features, interface fixes, and published customer sites
+
+## Education and certifications
+
+- **Rocketseat** — Full-Stack and Mobile Development (2023 – Present, remote): React, Next.js, Node.js (Fastify, NestJS), React Native, testing, RBAC multi-tenant SaaS, accessibility, SEO
+- **Udemy** — Full-Stack Development (2019 – 2023, remote): React, Vue.js, Angular, PHP, Node.js, MySQL, PostgreSQL, MongoDB
+- **Laravue** — Full-Stack Development (2021 – 2022, remote): Laravel, Vue.js, Vuex, Vue Router
+- **Uniasselvi** — Bachelor’s in Advertising and Marketing (2014 – 2017, on-site, Indaial/SC): communication, design, branding, digital media
+
+## Technical skills
+
+Skills below mirror the portfolio site (`src/data/skills.ts`). Grouped by category.
+
+### Front-end
+JavaScript, TypeScript, React, Next.js, Vue.js, HTML, CSS, Sass, CSS-in-JS, TailwindCSS, PWA, Service Worker, IndexedDB, Local Storage, Session Storage, SSG, SSR, RSC, Server Components, Context API, A11y, i18n, Web Vitals, SEO, Responsive Design, Design Systems
+
+### Back-end
+Node.js, Fastify, NestJS, PHP, Laravel, MySQL, PostgreSQL, Redis, Prisma ORM, OpenCart
+
+### Mobile
+React Native, Expo, React Native Reanimated, React Native Gesture Handler, React Native Navigation, React Native Skia
+
+### APIs and integrations
+APIs Rest, Axios, Auth.js, Supabase, Firebase Firestore, Firebase Storage, Cloudflare R2, Google Maps API, Stripe API, Resend API, GitHub API
+
+### Libraries and UI
+Radix UI, shadcn/ui, React Router, React Hook Form, TanStack Query, TanStack Virtual, Framer Motion, CVA, Redux, Zustand, Sonner, Vaul, Swiper, Embla Carousel, Tiptap, Styled Components, Stitches, Bootstrap, React Day Picker, React Number Format, React Zoom Pan Pinch, React Dropzone, DnD Kit, Markdown, Storybook, Gluestack UI, jQuery, Zod, T3 Env, Sentry, day.js, date-fns, CASL RBAC Authorizations, Puppeteer, Turborepo, TSUP
+
+### Testing and tooling
+Unit Testing, Integration Testing, Jest, Vitest, React Testing Library, Playwright, MSW, ESLint, Prettier, EditorConfig, Commitlint / Husky, NPM, Yarn, PNPM, Lighthouse
+
+### Tools
+macOS, Cursor, VSCode, Google Chrome, Safari, Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, Docker, Git, HTTPie, ChatGPT, Vercel, GitHub, GitHub Actions, GitHub Pages, GitLab, Notion, Trello, Jira Software, Slack
+
+## Selected projects
+
+Full case studies and stacks are on https://rcrdk.dev (Experiences section and per-company project pages).
+
+### MySide
+- Hero Mobile — PWA, AI chat, offline-first
+- Hero Desktop — negotiation management, maps, presentations
+
+### Meu Rosinha
+- Meu Rosinha (web app)
+- Meu Rosinha: Website
+- Meu Rosinha: Online Store
+
+### Rocketseat (learning and challenge projects)
+- ProjectInBio Micro SaaS — Next.js, Firebase, Stripe
+- Multi Tenant SaaS: Next.js and Fastify + RBAC — Turborepo, CASL
+- BookWise, Ignite Call, Ignite Shop, Pizza Shop, GitHub Blog — full-stack React/Next.js
+- Ignite Call Design System — Storybook, NPM package
+- Fast Feet API, Forum API (NestJS + DDD), Gympass-style APIs — Node.js, Prisma, PostgreSQL, Vitest
+- React Native apps: Coffee Delivery, Ignite Gym, Marketspace, Daily Diet, Ignite Teams, To-Do List
+- Coffee Delivery (web), To-Do List (web)
+
+### Sou Digital (client delivery, 32+ listed projects)
+Representative work: corporate sites and web apps in Laravel/PHP, often with Bootstrap, Sass, and jQuery; sectors include legal, marine survey, arts, retail, and B2B services. Examples include Geo Marine Survey Systems, LinkLaw, and many branded marketing sites.
+
+## Personal context
+
+- **Location:** Timbó, Santa Catarina, Brazil
+- **Born:** 1996-03-03
+- **Career start:** 2013-05-02 (first professional front-end role)
+- **Background:** Self-taught path from The Sims modding/Blogger themes → Delphi (2011) → professional web development (2013)
+- **Interests:** Music (wide playlists), reading, series and Brazilian telenovelas, nostalgia-driven media
+
+## Professional interests
+
+- Front-end SaaS and long-term product work
+- Accessible, fast web experiences
+- Design systems, component architecture, and maintainable codebases
+- Collaboration with innovative teams; continuous learning (including React Native)
+
+## Contact and profiles
+
+- **Email:** ricardoakowalski@gmail.com
+- **Website:** https://rcrdk.dev
+- **LinkedIn:** https://linkedin.com/in/rcrdk
+- **GitHub:** https://github.com/rcrdk
+- **Behance:** https://behance.net/rcrdk
+- **Resume folder:** https://drive.google.com/drive/folders/1xZ4LabVNZrWbp6TTgF9_wzu9IpveGkIX?usp=share_link
+
+## Site structure (https://rcrdk.dev)
+
+- `#about` — Hero and introduction
+- `#experiences` — Work history and project cards
+- `#education` — Courses and degree
+- `#skills` — Interactive skills by category
+- `#contact` — Email and social links
+
+## Optional
+
+- This file is generated from site content in `src/i18n/` and `src/data/` and intended for LLM crawlers and assistants answering questions about Ricardo Augusto Kowalski.
+- The portfolio site includes interactive easter eggs and a small in-site game; behavior is not fully described here.
