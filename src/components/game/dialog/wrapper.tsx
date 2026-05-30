@@ -51,6 +51,8 @@ export function GameDialogWrapper({
 		hasTetris ? 'sm:max-w-[490px]' : 'sm:max-w-[440px]',
 	)
 
+	const isSafari = browser === 'Apple Safari'
+
 	return (
 		<DialogComponent.Root open={open} onOpenChange={onOpenChange}>
 			<DialogComponent.Portal>
@@ -64,8 +66,9 @@ export function GameDialogWrapper({
 						>
 							<div
 								className={cn(
-									'animate-glowing game-gradient absolute -inset-2 -z-10 block rounded-3xl [background-size:1000%]',
-									browser !== 'Apple Safari' && 'blur-[120px]',
+									'absolute -z-10 block rounded-3xl',
+									!isSafari && 'animate-glowing game-gradient -inset-2 [background-size:1000%] blur-[120px]',
+									isSafari && 'animate-game-glow-shadow inset-0',
 								)}
 							/>
 

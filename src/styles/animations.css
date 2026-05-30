@@ -17,6 +17,7 @@
 
 	--animate-glowing: glowing 120s linear infinite;
 	--animate-glowing-rotate: glowingRotate 20s linear infinite;
+	--animate-game-glow-shadow: gameGlowShadow 10s linear infinite;
 	--animate-avatar-fall: avatarFall var(--fall-duration, 2s) ease-in forwards;
 
 	@keyframes avatar {
@@ -184,6 +185,34 @@
 		}
 		100% {
 			background-position: 0 0;
+		}
+	}
+
+	@keyframes gameGlowShadow {
+		0%,
+		100% {
+			box-shadow: 0 0 80px 75px rgb(255 0 0 / 0.45);
+		}
+		12.5% {
+			box-shadow: 0 0 90px 85px rgb(255 115 0 / 0.45);
+		}
+		25% {
+			box-shadow: 0 0 100px 95px rgb(255 251 0 / 0.45);
+		}
+		37.5% {
+			box-shadow: 0 0 110px 105px rgb(72 255 0 / 0.45);
+		}
+		50% {
+			box-shadow: 0 0 120px 115px rgb(0 255 213 / 0.45);
+		}
+		62.5% {
+			box-shadow: 0 0 110px 105px rgb(0 43 255 / 0.45);
+		}
+		75% {
+			box-shadow: 0 0 100px 95px rgb(122 0 255 / 0.45);
+		}
+		87.5% {
+			box-shadow: 0 0 90px 85px rgb(255 0 200 / 0.45);
 		}
 	}
 
