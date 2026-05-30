@@ -1,11 +1,11 @@
 'use client'
 
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import type { AbstractIntlMessages } from 'next-intl'
 import { NextIntlClientProvider } from 'next-intl'
 
-import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, type LocalesType } from '@/i18n/config'
-import { loadMessages } from '@/i18n/load-messages'
+import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, locales, type LocalesType } from '@/i18n/config'
+import { loadMessages, prefetchMessages, seedMessageCache } from '@/i18n/load-messages'
 
 interface LocaleContextValue {
 	locale: LocalesType
@@ -23,25 +23,38 @@ interface LocaleProviderProps {
 }
 
 export function LocaleProvider({ children, initialLocale, initialMessages }: Readonly<LocaleProviderProps>) {
-	const [locale, setLocaleState] = useState(initialLocale)
+	const [activeLocale, setActiveLocale] = useState(initialLocale)
 	const [messages, setMessages] = useState(initialMessages)
+	const [displayLocale, setDisplayLocale] = useState(initialLocale)
+	const isSeededRef = useRef(false)
+
+	if (!isSeededRef.current) {
+		seedMessageCache(initialLocale, initialMessages)
+		isSeededRef.current = true
+	}
+
+	useEffect(() => {
+		locales.filter((nextLocale) => nextLocale !== initialLocale).forEach(prefetchMessages)
+	}, [initialLocale])
 
 	const setLocale = useCallback(
 		async (nextLocale: LocalesType) => {
-			if (nextLocale === locale) return
+			if (nextLocale === displayLocale) return
 
-			const nextMessages = await loadMessages(nextLocale)
-			setLocaleState(nextLocale)
-			setMessages(nextMessages)
+			setDisplayLocale(nextLocale)
 			document.documentElement.lang = nextLocale
 			document.cookie = `${LOCALE_COOKIE}=${nextLocale};path=/;max-age=${LOCALE_COOKIE_MAX_AGE};SameSite=Lax`
+
+			const nextMessages = await loadMessages(nextLocale)
+			setActiveLocale(nextLocale)
+			setMessages(nextMessages)
 		},
-		[locale],
+		[displayLocale],
 	)
 
 	return (
-		<LocaleContext.Provider value={{ locale, setLocale }}>
-			<NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
+		<LocaleContext.Provider value={{ locale: displayLocale, setLocale }}>
+			<NextIntlClientProvider locale={activeLocale} messages={messages} timeZone={timeZone}>
 				{children}
 			</NextIntlClientProvider>
 		</LocaleContext.Provider>

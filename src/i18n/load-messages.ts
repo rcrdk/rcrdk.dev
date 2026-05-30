@@ -2,19 +2,32 @@ import type { AbstractIntlMessages } from 'next-intl'
 
 import type { LocalesType } from '@/i18n/config'
 
-export async function loadMessages(locale: LocalesType): Promise<AbstractIntlMessages> {
-	return {
-		...(await import(`./${locale}/about.json`)).default,
-		...(await import(`./${locale}/contact.json`)).default,
-		...(await import(`./${locale}/default.json`)).default,
-		...(await import(`./${locale}/game.json`)).default,
-		...(await import(`./${locale}/hero.json`)).default,
-		...(await import(`./${locale}/project.json`)).default,
-		...(await import(`./${locale}/skills.json`)).default,
-		...(await import(`./${locale}/seo.json`)).default,
-		...(await import(`./${locale}/not-found.json`)).default,
-		...(await import(`./${locale}/experiences.json`)).default,
-		...(await import(`./${locale}/education.json`)).default,
-		...(await import(`./${locale}/share.json`)).default,
-	}
+const messageCache = new Map<LocalesType, AbstractIntlMessages>()
+const pendingLoads = new Map<LocalesType, Promise<AbstractIntlMessages>>()
+
+const fetchMessages = async (locale: LocalesType): Promise<AbstractIntlMessages> => {
+	const module = await import(`./messages/${locale}`)
+	return module.default
 }
+
+export const seedMessageCache = (locale: LocalesType, messages: AbstractIntlMessages) =>
+	messageCache.set(locale, messages)
+
+export const loadMessages = async (locale: LocalesType): Promise<AbstractIntlMessages> => {
+	const cached = messageCache.get(locale)
+	if (cached) return cached
+
+	const pending = pendingLoads.get(locale)
+	if (pending) return pending
+
+	const load = fetchMessages(locale).then((messages) => {
+		messageCache.set(locale, messages)
+		pendingLoads.delete(locale)
+		return messages
+	})
+
+	pendingLoads.set(locale, load)
+	return load
+}
+
+export const prefetchMessages = (locale: LocalesType) => loadMessages(locale)

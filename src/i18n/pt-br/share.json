@@ -1,7 +1,0 @@
-{
-	"Share": {
-		"projectsCount": "{count, plural, one {# projeto} other {# projetos}}",
-		"viewAllProjects": "Ver todos os projetos",
-		"backToProjects": "Voltar aos projetos"
-	}
-}
