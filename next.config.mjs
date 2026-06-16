@@ -22,6 +22,18 @@ const nextConfig = {
 			},
 		],
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/stats/script.js',
+				destination: 'https://cloud.umami.is/script.js',
+			},
+			{
+				source: '/stats/api/send',
+				destination: 'https://gateway.umami.is/api/send',
+			},
+		]
+	},
 	async headers() {
 		return [
 			{
@@ -50,7 +62,7 @@ const nextConfig = {
 					{
 						key: 'Content-Security-Policy',
 						value:
-							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://ws.audioscrobbler.com https://cloud.umami.is https://gateway.umami.is; frame-ancestors 'none';",
+							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://ws.audioscrobbler.com; frame-ancestors 'none';",
 					},
 				],
 			},

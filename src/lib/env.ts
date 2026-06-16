@@ -13,7 +13,6 @@ export const env = createEnv({
 	shared: {
 		NEXT_PUBLIC_APP_URL: z.string(),
 		NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().optional(),
-		NEXT_PUBLIC_UMAMI_SCRIPT_URL: z.string().url().optional(),
 	},
 
 	runtimeEnv: {
@@ -22,6 +21,5 @@ export const env = createEnv({
 		LASTFM_USERNAME: process.env.LASTFM_USERNAME,
 		NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
 		NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-		NEXT_PUBLIC_UMAMI_SCRIPT_URL: process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL,
 	},
 })
