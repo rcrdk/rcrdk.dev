@@ -4,10 +4,12 @@ import { useLocale } from 'next-intl'
 
 import { LazyProjectDialog } from '@/app/components/project-dialog/lazy'
 import { Image } from '@/components/ui/image'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useLazyMount } from '@/hooks/use-lazy-mount'
 import type { LocalesType } from '@/i18n/config'
+import { trackEvent } from '@/lib/track-event'
 import type { HistoryProject } from '@/types/history'
 
 const DISCOVER_PROJECT_DELAY_MS = 2500
@@ -23,6 +25,8 @@ export function ProjectCard({ data }: Readonly<Props>) {
 	const { triggerHaptic } = useHaptics()
 
 	function handleOpenChange(nextOpen: boolean) {
+		if (nextOpen) trackEvent(ANALYTICS_EVENTS.projectCardOpen, { slug: data.slug, company: data.companySlug })
+
 		setOpen(nextOpen)
 		triggerHaptic()
 	}

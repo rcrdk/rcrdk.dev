@@ -6,7 +6,6 @@ import { CompanyProjectsContainer } from '@/app/(pages)/projects/[companySlug]/c
 import { ignorePagesRobots } from '@/config/metadata'
 import type { LocalesType } from '@/i18n/config'
 import { env } from '@/lib/env'
-import { trackServerEvent } from '@/services/mixpanel'
 import { getCompanySlugsWithProjects } from '@/utils/get-company-slugs-with-projects'
 import { getHistoryItemBySlug } from '@/utils/get-history-item-by-slug'
 import { getProjectsByCompanySlug } from '@/utils/get-projects-by-company-slug'
@@ -60,11 +59,6 @@ export default async function CompanyProjectsPage({ params }: Props) {
 	const projects = getProjectsByCompanySlug(companySlug)
 
 	if (projects.length === 0) notFound()
-
-	trackServerEvent('page_view', {
-		page: `projects-${companySlug}`,
-		url: `/projects/${companySlug}`,
-	})
 
 	return <CompanyProjectsContainer companySlug={companySlug} projects={projects} />
 }

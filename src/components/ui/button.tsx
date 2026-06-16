@@ -3,7 +3,9 @@
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
+import type { AnalyticsEventData, AnalyticsEventName } from '@/config/analytics-events'
 import { useHaptics } from '@/hooks/use-haptics'
+import { trackEvent } from '@/lib/track-event'
 import { cn } from '@/utils/tailwind-cn'
 
 const baseVariants = cva(
@@ -78,6 +80,10 @@ interface ButtonProps<T extends React.ElementType> {
 	icon?: ButtonVariantsProps['icon']
 	onClick?: React.MouseEventHandler<any>
 	haptic?: boolean
+	analytics?: {
+		name: AnalyticsEventName
+		data?: AnalyticsEventData
+	}
 }
 
 export function Button<T extends React.ElementType = 'button'>({
@@ -88,6 +94,7 @@ export function Button<T extends React.ElementType = 'button'>({
 	onClick,
 	className,
 	haptic = false,
+	analytics,
 	...props
 }: Readonly<ButtonProps<T>> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
 	const Component = as || 'button'
@@ -95,6 +102,8 @@ export function Button<T extends React.ElementType = 'button'>({
 	const { triggerHaptic } = useHaptics()
 
 	function handleClick(e: React.MouseEvent<any>) {
+		if (analytics) trackEvent(analytics.name, analytics.data)
+
 		onClick?.(e)
 		requestAnimationFrame(() => haptic && triggerHaptic())
 	}

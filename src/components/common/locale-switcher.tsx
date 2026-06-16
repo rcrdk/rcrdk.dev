@@ -4,10 +4,12 @@ import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { MotionDiv } from '@/components/animated/motion'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useLocaleSwitcher } from '@/context/locale-context'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import type { LocalesType } from '@/i18n/config'
+import { trackEvent } from '@/lib/track-event'
 import { cn } from '@/utils/tailwind-cn'
 
 const LANGUAGES_AVAILABLE: { prefix: LocalesType; title: string; acronym: string }[] = [
@@ -69,6 +71,8 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
 
 	function handleChangeLocale(nextLocale: LocalesType) {
 		if (nextLocale === currentLocale) return
+
+		trackEvent(ANALYTICS_EVENTS.localeChange, { locale: nextLocale })
 		triggerHaptic()
 		void setLocale(nextLocale)
 	}

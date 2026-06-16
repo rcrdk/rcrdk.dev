@@ -7,11 +7,13 @@ import { AnimatedContent } from '@/components/animated/animated-content'
 import { MotionDiv } from '@/components/animated/motion'
 import { Section } from '@/components/ui/section'
 import { Skill } from '@/components/ui/skill'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
 import type { SkillCategories } from '@/data/skills'
 import { SKILLS_LIST } from '@/data/skills'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
+import { trackEvent } from '@/lib/track-event'
 import { SkillCategoryButton } from './category-button'
 
 type SoftSkillTranslationKey =
@@ -51,6 +53,7 @@ export function Skills() {
 	}, [])
 
 	function handleChangeCategory(category: SkillCategories) {
+		trackEvent(ANALYTICS_EVENTS.skillsCategory, { category })
 		triggerHaptic()
 		setSelectedCategory(category)
 	}

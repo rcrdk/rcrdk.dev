@@ -11,7 +11,9 @@ import { ThemeSwitcher } from '@/components/common/theme-switcher'
 import { LazyGameDialogTetris } from '@/components/game/dialog/lazy-tetris-dialog'
 import { GameToggle } from '@/components/game/dialog/toggle'
 import { Container } from '@/components/ui/container'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
+import { trackEvent } from '@/lib/track-event'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -61,7 +63,10 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 				<a
 					href="/"
 					className="xs:py-2 xs:pr-4 xs:pl-2 layout:flex-col layout:px-1 layout:pb-2 layout:pt-1 layout:-mt-1 xs:-ml-2 focus-visible:border-accent-blue -ml-1 flex items-center rounded-4xl border border-transparent py-1 pr-2 pl-1"
-					onClick={(e) => scrollToSection(e, '#about')}
+					onClick={(e) => {
+						trackEvent(ANALYTICS_EVENTS.headerLogoClick)
+						scrollToSection(e, '#about')
+					}}
 				>
 					<HeaderAvatar className="xs:size-10 pointer-events-auto relative z-10 size-9 rounded-full" />
 

@@ -13,6 +13,7 @@ import { getTranslations } from 'next-intl/server'
 
 import { NotFoundGameTask } from '@/components/game/tasks/not-found-task'
 import { NOT_FOUND_GIFS } from '@/config/gifs'
+import { ignorePagesRobots } from '@/config/metadata'
 
 const FOLLOW_CURSOR_ROTATION_FACTOR = 50
 const FOLLOW_CURSOR_CARD_WIDTH = '400px'
@@ -27,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 	return {
 		title: __('title'),
+		robots: ignorePagesRobots,
 	}
 }
 

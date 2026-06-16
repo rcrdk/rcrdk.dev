@@ -6,6 +6,7 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useLazyMount } from '@/hooks/use-lazy-mount'
@@ -35,7 +36,13 @@ export function HeroAboutDialog() {
 
 	return (
 		<>
-			<Button variant="outline" size="lg" className="grow" onClick={handleShowContents}>
+			<Button
+				variant="outline"
+				size="lg"
+				className="grow"
+				onClick={handleShowContents}
+				analytics={{ name: ANALYTICS_EVENTS.aboutMeOpen }}
+			>
 				<IconUserCircle aria-hidden />
 				<span className="font-medium">{__('buttons.about')}</span>
 			</Button>

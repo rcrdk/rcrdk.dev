@@ -9,6 +9,7 @@ import FollowCursor from '@/components/animated/follow-cursor'
 import { RickRollingGameTaskButton } from '@/components/game/tasks/rickrolling-task'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { LINKS } from '@/config/links'
 import { BUTTONS, DEFAULT_BUTTON_PROPS, EXTERNAL_BUTTON_LINK_PROPS } from '@/constants/contact'
 import { useGame } from '@/hooks/use-game'
@@ -39,13 +40,21 @@ export function Contact() {
 				</AnimatedContent>
 
 				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
-					{BUTTONS.map(({ labelKey, href, Icon }, index) => {
+					{BUTTONS.map(({ labelKey, href, Icon, analytics }, index) => {
 						const delay = INITIAL_DELAY + index * DELAY_INCREMENT
 
 						return (
 							<li key={labelKey}>
 								<AnimatedContent delay={delay}>
-									<Button {...EXTERNAL_BUTTON_LINK_PROPS} href={href} aria-label={__(`buttons.${labelKey}`)}>
+									<Button
+										{...EXTERNAL_BUTTON_LINK_PROPS}
+										href={href}
+										aria-label={__(`buttons.${labelKey}`)}
+										analytics={{
+											name: analytics.name,
+											data: { ...analytics.data, section: 'contact' },
+										}}
+									>
 										<Icon aria-hidden />
 									</Button>
 								</AnimatedContent>
@@ -75,12 +84,20 @@ export function Contact() {
 						</p>
 
 						<div className="xs:w-auto flex w-full gap-2">
-							<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.linkedIn}>
+							<Button
+								{...DEFAULT_BUTTON_PROPS}
+								href={LINKS.linkedIn}
+								analytics={{ name: ANALYTICS_EVENTS.linkedinProfileClick, data: { section: 'contact' } }}
+							>
 								<IconBrandLinkedin aria-hidden />
 								<span className="font-semibold">{__('box.button.linkedin')}</span>
 							</Button>
 
-							<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.resume}>
+							<Button
+								{...DEFAULT_BUTTON_PROPS}
+								href={LINKS.resume}
+								analytics={{ name: ANALYTICS_EVENTS.resumeClick, data: { section: 'contact' } }}
+							>
 								<IconFileDescription aria-hidden />
 								<span className="font-semibold">{__('box.button.cv')}</span>
 							</Button>

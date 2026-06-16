@@ -47,6 +47,7 @@ export function HistoryListMobileItem({ data }: Readonly<Props>) {
 						<SwiperSlide className="!h-auto !w-45 sm:!w-60" key={`view-all-${data.slug}`}>
 							<ViewAllProjectsCard
 								href={`/projects/${data.slug}`}
+								companySlug={data.slug}
 								totalCount={data.projects.length}
 								remainingCount={data.projects.length - MAX_VISIBLE_PROJECTS}
 							/>

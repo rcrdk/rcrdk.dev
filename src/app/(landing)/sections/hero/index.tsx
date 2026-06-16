@@ -9,6 +9,7 @@ import { AnimatedContent } from '@/components/animated/animated-content'
 import { AnimatedSplitText } from '@/components/animated/animated-split-text'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { FULL_DATES } from '@/config/dates'
 import { HERO_BUTTONS } from '@/constants/hero'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
@@ -56,6 +57,7 @@ export function Hero() {
 								variant="solid"
 								size="lg"
 								onClick={(e) => scrollToSection(e, '#experiences')}
+								analytics={{ name: ANALYTICS_EVENTS.scrollToSection, data: { section: 'experiences' } }}
 								className="grow"
 								haptic
 							>
@@ -79,9 +81,9 @@ export function Hero() {
 								<HeroAboutDialog />
 							</li>
 
-							{HERO_BUTTONS.map(({ labelKey, href, Icon, ...buttonProps }) => (
+							{HERO_BUTTONS.map(({ labelKey, href, Icon, analytics, ...buttonProps }) => (
 								<li key={labelKey}>
-									<Button href={href} aria-label={__(`buttons.${labelKey}`)} {...buttonProps}>
+									<Button href={href} aria-label={__(`buttons.${labelKey}`)} analytics={analytics} {...buttonProps}>
 										<Icon aria-hidden />
 									</Button>
 								</li>

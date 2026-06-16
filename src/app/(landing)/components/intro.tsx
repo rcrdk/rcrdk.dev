@@ -1,15 +1,27 @@
 import { IconArrowRight } from '@tabler/icons-react'
 
 import { Button } from '@/components/ui/button'
+import type { AnalyticsEventData, AnalyticsEventName } from '@/config/analytics-events'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
 	heading: string
 	text: string
 	buttonText?: string
+	scrollAnalytics?: {
+		name: AnalyticsEventName
+		data?: AnalyticsEventData
+	}
 	handleSlideNext?: () => void
 }
 
-export function HistoryCommonIntro({ heading, text, buttonText, handleSlideNext, ...props }: Readonly<Props>) {
+export function HistoryCommonIntro({
+	heading,
+	text,
+	buttonText,
+	scrollAnalytics,
+	handleSlideNext,
+	...props
+}: Readonly<Props>) {
 	return (
 		<div {...props}>
 			<h2 className="layout:mb-8 font-heading xs:text-5xl mb-8 block items-center text-4xl font-black tracking-tight text-balance sm:mb-12 sm:text-7xl md:max-w-full lg:static lg:block lg:h-auto lg:pr-0 lg:text-6xl dark:text-white">
@@ -21,8 +33,14 @@ export function HistoryCommonIntro({ heading, text, buttonText, handleSlideNext,
 				dangerouslySetInnerHTML={{ __html: text }}
 			/>
 
-			{buttonText && (
-				<Button variant="solid" className="layout:mt-8 mt-8 sm:mt-12" onClick={handleSlideNext} haptic>
+			{buttonText && scrollAnalytics && (
+				<Button
+					variant="solid"
+					className="layout:mt-8 mt-8 sm:mt-12"
+					onClick={handleSlideNext}
+					analytics={scrollAnalytics}
+					haptic
+				>
 					{buttonText}
 					<IconArrowRight aria-hidden />
 				</Button>

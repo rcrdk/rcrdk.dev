@@ -9,9 +9,11 @@ import { useTranslations } from 'next-intl'
 import { GameDialogWrapper } from '@/components/game/dialog/wrapper'
 import { GameTaskItem } from '@/components/game/game-task-item'
 import { Button } from '@/components/ui/button'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
+import { trackEvent } from '@/lib/track-event'
 import { cn } from '@/utils/tailwind-cn'
 
 const GAME_WIN_CONFETTI_DELAY = 1000
@@ -62,6 +64,7 @@ export function GameDialog() {
 	}, [celebrateWin, isGameCompleted, showGameDialog])
 
 	function handleCelebrateAgain() {
+		trackEvent(ANALYTICS_EVENTS.gameCelebrateAgain, { points: pointsEarned })
 		celebrateWin()
 	}
 

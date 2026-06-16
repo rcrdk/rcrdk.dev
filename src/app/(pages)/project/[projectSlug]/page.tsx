@@ -6,7 +6,6 @@ import { ProjectContainer } from '@/app/(pages)/project/[projectSlug]/components
 import { ignorePagesRobots } from '@/config/metadata'
 import type { LocalesType } from '@/i18n/config'
 import { env } from '@/lib/env'
-import { trackServerEvent } from '@/services/mixpanel'
 import { getAllProjectSlugs } from '@/utils/get-all-project-slugs'
 import { getProjectBySlug } from '@/utils/get-project-by-slug'
 
@@ -62,11 +61,6 @@ export default async function ProjectPage({ params }: Props) {
 	const project = getProjectBySlug(projectSlug)
 
 	if (!project) notFound()
-
-	trackServerEvent('page_view', {
-		page: `project-${projectSlug}`,
-		url: `/project/${projectSlug}`,
-	})
 
 	return <ProjectContainer data={project} />
 }

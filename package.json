@@ -28,7 +28,6 @@
 		"canvas-confetti": "1.9.3",
 		"class-variance-authority": "0.7.1",
 		"dayjs": "1.11.13",
-		"mixpanel": "0.18.0",
 		"motion": "12.34.2",
 		"next": "16.2.6",
 		"next-intl": "4.4.0",
@@ -40,7 +39,6 @@
 		"sonner": "2.0.3",
 		"swiper": "11.2.6",
 		"tailwindcss": "4.1.4",
-		"uuid": "13.0.0",
 		"zod": "4.1.12"
 	},
 	"devDependencies": {
@@ -50,7 +48,6 @@
 		"@eslint/js": "9.18.0",
 		"@ianvs/prettier-plugin-sort-imports": "4.4.0",
 		"@next/eslint-plugin-next": "16.2.6",
-		"@next/third-parties": "16.2.6",
 		"@radix-ui/react-avatar": "1.1.7",
 		"@radix-ui/react-dropdown-menu": "2.1.12",
 		"@radix-ui/react-tooltip": "1.2.4",

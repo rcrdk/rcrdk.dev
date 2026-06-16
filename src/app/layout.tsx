@@ -5,6 +5,7 @@ import type { Metadata, Viewport } from 'next'
 import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 
 import profilePicture from '@/assets/avatar.jpg'
+import { UmamiAnalytics } from '@/components/analytics/umami'
 import { KonamiCodeGameTask } from '@/components/game/tasks/konami-code-task'
 import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { Providers } from '@/components/providers'
@@ -41,8 +42,6 @@ export default async function RootLayout({ children }: Readonly<Props>) {
 	const locale = (await getLocale()) as LocalesType
 	const messages = await getMessages()
 	const __ = await getTranslations('Seo')
-
-	const shouldEnableGA = process.env.NODE_ENV === 'production' && !!env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -105,9 +104,10 @@ export default async function RootLayout({ children }: Readonly<Props>) {
 			suppressHydrationWarning
 		>
 			<body className="text-content-light dark:text-content-dark layout:overflow-y-auto layout:snap-y layout:snap-mandatory layout:h-dvh w-full overflow-x-hidden scroll-smooth">
+				<UmamiAnalytics />
 				<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-				<Providers i18n={{ messages, locale }} shouldEnableGA={shouldEnableGA}>
+				<Providers i18n={{ messages, locale }}>
 					<LocaleGameTask />
 					<KonamiCodeGameTask />
 

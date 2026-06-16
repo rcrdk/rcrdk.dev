@@ -7,8 +7,10 @@ import { useTranslations } from 'next-intl'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { MotionDiv } from '@/components/animated/motion'
 import { NavLink } from '@/components/common/nav-link'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
+import { trackEvent } from '@/lib/track-event'
 import { scrollToSection } from '@/utils/scroll-to-section'
 import { cn } from '@/utils/tailwind-cn'
 
@@ -134,7 +136,10 @@ export function Nav({ slot }: Readonly<Props>) {
 						<NavLink
 							href={item.href}
 							className={linkClass}
-							onClick={(e) => scrollToSection(e, item.href)}
+							onClick={(e) => {
+								trackEvent(ANALYTICS_EVENTS.navClick, { section: item.href.replace('#', '') })
+								scrollToSection(e, item.href)
+							}}
 							aria-controls={item.href}
 							showActive={hoveredHref === item.href}
 							onHoverChange={(hovered) => (hovered ? setHoveredHref(item.href) : undefined)}

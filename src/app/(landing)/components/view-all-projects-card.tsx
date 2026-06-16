@@ -4,20 +4,28 @@ import Link from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
+import { trackEvent } from '@/lib/track-event'
 import { cn } from '@/utils/tailwind-cn'
 
 interface Props {
 	href: string
+	companySlug: string
 	totalCount: number
 	remainingCount: number
 }
 
-export function ViewAllProjectsCard({ href, totalCount, remainingCount }: Readonly<Props>) {
+export function ViewAllProjectsCard({ href, companySlug, totalCount, remainingCount }: Readonly<Props>) {
 	const __ = useTranslations('Share')
+
+	function handleClick() {
+		trackEvent(ANALYTICS_EVENTS.viewAllProjects, { company: companySlug })
+	}
 
 	return (
 		<Link
 			href={href}
+			onClick={handleClick}
 			className={cn(
 				'group/view-all-projects before:squircle-rounded squircle-rounded max-layout-breakpoint:flex-col relative flex min-h-full w-1/3 min-w-full flex-1 shrink-1 cursor-pointer overflow-hidden rounded-3xl bg-black/2 transition-colors duration-400 before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-3xl before:border before:border-black/15 before:transition-colors before:duration-400 hover:bg-black/6 hover:before:border-black/30 dark:bg-white/10 dark:before:border-white/20 dark:hover:bg-white/12 dark:hover:before:border-white/20',
 				'w-full',

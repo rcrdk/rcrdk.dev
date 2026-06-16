@@ -17,7 +17,6 @@ import { Container } from '@/components/ui/container'
 import { FULL_DATES } from '@/config/dates'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
-import { trackServerEvent } from '@/services/mixpanel'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const locale = await getLocale()
@@ -56,13 +55,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-	const locale = await getLocale()
-
-	trackServerEvent('page_view', {
-		page: `home-${locale.split('-')[0]}`,
-		url: '/',
-	})
-
 	return (
 		<div className="layout:flex-row layout:items-start relative flex flex-col items-center">
 			<Header />

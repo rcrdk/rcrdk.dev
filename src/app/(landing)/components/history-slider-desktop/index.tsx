@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide, type SwiperRef } from 'swiper/react'
 import { HistorySliderDesktopSlide } from '@/app/(landing)/components/history-slider-desktop/slide'
 import { HistoryCommonIntro } from '@/app/(landing)/components/intro'
 import { AnimatedContent } from '@/components/animated/animated-content'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import type { HistoryItem } from '@/types/history'
 import { handleParentTouchEnd, handleParentTouchStart } from '@/utils/swiper'
 import { cn } from '@/utils/tailwind-cn'
@@ -28,9 +29,10 @@ interface Props {
 	buttonNextSlideText: string
 	text: string
 	list: HistoryItem[]
+	section: 'experiences' | 'education'
 }
 
-export function HistorySliderDesktop({ title, buttonNextSlideText, text, list }: Readonly<Props>) {
+export function HistorySliderDesktop({ title, buttonNextSlideText, text, list, section }: Readonly<Props>) {
 	const refContainer = useRef<HTMLDivElement>(null)
 	const swiperRef = useRef<SwiperRef>(null)
 
@@ -97,6 +99,7 @@ export function HistorySliderDesktop({ title, buttonNextSlideText, text, list }:
 								text={text}
 								buttonText={buttonNextSlideText}
 								handleSlideNext={handleSlideNext}
+								scrollAnalytics={{ name: ANALYTICS_EVENTS.sectionScroll, data: { section } }}
 							/>
 
 							<div className="inactive-border squircle-rounded pointer-events-none absolute inset-y-0 right-0 -z-1 w-1/4 rounded-3xl border-y border-e border-black/15 transition-opacity duration-400 before:absolute before:-inset-px before:z-10 before:w-full before:bg-gradient-to-r before:from-white before:to-white/0 dark:border-white/20 dark:before:from-black dark:before:to-black/0" />

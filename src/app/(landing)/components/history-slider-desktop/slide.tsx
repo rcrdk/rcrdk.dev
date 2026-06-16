@@ -47,6 +47,7 @@ export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
 							<SwiperSlide className="!flex !h-auto !w-1/3 max-xl:!w-2/5" key={`view-all-${data.slug}`}>
 								<ViewAllProjectsCard
 									href={`/projects/${data.slug}`}
+									companySlug={data.slug}
 									totalCount={data.projects.length}
 									remainingCount={data.projects.length - MAX_VISIBLE_PROJECTS}
 								/>

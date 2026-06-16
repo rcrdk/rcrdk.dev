@@ -10,6 +10,7 @@ import { ProjectImages } from '@/app/components/project-images'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Skill } from '@/components/ui/skill'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject, HistoryProjectDescription } from '@/types/history'
 import { formatList } from '@/utils/format-list'
@@ -129,25 +130,57 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 							<ProjectGroup hasGallery title={__('links')}>
 								<div className="flex gap-2">
 									{data.links.website && (
-										<Button {...BUTTON_PROPS} href={data.links.website} title={__('website')}>
+										<Button
+											{...BUTTON_PROPS}
+											href={data.links.website}
+											title={__('website')}
+											analytics={{
+												name: ANALYTICS_EVENTS.projectLinkClick,
+												data: { type: 'website', slug: data.slug },
+											}}
+										>
 											<IconExternalLink aria-hidden />
 										</Button>
 									)}
 
 									{data.links.github && (
-										<Button {...BUTTON_PROPS} href={data.links.github} title={__('github')}>
+										<Button
+											{...BUTTON_PROPS}
+											href={data.links.github}
+											title={__('github')}
+											analytics={{
+												name: ANALYTICS_EVENTS.projectLinkClick,
+												data: { type: 'github', slug: data.slug },
+											}}
+										>
 											<IconBrandGithub aria-hidden />
 										</Button>
 									)}
 
 									{data.links.behance && (
-										<Button {...BUTTON_PROPS} href={data.links.behance} title={__('behance')}>
+										<Button
+											{...BUTTON_PROPS}
+											href={data.links.behance}
+											title={__('behance')}
+											analytics={{
+												name: ANALYTICS_EVENTS.projectLinkClick,
+												data: { type: 'behance', slug: data.slug },
+											}}
+										>
 											<IconBrandBehance aria-hidden />
 										</Button>
 									)}
 
 									{data.links.video && (
-										<Button {...BUTTON_PROPS} href={data.links.video} title={__('video')}>
+										<Button
+											{...BUTTON_PROPS}
+											href={data.links.video}
+											title={__('video')}
+											analytics={{
+												name: ANALYTICS_EVENTS.projectLinkClick,
+												data: { type: 'video', slug: data.slug },
+											}}
+										>
 											<IconPlayerPlay aria-hidden />
 										</Button>
 									)}

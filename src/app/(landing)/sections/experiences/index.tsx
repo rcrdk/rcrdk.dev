@@ -28,7 +28,7 @@ export function Experiences() {
 
 	return (
 		<Section>
-			{isDesktop && <LazyHistorySliderDesktop list={listWithProjects} {...rest} />}
+			{isDesktop && <LazyHistorySliderDesktop list={listWithProjects} section="experiences" {...rest} />}
 			{!isDesktop && <HistoryListMobile {...rest} list={listWithProjects} />}
 		</Section>
 	)

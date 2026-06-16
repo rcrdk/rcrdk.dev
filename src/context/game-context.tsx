@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 
 import { GameToast } from '@/components/game/toast'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { LOCAL_STORAGE_KEYS } from '@/config/keys'
 import type { GameTaskTypes } from '@/data/game-tasks'
 import { GAME_TASKS } from '@/data/game-tasks'
@@ -12,6 +13,7 @@ import { useHaptics } from '@/hooks/use-haptics'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
 import type { LocalesType } from '@/i18n/config'
 import { clearGameLocalStorage, GAME_LANGUAGE_CHANGED_KEY, setLanguageChangedDuringGame } from '@/i18n/game'
+import { trackEvent } from '@/lib/track-event'
 import { gameReducer, INITIAL_GAME_STATE, type GameHydratePayload } from '@/reducers/game-reducer'
 
 const TOAST_DURATION = 20000
@@ -76,7 +78,18 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 		button: task.button,
 	}))
 
+	const pointsEarned = GAME_TASKS.filter((task) => state.tasksCompleted.includes(task.id)).reduce(
+		(previous, current) => previous + current.points,
+		0,
+	)
+
+	const pointsTotal = GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
+
+	const isGameCompleted = pointsEarned >= pointsTotal
+
 	function onActivateGame() {
+		trackEvent(ANALYTICS_EVENTS.gameActivate)
+
 		dispatch({ type: 'game/activate' })
 		playSound('game-start')
 
@@ -105,6 +118,20 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 
 		if (taskAlreadyExists || !state.isScreenSizeAllowed || !state.isGameActive) return
 
+		const task = GAME_TASKS.find((item) => item.id === taskId)
+		const tasksCompleted = [...state.tasksCompleted, taskId]
+		const pointsEarnedAfterComplete = GAME_TASKS.filter((item) => tasksCompleted.includes(item.id)).reduce(
+			(previous, current) => previous + current.points,
+			0,
+		)
+
+		trackEvent(ANALYTICS_EVENTS.gameTaskComplete, {
+			task: taskId,
+			points: task?.points ?? 0,
+		})
+
+		if (pointsEarnedAfterComplete >= pointsTotal) trackEvent(ANALYTICS_EVENTS.gameCompleted, { points: pointsTotal })
+
 		dispatch({ type: 'game/completeTask', taskId })
 
 		if (typeof window !== 'undefined')
@@ -114,6 +141,8 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	function onResetGame(soundEffect?: boolean) {
+		trackEvent(ANALYTICS_EVENTS.gameReset, { points: pointsEarned })
+
 		dispatch({ type: 'game/reset' })
 		triggerHaptic()
 
@@ -127,6 +156,8 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	function onStopGame() {
+		trackEvent(ANALYTICS_EVENTS.gameStop, { points: pointsEarned })
+
 		dispatch({ type: 'game/stop' })
 		playSound('game-over')
 		triggerHaptic()
@@ -134,30 +165,29 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 	}
 
 	function onShowGameDialog() {
+		trackEvent(state.showGameDialog ? ANALYTICS_EVENTS.gameDialogClose : ANALYTICS_EVENTS.gameDialogOpen, {
+			points: pointsEarned,
+		})
+
 		dispatch({ type: 'game/toggleDialog' })
 	}
 
 	function onShowGameTetris(open: boolean) {
+		trackEvent(open ? ANALYTICS_EVENTS.gameTetrisOpen : ANALYTICS_EVENTS.gameTetrisClose)
+
 		dispatch({ type: 'game/setTetrisOpen', open })
 
 		if (!open) onCompleteTask('tetris')
 	}
 
 	function onShowGameTasks() {
+		trackEvent(ANALYTICS_EVENTS.gameShowTasks, { points: pointsEarned })
+
 		dispatch({ type: 'game/showTasks' })
 		onCompleteTask('has-opened-hints')
 
 		if (typeof window !== 'undefined') window.localStorage.setItem(LOCAL_STORAGE_KEYS.gameTasksVisible, 'true')
 	}
-
-	const pointsEarned = GAME_TASKS.filter((task) => state.tasksCompleted.includes(task.id)).reduce(
-		(previous, current) => previous + current.points,
-		0,
-	)
-
-	const pointsTotal = GAME_TASKS.reduce((previous, current) => previous + current.points, 0)
-
-	const isGameCompleted = pointsEarned >= pointsTotal
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return

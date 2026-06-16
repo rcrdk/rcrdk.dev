@@ -4,6 +4,7 @@ import { IconBrandLinkedin, IconFileDescription } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { LINKS } from '@/config/links'
 import { BUTTONS, DEFAULT_BUTTON_PROPS, EXTERNAL_BUTTON_LINK_PROPS } from '@/constants/contact'
 
@@ -23,9 +24,17 @@ export function PageContact() {
 				/>
 
 				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
-					{BUTTONS.map(({ labelKey, href, Icon }) => (
+					{BUTTONS.map(({ labelKey, href, Icon, analytics }) => (
 						<li key={labelKey}>
-							<Button {...EXTERNAL_BUTTON_LINK_PROPS} href={href} aria-label={__(`buttons.${labelKey}`)}>
+							<Button
+								{...EXTERNAL_BUTTON_LINK_PROPS}
+								href={href}
+								aria-label={__(`buttons.${labelKey}`)}
+								analytics={{
+									name: analytics.name,
+									data: { ...analytics.data, section: 'project_page' },
+								}}
+							>
 								<Icon aria-hidden />
 							</Button>
 						</li>
@@ -42,12 +51,20 @@ export function PageContact() {
 					</p>
 
 					<div className="xs:w-auto flex w-full gap-2">
-						<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.linkedIn}>
+						<Button
+							{...DEFAULT_BUTTON_PROPS}
+							href={LINKS.linkedIn}
+							analytics={{ name: ANALYTICS_EVENTS.linkedinProfileClick, data: { section: 'project_page' } }}
+						>
 							<IconBrandLinkedin aria-hidden />
 							<span className="font-semibold">{__('box.button.linkedin')}</span>
 						</Button>
 
-						<Button {...DEFAULT_BUTTON_PROPS} href={LINKS.resume}>
+						<Button
+							{...DEFAULT_BUTTON_PROPS}
+							href={LINKS.resume}
+							analytics={{ name: ANALYTICS_EVENTS.resumeClick, data: { section: 'project_page' } }}
+						>
 							<IconFileDescription aria-hidden />
 							<span className="font-semibold">{__('box.button.cv')}</span>
 						</Button>

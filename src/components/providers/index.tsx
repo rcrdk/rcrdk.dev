@@ -1,6 +1,5 @@
 'use client'
 
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { QueryClientProvider } from '@tanstack/react-query'
 import type { AbstractIntlMessages } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
@@ -10,7 +9,6 @@ import { GameContextProvider } from '@/context/game-context'
 import { HapticsProvider } from '@/context/haptics-context'
 import { LocaleProvider } from '@/context/locale-context'
 import type { LocalesType } from '@/i18n/config'
-import { env } from '@/lib/env'
 import { queryClient } from '@/lib/react-query'
 
 const TOASTER_OFFSET = 40
@@ -24,10 +22,9 @@ interface Props {
 		locale: LocalesType
 		messages: AbstractIntlMessages
 	}
-	shouldEnableGA: boolean
 }
 
-export function Providers({ children, i18n, shouldEnableGA }: Readonly<Props>) {
+export function Providers({ children, i18n }: Readonly<Props>) {
 	return (
 		<LocaleProvider initialLocale={i18n.locale} initialMessages={i18n.messages}>
 			<QueryClientProvider client={queryClient}>
@@ -51,8 +48,6 @@ export function Providers({ children, i18n, shouldEnableGA }: Readonly<Props>) {
 									},
 								}}
 							/>
-
-							{shouldEnableGA && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />}
 						</GameContextProvider>
 					</HapticsProvider>
 				</ThemeProvider>

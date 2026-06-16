@@ -28,7 +28,7 @@ export function Education() {
 
 	return (
 		<Section>
-			{isDesktop && <HistorySliderDesktop list={listWithProjects} {...rest} />}
+			{isDesktop && <HistorySliderDesktop list={listWithProjects} section="education" {...rest} />}
 			{!isDesktop && <HistoryListMobile list={listWithProjects} {...rest} />}
 		</Section>
 	)
