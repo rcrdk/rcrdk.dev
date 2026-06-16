@@ -35,7 +35,6 @@ export const SCREENSAVER_GIFS = [
 	'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdml6c3QwbDNhZmZ4dnFocG51YnZ6eDI3NXJnYTQ1MDJtZHZqeW5wMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bu3agRNMoG5Y8nu/giphy.gif',
 	'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamRzeHNla3gzenRrNnZzcXNqazlqcTFkdmo2ZHhjeTNxcXNsZHU1aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ohhwFq0liwGtrLNxC/giphy.gif',
 	'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3VvYmF4d3JzcnZjemQxeDEwaWdlMDR2MHIxc3lheGMzM2M5MHVjciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/J6ctgPvnDpDi0/giphy.gif',
-	'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm9rN2FvdTNnZmxvdHNmaHJqNWdtbnF6bHFzcTlhd3c4b3ByYzVhYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kaq6GnxDlJaBq/giphy.gif',
 	'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGRobGg2YjI1M2gzaTdlcGNyNXNsN29uNTVqczhnYnBzOXFoZzQzNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3vR3ogLP5ClWuRFK/giphy.gif',
 	'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3NwMDhtc2FiMW14ZWlyeDRxN3d3b3dtN3R4Y2RleWd1emthbThlZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oDwLkh1diFCH6/giphy.gif',
 ]
