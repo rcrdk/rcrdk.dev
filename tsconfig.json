@@ -31,7 +31,8 @@
   },
   "exclude": [
     "node_modules",
-    ".next"
+    ".next",
+    "agents/skills/**"
   ],
   "include": [
     "next-env.d.ts",
