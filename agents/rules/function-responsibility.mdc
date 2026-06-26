@@ -1,0 +1,51 @@
+---
+description: Single-responsibility functions; extract auxiliary helpers when logic grows
+alwaysApply: true
+---
+
+# Function Responsibility
+
+Each function should do one thing well. When a function handles multiple concerns, extract auxiliary functions.
+
+### When to Extract
+
+- Validation, transformation, and side effects are mixed in one function
+- The function name would need "and" to describe what it does
+- Nested logic makes the flow hard to follow at a glance
+- A block could be named and reused elsewhere
+
+### How to Extract
+
+- Name auxiliary functions after what they return or check
+- Keep the main function as a readable orchestration of small steps
+- Prefer pure auxiliary functions when possible
+
+- ✅ Good:
+
+  ```typescript
+  const isActiveUser = (user: User) => user.isActive && !user.isDeleted
+
+  const toDisplayName = (user: User) => user.name.toUpperCase()
+
+  export const getActiveUserDisplayName = (user: User | null) => {
+    if (!user) return null
+    if (!isActiveUser(user)) return null
+
+    return toDisplayName(user)
+  }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  export const getActiveUserDisplayName = (user: User | null) => {
+    if (!user) return null
+    if (!user.isActive || user.isDeleted) return null
+
+    const upperCaseName = user.name.toUpperCase()
+    const trimmedName = upperCaseName.trim()
+    const formattedName = trimmedName.replace(/\s+/g, ' ')
+
+    return formattedName
+  }
+  ```

@@ -11,7 +11,9 @@
 		"lint:fix": "eslint \"src/**/*.+(ts|tsx)\" --fix",
 		"format": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --write",
 		"format:check": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --check",
-		"prepare": "husky install"
+		"agents:link": "node scripts/link-agent-symlinks.mjs",
+		"agents:unlink": "node scripts/unlink-agent-symlinks.mjs",
+		"prepare": "husky install && pnpm agents:link"
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,mjs}": [

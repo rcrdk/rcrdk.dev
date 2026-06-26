@@ -38,3 +38,9 @@ next-env.d.ts
 
 # pwa
 **/public/sw.js
+
+# agent symlinks (generated via pnpm agents:link)
+.cursor/rules
+.cursor/skills
+.claude/rules
+.claude/skills

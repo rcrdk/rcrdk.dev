@@ -1,0 +1,104 @@
+---
+description: How to create and edit Cursor rules (location, naming, structure)
+alwaysApply: true
+---
+
+# Creating Cursor Rules
+
+Use this rule when creating or editing Cursor rules. It defines where rules live, how to name them, and their structure.
+
+## 1. Location
+
+Always place rule files in `PROJECT_ROOT/agents/rules/`:
+
+```
+PROJECT_ROOT/
+├── agents/
+│   └── rules/
+│       ├── your-rule-name.mdc
+│       ├── another-rule.mdc
+│       └── ...
+├── .cursor/
+│   └── rules -> ../agents/rules
+└── .claude/
+    └── rules -> ../agents/rules
+```
+
+`.cursor/rules` and `.claude/rules` are symlinks to `agents/rules`. Never place rule files in the project root or outside `agents/rules`.
+
+## 2. Naming
+
+- Use **kebab-case** for filenames (e.g. `creating-cursor-rules.mdc`).
+- Use the **.mdc** extension.
+- Use names that clearly describe the rule’s purpose.
+
+## 3. File structure
+
+Each rule file must have:
+
+1. **YAML front matter** at the top, between `---` lines.
+2. **Markdown body**: title, explanation, steps, and optional code examples.
+
+### Front matter
+
+```yaml
+---
+description: Short description of the rule's purpose
+globs: optional/path/pattern/**/*
+alwaysApply: false
+---
+```
+
+- `description`: short summary (e.g. for the rule picker).
+- `globs`: optional; file pattern so the rule applies when matching files are in context (e.g. `**/*.ts`, `src/**/*.tsx`).
+- `alwaysApply`: `true` if the rule should apply in every conversation; `false` if it applies only when matching files are relevant.
+
+### Body
+
+- Start with a level-1 heading: `# Rule Title`.
+- Use markdown for the main explanation.
+- Prefer:
+  1. Step-by-step instructions
+  2. Code examples (good vs bad when useful)
+  3. Clear guidelines
+
+Example:
+
+```markdown
+# Rule Title
+
+Main content explaining the rule with markdown formatting.
+
+1. Step-by-step instructions
+2. Code examples
+3. Guidelines
+
+Example:
+
+\`\`\`typescript
+// Good
+function goodExample() {
+  // Implementation following guidelines
+}
+
+// Bad
+function badExample() {
+  // Implementation not following guidelines
+}
+\`\`\`
+```
+
+## 4. Best practices
+
+- One main concern per rule; split broad topics into several rules.
+- Prefer short, actionable rules (e.g. under 50 lines when possible).
+- Prefer concrete examples (good vs bad) over long prose.
+- Use `alwaysApply: true` only for rules that must apply in every chat; otherwise use `globs` and `alwaysApply: false`.
+
+## 5. Checklist when creating a rule
+
+- [ ] File is in `agents/rules/` with a `.mdc` extension.
+- [ ] Filename is kebab-case and descriptive.
+- [ ] YAML front matter has `description`; set `globs` and `alwaysApply` as needed.
+- [ ] Body has a `# Rule Title` and clear instructions/examples.
+- [ ] Rule is focused and reasonably short.

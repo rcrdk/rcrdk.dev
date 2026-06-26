@@ -1,0 +1,42 @@
+---
+description: Utility functions use arrow functions and are exported as const
+globs: src/utils/**/*
+alwaysApply: false
+---
+
+# Utility Functions
+
+Use this rule for files in `src/utils/` and other non-component utility modules.
+
+- Define utility functions as **arrow functions**
+- Export them as **`const`** named exports
+- This does **not** apply to React components — see [react-components](react-components.mdc)
+
+- ✅ Good:
+
+  ```typescript
+  export const formatList = (items: string[] | undefined, locale?: string): string => {
+    if (!items || items.length === 0) return ''
+
+    const formatter = new Intl.ListFormat(locale ?? 'en', { style: 'long', type: 'conjunction' })
+    return formatter.format(items)
+  }
+
+  export const enrichHistoryWithProjects = (list: HistoryItem[], projects: HistoryProject[]): HistoryItem[] =>
+    list.map((item) => ({
+      ...item,
+      projects: projects.filter((project) => project.companySlug === item.slug),
+    }))
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  export function formatList(items: string[] | undefined, locale?: string): string {
+    // ...
+  }
+
+  export default function enrichHistoryWithProjects(list: HistoryItem[], projects: HistoryProject[]) {
+    // ...
+  }
+  ```

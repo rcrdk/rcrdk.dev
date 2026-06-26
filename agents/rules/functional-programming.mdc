@@ -1,0 +1,134 @@
+---
+description: Prefer functional style—immutability, pure functions, declarative data transforms
+alwaysApply: true
+---
+
+# Functional Programming
+
+Prefer a functional approach over imperative programming. Favor immutable data, pure functions, and declarative transforms.
+
+## Immutability
+
+- Use `const` when the binding does not need reassignment
+- Avoid reassigning variables (`x = ...` multiple times)
+- Do not mutate arrays (`push`, `pop`, `splice`, in-place `sort`, in-place `reverse`)
+- Do not mutate objects (`obj.prop = ...`, `delete obj.prop`)
+- Do not modify props or data received as arguments
+
+- ✅ Good:
+
+  ```typescript
+  const activeUsers = users.filter((user) => user.isActive)
+  const sortedNames = [...names].sort((a, b) => a.localeCompare(b))
+  const updatedUser = { ...user, name: 'Jane' }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  let result = []
+  for (const user of users) {
+    if (user.isActive) result.push(user)
+  }
+
+  names.sort()
+  user.name = 'Jane'
+  ```
+
+## Data Transforms
+
+- Prefer `map`, `filter`, `reduce`, `find`, `some`, and `every` over `for` and `forEach` when producing new values
+- Avoid building arrays manually (`const arr = []; arr.push(...)`)
+- Avoid conditionals that mutate intermediate state (`if (...) result = ...`)
+- Prefer expressions over long sequences of statements when readability improves
+
+- ✅ Good:
+
+  ```typescript
+  const projectSlugs = projects
+    .filter((project) => project.isPublished)
+    .map((project) => project.slug)
+
+  const hasActiveProject = projects.some((project) => project.isActive)
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  const projectSlugs = []
+  for (const project of projects) {
+    if (project.isPublished) {
+      projectSlugs.push(project.slug)
+    }
+  }
+
+  let hasActiveProject = false
+  projects.forEach((project) => {
+    if (project.isActive) hasActiveProject = true
+  })
+  ```
+
+## Purity and Composition
+
+- Keep functions pure whenever possible — same input, same output, no side effects
+- Avoid shared mutable variables between functions
+- Prefer function composition over long sequential logic
+- Derive values from state instead of manually syncing them
+
+- ✅ Good:
+
+  ```typescript
+  const getFullName = (user: User) => `${user.firstName} ${user.lastName}`
+
+  const getDisplayName = (user: User | null) => {
+    if (!user) return null
+    return getFullName(user)
+  }
+
+  const fullName = getFullName(user)
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  let cachedName = ''
+
+  const updateName = (user: User) => {
+    cachedName = `${user.firstName} ${user.lastName}`
+  }
+
+  const getDisplayName = () => cachedName
+  ```
+
+## React
+
+- Avoid side effects inside render
+- Do not manually sync derived values — compute them from state or props
+- Avoid direct DOM manipulation when a React solution exists; use `useRef` only when necessary
+
+- ✅ Good:
+
+  ```typescript
+  const visibleProjects = projects.filter((project) => project.isVisible)
+
+  return (
+    <ul>
+      {visibleProjects.map((project) => (
+        <li key={project.id}>{project.name}</li>
+      ))}
+    </ul>
+  )
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  const items = []
+  for (const project of projects) {
+    if (project.isVisible) items.push(<li key={project.id}>{project.name}</li>)
+  }
+
+  document.getElementById('list')?.appendChild(node)
+
+  return <ul>{items}</ul>
+  ```

@@ -1,0 +1,55 @@
+---
+description: Reducer and file naming (camelCase + reducer, kebab-case -reducer); named exports
+alwaysApply: true
+---
+
+# Reducer Naming Conventions
+
+Use this rule when creating or editing Redux (or similar) reducer functions and their files.
+
+### Reducer Function Naming
+
+- Reducer function names should be in **camelCase** with `reducer` suffix.
+- Use descriptive names that clearly indicate what the reducer manages.
+
+- ✅ Good:
+  ```typescript
+  function mapReducer(state: MapState, action: MapAction): MapState {}
+  function userReducer(state: UserState, action: UserAction): UserState {}
+  ```
+
+- ❌ Bad:
+  ```typescript
+  function map(state: MapState, action: MapAction): MapState {}
+  function MapReducer(state: MapState, action: MapAction): MapState {}
+  function map_reducer(state: MapState, action: MapAction): MapState {}
+  ```
+
+### Reducer File Naming
+
+- Reducer files should be named in **kebab-case** with `-reducer` suffix.
+- File names should match the reducer function name (converted to kebab-case).
+
+- ✅ Good:
+  - File: `map-reducer.ts` → Reducer: `mapReducer`
+  - File: `user-reducer.ts` → Reducer: `userReducer`
+
+- ❌ Bad:
+  - File: `map.ts` → Reducer: `mapReducer`
+  - File: `mapReducer.ts` → Reducer: `mapReducer`
+  - File: `map_reducer.ts` → Reducer: `mapReducer`
+
+### Reducer Exports
+
+- Reducers should be exported as named exports.
+- Export both the reducer function and any related constants (like initial state).
+
+- ✅ Good:
+  ```typescript
+  export { INITIAL_MAP_STATE, mapReducer }
+  ```
+
+- ❌ Bad:
+  ```typescript
+  export default mapReducer
+  ```
