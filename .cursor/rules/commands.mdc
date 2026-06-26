@@ -1,8 +1,0 @@
----
-description: Preferences for commands
-alwaysApply: true
----
-
-# Commands
-
-- Prefer to use PNPM to run commands.
