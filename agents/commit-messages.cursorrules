@@ -1,0 +1,42 @@
+When Cursor auto-generates a Git commit message for this repository, follow these rules.
+
+# Commit Messages
+
+Use Conventional Commits. Messages are validated by commitlint on `commit-msg`.
+
+## Header (subject line)
+
+- Format: `type(scope): subject` or `type: subject`
+- Max **100 characters**
+- Imperative mood, lowercase subject, no trailing period
+- Allowed types: `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`, `wip`
+
+When the change centers on a **component or function**, use a **scope** in **camelCase** (the export name, lowerCamelCase) to save characters. Prefer scoped commits over unscoped.
+
+For broader areas (routes, modules, config) that are not a single component or function, use **kebab-case** for the scope or omit it.
+
+Good:
+- `test(avatar): add unit tests`
+- `feat(resultsTabs): add filter resume`
+- `fix(getSearchTypologiesFiltersResume): handle empty filters`
+- `feat(searchTypologyFilterResumeSummary): add tooltip`
+- `docs: document agent symlink setup`
+- `chore(setup-agent-links): update symlink script`
+
+Bad:
+- `feat(results-tabs): add filter resume` (use camelCase for components)
+- `fix(get-search-typologies-filters-resume): handle empty filters` (use camelCase for functions)
+- `feat(search-typology-filter-resume-summary): add tooltip` (use camelCase component name)
+- `feat: add avatar component` (use scope when change is component-specific)
+- `Updated files`
+- `fix: bug fix.`
+
+## Examples
+
+```
+test(avatar): add unit tests
+```
+
+```
+feat(resultsTabs): add filter resume
+```

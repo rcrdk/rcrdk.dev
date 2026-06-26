@@ -12,7 +12,7 @@ Use this rule when writing or updating test mocks (utilities, UI components, or 
 
 ### Check Existing Mocks First
 
-Before writing new mocks, check the base project `__mocks__` folder. If a more general mock is needed, it is possible to create new ones in this folder.
+Before writing new mocks, check the base project `__mocks__` folder and `@/mocks/`. Reuse shared mocks whenever possible. Create new shared mocks in those locations only when a general mock is needed.
 
 ### Importing General Mocks
 

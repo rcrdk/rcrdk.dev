@@ -1,11 +1,11 @@
 ---
-description: Reducer and file naming (camelCase + reducer, kebab-case -reducer); named exports
+description: useReducer reducers for complex local state — naming and exports
 alwaysApply: true
 ---
 
 # Reducer Naming Conventions
 
-Use this rule when creating or editing Redux (or similar) reducer functions and their files.
+Use this rule when creating or editing reducer functions paired with React `useReducer` for complex local state. This project does not use Redux.
 
 ### Reducer Function Naming
 

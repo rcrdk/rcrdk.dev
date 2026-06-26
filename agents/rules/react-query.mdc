@@ -1,0 +1,98 @@
+---
+description: React Query hooks in src/hooks/react-query; stable ordered query keys for cache
+globs:
+  - src/hooks/react-query/**/*
+  - src/hooks/**/*query*
+alwaysApply: false
+---
+
+# React Query
+
+Place React Query hooks in `src/hooks/react-query/`. Group related hooks in subfolders when needed (e.g. `deal/use-deal-data-query.ts`).
+
+## Query Keys
+
+Query keys must be **stable** and **ordered**. Arrays used in keys must be sorted so the same logical input always maps to the same cache entry, regardless of input order.
+
+- ✅ Good:
+
+  ```typescript
+  const BASE_KEY = 'autocomplete-cities-options'
+
+  const regionIdsKey = [...mapAutocompleteOptionsToValues(regionIds)].sort()
+
+  useQuery({
+    queryKey: [BASE_KEY, regionIdsKey],
+    queryFn: () => fetchAutocompleteCitiesOptions({ regionIds }),
+  })
+  ```
+
+  ```typescript
+  const queryKeysSorted = teamRegionIds.toSorted().map((id) => `region-${id}`)
+
+  useQuery({
+    queryKey: [BASE_KEY, ...queryKeysSorted],
+    queryFn: () => searchDevelopmentAction({ locations: searchParams }),
+  })
+  ```
+
+  ```typescript
+  const buildScenarioTypologiesQueryKey = ({ dealId, unitTypeIds }: FetchScenarioTypologiesParams) => {
+    const sortedUnitTypeIds = [...unitTypeIds].sort((a, b) => a - b)
+
+    return [SCENARIO_TYPOLOGIES_QUERY_KEY, dealId, ...sortedUnitTypeIds] as const
+  }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  useQuery({
+    queryKey: [BASE_KEY, regionIds],
+    queryFn: () => fetchOptions({ regionIds }),
+  })
+
+  useQuery({
+    queryKey: [BASE_KEY, ...teamRegionIds],
+    queryFn: () => searchDevelopmentAction({ locations }),
+  })
+  ```
+
+### Key structure
+
+1. First element: stable string key (`BASE_KEY`, `DEAL_DATA_QUERY_KEY`, etc.)
+2. Following elements: primitive identifiers (`dealId`, `userId`, etc.)
+3. Array inputs: copy, sort, then spread or pass as a sorted array segment
+4. Extract a `build*QueryKey` helper when the key has multiple dynamic parts
+
+## Hook structure
+
+- Export the query key constant when reused for invalidation
+- Co-locate `invalidate*` helpers with the hook
+- Use the same key shape in `invalidateQueries` as in `useQuery`
+- Import `queryClient` from `@/lib/react-query`
+- Call server actions or HTTP layer from `queryFn`; keep fetch logic out of components
+
+- ✅ Good:
+
+  ```typescript
+  export const DEAL_DATA_QUERY_KEY = 'deal-data'
+
+  export function useDealDataQuery(dealId: string) {
+    return useQuery({
+      queryKey: [DEAL_DATA_QUERY_KEY, dealId],
+      queryFn: () => getDealData(dealId),
+    })
+  }
+
+  export async function invalidateDealData(dealId: string) {
+    await queryClient.invalidateQueries({ queryKey: [DEAL_DATA_QUERY_KEY, dealId] })
+  }
+  ```
+
+## Tests
+
+When a hook key depends on sortable arrays, add tests that:
+
+- Keys are ordered consistently
+- The same values in different input order produce the same cache key

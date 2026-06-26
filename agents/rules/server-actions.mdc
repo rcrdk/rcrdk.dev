@@ -18,8 +18,8 @@ Applies to Next.js server actions in `app/_actions/`. Use this rule when creatin
   // app/_actions/task.ts
   'use server'
 
-  export async function createDealTaskAction(data: CreateDealTaskSchemaStripped) {}
-  export async function updateDealTaskAction(data: UpdateDealTaskSchemaStripped) {}
+  export const createDealTaskAction = validatedActionWithUser(createDealTaskActionSchema, handler)
+  export const updateDealTaskAction = validatedActionWithUser(updateDealTaskActionSchema, handler)
   ```
 
 - ❌ Bad:
@@ -34,23 +34,5 @@ Applies to Next.js server actions in `app/_actions/`. Use this rule when creatin
 
 ### Revalidation
 
-- After mutations in server actions, always call `revalidateTag()` to invalidate Next.js cache.
-
-- ✅ Good:
-
-  ```typescript
-  export async function updateDealTaskAction(data: UpdateDealTaskSchemaStripped) {
-    const response = await callRocketAPI({ plMethod: 'updateDealTask', payload })
-    revalidateTag('deal-history')
-    return response
-  }
-  ```
-
-- ❌ Bad:
-
-  ```typescript
-  export async function updateDealTaskAction(data: UpdateDealTaskSchemaStripped) {
-    const response = await callRocketAPI({ plMethod: 'updateDealTask', payload })
-    return response
-  }
-  ```
+- Revalidate the tag(s) that match the stale cached data — see [validated-actions](validated-actions.mdc)
+- Respect `shouldRevalidate` when the client may update UI optimistically

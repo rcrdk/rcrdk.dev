@@ -15,7 +15,7 @@ alwaysApply: true
 
   ```typescript
   export function useDebounce<T>(value: T, delay: number): T {}
-  export function useEscapeKey(callback: () => void) {}
+  export function useEscapeKey(callback: VoidFunction) {}
   export function useMapFitBounds() {}
   ```
 

@@ -7,6 +7,67 @@ alwaysApply: true
 
 Use this rule for all TypeScript code. Prefer type safety over shortcuts.
 
+## `type` vs `interface`
+
+- **Utils** (`src/utils/`): prefer `type` for function argument objects, return shapes, and other local types.
+- **Components** (`*.tsx` with JSX): prefer `interface` for props. Use `type` when the shape is complex (unions, intersections, mapped types, or utility-type compositions).
+- **Elsewhere** (hooks, contexts, schemas): follow the same split — `interface` for simple object shapes used as props/context; `type` for everything else.
+
+- ✅ Good:
+
+  ```typescript
+  // utils
+  type FormatPriceArgs = { value: number; currency?: string }
+  export type FiltersResume = { text: string; segments: string[] }
+
+  // components
+  interface ButtonProps {
+    label: string
+    onPress: VoidFunction
+  }
+
+  type DialogProps = ButtonProps & { variant: 'confirm' | 'delete' }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  // utils — avoid interface for simple util shapes
+  interface FormatPriceArgs {
+    value: number
+  }
+
+  // components — avoid type for simple props
+  type ButtonProps = { label: string; onPress: () => void }
+  ```
+
+## Callback types
+
+Prefer `VoidFunction` over `() => void` for zero-argument callbacks that return nothing (event handlers, `onClose`, `onToggle`, etc.).
+
+Use an explicit function type when the callback takes parameters or returns a value.
+
+- ✅ Good:
+
+  ```typescript
+  interface ModalProps {
+    onClose: VoidFunction
+    onSave: (id: string) => void
+  }
+
+  export function useEscapeKey(callback: VoidFunction) {}
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  interface ModalProps {
+    onClose: () => void
+  }
+  ```
+
+## Type safety
+
 - Avoid using `any` type. Use proper types, `unknown`, or generics instead.
 - Avoid type assertions (`as Type`). Prefer type guards, proper typing, or type narrowing when possible.
 - When type assertions are necessary, prefer `as const` for literal types or use type guards for runtime safety.

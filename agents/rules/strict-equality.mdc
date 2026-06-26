@@ -1,0 +1,27 @@
+---
+description: Prefer strict equality (=== and !==) over loose equality (== and !=)
+alwaysApply: true
+---
+
+# Strict Equality
+
+Use strict equality comparisons to avoid unexpected type coercion.
+
+- Prefer `===` over `==`
+- Prefer `!==` over `!=`
+
+- ✅ Good:
+
+  ```typescript
+  if (status === 'active') return true
+  if (count !== 0) return count
+  if (value === null || value === undefined) return null
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  if (status == 'active') return true
+  if (count != 0) return count
+  if (value == null) return null
+  ```

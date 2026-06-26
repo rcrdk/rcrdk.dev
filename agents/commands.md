@@ -2,23 +2,6 @@
 
 Prefer **PNPM** for all commands in this project.
 
-## Agent Setup
-
-```bash
-pnpm agents:link     # Create .cursor/ and .claude/ symlinks to agents/
-pnpm agents:unlink   # Remove symlinks (needed before git ops on old .cursor/rules paths)
-```
-
-Runs automatically on `pnpm install` via the `prepare` script.
-
-If git fails with `pathspec is beyond a symbolic link`:
-
-```bash
-pnpm agents:unlink
-git rm -r --cached .cursor/rules   # only needed once after migrating to agents/
-pnpm agents:link
-```
-
 ## Development
 
 ```bash
@@ -30,11 +13,35 @@ pnpm start        # Start production server
 ## Quality
 
 ```bash
-pnpm typecheck    # TypeScript type check
-pnpm lint         # ESLint
+pnpm typecheck    # TypeScript check (tsc --noEmit)
+pnpm lint         # ESLint on src/**/*.ts(x)
 pnpm lint:fix     # ESLint with auto-fix
 pnpm format       # Prettier write
 pnpm format:check # Prettier check
+```
+
+## Agents
+
+After cloning, create local symlinks for Cursor and Claude rules (also runs automatically via `prepare`):
+
+```bash
+pnpm setup:agent-links  # Link .cursor/, .claude/, CLAUDE.md, and .cursorrules to agents/
+```
+
+## Git
+
+Commits use Conventional Commits and are validated by commitlint on `commit-msg`.
+
+**Format:** `type(scope): subject` — header max **100 characters**.
+
+When the change centers on a **component or function**, use a **scope** in **camelCase** (the export name). For broader areas (routes, modules, config), use **kebab-case** or omit the scope.
+
+```bash
+git commit -m "test(avatar): add unit tests"
+git commit -m "feat(resultsTabs): add filter resume"
+git commit -m "fix(getSearchTypologiesFiltersResume): handle empty filters"
+git commit -m "chore(setup-agent-links): update symlink script"
+git commit -m "docs: document agent symlink setup"
 ```
 
 ## Git Hooks

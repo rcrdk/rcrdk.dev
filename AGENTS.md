@@ -1,42 +1,79 @@
 # rcrdk.dev Development Guide for AI Agents
 
-You are a senior engineer working on a Next.js portfolio site. You prioritize type safety, small diffs, and consistency with existing conventions.
+You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Prioritize type safety, small reviewable diffs, and existing project conventions.
 
 ## Do
 
-- Use `type` imports for type-only imports
-- Use `.at()` instead of bracket notation for array access
+- Use `import type { X }` for TypeScript type-only imports
 - Use early returns to reduce nesting
+- Keep functions focused on a single responsibility; extract helpers when needed
+- Use an object parameter when a function has three or more arguments
+- Prefer functional style: `const`, immutability, `map`/`filter`/`reduce`, and pure functions
+- Omit curly braces for single-statement blocks; use arrow implicit return for single-expression functions (not components)
+- Export utilities in `src/utils/` as `const` arrow functions — not in `src/app/`
+- Assign function results and complex conditions to `const` before returning or branching
+- Use `.at()` instead of bracket notation for array access
+- Use optional chaining when accessing nested properties that may be undefined
+- Use `@/` absolute imports when the relative path goes up more than one folder level
+- Use named exports (no default exports for components)
+- Use `interface` for React component props wrapped in `Readonly`
+- Use `server-only` at the top of files in `http/`
 - Use PNPM for all commands
-- Use `@/` absolute imports when the relative path goes up more than one level
-- Use named exports for components and barrel files
-- Follow kebab-case for file and folder names
-- Run `pnpm typecheck` and `pnpm lint` before concluding work is done
+- Run `pnpm typecheck` before concluding CI failures are unrelated to your changes
 
 ## Don't
 
 - Never use `any` — use proper types, `unknown`, or generics
 - Never use wildcard imports (`import * from`)
-- Never use default exports for components
-- Never skip the context null check in custom context hooks
+- Never use barrel wildcard exports (`export * from`)
 - Never commit secrets or `.env` files
+- Never skip hooks (`--no-verify`) unless explicitly requested
+- Never use default exports for React components
+- Never skip the context null check in custom context hooks
+
+## React Query
+
+- Place hooks in `src/hooks/react-query/` when they grow beyond a single file
+- Sort array inputs in `queryKey` so cache keys are stable regardless of input order
 
 ## Commands
 
-See [agents/commands.md](agents/commands.md) for full reference. Key commands:
+See [agents/commands.md](agents/commands.md) for the full reference. Key commands:
 
 ```bash
-pnpm dev          # Development server
-pnpm typecheck    # Type check
-pnpm lint:fix     # Lint with auto-fix
-pnpm format       # Format with Prettier
+pnpm typecheck   # Type check
+pnpm lint:fix    # Lint and fix
+pnpm format      # Prettier write
+pnpm dev         # Dev server
 ```
+
+## Boundaries
+
+### Always do
+
+- Run typecheck on changed files before committing
+- Follow commit format: `type(scope): subject`; use camelCase scope for components/functions, kebab-case for broader areas; header max 100 chars
+- Match existing naming and file structure conventions
+
+### Ask first
+
+- Adding new dependencies
+- Deleting files
+- Large refactors spanning many modules
+
+### Never do
+
+- Commit secrets or API keys
+- Force push to shared branches
+- Modify unrelated code in the same PR
 
 ## Project Structure
 
+`src/app/` is for routing, pages, route-local components, and API routes. Do not add utility modules there — put helpers in `src/utils/`.
+
 ```
 src/
-├── app/              # Next.js App Router pages and layouts
+├── app/              # App Router pages and layouts
 ├── components/       # Shared UI and feature components
 ├── config/           # App configuration
 ├── data/             # Static data (projects, skills, etc.)
@@ -50,6 +87,14 @@ src/
 └── utils/            # Utility functions
 ```
 
+### Key conventions
+
+- **App folder**: pages, components, and `api/` only — no standalone util files
+- **Utilities**: `src/utils/` as `const` arrow functions with barrel `index.ts` when needed
+- **HTTP layer**: `src/http/` with `server-only`
+- **File names**: kebab-case
+- **Named values**: assign function results and complex conditions to `const` before returning or branching (see [constants-and-variables](agents/rules/constants-and-variables.mdc))
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router, Turbopack)
@@ -59,46 +104,69 @@ src/
 - **i18n**: next-intl
 - **Validation**: Zod
 - **Animation**: Motion (Framer Motion)
+- **Data fetching**: TanStack React Query
 - **Package manager**: PNPM
 
-## Behavioral Guidelines
+## Code Examples
 
-Always follow [Karpathy guidelines](agents/rules/karpathy-guidelines.mdc): think before coding, simplicity first, surgical changes, goal-driven execution. Source: [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills).
+### Good type import
 
-Optional terse mode: invoke `/caveman` or say "talk like caveman". Source: [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman). Stop with "normal mode".
+```typescript
+import { useState } from 'react'
 
-## Superpowers
-
-Agentic development methodology from [obra/superpowers](https://github.com/obra/superpowers). Skills live in `agents/skills/` and auto-link via `.cursor/skills` and `.claude/skills`.
-
-**Before any task**, check for applicable skills — see [using-superpowers](agents/skills/using-superpowers/SKILL.md).
-
-Typical workflow: brainstorm → git worktree → write plan → execute (subagent or batched) → TDD → code review → finish branch.
-
-Full skill index: [agents/README.md#superpowers](agents/README.md#superpowers)
-
-## Agent Configuration
-
-Rules and skills live in `agents/` and are linked from tool-specific folders:
-
+import type { Project } from '@/types/project'
 ```
-agents/
-├── rules/       # Source of truth for coding rules (.mdc)
-├── skills/      # Agent skills
-├── commands.md
-└── README.md    # Rules index
 
-.cursor/rules -> ../agents/rules   (symlink, not committed)
-.cursor/skills -> ../agents/skills
-.claude/rules -> ../agents/rules
-.claude/skills -> ../agents/skills
+### Good component
 
-After clone: `pnpm agents:link` (also runs on `pnpm install` via prepare).
+```typescript
+interface ButtonProps {
+  label: string
+  onPress: VoidFunction
+}
+
+export function Button({ label, onPress }: Readonly<ButtonProps>) {
+  return <button onClick={onPress}>{label}</button>
+}
 ```
+
+## PR Checklist
+
+- [ ] Commit includes scoped subject (when applicable), type, and conventional format; header ≤ 100 chars
+- [ ] Typecheck passes: `pnpm typecheck`
+- [ ] Lint passes: `pnpm lint`
+- [ ] Diff is small and focused
+- [ ] No secrets committed
+
+## When Stuck
+
+- Ask a clarifying question before large speculative changes
+- Propose a short plan for complex tasks
+- Fix type errors before lint failures
+- Read surrounding code and match existing patterns
 
 ## Extended Documentation
 
-- **[agents/README.md](agents/README.md)** - Rules and skills index
+Agent rules and settings are centralized in `agents/`. Symlinks in `.cursor/` and `.claude/` are generated locally and not committed to git.
+
+After cloning, run `pnpm dev` or `pnpm setup:agent-links` locally. Agent symlinks are recreated automatically on `pnpm install` via `prepare` (skipped when `CI` is set).
+
+```
+agents/
+├── rules/          # Source of truth for coding rules (.mdc)
+├── skills/         # Shared agent skills
+├── README.md       # Rules index
+└── commands.md     # Command reference
+
+.cursor/            # generated symlinks
+├── rules -> ../agents/rules
+└── skills -> ../agents/skills
+
+.claude/            # generated symlinks
+├── rules -> ../agents/rules
+└── skills -> ../agents/skills
+```
+
+- **[agents/README.md](agents/README.md)** - Rules index
 - **[agents/rules/](agents/rules/)** - Modular engineering rules
-- **[agents/skills/](agents/skills/)** - Agent skills (Superpowers, karpathy-guidelines, caveman)
 - **[agents/commands.md](agents/commands.md)** - Complete command reference

@@ -9,7 +9,8 @@ Use this rule when creating or editing React components (files that export JSX).
 
 ## Type Definitions
 
-- Always use `interface` (not `type`) when creating component props types.
+- Prefer `interface` for component props types.
+- Use `type` when the props shape is complex (unions, intersections, mapped types, or utility-type compositions). See [typescript](typescript.mdc).
 - Only export prop types if they are needed in another file.
 - Always wrap component props with `Readonly` to prevent accidental mutations.
   - This rule applies **only to React components**, not to utility functions or other non-component functions.
@@ -20,7 +21,9 @@ Use this rule when creating or editing React components (files that export JSX).
 
 ## Component Structure
 
+- Order declarations inside the component body per [component-member-order](component-member-order.mdc).
 - Always use destructuring when accessing component props.
+- Destructure values you use in render — props, hook results, and nested objects — instead of repeating property chains in JSX.
 - Do not use default exports for components. Use named exports instead.
 - For components that are not memoized, use function declarations (not arrow functions).
   - Example:
@@ -70,6 +73,36 @@ Always import React types, functions, and utilities individually from `'react'` 
 ## Styling and Variants
 
 - Use `cva` (class-variance-authority) when components have complex variants or multiple styling combinations.
+- Use `cn` from `@/utils/tailwind-cn` only when class names need **merging or conditionals**:
+  - boolean or state-based classes (`isActive && '...'`)
+  - optional `className` prop from the caller
+  - conflicting Tailwind utilities that need `twMerge`
+  - base + pseudo-class stacks (`hover:`, `focus:`, etc.) combined with other dynamic parts
+- Do **not** wrap a single static class string in `cn` — use a plain `className="..."` attribute instead, even when the string lists many utilities.
+
+- ✅ Good:
+
+  ```tsx
+  className="block w-full min-w-0 truncate"
+  className="font-medium"
+
+  className={cn(
+    BASE_TAB_CLASSNAME,
+    isActive && 'text-palette-white bg-brand-dark-blue border-brand-dark-blue pointer-events-none',
+  )}
+
+  className={cn('px-4 py-2 hover:bg-background focus-visible:ring-2', className)}
+
+  className={cn('font-medium', className)}
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  className={cn('block w-full min-w-0 truncate')}
+  className={cn('font-medium')}
+  className={cn('z-50 h-auto max-w-sm justify-center py-2.75 text-center break-words')}
+  ```
 
 ## Accessibility
 
@@ -97,3 +130,58 @@ Always import React types, functions, and utilities individually from `'react'` 
     ```tsx
     <Component show={false} />
     ```
+
+## JSX Conditionals
+
+Extract conditions into named `const` values before using them in JSX, especially for conditional rendering. See also [constants-and-variables](constants-and-variables.mdc) for named conditions and return values.
+
+- ✅ Good:
+
+  ```tsx
+  export function ResultsPanel({ items, isLoading, hasError }: Readonly<ResultsPanelProps>) {
+    const isEmpty = items.length === 0
+    const showSpinner = isLoading
+    const showError = !isLoading && hasError
+    const showList = !isLoading && !hasError && !isEmpty
+
+    if (showSpinner) return <Spinner />
+    if (showError) return <ErrorMessage />
+    if (showList) return <ResultsList items={items} />
+
+    return <EmptyState />
+  }
+  ```
+
+  ```tsx
+  export function Badge({ count, isDisabled }: Readonly<BadgeProps>) {
+    const isVisible = count > 0 && !isDisabled
+
+    return <div>{isVisible && <span>{count}</span>}</div>
+  }
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  export function ResultsPanel({ items, isLoading, hasError }: Readonly<ResultsPanelProps>) {
+    return (
+      <div>
+        {isLoading ? (
+          <Spinner />
+        ) : hasError ? (
+          <ErrorMessage />
+        ) : items.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <ResultsList items={items} />
+        )}
+      </div>
+    )
+  }
+  ```
+
+  ```tsx
+  export function Badge(props: Readonly<BadgeProps>) {
+    return <div>{props.count > 0 && !props.isDisabled && <span>{props.count}</span>}</div>
+  }
+  ```

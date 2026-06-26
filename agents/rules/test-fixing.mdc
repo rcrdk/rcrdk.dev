@@ -1,0 +1,42 @@
+---
+description: When fixing failing tests, prefer updating tests; confirm before changing production behavior
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Fixing Failing Tests
+
+When asked to fix a failing test, do not assume production code is wrong. First determine whether the failure can be resolved by updating only the test.
+
+## Default approach
+
+1. Prefer updating the test when production behavior is correct.
+2. Do not modify production code only to make a test pass.
+3. If fixing the test requires changing component, function, or public API behavior, **stop and ask for confirmation** before changing production code.
+4. Explain why production code would need to change.
+
+## When production may be wrong
+
+If you identify a clear bug that contradicts expected behavior, explain the issue and ask whether to:
+
+- update only the test; or
+- update both the implementation and the tests.
+
+Never silently change production behavior to match an outdated or incorrect test.
+
+## Examples
+
+- ✅ Good: Test expects old copy but UI copy was intentionally updated → update the test assertion.
+- ✅ Good: Test uses wrong `queryKey` order while the hook correctly sorts keys → fix the test expectation.
+- ✅ Good: Test mocks are stale after a refactor → update mocks and test setup only.
+
+- ❌ Bad: Test fails because a button is disabled during loading → change component to keep the button enabled just to pass the test.
+- ❌ Bad: Test expects a removed prop → add the prop back to the component without confirming the API change was intentional.
+- ❌ Bad: Test and implementation disagree on business rules → change production logic without explaining the conflict and asking first.
+
+## Related rules
+
+- [test-approach](test-approach.mdc) - Functional tests and base props reuse
+- [test-mocks](test-mocks.mdc) - Shared mocks from `@/mocks/`

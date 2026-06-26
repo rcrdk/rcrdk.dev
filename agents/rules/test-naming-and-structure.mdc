@@ -1,5 +1,5 @@
 ---
-description: Describe/it naming, quoted refs (props, components, IDs, constants), no explanation comments
+description: Describe/it naming, quoted refs (props, components, IDs, constants, brands), no explanation comments
 globs:
   - '**/*.spec.ts'
   - '**/*.spec.tsx'
@@ -63,12 +63,16 @@ Put in double quotes:
 - Function/hook names when referenced: `"useSession"`, `"onDelete"`
 - Return values or types when they are the focus: `"false"`, `"note"`, `"task"`
 - Constant names when relevant: `"TOAST_MESSAGES.SAVE_SUCCESS"`
+- Brand and product names: `"Sentry"`, `"Heap"`, `"Google Maps"`, `"NextAuth"`
 
 - ✅ Good:
 
   ```tsx
   it('should show toast when "save" succeeds', () => {})
   it('should set responsible to "Cliente" when "clientResponsibility" is "1"', () => {})
+  it('should report errors to "Sentry" when the request fails', () => {})
+  it('should track page view in "Heap" on mount', () => {})
+  it('should initialize "Google Maps" with default center', () => {})
   describe('When "TOAST_MESSAGES.SAVE_SUCCESS" is used', () => {})
   ```
 
@@ -77,6 +81,8 @@ Put in double quotes:
   ```tsx
   it('should show toast when save succeeds', () => {})
   it('should set responsible to Cliente when clientResponsibility is 1', () => {})
+  it('should report errors to Sentry when the request fails', () => {})
+  it('should track page view in Heap on mount', () => {})
   ```
 
 ### Constants in assertions and names

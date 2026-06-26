@@ -1,0 +1,89 @@
+---
+description: Toast + Sentry after client mutations; TOAST_MESSAGES; invalidate cache on success
+globs:
+  - src/app/**/*
+  - src/hooks/**/*
+alwaysApply: false
+---
+
+# Client Mutation Feedback
+
+When calling server actions from client components or hooks, follow a consistent success/error feedback pattern.
+
+## Success
+
+- Show `toast.success(TOAST_MESSAGES.*)` from `@/constants/ui/toast`
+- Do not hardcode toast strings in components
+- Update local UI state or call `invalidate*` helpers when cache must refresh
+- Reset the form or close dialogs when appropriate
+
+## Error
+
+- Show `toast.error(TOAST_MESSAGES.*)` in the `catch` block
+- Call `reportToSentry` with:
+  - `fingerprint`: `['module', 'feature', 'unexpected-error']` (3 parts)
+  - `tags.module`: feature or component name
+  - `extra`: safe context (IDs, form field names — avoid secrets)
+- For API error messages that may contain HTML, use `throwToastErrorWithHtml` from `@/lib/toast` (sanitized via `cleanHtmlOutput`)
+
+- ✅ Good:
+
+  ```tsx
+  import { toast } from 'sonner'
+
+  import { createDealDocumentAction } from '@/app/_actions/document'
+  import { TOAST_MESSAGES } from '@/constants/ui/toast'
+  import { reportToSentry } from '@/lib/sentry'
+
+  const onSubmit = async (data: CreateDealDocumentActionSchema) => {
+    try {
+      const response = await createDealDocumentAction({
+        ...data,
+        shouldRevalidate: false,
+      })
+
+      if (!response?.success) throw new Error(response?.errors.join(', ') ?? 'Erro ao salvar')
+
+      addEntry(mapDocumentToTimelineEntry(response.document))
+      toast.success(TOAST_MESSAGES.SAVE_SUCCESS)
+      reset()
+    } catch (error) {
+      toast.error(TOAST_MESSAGES.SAVE_ERROR)
+      reportToSentry(error, {
+        fingerprint: ['deals', 'document-form', 'unexpected-error'],
+        tags: { module: 'document-form' },
+        extra: { formData: data },
+      })
+    }
+  }
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  const onSubmit = async (data: FormData) => {
+    const response = await createDealDocumentAction(data)
+    if (!response) console.error('failed')
+  }
+  ```
+
+  ```tsx
+  catch (error) {
+    toast.error('Erro ao salvar informações.')
+  }
+  ```
+
+## `shouldRevalidate`
+
+Pass `shouldRevalidate: false` when the client already updates UI optimistically (timeline entries, local lists) and the server cache for that resource does not need invalidation.
+
+Pass `true` or omit (defaults to `true`) when the action should call `revalidateTag()` — the tag itself depends on which data changed (`deal-history`, `deal-docs`, `get-deal-by-id-${dealId}`, etc.). See [validated-actions](validated-actions.mdc).
+
+## Adding new messages
+
+Add reusable copy to `src/constants/ui/toast.ts` instead of inline strings. Reference constants in tests with quoted names (e.g. `"TOAST_MESSAGES.SAVE_SUCCESS"`).
+
+## Related rules
+
+- [validated-actions](validated-actions.mdc) — server-side wrapper and schemas
+- [react-query](react-query.mdc) — `invalidate*` helpers after mutations

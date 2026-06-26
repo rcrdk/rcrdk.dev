@@ -1,0 +1,55 @@
+---
+description: Clear setTimeout and setInterval on unmount
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Timers
+
+Always clear `setTimeout` and `setInterval` timers on unmount to avoid state updates on unmounted components and memory leaks.
+
+## In `useEffect`
+
+Return a cleanup function that clears the timer created in that effect.
+
+- ✅ Good:
+
+  ```tsx
+  useEffect(() => {
+    const timer = setTimeout(() => setDisplayedLabel(''), STATUS_BAR_HIDE_ANIMATION_MS)
+    return () => clearTimeout(timer)
+  }, [status])
+
+  useEffect(() => {
+    const interval = setInterval(pollStatus, POLL_INTERVAL_MS)
+    return () => clearInterval(interval)
+  }, [])
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  useEffect(() => {
+    setTimeout(() => setDisplayedLabel(''), STATUS_BAR_HIDE_ANIMATION_MS)
+  }, [status])
+  ```
+
+## Timers stored in refs
+
+When a timer is started from an event handler or callback and stored in a `useRef`, clear it in a dedicated unmount cleanup effect.
+
+- ✅ Good:
+
+  ```tsx
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout>>()
+
+  useEffect(() => {
+    return () => clearTimeout(hideTimerRef.current)
+  }, [])
+  ```
+
+Clear any existing timer before starting a new one when only one timer should be active at a time.
+
+## Custom hooks
+
+Hooks that schedule timers must expose the same cleanup behavior — either via an internal `useEffect` cleanup or by documenting that callers must invoke a returned cancel function.

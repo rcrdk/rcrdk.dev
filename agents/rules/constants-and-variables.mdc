@@ -1,5 +1,5 @@
 ---
-description: Magic numbers as SCREAMING_SNAKE_CASE; intermediate values in camelCase
+description: Magic numbers, named return values, and named conditions
 alwaysApply: true
 ---
 
@@ -15,6 +15,35 @@ When a function or component contains magic numbers, extract them as constants a
 - Default values: `const MAX_IMAGES = 4`
 - Configuration values: `const DEFAULT_TIMEOUT = 3000`
 
+- Configuration values: `const DEFAULT_TIMEOUT = 3000`
+
+This applies even when the value is used only once — magic numbers and non-obvious literals always deserve a named constant.
+
+### Single-use literals
+
+Do **not** extract a constant used only once when the value is already self-explanatory at the use site (class names, simple strings, obvious booleans).
+
+- ✅ Good:
+
+  ```tsx
+  <Text className={cn('font-medium', className)} />
+  <TooltipAbsolute className="z-50 h-auto max-w-sm justify-center py-2.75 text-center break-words" />
+
+  const ONE_MILLION = 1_000_000
+  const isPriceInMillions = value >= ONE_MILLION
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  const RESUME_TEXT_CLASSNAME = 'font-medium'
+  const TOOLTIP_CONTENT_CLASSNAME = 'z-50 h-auto max-w-sm justify-center py-2.75 text-center break-words'
+
+  <Text className={cn(RESUME_TEXT_CLASSNAME, className)} />
+
+  if (value >= 1_000_000) return `${value / 1_000_000}mi`
+  ```
+
 ### Intermediate Values
 
 For calculations, formatting, and intermediate values within a function, create constants in `camelCase` within the function scope. This improves readability and makes the code self-documenting:
@@ -25,4 +54,57 @@ For calculations, formatting, and intermediate values within a function, create 
 - Boolean conditions: `const isDesktop = variant === 'desktop'`
 - Complex expressions: `const hasValidData = data && data.length > 0`
 
-Prefer returning the constant (or a value derived from it) rather than inlining the expression at the return.
+### Named Return Values
+
+Do not return the result of another function or expression directly. Assign it to a `const` first, then return that value.
+
+**Exception — object literals:** returning a plain object literal at the `return` statement is allowed. Do not introduce an intermediate `const` only to wrap the return value.
+
+- ✅ Good:
+
+  ```typescript
+  const formattedTotal = formatCurrency(total)
+  return formattedTotal
+
+  const activeItems = items.filter((item) => item.isActive)
+  return activeItems
+
+  return { text, segments: resumeSegments }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  return formatCurrency(total)
+  return items.filter((item) => item.isActive)
+
+  const filtersResume = { text, segments: resumeSegments }
+  return filtersResume
+  ```
+
+### Named Conditions
+
+Extract complex or multi-part conditions into a descriptive `const` before using them in `if`, loops, or JSX. Name the constant after the intent, not the mechanics.
+
+- ✅ Good:
+
+  ```typescript
+  const canSubmit = isValid && !isSubmitting && hasChanges
+  if (canSubmit) submitForm()
+
+  const isEligibleForDiscount = user?.isActive && orderTotal >= MIN_ORDER_VALUE
+  ```
+
+  ```tsx
+  const showEmptyState = !isLoading && items.length === 0
+  if (showEmptyState) return <EmptyState />
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  if (isValid && !isSubmitting && hasChanges) submitForm()
+  if (user?.isActive && orderTotal >= MIN_ORDER_VALUE) applyDiscount()
+  ```
+
+Prefer returning the constant (or a value derived from it) rather than inlining the expression at the return — except for object literals (see exception above).

@@ -1,0 +1,65 @@
+---
+description: Where code belongs — app routes vs shared src modules
+alwaysApply: true
+---
+
+# Project Structure
+
+Keep `src/app/` focused on routing, pages, and UI. Put reusable logic in the appropriate `src/` module.
+
+## `src/app/` — routes and UI only
+
+The App Router folder is for:
+
+- **Pages**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`, route segments
+- **Route-local components**: colocated UI under `_components/` or feature folders
+- **Tests**: `__tests__/` next to the code they cover
+- **Framework entry points**: `app/_actions/`, `app/api/`, `app/_components/`
+
+Do **not** add standalone utility modules in `app/`. Pure helpers belong in `src/utils/<domain>/`.
+
+- ✅ Good:
+
+  ```
+  src/app/search-typologies/_results/table/results-tabs.tsx
+  src/utils/search-typologies/get-search-typologies-filters-resume.ts
+  ```
+
+- ❌ Bad:
+
+  ```
+  src/app/search-typologies/_results/table/get-search-typologies-filters-resume.ts
+  ```
+
+When logic is reused outside one route, move it out of `app/`:
+
+| Kind                              | Location                     |
+| --------------------------------- | ---------------------------- |
+| Pure helpers, formatters, mappers | `src/utils/<domain>/`        |
+| React Query hooks                 | `src/hooks/react-query/`     |
+| Other custom hooks                | `src/hooks/`                 |
+| Zod schemas and types             | `src/schemas/`, `src/types/` |
+| Server-only API calls             | `src/http/`                  |
+| Shared UI components              | `src/components/`            |
+| React contexts                    | `src/contexts/`              |
+| App constants                     | `src/constants/`             |
+| Complex local state reducers      | `src/reducers/`              |
+
+## `src/` layout
+
+```
+src/
+├── app/              # App Router — pages, route UI, tests, _actions, api
+├── components/       # Shared UI (ui/, icons/, providers/)
+├── contexts/         # React context providers and hooks
+├── hooks/            # Custom hooks (react-query/ for query hooks)
+├── http/             # Server-only API layer ('server-only')
+├── schemas/          # Zod schemas and inferred types
+├── utils/            # Pure utilities grouped by domain
+├── constants/        # Shared constants
+├── config/           # App configuration
+├── types/            # Shared TypeScript types
+├── reducers/         # useReducer functions for complex local state
+├── lib/              # Third-party integrations and shared libs
+└── styles/           # Global styles and Tailwind config
+```

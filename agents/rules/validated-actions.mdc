@@ -1,0 +1,122 @@
+---
+description: Use validatedActionWithUser; ActionSchema; userId from session; shouldRevalidate
+globs: src/app/_actions/**/*
+alwaysApply: false
+---
+
+# Validated Server Actions
+
+Mutations in `src/app/_actions/` must use `validatedActionWithUser` from `@/lib/validated-actions`. Do not export bare `async function` handlers for authenticated mutations.
+
+## Wrapper
+
+- Export as `export const fooAction = validatedActionWithUser(fooActionSchema, handler)`
+- Validate input with a Zod `*ActionSchema` from `@/schemas/`
+- Get `userId` from the authenticated `user` argument — never trust client-provided `userId`
+- Return `null` on failure (handled by the wrapper); throw only for control flow the wrapper understands (e.g. `UNAUTHORIZED`)
+
+- ✅ Good:
+
+  ```typescript
+  'use server'
+
+  import { revalidateTag } from 'next/cache'
+
+  import { DEFAULT_SHOULD_REVALIDATE } from '@/config/revalidation'
+  import { callRocketAPI } from '@/http/rocket'
+  import { validatedActionWithUser } from '@/lib/validated-actions'
+  import { createDealTaskActionSchema } from '@/schemas/tasks'
+  import type { CreateDealTaskPayload } from '@/types/rocket/task'
+
+  export const createDealTaskAction = validatedActionWithUser(createDealTaskActionSchema, async (data, user) => {
+    const { shouldRevalidate = DEFAULT_SHOULD_REVALIDATE, ...rest } = data
+
+    const payload: CreateDealTaskPayload = {
+      ...rest,
+      userId: Number(user.userId),
+    }
+
+    const response = await callRocketAPI({
+      plMethod: 'createDealTask',
+      payload,
+    })
+
+    if (shouldRevalidate) revalidateTag('deal-history')
+
+    return response
+  })
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  export async function createDealTaskAction(data: CreateDealTaskSchema) {
+    const session = await auth()
+    const response = await callRocketAPI({ plMethod: 'createDealTask', payload: data })
+    return response
+  }
+  ```
+
+## Schemas
+
+- Name schemas `createFooActionSchema`, `updateFooActionSchema`, etc.
+- Extend mutation schemas with `shouldRevalidate: shouldRevalidateSchema` from `@/schemas/shared`
+- Destructure `shouldRevalidate` before building the API payload
+- Use `shouldRevalidate: false` when the client updates local state optimistically and cache invalidation is not needed
+
+## Other wrappers
+
+- `actionWithUser` — read-only actions that only need auth, no input schema
+- `actionWithUserNoRedirect` — auth without redirect on failure
+
+## Revalidation
+
+`revalidateTag()` depends on **which cached data the mutation affects**. Use the same tag(s) declared in the corresponding fetch `next.tags`. Do not default every action to `'deal-history'`.
+
+### Choose the tag by context
+
+| Affected data                       | Typical tag                      | Example actions              |
+| ----------------------------------- | -------------------------------- | ---------------------------- |
+| Deal history / timeline / scenarios | `'deal-history'`                 | tasks, scenarios, objectives |
+| Deal documents                      | `'deal-docs'`                    | document CRUD                |
+| Single deal payload                 | `` `get-deal-by-id-${dealId}` `` | notes, `updateDealAction`    |
+
+- Check existing fetches in `src/app/_actions/` or HTTP calls for the tags they use
+- Revalidate only the tag(s) that become stale after the mutation
+- Some actions revalidate unconditionally when the client never updates optimistically (e.g. scenarios)
+- Others gate on `shouldRevalidate` when the client may skip server cache invalidation
+
+- ✅ Good:
+
+  ```typescript
+  // Tasks affect deal history
+  if (shouldRevalidate) revalidateTag('deal-history')
+
+  // Documents affect deal docs cache
+  if (shouldRevalidate) revalidateTag('deal-docs')
+
+  // Notes affect a specific deal
+  if (shouldRevalidate) revalidateTag(`get-deal-by-id-${rest.dealId}`)
+
+  // Deal update — only on success, specific deal tag
+  if (!response?.error) revalidateTag(`get-deal-by-id-${data.id}`)
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  // Wrong tag for the mutated resource
+  if (shouldRevalidate) revalidateTag('deal-history') // in a document action
+
+  // Revalidates even when client handles UI optimistically
+  revalidateTag('deal-history') // without checking shouldRevalidate
+
+  // Revalidates a tag that no fetch uses
+  revalidateTag('some-random-tag')
+  ```
+
+When adding a new mutation, find or add matching `next.tags` on the fetch that serves the data being changed.
+
+## Errors
+
+The wrapper reports unexpected errors to Sentry and returns `null`. Do not duplicate auth or `safeParse` logic inside the handler.

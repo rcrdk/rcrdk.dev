@@ -12,7 +12,7 @@ Use this rule when organizing test cases: when to use it.each, what to assert (c
 
 ### Using it.each for Similar Tests
 
-Prefer to use `it.each` when tests are too similar or contain large combinations of variants. This reduces code duplication and makes it easier to add new test cases.
+Always prefer `it.each` when tests are similar or cover multiple variants. This reduces duplication and makes new cases easy to add.
 
 - ✅ Good:
 

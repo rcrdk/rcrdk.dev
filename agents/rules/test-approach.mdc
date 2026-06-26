@@ -1,0 +1,110 @@
+---
+description: Prefer behavior tests; reuse base props/params; it.each; shared mocks
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Test Approach
+
+## Functional Over Implementation
+
+Prioritize functional tests that assert observable behavior (output, UI, side effects). Avoid tests tied to internal implementation details.
+
+### Assert behavior
+
+- User-visible results: rendered text, roles, disabled state, callbacks fired
+- Public outputs: return values, thrown errors, emitted events
+- Integration outcomes: API calls, toasts, navigation
+
+### Avoid implementation details
+
+- Internal state, private functions, or module internals
+- Static class names that are always present
+- Exact call order unless order is the behavior under test
+- Snapshot-only coverage with no behavioral assertion for logic-heavy code
+
+- ✅ Good:
+
+  ```tsx
+  it('should disable button when "loading" is true', () => {
+    render(<Button loading>Submit</Button>)
+    expect(screen.getByRole('button', { name: 'Submit' })).toBeDisabled()
+  })
+
+  it('should return formatted price', () => {
+    expect(formatPrice(1000)).toBe('R$ 1.000,00')
+  })
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  it('should set internal loading flag', () => {
+    const { result } = renderHook(() => useButtonState())
+    act(() => result.current.setLoading(true))
+    expect(result.current._internalLoading).toBe(true)
+  })
+
+  it('should call "useMemo" twice', () => {
+    const spy = jest.spyOn(React, 'useMemo')
+    render(<ExpensiveList items={items} />)
+    expect(spy).toHaveBeenCalledTimes(2)
+  })
+  ```
+
+## Base Props and Params
+
+When multiple tests share the same component props or function arguments, extract reusable base constants. Override only what each test needs.
+
+- ✅ Good:
+
+  ```tsx
+  const defaultProps = {
+    label: 'Submit',
+    onClick: jest.fn(),
+    loading: false,
+  }
+
+  const renderButton = (props: Partial<typeof defaultProps> = {}) =>
+    render(<Button {...defaultProps} {...props} />)
+
+  it('should call "onClick" when clicked', async () => {
+    const onClick = jest.fn()
+    renderButton({ onClick })
+
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }))
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+  ```
+
+  ```typescript
+  const defaultOptions = {
+    dealId: '123',
+    fieldName: 'objective' as const,
+    initialContent: 'Initial content',
+  }
+
+  it('should initialize with default values', () => {
+    const { result } = renderHook(() => useDebouncedObjectivesForm(defaultOptions))
+    expect(result.current.getValues().dealId).toBe('123')
+  })
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  it('should call onClick when clicked', async () => {
+    const onClick = jest.fn()
+    render(<Button label="Submit" onClick={onClick} loading={false} />)
+    // repeated full props in every test
+  })
+  ```
+
+Name constants `defaultProps`, `baseProps`, `defaultOptions`, or `baseParams` depending on context.
+
+## Related Conventions
+
+- Prefer `it.each` for similar cases — see [test-organization](test-organization.mdc)
+- Prefer shared mocks from `@/mocks/` and `__mocks__` — see [test-mocks](test-mocks.mdc)

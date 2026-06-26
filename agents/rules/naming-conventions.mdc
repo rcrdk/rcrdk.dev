@@ -16,7 +16,7 @@ Use this rule when naming props, constants, and variables. Applies to all TypeSc
   interface ButtonProps {
     label: string
     isDisabled: boolean
-    onPress: () => void
+    onPress: VoidFunction
   }
   const DEFAULT_PAGE_SIZE = 10
   const isLoading = status === 'pending'
@@ -28,7 +28,7 @@ Use this rule when naming props, constants, and variables. Applies to all TypeSc
   interface ButtonProps {
     class: string
     default: boolean
-    delete: () => void
+    onDelete: VoidFunction
   }
   const x = 10
   const flag = status === 'pending'

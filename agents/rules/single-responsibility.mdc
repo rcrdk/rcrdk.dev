@@ -1,0 +1,47 @@
+---
+description: One responsibility per function; extract helpers when logic grows
+alwaysApply: true
+---
+
+# Single Responsibility
+
+Each function should do one thing. When a function handles validation, transformation, and side effects together, extract auxiliary functions.
+
+- ✅ Good:
+
+  ```typescript
+  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+  const normalizeEmail = (email: string) => email.trim().toLowerCase()
+
+  export const parseUserEmail = (email: string) => {
+    const normalized = normalizeEmail(email)
+    if (!isValidEmail(normalized)) return null
+
+    return normalized
+  }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  export const parseUserEmail = (email: string) => {
+    const trimmed = email.trim().toLowerCase()
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)
+    if (!isValid) return null
+
+    // also fetches user, updates cache, and logs — too many responsibilities
+    const user = await fetchUserByEmail(trimmed)
+    cache.set(trimmed, user)
+    logger.info('parsed email', trimmed)
+
+    return trimmed
+  }
+  ```
+
+### When to extract
+
+- The function name needs "and" to describe what it does
+- Multiple levels of nesting that each represent a distinct step
+- Reusable logic that could be tested in isolation
+- Mixed concerns: I/O, formatting, validation, or UI updates in the same function

@@ -1,0 +1,84 @@
+---
+description: Order of declarations inside React component bodies
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# Component Member Order
+
+Use this rule when creating or editing React components. Order declarations inside the component body top-to-bottom as follows.
+
+## Priority order
+
+1. **State** — `useState`, `useReducer`
+2. **Refs** — `useRef`
+3. **Hooks that return values** — `useContext`, React Query hooks, custom hooks whose return value is used
+4. **Handlers and callbacks** — `handleFoo`, `onFoo`, `useCallback`
+5. **Self-calling hooks** — custom hooks called only for side effects (return value not used)
+6. **Effects** — `useEffect`, `useLayoutEffect`
+7. **Data processing** — `useMemo`, derived or filtered data, mapped/transformed values
+8. **JSX constants** — named conditions, formatted values, and other `const` used in render (see [constants-and-variables](constants-and-variables.mdc))
+9. **Return** — JSX
+
+## Flexibility
+
+Break this order when a declaration depends on something declared later in the list — place it after its dependency, not before.
+
+Example: a `useCallback` that reads state from step 1 stays in step 4 even if a `useMemo` in step 7 depends on it.
+
+## Example
+
+```tsx
+export function ResultsPanel({ items, onSelect }: Readonly<ResultsPanelProps>) {
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+
+  const listRef = useRef<HTMLUListElement>(null)
+
+  const { data, isLoading } = useItemsQuery()
+  const { user } = useSession()
+
+  const handleSelect = useCallback(
+    (id: string) => {
+      setSelectedId(id)
+      onSelect(id)
+    },
+    [onSelect],
+  )
+
+  useTrackPageView('results-panel')
+
+  useEffect(() => {
+    if (!selectedId) return
+    listRef.current?.querySelector(`[data-id="${selectedId}"]`)?.scrollIntoView()
+  }, [selectedId])
+
+  const visibleItems = useMemo(
+    () => items.filter((item) => item.isVisible && item.ownerId === user?.id),
+    [items, user?.id],
+  )
+
+  const isEmpty = !isLoading && visibleItems.length === 0
+  const showSpinner = isLoading
+  const showList = !isLoading && !isEmpty
+
+  if (showSpinner) return <Spinner />
+  if (showList)
+    return (
+      <ul ref={listRef}>
+        {visibleItems.map((item) => (
+          <li key={item.id} data-id={item.id} onClick={() => handleSelect(item.id)}>
+            {item.name}
+          </li>
+        ))}
+      </ul>
+    )
+
+  return <EmptyState />
+}
+```
+
+## Notes
+
+- Module-level constants, types, and helper functions stay **outside** the component — this rule applies only to the component body.
+- Group related declarations of the same step together; add a blank line between steps when it improves readability.
+- Prefer `useCallback` for handlers passed to memoized children; inline handlers in JSX constants (step 8) are fine for simple, local click handlers.

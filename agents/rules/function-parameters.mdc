@@ -1,0 +1,43 @@
+---
+description: Functions with 3+ arguments should use a single object parameter
+alwaysApply: true
+---
+
+# Function Parameters
+
+When a function accepts three or more arguments, use a single object parameter instead of positional arguments. This makes call sites self-documenting and avoids argument-order mistakes.
+
+- ✅ Good:
+
+  ```typescript
+  interface CreateTaskParams {
+    dealId: number
+    title: string
+    userId: number
+  }
+
+  export const createTask = ({ dealId, title, userId }: Readonly<CreateTaskParams>) => {
+    const payload = { dealId, title, userId }
+    return payload
+  }
+
+  createTask({ dealId: 1, title: 'Follow up', userId: 42 })
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  export const createTask = (dealId: number, title: string, userId: number) => {
+    const payload = { dealId, title, userId }
+    return payload
+  }
+
+  createTask(1, 'Follow up', 42)
+  ```
+
+### Guidelines
+
+- Name the params type after the function: `CreateTaskParams`, `GetEntryParams`
+- Destructure the object in the function signature
+- Wrap params types with `Readonly` when the function must not mutate them
+- One or two positional arguments are fine when the meaning is obvious

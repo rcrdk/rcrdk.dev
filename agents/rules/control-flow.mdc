@@ -1,5 +1,5 @@
 ---
-description: Early returns, single-line statements, and comment preservation
+description: Early returns, single-statement blocks, no nested ternaries, comment preservation
 alwaysApply: true
 ---
 
@@ -36,17 +36,21 @@ Prefer early returns over `else` statements to reduce nesting and improve readab
   }
   ```
 
-### Single-Line Statements
+### Single-Statement Blocks
 
-Avoid curly brackets for single-line `if` statements or arrow functions.
+Omit curly braces when a block contains only one statement.
+
+Applies to `if`, `else`, `for`, `while`, and arrow function bodies.
 
 - ✅ Good:
 
   ```typescript
   if (isValid) return true
+  if (!user) return null
+
+  for (const item of items) processItem(item)
 
   const doubled = numbers.map((n) => n * 2)
-
   const handleClick = () => setCount(count + 1)
   ```
 
@@ -57,6 +61,10 @@ Avoid curly brackets for single-line `if` statements or arrow functions.
     return true
   }
 
+  for (const item of items) {
+    processItem(item)
+  }
+
   const doubled = numbers.map((n) => {
     return n * 2
   })
@@ -65,6 +73,66 @@ Avoid curly brackets for single-line `if` statements or arrow functions.
     setCount(count + 1)
   }
   ```
+
+Use a block body when the function or branch needs multiple statements or intermediate `const` values.
+
+### Nested Ternaries
+
+Avoid nested ternary operators (`a ? b : c ? d : e`). Extract logic into a helper function or a dedicated component instead.
+
+- ✅ Good:
+
+  ```typescript
+  const getStatusLabel = (status: Status) => {
+    if (status === 'active') return 'Active'
+    if (status === 'pending') return 'Pending'
+    return 'Inactive'
+  }
+
+  const label = getStatusLabel(status)
+  ```
+
+  ```tsx
+  function EmptyState() {
+    return <p>No results found</p>
+  }
+
+  function ResultsList({ items }: Readonly<{ items: Item[] }>) {
+    if (items.length === 0) return <EmptyState />
+
+    return (
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    )
+  }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  const label = status === 'active' ? 'Active' : status === 'pending' ? 'Pending' : 'Inactive'
+  ```
+
+  ```tsx
+  return (
+    <div>
+      {items.length === 0 ? (
+        <p>No results found</p>
+      ) : isLoading ? (
+        <Spinner />
+      ) : hasError ? (
+        <ErrorMessage />
+      ) : (
+        <ResultsList items={items} />
+      )}
+    </div>
+  )
+  ```
+
+A single ternary is acceptable when it stays short and readable.
 
 ## Comments
 

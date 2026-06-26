@@ -1,42 +1,57 @@
 ---
-description: Utility functions use arrow functions and are exported as const
+description: Utils use arrow functions exported as const
 globs: src/utils/**/*
 alwaysApply: false
 ---
 
 # Utility Functions
 
-Use this rule for files in `src/utils/` and other non-component utility modules.
+Files in `src/utils/` must export utilities as `const` arrow functions.
 
-- Define utility functions as **arrow functions**
-- Export them as **`const`** named exports
-- This does **not** apply to React components — see [react-components](react-components.mdc)
+## Types
+
+Prefer `type` (not `interface`) for function argument objects, return shapes, and other types defined in util modules. See [typescript](typescript.mdc).
 
 - ✅ Good:
 
   ```typescript
-  export const formatList = (items: string[] | undefined, locale?: string): string => {
-    if (!items || items.length === 0) return ''
+  type SlugifyOptions = { lowercase?: boolean }
 
-    const formatter = new Intl.ListFormat(locale ?? 'en', { style: 'long', type: 'conjunction' })
-    return formatter.format(items)
+  export const slugify = (input: string, options?: SlugifyOptions) => {
+  ```
+
+## Function shape
+
+- ✅ Good:
+
+  ```typescript
+  export const slugify = (input: string) => {
+    const normalized = normalizeString(input)
+    if (!normalized) return ''
+
+    return normalized
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '')
   }
 
-  export const enrichHistoryWithProjects = (list: HistoryItem[], projects: HistoryProject[]): HistoryItem[] =>
-    list.map((item) => ({
-      ...item,
-      projects: projects.filter((project) => project.companySlug === item.slug),
-    }))
+  export const groupBy = <T, K>(array: T[], keyFn: (item: T) => K): Record<string, T[]> =>
+    array.reduce<Record<string, T[]>>((groups, item) => {
+      const key = String(keyFn(item))
+      const existingGroup = groups[key] ?? []
+
+      return { ...groups, [key]: [...existingGroup, item] }
+    }, {})
   ```
 
 - ❌ Bad:
 
   ```typescript
-  export function formatList(items: string[] | undefined, locale?: string): string {
-    // ...
+  export function slugify(input: string) {
+    return input.toLowerCase()
   }
 
-  export default function enrichHistoryWithProjects(list: HistoryItem[], projects: HistoryProject[]) {
-    // ...
-  }
+  export default function groupBy() {}
   ```
+
+This rule applies to utility modules only. React components and hooks follow their own conventions.

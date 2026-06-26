@@ -1,26 +1,23 @@
 ---
-description: Prefer functional style—immutability, pure functions, declarative data transforms
+description: Prefer functional style — immutability, pure functions, single-return arrows
 alwaysApply: true
 ---
 
 # Functional Programming
 
-Prefer a functional approach over imperative programming. Favor immutable data, pure functions, and declarative transforms.
+Prefer a functional approach over imperative code. Favor expressions and immutable data transformations.
 
-## Immutability
+## Variables
 
 - Use `const` when the binding does not need reassignment
 - Avoid reassigning variables (`x = ...` multiple times)
-- Do not mutate arrays (`push`, `pop`, `splice`, in-place `sort`, in-place `reverse`)
-- Do not mutate objects (`obj.prop = ...`, `delete obj.prop`)
-- Do not modify props or data received as arguments
+- Avoid shared mutable variables between functions
 
 - ✅ Good:
 
   ```typescript
   const activeUsers = users.filter((user) => user.isActive)
-  const sortedNames = [...names].sort((a, b) => a.localeCompare(b))
-  const updatedUser = { ...user, name: 'Jane' }
+  const total = items.reduce((sum, item) => sum + item.price, 0)
   ```
 
 - ❌ Bad:
@@ -31,73 +28,81 @@ Prefer a functional approach over imperative programming. Favor immutable data, 
     if (user.isActive) result.push(user)
   }
 
-  names.sort()
-  user.name = 'Jane'
+  let total = 0
+  for (const item of items) total = total + item.price
   ```
 
-## Data Transforms
+## Immutability
 
+- Do not mutate arrays (`push`, `pop`, `splice`, in-place `sort`, `reverse`)
+- Do not mutate objects (`obj.prop = ...`, `delete obj.prop`)
+- Do not modify props or data received as arguments
 - Prefer `map`, `filter`, `reduce`, `find`, `some`, and `every` over `for` and `forEach` when producing new values
-- Avoid building arrays manually (`const arr = []; arr.push(...)`)
+
+- ✅ Good:
+
+  ```typescript
+  const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name))
+  const updated = { ...user, name: 'Jane' }
+  const withItem = [...items, newItem]
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  items.sort((a, b) => a.name.localeCompare(b.name))
+  user.name = 'Jane'
+  items.push(newItem)
+  ```
+
+## Expressions over statements
+
 - Avoid conditionals that mutate intermediate state (`if (...) result = ...`)
-- Prefer expressions over long sequences of statements when readability improves
+- Prefer expressions and composition over long sequential logic
+- Keep functions pure when possible — same input, same output, no side effects
+
+### Single-return functions
+
+Non-component functions that only return an expression should use arrow functions with implicit return. React components follow [react-components](react-components.mdc) conventions (function declarations).
 
 - ✅ Good:
 
   ```typescript
-  const projectSlugs = projects
-    .filter((project) => project.isPublished)
-    .map((project) => project.slug)
-
-  const hasActiveProject = projects.some((project) => project.isActive)
+  export const double = (n: number) => n * 2
+  export const getActiveUsers = (users: User[]) => users.filter((user) => user.isActive)
+  export const formatPrice = (price: number) => formatCurrency(price)
   ```
 
 - ❌ Bad:
 
   ```typescript
-  const projectSlugs = []
-  for (const project of projects) {
-    if (project.isPublished) {
-      projectSlugs.push(project.slug)
-    }
+  export function double(n: number) {
+    return n * 2
   }
 
-  let hasActiveProject = false
-  projects.forEach((project) => {
-    if (project.isActive) hasActiveProject = true
-  })
+  export const getActiveUsers = (users: User[]) => {
+    return users.filter((user) => user.isActive)
+  }
   ```
 
-## Purity and Composition
-
-- Keep functions pure whenever possible — same input, same output, no side effects
-- Avoid shared mutable variables between functions
-- Prefer function composition over long sequential logic
-- Derive values from state instead of manually syncing them
+When a function needs intermediate variables or multiple steps, use a block body with named `const` values instead of implicit return.
 
 - ✅ Good:
 
   ```typescript
-  const getFullName = (user: User) => `${user.firstName} ${user.lastName}`
+  const label = isActive ? 'Active' : 'Inactive'
 
-  const getDisplayName = (user: User | null) => {
-    if (!user) return null
-    return getFullName(user)
-  }
-
-  const fullName = getFullName(user)
+  const formatPrice = (price: number) => formatCurrency(price)
+  const withTax = (price: number) => price * 1.1
+  const formatPriceWithTax = (price: number) => formatPrice(withTax(price))
   ```
 
 - ❌ Bad:
 
   ```typescript
-  let cachedName = ''
-
-  const updateName = (user: User) => {
-    cachedName = `${user.firstName} ${user.lastName}`
-  }
-
-  const getDisplayName = () => cachedName
+  let label
+  if (isActive) label = 'Active'
+  else label = 'Inactive'
   ```
 
 ## React
@@ -109,26 +114,16 @@ Prefer a functional approach over imperative programming. Favor immutable data, 
 - ✅ Good:
 
   ```typescript
-  const visibleProjects = projects.filter((project) => project.isVisible)
-
-  return (
-    <ul>
-      {visibleProjects.map((project) => (
-        <li key={project.id}>{project.name}</li>
-      ))}
-    </ul>
-  )
+  const fullName = `${firstName} ${lastName}`
+  const visibleItems = items.filter((item) => item.isVisible)
   ```
 
 - ❌ Bad:
 
   ```typescript
-  const items = []
-  for (const project of projects) {
-    if (project.isVisible) items.push(<li key={project.id}>{project.name}</li>)
-  }
+  const [fullName, setFullName] = useState('')
 
-  document.getElementById('list')?.appendChild(node)
-
-  return <ul>{items}</ul>
+  useEffect(() => {
+    setFullName(`${firstName} ${lastName}`)
+  }, [firstName, lastName])
   ```
