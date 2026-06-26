@@ -127,6 +127,27 @@ export default [
 		},
 	},
 	{
+		files: ['agents/skills/**/*.js'],
+		languageOptions: {
+			sourceType: 'commonjs',
+			globals: {
+				module: 'readonly',
+				require: 'readonly',
+				__dirname: 'readonly',
+				__filename: 'readonly',
+				process: 'readonly',
+				console: 'readonly',
+				window: 'readonly',
+				document: 'readonly',
+				WebSocket: 'readonly',
+			},
+		},
+		rules: {
+			'no-empty': 'off',
+			'no-unused-vars': ['error', { caughtErrors: 'none' }],
+		},
+	},
+	{
 		ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
 	},
 ]
