@@ -3,6 +3,7 @@
 	"version": "2.0.0",
 	"private": true,
 	"scripts": {
+		"predev": "pnpm setup:agent-links",
 		"dev": "rm -rf .next && next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
@@ -12,7 +13,7 @@
 		"format": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --write",
 		"format:check": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --check",
 		"setup:agent-links": "node scripts/setup-agent-links.mjs",
-		"prepare": "husky install && pnpm setup:agent-links"
+		"prepare": "husky install"
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,mjs}": [
@@ -73,6 +74,7 @@
 		"husky": "9.1.7",
 		"knip": "5.66.2",
 		"lint-staged": "15.5.1",
+		"listr2": "10.2.2",
 		"postcss": "8.5.3",
 		"prettier": "3.4.2",
 		"prettier-plugin-sort-json": "4.1.1",

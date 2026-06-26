@@ -7,7 +7,7 @@
 
 Rules live in [agents/rules/](rules/) and are shared via symlinks in `.cursor/rules` and `.claude/rules`.
 
-Run `pnpm dev` or `pnpm setup:agent-links` locally after cloning (skipped in CI).
+Run `pnpm dev` or `pnpm setup:agent-links` locally after cloning (`predev` runs setup automatically; skipped in CI).
 
 ### TypeScript & Code Style
 
@@ -60,4 +60,5 @@ Prioritize functional tests over implementation tests. See [test-approach](rules
 ### Meta
 
 - [commands](rules/commands.mdc) - Prefer PNPM for commands
+- [dependencies](rules/dependencies.mdc) - Ask before adding or installing packages
 - [cursor-rules](rules/cursor-rules.mdc) - How to create and maintain Cursor rules

@@ -1,0 +1,26 @@
+---
+description: Ask for approval before adding or installing new dependencies
+alwaysApply: true
+---
+
+# Dependencies
+
+Never add or install packages without explicit user approval.
+
+## Ask first
+
+- Proposing a new dependency (`pnpm add`, `pnpm add -D`, etc.)
+- Running install commands that add packages to `package.json`
+- Replacing or upgrading a dependency to a different package
+
+When a dependency seems necessary, explain why, name the package(s), and wait for approval before running any install command.
+
+## Allowed without asking
+
+- `pnpm install` to install from the existing lockfile (no new packages)
+- Using dependencies already listed in `package.json`
+
+## Do not
+
+- Run `pnpm add`, `npm install <pkg>`, or `yarn add` unless the user explicitly approved it
+- Modify `package.json` or `pnpm-lock.yaml` to add dependencies on your own

@@ -22,7 +22,7 @@ pnpm format:check # Prettier check
 
 ## Agents
 
-After cloning, create local symlinks for Cursor and Claude rules (also runs automatically via `prepare`):
+After cloning, create local symlinks for Cursor and Claude rules (also runs automatically via `predev` when you run `pnpm dev`):
 
 ```bash
 pnpm setup:agent-links  # Link .cursor/, .claude/, CLAUDE.md, and .cursorrules to agents/

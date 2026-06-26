@@ -149,7 +149,7 @@ export function Button({ label, onPress }: Readonly<ButtonProps>) {
 
 Agent rules and settings are centralized in `agents/`. Symlinks in `.cursor/` and `.claude/` are generated locally and not committed to git.
 
-After cloning, run `pnpm dev` or `pnpm setup:agent-links` locally. Agent symlinks are recreated automatically on `pnpm install` via `prepare` (skipped when `CI` is set).
+After cloning, run `pnpm dev` or `pnpm setup:agent-links` locally. Agent symlinks are recreated automatically via `predev` when starting the dev server (skipped when `CI` is set).
 
 ```
 agents/
