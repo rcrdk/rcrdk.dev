@@ -39,25 +39,25 @@ next-env.d.ts
 # pwa
 **/public/sw.js
 
-# agent symlinks (generated via pnpm setup:agent-links)
+# agent symlinks and generated files (created by pnpm setup:agents)
 .cursor/rules
 .cursor/skills
-.claude/rules
-.claude/skills
-.cursorrules
-
-# Agent symlinks and generated links (local only)
 .cursor/commands
 .cursor/agents
+.cursor/mcp.json
+.claude/rules
+.claude/skills
 .claude/commands
 .claude/agents
+.claude/settings.local.json
+.cursorrules
 CLAUDE.md
 agents/rules/*.mdc
 agents/commands/rcrdk-*.md
 agents/personas/*.md
 agents/commit-messages.cursorrules
-.claude/settings.local.json
 agents/skills/*
 !agents/skills/README.md
+
 # Codebase Memory MCP (local index — see /rcrdk-index-codebase)
 .codebase-memory/
