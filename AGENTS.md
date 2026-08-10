@@ -1,6 +1,19 @@
-# rcrdk.dev Development Guide for AI Agents
+# rcrdk.dev — AI Agent Guide
 
 You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Prioritize type safety, small reviewable diffs, and existing project conventions.
+
+<!-- BEGIN:agent-kit-base -->
+
+## Engineering Principles
+
+- Do not preserve backward compatibility — remove obsolete paths instead of adding compatibility layers, fallbacks, or migrations
+- Choose the simplest implementation that fully meets the current requirements — avoid speculative abstractions, configuration, and indirection
+- Grow the system in layers: start from the smallest version that works end to end, then add each new capability on top of a product that already works
+- Never trade a working product for unfinished complexity
+- Keep components modular and concerns clearly separated
+- Prefer established, well-maintained libraries when they reduce overall complexity or improve reliability — do not reimplement common functionality without a clear reason
+- Lean on the dependencies already in the project before writing your own implementation or adding packages; check a library's docs and types before assuming it lacks a capability (adding a new dependency still needs approval — see [Ask first](#ask-first))
+- Make architectural decisions for the long term — do not accept a stopgap that only works for now and is meant to be replaced later
 
 ## Do
 
@@ -10,15 +23,13 @@ You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Priori
 - Use an object parameter when a function has three or more arguments
 - Prefer functional style: `const`, immutability, `map`/`filter`/`reduce`, and pure functions
 - Omit curly braces for single-statement blocks; use arrow implicit return for single-expression functions (not components)
-- Export utilities in `src/utils/` as `const` arrow functions — not in `src/app/`
 - Assign function results and complex conditions to `const` before returning or branching
 - Use `.at()` instead of bracket notation for array access
 - Use optional chaining when accessing nested properties that may be undefined
 - Use `@/` absolute imports when the relative path goes up more than one folder level
 - Use named exports (no default exports for components)
 - Use `interface` for React component props wrapped in `Readonly`
-- Use `server-only` at the top of files in `http/`
-- Use PNPM for all commands
+- Pin exact dependency versions (`pnpm add -E <package>`)
 - Run `pnpm typecheck` before concluding CI failures are unrelated to your changes
 
 ## Don't
@@ -29,31 +40,47 @@ You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Priori
 - Never commit secrets or `.env` files
 - Never skip hooks (`--no-verify`) unless explicitly requested
 - Never use default exports for React components
-- Never skip the context null check in custom context hooks
 
-## React Query
+## Testing
 
-- Place hooks in `src/hooks/react-query/` when they grow beyond a single file
-- Sort array inputs in `queryKey` so cache keys are stable regardless of input order
+- Tests run on **the project's test runner** — use its API, never mix runners
+- Prioritize functional tests (observable behavior) over implementation details
+- Use `it.each` for similar test cases
+- Reuse shared mocks from `@/mocks/` and `__mocks__` when available
+- Extract `defaultProps`, `baseProps`, or `defaultOptions` when tests share common inputs
+- When fixing failing tests, prefer updating the test; ask before changing production behavior
 
 ## Commands
 
-See [agents/commands.md](agents/commands.md) for the full reference. Key commands:
+This project uses **pnpm** and **the project's test runner**. See [agents/commands.md](agents/commands.md) for the full reference. Key commands:
 
 ```bash
 pnpm typecheck   # Type check
 pnpm lint:fix    # Lint and fix
-pnpm format      # Prettier write
+pnpm test        # Unit tests
 pnpm dev         # Dev server
 ```
+
+## Workflow (Strict / Lean)
+
+Agent-kit provides slash **personas** (`/intake`, `/plan`, `/do`, `/debug`, `/test`, `/review`, `/secure`, …) routed by [`workflow-orchestrator`](agents/rules/workflow-orchestrator.mdc). Quality mode and the `/secure` gate live in `project.mdc` (create or refresh with `/intake`).
+
+| Mode | Typical pipeline |
+| ---- | ---------------- |
+| **Strict** | `/plan` → `/do` → `/debug` → `/test` → `/review` → `/secure` if gate → `/doc` / `/git` |
+| **Lean** | `/do` → `/debug` if needed → `/review` → `/git` |
+
+Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows in one request. Close deliveries per [`honest-delivery`](agents/rules/honest-delivery.mdc) (symptom / cause / evidence). See [agent-kit docs](.agents/agent-kit/docs/flows-and-adoption.md).
 
 ## Boundaries
 
 ### Always do
 
 - Run typecheck on changed files before committing
-- Follow commit format: `type(scope): subject`; use camelCase scope for components/functions, kebab-case for broader areas; header max 100 chars
+- Run relevant tests before pushing
+- Follow commit format: `type(scope): subject` (see [agents/rules/commit-messages.mdc](agents/rules/commit-messages.mdc))
 - Match existing naming and file structure conventions
+- Call the GitHub CLI only through the `gh-personal` alias — `zsh -ic 'gh-personal …'` (see [agents/rules/github-cli.mdc](agents/rules/github-cli.mdc))
 
 ### Ask first
 
@@ -66,34 +93,111 @@ pnpm dev         # Dev server
 - Commit secrets or API keys
 - Force push to shared branches
 - Modify unrelated code in the same PR
+- Run plain `gh`, `gh-myside`, or `GH_CONFIG_DIR=… gh` — always `gh-personal`
+
+## PR Checklist
+
+- [ ] Commit includes scoped subject (when applicable) and valid type
+- [ ] Typecheck passes: `pnpm typecheck`
+- [ ] Lint passes: `pnpm lint`
+- [ ] Relevant tests pass: `pnpm test:run`
+- [ ] Diff is small and focused
+- [ ] No secrets committed
+
+## When Stuck
+
+- Ask a clarifying question before large speculative changes
+- Propose a short plan for complex tasks
+- Fix type errors before test failures
+- Read surrounding code and match existing patterns
+
+<!-- END:agent-kit-base -->
+
+<!-- BEGIN:agent-kit-rules -->
+
+## Rules
+
+Coding rules come from [agent-kit](https://github.com/rcrdk/agent-kit) and are symlinked into `agents/rules/`. Cursor loads them from `.cursor/rules`; the imports below load the always-on ones for Claude Code.
+
+@agents/rules/ask-before-commit.mdc
+@agents/rules/codebase-memory-first.mdc
+@agents/rules/commit-messages.mdc
+@agents/rules/deduplication.mdc
+@agents/rules/documentation.mdc
+@agents/rules/file-naming.mdc
+@agents/rules/github-cli.mdc
+@agents/rules/honest-delivery.mdc
+@agents/rules/package-installation.mdc
+@agents/rules/project-structure.mdc
+@agents/rules/security.mdc
+@agents/rules/workflow-orchestrator.mdc
+
+Read these when touching matching files:
+
+- [array-access](agents/rules/array-access.mdc) — `**/*.ts`, `**/*.tsx`
+- [barrel-exports](agents/rules/barrel-exports.mdc) — `**/index.ts`, `**/index.tsx`
+- [constants-and-variables](agents/rules/constants-and-variables.mdc) — `**/*.ts`, `**/*.tsx`
+- [control-flow](agents/rules/control-flow.mdc) — `**/*.ts`, `**/*.tsx`
+- [cursor-rules](agents/rules/cursor-rules.mdc) — `**/*.mdc`
+- [file-size-limits](agents/rules/file-size-limits.mdc) — `**/*.ts`, `**/*.tsx`
+- [function-parameters](agents/rules/function-parameters.mdc) — `**/*.ts`, `**/*.tsx`
+- [functional-programming](agents/rules/functional-programming.mdc) — `**/*.ts`, `**/*.tsx`
+- [imports](agents/rules/imports.mdc) — `**/*.ts`, `**/*.tsx`
+- [naming-conventions](agents/rules/naming-conventions.mdc) — `**/*.ts`, `**/*.tsx`
+- [optional-chaining](agents/rules/optional-chaining.mdc) — `**/*.ts`, `**/*.tsx`
+- [react-components](agents/rules/react-components.mdc) — `**/*.tsx`
+- [single-responsibility](agents/rules/single-responsibility.mdc) — `**/*.ts`, `**/*.tsx`
+- [strict-equality](agents/rules/strict-equality.mdc) — `**/*.ts`, `**/*.tsx`
+- [test-approach](agents/rules/test-approach.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-date-mocks](agents/rules/test-date-mocks.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-element-selection](agents/rules/test-element-selection.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-fixing](agents/rules/test-fixing.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-mocks](agents/rules/test-mocks.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-naming-and-structure](agents/rules/test-naming-and-structure.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-organization](agents/rules/test-organization.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [test-runner](agents/rules/test-runner.mdc) — `**/*.spec.ts`, `**/*.spec.tsx`
+- [type-imports](agents/rules/type-imports.mdc) — `**/*.ts`, `**/*.tsx`
+- [typescript](agents/rules/typescript.mdc) — `**/*.ts`, `**/*.tsx`
+- [utility-functions](agents/rules/utility-functions.mdc) — `src/utils/**/*`, `src/shared/utils/**/*`, `src/features/**/utils/**/*`
+
+<!-- END:agent-kit-rules -->
+
+## Project Rules
+
+Project-specific conventions the shared agent-kit rules do not cover.
+
+### Do
+
+- Export utilities in `src/utils/` as `const` arrow functions — never place utility modules in `src/app/`
+- Use `server-only` at the top of every file in `src/http/`
+- Place React Query hooks in `src/hooks/react-query/` once they grow beyond a single file
+- Sort array inputs used in a `queryKey` so cache keys stay stable regardless of input order
+- Keep `src/app/` for routing, pages, route-local components, and `api/` handlers only
+- Use kebab-case file names
+- Use PNPM for all commands
+
+### Don't
+
+- Never skip the null check in a custom context hook
+- Never add standalone helper files under `src/app/`
 
 ## Project Structure
 
-`src/app/` is for routing, pages, route-local components, and API routes. Do not add utility modules there — put helpers in `src/utils/`.
-
 ```
 src/
-├── app/              # App Router pages and layouts
+├── app/              # App Router pages, layouts, route-local components, api/
 ├── components/       # Shared UI and feature components
 ├── config/           # App configuration
 ├── data/             # Static data (projects, skills, etc.)
-├── hooks/            # Custom React hooks
-├── http/             # Server-only HTTP functions
-├── i18n/             # Internationalization
-├── lib/              # Shared utilities (react-query, env, etc.)
+├── hooks/            # Custom React hooks (react-query/ for query hooks)
+├── http/             # Server-only HTTP functions (`server-only`)
+├── i18n/             # Internationalization (next-intl)
+├── lib/              # Shared libraries (react-query, env, etc.)
 ├── reducers/         # Reducer functions
 ├── styles/           # Global styles
 ├── types/            # Shared TypeScript types
-└── utils/            # Utility functions
+└── utils/            # Utility functions (const arrow fns, barrel index.ts when needed)
 ```
-
-### Key conventions
-
-- **App folder**: pages, components, and `api/` only — no standalone util files
-- **Utilities**: `src/utils/` as `const` arrow functions with barrel `index.ts` when needed
-- **HTTP layer**: `src/http/` with `server-only`
-- **File names**: kebab-case
-- **Named values**: assign function results and complex conditions to `const` before returning or branching (see [constants-and-variables](agents/rules/constants-and-variables.mdc))
 
 ## Tech Stack
 
@@ -106,6 +210,7 @@ src/
 - **Animation**: Motion (Framer Motion)
 - **Data fetching**: TanStack React Query
 - **Package manager**: PNPM
+- **Tests**: none configured — ignore test steps in the shared rules until a runner is added
 
 ## Code Examples
 
@@ -130,43 +235,13 @@ export function Button({ label, onPress }: Readonly<ButtonProps>) {
 }
 ```
 
-## PR Checklist
-
-- [ ] Commit includes scoped subject (when applicable), type, and conventional format; header ≤ 100 chars
-- [ ] Typecheck passes: `pnpm typecheck`
-- [ ] Lint passes: `pnpm lint`
-- [ ] Diff is small and focused
-- [ ] No secrets committed
-
-## When Stuck
-
-- Ask a clarifying question before large speculative changes
-- Propose a short plan for complex tasks
-- Fix type errors before lint failures
-- Read surrounding code and match existing patterns
-
 ## Extended Documentation
 
-Agent rules and settings are centralized in `agents/`. Symlinks in `.cursor/` and `.claude/` are generated locally and not committed to git.
+Agent rules and settings come from **[agent-kit](https://github.com/rcrdk/agent-kit)** (`.agents/agent-kit`). Rule, command, persona, and skill files under `agents/`, plus the symlinks in `.cursor/` and `.claude/`, are generated locally and not committed to git.
 
-After cloning, run `pnpm dev` or `pnpm setup:agent-links` locally. Agent symlinks are recreated automatically via `predev` when starting the dev server (skipped when `CI` is set).
+Run `pnpm setup:agents` after cloning or updating the submodule (`predev` refreshes symlinks automatically when starting the dev server; skipped when `CI` is set).
 
-```
-agents/
-├── rules/          # Source of truth for coding rules (.mdc)
-├── skills/         # Shared agent skills
-├── README.md       # Rules index
-└── commands.md     # Command reference
+The blocks between `<!-- BEGIN:agent-kit-base -->` / `<!-- END:agent-kit-base -->` and `<!-- BEGIN:agent-kit-rules -->` / `<!-- END:agent-kit-rules -->` are injected by `setup:agent-links` — **never edit them here**; edit agent-kit instead. Everything outside the markers is project-local.
 
-.cursor/            # generated symlinks
-├── rules -> ../agents/rules
-└── skills -> ../agents/skills
-
-.claude/            # generated symlinks
-├── rules -> ../agents/rules
-└── skills -> ../agents/skills
-```
-
-- **[agents/README.md](agents/README.md)** - Rules index
-- **[agents/rules/](agents/rules/)** - Modular engineering rules
-- **[agents/commands.md](agents/commands.md)** - Complete command reference
+- **[agents/README.md](agents/README.md)** — agent documentation index
+- **[agents/commands.md](agents/commands.md)** — command reference
