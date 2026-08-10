@@ -1,0 +1,81 @@
+---
+description: How to create and edit Cursor rules (location, naming, structure)
+globs:
+  - '**/*.mdc'
+alwaysApply: false
+---
+
+# Creating Cursor Rules
+
+Use this rule when creating or editing Cursor rules. It defines where rules live, how to name them, and their structure.
+
+## 1. Location
+
+Rules originate in the **[agent-kit](https://github.com/rcrdk/agent-kit)** repository and are **copied into** each consumer project as committed files under `agents/rules/`. There is no submodule.
+
+All rules live in a single flat `rules/` folder and apply to **every** consumer project. There are no per-project rule folders and no overrides — when projects differ (layout, package manager, test runner), the rule itself must cover both cases and say how to detect which applies.
+
+```
+agent-kit/                    # upstream source
+└── rules/*.mdc               # flat — every rule applies to every project
+
+PROJECT_ROOT/
+├── agents/rules/*.mdc        # committed copies
+├── .cursor/rules -> ../agents/rules
+└── .claude/rules -> ../agents/rules
+```
+
+Editing a rule in a consumer repo is allowed — it is that project's file. Mirror anything reusable back into agent-kit, or the next copy-in silently reverts it.
+
+## 2. Naming
+
+- Use **kebab-case** for filenames (e.g. `creating-cursor-rules.mdc`).
+- Use the **.mdc** extension.
+- Use names that clearly describe the rule's purpose.
+
+## 3. File structure
+
+Each rule file must have:
+
+1. **YAML front matter** at the top, between `---` lines.
+2. **Markdown body**: title, explanation, steps, and optional code examples.
+
+### Front matter
+
+```yaml
+---
+description: Short description of the rule's purpose
+globs: optional/path/pattern/**/*
+alwaysApply: false
+---
+```
+
+- `description`: short summary (e.g. for the rule picker).
+- `globs`: optional; file pattern so the rule applies when matching files are in context (e.g. `**/*.ts`, `src/**/*.tsx`).
+- `alwaysApply`: `true` if the rule should apply in every conversation; `false` if it applies only when matching files are relevant.
+
+### Body
+
+- Start with a level-1 heading: `# Rule Title`.
+- Use markdown for the main explanation.
+- Prefer:
+  1. Step-by-step instructions
+  2. Code examples (good vs bad when useful)
+  3. Clear guidelines
+
+## 4. Best practices
+
+- One main concern per rule; split broad topics into several rules.
+- Prefer short, actionable rules (e.g. under 50 lines when possible).
+- Prefer concrete examples (good vs bad) over long prose.
+- Use `alwaysApply: true` only for rules that must apply in every chat; otherwise use `globs` and `alwaysApply: false`.
+
+## 5. Checklist when creating a rule
+
+- [ ] File is in agent-kit `rules/` with a `.mdc` extension.
+- [ ] Filename is kebab-case and descriptive.
+- [ ] YAML front matter has `description`; set `globs` and `alwaysApply` as needed.
+- [ ] Body has a `# Rule Title` and clear instructions/examples.
+- [ ] Rule is focused and reasonably short.
+- [ ] Rule holds for every consumer project — no project-specific paths, package manager, or test runner assumed.
+- [ ] Consumer repos re-run `setup:agent-links` after copying in a new or renamed rule, so the rules index in `AGENTS.md` picks it up.

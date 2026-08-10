@@ -3,5 +3,9 @@
 /out
 /build
 
-# Submodules carry their own formatting — never reformat them from here
-/.agents
+# Copied verbatim from agent-kit. Formatting them here would make every future
+# copy-in produce a diff in every file, hiding the changes that matter.
+/agents/rules
+/agents/personas
+/agents/commands
+/agents/skills

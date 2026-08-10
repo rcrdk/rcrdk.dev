@@ -1,0 +1,95 @@
+---
+description: Named exports only in barrel files (index.ts), no wildcards
+globs:
+  - '**/index.ts'
+  - '**/index.tsx'
+alwaysApply: false
+---
+
+# Barrel Exports
+
+### Named Exports Only
+
+- Barrel export files (e.g., `index.ts`, `index.tsx`) must use **named exports only**.
+- Never use wildcard exports (`export * from`).
+- Explicitly list all exports to improve code clarity and tree-shaking.
+
+- ✅ Good:
+
+  ```typescript
+  export { getScenariosDevelopmentsImages } from './get-scenarios-developments-images'
+  export { getDevelopmentsWithSingleTypology } from './get-developments-with-single-typology'
+  export { orderScenarios } from './order-scenarios'
+  ```
+
+- ❌ Bad:
+  ```typescript
+  export * from './get-scenarios-developments-images'
+  export * from './get-developments-with-single-typology'
+  export * from './order-scenarios'
+  ```
+
+### Multiple Exports from Same File
+
+- When exporting multiple items from the same file, group them in a single export statement.
+
+- ✅ Good:
+
+  ```typescript
+  export { metersToLatDegrees, metersToLngDegrees } from './calc-lat-lng-meters-to-degrees'
+  export { activateStreetViewAtPosition, createMapDropHandler, createMapDragOverHandler } from './street-view-controls'
+  ```
+
+- ❌ Bad:
+  ```typescript
+  export { metersToLatDegrees } from './calc-lat-lng-meters-to-degrees'
+  export { metersToLngDegrees } from './calc-lat-lng-meters-to-degrees'
+  ```
+
+### Feature public API
+
+In feature-driven projects, each feature exposes its public surface through `src/features/<feature>/index.ts`. Other modules import from `@/features/<feature>` — never from internal paths.
+
+- ✅ Good:
+
+  ```typescript
+  // src/features/auth/index.ts
+  export { LoginForm } from './components/login-form'
+  export { signIn } from './actions/sign-in'
+  export type { SessionUser } from './types/session-user'
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  // importing internals from another feature
+  import { LoginForm } from '@/features/auth/components/login-form'
+  ```
+
+### File Naming
+
+- Barrel export files should be named `index.ts` or `index.tsx`.
+- Place them in the directory containing the files they re-export.
+
+- ✅ Good:
+
+  ```
+  features/auth/
+    components/
+      login-form.tsx
+    actions/
+      sign-in.ts
+    index.ts
+  shared/utils/
+    group-by/
+      index.ts
+      group-by.ts
+  ```
+
+- ❌ Bad:
+  ```
+  utils/
+    scenarios.ts
+    get-scenarios-developments-images.ts
+    order-scenarios.ts
+  ```

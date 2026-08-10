@@ -1,0 +1,81 @@
+---
+description: Keep components and functions under 100 lines; split when they grow
+globs:
+  - '**/*.ts'
+  - '**/*.tsx'
+alwaysApply: false
+---
+
+# File Size Limits
+
+Keep **React components** and **functions** under **100 lines** each (from opening `{` to closing `}` of the declaration). Long units are harder to review, test, and reuse.
+
+## What counts
+
+- **Component** — the function body of `export function Foo()` or the memoized `FooComponent` before `memo()`
+- **Function** — any named function, arrow export, server action, service method, or hook body
+- **Do not count** — imports, types/interfaces at file top, or other exports in the same file
+
+## When approaching the limit
+
+Split before you hit 100 lines:
+
+| Kind | Extract to |
+| --- | --- |
+| React UI sections | Colocated subcomponents in the same feature folder |
+| Repeated JSX blocks | Named subcomponents (see [react-components](react-components.mdc)) |
+| Component logic | Feature or shared hooks |
+| Business steps | `services/`, `utils/`, or pure helpers — one export per file when possible |
+| Server action steps | Private helpers in the same file or `services/` |
+
+- ✅ Good:
+
+  ```tsx
+  function CheckoutSummary({ items }: Readonly<CheckoutSummaryProps>) {
+    const subtotal = useCheckoutSubtotal(items)
+
+    return (
+      <section>
+        <CheckoutLineItems items={items} />
+        <CheckoutTotals subtotal={subtotal} />
+      </section>
+    )
+  }
+  ```
+
+  ```typescript
+  const validateCheckoutInput = (input: CheckoutInput) => { /* … */ }
+
+  export const createCheckout = async (input: CheckoutInput) => {
+    const validated = validateCheckoutInput(input)
+    if (!validated) return null
+
+    const session = await paymentGateway.createSession(validated)
+    return session
+  }
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  export function CheckoutPage() {
+    // 150+ lines: form state, validation, fetch, error UI, and markup in one component
+  }
+  ```
+
+  ```typescript
+  export const handleWebhook = async (event: WebhookEvent) => {
+    // 120 lines: verify, switch on type, DB updates, email, analytics — split by step
+  }
+  ```
+
+## Exceptions
+
+- **Test files** (`*.spec.ts`, `*.spec.tsx`, `__tests__/`) — no hard limit; still prefer focused describes and shared fixtures
+- **Config/data tables** — large static maps are fine if mostly literal entries; move lookup logic to helpers when behavior grows
+
+## Related rules
+
+- [single-responsibility](single-responsibility.mdc) — why to split
+- [react-components](react-components.mdc) — subcomponents and JSX conditionals
+- [project-structure](project-structure.mdc) — where extracted code lives in features

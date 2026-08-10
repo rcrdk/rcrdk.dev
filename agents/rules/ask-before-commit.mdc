@@ -1,0 +1,31 @@
+---
+description: Never create git commits unless the user explicitly asks; overrides skill auto-commit
+alwaysApply: true
+---
+
+# Ask before commit
+
+Never create a git commit unless the user explicitly asks in the current turn.
+
+## Counts as explicit ask
+
+- User says commit / create commits / commit these changes
+- User invokes `/rcrdk-commit-unstaged` (or another commit command they run)
+
+## Does not count
+
+- Skill, plan, or checklist steps that say "commit the design doc", "commit when done", or similar
+- Finishing a feature, fix, refactor, or docs write-up
+- "Ship it", "done", or PR creation alone (push/PR ≠ commit unless they also asked to commit)
+
+## When a skill wants to commit
+
+1. Finish the non-git work.
+2. Tell the user a commit is recommended and what would be committed.
+3. Wait for approval. Do not run `git commit` until they approve.
+
+## Other git safety
+
+- Do not push unless explicitly asked
+- Do not use `--no-verify` / `--no-gpg-sign` unless explicitly asked
+- Do not amend unless the user explicitly asks and amend safety rules are met

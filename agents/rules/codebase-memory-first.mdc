@@ -1,0 +1,129 @@
+---
+description: Consult Codebase Memory MCP before filesystem search or broad reads
+alwaysApply: true
+---
+
+# Codebase Memory First Policy
+
+## Objective
+
+Minimize context usage, token consumption, filesystem reads, and repository-wide searches while maintaining high-quality answers.
+
+This project provides a **Codebase Memory MCP** (`codebase-memory-mcp`) — the primary source of truth for project discovery. The filesystem is **not** the first place to search.
+
+## Discovery workflow (mandatory)
+
+For every request involving the codebase:
+
+### Step 1 — Consult Codebase Memory MCP
+
+Always begin by querying the MCP. Do not skip this step.
+
+Useful tools (in typical order):
+
+- `index_status` / `list_projects` — confirm the repo is indexed
+- `get_architecture` — project structure and layers
+- `search_code` / `search_graph` — symbols, routes, features, modules
+- `query_graph` — relationships, imports, callers, callees
+- `trace_path` — execution or dependency paths
+- `get_code_snippet` — targeted excerpts when a file path is known
+
+Discover: architecture, feature organization, folder responsibilities, module relationships, routing, API endpoints, services, hooks, state, models, shared utilities, docs, and ADRs.
+
+If the project is not indexed, run `index_repository` once before continuing.
+
+### Step 2 — Build a mental graph
+
+Before reading source, map the relevant portion of the app:
+
+- where the feature lives
+- dependents and dependencies
+- related components, services, hooks, and APIs
+
+Understand architecture before inspecting implementation.
+
+### Step 3 — Determine the minimal read set
+
+Read only:
+
+- the implementation file
+- directly imported dependencies
+- directly related types
+- directly related tests (only when useful)
+
+Do not read unrelated files.
+
+### Step 4 — Expand incrementally
+
+If more context is needed, expand **one dependency level at a time**. Never jump straight to repository-wide search.
+
+## Search priority
+
+Always follow this order:
+
+1. Codebase Memory MCP
+2. Existing architecture summaries
+3. Existing documentation (`docs/`, `AGENTS.md`)
+4. Relevant implementation files
+5. Direct dependencies
+6. One-hop dependencies
+7. Two-hop dependencies
+8. Repository-wide search (**last resort**)
+
+Never change this order.
+
+## Repository search rules
+
+Repository-wide searches are expensive. Do **not** perform recursive grep/glob, `find` across the repo, or load large folder trees unless:
+
+- the MCP lacks sufficient information
+- the graph is incomplete
+- symbols cannot be resolved
+- dynamic imports prevent discovery
+- generated code prevents tracing
+- the user explicitly requests a repository-wide search
+
+## File reading policy
+
+Treat every opened file as a token cost. Before opening a file, ask: *Is this file required to answer the request?*
+
+**Prefer:** entrypoints, feature root, implementation, interfaces, types, services, hooks, and components directly involved.
+
+**Avoid** unless requested: unrelated features, migrations, build artifacts, generated files, lockfiles, `node_modules`, `dist`, coverage, snapshots, changelogs.
+
+## Token optimization
+
+Prefer MCP summaries, architecture nodes, dependency graphs, and symbol lookup over raw source. Read implementation only when summaries are insufficient. Never re-read information already available from the MCP.
+
+## Workflows
+
+**Incremental exploration:** identify feature → locate via MCP → read implementation → read direct dependencies → stop.
+
+**Refactoring:** understand architecture via MCP → identify affected modules → read only affected files → change → verify direct impacts → stop.
+
+**Bug fix:** identify failing feature → locate via MCP → read implementation → read immediate dependencies → trace only as needed.
+
+**Questions ("How does X work?"):** query MCP → build graph → read implementation only if required → answer.
+
+If the MCP already has enough information, do not open source files.
+
+## Efficiency targets
+
+| Task type | Target files read |
+| --- | --- |
+| Simple question | 0–3 |
+| Feature question | 3–8 |
+| Bug investigation | 5–12 |
+| Large refactor | 10–20 |
+
+Avoid exceeding these unless necessary.
+
+## Guiding principles
+
+- Architecture before implementation
+- Graph before grep
+- Memory before filesystem
+- Precision before exploration
+- Minimal context over exhaustive scanning
+
+When in doubt, ask: *Can I answer this using the Codebase Memory MCP without reading more files?* If yes, do that.

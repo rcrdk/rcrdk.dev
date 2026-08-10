@@ -1,0 +1,40 @@
+---
+description: Detect the project test runner (Vitest or Jest) and use its API
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Test Runner
+
+Never assume the test runner. Detect it before writing or fixing tests.
+
+## Detect
+
+1. `devDependencies` in `package.json` — `vitest` or `jest`
+2. Config file at the repo root — `vitest.config.*` / `vite.config.*` with a `test` block, or `jest.config.*` / a `jest` key in `package.json`
+3. The `Commands` section of the project's `AGENTS.md`
+
+Match the runner already in use. Do not introduce the other one, and do not mix their APIs in the same file.
+
+## API mapping
+
+Rule examples in this folder are written for **Vitest**. In a Jest project, translate:
+
+| Vitest | Jest |
+| --- | --- |
+| `import { describe, it, expect, vi } from 'vitest'` | globals — no import needed |
+| `vi.fn()` | `jest.fn()` |
+| `vi.spyOn(obj, 'method')` | `jest.spyOn(obj, 'method')` |
+| `vi.mock('@/path', factory)` | `jest.mock('@/path', factory)` |
+| `vi.useFakeTimers()` / `vi.useRealTimers()` | `jest.useFakeTimers()` / `jest.useRealTimers()` |
+| `vi.setSystemTime(date)` | `jest.setSystemTime(date)` (modern timers) |
+| `vi.clearAllMocks()` / `vi.resetAllMocks()` | `jest.clearAllMocks()` / `jest.resetAllMocks()` |
+| `importOriginal` in a mock factory | `jest.requireActual('@/path')` |
+
+Everything else in the testing rules — naming, structure, `it.each`, element selection, mock reuse, functional-over-implementation focus — applies to both runners unchanged.
+
+## Running tests
+
+Use the project's script (`test`, `test:run`, `test:watch`) through its package manager — see [package-installation](package-installation.mdc) for detecting that, and the project's `AGENTS.md` for the exact commands. Never invoke `vitest` or `jest` binaries directly when a script exists.

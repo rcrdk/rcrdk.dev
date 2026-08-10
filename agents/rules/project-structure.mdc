@@ -1,0 +1,344 @@
+---
+description: src/ root, src/app Next.js conventions, feature-driven or flat domain layout
+alwaysApply: true
+---
+
+# Project Structure
+
+All application code lives under **`src/`**. Use the Next.js **`src/app/`** App Router for routing (standard file conventions) and keep route files thin.
+
+## Which layout this project uses
+
+Two layouts are supported. Detect the one in use before creating files — the project's `AGENTS.md` (**Project Structure**) is authoritative:
+
+| Layout | Signal | Product code goes in |
+| --- | --- | --- |
+| **Feature-driven** | `src/features/` exists | `src/features/<feature>/`, cross-feature code in `src/shared/` |
+| **Flat** | no `src/features/` — domain folders directly under `src/` | `src/<domain>/` (`utils/`, `hooks/`, `components/`, …) |
+
+Never mix layouts in one project, and never introduce the other layout without being asked.
+
+Both layouts share every rule below about `src/` as the application root, `src/app/` usage, and promotion of reused code.
+
+## `src/` is the application root
+
+Next.js supports an optional [`src` directory](https://nextjs.org/docs/app/api-reference/file-conventions/src-folder). This project **always** uses it.
+
+- ✅ Application code: `src/app/` plus the layout's folders (`src/features/` + `src/shared/`, or `src/<domain>/`)
+- ✅ `@/` alias resolves to `src/` (e.g. `@/features/auth` → `src/features/auth`, `@/utils/group-by` → `src/utils/group-by`)
+- ❌ Do **not** create a root-level `app/` folder — use `src/app/` only
+- ❌ Do **not** put features, shared modules, or utilities at the repo root
+
+Project root keeps framework, tooling, and — when the project has them — **project docs**:
+
+```
+project-root/
+├── docs/                   # Project knowledge — architecture, features, ADRs (when present)
+├── agents/                 # Agent coding rules
+├── public/                 # Static assets (Next.js convention)
+├── src/                    # All application code
+│   ├── app/
+│   └── …                   # features/ + shared/, or domain folders
+├── next.config.ts
+├── package.json
+└── tsconfig.json
+```
+
+Optional Next.js entry files also belong under `src/` when used:
+
+- `src/middleware.ts`
+- `src/instrumentation.ts`
+
+## Flat layout — `src/<domain>/`
+
+Used by projects without `src/features/`. Reusable code goes in the matching domain folder:
+
+| Kind | Location |
+| --- | ---- |
+| Pure helpers, formatters, mappers | `src/utils/` |
+| React hooks | `src/hooks/` |
+| Shared TypeScript types | `src/types/` |
+| Shared React components | `src/components/` |
+| Third-party wrappers, integrations | `src/lib/` |
+| App configuration | `src/config/` |
+| Shared constants | `src/constants/` |
+| Validation schemas | `src/schemas/` |
+| React contexts | `src/contexts/` |
+| State reducers | `src/reducers/` |
+| HTTP clients, API helpers | `src/http/` |
+| Global styles, design tokens | `src/styles/` |
+
+- ✅ Good:
+
+  ```
+  src/utils/group-by.ts
+  src/hooks/use-form-state/use-form-state.ts
+  src/types/optional.ts
+  src/styles/globals.css
+  ```
+
+- ❌ Bad:
+
+  ```
+  src/app/group-by.ts
+  src/app/use-form-state.ts
+  src/app/globals.css
+  ```
+
+When logic is reused outside one route, move it to the matching `src/<domain>/` folder.
+
+## Feature-driven layout
+
+```
+src/
+├── app/                    # Next.js App Router — routes only (thin)
+├── features/               # Product features (vertical slices)
+│   ├── auth/
+│   ├── billing/
+│   └── dashboard/
+├── shared/                 # Cross-feature shared code
+│   ├── components/
+│   ├── hooks/
+│   ├── utils/
+│   ├── lib/
+│   ├── types/
+│   ├── config/
+│   ├── constants/
+│   ├── schemas/
+│   ├── contexts/
+│   ├── reducers/
+│   ├── http/
+│   └── styles/
+└── mocks/                  # Test mocks (optional)
+```
+
+## `src/features/<feature>/` — feature modules (feature-driven development)
+
+**Features are the primary unit of organization.** Each feature is a self-contained vertical slice that can grow a **deep internal tree** — add subfolders as needed; there is no fixed cap on nesting.
+
+Use **kebab-case** for feature folder names (`auth`, `billing`, `team-settings`).
+
+See [feature-driven-development.md](../../docs/architecture/feature-driven-development.md) for the full guide and billing example tree.
+
+### Common feature folders
+
+Create only what the feature needs — not every folder is required:
+
+| Folder | Purpose |
+| --- | --- |
+| `components/` | Feature UI — nest by screen/flow (`components/checkout/`, …) |
+| `hooks/` | Feature-specific React hooks |
+| `actions/` | Server actions |
+| `queries/` | TanStack Query keys, fetchers, hooks |
+| `mutations/` | TanStack Query mutations |
+| `services/` | Business logic orchestration (no JSX) |
+| `lib/` | Feature-specific integrations (e.g. `lib/payment/`) |
+| `utils/` | Pure helpers — one exported function per file |
+| `schemas/` | Zod validation |
+| `types/` | Feature types |
+| `constants/`, `config/` | Feature constants and static config |
+| `contexts/`, `reducers/` | Client state scoped to this feature |
+| `emails/` | Feature-owned templates/triggers (optional) |
+| `api/` | Internal API/route helpers |
+| `__tests__/` | Tests — mirror internal structure |
+| `index.ts` | **Public API** — only exports consumed outside the feature |
+
+### Example — large feature
+
+```
+src/features/billing/
+├── components/
+│   ├── checkout/
+│   ├── history/
+│   └── credits/
+├── hooks/
+├── queries/
+├── mutations/
+├── actions/
+├── services/
+├── lib/payment/
+├── schemas/
+├── types/
+├── utils/
+├── index.ts
+└── __tests__/services/
+```
+
+### Spec layer folders → features first
+
+When the product spec mentions root `/lib`, `/utils`, `/hooks`, `/components`, `/schemas`:
+
+1. Default to `src/features/<feature>/<folder>/`
+2. Promote to `src/shared/<folder>/` only when **two or more** features need the code
+
+- ✅ Good:
+
+  ```
+  src/features/billing/components/checkout/checkout-form.tsx
+  src/features/billing/queries/get-credit-balance.ts
+  src/features/billing/services/process-webhook-event.ts
+  src/features/billing/lib/payment/abacatepay.ts
+  src/features/billing/index.ts
+  ```
+
+- ❌ Bad:
+
+  ```
+  src/components/checkout-form.tsx           # belongs in a feature
+  src/hooks/use-credit-balance.ts            # billing-specific → feature
+  src/lib/payment/abacatepay.ts              # billing-owned → feature/lib
+  src/app/(app)/billing/actions.ts           # business logic in route tree
+  ```
+
+### Feature boundaries
+
+- Import another feature only through its public barrel: `@/features/auth`
+- Do **not** reach into another feature's internals (`@/features/auth/components/...`)
+- Prefer relative imports within the same feature
+- When code is used by **one** feature, keep it in that feature
+- When code is used by **two or more** features, move it to `src/shared/`
+
+## `src/shared/` — cross-feature code
+
+Use `src/shared/` for code with no single feature owner — design-system primitives, generic hooks, third-party wrappers, global config, and global styles.
+
+| Kind | Location |
+| --- | --- |
+| Shared UI primitives | `src/shared/components/` |
+| Shared hooks | `src/shared/hooks/` |
+| Shared helpers | `src/shared/utils/` |
+| Third-party wrappers | `src/shared/lib/` |
+| Shared types | `src/shared/types/` |
+| App configuration | `src/shared/config/` |
+| Shared constants | `src/shared/constants/` |
+| Shared validation | `src/shared/schemas/` |
+| React contexts | `src/shared/contexts/` |
+| State reducers | `src/shared/reducers/` |
+| HTTP clients | `src/shared/http/` |
+| Global styles | `src/shared/styles/` |
+
+- ✅ Good:
+
+  ```
+  src/shared/components/button/index.tsx
+  src/shared/utils/tailwind-cn.ts
+  src/shared/lib/sentry/index.ts
+  src/shared/styles/globals.css
+  ```
+
+## `src/app/` — Next.js App Router (routing only)
+
+`src/app/` is the App Router root. Follow [Next.js file conventions](https://nextjs.org/docs/app/api-reference/file-conventions) — do not invent custom route file names or folder patterns.
+
+### Allowed route files
+
+Use only Next.js special files inside the route tree:
+
+| File | Purpose |
+| --- | --- |
+| `page.tsx` | Route UI (required for a URL segment) |
+| `layout.tsx` | Shared UI wrapper for a segment and its children |
+| `loading.tsx` | Loading UI (Suspense boundary) |
+| `error.tsx` | Error UI (error boundary) |
+| `not-found.tsx` | Not found UI for a segment |
+| `template.tsx` | Re-mounted layout variant |
+| `default.tsx` | Parallel route fallback |
+| `route.ts` | Route Handler (API endpoint) |
+
+Metadata and static route files (`icon`, `opengraph-image`, `robots.ts`, `sitemap.ts`, etc.) follow the same Next.js conventions under `src/app/`.
+
+### Route organization
+
+Use Next.js routing features as documented:
+
+- **Route groups**: `(marketing)`, `(dashboard)` — organize without affecting the URL
+- **Dynamic segments**: `[id]`, `[...slug]`
+- **Parallel routes**: `@modal`, `@sidebar`
+- **Intercepting routes**: `(.)photo`, `(..)photo`
+- **API routes**: `src/app/api/<path>/route.ts`
+
+### Thin pages — delegate outward
+
+Route files compose code that lives outside the route tree; they do not own business logic.
+
+- Import UI, actions, and data helpers from `@/features/...` and `@/shared/...` (feature-driven) or `@/components/...`, `@/utils/...` (flat)
+- Pass route params, search params, and server data into those components
+- Global CSS is imported in the root layout from the project's styles folder (`@/shared/styles/globals.css` or `@/styles/globals.css`)
+
+- ✅ Good:
+
+  ```tsx
+  // src/app/layout.tsx
+  import '@/shared/styles/globals.css'
+
+  export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+    return (
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    )
+  }
+  ```
+
+  ```tsx
+  // src/app/(auth)/login/page.tsx
+  import { LoginForm } from '@/features/auth'
+
+  export default function LoginPage() {
+    return <LoginForm />
+  }
+  ```
+
+  ```typescript
+  // src/app/api/webhooks/stripe/route.ts
+  import { handleStripeWebhook } from '@/features/billing'
+
+  export async function POST(request: Request) {
+    return handleStripeWebhook(request)
+  }
+  ```
+
+- ❌ Bad:
+
+  ```
+  app/page.tsx                              # root app/ — must be src/app/
+  src/app/(auth)/login/login-form.tsx       # feature UI in the route tree
+  src/app/utils/format-date.ts              # utilities in app/
+  src/app/hooks/use-auth.ts                 # hooks in app/
+  src/app/globals.css                       # global styles in app/ — use shared/styles
+  src/app/(auth)/login/page.ts              # wrong extension — use page.tsx
+  src/app/dashboard/DashboardPage.tsx       # custom page file name — use page.tsx
+  ```
+
+Do **not** add standalone utilities, hooks, schemas, components, or global styles under `src/app/`.
+
+## Import paths
+
+- `@/features/<feature>` — feature public API (barrel), feature-driven layout
+- `@/shared/<domain>/...` — shared cross-feature code, feature-driven layout
+- `@/<domain>/...` — domain folders, flat layout
+- `@/mocks/...` — test mocks
+- Prefer `@/` when the relative path goes up more than one folder level
+
+## Promoting code
+
+**Feature-driven:**
+
+1. Start new product behavior in `src/features/<feature>/`
+2. If a second feature needs the same code, move it to the matching `src/shared/<domain>/` folder
+3. Update imports; keep feature barrels exporting only that feature's public surface
+
+**Flat:**
+
+1. Start route-local code next to the route in `src/app/`
+2. When it is reused outside that route, move it to the matching `src/<domain>/` folder
+3. Update imports to the `@/<domain>/...` alias
+
+## Documentation
+
+When the project has a `docs/` folder, project knowledge lives there (see [documentation](documentation.mdc)):
+
+- [docs/README.md](../../docs/README.md) — doc index
+- [docs/architecture/overview.md](../../docs/architecture/overview.md) — architecture summary
+- [docs/features/<feature>.md](../../docs/features/) — per-feature docs (mirror `src/features/`)
+- [docs/adr/](../../docs/adr/) — architecture decision records

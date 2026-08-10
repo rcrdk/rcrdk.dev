@@ -1,0 +1,115 @@
+---
+description: Describe/it naming, quoted refs (props, components, IDs, constants, brands), no explanation comments
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Test Naming and Structure
+
+## Naming Conventions
+
+### Describe Blocks
+
+`describe` blocks should have the first letter uppercased. Use descriptive names that clearly identify the component or functionality being tested.
+
+- ✅ Good:
+
+  ```tsx
+  describe('Button component', () => {})
+  describe('User authentication flow', () => {})
+  ```
+
+- ❌ Bad:
+  ```tsx
+  describe('button component', () => {})
+  describe('user authentication flow', () => {})
+  ```
+
+### Test Cases (it blocks)
+
+Test case names should always start with the word "should" and avoid using parentheses. When using boolean values in test names, prefer explicit "true" or "false" (do not use 0 or 1). When referring to props, functions or attributes in test names, always put them in double quotes.
+
+- ✅ Good:
+
+  ```tsx
+  it('should render button with text', () => {})
+  it('should call "onClick" when button is clicked', () => {})
+  it('should display error message when "isError" is true', () => {})
+  it('should hide content when "isVisible" is false', () => {})
+  it('should have a "title" provided', () => {})
+  ```
+
+- ❌ Bad:
+  ```tsx
+  it('renders button with text', () => {})
+  it('should call onClick when button is clicked', () => {})
+  it('should display error when isError is 1', () => {})
+  it('should hide content when isVisible is 0', () => {})
+  it('should handle click() event', () => {})
+  it('should have a title provided', () => {})
+  ```
+
+### Quoted references (in describe/it strings)
+
+When referring to technical values in `describe()` or `it()` strings, put them in **double quotes**. Common words (should, when, from, over) do not need quotes.
+
+Put in double quotes:
+
+- Prop/field names: `"email"`, `"onClick"`, `"isError"`, `"teamRegionIds"`
+- Component names: `"PercentageInput"`, `"SessionProvider"`
+- IDs or technical literal values: `"commission-field-total-percentage"`, `"regionId"`
+- Function/hook names when referenced: `"useSession"`, `"onDelete"`
+- Return values or types when they are the focus: `"false"`, `"note"`, `"task"`
+- Constant names when relevant: `"TOAST_MESSAGES.SAVE_SUCCESS"`
+- Brand and product names: `"Sentry"`, `"Heap"`, `"Google Maps"`, `"NextAuth"`
+
+- ✅ Good:
+
+  ```tsx
+  it('should show toast when "save" succeeds', () => {})
+  it('should set responsible to "Cliente" when "clientResponsibility" is "1"', () => {})
+  it('should report errors to "Sentry" when the request fails', () => {})
+  it('should track page view in "Heap" on mount', () => {})
+  it('should initialize "Google Maps" with default center', () => {})
+  describe('When "TOAST_MESSAGES.SAVE_SUCCESS" is used', () => {})
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  it('should show toast when save succeeds', () => {})
+  it('should set responsible to Cliente when clientResponsibility is 1', () => {})
+  it('should report errors to Sentry when the request fails', () => {})
+  it('should track page view in Heap on mount', () => {})
+  ```
+
+### Constants in assertions and names
+
+When asserting toast or UI messages, use project constants (e.g. `TOAST_MESSAGES.SAVE_SUCCESS`) instead of hardcoded strings. When referring to those constants in describe/it descriptions, put the constant name in double quotes (e.g. `"TOAST_MESSAGES.SAVE_SUCCESS"`).
+
+## Test Structure
+
+### Comments
+
+Avoid putting explanation comments into tests unless explicitly asked for. Tests should be self-documenting through clear naming and structure.
+
+- ✅ Good:
+
+  ```tsx
+  it('should disable button when loading', () => {
+    render(<Button loading>Submit</Button>)
+    expect(screen.getByRole('button')).toBeDisabled()
+  })
+  ```
+
+- ❌ Bad:
+  ```tsx
+  it('should disable button when loading', () => {
+    // Render the button with loading state
+    render(<Button loading>Submit</Button>)
+    // Check that the button is disabled
+    expect(screen.getByRole('button')).toBeDisabled()
+  })
+  ```

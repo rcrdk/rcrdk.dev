@@ -39,7 +39,8 @@ next-env.d.ts
 # pwa
 **/public/sw.js
 
-# agent symlinks and generated files (created by pnpm setup:agents)
+# agent symlinks and generated files (created by pnpm setup:agent-links)
+# The sources under agents/ are committed — only these generated views are ignored.
 .cursor/rules
 .cursor/skills
 .cursor/commands
@@ -52,12 +53,7 @@ next-env.d.ts
 .claude/settings.local.json
 .cursorrules
 CLAUDE.md
-agents/rules/*.mdc
-agents/commands/rcrdk-*.md
-agents/personas/*.md
 agents/commit-messages.cursorrules
-agents/skills/*
-!agents/skills/README.md
 
 # Codebase Memory MCP (local index — see /rcrdk-index-codebase)
 .codebase-memory/

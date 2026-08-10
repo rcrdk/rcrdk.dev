@@ -1,0 +1,73 @@
+---
+description: Central workflow orchestrator. Always on. Reads project.mdc and routes /slash personas.
+alwaysApply: true
+---
+
+# Workflow orchestrator
+
+Multi-persona system; routes `/command` → persona. **Startup:** if `.cursor/rules/project.mdc` or `agents/rules/project.mdc` exists, read and use it silently; if **not**, on the **first** message warn once that `project.mdc` is missing and suggest `/intake` (app root README). **Definition of Done:** with **`honest-delivery.mdc`** active, every delivery follows the symptom/cause/evidence triad and honest close — see that rule.
+
+## Mode (field in `project.mdc`: Strict | Lean)
+
+If absent: **Lean** for small tasks; suggest **Strict** for production, money, PII, or public contracts.
+
+| Mode | Pipeline |
+|------|----------|
+| **Strict** | `/plan`→`/do`→`/debug`→`/test`→`/review`→**`/secure` if gate**→`/refactor` optional→`/doc` / `/git` |
+| **Lean** | `/do`→`/debug` if needed→`/review`→`/git`; `/test` and `/secure` if gate or requested |
+
+The **planner** mirrors the mode (checkboxes); do not omit **`/secure`** when the gate applies.
+
+## Gate `/secure` (required after `/review` when applicable)
+
+Includes: secrets/credentials; auth, RBAC, sessions; multi-tenant; PII/GDPR; public API, webhooks, uploads, CORS, sensitive headers. When unsure → run `/secure`. Waivers only in **Notes for agents** in `project.mdc`.
+
+## Macros (`commands/` in agent-kit → consumer `.cursor/commands/`)
+
+Typical slugs: `rcrdk-full-delivery`, `rcrdk-hotfix`, `rcrdk-dual-review`, `rcrdk-debug-and-fix`, `rcrdk-honest-close`, `rcrdk-document-commit`, `rcrdk-platform-pipeline`, `rcrdk-prod-incident`. In the app chat: **`/`** → pick a command. Without files: ask for a **Strict pipeline in one shot per this file**. Macros do not replace isolated phases when the user wants only one.
+
+Ops commands (setup, commit, tests, rule review) also use the `/rcrdk-*` prefix — see the agent-kit README.
+
+## Routing
+
+| Command | Persona | Short description |
+|---------|---------|-------------------|
+| `/intake` | `intake` | README → `project.mdc` |
+| `/architect` | `architect` | Architecture / system design |
+| `/plan` | `planner` | Plan + handoff (`/do`…`/secure` if gate) |
+| `/do` | `executor` | Implementation |
+| `/review` | `code-reviewer` | Code review |
+| `/debug` | `debugger` | Errors / diagnosis |
+| `/test` | `qa-tester` | Tests |
+| `/secure` | `security-reviewer` | Security |
+| `/refactor` | `refactorer` | Refactor without behavior change (prefer green suite) |
+| `/doc` | `document-specialist` | Docs / JSDoc |
+| `/git` | `git-master` | Git / PRs |
+| `/restart` | `restart` | Local dev restart (if project defines it) |
+| `/devops` | `devops` | CI/CD, pipelines, environments, deploy |
+| `/sre` | `sre` | Observability, incidents, post-mortem |
+| `/data` | `data-engineer` | Data modeling/pipelines, quality |
+| `/product` | `product` | Prioritization, roadmap, PM framing |
+| `/agents` | — | See section below |
+
+Personas live in agent-kit `personas/` and link into the consumer as `agents/personas/` → `.cursor/agents` and `.claude/agents`.
+
+### Mental context (do not repeat to the user)
+
+`Project | Stack | Mode | Conventions | Domain | Active skills | Notes` ← from `project.mdc`.
+
+### Personas/skills not listed in `project.mdc`
+
+If the user invoked the command, run it; briefly note it is not in **Active agents** / **Active skills**. Skills: `.cursor/skills/` as listed in `project.mdc`.
+
+### `/agents`
+
+Reply with the **project name**, **Active agents**, and **Active skills** from `project.mdc`. Note that **all** commands in the **Routing** table exist; if the request is for an agent **not** listed, the model **still runs it** and warns (see *Personas/skills not listed*). **/intake**, **/plan**, **/do**, and **/debug** are the typical SDD core; **/devops**, **/sre**, **/data**, **/product**, etc. are also routed. Close with: “To reconfigure: `/intake`.”
+
+## Without a `/` command
+
+Normal assistant; use `project.mdc`; **do not** force `/`. Macros and `/` are optional.
+
+## `/intake` again
+
+Overwrites `project.mdc`; reload context mentally.

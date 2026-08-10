@@ -1,0 +1,48 @@
+---
+description: Always call the GitHub CLI through the gh-personal alias — never plain gh or gh-myside
+alwaysApply: true
+---
+
+# GitHub CLI — `gh-personal` only
+
+These are personal repositories. **Every** GitHub CLI call must go through the `gh-personal` alias — auth checks, repo/PR/issue reads, `api`, comments, releases, workflow runs, the whole flow.
+
+## Mandatory
+
+- Use `gh-personal`. Never plain `gh`, never `gh-myside` (work account), never any other alias.
+- Run through an interactive zsh so `~/.zshrc` loads the alias:
+
+  ```bash
+  zsh -ic 'gh-personal pr view --json number,url,title,state'
+  ```
+
+- Do not substitute the expanded `GH_CONFIG_DIR=… gh` form, and do not fall back to default `gh` (which may resolve to another account's config).
+- Expected login: personal account **`rcrdk`**. `rcrdkw` (work) is wrong — treat as failure even when authenticated.
+- If the alias is missing or unavailable: **stop and tell the user**. Do not invent a workaround with plain `gh`.
+
+## Verify before GitHub work
+
+```bash
+zsh -ic 'gh-personal auth status'
+zsh -ic 'gh-personal api user --jq .login'   # must print rcrdk
+```
+
+On auth failure, wrong login, or 401/403/404 on the repo: report which login was seen and stop.
+
+## Good vs bad
+
+```bash
+# good
+zsh -ic 'gh-personal pr list --state open'
+zsh -ic 'gh-personal api repos/{owner}/{repo}/pulls/12/comments'
+
+# bad
+gh pr list --state open                        # default config — may be the work account
+gh-myside pr list --state open                 # work alias on a personal repo
+GH_CONFIG_DIR=$HOME/.config/gh gh pr list      # expanded form instead of the alias
+```
+
+## Boundaries
+
+- Creating PRs, commenting, or pushing still needs an explicit user request — see [ask-before-commit](ask-before-commit.mdc).
+- Never merge a PR from the CLI; merging is the user's call.

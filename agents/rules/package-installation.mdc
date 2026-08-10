@@ -1,0 +1,52 @@
+---
+description: Ask before adding, removing, or upgrading npm packages
+alwaysApply: true
+---
+
+# Package Installation
+
+Do not install, upgrade, or remove dependencies without explicit user approval.
+
+## Detect the package manager first
+
+Never assume `pnpm`. Determine the project's package manager before running or quoting any command:
+
+1. `packageManager` field in `package.json` (Corepack) — authoritative when present
+2. Lockfile at the repo root — `pnpm-lock.yaml`, `yarn.lock`, `bun.lock`/`bun.lockb`, `package-lock.json`
+3. The `Commands` section of the project's `AGENTS.md`
+
+| Action | pnpm | yarn | npm | bun |
+| --- | --- | --- | --- | --- |
+| Add | `pnpm add <pkg>` | `yarn add <pkg>` | `npm install <pkg>` | `bun add <pkg>` |
+| Add dev | `pnpm add -D <pkg>` | `yarn add -D <pkg>` | `npm install -D <pkg>` | `bun add -d <pkg>` |
+| Add exact | `pnpm add -E <pkg>` | `yarn add --exact <pkg>` | `npm install --save-exact <pkg>` | `bun add --exact <pkg>` |
+| Remove | `pnpm remove <pkg>` | `yarn remove <pkg>` | `npm uninstall <pkg>` | `bun remove <pkg>` |
+| Run script | `pnpm <script>` | `yarn <script>` | `npm run <script>` | `bun run <script>` |
+
+Use one package manager per project — never mix, and never create a second lockfile.
+
+## Ask first
+
+Before running any package manager command that changes `package.json` or the lockfile, stop and ask the user. This includes every add, remove, and update command in the table above.
+
+## When proposing a dependency
+
+Explain briefly:
+
+1. **Why** the package is needed (what problem it solves)
+2. **Alternatives** considered (built-in APIs, existing project utilities, or a smaller dependency)
+3. **Exact command** you would run if approved — in the project's package manager, pinning the exact version
+
+Wait for approval before running the command.
+
+## Without approval, you may
+
+- Use packages already listed in `package.json`
+- Read `package.json` and the lockfile to check what is installed
+- Suggest a dependency in your response without installing it
+
+## After approval
+
+- Pin exact versions with the project's add-exact command (see the table above)
+- Install only what was approved — do not add related or transitive packages the user did not agree to
+- Mention any peer dependency or setup steps the package requires

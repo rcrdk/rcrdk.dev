@@ -1,7 +1,10 @@
-# Commands (generated)
+# Commands
 
-Slash command files here are **symlinks** from [agent-kit](https://github.com/rcrdk/agent-kit) (`.agents/agent-kit/commands/`).
+Slash command macros, committed as plain markdown. They originated in [agent-kit](https://github.com/rcrdk/agent-kit) and were copied in — there is no submodule.
 
-Edit commands in agent-kit, not here. Run `pnpm setup:agents` after clone or submodule update.
+Edit a command here when this project needs it, and mirror the change in agent-kit. To pull newer ones, copy `commands/rcrdk-*.md` from an agent-kit checkout over this folder.
 
-See [agents/README.md](../README.md).
+- **Cursor:** `.cursor/commands` → `agents/commands/`
+- **Claude Code:** `.claude/commands` → `agents/commands/`
+
+See [agents/README.md](../README.md) and [agents/commands.md](../commands.md).

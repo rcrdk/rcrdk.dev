@@ -1,0 +1,174 @@
+---
+description: Early returns, no if inside if, no nested ternaries, single-statement blocks
+globs:
+  - '**/*.ts'
+  - '**/*.tsx'
+alwaysApply: false
+---
+
+# Control Flow
+
+### Avoid `if` inside `if`
+
+Do not nest `if` blocks. Flatten with **early returns** (guard clauses) or **named conditions** (see [constants-and-variables](constants-and-variables.mdc)).
+
+Also prefer early returns over `else` when it reduces nesting.
+
+- ✅ Good:
+
+  ```typescript
+  function processUser(user: User | null) {
+    if (!user) return null
+    if (!user.isActive) return null
+
+    const upperCaseName = user.name.toUpperCase()
+    return upperCaseName
+  }
+  ```
+
+  ```typescript
+  const hasError = !result || result.error
+  const isInvalidDealIdError =
+    hasError && result?.message === DELETE_SCENARIO_INVALID_DEAL_ID_MESSAGE
+
+  if (isInvalidDealIdError) {
+    toast.error('Você não tem permissão para deletar um cenário desse atendimento.')
+    return
+  }
+
+  if (hasError) throw new Error(result?.message ?? 'deleteScenarioAction returned no result')
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  function processUser(user: User | null) {
+    if (user) {
+      if (user.isActive) {
+        return user.name.toUpperCase()
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
+  ```
+
+  ```typescript
+  if (!result || result.error) {
+    if (result?.message === DELETE_SCENARIO_INVALID_DEAL_ID_MESSAGE) {
+      toast.error('Você não tem permissão para deletar um cenário desse atendimento.')
+      return
+    }
+
+    throw new Error(result?.message ?? 'deleteScenarioAction returned no result')
+  }
+  ```
+
+### Single-Statement Blocks
+
+Omit curly braces when a block contains only one statement.
+
+Applies to `if`, `else`, `for`, `while`, and arrow function bodies.
+
+- ✅ Good:
+
+  ```typescript
+  if (isValid) return true
+  if (!user) return null
+
+  for (const item of items) processItem(item)
+
+  const doubled = numbers.map((n) => n * 2)
+  const handleClick = () => setCount(count + 1)
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  if (isValid) {
+    return true
+  }
+
+  for (const item of items) {
+    processItem(item)
+  }
+
+  const doubled = numbers.map((n) => {
+    return n * 2
+  })
+
+  const handleClick = () => {
+    setCount(count + 1)
+  }
+  ```
+
+Use a block body when the function or branch needs multiple statements or intermediate `const` values.
+
+### Avoid ternary inside ternary
+
+Do not nest ternary operators (`a ? b : c ? d : e`). Extract logic into a **helper function** or a **dedicated component** instead.
+
+- ✅ Good:
+
+  ```typescript
+  const getStatusLabel = (status: Status) => {
+    if (status === 'active') return 'Active'
+    if (status === 'pending') return 'Pending'
+    return 'Inactive'
+  }
+
+  const label = getStatusLabel(status)
+  ```
+
+  ```tsx
+  function EmptyState() {
+    return <p>No results found</p>
+  }
+
+  function ResultsList({ items }: Readonly<{ items: Item[] }>) {
+    if (items.length === 0) return <EmptyState />
+
+    return (
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    )
+  }
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  const label = status === 'active' ? 'Active' : status === 'pending' ? 'Pending' : 'Inactive'
+  ```
+
+  ```tsx
+  return (
+    <div>
+      {items.length === 0 ? (
+        <p>No results found</p>
+      ) : isLoading ? (
+        <Spinner />
+      ) : hasError ? (
+        <ErrorMessage />
+      ) : (
+        <ResultsList items={items} />
+      )}
+    </div>
+  )
+  ```
+
+A single ternary is acceptable when it stays short and readable.
+
+## Comments
+
+- Only add comments to code when explicitly asked. Always preserve:
+  - "TODO" comments
+  - "Tech Debt" comments
+  - ESLint disable/enable rules
+  - Prettier ignore rules
+  - TypeScript `@ts-expect-error` or `@ts-ignore` directives

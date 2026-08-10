@@ -1,0 +1,68 @@
+---
+description: Definition of Done — symptom, cause, evidence, and honest close. Always on.
+alwaysApply: true
+---
+
+# Honest delivery (Definition of Done)
+
+Global close policy. Applies to **every** delivery with code, a fix, or a diagnosis — macros, `/do`, `/debug`, free chat.
+
+## 1. Triad before saying "fixed" or "resolved"
+
+Fill **before** the patch and **revalidate after** the patch:
+
+| Field | Content |
+|-------|---------|
+| **Symptom** | What the user sees (UI, API, log, behavior) |
+| **Likely cause** | Hypothesis in one sentence — mechanism, not a vague guess |
+| **Evidence** | Log, HTTP status, query, passing test, screenshot, DB value |
+
+**Allowed statuses:**
+
+- **Closed** — all three align (symptom explained by cause, evidence confirms)
+- **Partial** — patch applied, but validation is missing (say what)
+- **Unconfirmed** — hypothesis without evidence; **do not** use "fixed"
+
+Forbidden: "should be fine", "seems resolved", "probably fixed".
+
+## 2. Prove before asking for a human retest
+
+Before asking the user to test:
+
+1. Reproduce the **exact scenario** (e.g. empty inbox vs approved with 55 items — not only the happy path)
+2. Check a **real** response when possible: status, size, content, bucket, count
+3. Use the **Verification** section of `project.mdc` (URLs, curls, test accounts, queries)
+4. Run commands (`curl`, tests, project scripts) if the environment allows
+
+If there is **no** access to prod/data: add **Pending validation** listing what is missing — do not fake certainty.
+
+## 3. One scope per fix
+
+Do not mix in the same patch/diff without naming:
+
+| Scope | Examples |
+|-------|----------|
+| **UX** | message, loading, visual bucket, copy |
+| **Data** | city/region in DB, migration, seed |
+| **Backend** | endpoint, query, cache, integration |
+
+If the request mixes scopes: **list each**, implement **only what was agreed in this thread**; the rest goes under **What is still unresolved**.
+
+## 4. Required close (every delivery)
+
+End with these four sections (macro **`/rcrdk-honest-close`** expands the same format):
+
+```markdown
+## What changed
+## What you should see now
+## What is still unresolved
+## How to test in 30 seconds
+```
+
+If nothing is pending: under **What is still unresolved**, write explicitly **Nothing pending in this scope.**
+
+## Related skills and personas
+
+- **`/debug`**, macro **`/rcrdk-debug-and-fix`**: triad **before** and **after** the patch
+- **`/sre`**, **`/rcrdk-prod-incident`**: prod evidence (metrics, logs) before concluding cause
+- Skill **`evidence-verifier`**: staging/prod proof checklist when listed in `project.mdc`

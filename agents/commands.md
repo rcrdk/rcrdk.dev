@@ -22,17 +22,15 @@ pnpm test:run     # the project's test runner single run (CI)
 
 ## Agents
 
-After cloning, init submodules and create local symlinks for Cursor and Claude rules, skills, and slash commands (`prepare` / `predev` run these automatically when not in CI):
+After cloning, create the local symlinks for Cursor and Claude rules, personas, skills, and slash commands (`predev` runs this automatically when not in CI):
 
 ```bash
-pnpm setup:submodules   # git submodule update --init --recursive
-pnpm setup:agent-links  # Link .cursor/ and .claude/ to agents/rules, skills, and agents/commands
-pnpm setup:agents       # Both of the above
+pnpm setup:agent-links  # Link .cursor/ and .claude/ to agents/*, rebuild generated files
 ```
 
 ### Slash commands
 
-Slash commands are symlinked from [agent-kit](https://github.com/rcrdk/agent-kit) into [agents/commands/](commands/) and wired into Cursor (`.cursor/commands`) and Claude Code (`.claude/commands`):
+Slash commands live in [agents/commands/](commands/) and are wired into Cursor (`.cursor/commands`) and Claude Code (`.claude/commands`):
 
 | Command | Description |
 | ------- | ----------- |
@@ -40,7 +38,7 @@ Slash commands are symlinked from [agent-kit](https://github.com/rcrdk/agent-kit
 | `/rcrdk-index-codebase` | Index or reindex with Codebase Memory MCP; verify install and gitignore `.codebase-memory/` |
 | `/rcrdk-review-rules` | Review branch changes against project rules; summarize fixes; ask before implementing |
 | `/rcrdk-fix-tests` | Fix broken tests (tests only); log-scoped or branch-aware discovery |
-| `/rcrdk-setup-agent-kit` | Bootstrap or refresh agent-kit — submodule add/update, scripts, gitignore, symlinks |
+| `/rcrdk-setup-agent-kit` | Install or refresh agent-kit — copy rules/personas/commands/skills in, wire scripts, gitignore, symlinks |
 | `/rcrdk-setup-dx` | Install selected DX from rcrdk/utils — ESLint, Prettier, TS, EditorConfig, VS Code, Husky |
 
 ## Git

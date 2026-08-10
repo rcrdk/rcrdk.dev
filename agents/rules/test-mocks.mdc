@@ -1,0 +1,72 @@
+---
+description: Check __mocks__ first; @/mocks/ for utils; module and UI mocking
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Mock Management
+
+Examples use Vitest — in a Jest project translate the API, see [test-runner](test-runner.mdc).
+
+Use this rule when writing or updating test mocks (utilities, UI components, or external modules).
+
+### Check Existing Mocks First
+
+Example paths below follow a feature-driven layout (`@/shared/...`); use the project's own paths (see [project-structure](project-structure.mdc)).
+
+Before writing new mocks, check the base project `__mocks__` folder and `@/mocks/`. Reuse shared mocks whenever possible. Create new shared mocks in those locations only when a general mock is needed.
+
+### Importing General Mocks
+
+For general utility mocks, use direct imports with the `@/mocks/...` import path:
+
+- ✅ Good:
+
+  ```tsx
+  import { mockGoogleMaps } from '@/mocks/google-maps'
+  import { createDealHistoryScenarioDevelopment } from '@/mocks/rocket/deal-history'
+  ```
+
+- ❌ Bad:
+  ```tsx
+  vi.mock('google-maps', () => ({
+    // inline mock definition
+  }))
+  ```
+
+### Mocking UI Components
+
+For UI component mocks (drawer, tabs, tooltip, etc.), use the runner's module mock with `require()` inside the mock function to import from `@/mocks/ui/...`:
+
+- ✅ Good:
+
+  ```tsx
+  vi.mock('@/shared/components/ui/drawer', () => {
+    const { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose, DrawerBody } = require('@/mocks/ui/drawer')
+    return { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose, DrawerBody }
+  })
+
+  vi.mock('@/shared/components/ui/tabs', () => {
+    const { Tabs, TabsList, TabsTrigger } = require('@/mocks/ui/tabs')
+    return { Tabs, TabsList, TabsTrigger }
+  })
+
+  vi.mock('@/shared/components/ui/tooltip', () => {
+    const { Tooltip, TooltipTrigger, TooltipContent } = require('@/mocks/ui/tooltip')
+    return { Tooltip, TooltipTrigger, TooltipContent }
+  })
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  // Direct import won't work for component mocks
+  import { Drawer } from '@/mocks/ui/drawer'
+
+  // Inline mock definition
+  vi.mock('@/shared/components/ui/drawer', () => ({
+    Drawer: () => <div>Mock Drawer</div>,
+  }))
+  ```

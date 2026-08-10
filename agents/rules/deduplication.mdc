@@ -1,0 +1,74 @@
+---
+description: Extract shared logic when the same transformation appears in multiple places
+alwaysApply: true
+---
+
+# Deduplication
+
+When the same transformation, validation, or mapping appears in two or more places, extract a shared helper and parameterize only what differs.
+
+- ✅ Good:
+
+  ```typescript
+  const getAmenityLabelsFromOptions = (options?: Option[]) => {
+    if (!options?.length) return []
+
+    const labels = options
+      .map((option) => getAmenityNameFromLabel(option.label.trim()))
+      .filter((label): label is string => Boolean(label))
+
+    return labels
+  }
+
+  const getMultiselectSegmentFromAmenityOptions = (
+    options?: Option[],
+    formatText?: (joinedOptions: string) => string,
+  ) => createMultiselectSegment(getAmenityLabelsFromOptions(options), formatText)
+
+  const formatRangeWithFormatter = (min: number, max: number, format: (value: number) => string) => {
+    if (min === max) return format(min)
+
+    const rangeValue = `${format(min)}-${format(max)}`
+    return rangeValue
+  }
+
+  const formatRangeValue = (min: number, max: number) => formatRangeWithFormatter(min, max, String)
+  const formatIntegerRangeValue = (min: number, max: number) =>
+    formatRangeWithFormatter(min, max, formatIntegerPtBr)
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  const getDesiredAmenitiesSegment = (options?: Option[]) => {
+    if (!options?.length) return null
+
+    const labels = options
+      .map((option) => getAmenityNameFromLabel(option.label.trim()))
+      .filter((label): label is string => Boolean(label))
+
+    return createMultiselectSegment(labels)
+  }
+
+  const getUndesiredAmenitiesSegment = (options?: Option[]) => {
+    if (!options?.length) return null
+
+    const labels = options
+      .map((option) => getAmenityNameFromLabel(option.label.trim()))
+      .filter((label): label is string => Boolean(label))
+
+    return createMultiselectSegment(labels, (joined) => `Não desejado: ${joined}`)
+  }
+  ```
+
+### When to extract
+
+- The same block of logic is copied with only labels, templates, or formatters changing
+- A reviewer flags duplicated mapping, filtering, or formatting
+- Two functions would need the same fix if the shared behavior changes
+
+### How to extract
+
+- Name the helper after the shared concern, not one call site
+- Pass differences as parameters: formatters, templates, predicates, or config keys
+- Keep call-site wrappers thin when they only supply a label or template

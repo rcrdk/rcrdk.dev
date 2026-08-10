@@ -1,0 +1,32 @@
+---
+description: Kebab-case for files and folders; .spec.tsx for tests; __tests__ structure
+alwaysApply: true
+---
+
+# File Naming Convention
+
+- Use **kebab-case** (lowercase with hyphens) for all file and folder names.
+- ✅ Good: `format-date.ts`, `use-debounce.ts`, `reservation-card.tsx`
+- ❌ Bad: `formatDate.ts`, `useDebounce.ts`, `ReservationCard.tsx`
+
+### Test File Naming
+
+- Test files should use `.spec.tsx` or `.spec.ts` extension, or be placed in `__tests__` folders.
+- ✅ Good: `button.spec.tsx`, `use-debounce.spec.ts`
+- ❌ Bad: `button.test.tsx`, `Button.test.tsx`
+
+### Component File Structure
+
+- For components with tests, place them in a subfolder with `__tests__`.
+- ✅ Good:
+  ```
+  button/
+    index.tsx
+    __tests__/
+      index.spec.tsx
+  ```
+- ❌ Bad:
+  ```
+  button.tsx
+  button.spec.tsx
+  ```

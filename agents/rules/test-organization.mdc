@@ -1,0 +1,140 @@
+---
+description: it.each for similar tests; conditional class testing; snapshot usage
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Test Organization
+
+Use this rule when organizing test cases: when to use it.each, what to assert (conditional classes, snapshots), and how to structure snapshot tests.
+
+### Using it.each for Similar Tests
+
+Always prefer `it.each` when tests are similar or cover multiple variants. This reduces duplication and makes new cases easy to add.
+
+- ✅ Good:
+
+  ```tsx
+  const variants = ['primary', 'outline', 'ghost'] as const
+
+  it.each(variants)('should render with "%s" variant', (variant) => {
+    const { container } = render(<Button variant={variant}>Click me</Button>)
+    expect(container).toMatchSnapshot()
+  })
+  ```
+
+- ❌ Bad:
+
+  ```tsx
+  it('should render with primary variant', () => {
+    const { container } = render(<Button variant="primary">Click me</Button>)
+    expect(container).toMatchSnapshot()
+  })
+
+  it('should render with outline variant', () => {
+    const { container } = render(<Button variant="outline">Click me</Button>)
+    expect(container).toMatchSnapshot()
+  })
+
+  it('should render with ghost variant', () => {
+    const { container } = render(<Button variant="ghost">Click me</Button>)
+    expect(container).toMatchSnapshot()
+  })
+  ```
+
+### Descriptive labels in it.each tables
+
+When `it.each` rows use objects, tuples, or other non-obvious inputs, add a human-readable label as the **first column** and interpolate it in the test title. This makes failures self-explanatory without reading the full row data.
+
+- Prefix the label parameter with `_` when it is only used in the title (e.g. `_label`).
+- Use `as const` on the table when it improves tuple inference.
+- Omit the label column when a single primitive value is already clear (e.g. variant strings).
+
+- ✅ Good:
+
+  ```typescript
+  it.each([
+    ['both in millions', { min: 1_000_000, max: 4_000_000 }, '1-4mi'],
+    ['mixed thousands/millions', { min: 200_000, max: 4_000_000 }, '200k-4mi'],
+    ['equal thousands', { min: 800_000, max: 800_000 }, '800k'],
+  ] as const)('should format price range — %s', (_label, price, expectedSegment) => {
+    expect(formatPriceRange(price)).toBe(expectedSegment)
+  })
+  ```
+
+- ❌ Bad:
+
+  ```typescript
+  it.each([
+    [{ min: 1_000_000, max: 4_000_000 }, '1-4mi'],
+    [{ min: 200_000, max: 4_000_000 }, '200k-4mi'],
+  ])('should format price range as %s', (price, expectedSegment) => {
+    // %s prints [object Object] — failure output is unclear
+    expect(formatPriceRange(price)).toBe(expectedSegment)
+  })
+  ```
+
+## Class Name Testing
+
+### Only Test Conditional Classes
+
+When testing a component, only test for class names when they are conditional (based on props, state, or variants). Avoid testing static class names that are always present.
+
+- ✅ Good:
+
+  ```tsx
+  it('should apply selected styles when "selected" is true', () => {
+    render(
+      <Button variant="outline" selected>
+        Click me
+      </Button>,
+    )
+    const button = screen.getByRole('button')
+    expect(button).toHaveClass('!bg-title', '!border-title')
+  })
+  ```
+
+- ❌ Bad:
+  ```tsx
+  it('should have base button classes', () => {
+    render(<Button>Click me</Button>)
+    const button = screen.getByRole('button')
+    expect(button).toHaveClass('px-4', 'py-2', 'rounded')
+  })
+  ```
+
+## Snapshot Testing
+
+### When to Use Snapshots
+
+When testing a component, include a snapshot test. It is a priority when the component has variants, different states, or multiple prop combinations. Snapshots help catch unintended visual changes and are especially useful for components with many variants.
+
+- ✅ Good:
+
+  ```tsx
+  describe('Button component', () => {
+    const variants = ['primary', 'outline', 'ghost'] as const
+
+    it.each(variants)('should match snapshot for "%s" variant', (variant) => {
+      const { container } = render(<Button variant={variant}>Click me</Button>)
+      expect(container).toMatchSnapshot()
+    })
+
+    it('should match snapshot for loading state', () => {
+      const { container } = render(<Button loading>Click me</Button>)
+      expect(container).toMatchSnapshot()
+    })
+  })
+  ```
+
+- ❌ Bad:
+  ```tsx
+  describe('Button component', () => {
+    it('should render button', () => {
+      render(<Button>Click me</Button>)
+      // No snapshot test for component with variants
+    })
+  })
+  ```

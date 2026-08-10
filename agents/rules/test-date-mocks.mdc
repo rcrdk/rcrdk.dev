@@ -1,0 +1,68 @@
+---
+description: Mock or freeze time in tests when production code uses dates
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Date and Time Mocks
+
+Use this rule when production code uses `Date`, `Date.now()`, or date libraries for logic — comparisons, relative labels, status colors, expiry checks, or snapshots.
+
+Do **not** skip mocking just because the test passes today. Unfrozen time causes flaky tests and snapshot drift.
+
+## When to mock
+
+Mock or freeze time when the code under test:
+
+- Formats relative dates (`"2 days ago"`, `"Today"`, `"Yesterday"`)
+- Compares dates (`isExpired`, `isDueSoon`, sorting by date)
+- Derives status or colors from date ranges
+- Snapshots UI that includes date-dependent output
+
+## Pattern
+
+Use fake timers at suite scope when the whole file depends on time. Examples use Vitest — in a Jest project translate the API, see [test-runner](test-runner.mdc).
+
+```typescript
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
+
+const MOCK_TODAY = new Date('2026-01-15T12:00:00.000Z')
+
+describe('RelativeDateLabel', () => {
+  beforeAll(() => {
+    vi.useFakeTimers()
+    vi.setSystemTime(MOCK_TODAY)
+  })
+
+  afterAll(() => {
+    vi.useRealTimers()
+  })
+
+  it('should render "Today" for the frozen date', () => {
+    // ...
+  })
+})
+```
+
+Use `beforeEach` / `afterEach` when only some tests in the file need frozen time.
+
+## Naming
+
+Name fixed dates clearly:
+
+- `MOCK_TODAY` — calendar date anchor for relative labels
+- `FROZEN_NOW` — explicit "now" for `Date.now()`-driven logic
+- `DEFAULT_TEST_NOW` — shared default when multiple suites reuse the same instant
+
+Pick a fixed date that keeps test fixtures valid (not in the past relative to seeded data, not on timezone boundaries unless testing that).
+
+## Snapshots
+
+Always freeze time **before** snapshotting date-dependent UI. Re-run snapshots only after confirming the frozen instant is intentional.
+
+## Related rules
+
+- [test-mocks](test-mocks.mdc) — shared mocks and module mocking
+- [test-organization](test-organization.mdc) — snapshot testing

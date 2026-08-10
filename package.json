@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"private": true,
 	"scripts": {
-		"predev": "pnpm setup:agents",
+		"predev": "pnpm setup:agent-links",
 		"dev": "rm -rf .next && next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
@@ -12,9 +12,7 @@
 		"lint:fix": "eslint \"src/**/*.+(ts|tsx)\" --fix",
 		"format": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --write",
 		"format:check": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --check",
-		"setup:submodules": "node scripts/setup-submodules.mjs",
 		"setup:agent-links": "node scripts/setup-agent-links.mjs",
-		"setup:agents": "pnpm setup:submodules && pnpm setup:agent-links",
 		"prepare": "husky install"
 	},
 	"lint-staged": {

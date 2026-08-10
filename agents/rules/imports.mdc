@@ -1,0 +1,38 @@
+---
+description: Prefer project @/ aliases; absolute imports; no wildcard imports
+globs:
+  - '**/*.ts'
+  - '**/*.tsx'
+alwaysApply: false
+---
+
+# Imports
+
+Applies to all import statements in TypeScript/JavaScript files. Prefer `@/` when the relative path goes up more than one level.
+
+- When using mocks, prefer to use `@/mocks/...` import path instead of relative paths or other aliases.
+- Use the aliases of the project's layout (see [project-structure](project-structure.mdc)):
+  - **Feature-driven**: features through their public barrel `@/features/<feature>`, shared code from `@/shared/<domain>/...`
+  - **Flat**: domain folders directly — `@/utils/...`, `@/hooks/...`, `@/components/...`
+- Prefer absolute imports when the relative path goes up more than one folder level (e.g., `../../` should be converted to an absolute import like `@/...`).
+- Prefer to import from barrel export files (e.g., `index.ts` or `index.tsx`) when available, rather than importing directly from individual files within the same directory.
+- In feature-driven projects, do not import another feature's internals — only its barrel export.
+
+### No Wildcard Imports
+
+- Never use wildcard imports (`import * from`).
+- Always use named imports for better tree-shaking, clarity, and IDE support.
+
+- ✅ Good:
+  ```typescript
+  import { LoginForm, signIn } from '@/features/auth'
+  import { cn } from '@/shared/utils/tailwind-cn'
+  import { type ReactNode, useState } from 'react'
+  ```
+
+- ❌ Bad:
+  ```typescript
+  import { LoginForm } from '@/features/auth/components/login-form'
+  import * as auth from '@/features/auth'
+  import * as React from 'react'
+  ```

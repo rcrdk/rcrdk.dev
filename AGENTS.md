@@ -2,8 +2,6 @@
 
 You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Prioritize type safety, small reviewable diffs, and existing project conventions.
 
-<!-- BEGIN:agent-kit-base -->
-
 ## Engineering Principles
 
 - Do not preserve backward compatibility — remove obsolete paths instead of adding compatibility layers, fallbacks, or migrations
@@ -55,12 +53,12 @@ pnpm dev         # Dev server
 
 Agent-kit provides slash **personas** (`/intake`, `/plan`, `/do`, `/debug`, `/test`, `/review`, `/secure`, …) routed by [`workflow-orchestrator`](agents/rules/workflow-orchestrator.mdc). Quality mode and the `/secure` gate live in `project.mdc` (create or refresh with `/intake`).
 
-| Mode | Typical pipeline |
-| ---- | ---------------- |
+| Mode       | Typical pipeline                                                                       |
+| ---------- | -------------------------------------------------------------------------------------- |
 | **Strict** | `/plan` → `/do` → `/debug` → `/test` → `/review` → `/secure` if gate → `/doc` / `/git` |
-| **Lean** | `/do` → `/debug` if needed → `/review` → `/git` |
+| **Lean**   | `/do` → `/debug` if needed → `/review` → `/git`                                        |
 
-Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows in one request. Close deliveries per [`honest-delivery`](agents/rules/honest-delivery.mdc) (symptom / cause / evidence). See [agent-kit docs](.agents/agent-kit/docs/flows-and-adoption.md).
+Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows in one request. Close deliveries per [`honest-delivery`](agents/rules/honest-delivery.mdc) (symptom / cause / evidence). See [agent-kit docs](https://github.com/rcrdk/agent-kit/blob/main/docs/flows-and-adoption.md).
 
 ## Boundaries
 
@@ -99,13 +97,11 @@ Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows 
 - Fix type errors before test failures
 - Read surrounding code and match existing patterns
 
-<!-- END:agent-kit-base -->
-
 <!-- BEGIN:agent-kit-rules -->
 
 ## Rules
 
-Coding rules come from [agent-kit](https://github.com/rcrdk/agent-kit) and are symlinked into `agents/rules/`. Cursor loads them from `.cursor/rules`; the imports below load the always-on ones for Claude Code.
+Coding rules live in `agents/rules/` as committed files, copied in from [agent-kit](https://github.com/rcrdk/agent-kit). Cursor loads them from `.cursor/rules`; the imports below load the always-on ones for Claude Code.
 
 @agents/rules/ask-before-commit.mdc
 @agents/rules/codebase-memory-first.mdc
@@ -225,11 +221,9 @@ export function Button({ label, onPress }: Readonly<ButtonProps>) {
 
 ## Extended Documentation
 
-Agent rules and settings come from **[agent-kit](https://github.com/rcrdk/agent-kit)** (`.agents/agent-kit`). Rule, command, persona, and skill files under `agents/`, plus the symlinks in `.cursor/` and `.claude/`, are generated locally and not committed to git.
+Everything under `agents/` is a **committed file in this repository**. Rules, personas, commands, skills, and the shared part of this guide originated in **[agent-kit](https://github.com/rcrdk/agent-kit)** and were copied in by hand — there is no submodule and nothing fetches them at install time. Edit them here when the project needs it, and push improvements upstream to agent-kit so other projects can copy them in turn.
 
-Run `pnpm setup:agents` after cloning or updating the submodule (`predev` refreshes symlinks automatically when starting the dev server; skipped when `CI` is set).
-
-The blocks between `<!-- BEGIN:agent-kit-base -->` / `<!-- END:agent-kit-base -->` and `<!-- BEGIN:agent-kit-rules -->` / `<!-- END:agent-kit-rules -->` are injected by `setup:agent-links` — **never edit them here**; edit agent-kit instead. Everything outside the markers is project-local.
+Only the tool-facing views are generated: the symlinks under `.cursor/` and `.claude/`, `CLAUDE.md`, `.cursorrules`, `agents/commit-messages.cursorrules`, and the rules index between `<!-- BEGIN:agent-kit-rules -->` / `<!-- END:agent-kit-rules -->` above (rebuilt from `agents/rules/*.mdc` frontmatter). Those are gitignored — run `pnpm setup:agent-links`, or just `pnpm dev`, to recreate them (skipped when `CI` is set).
 
 - **[agents/README.md](agents/README.md)** — agent documentation index
 - **[agents/commands.md](agents/commands.md)** — command reference

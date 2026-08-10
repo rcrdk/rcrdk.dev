@@ -1,0 +1,81 @@
+---
+description: Read and update docs/ for project knowledge in this AI-driven repo
+alwaysApply: true
+---
+
+# Documentation
+
+Applies to projects that keep a `docs/` folder — skip it when the project has none.
+
+These projects are **AI-driven**. Persistent docs in `docs/` carry context across sessions. Agent rules in `agents/rules/` define coding style; docs define product and architecture knowledge.
+
+## Docs vs rules
+
+| Location | Purpose |
+| --- | --- |
+| `docs/` | What to build — architecture, features, ADRs, workflows |
+| `agents/rules/` | How to write code — TypeScript, React, imports, tests |
+| `AGENTS.md` | Agent entry point — conventions, commands, doc index |
+
+## Before implementing
+
+1. Read [docs/README.md](../../docs/README.md)
+2. Read [docs/spec/saas-template-spec.md](../../docs/spec/saas-template-spec.md) for product requirements
+3. Read [docs/architecture/feature-driven-development.md](../../docs/architecture/feature-driven-development.md) for where code lives inside features
+4. Read [docs/architecture/security.md](../../docs/architecture/security.md) before handling user input or AI integrations
+5. Read the relevant [docs/features/](../../docs/features/) doc when working in a feature
+6. Read related [ADRs](../../docs/adr/) before changing an architectural decision
+
+## When to update docs
+
+- **New feature** — create `docs/features/<feature>.md` from the template in [docs/features/README.md](../../docs/features/README.md)
+- **Route or public API change** — update the feature doc
+- **Architecture or major library choice** — update architecture overview and add an ADR
+- **New env var or external integration** — document in the feature doc or an ADR
+- **Completed or started plan task** — update [docs/status/current-task.md](../../docs/status/current-task.md) and plan checkboxes
+- **User-facing behavior verified** — update [docs/status/application.md](../../docs/status/application.md)
+
+Skip doc updates for trivial refactors that do not change behavior agents need to know.
+
+## After implementing (checklist)
+
+Before considering work done, confirm docs are current:
+
+- [ ] Read the relevant feature doc **before** coding
+- [ ] Updated `docs/features/<feature>.md` if routes, public API, flows, or integrations changed
+- [ ] Updated `docs/status/current-task.md` and plan checkboxes if task progress changed
+- [ ] Updated `docs/status/application.md` if user-visible behavior changed
+- [ ] Added or updated an ADR for architectural decisions
+- [ ] Staged doc updates in the **same commit** as code (pre-commit runs the `check:docs-drift` script)
+
+Run `/rcrdk-review-rules` before merge to catch docs drift on the full branch.
+
+## Docs drift (pre-commit)
+
+The `check:docs-drift` script runs on pre-commit (see `package.json` for the exact command). It fails when:
+
+- Production files (`src/features/<feature>/`, or the project's domain folders) are staged without any `docs/` update in the same commit
+- App routes (`page.tsx`, `layout.tsx`, `route.ts`) change without a staged doc touch
+- `src/env.ts` changes without a staged doc touch
+
+Allowed doc paths that satisfy the check: `docs/features/`, `docs/status/`, `docs/architecture/`, `docs/spec/`, `docs/superpowers/`, `docs/runbooks/`, `docs/workflows/`, `docs/adr/`.
+
+## Feature doc location
+
+Mirror feature folder names:
+
+```
+src/features/auth/     →  docs/features/auth.md
+src/features/billing/  →  docs/features/billing.md
+```
+
+## ADRs
+
+Use [docs/adr/README.md](../../docs/adr/README.md) format. Filename: `NNNN-short-title.md`. Add a row to the ADR index.
+
+## Writing style
+
+- Short, factual, and scannable
+- Prefer tables and lists over long prose
+- Link to code paths (`src/features/...`) and related docs
+- Keep docs in sync with code — outdated docs are worse than none

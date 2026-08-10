@@ -1,0 +1,52 @@
+---
+description: Prefer data-testid and semantic queries (getByRole, getByLabelText)
+globs:
+  - '**/*.spec.ts'
+  - '**/*.spec.tsx'
+alwaysApply: false
+---
+
+# Element Selection
+
+Use this rule when writing or editing tests that query the DOM. Prefer semantic queries; use data-testid when role/label are not practical.
+
+### Prefer data-testid over querySelector
+
+Avoid using `querySelector` or `querySelectorAll`. Instead, implement `data-testid` attributes on component elements that need to be tested. Use `screen.getByTestId()` from React Testing Library for better test maintainability and accessibility.
+
+- ✅ Good:
+
+  ```tsx
+  // Component
+  <button data-testid="submit-button">Submit</button>
+
+  // Test
+  const submitButton = screen.getByTestId('submit-button')
+  expect(submitButton).toBeInTheDocument()
+  ```
+
+- ❌ Bad:
+  ```tsx
+  // Test
+  const { container } = render(<Button>Submit</Button>)
+  const button = container.querySelector('button')
+  expect(button).toBeInTheDocument()
+  ```
+
+### Using Semantic Queries
+
+When possible, prefer semantic queries like `getByRole`, `getByLabelText`, or `getByText` over `getByTestId` for better accessibility testing:
+
+- ✅ Good:
+
+  ```tsx
+  const button = screen.getByRole('button', { name: 'Submit' })
+  const input = screen.getByLabelText('Email address')
+  ```
+
+- ❌ Bad (use getByRole/getByLabelText when role or label is available):
+
+  ```tsx
+  const button = screen.getByTestId('submit-button')
+  const input = screen.getByTestId('email-input')
+  ```

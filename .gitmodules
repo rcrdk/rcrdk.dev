@@ -1,3 +1,0 @@
-[submodule ".agents/agent-kit"]
-	path = .agents/agent-kit
-	url = https://github.com/rcrdk/agent-kit.git
