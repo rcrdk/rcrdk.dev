@@ -1,9 +1,0 @@
----
-description: Prefer PNPM for all package manager and script commands
-alwaysApply: true
----
-
-# Commands
-
-- Use **PNPM** for all commands in this project (`pnpm dev`, `pnpm typecheck`, `pnpm lint:fix`, etc.)
-- Do not use `yarn` or `npm` unless the user explicitly requests it
