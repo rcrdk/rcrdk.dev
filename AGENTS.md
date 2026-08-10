@@ -41,23 +41,13 @@ You are a senior engineer working on rcrdk.dev, a Next.js portfolio site. Priori
 - Never skip hooks (`--no-verify`) unless explicitly requested
 - Never use default exports for React components
 
-## Testing
-
-- Tests run on **the project's test runner** — use its API, never mix runners
-- Prioritize functional tests (observable behavior) over implementation details
-- Use `it.each` for similar test cases
-- Reuse shared mocks from `@/mocks/` and `__mocks__` when available
-- Extract `defaultProps`, `baseProps`, or `defaultOptions` when tests share common inputs
-- When fixing failing tests, prefer updating the test; ask before changing production behavior
-
 ## Commands
 
-This project uses **pnpm** and **the project's test runner**. See [agents/commands.md](agents/commands.md) for the full reference. Key commands:
+This project uses **pnpm**. No test runner is configured — ignore test steps in the shared rules until one is added. See [agents/commands.md](agents/commands.md) for the full reference. Key commands:
 
 ```bash
 pnpm typecheck   # Type check
 pnpm lint:fix    # Lint and fix
-pnpm test        # Unit tests
 pnpm dev         # Dev server
 ```
 
@@ -77,7 +67,6 @@ Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows 
 ### Always do
 
 - Run typecheck on changed files before committing
-- Run relevant tests before pushing
 - Follow commit format: `type(scope): subject` (see [agents/rules/commit-messages.mdc](agents/rules/commit-messages.mdc))
 - Match existing naming and file structure conventions
 - Call the GitHub CLI only through the `gh-personal` alias — `zsh -ic 'gh-personal …'` (see [agents/rules/github-cli.mdc](agents/rules/github-cli.mdc))
@@ -100,7 +89,6 @@ Macros such as `/rcrdk-full-delivery` and `/rcrdk-hotfix` run multi-phase flows 
 - [ ] Commit includes scoped subject (when applicable) and valid type
 - [ ] Typecheck passes: `pnpm typecheck`
 - [ ] Lint passes: `pnpm lint`
-- [ ] Relevant tests pass: `pnpm test:run`
 - [ ] Diff is small and focused
 - [ ] No secrets committed
 
