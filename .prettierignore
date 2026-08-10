@@ -2,3 +2,6 @@
 /.next
 /out
 /build
+
+# Submodules carry their own formatting — never reformat them from here
+/.agents

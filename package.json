@@ -12,15 +12,15 @@
 		"lint:fix": "eslint \"src/**/*.+(ts|tsx)\" --fix",
 		"format": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --write",
 		"format:check": "prettier \"**/*.+(js|jsx|ts|tsx|mjs)\" --log-level warn --check",
-		"setup:agent-links": "node scripts/setup-agent-links.mjs",
-		"prepare": "husky install",
 		"setup:submodules": "node scripts/setup-submodules.mjs",
-		"setup:agents": "pnpm setup:submodules && pnpm setup:agent-links"
+		"setup:agent-links": "node scripts/setup-agent-links.mjs",
+		"setup:agents": "pnpm setup:submodules && pnpm setup:agent-links",
+		"prepare": "husky install"
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,mjs}": [
-			"pnpm lint:fix",
-			"pnpm format"
+			"eslint --fix",
+			"prettier --log-level warn --write"
 		]
 	},
 	"dependencies": {
