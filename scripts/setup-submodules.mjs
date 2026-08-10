@@ -39,13 +39,15 @@ if (!existsSync(gitmodulesPath)) {
 
 log.title()
 
-const result = spawnSync('git', ['submodule', 'update', '--init', '--recursive'], {
+// Not --recursive: agent-kit has no nested submodules, and staying shallow keeps
+// the auto-executed code surface limited to what this repo pins directly.
+const result = spawnSync('git', ['submodule', 'update', '--init'], {
 	cwd: ROOT,
 	stdio: 'inherit',
 })
 
 if (result.status !== 0) {
-	log.error('git submodule update --init --recursive failed.')
+	log.error('git submodule update --init failed.')
 	process.exit(result.status ?? 1)
 }
 
