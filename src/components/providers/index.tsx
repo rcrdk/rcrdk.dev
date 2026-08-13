@@ -1,13 +1,14 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import type { AbstractIntlMessages } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from 'sonner'
 
-import { GameContextProvider } from '@/context/game-context'
-import { HapticsProvider } from '@/context/haptics-context'
-import { LocaleProvider } from '@/context/locale-context'
+import { GameContextProvider } from '@/contexts/game-context'
+import { HapticsProvider } from '@/contexts/haptics-context'
+import { LocaleProvider } from '@/contexts/locale-context'
 import type { LocalesType } from '@/i18n/config'
 import { queryClient } from '@/lib/react-query'
 
@@ -16,15 +17,15 @@ const TOASTER_MOBILE_OFFSET = 24
 const TOASTER_MAX_WIDTH = 540
 const TOASTER_MAX_MOBILE_WIDTH = 48
 
-interface Props {
-	children: React.ReactNode
+interface ProvidersProps {
+	children: ReactNode
 	i18n: {
 		locale: LocalesType
 		messages: AbstractIntlMessages
 	}
 }
 
-export function Providers({ children, i18n }: Readonly<Props>) {
+export function Providers({ children, i18n }: Readonly<ProvidersProps>) {
 	return (
 		<LocaleProvider initialLocale={i18n.locale} initialMessages={i18n.messages}>
 			<QueryClientProvider client={queryClient}>
