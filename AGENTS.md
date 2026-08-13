@@ -153,7 +153,7 @@ Project-specific conventions the shared agent-kit rules do not cover.
 ### Do
 
 - Export utilities in `src/utils/` as `const` arrow functions — never place utility modules in `src/app/`
-- Use `server-only` at the top of every file in `src/http/`
+- Use `server-only` at the top of every file in `src/http/` that is not reached from a client component (see the Tech Debt note in [get-lastfm-played-tracks.ts](src/http/get-lastfm-played-tracks.ts))
 - Place React Query hooks in `src/hooks/react-query/` once they grow beyond a single file
 - Sort array inputs used in a `queryKey` so cache keys stay stable regardless of input order
 - Keep `src/app/` for routing, pages, route-local components, and `api/` handlers only
@@ -170,14 +170,18 @@ Project-specific conventions the shared agent-kit rules do not cover.
 ```
 src/
 ├── app/              # App Router pages, layouts, route-local components, api/
+├── assets/           # Imported static assets (images bundled through Next.js)
 ├── components/       # Shared UI and feature components
 ├── config/           # App configuration
+├── constants/        # Shared constants
+├── contexts/         # React contexts and providers
 ├── data/             # Static data (projects, skills, etc.)
 ├── hooks/            # Custom React hooks (react-query/ for query hooks)
-├── http/             # Server-only HTTP functions (`server-only`)
+├── http/             # HTTP functions
 ├── i18n/             # Internationalization (next-intl)
 ├── lib/              # Shared libraries (react-query, env, etc.)
 ├── reducers/         # Reducer functions
+├── schemas/          # Zod validation schemas
 ├── styles/           # Global styles
 ├── types/            # Shared TypeScript types
 └── utils/            # Utility functions (const arrow fns, barrel index.ts when needed)
