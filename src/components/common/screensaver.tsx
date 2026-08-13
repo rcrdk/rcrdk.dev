@@ -9,7 +9,7 @@ import { SCREENSAVER_CONFIG } from '@/config/screensaver'
 import { useDvdScreensaver } from '@/hooks/use-dvd-screensaver'
 import { useGame } from '@/hooks/use-game'
 import { useSoundEffect } from '@/hooks/use-sound-effect'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const { TIMEOUT, GIF_CHANGE_DELAY, DVD_SPEED } = SCREENSAVER_CONFIG
 

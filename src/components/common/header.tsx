@@ -14,8 +14,7 @@ import { Container } from '@/components/ui/container'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { trackEvent } from '@/lib/track-event'
-import { scrollToSection } from '@/utils/scroll-to-section'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, scrollToSection } from '@/utils'
 
 const INTERSECTION_THRESHOLD = 0.1
 const ANIMATION_TENSION = 60

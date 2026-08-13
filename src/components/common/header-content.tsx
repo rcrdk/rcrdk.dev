@@ -8,7 +8,7 @@ import avatarPicture from '@/assets/avatar.jpg'
 import { LocaleSwitcher } from '@/components/common/locale-switcher'
 import { Container } from '@/components/ui/container'
 import { useScrollHeader } from '@/hooks/use-scroll-header'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 export function HeaderContent() {
 	const t = useTranslations('Default')

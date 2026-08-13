@@ -5,8 +5,7 @@ import { IconArrowUp } from '@tabler/icons-react'
 
 import { Button } from '@/components/ui/button'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
-import { scrollToSection } from '@/utils/scroll-to-section'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, scrollToSection } from '@/utils'
 
 export function ScrollStart() {
 	const ref = useRef<HTMLDivElement>(null)
