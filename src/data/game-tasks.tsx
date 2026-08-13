@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { DevToolsGameTaskButton } from '@/components/game/tasks/devtools-task'
 import { NotFoundGameTaskButton } from '@/components/game/tasks/not-found-task'
 import { RandomFactGameTaskButton } from '@/components/game/tasks/random-fact-task'
@@ -32,7 +34,7 @@ type GameTaskObject = {
 		hint: Record<LocalesType, string>
 	}
 	points: number
-	button?: React.ReactNode
+	button?: ReactNode
 }
 
 export const GAME_TASKS: GameTaskObject[] = [
