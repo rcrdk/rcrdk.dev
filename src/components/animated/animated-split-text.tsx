@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react'
 import { motion, type Target } from 'motion/react'
 
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
@@ -18,9 +18,10 @@ const DEFAULT_ANIMATION_FROM = {
 } as const
 const DEFAULT_ANIMATION_TO = { opacity: 1, transform: 'translate3d(0,0,0)' } as const
 
-interface SplitTextAnimationState {
-	opacity: number
-	transform: string
+const getSafeDuration = (duration: number) => {
+	const isValidDuration = Number.isFinite(duration) && duration > 0
+
+	return isValidDuration ? duration : DEFAULT_DURATION
 }
 
 type EasingPreset =
@@ -41,14 +42,14 @@ interface SplitTextProps {
 	className?: string
 	delay?: number
 	duration?: number
-	animationFrom?: SplitTextAnimationState
-	animationTo?: SplitTextAnimationState
+	animationFrom?: Target
+	animationTo?: Target
 	easing?: EasingPreset | [number, number, number, number]
 	threshold?: number
 	rootMargin?: string
 	textAlign?: 'left' | 'right' | 'center' | 'justify' | 'start' | 'end'
 	breakWords?: boolean
-	onLetterAnimationComplete?: () => void
+	onLetterAnimationComplete?: VoidFunction
 }
 
 export function AnimatedSplitText({
@@ -65,7 +66,7 @@ export function AnimatedSplitText({
 	breakWords = false,
 	onLetterAnimationComplete,
 }: Readonly<SplitTextProps>) {
-	const ref = useRef<React.ComponentRef<'span'> | null>(null)
+	const ref = useRef<ComponentRef<'span'> | null>(null)
 	const [reduceMotion, setReduceMotion] = useState(false)
 
 	useEffect(() => {
@@ -81,10 +82,10 @@ export function AnimatedSplitText({
 	const words = useMemo(() => text.split(' ').map((word) => word.split('')), [text])
 	const lettersCount = useMemo(() => words.flat().length, [words])
 
-	const from = animationFrom ?? DEFAULT_ANIMATION_FROM
-	const to = animationTo ?? DEFAULT_ANIMATION_TO
+	const from: Target = animationFrom ?? DEFAULT_ANIMATION_FROM
+	const to: Target = animationTo ?? DEFAULT_ANIMATION_TO
 
-	const safeDuration = reduceMotion ? 0 : Number.isFinite(duration) && duration > 0 ? duration : DEFAULT_DURATION
+	const safeDuration = reduceMotion ? 0 : getSafeDuration(duration)
 	const safeDelay = Number.isFinite(delay) && delay >= 0 ? delay : DEFAULT_DELAY
 
 	const baseTransition = useMemo(
@@ -121,8 +122,8 @@ export function AnimatedSplitText({
 							<motion.span
 								key={index}
 								className={reduceMotion ? 'inline-block' : 'inline-block will-change-[transform,opacity]'}
-								initial={(reduceMotion ? to : from) as Target}
-								animate={(showFinalState ? to : from) as Target}
+								initial={reduceMotion ? to : from}
+								animate={showFinalState ? to : from}
 								transition={{
 									...baseTransition,
 									delay: (index * safeDelay) / 1000,
