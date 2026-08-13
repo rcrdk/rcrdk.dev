@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { AnimatedContent } from '@/components/animated/animated-content'
@@ -47,12 +47,16 @@ export function Nav({ slot }: Readonly<NavProps>) {
 	const isSlotPage = slot === 'page'
 	const showBackground = containerHovered && Boolean(hoveredHref)
 
-	const hoveredIndex = ITEMS.findIndex((item) => item.href === hoveredHref)
-	const hoveredElement = hoveredIndex >= 0 ? (linkRefs.current.at(hoveredIndex) ?? null) : null
+	const getHoveredElement = useCallback(() => {
+		const hoveredIndex = ITEMS.findIndex((item) => item.href === hoveredHref)
+		if (hoveredIndex < 0) return null
+
+		return linkRefs.current.at(hoveredIndex) ?? null
+	}, [hoveredHref])
 
 	const backgroundRect = useRelativeRect({
 		containerRef: contentRef,
-		targetElement: hoveredElement,
+		getTarget: getHoveredElement,
 		enabled: showBackground,
 		runOnMount: false,
 	})
