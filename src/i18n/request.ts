@@ -2,20 +2,23 @@ import { cookies, headers } from 'next/headers'
 import { IntlErrorCode } from 'next-intl'
 import { getRequestConfig } from 'next-intl/server'
 
-import { defaultLocale, isValidLocale, LOCALE_COOKIE } from './config'
+import { isValidLocale, LOCALE_COOKIE } from './config'
 import { detectLocaleFromAcceptLanguage } from './detect-locale'
 import { loadMessages } from './load-messages'
+
+const resolveLocale = async (cookieLocale: string | undefined) => {
+	if (isValidLocale(cookieLocale)) return cookieLocale
+
+	const headerStore = await headers()
+	const detectedLocale = detectLocaleFromAcceptLanguage(headerStore.get('accept-language'))
+
+	return detectedLocale
+}
 
 export default getRequestConfig(async () => {
 	const cookieStore = await cookies()
 	const cookieLocale = cookieStore.get(LOCALE_COOKIE)?.value
-
-	let locale = isValidLocale(cookieLocale) ? cookieLocale : defaultLocale
-
-	if (!isValidLocale(cookieLocale)) {
-		const headerStore = await headers()
-		locale = detectLocaleFromAcceptLanguage(headerStore.get('accept-language'))
-	}
+	const locale = await resolveLocale(cookieLocale)
 
 	return {
 		locale,
@@ -41,7 +44,7 @@ export default getRequestConfig(async () => {
 		},
 
 		getMessageFallback({ namespace, key, error }) {
-			const path = [namespace, key].filter((part) => part != null).join('.')
+			const path = [namespace, key].filter(Boolean).join('.')
 
 			if (error.code === IntlErrorCode.MISSING_MESSAGE) return path + ' is not yet translated'
 

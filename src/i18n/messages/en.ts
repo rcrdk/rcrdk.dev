@@ -1,5 +1,3 @@
-import type { AbstractIntlMessages } from 'next-intl'
-
 const messages = {
 	About: {
 		title: 'About me',
@@ -432,6 +430,6 @@ const messages = {
 		viewAllProjects: 'View all projects',
 		backToProjects: 'Back to projects',
 	},
-} as unknown as AbstractIntlMessages
+}
 
 export default messages
