@@ -1,16 +1,17 @@
 'use client'
 
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState, type ComponentRef } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { MotionDiv } from '@/components/animated/motion'
+import { LocaleSwitcherItem } from '@/components/common/locale-switcher-item'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import { useLocaleSwitcher } from '@/context/locale-context'
+import { useLocaleSwitcher } from '@/contexts/locale-context'
 import { useHaptics } from '@/hooks/use-haptics'
-import { useResizeObserver } from '@/hooks/use-resize-observer'
+import { useRelativeRect } from '@/hooks/use-relative-rect'
 import type { LocalesType } from '@/i18n/config'
 import { trackEvent } from '@/lib/track-event'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const LANGUAGES_AVAILABLE: { prefix: LocalesType; title: string; acronym: string }[] = [
 	{
@@ -25,8 +26,6 @@ const LANGUAGES_AVAILABLE: { prefix: LocalesType; title: string; acronym: string
 	},
 ]
 
-type IndicatorRect = { x: number; y: number; width: number; height: number }
-
 const LOCALE_INDICATOR_SPRING = {
 	type: 'spring' as const,
 	stiffness: 380,
@@ -34,46 +33,33 @@ const LOCALE_INDICATOR_SPRING = {
 	mass: 0.45,
 }
 
-interface Props {
+interface LocaleSwitcherProps {
 	variant?: 'vertical' | 'horizontal'
 }
 
-export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
+export function LocaleSwitcher({ variant = 'vertical' }: Readonly<LocaleSwitcherProps>) {
 	const isHorizontal = variant === 'horizontal'
 	const __ = useTranslations('Default')
 	const { locale: currentLocale, setLocale } = useLocaleSwitcher()
 	const { triggerHaptic } = useHaptics()
 
-	const containerRef = useRef<React.ComponentRef<'div'> | null>(null)
-	const itemRefs = useRef<Partial<Record<LocalesType, React.ComponentRef<'button'>>>>({})
-	const [indicator, setIndicator] = useState<IndicatorRect | null>(null)
+	const containerRef = useRef<ComponentRef<'div'> | null>(null)
+	const itemRefs = useRef<Partial<Record<LocalesType, ComponentRef<'button'>>>>({})
+	const [activeElement, setActiveElement] = useState<ComponentRef<'button'> | null>(null)
 
-	const updateIndicator = useCallback(() => {
-		const container = containerRef.current
-		const activeEl = itemRefs.current[currentLocale]
+	const indicator = useRelativeRect({ containerRef, targetElement: activeElement })
 
-		if (!container || !activeEl) return
-
-		const containerRect = container.getBoundingClientRect()
-		const activeRect = activeEl.getBoundingClientRect()
-
-		setIndicator({
-			x: activeRect.left - containerRect.left,
-			y: activeRect.top - containerRect.top,
-			width: activeRect.width,
-			height: activeRect.height,
-		})
-	}, [currentLocale])
-
-	useLayoutEffect(() => updateIndicator(), [updateIndicator])
-
-	useResizeObserver(containerRef, updateIndicator, { runOnMount: true })
+	function registerItemRef(locale: LocalesType, element: ComponentRef<'button'> | null) {
+		itemRefs.current[locale] = element ?? undefined
+		if (locale === currentLocale) setActiveElement(element)
+	}
 
 	function handleChangeLocale(nextLocale: LocalesType) {
 		if (nextLocale === currentLocale) return
 
 		trackEvent(ANALYTICS_EVENTS.localeChange, { locale: nextLocale })
 		triggerHaptic()
+		setActiveElement(itemRefs.current[nextLocale] ?? null)
 		void setLocale(nextLocale)
 	}
 
@@ -94,8 +80,8 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
 						className="squircle-rounded pointer-events-none absolute top-0 left-0 rounded-xl bg-white shadow-sm dark:bg-black dark:shadow-md dark:shadow-white/10"
 						initial={false}
 						animate={{
-							x: indicator.x,
-							y: indicator.y,
+							x: indicator.left,
+							y: indicator.top,
 							width: indicator.width,
 							height: indicator.height,
 						}}
@@ -103,40 +89,16 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<Props>) {
 					/>
 				)}
 
-				{LANGUAGES_AVAILABLE.map((lang) => {
-					const isActive = currentLocale === lang.prefix
-					const tabIndex = isActive ? -1 : undefined
-
-					return (
-						<button
-							type="button"
-							key={lang.prefix}
-							ref={(el) => {
-								itemRefs.current[lang.prefix] = el ?? undefined
-							}}
-							tabIndex={tabIndex}
-							className={cn(
-								'group squircle-rounded relative z-10 flex size-8 items-center justify-center rounded-xl transition-[background-color,box-shadow,transform] duration-200 ease-out outline-none select-none',
-								isActive && 'pointer-events-none',
-								!isActive &&
-									'cursor-pointer hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-black/10 active:scale-95 dark:hover:bg-white/5 dark:focus-visible:ring-white/30',
-							)}
-							onClick={() => handleChangeLocale(lang.prefix)}
-						>
-							<abbr
-								title={lang.title}
-								className={cn(
-									'text-sm font-semibold no-underline transition-colors duration-200 ease-out',
-									isActive
-										? 'text-black dark:text-white'
-										: 'text-black/60 group-hover:text-black dark:text-white/60 dark:group-hover:text-white',
-								)}
-							>
-								{lang.acronym}
-							</abbr>
-						</button>
-					)
-				})}
+				{LANGUAGES_AVAILABLE.map((lang) => (
+					<LocaleSwitcherItem
+						key={lang.prefix}
+						title={lang.title}
+						acronym={lang.acronym}
+						isActive={currentLocale === lang.prefix}
+						onSelect={() => handleChangeLocale(lang.prefix)}
+						itemRef={(element) => registerItemRef(lang.prefix, element)}
+					/>
+				))}
 			</div>
 		</nav>
 	)
