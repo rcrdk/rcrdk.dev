@@ -11,15 +11,27 @@ import { yearsFromThen } from '@/lib/dayjs'
 
 const DELAY_SPECIAL_DATE = 1250
 const TOAST_DURATION = 10000
+const DATE_FORMAT = 'MM-DD'
 
-const ActionButton = ({ label, onClick }: { label: string; onClick: VoidFunction }) => (
-	<button
-		onClick={onClick}
-		className="bg-accent-blue hover:bg-accent-blue/85 focus-visible:!ring-accent-blue/40 cursor-pointer rounded-xl !border !border-transparent px-5 py-2 font-semibold text-nowrap text-white transition-all !outline-none focus-visible:!border-white focus-visible:!ring-4 active:scale-95 active:duration-75 dark:focus-visible:!border-black"
-	>
-		{label}
-	</button>
-)
+const getToday = () => dayjs().format(DATE_FORMAT)
+
+const isTodayASpecialDate = () => Object.values(DATES).includes(getToday())
+
+interface ActionButtonProps {
+	label: string
+	onClick: VoidFunction
+}
+
+function ActionButton({ label, onClick }: Readonly<ActionButtonProps>) {
+	return (
+		<button
+			onClick={onClick}
+			className="bg-accent-blue hover:bg-accent-blue/85 focus-visible:!ring-accent-blue/40 cursor-pointer rounded-xl !border !border-transparent px-5 py-2 font-semibold text-nowrap text-white transition-all !outline-none focus-visible:!border-white focus-visible:!ring-4 active:scale-95 active:duration-75 dark:focus-visible:!border-black"
+		>
+			{label}
+		</button>
+	)
+}
 
 export function SpecialDates() {
 	const { fireConfettiWithSound } = useConfetti()
@@ -27,12 +39,9 @@ export function SpecialDates() {
 
 	useEffect(() => {
 		function showSpecialDate() {
-			const isASpecialDate = Object.values(DATES).includes(dayjs().format('MM-DD'))
-			const today = dayjs().format('MM-DD')
+			if (!isTodayASpecialDate()) return
 
-			if (!isASpecialDate) return
-
-			const data = {
+			const specialDates: Record<string, { icon: string; text: string }> = {
 				[DATES.bithday]: {
 					icon: '🎂',
 					text: __('specialDates.dates.birthday', { age: yearsFromThen(FULL_DATES.birthday) }),
@@ -65,22 +74,23 @@ export function SpecialDates() {
 					icon: '🎨',
 					text: __('specialDates.dates.cssReleaseDate', { years: yearsFromThen(FULL_DATES.cssReleaseDate) }),
 				},
-			} as Record<string, { icon: string; text: string }>
+			}
+
+			const todaySpecialDate = specialDates[getToday()]
+			if (!todaySpecialDate) return
 
 			fireConfettiWithSound()
 			toast.dismiss('special-dates-existence')
 
-			toast(data[today].text, {
+			toast(todaySpecialDate.text, {
 				duration: TOAST_DURATION,
-				icon: data[today].icon,
+				icon: todaySpecialDate.icon,
 				position: 'bottom-center',
 				action: <ActionButton label={__('specialDates.button.more')} onClick={fireConfettiWithSound} />,
 			})
 		}
 
-		const isASpecialDate = Object.values(DATES).includes(dayjs().format('MM-DD'))
-
-		if (isASpecialDate) {
+		if (isTodayASpecialDate()) {
 			const timer = setTimeout(() => {
 				toast(__('specialDates.title'), {
 					position: 'bottom-center',

@@ -11,8 +11,8 @@ export const DATES = {
 	cssReleaseDate: '12-17',
 }
 
-export const FULL_DATES = {
+export const FULL_DATES: Record<string, `${string}-${string}-${string}`> = {
 	birthday: '1996-03-03',
 	careerBirthday: '2013-05-02',
 	cssReleaseDate: '1996-12-17',
-} as Record<string, `${string}-${string}-${string}`>
+}
