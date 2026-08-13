@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 
 import { MotionDiv } from '@/components/animated/motion'
@@ -46,8 +46,7 @@ interface FollowCursorProps {
 	backgroundImage: string
 }
 
-const isMobile = (): boolean =>
-	typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+const isMobile = (): boolean => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
 const toMotionSpring = (config: { mass?: number; tension?: number; friction?: number }) => ({
 	mass: config.mass ?? DEFAULT_MASS,
@@ -81,6 +80,10 @@ export function FollowCursor({
 	const domTarget = useRef<HTMLDivElement | null>(null)
 	const containerRef = useRef<HTMLDivElement | null>(null)
 
+	const [isMobileDevice, setIsMobileDevice] = useState(false)
+
+	useEffect(() => setIsMobileDevice(isMobile()), [])
+
 	const mainSpring = toMotionSpring(animationConfig)
 
 	const springs = {
@@ -109,7 +112,7 @@ export function FollowCursor({
 	useFollowCursorTouch({
 		targetRef: domTarget,
 		springs,
-		enabled: enableDrag && isMobile(),
+		enabled: enableDrag && isMobileDevice,
 		enableZoom,
 		zoomSensitivity,
 		hoverScale,
@@ -118,7 +121,7 @@ export function FollowCursor({
 	useFollowCursorTilt({
 		containerRef,
 		springs,
-		enabled: enableTilt && !isMobile(),
+		enabled: enableTilt && !isMobileDevice,
 		cardWidth,
 		offsetX,
 		offsetY,
