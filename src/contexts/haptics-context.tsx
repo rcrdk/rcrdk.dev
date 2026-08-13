@@ -1,18 +1,22 @@
 'use client'
 
-import { createContext, useCallback, useEffect, useRef } from 'react'
+import { createContext, useCallback, useEffect, useRef, type ComponentRef, type ReactNode } from 'react'
 
 export interface HapticsContextValue {
-	triggerHaptic: () => void
+	triggerHaptic: VoidFunction
 }
 
 export const HapticsContext = createContext<HapticsContextValue | null>(null)
 
 const HAPTIC_DURATION = 5
 
-export function HapticsProvider({ children }: { children: React.ReactNode }) {
-	const inputRef = useRef<React.ComponentRef<'input'> | null>(null)
-	const labelRef = useRef<React.ComponentRef<'label'> | null>(null)
+interface HapticsProviderProps {
+	children: ReactNode
+}
+
+export function HapticsProvider({ children }: Readonly<HapticsProviderProps>) {
+	const inputRef = useRef<ComponentRef<'input'> | null>(null)
+	const labelRef = useRef<ComponentRef<'label'> | null>(null)
 
 	const triggerHaptic = useCallback(() => {
 		const hasNavigator = typeof window !== 'undefined'

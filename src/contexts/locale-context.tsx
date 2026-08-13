@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { AbstractIntlMessages } from 'next-intl'
 import { NextIntlClientProvider } from 'next-intl'
 
@@ -17,7 +17,7 @@ const LocaleContext = createContext<LocaleContextValue | null>(null)
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
 interface LocaleProviderProps {
-	children: React.ReactNode
+	children: ReactNode
 	initialLocale: LocalesType
 	initialMessages: AbstractIntlMessages
 }
@@ -63,6 +63,6 @@ export function LocaleProvider({ children, initialLocale, initialMessages }: Rea
 
 export function useLocaleSwitcher() {
 	const value = useContext(LocaleContext)
-	if (value == null) throw new Error('useLocaleSwitcher must be used within LocaleProvider')
+	if (!value) throw new Error('useLocaleSwitcher must be used within LocaleProvider')
 	return value
 }
