@@ -1,14 +1,19 @@
 'use client'
 
 import { useEffect, type ReactNode } from 'react'
-import * as DialogComponent from '@radix-ui/react-dialog'
+import {
+	Close as DialogClose,
+	Content as DialogContent,
+	Overlay as DialogOverlay,
+	Portal as DialogPortal,
+	Root as DialogRoot,
+} from '@radix-ui/react-dialog'
 import { IconX } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { dialogInlineCloseButtonClassName } from '@/config/dialog'
-import useDetectBrowser from '@/hooks/use-browser'
-import { onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils/dialog'
-import { cn } from '@/utils/tailwind-cn'
+import { useDetectBrowser } from '@/hooks/use-detect-browser'
+import { cn, onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils'
 
 interface GameDialogWrapperProps {
 	open: boolean
@@ -54,11 +59,11 @@ export function GameDialogWrapper({
 	const isSafari = browser === 'Apple Safari'
 
 	return (
-		<DialogComponent.Root open={open} onOpenChange={onOpenChange}>
-			<DialogComponent.Portal>
-				<DialogComponent.Overlay className={overlayClassName}>
+		<DialogRoot open={open} onOpenChange={onOpenChange}>
+			<DialogPortal>
+				<DialogOverlay className={overlayClassName}>
 					<div className="xs:p-4 pointer-events-none flex min-h-full items-end justify-center p-3 max-sm:pt-10 sm:items-center sm:p-10 lg:p-10">
-						<DialogComponent.Content
+						<DialogContent
 							className={contentClassName}
 							onOpenAutoFocus={onDialogOpenAutoFocus}
 							onPointerDownOutside={onDialogPointerDownOutside}
@@ -73,16 +78,16 @@ export function GameDialogWrapper({
 							/>
 
 							<div className="shadow-dialog dark:shadow-dialog-inverted squircle-rounded-dialog xs:p-10 relative z-10 rounded-3xl bg-white px-6 pt-10 pb-6 text-center text-balance select-none dark:bg-black">
-								<DialogComponent.Close className={dialogInlineCloseButtonClassName} aria-label={__('close')}>
+								<DialogClose className={dialogInlineCloseButtonClassName} aria-label={__('close')}>
 									<IconX className="size-5" aria-hidden />
-								</DialogComponent.Close>
+								</DialogClose>
 
 								{children}
 							</div>
-						</DialogComponent.Content>
+						</DialogContent>
 					</div>
-				</DialogComponent.Overlay>
-			</DialogComponent.Portal>
-		</DialogComponent.Root>
+				</DialogOverlay>
+			</DialogPortal>
+		</DialogRoot>
 	)
 }

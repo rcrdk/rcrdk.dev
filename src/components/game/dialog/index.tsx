@@ -1,22 +1,19 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
-import * as Collapsible from '@radix-ui/react-collapsible'
-import * as DialogRadix from '@radix-ui/react-dialog'
-import { IconRefresh, IconSkull, IconVolume } from '@tabler/icons-react'
+import { Content as CollapsibleContent, Root as CollapsibleRoot } from '@radix-ui/react-collapsible'
+import { Description as DialogDescription, Title as DialogTitle } from '@radix-ui/react-dialog'
 import { useTranslations } from 'next-intl'
 
+import { GameOptIn } from '@/components/game/dialog/opt-in'
+import { GameScoreboard } from '@/components/game/dialog/scoreboard'
 import { GameDialogWrapper } from '@/components/game/dialog/wrapper'
 import { GameTaskItem } from '@/components/game/game-task-item'
 import { Button } from '@/components/ui/button'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import { useConfetti } from '@/hooks/use-confetti'
 import { useGame } from '@/hooks/use-game'
-import { useSoundEffect } from '@/hooks/use-sound-effect'
+import { useGameCelebration } from '@/hooks/use-game-celebration'
 import { trackEvent } from '@/lib/track-event'
-import { cn } from '@/utils/tailwind-cn'
-
-const GAME_WIN_CONFETTI_DELAY = 1000
+import { cn } from '@/utils'
 
 export function GameDialog() {
 	const {
@@ -36,32 +33,7 @@ export function GameDialog() {
 
 	const __ = useTranslations('Game')
 
-	const { fireConfettiWithSound } = useConfetti()
-	const { playSound } = useSoundEffect()
-	const celebrateAgainTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-	const clearConfettiTimersRef = useRef<(() => void) | null>(null)
-
-	const celebrateWin = useCallback(() => {
-		playSound('game-tada')
-
-		if (celebrateAgainTimerRef.current) clearTimeout(celebrateAgainTimerRef.current)
-		clearConfettiTimersRef.current?.()
-
-		celebrateAgainTimerRef.current = setTimeout(() => {
-			clearConfettiTimersRef.current = fireConfettiWithSound()
-		}, GAME_WIN_CONFETTI_DELAY)
-	}, [fireConfettiWithSound, playSound])
-
-	useEffect(() => {
-		if (!isGameCompleted || !showGameDialog) return
-
-		celebrateWin()
-
-		return () => {
-			if (celebrateAgainTimerRef.current) clearTimeout(celebrateAgainTimerRef.current)
-			clearConfettiTimersRef.current?.()
-		}
-	}, [celebrateWin, isGameCompleted, showGameDialog])
+	const { celebrateWin } = useGameCelebration({ isGameCompleted, showGameDialog })
 
 	function handleCelebrateAgain() {
 		trackEvent(ANALYTICS_EVENTS.gameCelebrateAgain, { points: pointsEarned })
@@ -75,13 +47,13 @@ export function GameDialog() {
 		<GameDialogWrapper open={showGameDialog} onOpenChange={onShowGameDialog}>
 			<span className="text-6xl">{isGameCompleted ? '🥇' : '🕹️'}</span>
 
-			<DialogRadix.Title className="mt-4 mb-3 block text-3xl font-bold tracking-tight text-black dark:text-white">
+			<DialogTitle className="mt-4 mb-3 block text-3xl font-bold tracking-tight text-black dark:text-white">
 				{isGameCompleted ? __('winner.title') : __('title')}
-			</DialogRadix.Title>
+			</DialogTitle>
 
-			<DialogRadix.Description className="dark:text-content-dark text-content-light text-base">
+			<DialogDescription className="dark:text-content-dark text-content-light text-base">
 				{isGameCompleted ? __('winner.text') : __('text', { quantity: gameTasks.length })}
-			</DialogRadix.Description>
+			</DialogDescription>
 
 			{isGameCompleted && isGameActive && (
 				<Button variant="outline-warning" className="mt-6 w-full font-semibold" onClick={handleCelebrateAgain} haptic>
@@ -90,52 +62,16 @@ export function GameDialog() {
 				</Button>
 			)}
 
-			{!isGameActive && (
-				<>
-					<Button
-						variant="outline-warning"
-						className="mt-8 mb-6 w-full font-semibold"
-						onClick={onActivateGame}
-						aria-describedby="game-sound-note"
-						haptic
-					>
-						<span className="text-2xl">🤠</span>
-						{__('optIn.button')}
-					</Button>
-
-					<p id="game-sound-note" className="flex items-center justify-center gap-1 text-sm opacity-50 dark:opacity-80">
-						<IconVolume className="stroke-1" aria-hidden />
-						{__('optIn.sound')}
-					</p>
-				</>
-			)}
+			{!isGameActive && <GameOptIn onActivateGame={onActivateGame} />}
 
 			{isGameActive && (
 				<>
-					<div className="squircle-rounded mt-6 mb-10 flex items-center gap-1 rounded-2xl bg-black/5 py-3 pr-4 pl-5 dark:bg-white/10">
-						<p className="grow p-1 text-start text-sm text-black dark:text-white">
-							<strong className="font-semibold">{__('score')}</strong> {pointsEarned}/{pointsTotal}
-						</p>
-
-						<button
-							onClick={onStopGame}
-							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue squircle-rounded flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
-							aria-label={__('ariaLabels.stopGame')}
-						>
-							<IconSkull size={16} aria-hidden />
-							{__('stop')}
-						</button>
-
-						<button
-							onClick={onResetGame}
-							disabled={pointsEarned === 0}
-							className="focus-visible:ring-accent-blue/40 focus-visible:text-accent-blue squircle-rounded flex cursor-pointer items-center gap-1 rounded-lg p-1 text-sm font-medium transition-all outline-none hover:bg-black/5 focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/5"
-							aria-label={__('ariaLabels.resetGame')}
-						>
-							<IconRefresh size={16} aria-hidden />
-							{__('reset')}
-						</button>
-					</div>
+					<GameScoreboard
+						pointsEarned={pointsEarned}
+						pointsTotal={pointsTotal}
+						onStopGame={onStopGame}
+						onResetGame={onResetGame}
+					/>
 
 					<div className="relative min-h-12">
 						<Button
@@ -153,13 +89,13 @@ export function GameDialog() {
 							{__('button')}
 						</Button>
 
-						<Collapsible.Root open={shouldDisplayTasks}>
-							<Collapsible.Content className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out flex flex-col gap-4 overflow-hidden will-change-contents ![animation-duration:500ms]">
+						<CollapsibleRoot open={shouldDisplayTasks}>
+							<CollapsibleContent className="data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out flex flex-col gap-4 overflow-hidden will-change-contents ![animation-duration:500ms]">
 								{gameTasks.map((task) => (
 									<GameTaskItem key={task.id} task={task} />
 								))}
-							</Collapsible.Content>
-						</Collapsible.Root>
+							</CollapsibleContent>
+						</CollapsibleRoot>
 					</div>
 				</>
 			)}
