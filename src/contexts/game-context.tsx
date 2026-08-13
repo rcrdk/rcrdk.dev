@@ -10,7 +10,7 @@ import { useGameScreenSize } from '@/hooks/use-game-screen-size'
 import { defaultLocale, isValidLocale } from '@/i18n/config'
 import { gameReducer, INITIAL_GAME_STATE } from '@/reducers/game-reducer'
 import type { GameTaskUser } from '@/types/game'
-import { buildGameTasks, sumGamePoints } from '@/utils'
+import { buildGameTasks, getTotalGamePoints, sumGamePoints } from '@/utils'
 
 interface GameContextDataProps {
 	gameTasks: GameTaskUser[]
@@ -45,7 +45,7 @@ export function GameContextProvider({ children }: Readonly<GameContextProviderPr
 
 	const gameTasks = buildGameTasks({ locale, tasksCompleted: state.tasksCompleted })
 	const pointsEarned = sumGamePoints(state.tasksCompleted)
-	const pointsTotal = sumGamePoints()
+	const pointsTotal = getTotalGamePoints()
 	const isGameCompleted = pointsEarned >= pointsTotal
 
 	const actions = useGameActions({ state, dispatch, gameTasks, pointsEarned, pointsTotal })
