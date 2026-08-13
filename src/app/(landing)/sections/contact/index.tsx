@@ -1,21 +1,31 @@
 'use client'
 
 import { useState } from 'react'
-import { IconBrandLinkedin, IconFileDescription } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
+import { ContactCtaBox } from '@/app/(landing)/sections/contact/cta-box'
 import { AnimatedContent } from '@/components/animated/animated-content'
-import FollowCursor from '@/components/animated/follow-cursor'
+import { FollowCursor } from '@/components/animated/follow-cursor'
 import { RickRollingGameTaskButton } from '@/components/game/tasks/rickrolling-task'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/components/ui/section'
-import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import { LINKS } from '@/config/links'
-import { BUTTONS, DEFAULT_BUTTON_PROPS, EXTERNAL_BUTTON_LINK_PROPS } from '@/constants/contact'
+import { BUTTONS, EXTERNAL_BUTTON_LINK_PROPS } from '@/constants/contact'
 import { useGame } from '@/hooks/use-game'
 
 const INITIAL_DELAY = 250
 const DELAY_INCREMENT = 50
+const TEXT_DELAY = 250
+const RICK_ROLLING_DELAY = 450
+const DIVIDER_DELAY = 500
+const CTA_BOX_DELAY = 550
+
+const RICK_ROLLING_CURSOR = {
+	backgroundImage: 'https://media1.tenor.com/m/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif',
+	rotationFactor: 50,
+	cardWidth: '400px',
+	offsetX: -200,
+	offsetY: -200,
+} as const
 
 export function Contact() {
 	const [showAnimated, setShowAnimated] = useState(false)
@@ -32,7 +42,7 @@ export function Contact() {
 			</AnimatedContent>
 
 			<div className="layout:mt-8 mt-8 sm:mt-12">
-				<AnimatedContent delay={250}>
+				<AnimatedContent delay={TEXT_DELAY}>
 					<p
 						className="text-lg text-balance md:pl-40 [&_a]:underline"
 						dangerouslySetInnerHTML={{ __html: __.raw('text') }}
@@ -40,79 +50,47 @@ export function Contact() {
 				</AnimatedContent>
 
 				<ul className="mt-16 flex flex-wrap gap-2 sm:gap-3">
-					{BUTTONS.map(({ labelKey, href, Icon, analytics }, index) => {
-						const delay = INITIAL_DELAY + index * DELAY_INCREMENT
-
-						return (
-							<li key={labelKey}>
-								<AnimatedContent delay={delay}>
-									<Button
-										{...EXTERNAL_BUTTON_LINK_PROPS}
-										href={href}
-										aria-label={__(`buttons.${labelKey}`)}
-										analytics={{
-											name: analytics.name,
-											data: { ...analytics.data, section: 'contact' },
-										}}
-									>
-										<Icon aria-hidden />
-									</Button>
-								</AnimatedContent>
-							</li>
-						)
-					})}
+					{BUTTONS.map(({ labelKey, href, Icon, analytics }, index) => (
+						<li key={labelKey}>
+							<AnimatedContent delay={INITIAL_DELAY + index * DELAY_INCREMENT}>
+								<Button
+									{...EXTERNAL_BUTTON_LINK_PROPS}
+									href={href}
+									aria-label={__(`buttons.${labelKey}`)}
+									analytics={{
+										name: analytics.name,
+										data: { ...analytics.data, section: 'contact' },
+									}}
+								>
+									<Icon aria-hidden />
+								</Button>
+							</AnimatedContent>
+						</li>
+					))}
 
 					{isGameActive && (
 						<li className="layout:block hidden">
-							<AnimatedContent delay={450}>
+							<AnimatedContent delay={RICK_ROLLING_DELAY}>
 								<RickRollingGameTaskButton onShowAnimated={setShowAnimated} />
 							</AnimatedContent>
 						</li>
 					)}
 
 					<li className="w-full grow self-center sm:w-auto">
-						<AnimatedContent delay={500}>
+						<AnimatedContent delay={DIVIDER_DELAY}>
 							<hr className="mx-6 my-6 h-12 grow self-center border-t-0 border-l border-black/10 sm:mx-0 sm:h-auto sm:border-t sm:border-l-0 lg:mx-5 lg:my-0 dark:border-white/15" />
 						</AnimatedContent>
 					</li>
 				</ul>
 
-				<AnimatedContent delay={550}>
-					<div className="squircle-rounded flex items-center gap-6 rounded-2xl bg-black/5 p-5 max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-4 sm:mt-16 dark:bg-white/10">
-						<p className="xs:text-start text-content-light/75 dark:text-content-dark/75 grow text-center text-[15px] text-balance">
-							{__('box.text')}
-						</p>
-
-						<div className="xs:w-auto flex w-full gap-2">
-							<Button
-								{...DEFAULT_BUTTON_PROPS}
-								href={LINKS.linkedIn}
-								analytics={{ name: ANALYTICS_EVENTS.linkedinProfileClick, data: { section: 'contact' } }}
-							>
-								<IconBrandLinkedin aria-hidden />
-								<span className="font-semibold">{__('box.button.linkedin')}</span>
-							</Button>
-
-							<Button
-								{...DEFAULT_BUTTON_PROPS}
-								href={LINKS.resume}
-								analytics={{ name: ANALYTICS_EVENTS.resumeClick, data: { section: 'contact' } }}
-							>
-								<IconFileDescription aria-hidden />
-								<span className="font-semibold">{__('box.button.cv')}</span>
-							</Button>
-						</div>
-					</div>
+				<AnimatedContent delay={CTA_BOX_DELAY}>
+					<ContactCtaBox />
 				</AnimatedContent>
 			</div>
 
 			{showAnimated && (
 				<FollowCursor
-					backgroundImage="https://media1.tenor.com/m/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif"
-					rotationFactor={50}
-					cardWidth="400px"
-					offsetX={-200}
-					offsetY={-200}
+					{...RICK_ROLLING_CURSOR}
 					className="pointer-events-none fixed inset-1/2 z-9999 opacity-0 transition-opacity duration-500 in-hover:!opacity-100 [&_>_div]:!max-w-none"
 				/>
 			)}
