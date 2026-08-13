@@ -1,7 +1,8 @@
+import type { HTMLAttributes } from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const baseVariants = cva('w-full max-w-full', {
 	variants: {
@@ -25,10 +26,10 @@ const containerVariants = cva('w-full', {
 type BaseVariantsProps = VariantProps<typeof baseVariants>
 type ContainerVariantsProps = VariantProps<typeof containerVariants>
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 	size?: ContainerVariantsProps['size']
 	sideSpacing?: BaseVariantsProps['sideSpacing']
-	classNameCenter?: React.HTMLAttributes<HTMLDivElement>['className']
+	classNameCenter?: HTMLAttributes<HTMLDivElement>['className']
 }
 export function Container({
 	size = 'fluid',

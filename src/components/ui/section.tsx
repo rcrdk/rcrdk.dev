@@ -1,7 +1,9 @@
-import { cn } from '@/utils/tailwind-cn'
+import type { ReactNode } from 'react'
+
+import { cn } from '@/utils'
 
 interface SectionProps {
-	children: React.ReactNode
+	children: ReactNode
 	className?: string
 	classNameCenter?: string
 }

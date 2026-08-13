@@ -1,12 +1,12 @@
 import type { SkillItem as SkillItemType } from '@/data/skills'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
-interface Props {
+interface SkillProps {
 	skill: SkillItemType
 	label?: string
 }
 
-export function Skill({ skill, label }: Readonly<Props>) {
+export function Skill({ skill, label }: Readonly<SkillProps>) {
 	const { Icon, title, fill } = skill
 	const displayTitle = label ?? title
 

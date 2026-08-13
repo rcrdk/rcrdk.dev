@@ -5,11 +5,11 @@ import { useState } from 'react'
 import NextImage from 'next/image'
 import { IconLoader } from '@tabler/icons-react'
 
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
-type Props = Omit<ComponentProps<typeof NextImage>, 'onLoad'>
+type ImageProps = Omit<ComponentProps<typeof NextImage>, 'onLoad'>
 
-export function Image({ className, ...props }: Readonly<Props>) {
+export function Image({ className, ...props }: Readonly<ImageProps>) {
 	const [loading, setLoading] = useState(true)
 
 	return (
