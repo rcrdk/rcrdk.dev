@@ -6,9 +6,9 @@ import type { SwiperOptions } from 'swiper/types'
 
 import { Image } from '@/components/ui/image'
 import type { HistoryGalleryItem } from '@/types/history'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
-interface Props {
+interface ProjectImagesProps {
 	image: string | null
 	gallery: HistoryGalleryItem[]
 	title: string
@@ -53,7 +53,7 @@ const SWIPER_CONFIG: SwiperOptions = {
 	},
 } as const
 
-export function ProjectImages({ image, gallery, title, classes }: Readonly<Props>) {
+export function ProjectImages({ image, gallery, title, classes }: Readonly<ProjectImagesProps>) {
 	const hasGallery = gallery.length > 0
 
 	if (!hasGallery && !image) return null

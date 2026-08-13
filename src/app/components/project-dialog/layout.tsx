@@ -1,15 +1,20 @@
 'use client'
 
 import { type ReactNode } from 'react'
-import * as DialogComponent from '@radix-ui/react-dialog'
+import {
+	Close as DialogClose,
+	Content as DialogContent,
+	Overlay as DialogOverlay,
+	Portal as DialogPortal,
+	Root as DialogRoot,
+} from '@radix-ui/react-dialog'
 import { IconX } from '@tabler/icons-react'
 import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
 
 import { MotionDiv } from '@/components/animated/motion'
 import { dialogCloseButtonClassName, dialogCloseMotionProps, getDialogOverlayBaseClassName } from '@/config/dialog'
-import { onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils/dialog'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils'
 
 interface LayoutProps {
 	open: boolean
@@ -31,9 +36,9 @@ export function Layout({
 	const __ = useTranslations('Default')
 
 	return (
-		<DialogComponent.Root open={open} onOpenChange={onOpenChange}>
-			<DialogComponent.Portal>
-				<DialogComponent.Overlay
+		<DialogRoot open={open} onOpenChange={onOpenChange}>
+			<DialogPortal>
+				<DialogOverlay
 					className={cn(
 						'data-[state=open]:animate-dialog-overlay-show data-[state=closed]:animate-dialog-overlay-hide fixed inset-0 z-99 overflow-x-hidden overflow-y-auto scroll-smooth bg-white/50 backdrop-blur-xs dark:bg-black/50',
 						getDialogOverlayBaseClassName(disableTheme),
@@ -46,15 +51,15 @@ export function Layout({
 								className="layout:h-30 pointer-events-none absolute top-0 left-0 z-10 flex h-26 w-screen items-center justify-center"
 								{...dialogCloseMotionProps}
 							>
-								<DialogComponent.Close className={dialogCloseButtonClassName} aria-label={__('close')}>
+								<DialogClose className={dialogCloseButtonClassName} aria-label={__('close')}>
 									<IconX className="size-7" aria-hidden />
-								</DialogComponent.Close>
+								</DialogClose>
 							</MotionDiv>
 						)}
 					</AnimatePresence>
 
 					<div className="layout:pt-30 pointer-events-none flex min-h-full items-end justify-center pt-26">
-						<DialogComponent.Content
+						<DialogContent
 							className={cn(
 								'data-[state=open]:animate-dialog-content-show data-[state=closed]:animate-dialog-content-hide pointer-events-all squircle-rounded-dialog relative z-10 w-full rounded-3xl !rounded-b-none border-x border-t border-black/15 will-change-transform outline-none dark:border-white/20',
 								contentClassName,
@@ -66,10 +71,10 @@ export function Layout({
 							<div className="shadow-dialog dark:shadow-dialog-inverted squircle-rounded-dialog relative z-10 rounded-3xl !rounded-b-none bg-white select-none dark:bg-black">
 								{children}
 							</div>
-						</DialogComponent.Content>
+						</DialogContent>
 					</div>
-				</DialogComponent.Overlay>
-			</DialogComponent.Portal>
-		</DialogComponent.Root>
+				</DialogOverlay>
+			</DialogPortal>
+		</DialogRoot>
 	)
 }

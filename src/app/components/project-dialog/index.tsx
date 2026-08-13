@@ -1,10 +1,8 @@
 'use client'
 
-import { useLocale } from 'next-intl'
-
 import { Content } from '@/app/components/project-dialog/content'
 import { Shell } from '@/app/components/project-dialog/shell'
-import type { LocalesType } from '@/i18n/config'
+import { useCurrentLocale } from '@/hooks/use-current-locale'
 import type { HistoryProject } from '@/types/history'
 
 export interface ProjectDialogProps {
@@ -15,7 +13,7 @@ export interface ProjectDialogProps {
 }
 
 export function ProjectDialog({ data, open, onOpenChange, disableTheme = false }: Readonly<ProjectDialogProps>) {
-	const locale = useLocale() as LocalesType
+	const locale = useCurrentLocale()
 	const hasGallery = data.gallery.length > 0
 	const variant = hasGallery ? 'gallery' : 'cover'
 
