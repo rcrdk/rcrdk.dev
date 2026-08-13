@@ -20,9 +20,6 @@ const buildHydratePayload = (): GameHydratePayload => {
 	const tasksCompleted = readCompletedTasks(window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasks))
 	const showGameTasks = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameTasksVisible) === 'true'
 	const isGameActive = window.localStorage.getItem(LOCAL_STORAGE_KEYS.gameActive) === 'true'
-	const hasLanguageChangedFlag = Boolean(window.localStorage.getItem(GAME_LANGUAGE_CHANGED_KEY))
-
-	if (isGameActive && !hasLanguageChangedFlag) setLanguageChangedDuringGame(false)
 
 	return {
 		...(tasksCompleted && { tasksCompleted }),
@@ -31,11 +28,19 @@ const buildHydratePayload = (): GameHydratePayload => {
 	}
 }
 
+const seedLanguageChangedFlag = (isGameActive: boolean) => {
+	const hasLanguageChangedFlag = Boolean(window.localStorage.getItem(GAME_LANGUAGE_CHANGED_KEY))
+	if (isGameActive && !hasLanguageChangedFlag) setLanguageChangedDuringGame(false)
+}
+
 export function useGameHydration(onHydrate: (payload: GameHydratePayload) => void) {
 	useEffect(() => {
 		if (typeof window === 'undefined') return
 
 		const payload = buildHydratePayload()
+
+		seedLanguageChangedFlag(Boolean(payload.isGameActive))
+
 		if (Object.keys(payload).length > 0) onHydrate(payload)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
