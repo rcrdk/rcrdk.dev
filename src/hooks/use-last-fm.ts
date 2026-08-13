@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query'
 
 import { getLastFmPlayedTracks } from '@/http/get-lastfm-played-tracks'
 
-interface Props {
+interface UseLastFmParams {
 	enabled: boolean
 }
 
-export function useLastFM({ enabled }: Props) {
+export function useLastFM({ enabled }: UseLastFmParams) {
 	return useQuery({
 		queryKey: ['GET_LASTFM_TRACKS'],
 		enabled,
