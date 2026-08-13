@@ -39,7 +39,7 @@ export function SpecialDates() {
 
 	useEffect(() => {
 		function showSpecialDate() {
-			if (!isTodayASpecialDate()) return
+			const today = getToday()
 
 			const specialDates: Record<string, { icon: string; text: string }> = {
 				[DATES.bithday]: {
@@ -76,7 +76,7 @@ export function SpecialDates() {
 				},
 			}
 
-			const todaySpecialDate = specialDates[getToday()]
+			const todaySpecialDate = specialDates[today]
 			if (!todaySpecialDate) return
 
 			fireConfettiWithSound()
