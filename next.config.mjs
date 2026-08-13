@@ -16,6 +16,12 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
+				hostname: 'lastfm-img.freetls.fastly.net',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
 				hostname: 'github.com',
 				port: '',
 				pathname: '/**',
