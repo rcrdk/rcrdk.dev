@@ -1,16 +1,14 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 import { CompanyProjectsContainer } from '@/app/(pages)/projects/[companySlug]/components/container'
 import { ignorePagesRobots } from '@/config/metadata'
-import type { LocalesType } from '@/i18n/config'
+import { getCurrentLocale } from '@/i18n/get-current-locale'
 import { env } from '@/lib/env'
-import { getCompanySlugsWithProjects } from '@/utils/get-company-slugs-with-projects'
-import { getHistoryItemBySlug } from '@/utils/get-history-item-by-slug'
-import { getProjectsByCompanySlug } from '@/utils/get-projects-by-company-slug'
+import { getCompanySlugsWithProjects, getHistoryItemBySlug, getProjectsByCompanySlug } from '@/utils'
 
-interface Props {
+interface CompanyProjectsPageProps {
 	params: Promise<{ companySlug: string }>
 }
 
@@ -18,9 +16,9 @@ export function generateStaticParams() {
 	return getCompanySlugsWithProjects().map((companySlug) => ({ companySlug }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: CompanyProjectsPageProps): Promise<Metadata> {
 	const { companySlug } = await params
-	const locale = (await getLocale()) as LocalesType
+	const locale = await getCurrentLocale()
 	const historyItem = await getHistoryItemBySlug(companySlug, locale)
 	const __ = await getTranslations('Seo')
 
@@ -49,9 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export default async function CompanyProjectsPage({ params }: Props) {
+export default async function CompanyProjectsPage({ params }: Readonly<CompanyProjectsPageProps>) {
 	const { companySlug } = await params
-	const locale = (await getLocale()) as LocalesType
+	const locale = await getCurrentLocale()
 	const historyItem = await getHistoryItemBySlug(companySlug, locale)
 
 	if (!historyItem) notFound()

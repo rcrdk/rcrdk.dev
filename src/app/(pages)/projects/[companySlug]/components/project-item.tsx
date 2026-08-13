@@ -2,24 +2,23 @@
 
 import { useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
-import { useLocale } from 'next-intl'
 
 import { LazyProjectDialog } from '@/app/components/project-dialog/lazy'
 import { Image } from '@/components/ui/image'
+import { useCurrentLocale } from '@/hooks/use-current-locale'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useLazyMount } from '@/hooks/use-lazy-mount'
-import type { LocalesType } from '@/i18n/config'
 import type { HistoryProject } from '@/types/history'
 
-interface Props {
+interface CompanyProjectItemProps {
 	data: HistoryProject
 }
 
-export function ProjectItem({ data }: Readonly<Props>) {
+export function ProjectItem({ data }: Readonly<CompanyProjectItemProps>) {
 	const [open, setOpen] = useState(false)
 	const shouldMountDialog = useLazyMount(open)
 	const { triggerHaptic } = useHaptics()
-	const locale = useLocale() as LocalesType
+	const locale = useCurrentLocale()
 	const { title } = data[locale] || {}
 
 	function handleOpenChange(nextOpen: boolean) {

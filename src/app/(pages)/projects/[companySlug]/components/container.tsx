@@ -4,12 +4,12 @@ import { CompanyProjectsList } from '@/app/(pages)/projects/[companySlug]/compon
 import { Container } from '@/components/ui/container'
 import type { HistoryProject } from '@/types/history'
 
-interface Props {
+interface CompanyProjectsContainerProps {
 	companySlug: string
 	projects: HistoryProject[]
 }
 
-export function CompanyProjectsContainer({ companySlug, projects }: Readonly<Props>) {
+export function CompanyProjectsContainer({ companySlug, projects }: Readonly<CompanyProjectsContainerProps>) {
 	return (
 		<Container sideSpacing="pageContent">
 			<CompanyProjectsHero companySlug={companySlug} />

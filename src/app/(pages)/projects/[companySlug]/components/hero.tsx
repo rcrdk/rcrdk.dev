@@ -21,11 +21,11 @@ export const BUTTON_PROPS = {
 	className: 'max-sm:w-auto max-sm:flex-1',
 } as const
 
-interface Props {
+interface CompanyProjectsHeroProps {
 	companySlug: string
 }
 
-export function CompanyProjectsHero({ companySlug }: Readonly<Props>) {
+export function CompanyProjectsHero({ companySlug }: Readonly<CompanyProjectsHeroProps>) {
 	const [isOpen, setIsOpen] = useState(false)
 	const historyItem = useHistoryItemBySlug(companySlug)
 	const __ = useTranslations('Default')

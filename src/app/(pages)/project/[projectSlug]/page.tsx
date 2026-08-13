@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 import { ProjectContainer } from '@/app/(pages)/project/[projectSlug]/components/container'
 import { ignorePagesRobots } from '@/config/metadata'
-import type { LocalesType } from '@/i18n/config'
+import { getCurrentLocale } from '@/i18n/get-current-locale'
 import { env } from '@/lib/env'
-import { getAllProjectSlugs } from '@/utils/get-all-project-slugs'
-import { getProjectBySlug } from '@/utils/get-project-by-slug'
+import { getAllProjectSlugs, getProjectBySlug } from '@/utils'
 
-interface Props {
+interface ProjectPageProps {
 	params: Promise<{ projectSlug: string }>
 }
 
@@ -17,13 +16,13 @@ export function generateStaticParams() {
 	return getAllProjectSlugs().map((projectSlug) => ({ projectSlug }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
 	const { projectSlug } = await params
 	const project = getProjectBySlug(projectSlug)
 
 	if (!project) return {}
 
-	const locale = (await getLocale()) as LocalesType
+	const locale = await getCurrentLocale()
 	const __ = await getTranslations('Seo')
 
 	const { title: projectTitle } = project[locale]
@@ -56,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export default async function ProjectPage({ params }: Props) {
+export default async function ProjectPage({ params }: Readonly<ProjectPageProps>) {
 	const { projectSlug } = await params
 	const project = getProjectBySlug(projectSlug)
 

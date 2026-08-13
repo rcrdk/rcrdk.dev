@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl'
 import { ProjectItem } from '@/app/(pages)/projects/[companySlug]/components/project-item'
 import type { HistoryProject } from '@/types/history'
 
-interface Props {
+interface CompanyProjectsListProps {
 	projects: HistoryProject[]
 }
 
-export function CompanyProjectsList({ projects }: Readonly<Props>) {
+export function CompanyProjectsList({ projects }: Readonly<CompanyProjectsListProps>) {
 	const __ = useTranslations('Project')
 
 	return (

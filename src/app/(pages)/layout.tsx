@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 import { HeaderContent } from '@/components/common/header-content'
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
 	robots: ignorePagesRobots,
 }
 
-interface Props {
-	children: React.ReactNode
+interface ShareLayoutProps {
+	children: ReactNode
 }
 
-export default function ShareLayout({ children }: Readonly<Props>) {
+export default function ShareLayout({ children }: Readonly<ShareLayoutProps>) {
 	return (
 		<div className="disable-themes text-content-light flex min-h-dvh flex-col bg-white">
 			<HeaderContent />
