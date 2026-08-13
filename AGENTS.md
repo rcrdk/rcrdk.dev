@@ -164,6 +164,7 @@ Project-specific conventions the shared agent-kit rules do not cover.
 
 - Never skip the null check in a custom context hook
 - Never add standalone helper files under `src/app/`
+- Never pass user-, CMS-, or API-supplied strings to `dangerouslySetInnerHTML` — the existing sinks are fed only by committed content in `src/data/` and `src/i18n/messages/`, and that is the invariant keeping them safe
 
 ## Project Structure
 
