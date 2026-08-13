@@ -1,25 +1,24 @@
-import * as React from 'react'
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
+import { forwardRef, type ComponentPropsWithoutRef, type ComponentRef } from 'react'
+import { Content, Root, Trigger } from '@radix-ui/react-collapsible'
 
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
-const Collapsible = CollapsiblePrimitive.Root
-const CollapsibleTrigger = CollapsiblePrimitive.Trigger
+const Collapsible = Root
+const CollapsibleTrigger = Trigger
 
-const CollapsibleContent = React.forwardRef<
-	React.ElementRef<typeof CollapsiblePrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>
->(({ className, ...props }, ref) => (
-	<CollapsiblePrimitive.Content
-		ref={ref}
-		className={cn(
-			'data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden',
-			className,
-		)}
-		{...props}
-	/>
-))
+const CollapsibleContent = forwardRef<ComponentRef<typeof Content>, ComponentPropsWithoutRef<typeof Content>>(
+	({ className, ...props }, ref) => (
+		<Content
+			ref={ref}
+			className={cn(
+				'data-[state=open]:animate-collapsible-in data-[state=closed]:animate-collapsible-out overflow-hidden',
+				className,
+			)}
+			{...props}
+		/>
+	),
+)
 
-CollapsibleContent.displayName = CollapsiblePrimitive.Content.displayName
+CollapsibleContent.displayName = Content.displayName
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+export { Collapsible, CollapsibleContent, CollapsibleTrigger }
