@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible'
 import { Image } from '@/components/ui/image'
 import type { HistoryItem } from '@/types/history'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const defaultButtonProps = {
 	as: 'a',
@@ -19,11 +19,11 @@ const defaultButtonProps = {
 	haptic: true,
 } as const
 
-interface Props {
+interface HistoryInfoProps {
 	data: HistoryItem
 }
 
-export function HistoryCommonInfo({ data }: Readonly<Props>) {
+export function HistoryCommonInfo({ data }: Readonly<HistoryInfoProps>) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	const __ = useTranslations('Default')

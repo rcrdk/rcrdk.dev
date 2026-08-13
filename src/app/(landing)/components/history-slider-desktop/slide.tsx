@@ -19,11 +19,11 @@ const SWIPER_CONFIG = {
 
 const MAX_VISIBLE_PROJECTS = 4
 
-interface Props {
+interface HistorySlideProps {
 	data: HistoryItem
 }
 
-export function HistorySliderDesktopSlide({ data }: Readonly<Props>) {
+export function HistorySliderDesktopSlide({ data }: Readonly<HistorySlideProps>) {
 	const hasProjects = data.projects.length > 0
 	const visibleProjects = data.projects.slice(0, MAX_VISIBLE_PROJECTS)
 	const hasMoreProjects = data.projects.length > MAX_VISIBLE_PROJECTS

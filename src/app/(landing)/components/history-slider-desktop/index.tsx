@@ -6,8 +6,7 @@ import { HistoryCommonIntro } from '@/app/(landing)/components/intro'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import type { HistoryItem } from '@/types/history'
-import { handleParentTouchEnd, handleParentTouchStart } from '@/utils/swiper'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, handleParentTouchEnd, handleParentTouchStart } from '@/utils'
 
 const RESIZE_DELAY = 150
 
@@ -24,7 +23,7 @@ const SWIPER_CONFIG = {
 	},
 } as const
 
-interface Props {
+interface HistorySliderDesktopProps {
 	title: string
 	buttonNextSlideText: string
 	text: string
@@ -32,7 +31,13 @@ interface Props {
 	section: 'experiences' | 'education'
 }
 
-export function HistorySliderDesktop({ title, buttonNextSlideText, text, list, section }: Readonly<Props>) {
+export function HistorySliderDesktop({
+	title,
+	buttonNextSlideText,
+	text,
+	list,
+	section,
+}: Readonly<HistorySliderDesktopProps>) {
 	const refContainer = useRef<HTMLDivElement>(null)
 	const swiperRef = useRef<SwiperRef>(null)
 

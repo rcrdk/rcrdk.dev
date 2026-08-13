@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react'
 import { IconArrowRight, IconPhotoOff } from '@tabler/icons-react'
-import { useLocale } from 'next-intl'
 
 import { LazyProjectDialog } from '@/app/components/project-dialog/lazy'
 import { Image } from '@/components/ui/image'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
+import { useCurrentLocale } from '@/hooks/use-current-locale'
 import { useGame } from '@/hooks/use-game'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useLazyMount } from '@/hooks/use-lazy-mount'
-import type { LocalesType } from '@/i18n/config'
 import { trackEvent } from '@/lib/track-event'
 import type { HistoryProject } from '@/types/history'
 
 const DISCOVER_PROJECT_DELAY_MS = 2500
 
-interface Props {
+interface ProjectCardProps {
 	data: HistoryProject
 }
 
-export function ProjectCard({ data }: Readonly<Props>) {
+export function ProjectCard({ data }: Readonly<ProjectCardProps>) {
 	const [open, setOpen] = useState(false)
 	const shouldMountDialog = useLazyMount(open)
 	const { onCompleteTask } = useGame()
@@ -39,7 +38,7 @@ export function ProjectCard({ data }: Readonly<Props>) {
 		return () => window.clearTimeout(timer)
 	}, [open, onCompleteTask])
 
-	const locale = useLocale() as LocalesType
+	const locale = useCurrentLocale()
 	const { title } = data?.[locale] || {}
 
 	return (

@@ -3,13 +3,13 @@ import { HistoryCommonIntro } from '@/app/(landing)/components/intro'
 import { AnimatedContent } from '@/components/animated/animated-content'
 import type { HistoryItem } from '@/types/history'
 
-interface Props {
+interface HistoryListMobileProps {
 	title: string
 	text: string
 	list: HistoryItem[]
 }
 
-export function HistoryListMobile({ title, text, list }: Readonly<Props>) {
+export function HistoryListMobile({ title, text, list }: Readonly<HistoryListMobileProps>) {
 	return (
 		<>
 			<AnimatedContent>

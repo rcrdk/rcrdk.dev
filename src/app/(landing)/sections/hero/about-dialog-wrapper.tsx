@@ -1,7 +1,12 @@
 'use client'
 
 import { useEffect, useState, type ReactNode } from 'react'
-import * as DialogComponent from '@radix-ui/react-dialog'
+import {
+	Close as DialogClose,
+	Content as DialogContent,
+	Portal as DialogPortal,
+	Root as DialogRoot,
+} from '@radix-ui/react-dialog'
 import { IconX } from '@tabler/icons-react'
 import { AnimatePresence } from 'motion/react'
 import { useTranslations } from 'next-intl'
@@ -15,8 +20,7 @@ import {
 	FULLSCREEN_EXIT_DURATION_S,
 	getDialogOverlayBaseClassName,
 } from '@/config/dialog'
-import { onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils/dialog'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, onDialogOpenAutoFocus, onDialogPointerDownOutside } from '@/utils'
 
 interface AboutDialogWrapperProps {
 	open: boolean
@@ -50,10 +54,10 @@ export function AboutDialogWrapper({
 	}
 
 	return (
-		<DialogComponent.Root open={isDialogOpen} onOpenChange={handleOpenChange}>
+		<DialogRoot open={isDialogOpen} onOpenChange={handleOpenChange}>
 			<AnimatePresence onExitComplete={handleExitComplete}>
 				{open && (
-					<DialogComponent.Portal key="dialog-fullscreen">
+					<DialogPortal key="dialog-fullscreen">
 						<MotionDiv
 							role="presentation"
 							aria-hidden
@@ -71,12 +75,12 @@ export function AboutDialogWrapper({
 							className="pointer-events-none fixed inset-x-0 top-0 z-101 flex h-[7.5rem] w-full items-center justify-center"
 							{...dialogCloseMotionProps}
 						>
-							<DialogComponent.Close className={dialogCloseButtonClassName} aria-label={__('close')}>
+							<DialogClose className={dialogCloseButtonClassName} aria-label={__('close')}>
 								<IconX className="size-7" aria-hidden />
-							</DialogComponent.Close>
+							</DialogClose>
 						</MotionDiv>
 
-						<DialogComponent.Content
+						<DialogContent
 							asChild
 							forceMount
 							onOpenAutoFocus={onDialogOpenAutoFocus}
@@ -91,10 +95,10 @@ export function AboutDialogWrapper({
 							>
 								<div className="scrollbar-hidden size-full overflow-x-hidden overflow-y-auto">{children}</div>
 							</MotionDiv>
-						</DialogComponent.Content>
-					</DialogComponent.Portal>
+						</DialogContent>
+					</DialogPortal>
 				)}
 			</AnimatePresence>
-		</DialogComponent.Root>
+		</DialogRoot>
 	)
 }

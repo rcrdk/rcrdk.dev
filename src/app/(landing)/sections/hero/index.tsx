@@ -14,7 +14,7 @@ import { FULL_DATES } from '@/config/dates'
 import { HERO_BUTTONS } from '@/constants/hero'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { yearsFromThen } from '@/lib/dayjs'
-import { scrollToSection } from '@/utils/scroll-to-section'
+import { scrollToSection } from '@/utils'
 
 export function Hero() {
 	const ref = useRef<HTMLDivElement>(null)

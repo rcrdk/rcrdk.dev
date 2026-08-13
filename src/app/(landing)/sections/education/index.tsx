@@ -8,8 +8,7 @@ import { Section } from '@/components/ui/section'
 import { APP_CONFIG } from '@/config/app'
 import { PROJECTS } from '@/data/projects/index'
 import { useWindowSize } from '@/hooks/use-window-size'
-import type { HistoryItem } from '@/types/history'
-import { enrichHistoryWithProjects } from '@/utils/enrich-history-with-projects'
+import { enrichHistoryWithProjects, toHistoryItems } from '@/utils'
 
 export function Education() {
 	const __ = useTranslations('Education')
@@ -18,7 +17,7 @@ export function Education() {
 	const isDesktop = width >= APP_CONFIG.DESKTOP_LAYOUT_BREAKPOINT
 
 	const { list, ...rest } = {
-		list: __.raw('list') as HistoryItem[],
+		list: toHistoryItems(__.raw('list')),
 		title: __('title'),
 		buttonNextSlideText: __('scrollButton'),
 		text: __.raw('text'),

@@ -1,6 +1,6 @@
 'use client'
 
-import * as DialogComponent from '@radix-ui/react-dialog'
+import { Close as DialogClose, Title as DialogTitle } from '@radix-ui/react-dialog'
 import { IconArrowLeft } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
@@ -36,21 +36,21 @@ export function HeroAboutDialogPanel({ open, onOpenChange }: Readonly<HeroAboutD
 				/>
 
 				<div className="xs:gap-5 flex max-w-[768px] flex-col gap-4">
-					<DialogComponent.Title className="font-heading xs:text-5xl text-3xl leading-none font-black tracking-tight text-balance sm:text-6xl dark:text-white">
+					<DialogTitle className="font-heading xs:text-5xl text-3xl leading-none font-black tracking-tight text-balance sm:text-6xl dark:text-white">
 						{__('aboutDialog.title')}
-					</DialogComponent.Title>
+					</DialogTitle>
 
 					<p className="xs:text-lg text-base leading-relaxed text-balance text-black/75 sm:text-lg dark:text-white/75">
 						{__('aboutDialog.description')}
 					</p>
 				</div>
 
-				<DialogComponent.Close asChild>
+				<DialogClose asChild>
 					<Button variant="outline" size="lg" haptic onClick={handleCloseDrawer} className="mt-4 max-sm:w-full">
 						<span>{__('aboutDialog.button')}</span>
 						<IconArrowLeft className="rotate-180" aria-hidden />
 					</Button>
-				</DialogComponent.Close>
+				</DialogClose>
 			</div>
 		</AboutDialogWrapper>
 	)

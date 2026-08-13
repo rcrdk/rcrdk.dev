@@ -6,16 +6,21 @@ import { useTranslations } from 'next-intl'
 
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { trackEvent } from '@/lib/track-event'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
-interface Props {
+interface ViewAllProjectsCardProps {
 	href: string
 	companySlug: string
 	totalCount: number
 	remainingCount: number
 }
 
-export function ViewAllProjectsCard({ href, companySlug, totalCount, remainingCount }: Readonly<Props>) {
+export function ViewAllProjectsCard({
+	href,
+	companySlug,
+	totalCount,
+	remainingCount,
+}: Readonly<ViewAllProjectsCardProps>) {
 	const __ = useTranslations('Share')
 
 	function handleClick() {
