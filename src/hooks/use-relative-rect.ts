@@ -8,37 +8,34 @@ export type RelativeRect = { left: number; top: number; width: number; height: n
 
 type UseRelativeRectParams = {
 	containerRef: RefObject<HTMLElement | null>
-	targetElement: HTMLElement | null
+	/** Resolved inside the layout effect — keep it memoized so the rect only recomputes when the target changes. */
+	getTarget: () => HTMLElement | null
 	enabled?: boolean
 	runOnMount?: boolean
 }
 
-export function useRelativeRect({
-	containerRef,
-	targetElement,
-	enabled = true,
-	runOnMount = true,
-}: UseRelativeRectParams) {
+export function useRelativeRect({ containerRef, getTarget, enabled = true, runOnMount = true }: UseRelativeRectParams) {
 	const [rect, setRect] = useState<RelativeRect>(null)
 
 	const updateRect = useCallback(() => {
 		const container = containerRef.current
+		const target = getTarget()
 
-		if (!container || !targetElement) {
+		if (!container || !target) {
 			setRect(null)
 			return
 		}
 
 		const containerRect = container.getBoundingClientRect()
-		const elementRect = targetElement.getBoundingClientRect()
+		const targetRect = target.getBoundingClientRect()
 
 		setRect({
-			left: elementRect.left - containerRect.left,
-			top: elementRect.top - containerRect.top,
-			width: elementRect.width,
-			height: elementRect.height,
+			left: targetRect.left - containerRect.left,
+			top: targetRect.top - containerRect.top,
+			width: targetRect.width,
+			height: targetRect.height,
 		})
-	}, [containerRef, targetElement])
+	}, [containerRef, getTarget])
 
 	useLayoutEffect(() => updateRect(), [updateRect])
 
