@@ -1,11 +1,11 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react'
 
 import { MotionDiv } from '@/components/animated/motion'
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const DEFAULT_DISTANCE = 90
 const DEFAULT_TENSION = 60
@@ -15,6 +15,7 @@ const DEFAULT_SCALE = 1
 const DEFAULT_THRESHOLD = 0.1
 const DEFAULT_DELAY = 0
 const DEFAULT_ROOT_MARGIN = '0px 0px 90px'
+const MILLISECONDS_IN_SECOND = 1000
 
 const IN_VIEW_ANIMATION = { x: 0, y: 0, scale: 1, opacity: 1 } as const
 
@@ -53,7 +54,7 @@ export function AnimatedContent({
 	rootMargin = DEFAULT_ROOT_MARGIN,
 	delay = DEFAULT_DELAY,
 }: Readonly<AnimatedContentProps>) {
-	const ref = useRef<React.ComponentRef<'div'> | null>(null)
+	const ref = useRef<ComponentRef<'div'> | null>(null)
 	const inView = useIntersectionObserver(ref, { threshold, rootMargin })
 	const [reduceMotion, setReduceMotion] = useState(false)
 	const [animationDone, setAnimationDone] = useState(false)
@@ -72,14 +73,18 @@ export function AnimatedContent({
 	const safeScale = Number.isFinite(scale) ? scale : DEFAULT_SCALE
 	const safeInitialOpacity = Number.isFinite(initialOpacity) ? initialOpacity : DEFAULT_INITIAL_OPACITY
 
-	const hasValidTension = config?.tension != null && Number.isFinite(config.tension) && config.tension > 0
-	const hasValidFriction = config?.friction != null && Number.isFinite(config.friction) && config.friction > 0
+	const tension = config?.tension
+	const friction = config?.friction
+	const mass = config?.mass
 
-	const stiffness = hasValidTension ? (config?.tension ?? DEFAULT_TENSION) : DEFAULT_TENSION
-	const damping = hasValidFriction ? (config?.friction ?? DEFAULT_FRICTION) : DEFAULT_FRICTION
+	const hasValidTension = Number.isFinite(tension) && Number(tension) > 0
+	const hasValidFriction = Number.isFinite(friction) && Number(friction) > 0
+	const hasValidMass = Number.isFinite(mass)
 
-	const delaySeconds = Number.isFinite(Number(delay)) ? Number(delay) / 1000 : 0
-	const hasValidMass = config?.mass != null && Number.isFinite(config.mass)
+	const stiffness = hasValidTension ? (tension ?? DEFAULT_TENSION) : DEFAULT_TENSION
+	const damping = hasValidFriction ? (friction ?? DEFAULT_FRICTION) : DEFAULT_FRICTION
+
+	const delaySeconds = Number.isFinite(Number(delay)) ? Number(delay) / MILLISECONDS_IN_SECOND : 0
 
 	const transition = useMemo(
 		() => ({
@@ -87,9 +92,9 @@ export function AnimatedContent({
 			stiffness: Number.isFinite(stiffness) ? stiffness : DEFAULT_TENSION,
 			damping: Number.isFinite(damping) ? damping : DEFAULT_FRICTION,
 			delay: delaySeconds >= 0 ? delaySeconds : 0,
-			...(hasValidMass && config?.mass != null && { mass: config.mass }),
+			...(hasValidMass && { mass }),
 		}),
-		[stiffness, damping, delaySeconds, hasValidMass, config?.mass],
+		[stiffness, damping, delaySeconds, hasValidMass, mass],
 	)
 
 	const initial = useMemo(
