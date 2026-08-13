@@ -20,13 +20,15 @@ export function ThemeSwitcher() {
 
 	const [mounted, setMounted] = useState(false)
 
+	const systemTheme = { mode: 'system', title: __('mode.default'), Icon: IconSunMoon }
+
 	const themesAvailable = [
-		{ mode: 'system', title: __('mode.default'), Icon: IconSunMoon },
+		systemTheme,
 		{ mode: 'light', title: __('mode.light'), Icon: IconSun },
 		{ mode: 'dark', title: __('mode.dark'), Icon: IconMoon },
 	]
 
-	const getActiveTheme = themesAvailable.find((theme) => theme.mode === currentTheme) ?? themesAvailable[0]
+	const getActiveTheme = themesAvailable.find((theme) => theme.mode === currentTheme) ?? systemTheme
 
 	function handleChangeTheme() {
 		const isSystemDarkTheme = resolvedTheme === 'dark'
