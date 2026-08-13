@@ -1,12 +1,13 @@
 'use client'
 
+import type { ComponentPropsWithoutRef, ElementType, MouseEvent, MouseEventHandler } from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 import type { AnalyticsEventData, AnalyticsEventName } from '@/config/analytics-events'
 import { useHaptics } from '@/hooks/use-haptics'
 import { trackEvent } from '@/lib/track-event'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 const baseVariants = cva(
 	cn(
@@ -73,12 +74,12 @@ const baseVariants = cva(
 
 type ButtonVariantsProps = VariantProps<typeof baseVariants>
 
-interface ButtonProps<T extends React.ElementType> {
+interface ButtonProps<T extends ElementType> {
 	as?: T
 	variant?: ButtonVariantsProps['variant']
 	size?: ButtonVariantsProps['size']
 	icon?: ButtonVariantsProps['icon']
-	onClick?: React.MouseEventHandler<any>
+	onClick?: MouseEventHandler<HTMLElement>
 	haptic?: boolean
 	analytics?: {
 		name: AnalyticsEventName
@@ -86,7 +87,7 @@ interface ButtonProps<T extends React.ElementType> {
 	}
 }
 
-export function Button<T extends React.ElementType = 'button'>({
+export function Button<T extends ElementType = 'button'>({
 	as,
 	variant = 'discret',
 	size = 'base',
@@ -96,12 +97,12 @@ export function Button<T extends React.ElementType = 'button'>({
 	haptic = false,
 	analytics,
 	...props
-}: Readonly<ButtonProps<T>> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
+}: Readonly<ButtonProps<T>> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
 	const Component = as || 'button'
 
 	const { triggerHaptic } = useHaptics()
 
-	function handleClick(e: React.MouseEvent<any>) {
+	function handleClick(e: MouseEvent<HTMLElement>) {
 		if (analytics) trackEvent(analytics.name, analytics.data)
 
 		onClick?.(e)
