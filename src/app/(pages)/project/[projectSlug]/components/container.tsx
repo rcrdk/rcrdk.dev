@@ -1,84 +1,41 @@
 'use client'
 
-import { IconBrandBehance, IconBrandGithub, IconExternalLink, IconPlayerPlay } from '@tabler/icons-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 import { PageContact } from '@/app/(pages)/components/contact'
+import { ProjectDescription } from '@/app/components/project-description'
 import { ProjectEntity } from '@/app/components/project-entity'
 import { ProjectGroup } from '@/app/components/project-group'
 import { ProjectImages } from '@/app/components/project-images'
-import { Button } from '@/components/ui/button'
+import { hasProjectLinks, ProjectLinks } from '@/app/components/project-links'
 import { Container } from '@/components/ui/container'
 import { Skill } from '@/components/ui/skill'
-import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import type { LocalesType } from '@/i18n/config'
-import type { HistoryProject, HistoryProjectDescription } from '@/types/history'
-import { formatList } from '@/utils/format-list'
-import { getProjectAttributions } from '@/utils/get-project-attributions'
-import { getProjectSkills } from '@/utils/get-project-skills'
+import { useCurrentLocale } from '@/hooks/use-current-locale'
+import type { HistoryProject } from '@/types/history'
+import { formatList, getProjectAttributions, getProjectSkills } from '@/utils'
 
-const BUTTON_PROPS = {
-	as: 'a',
-	variant: 'outline',
-	size: 'sm',
-	icon: true,
-	target: '_blank',
-	rel: 'noopener noreferrer',
-	haptic: true,
-} as const
-
-interface Props {
+interface ProjectContainerProps {
 	data: HistoryProject
 }
 
-export function ProjectContainer({ data }: Readonly<Props>) {
-	const locale = useLocale() as LocalesType
+export function ProjectContainer({ data }: Readonly<ProjectContainerProps>) {
+	const locale = useCurrentLocale()
 	const __ = useTranslations('Project')
 
 	const attributions = getProjectAttributions(data.attributions, locale)
 	const skills = getProjectSkills(data)
 
-	const title = data[locale].title
-	const description = data[locale].description
+	const { title, description } = data[locale]
 
 	const hasGallery = data.gallery.length > 0
-	const hasLinks = data.links.website || data.links.github || data.links.behance || data.links.video
-
-	const renderDescription = (description: HistoryProjectDescription) => {
-		if (typeof description === 'string')
-			return (
-				<p
-					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&>a]:underline"
-					dangerouslySetInnerHTML={{ __html: description }}
-				/>
-			)
-
-		return description.map((item) => {
-			if (item.type === 'title')
-				return (
-					<h2
-						key={item.value}
-						className="font-heading mb-6 text-2xl font-bold tracking-tight text-balance md:text-3xl lg:text-4xl dark:text-white [&:not(:first-child)]:mt-8"
-						dangerouslySetInnerHTML={{ __html: item.value }}
-					/>
-				)
-
-			return (
-				<p
-					key={item.value}
-					className="[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&:not(:first-child)]:mt-4 [&>a]:underline"
-					dangerouslySetInnerHTML={{ __html: item.value }}
-				/>
-			)
-		})
-	}
+	const hasLinks = hasProjectLinks(data.links)
 
 	return (
 		<div className="w-full overflow-hidden bg-black/2">
 			<ProjectImages
 				image={data.image}
 				gallery={data.gallery}
-				title={data[locale].title}
+				title={title}
 				classes={{
 					singleImage:
 						'aspect-6/1 w-full overflow-hidden bg-black [&_img]:scale-125 [&_img]:opacity-85 [&_img]:blur-sm',
@@ -91,7 +48,9 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 						{title}
 					</h1>
 
-					<div>{renderDescription(description)}</div>
+					<div>
+						<ProjectDescription description={description} variant="page" />
+					</div>
 
 					{description && <hr className="my-7 border-black/15 md:my-12 dark:border-white/15" />}
 
@@ -123,68 +82,12 @@ export function ProjectContainer({ data }: Readonly<Props>) {
 						</ProjectGroup>
 
 						<ProjectGroup hasGallery={hasGallery} title={__('categories')}>
-							<p className="text-black/50 dark:text-white/50">{formatList(data.categories, locale)}</p>
+							<p className="text-black/50 dark:text-white/50">{formatList({ items: data.categories, locale })}</p>
 						</ProjectGroup>
 
 						{hasLinks && (
 							<ProjectGroup hasGallery title={__('links')}>
-								<div className="flex gap-2">
-									{data.links.website && (
-										<Button
-											{...BUTTON_PROPS}
-											href={data.links.website}
-											title={__('website')}
-											analytics={{
-												name: ANALYTICS_EVENTS.projectLinkClick,
-												data: { type: 'website', slug: data.slug },
-											}}
-										>
-											<IconExternalLink aria-hidden />
-										</Button>
-									)}
-
-									{data.links.github && (
-										<Button
-											{...BUTTON_PROPS}
-											href={data.links.github}
-											title={__('github')}
-											analytics={{
-												name: ANALYTICS_EVENTS.projectLinkClick,
-												data: { type: 'github', slug: data.slug },
-											}}
-										>
-											<IconBrandGithub aria-hidden />
-										</Button>
-									)}
-
-									{data.links.behance && (
-										<Button
-											{...BUTTON_PROPS}
-											href={data.links.behance}
-											title={__('behance')}
-											analytics={{
-												name: ANALYTICS_EVENTS.projectLinkClick,
-												data: { type: 'behance', slug: data.slug },
-											}}
-										>
-											<IconBrandBehance aria-hidden />
-										</Button>
-									)}
-
-									{data.links.video && (
-										<Button
-											{...BUTTON_PROPS}
-											href={data.links.video}
-											title={__('video')}
-											analytics={{
-												name: ANALYTICS_EVENTS.projectLinkClick,
-												data: { type: 'video', slug: data.slug },
-											}}
-										>
-											<IconPlayerPlay aria-hidden />
-										</Button>
-									)}
-								</div>
+								<ProjectLinks links={data.links} size="sm" slug={data.slug} />
 							</ProjectGroup>
 						)}
 					</div>
