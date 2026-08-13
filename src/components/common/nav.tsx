@@ -1,24 +1,26 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { AnimatePresence } from 'motion/react'
+import { useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { AnimatedContent } from '@/components/animated/animated-content'
-import { MotionDiv } from '@/components/animated/motion'
+import { NavHoverBackground } from '@/components/common/nav-hover-background'
 import { NavLink } from '@/components/common/nav-link'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
-import { useResizeObserver } from '@/hooks/use-resize-observer'
+import { useRelativeRect } from '@/hooks/use-relative-rect'
 import { trackEvent } from '@/lib/track-event'
-import { scrollToSection } from '@/utils/scroll-to-section'
-import { cn } from '@/utils/tailwind-cn'
+import { cn, scrollToSection } from '@/utils'
 
 const NAV_DISTANCE = 65
 const NAV_TENSION = 60
 const NAV_FRICTION = 15
 const NAV_ROOT_MARGIN = '65px 0px 0px'
 const DELAY_INCREMENT = 100
+
+const LINK_CLASSNAME = cn(
+	'squircle-rounded focus-visible:border-accent-blue focus-visible:text-accent-blue block rounded-2xl border border-transparent px-3.5 py-2.5 text-sm text-black/60 transition-colors duration-300 hover:text-black dark:text-white/50 dark:hover:text-white',
+	'focus-visible:ring-accent-blue/40 cursor-pointer outline-none focus-visible:ring-4 dark:text-white/50',
+)
 
 const ITEMS = [
 	{ href: '#about', label: 'navigation.about' },
@@ -28,62 +30,37 @@ const ITEMS = [
 	{ href: '#contact', label: 'navigation.contact' },
 ]
 
-interface Props {
+interface NavProps {
 	slot: 'header' | 'page'
 }
 
-type BackgroundRect = { left: number; top: number; width: number; height: number } | null
-
-export function Nav({ slot }: Readonly<Props>) {
+export function Nav({ slot }: Readonly<NavProps>) {
 	const [containerHovered, setContainerHovered] = useState(false)
 	const [hoveredHref, setHoveredHref] = useState<string | null>(null)
-	const [backgroundRect, setBackgroundRect] = useState<BackgroundRect>(null)
 
 	const __ = useTranslations('Default')
 
 	const contentRef = useRef<HTMLDivElement>(null)
 	const linkRefs = useRef<(HTMLDivElement | null)[]>([])
 
-	const linkClass = cn(
-		'squircle-rounded focus-visible:border-accent-blue focus-visible:text-accent-blue block rounded-2xl border border-transparent px-3.5 py-2.5 text-sm text-black/60 transition-colors duration-300 hover:text-black dark:text-white/50 dark:hover:text-white',
-		'focus-visible:ring-accent-blue/40 cursor-pointer outline-none focus-visible:ring-4 dark:text-white/50',
-	)
-
 	const isSlotHeader = slot === 'header'
 	const isSlotPage = slot === 'page'
-	const showBackground = containerHovered && hoveredHref != null
+	const showBackground = containerHovered && Boolean(hoveredHref)
 
-	const updateBackgroundRect = useCallback(() => {
-		const content = contentRef.current
+	const hoveredIndex = ITEMS.findIndex((item) => item.href === hoveredHref)
+	const hoveredElement = hoveredIndex >= 0 ? (linkRefs.current.at(hoveredIndex) ?? null) : null
 
-		if (!content || !hoveredHref) {
-			setBackgroundRect(null)
-			return
-		}
+	const backgroundRect = useRelativeRect({
+		containerRef: contentRef,
+		targetElement: hoveredElement,
+		enabled: showBackground,
+		runOnMount: false,
+	})
 
-		const index = ITEMS.findIndex((i) => i.href === hoveredHref)
-		const linkEl = linkRefs.current[index]
-		if (!linkEl) {
-			setBackgroundRect(null)
-			return
-		}
-
-		const contentRect = content.getBoundingClientRect()
-		const linkRect = linkEl.getBoundingClientRect()
-
-		setBackgroundRect({
-			left: linkRect.left - contentRect.left,
-			top: linkRect.top - contentRect.top,
-			width: linkRect.width,
-			height: linkRect.height,
-		})
-	}, [hoveredHref])
-
-	useEffect(() => updateBackgroundRect(), [updateBackgroundRect])
-
-	useResizeObserver(contentRef, updateBackgroundRect, { enabled: showBackground, runOnMount: false })
-
-	const showBackgroundHovered = showBackground && backgroundRect
+	function handleMouseLeave() {
+		setContainerHovered(false)
+		setHoveredHref(null)
+	}
 
 	return (
 		<div
@@ -94,35 +71,10 @@ export function Nav({ slot }: Readonly<Props>) {
 					'layout:flex layout-sm:fixed before:bg-glass-light/65 dark:before:bg-glass-dark/65 before:squircle-rounded absolute top-10 right-11 z-50 -mr-2 hidden before:absolute before:inset-0 before:-translate-y-full before:rounded-xl before:opacity-0 before:backdrop-blur-xs before:transition-[opacity,transform] before:duration-1000 [&:has([data-state="open"])]:before:translate-y-0 [&:has([data-state="open"])]:before:opacity-100',
 			)}
 			onMouseEnter={() => setContainerHovered(true)}
-			onMouseLeave={() => {
-				setContainerHovered(false)
-				setHoveredHref(null)
-			}}
+			onMouseLeave={handleMouseLeave}
 		>
-			<div ref={contentRef} className={cn('relative flex items-center')}>
-				<AnimatePresence>
-					{showBackgroundHovered && (
-						<MotionDiv
-							className="squircle-rounded pointer-events-none absolute z-0 rounded-2xl border border-black/15 bg-white dark:border-white/15 dark:bg-white/20"
-							transition={DEFAULT_MOTION_SPRING_CONFIG}
-							initial={{
-								opacity: 0,
-								left: backgroundRect.left,
-								top: backgroundRect.top,
-								width: backgroundRect.width,
-								height: backgroundRect.height,
-							}}
-							animate={{
-								opacity: 1,
-								left: backgroundRect.left,
-								top: backgroundRect.top,
-								width: backgroundRect.width,
-								height: backgroundRect.height,
-							}}
-							exit={{ opacity: 0 }}
-						/>
-					)}
-				</AnimatePresence>
+			<div ref={contentRef} className="relative flex items-center">
+				<NavHoverBackground rect={showBackground ? backgroundRect : null} />
 
 				{ITEMS.map((item, index) => (
 					<AnimatedContent
@@ -135,7 +87,7 @@ export function Nav({ slot }: Readonly<Props>) {
 					>
 						<NavLink
 							href={item.href}
-							className={linkClass}
+							className={LINK_CLASSNAME}
 							onClick={(e) => {
 								trackEvent(ANALYTICS_EVENTS.navClick, { section: item.href.replace('#', '') })
 								scrollToSection(e, item.href)

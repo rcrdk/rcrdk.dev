@@ -1,13 +1,15 @@
-import { cn } from '@/utils/tailwind-cn'
+import type { AnchorHTMLAttributes, Ref } from 'react'
+
+import { cn } from '@/utils'
 
 interface NavLinkProps
 	extends Pick<
-		React.AnchorHTMLAttributes<HTMLAnchorElement>,
+		AnchorHTMLAttributes<HTMLAnchorElement>,
 		'href' | 'className' | 'onClick' | 'aria-controls' | 'children'
 	> {
 	showActive: boolean
 	onHoverChange: (hovered: boolean) => void
-	linkRef: React.Ref<HTMLDivElement>
+	linkRef: Ref<HTMLDivElement>
 }
 
 export function NavLink({
