@@ -1,20 +1,20 @@
 import { MotionButton, MotionDiv } from '@/components/animated/motion'
 import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
 import type { SkillCategories } from '@/data/skills'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 type Category = {
 	id: SkillCategories
 	title: string
 }
 
-interface Props {
+interface SkillCategoryButtonProps {
 	category: Category
 	selected: boolean
 	onSelect: VoidFunction
 }
 
-export function SkillCategoryButton({ category, selected, onSelect }: Readonly<Props>) {
+export function SkillCategoryButton({ category, selected, onSelect }: Readonly<SkillCategoryButtonProps>) {
 	const tabIndex = selected ? -1 : 0
 
 	return (

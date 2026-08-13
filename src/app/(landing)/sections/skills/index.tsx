@@ -3,34 +3,39 @@
 import { useCallback, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
+import { SkillsList } from '@/app/(landing)/sections/skills/skills-list'
 import { AnimatedContent } from '@/components/animated/animated-content'
-import { MotionDiv } from '@/components/animated/motion'
 import { Section } from '@/components/ui/section'
-import { Skill } from '@/components/ui/skill'
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
-import { DEFAULT_MOTION_SPRING_CONFIG } from '@/config/motion'
-import type { SkillCategories } from '@/data/skills'
+import type { SkillCategories, SkillItem } from '@/data/skills'
 import { SKILLS_LIST } from '@/data/skills'
 import { useHaptics } from '@/hooks/use-haptics'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { trackEvent } from '@/lib/track-event'
 import { SkillCategoryButton } from './category-button'
 
-type SoftSkillTranslationKey =
-	| 'communication'
-	| 'team-collaboration'
-	| 'problem-solving'
-	| 'critical-thinking'
-	| 'code-review'
-	| 'time-management'
-	| 'technical-writing'
-	| 'continuous-learning'
-	| 'ownership'
-	| 'ai-assisted-development'
+const SOFT_SKILLS_CATEGORY: SkillCategories = 'soft-skills'
+
+const SOFT_SKILL_TRANSLATION_KEYS = new Set<string>([
+	'communication',
+	'team-collaboration',
+	'problem-solving',
+	'critical-thinking',
+	'code-review',
+	'time-management',
+	'technical-writing',
+	'continuous-learning',
+	'ownership',
+	'ai-assisted-development',
+])
+
+type SkillCategoryOption = { id: SkillCategories; title: string }
+
+const toCategoryOptions = (value: unknown): SkillCategoryOption[] => (Array.isArray(value) ? value : [])
 
 export function Skills() {
 	const __ = useTranslations('Skills')
-	const categories = __.raw('categories') as { id: SkillCategories; title: string }[]
+	const categories = toCategoryOptions(__.raw('categories'))
 
 	const { triggerHaptic } = useHaptics()
 
@@ -58,9 +63,16 @@ export function Skills() {
 		setSelectedCategory(category)
 	}
 
+	function getSkillLabel(skill: SkillItem) {
+		const isSoftSkill = selectedCategory === SOFT_SKILLS_CATEGORY && SOFT_SKILL_TRANSLATION_KEYS.has(skill.title)
+		if (!isSoftSkill) return undefined
+
+		return __(`softSkills.${skill.title}`)
+	}
+
 	useResizeObserver(contentRef, updateHeight, { runOnMount: true })
 
-	const containerHeight = contentHeight != null ? `${contentHeight}px` : 'auto'
+	const containerHeight = Number.isFinite(contentHeight) ? `${contentHeight}px` : 'auto'
 
 	return (
 		<Section classNameCenter="max-xs:pt-9" className="layout:border-t- relative z-1">
@@ -93,29 +105,7 @@ export function Skills() {
 					className="h-[var(--height)] [transition:height_500ms_ease]"
 					style={{ '--height': containerHeight }}
 				>
-					<MotionDiv layout className="xs:gap-2 flex flex-wrap gap-1 md:gap-3">
-						<div ref={contentRef} className="xs:gap-2 flex flex-wrap gap-1 md:gap-3">
-							{skills.map((item, index) => {
-								const label =
-									selectedCategory === 'soft-skills'
-										? __(`softSkills.${item.title as SoftSkillTranslationKey}`)
-										: undefined
-
-								return (
-									<MotionDiv
-										key={item.title}
-										layout
-										initial={{ opacity: 0, y: 40, scale: 0.8 }}
-										animate={{ opacity: 1, y: 0, scale: 1 }}
-										exit={{ opacity: 0, y: -40, scale: 0.8 }}
-										transition={{ ...DEFAULT_MOTION_SPRING_CONFIG, delay: index * 0.015 }}
-									>
-										<Skill skill={item} label={label} />
-									</MotionDiv>
-								)
-							})}
-						</div>
-					</MotionDiv>
+					<SkillsList skills={skills} contentRef={contentRef} getLabel={getSkillLabel} />
 				</div>
 			</AnimatedContent>
 		</Section>
