@@ -16,7 +16,7 @@ export const getProjectAttributions = (
 ): ProjectWithAttribution[] => {
 	if (!attributions) return []
 
-	return attributions.map(({ id, roles }) => {
+	const projectAttributions = attributions.map(({ id, roles }) => {
 		const attribution = ATTRIBUTIONS[id]
 		const rolesTranslated = roles.map((role) => ROLES[role][locale])
 
@@ -28,4 +28,6 @@ export const getProjectAttributions = (
 			roles: rolesTranslated,
 		}
 	})
+
+	return projectAttributions
 }

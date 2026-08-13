@@ -7,6 +7,7 @@ export const getHistoryItemBySlug = async (
 	locale: LocalesType,
 ): Promise<HistoryItem | undefined> => {
 	const list = await getHistoryLists(locale)
+	const historyItem = list.find((item) => item.slug === companySlug)
 
-	return list.find((item) => item.slug === companySlug)
+	return historyItem
 }
