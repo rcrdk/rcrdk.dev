@@ -1,5 +1,9 @@
 import type { HistoryProjectDescription } from '@/types/history'
 
+// Security invariant: `description` may only carry markup authored in `src/data/`
+// or `src/i18n/messages/`, which are committed and reviewed. Never pass user-,
+// CMS-, or API-supplied strings here — `dangerouslySetInnerHTML` does not escape.
+
 const PARAGRAPH_BASE_CLASSNAME = '[&>a]:text-accent-blue text-pretty text-black/75 dark:text-white/75 [&>a]:underline'
 
 const VARIANT_CLASSNAMES = {
