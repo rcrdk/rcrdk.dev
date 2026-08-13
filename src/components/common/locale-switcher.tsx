@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, type ComponentRef } from 'react'
+import { useCallback, useRef, type ComponentRef } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { MotionDiv } from '@/components/animated/motion'
@@ -45,21 +45,16 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<LocaleSwitcher
 
 	const containerRef = useRef<ComponentRef<'div'> | null>(null)
 	const itemRefs = useRef<Partial<Record<LocalesType, ComponentRef<'button'>>>>({})
-	const [activeElement, setActiveElement] = useState<ComponentRef<'button'> | null>(null)
 
-	const indicator = useRelativeRect({ containerRef, targetElement: activeElement })
+	const getActiveElement = useCallback(() => itemRefs.current[currentLocale] ?? null, [currentLocale])
 
-	function registerItemRef(locale: LocalesType, element: ComponentRef<'button'> | null) {
-		itemRefs.current[locale] = element ?? undefined
-		if (locale === currentLocale) setActiveElement(element)
-	}
+	const indicator = useRelativeRect({ containerRef, getTarget: getActiveElement })
 
 	function handleChangeLocale(nextLocale: LocalesType) {
 		if (nextLocale === currentLocale) return
 
 		trackEvent(ANALYTICS_EVENTS.localeChange, { locale: nextLocale })
 		triggerHaptic()
-		setActiveElement(itemRefs.current[nextLocale] ?? null)
 		void setLocale(nextLocale)
 	}
 
@@ -96,7 +91,9 @@ export function LocaleSwitcher({ variant = 'vertical' }: Readonly<LocaleSwitcher
 						acronym={lang.acronym}
 						isActive={currentLocale === lang.prefix}
 						onSelect={() => handleChangeLocale(lang.prefix)}
-						itemRef={(element) => registerItemRef(lang.prefix, element)}
+						itemRef={(element) => {
+							itemRefs.current[lang.prefix] = element ?? undefined
+						}}
 					/>
 				))}
 			</div>
