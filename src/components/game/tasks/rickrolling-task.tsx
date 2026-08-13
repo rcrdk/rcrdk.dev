@@ -1,16 +1,16 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, type Dispatch, type SetStateAction } from 'react'
 import { IconMicrophone } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { useGame } from '@/hooks/use-game'
 import { env } from '@/lib/env'
-import { cn } from '@/utils/tailwind-cn'
+import { cn } from '@/utils'
 
 interface RickRollingGameTaskButtonProps {
-	onShowAnimated: React.Dispatch<React.SetStateAction<boolean>>
+	onShowAnimated: Dispatch<SetStateAction<boolean>>
 }
 
 export function RickRollingGameTaskButton({ onShowAnimated }: Readonly<RickRollingGameTaskButtonProps>) {

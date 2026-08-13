@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
-import type { GameTaskUser } from '@/context/game-context'
+import type { GameTaskUser } from '@/types/game'
 
 interface GameToastProps {
 	task: GameTaskUser

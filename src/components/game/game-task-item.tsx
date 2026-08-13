@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
-import type { GameTaskUser } from '@/context/game-context'
-import { cn } from '@/utils/tailwind-cn'
+import type { GameTaskUser } from '@/types/game'
+import { cn } from '@/utils'
 
 interface GameTaskItemProps {
 	task: GameTaskUser
