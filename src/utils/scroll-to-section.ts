@@ -1,5 +1,7 @@
-export const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, selector: string) => {
-	e?.preventDefault()
+import type { MouseEvent } from 'react'
+
+export const scrollToSection = (event: MouseEvent<HTMLElement> | null, selector: string) => {
+	event?.preventDefault()
 
 	document.querySelector(selector)?.scrollIntoView({
 		behavior: 'smooth',
