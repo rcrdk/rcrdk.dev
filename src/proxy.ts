@@ -7,14 +7,15 @@ import { detectLocaleFromAcceptLanguage } from '@/i18n/detect-locale'
 const NOINDEX_HEADER = 'noindex, nofollow, noarchive'
 const STATIC_FILE_EXTENSION = /\.(avif|gif|ico|jpe?g|pdf|png|svg|webp)$/i
 
+const IGNORE_PAGE_PATTERNS = [/^\/project\/([^/]+)$/, /^\/projects\/([^/]+)$/]
+
 const isIgnorePagePath = (pathname: string) => {
-	const projectPage = pathname.match(/^\/project\/([^/]+)$/)
-	if (projectPage) return !STATIC_FILE_EXTENSION.test(projectPage[1])
+	const matchedSlug = IGNORE_PAGE_PATTERNS.map((pattern) => pathname.match(pattern)?.at(1)).find(Boolean)
+	if (!matchedSlug) return false
 
-	const companyProjectsPage = pathname.match(/^\/projects\/([^/]+)$/)
-	if (companyProjectsPage) return !STATIC_FILE_EXTENSION.test(companyProjectsPage[1])
+	const isStaticFile = STATIC_FILE_EXTENSION.test(matchedSlug)
 
-	return false
+	return !isStaticFile
 }
 
 export default async function proxy(request: NextRequest & { ip?: string }) {
