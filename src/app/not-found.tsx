@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { AnimatedContent } from '@/components/animated/animated-content'
 import { AnimatedSplitText } from '@/components/animated/animated-split-text'
-import FollowCursor from '@/components/animated/follow-cursor'
+import { FollowCursor } from '@/components/animated/follow-cursor'
 import { Button } from '@/components/ui/button'
 
 import '@/styles/globals.css'

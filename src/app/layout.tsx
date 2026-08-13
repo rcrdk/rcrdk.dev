@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react'
+
 import '@/styles/globals.css'
 import '@/styles/tetris.css'
 
 import type { Metadata, Viewport } from 'next'
-import { getLocale, getMessages, getTranslations } from 'next-intl/server'
+import { getMessages, getTranslations } from 'next-intl/server'
 
 import profilePicture from '@/assets/avatar.jpg'
 import { UmamiAnalytics } from '@/components/analytics/umami'
@@ -11,12 +13,12 @@ import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { Providers } from '@/components/providers'
 import { FULL_DATES } from '@/config/dates'
 import { LINKS } from '@/config/links'
-import type { LocalesType } from '@/i18n/config'
+import { getCurrentLocale } from '@/i18n/get-current-locale'
 import { yearsFromThen } from '@/lib/dayjs'
 import { env } from '@/lib/env'
 
-interface Props {
-	children: React.ReactNode
+interface RootLayoutProps {
+	children: ReactNode
 }
 
 export const metadata: Metadata = {
@@ -38,8 +40,8 @@ export const viewport: Viewport = {
 	],
 }
 
-export default async function RootLayout({ children }: Readonly<Props>) {
-	const locale = (await getLocale()) as LocalesType
+export default async function RootLayout({ children }: Readonly<RootLayoutProps>) {
+	const locale = await getCurrentLocale()
 	const messages = await getMessages()
 	const __ = await getTranslations('Seo')
 
