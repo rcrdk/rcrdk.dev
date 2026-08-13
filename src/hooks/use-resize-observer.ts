@@ -10,7 +10,7 @@ interface UseResizeObserverOptions {
 
 export function useResizeObserver(
 	ref: RefObject<Element | null>,
-	callback: () => void,
+	callback: VoidFunction,
 	options: UseResizeObserverOptions = {},
 ): void {
 	const { enabled = true, runOnMount = true } = options
