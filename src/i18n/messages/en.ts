@@ -11,15 +11,15 @@ const messages = {
 			'At the same time, between 2014 and 2017, I pursued a degree in <strong>Advertising and Marketing</strong>. Although I never worked directly in this field, the degree added a lot of value to my work, providing insights into <strong>design, marketing, consumer behavior, and technology.</strong>',
 			'In 2017, within Sou Digital, what is now known as <strong>Sonica</strong> was born — a <strong>no-code</strong> platform designed to deliver functional and customizable websites without the need to deal with code. Today, Sonica is a startup positioned as a <strong>multi-chain</strong> platform for asset tokenization, focused on developing an ecosystem that connects originators, tokenizers, and distributors.',
 			'From 2019 onwards, as I transitioned to <strong>remote work</strong>, I took the opportunity to dive deeper into my studies and enhance my skills in <strong>React, Next.js, TypeScript, Node.js, PHP, and Laravel.</strong> I kept working in my previous position at <strong>Sou Digital</strong> and also worked as a front-end developer at <strong>Meu Rosinha</strong> helping to build a web app for beauty consultants, and of course, working with these modern technologies.',
-			'For 2025, I challenged myself to make this year a watershed year. So, my main goal was to find a new position as front-end developer and I did it by starting at <strong>MySide</strong>, a real estate brazilian startup. But this history is yet to be written.',
-			'My main focus in these last few years was to work with the <strong>JavaScript</strong> ecosystem, most specifically with <strong>React</strong>, but always remaining open to exploring <strong>other frameworks</strong> or even mobile development with <strong>React Native</strong>, which I am currently learning. On the back-end, <strong>Node.js</strong> has become a natural complement to <strong>Next.js</strong> or even using one of its frameworks like <strong>Fastify</strong>, while <strong>PHP and Laravel</strong> serve as more of a backup solution when needed.',
-			'<strong>In the future,</strong> my goal is to continue growing as a developer, exploring <strong>new technologies,</strong> and getting involved in challenging projects where I can leave a meaningful mark. While my focus remains on front-end development, I am always looking for new tools and best practices to expand my skill set. <strong>I want to collaborate with innovative teams, share knowledge, and contribute to the creation of products that truly make a difference.</strong> I strive to always keep moving forward—one day at a time, one line of code at a time.',
+			'In 2025, I joined <strong>MySide</strong>, a Brazilian real estate startup, as <strong>senior front-end engineer</strong>, my last position to date. In a lean startup squad, I owned the front-end architecture of <strong>Hero</strong>, an AI-powered product for Personal Shoppers, until leaving in <strong>2026</strong>.',
+			'My focus is <strong>front-end architecture</strong>, building <strong>SaaS products, PWAs,</strong> and complex user experiences with <strong>React, Next.js, and TypeScript</strong>. I have hands-on experience with <strong>AI-integrated products</strong> (chat, audio transcription, and browser persistence) and use <strong>AI-assisted engineering</strong> in my daily workflow. I can work across the stack with <strong>Node.js, PHP, and Laravel</strong>, but my deepest expertise and ownership stay on the front-end.',
+			'<strong>Today,</strong> I am looking for my next role as a <strong>senior front-end engineer</strong> in product teams that value autonomy, technical quality, and collaboration. I want to keep building products that matter, close to product and business, with real ownership over the solutions I ship.',
 		],
 	},
 	Contact: {
 		title: 'Contact me',
 		pagesTitle: "What's up?",
-		text: "<strong>How about we have a chat?</strong> I’m open to talking and exploring new opportunities. Feel free to reach out to me at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let’s connect!</strong>",
+		text: "<strong>Looking for my next role as a senior front-end engineer.</strong> I'm open to product teams that value autonomy, technical quality, and collaboration. Reach out at <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> or through my social media. <strong>Let's connect!</strong>",
 		buttons: {
 			linkedin: 'Connect with me on LinkedIn',
 			github: 'Check out my projects and activities on GitHub',
@@ -225,10 +225,11 @@ const messages = {
 		},
 	},
 	Seo: {
-		title: 'Ricardo Augusto Kowalski | Front-End Developer',
+		title: 'Ricardo Augusto Kowalski | Senior Front-End Engineer',
 		description:
-			'Front-end developer with over {years} years of experience, specializing in TypeScript, React, Next.js, and Node.js. Passionate about technology, coffee, and playlists, creating solutions like web apps, websites, landing pages and online stores.',
+			'Senior front-end engineer with over {years} years of experience, specializing in TypeScript, React, Next.js, and front-end architecture. Builds scalable PWAs, SaaS products, and AI-integrated web applications. Open to senior front-end roles.',
 		keywords: [
+			'senior front-end engineer',
 			'front-end developer',
 			'web developer',
 			'React',
@@ -255,9 +256,19 @@ const messages = {
 			'Santa Catarina',
 			'remote developer',
 			'digital projects',
+			'PWA',
+			'SaaS',
+			'front-end architecture',
+			'AI-assisted development',
 			'clean code best practices',
 		],
-		jobTitle: 'Front-End Engineer',
+		projects: {
+			'hero-mobile':
+				'Hero Mobile, an internal MySide PWA with AI chat, offline-first architecture, Service Workers, IndexedDB conversation history, and negotiation pipeline for 40+ Personal Shoppers.',
+			'hero-desktop':
+				'Hero Desktop, an internal MySide web app with Google Maps property search, negotiation pipeline, interactive presentation tool, and front-end architecture by Ricardo Augusto Kowalski.',
+		},
+		jobTitle: 'Senior Front-End Engineer',
 	},
 	NotFound: {
 		title: 'Page not found',
@@ -265,7 +276,7 @@ const messages = {
 	},
 	Experiences: {
 		title: 'Work experience',
-		text: "I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. I'm currently building <strong>Hero</strong> a smart assistant for <strong>MySide</strong> Personal Shoppers.",
+		text: 'I have been working as a <strong>front-end developer</strong> since 2013, when I joined <strong>Sou Digital.</strong> In the last years I worked on <strong>Meu Rosinha</strong>, on <strong>Sonica</strong>, and with other side projects. My last role was at <strong>MySide</strong>, where I built <strong>Hero</strong>, a smart assistant for Personal Shoppers.',
 		scrollButton: 'Drag to see my experiences',
 		list: [
 			{
@@ -275,17 +286,17 @@ const messages = {
 				companyLinkedinUrl: 'https://www.linkedin.com/company/myside',
 				companyLogo: '/companies/myside.jpeg',
 				companyLogoAlt: 'Logo of MySide',
-				title: 'Front-End Developer at MySide',
-				timeRange: '2025 - Present',
+				title: 'Senior Front-End Engineer at MySide',
+				timeRange: '2025 - 2026',
 				location: 'Florianópolis, SC, Brazil',
 				remoteOrPresencial: 'Remote',
 				description: [
-					'Developed <strong>Hero</strong>, an internal intelligent assistant used daily by <strong>40+</strong> Personal Shoppers for real estate service and negotiation workflows.',
-					'Used <strong>AI tools</strong> during development to generate components, business logic, and automated tests, optimizing implementation time and solution experimentation.',
-					'Built two main products: a <strong>mobile PWA</strong> with AI-integrated chat for querying developments, builders, and property types, plus a negotiation pipeline module with task and event management; and a <strong>desktop application</strong> featuring negotiation management, property search, and an interactive presentation tool used during initial strategic client meetings.',
-					'Designed and implemented front-end architecture using <strong>React 19, Next.js 15 (App Router) and TypeScript</strong>, focusing on scalability, performance, and modular organization.',
-					'Implemented offline-first strategies with <strong>Service Workers, IndexedDB, and cache persistence</strong>, ensuring continuous application usage even under unstable connectivity.',
-					'Structured unit and component testing using <strong>Jest and React Testing Library</strong>.',
+					'Built <strong>Hero</strong>, an internal product used daily by <strong>40+</strong> Personal Shoppers in real estate service and negotiation workflows, within a lean startup squad.',
+					'Owned <strong>front-end architecture</strong> (componentization, code patterns, and library choices) with <strong>React 19, Next.js 15 (App Router), and TypeScript</strong>.',
+					'Shipped a mobile <strong>PWA</strong> with AI chat, property search, negotiation pipeline, task management, and offline-first with Service Workers and IndexedDB, plus a <strong>desktop app</strong> with Google Maps search and interactive presentations for strategic client meetings.',
+					'Delivered AI product features including chat API integration and audio transcription, partnering with <strong>Product Manager and Designer</strong> on refinement and technical planning.',
+					'Accelerated delivery with <strong>AI-assisted engineering workflows</strong> for components, business logic, and tests through QA, pull requests, and CI/CD.',
+					'Structured testing with <strong>Jest, Vitest, and React Testing Library</strong>.',
 				],
 			},
 			{
@@ -300,11 +311,11 @@ const messages = {
 				location: 'Timbó, SC, Brazil',
 				remoteOrPresencial: 'Remote',
 				description: [
-					'Development of several projects including a <strong>website, a web application, and an online store</strong>. In the past I also worked on legacy projects.',
-					'Migrated and upgraded the stack to <strong>React, Next.js, and TypeScript</strong>, ensuring greater scalability, maintainability, and long-term technical sustainability.',
-					'<strong>Re-architected the front-end structure</strong> focusing on componentization and reuse, reducing complexity and enabling continuous product evolution.',
-					'Directly contributed to supporting and growing a user base of <strong>1,200+</strong> subscribers through ongoing improvements and the development of new features such as a WhatsApp module and catalog expansion.',
-					'Actively participated in the visual <strong>identity rebranding</strong>, delivering a more consistent, modern interface aligned with the brand’s positioning.',
+					'Led <strong>technical modernization</strong> from legacy stack to <strong>React, Next.js, and TypeScript</strong>, re-architecting the front-end for componentization, reuse, and long-term maintainability.',
+					'Worked with <strong>autonomy on the front-end</strong>, partnering directly with product and business on prioritization and feature delivery.',
+					'Built and evolved a <strong>website, web application, and online store</strong> supporting a platform with <strong>1,200+</strong> subscribers.',
+					'Shipped new capabilities including a <strong>WhatsApp integration module</strong> and <strong>catalog expansion</strong>.',
+					'Contributed to the visual <strong>identity rebranding</strong>, delivering a more consistent, modern interface aligned with the brand positioning.',
 				],
 			},
 			{
@@ -359,14 +370,16 @@ const messages = {
 				companyLogo: '/companies/rocketseat.jpeg',
 				companyLogoAlt: 'Logo of Rocketseat',
 				title: 'Full-Stack and Mobile Development at Rocketseat',
-				timeRange: '2023 - Present',
+				timeRange: '2023 - 2025',
 				location: 'Brazil',
 				remoteOrPresencial: 'Remote',
 				description: [
 					'<strong>React:</strong> Hooks, Context API, API consumption, unit and integration testing, Next.js, SSR, SSG, Full-Stack apps and design systems.',
 					'<strong>Node.js:</strong> Fastify, NestJS, SOLID principles, design patterns, scalable APIs, and automated testing.',
 					'<strong>React Native:</strong> Navigation, API integration, push notifications, deep linking, animations, micro-interactions, and offline-first strategies.',
-					'<strong>Additional Skills:</strong> JavaScript, TypeScript, Redux, Zustand, multi-tenant SaaS boilerplate with RBAC, web accessibility, SEO for developers, Micro SaaS development and functional programming.',
+					'<strong>NLW Expert (React track)</strong>',
+					'<strong>Multi-tenant SaaS boilerplate with RBAC:</strong> OAuth authentication, Fastify, Next.js, CASL, Turborepo, Server Actions, Nodemailer, Cloudflare R2, and organization and project management.',
+					'<strong>Creating a Micro SaaS</strong>',
 				],
 			},
 			{
