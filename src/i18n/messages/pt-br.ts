@@ -11,15 +11,15 @@ const messages = {
 			'Paralelamente, cursei <strong>Publicidade e Propaganda</strong> entre 2014 e 2017. Apesar de nunca ter atuado diretamente na área, a formação agregou muito ao meu trabalho, trazendo conceitos de <strong>design, marketing, comportamento e tecnologia.</strong>',
 			'Em 2017, dentro da Sou Digital, nasceu o que hoje é chamada <strong>Sonica</strong>, uma plataforma <strong>no-code</strong> com a proposta de entregar websites funcionais e personalizáveis sem precisar lidar obrigatoriamente com código. A Sonica hoje é uma startup que se posiciona como uma uma <strong>plataforma multi-chain para tokenização de ativos</strong>, focada em desenvolver um ecossistema unindo originadores, tokenizadoras e distribuidores.',
 			'A partir de 2019, com o <strong>trabalho remoto</strong>, aproveitei para intensificar meus estudos e aprofundar minhas habilidades em <strong>React, Next.js, TypeScript, Node.js, PHP e Laravel</strong>. Continuei trabalhando na minha posição anterior na <strong>Sou Digital</strong> e também trabalhei como desenvolvedor front-end no <strong>Meu Rosinha</strong>, um sistema de organização para consultoras de beleza, e claro, trabalhando com essas novas tecnologias.',
-			'Agora em 2025, me desafiei a transformar o ano em um divisor de águas. Então, o maior objetivo era encontrar uma nova posição como desenvolvedor front-end. Dito e feito, estou começando na <strong>MySide</strong>, um personal shopper imobiliário. Mas essa história ainda está para ser escrita.',
-			'Meu foco principal nesses últimos anos vem sendo trabalhar com o ecossistema <strong>JavaScript</strong>, mais especificamente com <strong>React</strong>, sem descartar o uso de <strong>outros frameworks</strong> ou até mesmo mobile com <strong>React Native</strong> no qual estou aprendendo. No back-end, <strong>Node.js</strong> tem sido um complemento natural do <strong>Next.js</strong> ou mesmo usando algum de seus frameworks como o <strong>Fastify</strong>, enquanto <strong>PHP e Laravel</strong> são mais um quebra-galho.',
-			'<strong>No futuro</strong>, meu objetivo é continuar crescendo como desenvolvedor, explorando <strong>novas tecnologias</strong> e me envolvendo em projetos desafiadores que me permitam deixar uma marca significativa. Embora meu foco continue no front-end, estou sempre em busca de novas ferramentas e práticas para expandir minhas habilidades. <strong>Quero colaborar com equipes inovadoras, compartilhar conhecimento e contribuir para a criação de produtos que realmente façam a diferença.</strong> Quero estar sempre em movimento, um dia de cada vez, uma linha de código por vez.',
+			'Em 2025, entrei na <strong>MySide</strong>, um personal shopper imobiliário, como <strong>desenvolvedor front-end sênior</strong>, minha última posição até aqui. Em uma squad enxuta de startup, tive ownership sobre a arquitetura front-end do <strong>Hero</strong>, um produto com IA para Personal Shoppers, até deixar a empresa em <strong>2026</strong>.',
+			'Meu foco é <strong>arquitetura front-end</strong>, construção de <strong>produtos SaaS, PWAs</strong> e experiências complexas com <strong>React, Next.js e TypeScript</strong>. Tenho experiência prática com <strong>produtos integrados à IA</strong> (chat, transcrição de áudio e persistência no navegador) e uso <strong>engenharia assistida por IA</strong> no meu fluxo de trabalho. Consigo atuar em diferentes partes da aplicação com <strong>Node.js, PHP e Laravel</strong>, mas minha maior profundidade técnica e ownership ficam no front-end.',
+			'<strong>Hoje,</strong> busco minha próxima oportunidade como <strong>desenvolvedor front-end sênior</strong> em times de produto que valorizem autonomia, qualidade técnica e colaboração. Quero continuar construindo produtos que façam diferença, próximo de produto e negócio, com ownership real sobre o que entrego.',
 		],
 	},
 	Contact: {
 		title: 'Chama aí',
 		pagesTitle: 'E aí?',
-		text: "<strong>Que tal a gente trocar uma ideia?</strong> Estou aberto para conversar e explorar novas oportunidades. Pode me chamar no <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> ou pelas minhas redes sociais. <strong>Vamos nos conectar!</strong>",
+		text: "<strong>Busco minha próxima oportunidade como desenvolvedor front-end sênior.</strong> Estou aberto a times de produto que valorizem autonomia, qualidade técnica e colaboração. Pode me chamar no <a href='mailto:ricardoakowalski@gmail.com'>ricardoakowalski@gmail.com</a> ou pelas minhas redes sociais. <strong>Vamos nos conectar!</strong>",
 		buttons: {
 			linkedin: 'Conecte-se comigo no LinkedIn',
 			github: 'Veja minha atividade e projetos no GitHub',
@@ -225,10 +225,11 @@ const messages = {
 		},
 	},
 	Seo: {
-		title: 'Ricardo Augusto Kowalski | Desenvolvedor Front-End',
+		title: 'Ricardo Augusto Kowalski | Desenvolvedor Front-End Sênior',
 		description:
-			'Desenvolvedor front-end com mais de {years} anos de experiência, especializado em TypeScript, React, Next.js e Node.js. Apaixonado por tecnologia, café e playlists, criando soluções como sistemas web, websites, landing pages e lojas online.',
+			'Desenvolvedor front-end sênior com mais de {years} anos de experiência, especializado em TypeScript, React, Next.js e arquitetura front-end. Cria PWAs escaláveis, produtos SaaS e aplicações web com IA. Aberto a oportunidades como desenvolvedor front-end sênior.',
 		keywords: [
+			'desenvolvedor front-end sênior',
 			'desenvolvedor front-end',
 			'desenvolvedor web',
 			'React',
@@ -255,9 +256,19 @@ const messages = {
 			'Santa Catarina',
 			'desenvolvedor remoto',
 			'projetos digitais',
+			'PWA',
+			'SaaS',
+			'arquitetura front-end',
+			'desenvolvimento assistido por IA',
 			'boas práticas de código',
 		],
-		jobTitle: 'Desenvolvedor Front-End',
+		projects: {
+			'hero-mobile':
+				'Hero Mobile, PWA interno da MySide com chat integrado à IA, arquitetura offline-first, Service Workers, histórico de conversas em IndexedDB e pipeline de negociações para mais de 40 Personal Shoppers.',
+			'hero-desktop':
+				'Hero Desktop, aplicação web interna da MySide com busca de imóveis via Google Maps, pipeline de atendimentos, ferramenta de apresentação interativa e arquitetura front-end por Ricardo Augusto Kowalski.',
+		},
+		jobTitle: 'Desenvolvedor Front-End Sênior',
 	},
 	NotFound: {
 		title: 'Página não encontrada',
@@ -265,7 +276,7 @@ const messages = {
 	},
 	Experiences: {
 		title: 'Experiências profissionais',
-		text: 'Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Atualmente estou construindo o <strong>Hero</strong>, um assistente para os Personal Shoppers da <strong>MySide</strong>.',
+		text: 'Trabalho como <strong>desenvolvedor front-end</strong> desde 2013, quando entrei na <strong>Sou Digital.</strong> Nos últimos anos trabalhei no <strong>Meu Rosinha</strong>, na <strong>Sonica</strong> e em outros projetos. Minha última posição foi na <strong>MySide</strong>, onde construí o <strong>Hero</strong>, um assistente para os Personal Shoppers.',
 		scrollButton: 'Arraste para ver mais',
 		list: [
 			{
@@ -275,17 +286,17 @@ const messages = {
 				companyLinkedinUrl: 'https://www.linkedin.com/company/myside',
 				companyLogo: '/companies/myside.jpeg',
 				companyLogoAlt: 'Logo da MySide',
-				title: 'Desenvolvedor Front-End na MySide',
-				timeRange: '2025 - Presente',
+				title: 'Desenvolvedor Front-End Sênior na MySide',
+				timeRange: '2025 - 2026',
 				location: 'Florianópolis, SC',
 				remoteOrPresencial: 'Remoto',
 				description: [
-					'Desenvolvimento do <strong>Hero</strong>, assistente inteligente interno utilizado por mais de <strong>40+</strong> Personal Shoppers na rotina de atendimento e negociação imobiliária.',
-					'Uso de <strong>ferramentas IA</strong> no desenvolvimento para geração de componentes, lógica e testes automatizados, otimizando tempo de implementação e experimentação de soluções.',
-					'Implementação de dois produtos principais: um <strong>PWA mobile</strong> com chat integrado a IA para consulta de empreendimentos, construtoras e tipologias, além de módulo de gestão de negociações estruturado em pipeline com controle de tarefas e eventos; e uma <strong>aplicação desktop</strong> com gestão de negociações, buscador de imóveis e ferramenta de apresentação interativa utilizada no primeiro contato estratégico com clientes.',
-					'Construção da arquitetura front-end com <strong>React 19, Next.js 15 (App Router) e TypeScript</strong>, com foco em escalabilidade, performance e organização modular.',
-					'Implementação de estratégias offline com <strong>Service Workers, IndexedDB e persistência de cache</strong>, garantindo uso contínuo da aplicação mesmo em cenários de conectividade instável.',
-					'Estruturação de testes unitários e de componentes com <strong>Jest e React Testing Library</strong>.',
+					'Desenvolvimento do <strong>Hero</strong>, produto interno utilizado diariamente por mais de <strong>40+</strong> Personal Shoppers em fluxos de atendimento e negociação imobiliária, em uma squad enxuta de startup.',
+					'Ownership sobre a <strong>arquitetura front-end</strong> (componentização, padrões de código e escolha de bibliotecas) com <strong>React 19, Next.js 15 (App Router) e TypeScript</strong>.',
+					'Entrega de um <strong>PWA mobile</strong> com chat IA, busca de imóveis, pipeline de atendimentos, gestão de tarefas e offline com Service Workers e IndexedDB, além de um <strong>app desktop</strong> com Google Maps e apresentações interativas para reuniões estratégicas com clientes.',
+					'Entrega de funcionalidades com IA, incluindo integração com APIs de chat e transcrição de áudio, atuando com <strong>Product Manager e Designer</strong> no refinamento e planejamento técnico.',
+					'Aceleração de entregas com <strong>fluxos de engenharia assistidos por IA</strong> para componentes, lógica de negócio e testes, do QA aos Pull Requests e CI/CD.',
+					'Estruturação de testes com <strong>Jest, Vitest e React Testing Library</strong>.',
 				],
 			},
 			{
@@ -300,11 +311,11 @@ const messages = {
 				location: 'Timbó, SC',
 				remoteOrPresencial: 'Remoto',
 				description: [
-					'Desenvolvimento de vários projetos incluindo um <strong>website, um aplicativo web e uma lojinha online</strong>. No passado trabalhei também em projetos legados.',
-					'Migração e atualização da stack para <strong>React, Next.js e TypeScript</strong>, garantindo maior escalabilidade, manutenibilidade e sustentabilidade técnica.',
-					'<strong>Reestruturação da arquitetura front-end</strong> com foco em componentização e reutilização, reduzindo complexidade e facilitando evolução contínua do produto.',
-					'Contribuição direta para a sustentação e crescimento da base atual de mais de <strong>1,200+</strong> assinantes, através de melhorias contínuas e criação de novas features como módulo de WhatsApp e expansão do catálogo.',
-					'Participação ativa no rebranding da <strong>identidade visual</strong>, promovendo uma interface mais consistente, moderna e alinhada ao posicionamento da marca.',
+					'<strong>Liderança técnica</strong> na modernização do stack legado para <strong>React, Next.js e TypeScript</strong>, reestruturando o front-end com foco em componentização, reutilização e manutenibilidade.',
+					'Atuação com <strong>autonomia no front-end</strong>, colaborando diretamente com produto e negócio na priorização e entrega de funcionalidades.',
+					'Desenvolvimento e evolução de <strong>website, aplicativo web e lojinha online</strong>, sustentando uma plataforma com mais de <strong>1.200+</strong> assinantes.',
+					'Entrega de novas funcionalidades, incluindo <strong>módulo de integração com WhatsApp</strong> e <strong>expansão do catálogo</strong>.',
+					'Participação no rebranding da <strong>identidade visual</strong>, promovendo uma interface mais consistente, moderna e alinhada ao posicionamento da marca.',
 				],
 			},
 			{
@@ -359,14 +370,16 @@ const messages = {
 				companyLogo: '/companies/rocketseat.jpeg',
 				companyLogoAlt: 'Logo da Rocketseat',
 				title: 'Desenvolvimento Full-Stack e Mobile na Rocketseat',
-				timeRange: '2023 - Presente',
+				timeRange: '2023 - 2025',
 				location: 'Brasil',
 				remoteOrPresencial: 'Remoto',
 				description: [
 					'<strong>React:</strong> Hooks, Context API, consumo de APIs, testes unitários e de integração, Next.js, SSR, SSG, Full-Stack apps e design systems.',
 					'<strong>Node.js:</strong> Fastify, NestJS, princípios SOLID, design patterns, APIs escaláveis e testes automatizados.',
 					'<strong>React Native:</strong> Navegação, integração com APIs, notificações push, deep linking, animações, micro-interações e estratégias offline-first.',
-					'<strong>Habilidades Adicionais:</strong> JavaScript, TypeScript, Redux, Zustand, boilerplate SaaS multi-tenant com RBAC, acessibilidade web, SEO para desenvolvedores, desenvolvimento de Micro SaaS and funcional programming.',
+					'<strong>NLW Expert (trilha de React)</strong>',
+					'<strong>Boilerplate SaaS multi-tenant com RBAC:</strong> autenticação com OAuth, Fastify, Next.js, CASL, Turborepo, Server Actions, Nodemailer, Cloudflare R2, gestão de organizações e projetos.',
+					'<strong>Creating a Micro SaaS</strong>',
 				],
 			},
 			{

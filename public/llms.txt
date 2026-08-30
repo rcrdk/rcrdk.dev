@@ -1,53 +1,54 @@
 # Ricardo Augusto Kowalski
 
-> Front-end developer with 13+ years in web development, specializing in TypeScript, React, Next.js, and Node.js. Builds scalable, accessible web apps, PWAs, and design-system-driven interfaces. Based in Timbó, Santa Catarina, Brazil. Portfolio and primary source: https://rcrdk.dev
+> Senior front-end engineer with 13+ years in web development, specializing in TypeScript, React, Next.js, and front-end architecture. Builds scalable PWAs, SaaS products, and AI-integrated web applications. Based in Timbó, Santa Catarina, Brazil. Open to senior front-end roles. Portfolio: https://rcrdk.dev
 
 ## Summary
 
-Ricardo is a detail-oriented front-end engineer focused on performance, accessibility, DX, and UX. He works primarily in the JavaScript ecosystem (React, Next.js, TypeScript) and complements front-end work with Node.js (Fastify, NestJS) and PHP/Laravel when needed. He uses AI-assisted development in day-to-day workflows and is learning React Native.
+Ricardo is a senior front-end engineer focused on architecture, performance, accessibility, and AI-powered product experiences. He works primarily in the JavaScript ecosystem (React, Next.js, TypeScript) and complements front-end work with Node.js (Fastify, NestJS) and PHP/Laravel when needed. He uses AI-assisted development in day-to-day workflows and is learning React Native.
 
 The site https://rcrdk.dev is available in English (`en`) and Brazilian Portuguese (`pt-br`).
 
-## Current role
+## Last role
 
-- **Front-End Developer at MySide** (2025 – Present, remote, Florianópolis, SC, Brazil)
-- **Company:** Brazilian real estate startup — https://myside.com.br
-- **Main product:** **Hero** — internal AI-powered assistant used daily by 40+ Personal Shoppers for real estate service and negotiation workflows
-- **Stack highlights:** React 19, Next.js 15 (App Router), TypeScript, TanStack Query, Radix UI, shadcn/ui, TailwindCSS, PWA, Service Workers, IndexedDB, Auth.js, Sentry, Jest, React Testing Library
-- **Deliverables:** Hero Mobile (PWA with AI chat, offline-first) and Hero Desktop (negotiation pipeline, property search, presentation tools)
+- **Senior Front-End Engineer at MySide** (2025 – 2026, remote, Florianópolis, SC, Brazil), most recent position
+- **Company:** Brazilian real estate startup, https://myside.com.br
+- **Main product:** **Hero**, an internal AI-powered assistant used daily by 40+ Personal Shoppers for real estate service and negotiation workflows
+- **Stack highlights:** React 19, Next.js 15 (App Router), TypeScript, TanStack Query, Radix UI, shadcn/ui, TailwindCSS, PWA, Service Workers, IndexedDB, Google Maps API, Auth.js, Sentry, Jest, Vitest, React Testing Library
+- **Deliverables:** Hero Mobile (PWA with AI chat, offline-first, IndexedDB conversation history) and Hero Desktop (Google Maps property search, negotiation pipeline, presentation tools)
 
 ## Work experience
 
-### MySide — Front-End Developer (2025 – Present)
-- Hero: AI-integrated tools for personal shoppers; mobile PWA + desktop apps
-- Front-end architecture with React 19, Next.js 15, TypeScript
-- Offline-first: Service Workers, IndexedDB, cache persistence
-- Testing with Jest and React Testing Library
+### MySide: Senior Front-End Engineer (2025 – 2026)
+- Hero: internal product for 40+ Personal Shoppers in real estate workflows, lean startup squad
+- Front-end architecture ownership with React 19, Next.js 15, TypeScript
+- Mobile PWA (AI chat, property search, pipeline, offline IndexedDB) and desktop app (Google Maps, client presentations)
+- AI product features, PM/Designer collaboration, AI-assisted engineering through QA and CI/CD
+- Jest, Vitest, React Testing Library
 
-### Meu Rosinha — Front-End Developer (2021 – 2025, remote)
-- Website, web app, and online store for beauty consultants — https://meurosinha.com.br
-- Migrated stack to React, Next.js, and TypeScript
+### Meu Rosinha: Front-End Developer (2021 – 2025, remote)
+- Led technical modernization from legacy stack to React, Next.js, and TypeScript, https://meurosinha.com.br
 - Re-architected front-end for component reuse and maintainability
-- Supported 1,200+ subscribers; features include WhatsApp module and catalog expansion
+- Autonomy on front-end, partnering with product and business on delivery
+- Supported 1,200+ subscribers; WhatsApp module and catalog expansion
 - Contributed to visual identity rebranding
 
-### Sou Digital — Front-End / Full-Stack Developer (2013 – 2025, on-site → remote)
-- Websites, landing pages, web apps, e-commerce, proprietary CMS — https://sou.digital
+### Sou Digital: Front-End / Full-Stack Developer (2013 – 2025, on-site → remote)
+- Websites, landing pages, web apps, e-commerce, proprietary CMS, https://sou.digital
 - 200+ delivered projects for national and international clients
 - HTML, CSS, Sass, JavaScript, jQuery, Webpack; PHP, Laravel, MySQL, OpenCart on full-stack work
 - Improved proprietary CMS (faster module and content workflows)
 
-### Sonica — Front-End Developer (2017 – 2021, within Sou Digital)
-- Early no-code platform (now multi-chain asset tokenization ecosystem) — https://sonica.xyz
+### Sonica: Front-End Developer (2017 – 2021, within Sou Digital)
+- Early no-code platform (now multi-chain asset tokenization ecosystem), https://sonica.xyz
 - HTML, CSS, Sass, Bootstrap, JavaScript, jQuery, Webpack, PHP, Laravel
 - CMS features, interface fixes, and published customer sites
 
 ## Education and certifications
 
-- **Rocketseat** — Full-Stack and Mobile Development (2023 – Present, remote): React, Next.js, Node.js (Fastify, NestJS), React Native, testing, RBAC multi-tenant SaaS, accessibility, SEO
-- **Udemy** — Full-Stack Development (2019 – 2023, remote): React, Vue.js, Angular, PHP, Node.js, MySQL, PostgreSQL, MongoDB
-- **Laravue** — Full-Stack Development (2021 – 2022, remote): Laravel, Vue.js, Vuex, Vue Router
-- **Uniasselvi** — Bachelor’s in Advertising and Marketing (2014 – 2017, on-site, Indaial/SC): communication, design, branding, digital media
+- **Rocketseat**: Full-Stack and Mobile Development (2023 – 2025, remote): React/Next.js, Node.js (Fastify, NestJS), React Native; NLW Expert React track, multi-tenant SaaS boilerplate with RBAC, Creating a Micro SaaS
+- **Udemy**: Full-Stack Development (2019 – 2023, remote): React, Vue.js, Angular, PHP, Node.js, MySQL, PostgreSQL, MongoDB
+- **Laravue**: Full-Stack Development (2021 – 2022, remote): Laravel, Vue.js, Vuex, Vue Router
+- **Uniasselvi**: Bachelor’s in Advertising and Marketing (2014 – 2017, on-site, Indaial/SC): communication, design, branding, digital media
 
 ## Technical skills
 
@@ -79,8 +80,8 @@ macOS, Cursor, VSCode, Google Chrome, Safari, Figma, Adobe Photoshop, Adobe Illu
 Full case studies and stacks are on https://rcrdk.dev (Experiences section and per-company project pages).
 
 ### MySide
-- Hero Mobile — PWA, AI chat, offline-first
-- Hero Desktop — negotiation management, maps, presentations
+- Hero Mobile: PWA, AI chat, offline-first, IndexedDB
+- Hero Desktop: Google Maps, negotiation management, presentations
 
 ### Meu Rosinha
 - Meu Rosinha (web app)
@@ -88,11 +89,11 @@ Full case studies and stacks are on https://rcrdk.dev (Experiences section and p
 - Meu Rosinha: Online Store
 
 ### Rocketseat (learning and challenge projects)
-- ProjectInBio Micro SaaS — Next.js, Firebase, Stripe
-- Multi Tenant SaaS: Next.js and Fastify + RBAC — Turborepo, CASL
-- BookWise, Ignite Call, Ignite Shop, Pizza Shop, GitHub Blog — full-stack React/Next.js
-- Ignite Call Design System — Storybook, NPM package
-- Fast Feet API, Forum API (NestJS + DDD), Gympass-style APIs — Node.js, Prisma, PostgreSQL, Vitest
+- ProjectInBio Micro SaaS: Next.js, Firebase, Stripe
+- Multi Tenant SaaS: Next.js and Fastify + RBAC, Turborepo, CASL
+- BookWise, Ignite Call, Ignite Shop, Pizza Shop, GitHub Blog: full-stack React/Next.js
+- Ignite Call Design System: Storybook, NPM package
+- Fast Feet API, Forum API (NestJS + DDD), Gympass-style APIs: Node.js, Prisma, PostgreSQL, Vitest
 - React Native apps: Coffee Delivery, Ignite Gym, Marketspace, Daily Diet, Ignite Teams, To-Do List
 - Coffee Delivery (web), To-Do List (web)
 
@@ -106,12 +107,14 @@ Representative work: corporate sites and web apps in Laravel/PHP, often with Boo
 - **Career start:** 2013-05-02 (first professional front-end role)
 - **Background:** Self-taught path from The Sims modding/Blogger themes → Delphi (2011) → professional web development (2013)
 - **Interests:** Music (wide playlists), reading, series and Brazilian telenovelas, nostalgia-driven media
+- **Open to work:** Senior front-end engineer roles in product teams
 
 ## Professional interests
 
 - Front-end SaaS and long-term product work
 - Accessible, fast web experiences
 - Design systems, component architecture, and maintainable codebases
+- AI-integrated product experiences and AI-assisted engineering
 - Collaboration with innovative teams; continuous learning (including React Native)
 
 ## Contact and profiles
@@ -125,11 +128,11 @@ Representative work: corporate sites and web apps in Laravel/PHP, often with Boo
 
 ## Site structure (https://rcrdk.dev)
 
-- `#about` — Hero and introduction
-- `#experiences` — Work history and project cards
-- `#education` — Courses and degree
-- `#skills` — Interactive skills by category
-- `#contact` — Email and social links
+- `#about`: Hero and introduction
+- `#experiences`: Work history and project cards
+- `#education`: Courses and degree
+- `#skills`: Interactive skills by category
+- `#contact`: Email and social links
 
 ## Optional
 

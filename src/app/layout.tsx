@@ -55,11 +55,6 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
 		sameAs: [LINKS.github, LINKS.behance, LINKS.linkedIn],
 		jobTitle: __('jobTitle'),
-		worksFor: {
-			'@type': 'Organization',
-			name: 'MySide',
-			url: 'https://myside.com.br',
-		},
 		address: {
 			'@type': 'PostalAddress',
 			addressLocality: 'Timbó',
@@ -88,7 +83,7 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
 		},
 		hasOccupation: {
 			'@type': 'Occupation',
-			name: 'Front-End Developer',
+			name: __('jobTitle'),
 			occupationLocation: {
 				'@type': 'City',
 				name: 'Timbó',

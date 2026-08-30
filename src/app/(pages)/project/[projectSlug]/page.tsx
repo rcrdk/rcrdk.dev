@@ -8,6 +8,8 @@ import { getCurrentLocale } from '@/i18n/get-current-locale'
 import { env } from '@/lib/env'
 import { getAllProjectSlugs, getProjectBySlug } from '@/utils'
 
+const PROJECT_SEO_SLUGS = new Set(['hero-mobile', 'hero-desktop'])
+
 interface ProjectPageProps {
 	params: Promise<{ projectSlug: string }>
 }
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 	const { title: projectTitle } = project[locale]
 
 	const title = `${projectTitle} | ${__('title')}`
+	const description = PROJECT_SEO_SLUGS.has(projectSlug) ? __(`projects.${projectSlug}`) : undefined
 	const url = `${env.NEXT_PUBLIC_APP_URL}/project/${projectSlug}`
 
 	const imageSelected = project.image ?? project.gallery.at(0)?.url
@@ -40,8 +43,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 	return {
 		robots: ignorePagesRobots,
 		title,
+		description,
 		openGraph: {
 			title,
+			description,
 			url,
 			type: 'article',
 			...openGraphImages,
@@ -49,6 +54,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 		twitter: {
 			card: imageSelected ? 'summary_large_image' : 'summary',
 			title,
+			description,
 			...twitterImages,
 		},
 		alternates: { canonical: url },
