@@ -22,13 +22,30 @@ export async function generateMetadata(): Promise<Metadata> {
 	const locale = await getLocale()
 	const __ = await getTranslations('Seo')
 
+	const title = __('title')
+	const description = __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) })
+	const isPortuguese = locale === 'pt-br'
+	const openGraphLocale = isPortuguese ? 'pt_BR' : 'en_US'
+	const openGraphAlternateLocale = isPortuguese ? 'en_US' : 'pt_BR'
+
 	return {
-		title: __('title'),
-		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+		title,
+		description,
 		keywords: __.raw('keywords'),
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				'max-image-preview': 'large',
+				'max-snippet': -1,
+				'max-video-preview': -1,
+			},
+		},
 		openGraph: {
-			title: __('title'),
-			description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+			title,
+			description,
 			url: env.NEXT_PUBLIC_APP_URL,
 			siteName: 'Ricardo Augusto Kowalski',
 			images: [
@@ -36,16 +53,17 @@ export async function generateMetadata(): Promise<Metadata> {
 					url: `${env.NEXT_PUBLIC_APP_URL}/opengraph-image.jpg`,
 					width: 1200,
 					height: 630,
-					alt: __('title'),
+					alt: title,
 				},
 			],
-			locale,
+			locale: openGraphLocale,
+			alternateLocale: [openGraphAlternateLocale],
 			type: 'website',
 		},
 		twitter: {
 			card: 'summary_large_image',
-			title: __('title'),
-			description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
+			title,
+			description,
 			images: [`${env.NEXT_PUBLIC_APP_URL}/twitter-image.jpg`],
 		},
 		alternates: {
@@ -57,10 +75,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
 	return (
 		<div className="layout:flex-row layout:items-start relative flex flex-col items-center">
-			<Header />
-			<Nav slot="page" />
-
-			<main className="layout:self-stretch max-layout-breakpoint:overflow-hidden flex w-screen max-w-screen grow">
+			<main className="layout:self-stretch max-layout-breakpoint:overflow-hidden order-2 flex w-screen max-w-screen grow">
 				<Container
 					size="center"
 					sideSpacing="lg"
@@ -83,6 +98,9 @@ export default async function HomePage() {
 					<Contact />
 				</Container>
 			</main>
+
+			<Header />
+			<Nav slot="page" />
 
 			<ScrollStart />
 			<LazyScreensaver />

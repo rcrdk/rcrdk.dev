@@ -43,7 +43,7 @@ const messages = {
 			default: 'Modo de cor',
 		},
 		changeLocale: 'Alterar idioma',
-		avatarAlt: 'Imagem de perfil de Ricardo Augusto Kowalski',
+		avatarAlt: 'Ricardo Augusto Kowalski',
 		navigation: {
 			about: 'Sobre mim',
 			experiences: 'Experiências',
@@ -149,7 +149,7 @@ const messages = {
 	},
 	Hero: {
 		title: 'Ricardo Augusto Kowalski',
-		text: 'Sou <strong>desenvolvedor front-end</strong> movido a café, boas playlists e desafios complexos. Trabalho com web há mais de {years} anos e, nos últimos anos, me especializei em <strong>React, Next.js e TypeScript</strong>, criando aplicações escaláveis e de alta performance com arquitetura sólida e foco em resultado.',
+		text: 'Sou <strong>desenvolvedor front-end sênior</strong> movido a café, boas playlists e desafios complexos. Trabalho com web há mais de {years} anos e, nos últimos anos, me especializei em <strong>React, Next.js e TypeScript</strong>, criando aplicações escaláveis e de alta performance com arquitetura sólida e foco em resultado.',
 		buttons: {
 			about: 'Mais sobre mim',
 			scroll: 'Minhas experiências',
@@ -227,7 +227,7 @@ const messages = {
 	Seo: {
 		title: 'Ricardo Augusto Kowalski | Desenvolvedor Front-End Sênior',
 		description:
-			'Desenvolvedor front-end sênior com mais de {years} anos de experiência, especializado em TypeScript, React, Next.js e arquitetura front-end. Cria PWAs escaláveis, produtos SaaS e aplicações web com IA. Aberto a oportunidades como desenvolvedor front-end sênior.',
+			'Desenvolvedor front-end sênior com mais de {years} anos de experiência em React, Next.js e TypeScript. Cria PWAs, produtos SaaS e aplicações web com IA.',
 		keywords: [
 			'desenvolvedor front-end sênior',
 			'desenvolvedor front-end',
