@@ -16,6 +16,7 @@ export function HeaderContent() {
 
 	return (
 		<header
+			data-nosnippet
 			className={cn(
 				'sticky inset-x-0 top-0 z-20 w-full border-b border-black/5 bg-white/90 text-black/85 backdrop-blur-xs transition-transform duration-300 ease-out will-change-transform select-none motion-reduce:transition-none dark:border-white/10 dark:bg-black/90 dark:text-white',
 				!visible && '-translate-y-full',

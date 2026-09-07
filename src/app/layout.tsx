@@ -12,6 +12,7 @@ import { KonamiCodeGameTask } from '@/components/game/tasks/konami-code-task'
 import { LocaleGameTask } from '@/components/game/tasks/locale-task'
 import { Providers } from '@/components/providers'
 import { FULL_DATES } from '@/config/dates'
+import { getSiteJsonLd } from '@/config/json-ld'
 import { LINKS } from '@/config/links'
 import { getCurrentLocale } from '@/i18n/get-current-locale'
 import { yearsFromThen } from '@/lib/dayjs'
@@ -45,53 +46,15 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
 	const messages = await getMessages()
 	const __ = await getTranslations('Seo')
 
-	const jsonLd = {
-		'@context': 'https://schema.org',
-		'@type': 'Person',
-		name: 'Ricardo Augusto Kowalski',
-		birthDate: '1996-03-03',
-		image: `${env.NEXT_PUBLIC_APP_URL}${profilePicture.src}`,
+	const jsonLd = getSiteJsonLd({
 		url: env.NEXT_PUBLIC_APP_URL,
+		name: 'Ricardo Augusto Kowalski',
 		description: __('description', { years: yearsFromThen(FULL_DATES.careerBirthday) }),
-		sameAs: [LINKS.github, LINKS.behance, LINKS.linkedIn],
 		jobTitle: __('jobTitle'),
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Timbó',
-			addressRegion: 'Santa Catarina',
-			addressCountry: 'BR',
-		},
-		knowsAbout: [
-			'Front-end Development',
-			'React',
-			'Next.js',
-			'TypeScript',
-			'Node.js',
-			'JavaScript',
-			'PHP',
-			'Laravel',
-			'Web Development',
-			'UI/UX Design',
-			'Responsive Design',
-			'Web Performance',
-			'Accessibility',
-		],
-		alumniOf: {
-			'@type': 'Organization',
-			name: 'Uniasselvi',
-			url: 'https://portal.uniasselvi.com.br/',
-		},
-		hasOccupation: {
-			'@type': 'Occupation',
-			name: __('jobTitle'),
-			occupationLocation: {
-				'@type': 'City',
-				name: 'Timbó',
-				addressRegion: 'Santa Catarina',
-				addressCountry: 'BR',
-			},
-		},
-	}
+		image: `${env.NEXT_PUBLIC_APP_URL}${profilePicture.src}`,
+		sameAs: [LINKS.github, LINKS.behance, LINKS.linkedIn],
+		locale,
+	})
 
 	return (
 		<html

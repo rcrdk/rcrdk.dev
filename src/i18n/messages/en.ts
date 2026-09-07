@@ -43,7 +43,7 @@ const messages = {
 			default: 'System color mode',
 		},
 		changeLocale: 'Change language',
-		avatarAlt: 'Profile picture of Ricardo Augusto Kowalski',
+		avatarAlt: 'Ricardo Augusto Kowalski',
 		navigation: {
 			about: 'About me',
 			experiences: 'Experiences',
@@ -149,7 +149,7 @@ const messages = {
 	},
 	Hero: {
 		title: 'Ricardo Augusto Kowalski',
-		text: 'I’m a <strong>front-end developer</strong> fueled by coffee, good playlists, and complex challenges. I’ve been working with web development for over {years} years and, in recent years, I’ve specialized in <strong>React, Next.js and TypeScript</strong>, building scalable, high-performance applications with solid architecture and a focus on results.',
+		text: 'I’m a <strong>senior front-end engineer</strong> fueled by coffee, good playlists, and complex challenges. I’ve been working with web development for over {years} years and, in recent years, I’ve specialized in <strong>React, Next.js and TypeScript</strong>, building scalable, high-performance applications with solid architecture and a focus on results.',
 		buttons: {
 			about: 'More about me',
 			scroll: 'My experiences',
@@ -227,7 +227,7 @@ const messages = {
 	Seo: {
 		title: 'Ricardo Augusto Kowalski | Senior Front-End Engineer',
 		description:
-			'Senior front-end engineer with over {years} years of experience, specializing in TypeScript, React, Next.js, and front-end architecture. Builds scalable PWAs, SaaS products, and AI-integrated web applications. Open to senior front-end roles.',
+			'Senior front-end engineer with over {years} years of experience in React, Next.js, and TypeScript. Builds scalable PWAs, SaaS products, and AI-powered web apps.',
 		keywords: [
 			'senior front-end engineer',
 			'front-end developer',

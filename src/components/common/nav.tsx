@@ -68,6 +68,7 @@ export function Nav({ slot }: Readonly<NavProps>) {
 
 	return (
 		<div
+			data-nosnippet
 			className={cn(
 				'relative select-none',
 				isSlotHeader && 'layout:hidden hidden min-[960px]:flex',

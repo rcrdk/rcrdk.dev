@@ -97,7 +97,10 @@ function HeaderInset({ animationEnter }: Readonly<HeaderInsetProps>) {
 
 export function Header() {
 	return (
-		<header className="xs:pt-6 xs:pb-0 xs:static layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 w-full bg-white/90 text-black/85 backdrop-blur-xs select-none dark:bg-black/90 dark:text-white">
+		<header
+			data-nosnippet
+			className="xs:pt-6 xs:pb-0 xs:static layout:sticky layout:top-0 layout:w-auto layout:py-10 layout:min-h-svh layout:flex sticky top-0 z-10 order-1 w-full bg-white/90 text-black/85 backdrop-blur-xs select-none dark:bg-black/90 dark:text-white"
+		>
 			<HeaderInset animationEnter="horizontal" />
 			<HeaderInset animationEnter="vertical" />
 

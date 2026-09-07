@@ -25,18 +25,22 @@ export function Hero() {
 	const descriptionDelay = canDelayAnimations ? 500 : 0
 	const buttonsDelay = canDelayAnimations ? 750 : 0
 
+	const title = __('title')
 	const descriptionHTML = __.raw('text').replace('{years}', yearsFromThen(FULL_DATES.careerBirthday))
 
 	return (
 		<Section>
 			<div ref={ref}>
 				<h1>
-					<AnimatedSplitText
-						text={__('title')}
-						delay={50}
-						breakWords
-						className="font-heading xs:leading-[0.85] layout:text-8xl block max-w-1/2 text-[19vw] leading-[16vw] font-black tracking-tight sm:text-8xl md:max-w-full md:text-9xl dark:text-white"
-					/>
+					<span className="sr-only">{title}</span>
+					<span aria-hidden="true">
+						<AnimatedSplitText
+							text={title}
+							delay={50}
+							breakWords
+							className="font-heading xs:leading-[0.85] layout:text-8xl block max-w-1/2 text-[19vw] leading-[16vw] font-black tracking-tight sm:text-8xl md:max-w-full md:text-9xl dark:text-white"
+						/>
+					</span>
 				</h1>
 
 				<div className="layout:mt-9 mt-8 sm:mt-16">
