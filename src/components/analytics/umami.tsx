@@ -8,14 +8,13 @@ export function UmamiAnalytics() {
 	if (!shouldEnableUmami()) return null
 
 	const websiteId = env.NEXT_PUBLIC_UMAMI_WEBSITE_ID!
-	const hostUrl = `${env.NEXT_PUBLIC_APP_URL}${UMAMI_PROXY_BASE_PATH}`
 
 	return (
 		<Script
 			defer
 			src={`${UMAMI_PROXY_BASE_PATH}/script.js`}
 			data-website-id={websiteId}
-			data-host-url={hostUrl}
+			data-host-url={env.NEXT_PUBLIC_APP_URL}
 			strategy="afterInteractive"
 		/>
 	)

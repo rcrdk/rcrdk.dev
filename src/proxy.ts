@@ -38,5 +38,5 @@ export default async function proxy(request: NextRequest & { ip?: string }) {
 }
 
 export const config = {
-	matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+	matcher: ['/((?!api|_next|_vercel|stats|.*\\..*).*)'],
 }

@@ -11,6 +11,7 @@ export { getProjectAttributions, type ProjectWithAttribution } from './get-proje
 export { getProjectBySlug } from './get-project-by-slug'
 export { getProjectSkills } from './get-project-skills'
 export { getProjectsByCompanySlug } from './get-projects-by-company-slug'
+export { getRequestClientIp } from './get-request-client-ip'
 export { scrollToSection } from './scroll-to-section'
 export { getTotalGamePoints, sumGamePoints } from './sum-game-points'
 export { handleParentTouchEnd, handleParentTouchStart } from './swiper'
