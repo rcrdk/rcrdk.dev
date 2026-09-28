@@ -25,7 +25,6 @@ const messages = {
 			github: 'Veja minha atividade e projetos no GitHub',
 			behance: 'Veja meus projetos visuais no Behance',
 			discord: 'Fale comigo no Discord',
-			spotify: 'Vamos ouvir CSS no Spotify!',
 		},
 		box: {
 			text: 'Confira meu perfil completo com experiências, cursos e certificados no LinkedIn, ou então, confira meu CV.',
@@ -76,7 +75,7 @@ const messages = {
 		},
 		lastfm: {
 			title: 'Últimas músicas tocadas',
-			button: 'Ouça minhas playlists',
+			button: 'Confira meu perfil no Apple Music',
 		},
 		company: {
 			site: 'Site',

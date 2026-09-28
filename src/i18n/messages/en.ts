@@ -25,7 +25,6 @@ const messages = {
 			github: 'Check out my projects and activities on GitHub',
 			behance: 'Check out my visual projects on Behance',
 			discord: 'Contact me on Discord',
-			spotify: "Let's listen to CSS on Spotify!",
 		},
 		box: {
 			text: 'Check out my full profile with experiences, courses, and certifications on LinkedIn, or take a look at my resume.',
@@ -76,7 +75,7 @@ const messages = {
 		},
 		lastfm: {
 			title: 'Recently played tracks',
-			button: 'Check out my playlists',
+			button: 'Check out my Apple Music profile',
 		},
 		company: {
 			site: 'Site',
