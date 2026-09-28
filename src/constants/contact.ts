@@ -1,10 +1,4 @@
-import {
-	IconBrandBehance,
-	IconBrandDiscord,
-	IconBrandGithub,
-	IconBrandLinkedin,
-	IconBrandSpotify,
-} from '@tabler/icons-react'
+import { IconBrandBehance, IconBrandDiscord, IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react'
 
 import { ANALYTICS_EVENTS } from '@/config/analytics-events'
 import { LINKS } from '@/config/links'
@@ -50,11 +44,5 @@ export const BUTTONS = [
 		labelKey: 'discord',
 		Icon: IconBrandDiscord,
 		analytics: { name: ANALYTICS_EVENTS.socialLinkClick, data: { platform: 'discord' } },
-	},
-	{
-		href: LINKS.spotify,
-		labelKey: 'spotify',
-		Icon: IconBrandSpotify,
-		analytics: { name: ANALYTICS_EVENTS.socialLinkClick, data: { platform: 'spotify' } },
 	},
 ]

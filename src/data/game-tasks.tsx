@@ -97,7 +97,10 @@ export const GAME_TASKS: GameTaskObject[] = [
 		icon: '🎸',
 		listItem: {
 			title: { en: 'Music lover', 'pt-br': 'Amante de música' },
-			hint: { en: "Checked what I've been listening on Spotify.", 'pt-br': 'Viu o que andei ouvindo no Spotify.' },
+			hint: {
+				en: "Checked what I've been listening on Apple Music.",
+				'pt-br': 'Viu o que andei ouvindo no Apple Music.',
+			},
 		},
 		toastItem: {
 			title: { en: 'So, what do you think?', 'pt-br': 'Então, o que achou?' },

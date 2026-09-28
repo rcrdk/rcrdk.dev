@@ -15,9 +15,10 @@ import { useGame } from '@/hooks/use-game'
 const INITIAL_DELAY = 250
 const DELAY_INCREMENT = 50
 const TEXT_DELAY = 250
-const RICK_ROLLING_DELAY = 450
-const DIVIDER_DELAY = 500
-const CTA_BOX_DELAY = 550
+const LAST_BUTTON_DELAY = INITIAL_DELAY + (BUTTONS.length - 1) * DELAY_INCREMENT
+const RICK_ROLLING_DELAY = LAST_BUTTON_DELAY + DELAY_INCREMENT
+const DIVIDER_DELAY = RICK_ROLLING_DELAY + DELAY_INCREMENT
+const CTA_BOX_DELAY = DIVIDER_DELAY + DELAY_INCREMENT
 
 const RICK_ROLLING_CURSOR = {
 	backgroundImage: 'https://media1.tenor.com/m/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif',

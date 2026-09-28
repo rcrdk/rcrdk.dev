@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { Root as DropdownRoot, Trigger as DropdownTrigger } from '@radix-ui/react-dropdown-menu'
-import { IconArrowRight, IconBrandSpotify, IconMusic } from '@tabler/icons-react'
+import { IconArrowRight, IconMusic } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { LastFmSkeletons } from '@/components/common/last-fm-skeletons'
 import { LastFmTrackItem } from '@/components/common/last-fm-track-item'
+import { AppleMusicIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { LAST_FM_CONFIG } from '@/config/last-fm'
@@ -53,11 +54,11 @@ export function LastFmHistory() {
 				sideOffset={DROPDOWN_SIDE_OFFSET}
 			>
 				<div className="dark:bg-dropdown-dark sticky top-0 z-10 flex items-center gap-2 bg-white py-3 pr-4 pl-3">
-					<IconBrandSpotify className="size-7 stroke-[1.5]" aria-hidden />
+					<AppleMusicIcon className="size-7" />
 					<strong className="block grow">{__('lastfm.title')}</strong>
 					<Button
 						as="a"
-						href={LINKS.spotify}
+						href={LINKS.appleMusic}
 						target="_blank"
 						variant="discret"
 						aria-label={__('lastfm.button')}

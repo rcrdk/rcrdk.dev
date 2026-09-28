@@ -1,3 +1,4 @@
+export { AppleMusicIcon } from '@/components/icons/apple-music-icon'
 export { BrandCursorIcon } from '@/components/icons/cursor-icon'
 export { EditorConfigIcon } from '@/components/icons/editor-config-icon'
 export { ESLintIcon } from '@/components/icons/eslint-icon'
